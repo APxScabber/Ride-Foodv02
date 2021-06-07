@@ -33,9 +33,7 @@ class LoadManager: NSObject {
             do {
                 
                 let json = try JSONDecoder().decode(DataConfirmModel.self, from: data)
-                print(json.data.code)
                 completion(.success(json))
-                
                 
             } catch {
                 completion(.failure(error))

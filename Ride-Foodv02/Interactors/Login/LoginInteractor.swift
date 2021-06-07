@@ -12,7 +12,8 @@ class LoginInteractor {
     //Получаем с сервера код подтверждения
     func reciveConfirmCode(from phoneNumber: String) {
         
-        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: "###########", replacmentCharacter: "#")
+        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginText.phoneFormatEasy.rawValue,
+                                                                    replacmentCharacter: "#")
         
         LoadManager.shared.createData(phone: formatedPhoneNumber) { result in
 

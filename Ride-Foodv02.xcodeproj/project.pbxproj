@@ -25,6 +25,12 @@
 		C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */; };
 		C4E83FE4266EA830000EE70F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE3266EA830000EE70F /* LabelExtension.swift */; };
 		C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */; };
+		C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE9266EB4E7000EE70F /* LoginText.swift */; };
+		C4E83FEE266EB7D5000EE70F /* LoginAndConfirmFont in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FED266EB7D5000EE70F /* LoginAndConfirmFont */; };
+		C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FEF266EC126000EE70F /* TextFont.swift */; };
+		C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */; };
+		C4E83FF5266EC405000EE70F /* ColorElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF4266EC405000EE70F /* ColorElements.swift */; };
+		C4E83FF7266EC5B5000EE70F /* LoginImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF6266EC5B5000EE70F /* LoginImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,12 @@
 		C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
 		C4E83FE3266EA830000EE70F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		C4E83FE9266EB4E7000EE70F /* LoginText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginText.swift; sourceTree = "<group>"; };
+		C4E83FED266EB7D5000EE70F /* LoginAndConfirmFont */ = {isa = PBXFileReference; lastKnownFileType = text; path = LoginAndConfirmFont; sourceTree = "<group>"; };
+		C4E83FEF266EC126000EE70F /* TextFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
+		C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFontSize.swift; sourceTree = "<group>"; };
+		C4E83FF4266EC405000EE70F /* ColorElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorElements.swift; sourceTree = "<group>"; };
+		C4E83FF6266EC5B5000EE70F /* LoginImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +92,13 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FE7266EA863000EE70F /* Others */,
-				C4E83FDB266EA7BF000EE70F /* Helpers */,
+				C4E83FC7266EA680000EE70F /* Interactors */,
+				C4E83FCB266EA6BD000EE70F /* Models */,
 				C4E83FD6266EA76C000EE70F /* Managers */,
 				C4E83FD0266EA704000EE70F /* ViewControllers */,
-				C4E83FCB266EA6BD000EE70F /* Models */,
-				C4E83FC7266EA680000EE70F /* Interactors */,
+				C4E83FDB266EA7BF000EE70F /* Helpers */,
 				C4E83FC4266EA63B000EE70F /* StoryBoards */,
+				C4E83FE7266EA863000EE70F /* Others */,
 				C4E83FBE266EA53B000EE70F /* Info.plist */,
 			);
 			path = "Ride-Foodv02";
@@ -155,6 +167,10 @@
 		C4E83FDB266EA7BF000EE70F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C4E83FF3266EC3A8000EE70F /* Colors */,
+				C4E83FEC266EB7A1000EE70F /* Images */,
+				C4E83FEB266EB798000EE70F /* Fonts */,
+				C4E83FE8266EB492000EE70F /* Texts */,
 				C4E83FDC266EA7C6000EE70F /* Extensions */,
 			);
 			path = Helpers;
@@ -181,6 +197,40 @@
 				C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		C4E83FE8266EB492000EE70F /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FE9266EB4E7000EE70F /* LoginText.swift */,
+			);
+			path = Texts;
+			sourceTree = "<group>";
+		};
+		C4E83FEB266EB798000EE70F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FED266EB7D5000EE70F /* LoginAndConfirmFont */,
+				C4E83FEF266EC126000EE70F /* TextFont.swift */,
+				C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C4E83FEC266EB7A1000EE70F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FF6266EC5B5000EE70F /* LoginImages.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C4E83FF3266EC3A8000EE70F /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FF4266EC405000EE70F /* ColorElements.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,18 +306,24 @@
 			files = (
 				C4E83FE4266EA830000EE70F /* LabelExtension.swift in Sources */,
 				C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */,
+				C4E83FF5266EC405000EE70F /* ColorElements.swift in Sources */,
 				C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */,
 				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
 				C4E83FCF266EA6ED000EE70F /* LoginModel.swift in Sources */,
+				C4E83FEE266EB7D5000EE70F /* LoginAndConfirmFont in Sources */,
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
 				C4E83FCD266EA6CF000EE70F /* ConfirmModel.swift in Sources */,
 				C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */,
+				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
+				C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */,
+				C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,
 				C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */,
 				C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */,
 				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
 				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
+				C4E83FF7266EC5B5000EE70F /* LoginImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

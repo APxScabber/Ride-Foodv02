@@ -11,6 +11,8 @@ class LoginViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var licenseCheckBoxOutlet: UIButton!
@@ -30,11 +32,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nextButtonOutlet.style()
-        setupLicenseTextView()
-        phoneNumberTextField.text = "+7"
+        setupPhoneNumberLabel()
+        mainImageView.image = LoginImages.mainBackground.value
+        setupNextButton()
         setImageLicenseCheckBox()
-        nextButtonEnable()
+        setupLicenseTextView()
+
+        phoneNumberTextField.text = LoginText.phonePrefix.rawValue
+        
     }
     
     deinit {
@@ -43,16 +48,33 @@ class LoginViewController: UIViewController {
     
     //MARK: - Methods
     
+    //Задаем параметры и текст phoneNumberLabel
+    private func setupPhoneNumberLabel() {
+        phoneNumberLabel.text = LoginText.phoneNumberLable.rawValue
+        phoneNumberLabel.font = UIFont(
+            name: TextFont.main.rawValue,
+            size: LoginFontSize.normal.rawValue)
+        phoneNumberLabel.textColor = ColorElements.blackTextColor.value
+    }
+    
+    //Задаем параметры и текст кнопке
+    private func setupNextButton() {
+        nextButtonOutlet.style()
+        isNextButtonEnable()
+        nextButtonOutlet.setTitle(LoginText.buttonText.rawValue, for: .normal)
+    }
+    
     //Создаем гиперссылку на фразу "Пользовательское соглащение"
     private func setupLicenseTextView() {
         
-        let licenseText = "Даю согласие на обработку персональных данных, с пользовательским соглашением ознакомлен"
+        let licenseText = LoginText.licenseInfo.rawValue
         
         let attributedString = NSMutableAttributedString(string: licenseText)
-        attributedString.addAttribute(.link, value: "https://www.google.com/", range: NSRange(location: 49, length: 28))
+        attributedString.addAttribute(.link, value: LoginText.licenseLink.rawValue,
+                                      range: NSRange(location: 49, length: 28))
         
         textView.attributedText = attributedString
-        textView.textColor = .systemGray
+        textView.textColor = ColorElements.grayTextColor.value
         
         let padding = textView.textContainer.lineFragmentPadding
         textView.textContainerInset =  UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
@@ -61,20 +83,20 @@ class LoginViewController: UIViewController {
     //Устанавливаем картинку на кнопку принятия Пользовательского соглашения
     private func setImageLicenseCheckBox() {
         if !isLicenseAccept {
-            licenseCheckBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBtnOff"), for: .normal)
+            licenseCheckBoxOutlet.setBackgroundImage(LoginImages.checkBoxDisable.value, for: .normal)
         } else {
-            licenseCheckBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBtnOn"), for: .normal)
+            licenseCheckBoxOutlet.setBackgroundImage(LoginImages.checkBoxEnable.value, for: .normal)
         }
     }
     
     //Делаем кнопку Далее активной или неактивной
-    private func nextButtonEnable() {
+    private func isNextButtonEnable() {
         if isLicenseAccept && isPhoneNumberCorrect {
             nextButtonOutlet.isEnabled = true
-            nextButtonOutlet.backgroundColor = #colorLiteral(red: 0.3084548712, green: 0.352679342, blue: 1, alpha: 1)
+            nextButtonOutlet.backgroundColor = ColorElements.buttonEnableColor.value
         } else {
             nextButtonOutlet.isEnabled = false
-            nextButtonOutlet.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            nextButtonOutlet.backgroundColor = ColorElements.buttonDisableColor.value
         }
     }
     
@@ -84,7 +106,7 @@ class LoginViewController: UIViewController {
     @IBAction func acceptLicenseButton(_ sender: Any) {
         isLicenseAccept = !isLicenseAccept
         setImageLicenseCheckBox()
-        nextButtonEnable()
+        isNextButtonEnable()
     }
     
     //Проверяем корректность формата вводимого номера телефона
@@ -102,18 +124,18 @@ class LoginViewController: UIViewController {
             isPhoneNumberCorrect = true
             
         case minLenghtPhoneNumber:
-            sender.text = "+7"
+            sender.text = LoginText.phonePrefix.rawValue
             
         default:
             let formatedNumber = sender.text!
                 .applyPatternOnNumbers(pattern:
-                                        "+# (###) ###-##-##",
+                                        LoginText.phoneFormatFull.rawValue,
                                        replacmentCharacter: "#")
             isPhoneNumberCorrect = false
             sender.text = formatedNumber
         }
         
-        nextButtonEnable()
+        isNextButtonEnable()
     }
     
     //Действие при нажатии на кнопку Далее
