@@ -8,22 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
-		C4E83FB3266EA538000EE70F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB2266EA538000EE70F /* SceneDelegate.swift */; };
 		C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB4266EA538000EE70F /* ViewController.swift */; };
 		C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB6266EA538000EE70F /* Main.storyboard */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
+		C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FC5266EA65F000EE70F /* Login.storyboard */; };
+		C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */; };
+		C4E83FCD266EA6CF000EE70F /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCC266EA6CF000EE70F /* ConfirmModel.swift */; };
+		C4E83FCF266EA6ED000EE70F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCE266EA6ED000EE70F /* LoginModel.swift */; };
+		C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD2266EA72C000EE70F /* LoginViewController.swift */; };
+		C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */; };
+		C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD7266EA77E000EE70F /* LoadManager.swift */; };
+		C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD9266EA79C000EE70F /* LocalNotifications.swift */; };
+		C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */; };
+		C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FDF266EA7F9000EE70F /* StringExtension.swift */; };
+		C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */; };
+		C4E83FE4266EA830000EE70F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE3266EA830000EE70F /* LabelExtension.swift */; };
+		C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4E83FB2266EA538000EE70F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB4266EA538000EE70F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4E83FB7266EA538000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E83FBC266EA53B000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4E83FC5266EA65F000EE70F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		C4E83FCC266EA6CF000EE70F /* ConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
+		C4E83FCE266EA6ED000EE70F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		C4E83FD2266EA72C000EE70F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		C4E83FD7266EA77E000EE70F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
+		C4E83FD9266EA79C000EE70F /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		C4E83FDF266EA7F9000EE70F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
+		C4E83FE3266EA830000EE70F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
+		C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +80,107 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FB0266EA538000EE70F /* AppDelegate.swift */,
-				C4E83FB2266EA538000EE70F /* SceneDelegate.swift */,
-				C4E83FB4266EA538000EE70F /* ViewController.swift */,
-				C4E83FB6266EA538000EE70F /* Main.storyboard */,
-				C4E83FB9266EA53B000EE70F /* Assets.xcassets */,
-				C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */,
+				C4E83FE7266EA863000EE70F /* Others */,
+				C4E83FDB266EA7BF000EE70F /* Helpers */,
+				C4E83FD6266EA76C000EE70F /* Managers */,
+				C4E83FD0266EA704000EE70F /* ViewControllers */,
+				C4E83FCB266EA6BD000EE70F /* Models */,
+				C4E83FC7266EA680000EE70F /* Interactors */,
+				C4E83FC4266EA63B000EE70F /* StoryBoards */,
 				C4E83FBE266EA53B000EE70F /* Info.plist */,
 			);
 			path = "Ride-Foodv02";
+			sourceTree = "<group>";
+		};
+		C4E83FC4266EA63B000EE70F /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FB6266EA538000EE70F /* Main.storyboard */,
+				C4E83FC5266EA65F000EE70F /* Login.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		C4E83FC7266EA680000EE70F /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FC8266EA692000EE70F /* Login */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		C4E83FC8266EA692000EE70F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C4E83FCB266EA6BD000EE70F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FCC266EA6CF000EE70F /* ConfirmModel.swift */,
+				C4E83FCE266EA6ED000EE70F /* LoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C4E83FD0266EA704000EE70F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FD1266EA70F000EE70F /* Login */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C4E83FD1266EA70F000EE70F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FD2266EA72C000EE70F /* LoginViewController.swift */,
+				C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C4E83FD6266EA76C000EE70F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FD7266EA77E000EE70F /* LoadManager.swift */,
+				C4E83FD9266EA79C000EE70F /* LocalNotifications.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C4E83FDB266EA7BF000EE70F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FDC266EA7C6000EE70F /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C4E83FDC266EA7C6000EE70F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */,
+				C4E83FDF266EA7F9000EE70F /* StringExtension.swift */,
+				C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */,
+				C4E83FE3266EA830000EE70F /* LabelExtension.swift */,
+				C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C4E83FE7266EA863000EE70F /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FB9266EA53B000EE70F /* Assets.xcassets */,
+				C4E83FB0266EA538000EE70F /* AppDelegate.swift */,
+				C4E83FB4266EA538000EE70F /* ViewController.swift */,
+				C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */,
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
 				C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */,
@@ -137,9 +254,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E83FE4266EA830000EE70F /* LabelExtension.swift in Sources */,
+				C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */,
+				C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */,
+				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
+				C4E83FCF266EA6ED000EE70F /* LoginModel.swift in Sources */,
+				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
+				C4E83FCD266EA6CF000EE70F /* ConfirmModel.swift in Sources */,
 				C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
-				C4E83FB3266EA538000EE70F /* SceneDelegate.swift in Sources */,
+				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,
+				C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */,
+				C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */,
+				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
+				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,11 +417,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 223988V24V;
 				INFOPLIST_FILE = "Ride-Foodv02/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apxscabber.Ride-Foodv02";
+				PRODUCT_BUNDLE_IDENTIFIER = "SkillboxComandDiplom.Ride-food";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -308,11 +437,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 223988V24V;
 				INFOPLIST_FILE = "Ride-Foodv02/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.apxscabber.Ride-Foodv02";
+				PRODUCT_BUNDLE_IDENTIFIER = "SkillboxComandDiplom.Ride-food";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

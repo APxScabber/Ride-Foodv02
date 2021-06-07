@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ygf-UG-qGn">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="nmJ-X0-xbJ">
+            <objects>
+                <viewController id="ygf-UG-qGn" customClass="LoginViewController" customModule="Ride_food" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TG8-cT-Cu5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jkD-4V-81k">
+                                <rect key="frame" x="25" y="54" width="364" height="391"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите номер телефона" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2h-oV-hQk">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="wUV-14-wGm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigMan3x" translatesAutoresizingMaskIntoConstraints="NO" id="Uxl-Jh-G0M">
+                                        <rect key="frame" x="0.0" y="37" width="364" height="210"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iee-aM-UMs">
+                                        <rect key="frame" x="0.0" y="257" width="364" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+7 (906) 235-99-23" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vAz-c7-hQw">
+                                                <rect key="frame" x="0.0" y="0.0" width="364" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="vjX-vx-eKP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                                <connections>
+                                                    <action selector="checkPhoneNumberTextField:" destination="ygf-UG-qGn" eventType="editingChanged" id="Ire-ve-W3U"/>
+                                                </connections>
+                                            </textField>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underLine3x" translatesAutoresizingMaskIntoConstraints="NO" id="yHe-Jq-1EX">
+                                                <rect key="frame" x="0.0" y="31" width="364" height="3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="3" id="bDa-ec-Do0"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="a8e-mF-kew"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-HJ-pbr">
+                                        <rect key="frame" x="0.0" y="301" width="364" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s07-6D-UY2">
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="s07-6D-UY2" secondAttribute="height" multiplier="1:1" id="ecA-CA-8FK"/>
+                                                    <constraint firstAttribute="height" constant="16" id="rMH-Qd-8rg"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="checkBtnOff"/>
+                                                <connections>
+                                                    <action selector="acceptLicenseButton:" destination="ygf-UG-qGn" eventType="touchUpInside" id="LSS-N4-AYT"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Даю согласие на обработку персональных данных, с пользовательским соглашением ознакомлен" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuo-uF-E6k">
+                                                <rect key="frame" x="21" y="0.0" width="343" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="CO4-7h-2WP"/>
+                                                    <constraint firstAttribute="height" constant="30" id="x0a-ln-XdD"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.79215686269999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="fpb-R4-a0L"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cby-wZ-pgv">
+                                        <rect key="frame" x="0.0" y="341" width="364" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CCh-f7-2sa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                        <state key="normal" title="Далее">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButton:" destination="ygf-UG-qGn" eventType="touchUpInside" id="MLi-mW-lsv"/>
+                                            <segue destination="smJ-RH-dkj" kind="presentation" identifier="toConfirmVC" modalPresentationStyle="overFullScreen" id="KtU-Uf-Wy4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cby-wZ-pgv" firstAttribute="leading" secondItem="jkD-4V-81k" secondAttribute="leading" id="8g5-k0-Z80"/>
+                                    <constraint firstItem="Uxl-Jh-G0M" firstAttribute="leading" secondItem="jkD-4V-81k" secondAttribute="leading" id="Eiw-zg-lfm"/>
+                                    <constraint firstAttribute="trailing" secondItem="a4c-HJ-pbr" secondAttribute="trailing" id="GPE-bc-7WR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cby-wZ-pgv" secondAttribute="trailing" id="HIb-qb-SSk"/>
+                                    <constraint firstItem="iee-aM-UMs" firstAttribute="leading" secondItem="jkD-4V-81k" secondAttribute="leading" id="Jg2-Tq-ejA"/>
+                                    <constraint firstItem="h2h-oV-hQk" firstAttribute="top" secondItem="jkD-4V-81k" secondAttribute="top" id="KSM-qI-y0D"/>
+                                    <constraint firstItem="a4c-HJ-pbr" firstAttribute="leading" secondItem="jkD-4V-81k" secondAttribute="leading" id="YbL-mT-XNX"/>
+                                    <constraint firstAttribute="trailing" secondItem="iee-aM-UMs" secondAttribute="trailing" id="Z7D-3W-94B"/>
+                                    <constraint firstItem="h2h-oV-hQk" firstAttribute="leading" secondItem="jkD-4V-81k" secondAttribute="leading" id="mUe-sT-MLL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uxl-Jh-G0M" secondAttribute="trailing" id="zye-fZ-CMh"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NOK-Eo-Ac5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NOK-Eo-Ac5" firstAttribute="trailing" secondItem="jkD-4V-81k" secondAttribute="trailing" constant="25" id="Cp1-zL-Jf2"/>
+                            <constraint firstItem="jkD-4V-81k" firstAttribute="top" secondItem="NOK-Eo-Ac5" secondAttribute="top" constant="10" id="Pbm-ER-DL0"/>
+                            <constraint firstItem="jkD-4V-81k" firstAttribute="leading" secondItem="TG8-cT-Cu5" secondAttribute="leading" constant="25" id="fQv-DN-AAo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="licenseCheckBoxOutlet" destination="s07-6D-UY2" id="3rY-Jt-FJN"/>
+                        <outlet property="nextButtonOutlet" destination="Cby-wZ-pgv" id="jNf-yk-ePH"/>
+                        <outlet property="phoneNumberTextField" destination="vAz-c7-hQw" id="aCE-J2-ece"/>
+                        <outlet property="textView" destination="cuo-uF-E6k" id="gBX-Sy-DGD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GzZ-pL-4Fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-336" y="85"/>
+        </scene>
+        <!--Confirm View Controller-->
+        <scene sceneID="CKI-ru-l5N">
+            <objects>
+                <viewController id="smJ-RH-dkj" customClass="ConfirmViewController" customModule="Ride_food" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="50d-za-WRl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Код подтверждения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVH-pQ-XpR">
+                                <rect key="frame" x="125.5" y="206" width="163.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ib6-Ew-FzB">
+                                <rect key="frame" x="127" y="242" width="160" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" background="confirmEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="w4F-op-e4c">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="uTH-Ll-hjp"/>
+                                            <constraint firstAttribute="height" constant="34" id="w6c-7n-YWq"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.23921568630000001" green="0.23137254900000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="editingCodeTextField:" destination="smJ-RH-dkj" eventType="editingChanged" id="vs4-YY-LrI"/>
+                                            <action selector="endEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidEnd" id="Rca-ki-e29"/>
+                                            <action selector="startEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidBegin" id="IWj-s8-8kh"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" background="confirmEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="vu0-FC-SeM">
+                                        <rect key="frame" x="42" y="0.0" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="SpP-UL-a1d"/>
+                                            <constraint firstAttribute="height" constant="34" id="gwz-2H-ied"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.23921568630000001" green="0.23137254900000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="editingCodeTextField:" destination="smJ-RH-dkj" eventType="editingChanged" id="IdV-Qr-tag"/>
+                                            <action selector="endEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidEnd" id="1rB-Om-esv"/>
+                                            <action selector="startEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidBegin" id="dZT-fE-jS7"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" background="confirmEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="pFC-Ls-I39">
+                                        <rect key="frame" x="84" y="0.0" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="8UV-Lw-6Do"/>
+                                            <constraint firstAttribute="width" constant="34" id="ZKg-I8-ka3"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.23921568630000001" green="0.23137254900000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="editingCodeTextField:" destination="smJ-RH-dkj" eventType="editingChanged" id="882-uC-aIM"/>
+                                            <action selector="endEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidEnd" id="LwE-Zn-ws4"/>
+                                            <action selector="startEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidBegin" id="4YT-z9-flL"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" background="confirmEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="iEm-a4-COp">
+                                        <rect key="frame" x="126" y="0.0" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="7NK-S2-OaJ"/>
+                                            <constraint firstAttribute="width" constant="34" id="T9d-pr-CqI"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.23921568630000001" green="0.23137254900000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="editingCodeTextField:" destination="smJ-RH-dkj" eventType="editingChanged" id="JHw-rp-G2O"/>
+                                            <action selector="endEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidEnd" id="m26-Zp-TcK"/>
+                                            <action selector="startEditCodeTextField:" destination="smJ-RH-dkj" eventType="editingDidBegin" id="PfL-At-Kh4"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="На номер +7 (944) 534-43-53 отправлено смс с кодом. Повторная отправка через 29 секунд" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyz-I8-k1C">
+                                <rect key="frame" x="36" y="292" width="342" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6iD-gG-Oaa"/>
+                                </constraints>
+                                <color key="textColor" red="0.79215686269999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lo-n1-YAa">
+                                <rect key="frame" x="25" y="446" width="364" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UeP-GZ-ucq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                <state key="normal" title="Далее">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wbD-6U-NBs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eyz-I8-k1C" firstAttribute="centerX" secondItem="Ib6-Ew-FzB" secondAttribute="centerX" id="6fG-SE-Rvc"/>
+                            <constraint firstItem="Ib6-Ew-FzB" firstAttribute="centerX" secondItem="wbD-6U-NBs" secondAttribute="centerX" id="BY3-kD-Kdk"/>
+                            <constraint firstItem="eyz-I8-k1C" firstAttribute="leading" secondItem="wbD-6U-NBs" secondAttribute="leading" constant="36" id="H6j-lq-lEX"/>
+                            <constraint firstItem="sVH-pQ-XpR" firstAttribute="centerX" secondItem="wbD-6U-NBs" secondAttribute="centerX" id="KRX-nA-ePV"/>
+                            <constraint firstItem="3lo-n1-YAa" firstAttribute="top" secondItem="eyz-I8-k1C" secondAttribute="bottom" constant="104" id="NzQ-eQ-6oV"/>
+                            <constraint firstItem="3lo-n1-YAa" firstAttribute="leading" secondItem="wbD-6U-NBs" secondAttribute="leading" constant="25" id="Zkt-no-ryo"/>
+                            <constraint firstItem="Ib6-Ew-FzB" firstAttribute="top" secondItem="sVH-pQ-XpR" secondAttribute="bottom" constant="19" id="glH-ZB-i0l"/>
+                            <constraint firstItem="wbD-6U-NBs" firstAttribute="trailing" secondItem="3lo-n1-YAa" secondAttribute="trailing" constant="25" id="iJM-kP-ani"/>
+                            <constraint firstItem="sVH-pQ-XpR" firstAttribute="top" secondItem="wbD-6U-NBs" secondAttribute="top" constant="162" id="qmA-M3-xcD"/>
+                            <constraint firstItem="eyz-I8-k1C" firstAttribute="top" secondItem="Ib6-Ew-FzB" secondAttribute="bottom" constant="16" id="yvk-Rg-Z52"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="y96-c1-X2s"/>
+                    <connections>
+                        <outlet property="infoTextView" destination="eyz-I8-k1C" id="cMH-Ot-kFk"/>
+                        <outlet property="nextButtonOutlet" destination="3lo-n1-YAa" id="Qzh-vm-Y5B"/>
+                        <outletCollection property="codeConfirmTextField" destination="w4F-op-e4c" collectionClass="NSMutableArray" id="XNi-NR-6jG"/>
+                        <outletCollection property="codeConfirmTextField" destination="vu0-FC-SeM" collectionClass="NSMutableArray" id="HEZ-SJ-AN4"/>
+                        <outletCollection property="codeConfirmTextField" destination="pFC-Ls-I39" collectionClass="NSMutableArray" id="ebt-oI-aph"/>
+                        <outletCollection property="codeConfirmTextField" destination="iEm-a4-COp" collectionClass="NSMutableArray" id="eHN-aM-0pE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WIb-ma-RIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="628" y="85"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bigMan3x" width="375" height="210"/>
+        <image name="checkBtnOff" width="16" height="16"/>
+        <image name="confirmEmpty" width="35" height="35"/>
+        <image name="underLine3x" width="325" height="1"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
