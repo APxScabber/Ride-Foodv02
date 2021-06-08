@@ -3,7 +3,7 @@ import UIKit
 
 class RoundedView: UIView {
     
-    var color: UIColor = .white { didSet { setNeedsDisplay() }}
+    var color: UIColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1) { didSet { setNeedsDisplay() }}
     
     var cornerRadius: CGFloat = 15 { didSet { setNeedsDisplay() }}
         
