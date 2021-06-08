@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A3266FAA420031BFA0 /* Support.storyboard */; };
+		7867B4A9266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A6266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf */; };
+		7867B4AA266FAB1B0031BFA0 /* SFUIDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A7266FAB1B0031BFA0 /* SFUIDisplay-Light.otf */; };
+		7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A8266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf */; };
+		7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */; };
+		7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */; };
+		7867B4BA266FAD120031BFA0 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B9266FAD120031BFA0 /* UIButton+Extensions.swift */; };
+		7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
-		C4E83FB3266EA538000EE70F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB2266EA538000EE70F /* SceneDelegate.swift */; };
-		C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB4266EA538000EE70F /* ViewController.swift */; };
-		C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB6266EA538000EE70F /* Main.storyboard */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7867B4A3266FAA420031BFA0 /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
+		7867B4A6266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Semibold.otf"; sourceTree = "<group>"; };
+		7867B4A7266FAB1B0031BFA0 /* SFUIDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Light.otf"; sourceTree = "<group>"; };
+		7867B4A8266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = "<group>"; };
+		7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportAddImagesViewController.swift; sourceTree = "<group>"; };
+		7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportMainViewController.swift; sourceTree = "<group>"; };
+		7867B4B9266FAD120031BFA0 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4E83FB2266EA538000EE70F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C4E83FB4266EA538000EE70F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C4E83FB7266EA538000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E83FBC266EA53B000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +47,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7867B4A1266FA9F50031BFA0 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				7867B4A5266FAB050031BFA0 /* Fonts */,
+				C4E83FB0266EA538000EE70F /* AppDelegate.swift */,
+				C4E83FB9266EA53B000EE70F /* Assets.xcassets */,
+				C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */,
+				C4E83FBE266EA53B000EE70F /* Info.plist */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		7867B4A2266FAA300031BFA0 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				7867B4A3266FAA420031BFA0 /* Support.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		7867B4A5266FAB050031BFA0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7867B4A7266FAB1B0031BFA0 /* SFUIDisplay-Light.otf */,
+				7867B4A8266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf */,
+				7867B4A6266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7867B4B2266FAC300031BFA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7867B4B9266FAD120031BFA0 /* UIButton+Extensions.swift */,
+				7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7867B4B3266FAC380031BFA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7867B4B4266FAC410031BFA0 /* SupportMVC */ = {
+			isa = PBXGroup;
+			children = (
+				7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */,
+				7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */,
+			);
+			path = SupportMVC;
+			sourceTree = "<group>";
+		};
 		C4E83FA4266EA538000EE70F = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +121,11 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FB0266EA538000EE70F /* AppDelegate.swift */,
-				C4E83FB2266EA538000EE70F /* SceneDelegate.swift */,
-				C4E83FB4266EA538000EE70F /* ViewController.swift */,
-				C4E83FB6266EA538000EE70F /* Main.storyboard */,
-				C4E83FB9266EA53B000EE70F /* Assets.xcassets */,
-				C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */,
-				C4E83FBE266EA53B000EE70F /* Info.plist */,
+				7867B4B3266FAC380031BFA0 /* Model */,
+				7867B4B4266FAC410031BFA0 /* SupportMVC */,
+				7867B4A2266FAA300031BFA0 /* Storyboard */,
+				7867B4B2266FAC300031BFA0 /* Extensions */,
+				7867B4A1266FA9F50031BFA0 /* Misc */,
 			);
 			path = "Ride-Foodv02";
 			sourceTree = "<group>";
@@ -124,9 +187,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7867B4AA266FAB1B0031BFA0 /* SFUIDisplay-Light.otf in Resources */,
+				7867B4A9266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf in Resources */,
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
+				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
+				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
-				C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +203,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */,
+				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
+				7867B4BA266FAD120031BFA0 /* UIButton+Extensions.swift in Sources */,
+				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
+				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
-				C4E83FB3266EA538000EE70F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C4E83FB6266EA538000EE70F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4E83FB7266EA538000EE70F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,8 +347,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 223988V24V;
-				INFOPLIST_FILE = "Ride-Foodv02/Info.plist";
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +357,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.apxscabber.Ride-Foodv02";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -306,8 +367,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 223988V24V;
-				INFOPLIST_FILE = "Ride-Foodv02/Info.plist";
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.apxscabber.Ride-Foodv02";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
