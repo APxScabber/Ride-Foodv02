@@ -7,11 +7,11 @@ class SupportMainViewController: UIViewController {
     var text = "" { didSet { updateUI() }}
     
     @IBOutlet weak var supportLabel: UILabel! { didSet {
-        supportLabel.font = UIFont(name: "SFUIDisplay-Semibold", size: 15)
+        supportLabel.font = UIFont.SFUIDisplaySemibold(size: 15)
     }}
 
     @IBOutlet weak var textViewLabelDescription: UILabel! { didSet  {
-        textViewLabelDescription.font = UIFont(name: "SFUIDisplay-Light", size: 17)
+        textViewLabelDescription.font = UIFont.SFUIDisplayLight(size: 17)
     }}
     
     @IBOutlet weak var goBackView: UIView! { didSet {
@@ -20,12 +20,12 @@ class SupportMainViewController: UIViewController {
     }}
     
     @IBOutlet weak var nextButton: RoundedButton! { didSet {
-        nextButton.titleLabel?.font = UIFont(name: "SFUIDisplay-Regular", size: 17)
+        nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
     
     @IBOutlet weak var distanceFromBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView! { didSet {
-        textView.font = UIFont(name: "SFUIDisplay-Light", size: 17)
+        textView.font = UIFont.SFUIDisplayLight(size: 17)
     }}
     
     //MARK: - ViewController lifecycle
@@ -46,8 +46,8 @@ class SupportMainViewController: UIViewController {
     
     //MARK: - UI changes
     private func updateUI() {
-        nextButton.color = text.count < 3 ? UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1) : UIColor(red: 61/255, green: 59/255, blue: 255/255, alpha: 1)
-        nextButton.isUserInteractionEnabled = text.count >= 3
+        nextButton.color = text.count < SupportConstant.minimumLeters ? UIColor.supportNextButtonInActiveColor : UIColor.SupportNextButtonActiveColor
+        nextButton.isUserInteractionEnabled = text.count >= SupportConstant.minimumLeters
         textViewLabelDescription.isHidden = !text.isEmpty
     }
 
@@ -55,9 +55,9 @@ class SupportMainViewController: UIViewController {
     private func updateConstraintWith(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if distanceFromBottomConstraint.constant == 25 {
+            if distanceFromBottomConstraint.constant == SupportConstant.bottomConstraintValue {
             distanceFromBottomConstraint.constant += size.height
-            } else { distanceFromBottomConstraint.constant = 25 }
+            } else { distanceFromBottomConstraint.constant = SupportConstant.bottomConstraintValue }
         }
         
     }
@@ -72,7 +72,7 @@ class SupportMainViewController: UIViewController {
     }
 }
 
-
+//MARK: - UITextViewDelegate
 extension SupportMainViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {

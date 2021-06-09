@@ -170,10 +170,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ItP-um-WwU" customClass="RoundedView" customModule="Ride_food" customModuleProvider="target">
-                                <rect key="frame" x="25" y="150" width="364" height="303.5"/>
+                                <rect key="frame" x="25" y="120" width="364" height="303.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9A-mg-Y6i">
-                                        <rect key="frame" x="157" y="99" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9A-mg-Y6i" customClass="SupportAddImageButton" customModule="Ride_Foodv02" customModuleProvider="target">
+                                        <rect key="frame" x="157" y="70" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="775-ob-ff0"/>
                                             <constraint firstAttribute="height" constant="50" id="SDO-Iu-HIf"/>
@@ -183,17 +183,17 @@
                                             <action selector="addImage:" destination="2Jf-bz-IJY" eventType="touchUpInside" id="yXj-TH-waF"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="При необходимости прикрепите изображения" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="weD-Np-kdP">
-                                        <rect key="frame" x="47" y="160" width="270" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="При необходимости прикрепите изображения" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="weD-Np-kdP">
+                                        <rect key="frame" x="47" y="131" width="270" height="33.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="x1R-ZB-t7U"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В течении часа с вами свяжется наш менеджер и постарается решить вашу проблему" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="InE-Vk-26N">
-                                        <rect key="frame" x="47" y="208" width="270" height="61"/>
+                                        <rect key="frame" x="47" y="171.5" width="270" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="FLM-12-RgB"/>
                                         </constraints>
@@ -205,7 +205,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="weD-Np-kdP" firstAttribute="centerX" secondItem="ItP-um-WwU" secondAttribute="centerX" id="6a3-TG-zUK"/>
-                                    <constraint firstItem="k9A-mg-Y6i" firstAttribute="top" secondItem="ItP-um-WwU" secondAttribute="top" constant="99" id="8Uy-NN-nmF"/>
+                                    <constraint firstItem="k9A-mg-Y6i" firstAttribute="top" secondItem="ItP-um-WwU" secondAttribute="top" constant="70" id="8Uy-NN-nmF"/>
                                     <constraint firstItem="InE-Vk-26N" firstAttribute="leading" secondItem="ItP-um-WwU" secondAttribute="leading" constant="47" id="CFo-M1-9wN"/>
                                     <constraint firstItem="weD-Np-kdP" firstAttribute="top" secondItem="k9A-mg-Y6i" secondAttribute="bottom" constant="11" id="G6k-P9-zew"/>
                                     <constraint firstAttribute="trailing" secondItem="weD-Np-kdP" secondAttribute="trailing" constant="47" id="GEf-Hg-ZP3"/>
@@ -217,7 +217,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5u-u7-NZI">
-                                <rect key="frame" x="16" y="484.5" width="382" height="91"/>
+                                <rect key="frame" x="16" y="454.5" width="382" height="91"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="91" id="fru-hS-Udz"/>
@@ -275,7 +275,7 @@
                                 </connections>
                             </collectionView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы прикрепили максимальное количество фото (10) " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qCi-L5-asd">
-                                <rect key="frame" x="44" y="599.5" width="326" height="18"/>
+                                <rect key="frame" x="44" y="569.5" width="326" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="xMm-oP-Ob5"/>
                                 </constraints>
@@ -299,7 +299,7 @@
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nTt-io-lD3" firstAttribute="bottom" secondItem="JVI-Tn-Aen" secondAttribute="bottom" constant="-8" id="5Bc-WJ-3GV"/>
-                            <constraint firstItem="ItP-um-WwU" firstAttribute="top" secondItem="B8t-GD-H35" secondAttribute="top" constant="150" id="7kc-W2-efV"/>
+                            <constraint firstItem="ItP-um-WwU" firstAttribute="top" secondItem="B8t-GD-H35" secondAttribute="top" constant="120" id="7kc-W2-efV"/>
                             <constraint firstItem="Z5u-u7-NZI" firstAttribute="top" secondItem="ItP-um-WwU" secondAttribute="bottom" constant="31" id="EcH-al-m2r"/>
                             <constraint firstItem="kaH-gL-l0S" firstAttribute="leading" secondItem="JVI-Tn-Aen" secondAttribute="leading" id="Mha-Qo-DAU"/>
                             <constraint firstItem="JVI-Tn-Aen" firstAttribute="trailing" secondItem="Z5u-u7-NZI" secondAttribute="trailing" constant="16" id="PzU-2Z-Nqg"/>

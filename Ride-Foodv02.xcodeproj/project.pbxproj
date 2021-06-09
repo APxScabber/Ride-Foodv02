@@ -18,6 +18,12 @@
 		7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BD266FB7150031BFA0 /* ImagePicker.swift */; };
 		7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */; };
 		7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */; };
+		7867B4C4267103B50031BFA0 /* SupportActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C3267103B50031BFA0 /* SupportActionSheet.swift */; };
+		7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C52671043D0031BFA0 /* SupportConstants.swift */; };
+		7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C7267106330031BFA0 /* UIFont+Extensions.swift */; };
+		7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C9267108920031BFA0 /* SupportAddImageButton.swift */; };
+		7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4CB267109E90031BFA0 /* CGRect+Extensions.swift */; };
+		7867B4CE26711B120031BFA0 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4CD26711B120031BFA0 /* UIColor+Extensions.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
@@ -35,6 +41,12 @@
 		7867B4BD266FB7150031BFA0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCollectionViewCell.swift; sourceTree = "<group>"; };
 		7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		7867B4C3267103B50031BFA0 /* SupportActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportActionSheet.swift; sourceTree = "<group>"; };
+		7867B4C52671043D0031BFA0 /* SupportConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportConstants.swift; sourceTree = "<group>"; };
+		7867B4C7267106330031BFA0 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		7867B4C9267108920031BFA0 /* SupportAddImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAddImageButton.swift; sourceTree = "<group>"; };
+		7867B4CB267109E90031BFA0 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
+		7867B4CD26711B120031BFA0 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +101,9 @@
 				7867B4B9266FAD120031BFA0 /* UIButton+Extensions.swift */,
 				7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */,
 				7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */,
+				7867B4C7267106330031BFA0 /* UIFont+Extensions.swift */,
+				7867B4CB267109E90031BFA0 /* CGRect+Extensions.swift */,
+				7867B4CD26711B120031BFA0 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -98,8 +113,11 @@
 			children = (
 				7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */,
 				7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */,
+				7867B4C3267103B50031BFA0 /* SupportActionSheet.swift */,
+				7867B4C52671043D0031BFA0 /* SupportConstants.swift */,
 				7867B4BD266FB7150031BFA0 /* ImagePicker.swift */,
 				7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */,
+				7867B4C9267108920031BFA0 /* SupportAddImageButton.swift */,
 			);
 			path = SupportMVC;
 			sourceTree = "<group>";
@@ -204,12 +222,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7867B4C4267103B50031BFA0 /* SupportActionSheet.swift in Sources */,
+				7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */,
 				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
+				7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */,
 				7867B4BA266FAD120031BFA0 /* UIButton+Extensions.swift in Sources */,
 				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
 				7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */,
+				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
 				7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */,
+				7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */,
+				7867B4CE26711B120031BFA0 /* UIColor+Extensions.swift in Sources */,
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 			);

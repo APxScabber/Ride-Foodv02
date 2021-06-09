@@ -3,27 +3,28 @@ import UIKit
 class SupportAddImagesViewController: UIViewController {
     
     //MARK: - Public API
+    
     var text = ""
     var images = [UIImage]() { didSet {
-        errorDescriptionLabel.isHidden = images.count < 3
-        addImagesButton.setImage(UIImage(named: images.count < 3 ? "Plus" : "RemoveButton"), for: .normal)
-        addImagesButton.isUserInteractionEnabled = images.count < 3
+        errorDescriptionLabel.isHidden = images.count < SupportConstant.imagesLimit
+        addImagesButton.buttonState = images.count < SupportConstant.imagesLimit ? .active : .inActive
+        addImagesButton.isUserInteractionEnabled = images.count < SupportConstant.imagesLimit
     }}
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var sendButton: RoundedButton! { didSet {
-        sendButton.titleLabel?.font = UIFont(name: "SFUIDisplay-Regular", size: 17)
+        sendButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
     
-    @IBOutlet weak var addImagesButton: UIButton!
+    @IBOutlet weak var addImagesButton: SupportAddImageButton!
     
     @IBOutlet weak var addImageDescriptionLabel: UILabel! { didSet {
-        addImageDescriptionLabel.font = UIFont(name: "SFUIDisplay-Light", size: 17)
+        addImageDescriptionLabel.font = UIFont.SFUIDisplayLight(size: 17)
     }}
     
     @IBOutlet weak var successLabel: UILabel! { didSet {
-        successLabel.font = UIFont(name: "SFUIDisplay-Light", size: 17)
+        successLabel.font = UIFont.SFUIDisplayLight(size: 17)
     }}
     
     @IBOutlet weak var goBackView: UIView! { didSet {
@@ -31,42 +32,25 @@ class SupportAddImagesViewController: UIViewController {
         goBackView.addGestureRecognizer(tapGesture)
     }}
     @IBOutlet weak var errorDescriptionLabel: UILabel! { didSet {
-        errorDescriptionLabel.font = UIFont(name: "SFUIDisplay-Regular", size: 12)
+        errorDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
     }}
     
     
     
     //MARK: - IBActions
     @IBAction func addImage(_ sender: UIButton) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-        actionSheet.addAction(UIAlertAction(title: "Снять фото или видео", style: .default, handler: { action in
-            self.goToCamera()
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Медиатека", style: .default, handler: { action in
-            self.goToLibrary()
-        }))
-        present(actionSheet, animated: true)
+        SupportActionSheet.showIn(self)
+        SupportActionSheet.delegate = self
     }
 
     @IBAction func sendFeedback(_ sender: RoundedButton) {
-        sendButton.setTitle("Отлично!", for: .normal)
-        addImagesButton.setImage(UIImage(named: "DoneButton"), for: .normal)
-        addImagesButton.isUserInteractionEnabled = false
-        addImageDescriptionLabel.text = "Обращение отправлено"
+        sendButton.setTitle(SupportConstant.done, for: .normal)
+        addImagesButton.buttonState = .done
+        addImageDescriptionLabel.text = SupportConstant.messageSent
         addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
         successLabel.isHidden = false
     }
     
-    @objc
-    private func goToCamera() {
-        ImagePicker.showWith(.camera, in: self)
-    }
-    
-    @objc
-    private func goToLibrary() {
-        ImagePicker.showWith(.photoLibrary, in: self)
-    }
     
     @objc
     private func done() {
@@ -75,7 +59,7 @@ class SupportAddImagesViewController: UIViewController {
     
 }
 
-
+//MARK: - ImagePickerDelegate
 extension SupportAddImagesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -88,6 +72,7 @@ extension SupportAddImagesViewController: UIImagePickerControllerDelegate, UINav
     
 }
 
+//MARK: - UICollectionViewDataSourse and delegate
 
 extension SupportAddImagesViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     
@@ -112,6 +97,7 @@ extension SupportAddImagesViewController: UICollectionViewDelegate,UICollectionV
     }
 }
 
+//MARK: - UICollectionViewFlowLayout
 
 extension SupportAddImagesViewController: UICollectionViewDelegateFlowLayout {
     
@@ -119,4 +105,17 @@ extension SupportAddImagesViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 91, height: 91)
     }
     
+}
+
+//MARK: - SupportActionSheetDelegate
+
+extension SupportAddImagesViewController: SupportActionSheetDelegate {
+    
+   func goToCamera() {
+        ImagePicker.showWith(.camera, in: self)
+    }
+    
+    func goToLibrary() {
+        ImagePicker.showWith(.photoLibrary, in: self)
+    }
 }
