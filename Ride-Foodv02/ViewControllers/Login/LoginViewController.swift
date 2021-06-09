@@ -11,8 +11,8 @@ class LoginViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var licenseCheckBoxOutlet: UIButton!
@@ -25,6 +25,9 @@ class LoginViewController: UIViewController {
     private var isPhoneNumberCorrect = false
     private var isLicenseAccept = false
     
+    #warning("Эту переменную хранить например в UserDefaults")
+    var languageCode = Language.russian.code
+    
     let loginInteractor = LoginInteractor()
     
     //MARK: - viewDidLoad
@@ -33,13 +36,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupPhoneNumberLabel()
-        mainImageView.image = LoginImages.mainBackground.value
         setupNextButton()
         setImageLicenseCheckBox()
         setupLicenseTextView()
 
         phoneNumberTextField.text = LoginText.phonePrefix.rawValue
-        
+
+        registerForKeyboardNotification()
+        registrationTapGesture()
     }
     
     deinit {
@@ -48,9 +52,29 @@ class LoginViewController: UIViewController {
     
     //MARK: - Methods
     
+    //Регистрируем уведомления на пояаление и скрытие клавиатуры
+    private func registerForKeyboardNotification() {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyBoardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyBoardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    //Создаем распознавание жестов касанием
+    private func registrationTapGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(screenTap))
+        view.addGestureRecognizer(gesture)
+    }
+
     //Задаем параметры и текст phoneNumberLabel
     private func setupPhoneNumberLabel() {
-        phoneNumberLabel.text = LoginText.phoneNumberLable.rawValue
+        phoneNumberLabel.text = Language(languageCode)?.phoneNumberLable
         phoneNumberLabel.font = UIFont(
             name: TextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
@@ -61,18 +85,27 @@ class LoginViewController: UIViewController {
     private func setupNextButton() {
         nextButtonOutlet.style()
         isNextButtonEnable()
-        nextButtonOutlet.setTitle(LoginText.buttonText.rawValue, for: .normal)
+        nextButtonOutlet.setTitle(Language(languageCode)?.buttonText, for: .normal)
     }
     
     //Создаем гиперссылку на фразу "Пользовательское соглащение"
     private func setupLicenseTextView() {
         
-        let licenseText = LoginText.licenseInfo.rawValue
+        let licenseText = Language(languageCode)!.licenseInfo
         
         let attributedString = NSMutableAttributedString(string: licenseText)
-        attributedString.addAttribute(.link, value: LoginText.licenseLink.rawValue,
-                                      range: NSRange(location: 49, length: 28))
         
+        switch Language(languageCode) {
+        case .russian:
+            attributedString.addAttribute(.link, value: LoginText.licenseLink.rawValue,
+                                          range: NSRange(location: 49, length: 28))
+        case .english:
+            attributedString.addAttribute(.link, value: LoginText.licenseLink.rawValue,
+                                          range: NSRange(location: 60, length: 14))
+        case .none:
+            return
+        }
+
         textView.attributedText = attributedString
         textView.textColor = ColorElements.grayTextColor.value
         
@@ -83,9 +116,9 @@ class LoginViewController: UIViewController {
     //Устанавливаем картинку на кнопку принятия Пользовательского соглашения
     private func setImageLicenseCheckBox() {
         if !isLicenseAccept {
-            licenseCheckBoxOutlet.setBackgroundImage(LoginImages.checkBoxDisable.value, for: .normal)
+            licenseCheckBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBtnOff"), for: .normal)
         } else {
-            licenseCheckBoxOutlet.setBackgroundImage(LoginImages.checkBoxEnable.value, for: .normal)
+            licenseCheckBoxOutlet.setBackgroundImage(#imageLiteral(resourceName: "checkBtnOn"), for: .normal)
         }
     }
     
@@ -93,11 +126,40 @@ class LoginViewController: UIViewController {
     private func isNextButtonEnable() {
         if isLicenseAccept && isPhoneNumberCorrect {
             nextButtonOutlet.isEnabled = true
-            nextButtonOutlet.backgroundColor = ColorElements.buttonEnableColor.value
+            nextButtonOutlet.backgroundColor = ColorElements.blueColor.value
         } else {
             nextButtonOutlet.isEnabled = false
-            nextButtonOutlet.backgroundColor = ColorElements.buttonDisableColor.value
+            nextButtonOutlet.backgroundColor = ColorElements.greyButtonColor.value
         }
+    }
+    
+    //MARK: - @objc Methods
+    
+    #warning("Некорректно работает, если на клавиатуре ввести символ, то scrollView опускается")
+    //Метод отрабатывающий появление клавиатуры
+    @objc func keyBoardWillShow(_ notification: Notification) {
+        
+        let keyboardHeight = loginInteractor.getKeyboardHeight(notification)
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardHeight
+        if let activeField = self.nextButtonOutlet {
+            if (!aRect.contains(activeField.frame.origin)) {
+                
+                self.scrollView.frame.origin.y = -keyboardHeight + 1.5 * activeField.frame.size.height
+                //self.scrollView.contentOffset.y = -keyboardHeight + 1.5 * activeField.frame.size.height
+                
+            }
+        }
+    }
+    
+    //Метод отрабатывающий скрытие клавиатуры
+    @objc func keyBoardWillHide(_ notification: Notification) {
+       scrollView.frame.origin.y = .zero
+    }
+    
+    @objc func screenTap() {
+       phoneNumberTextField.resignFirstResponder()
     }
     
     // MARK: - Actions
@@ -111,7 +173,7 @@ class LoginViewController: UIViewController {
     
     //Проверяем корректность формата вводимого номера телефона
     @IBAction func checkPhoneNumberTextField(_ sender: UITextField) {
-        
+
         let count = sender.text!.count
         
         switch count {
@@ -122,6 +184,7 @@ class LoginViewController: UIViewController {
             
         case maxLenghtPhoneNumber - 1:
             isPhoneNumberCorrect = true
+            phoneNumberTextField.resignFirstResponder()
             
         case minLenghtPhoneNumber:
             sender.text = LoginText.phonePrefix.rawValue
@@ -140,7 +203,6 @@ class LoginViewController: UIViewController {
     
     //Действие при нажатии на кнопку Далее
     @IBAction func nextButton(_ sender: Any) {
-        
         loginInteractor.reciveConfirmCode(from: phoneNumberTextField.text!)
     }
     

@@ -8,6 +8,7 @@
 import Foundation
 import UserNotifications
 
+#warning("Что будет если пользователь отклонит уведомления?")
 //Класс для работы с локальными уведомлениями
 class LocalNotofications {
     
@@ -22,7 +23,7 @@ class LocalNotofications {
         content.body = body
         content.sound = UNNotificationSound.default
         
-        let triger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let triger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
         let request = UNNotificationRequest(identifier: "notification", content: content, trigger: triger)
         

@@ -15,7 +15,12 @@ class LoginInteractor {
         let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginText.phoneFormatEasy.rawValue,
                                                                     replacmentCharacter: "#")
         
-        LoadManager.shared.createData(phone: formatedPhoneNumber) { result in
+        let url =  URL(string: "https://skillbox.cc/api/auth/registration")
+
+        let passData = ["phone" : formatedPhoneNumber]
+        
+        LoadManager.shared.loadData(of: RegistrationResponsesModel.self, from: url!,
+                                    httpMethod: .post, passData: passData) { result in
 
             switch result {
 
@@ -30,5 +35,19 @@ class LoginInteractor {
             }
         }
     }
+    
+    //Метод для получения высоты клавиатуры
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        
+        var keyboardHeight: CGFloat = 0.0
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            keyboardHeight = keyboardRectangle.height
+        }
+        
+        return keyboardHeight
+    }
+    
 }
 

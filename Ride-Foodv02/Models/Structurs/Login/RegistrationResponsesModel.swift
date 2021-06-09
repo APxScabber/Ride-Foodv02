@@ -8,10 +8,10 @@
 import Foundation
 
 //Модель данных для кода подтверждения
-struct DataConfirmModel: Decodable {
-    var data: ConfirmModel
+struct RegistrationResponsesModel: Decodable {
+    var data: ConfirmationCodeModel
 }
 
-struct ConfirmModel: Decodable {
+struct ConfirmationCodeModel: Decodable {
     var code: Int
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */; };
+		C45BB4F02670CDAD0057DBBB /* ConfirmFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4EF2670CDAD0057DBBB /* ConfirmFontSize.swift */; };
+		C45BB4F32670FC5F0057DBBB /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F22670FC5F0057DBBB /* ConfirmModel.swift */; };
+		C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */; };
+		C45BB4F726710BB80057DBBB /* ConfirmResponsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F626710BB80057DBBB /* ConfirmResponsesModel.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB4266EA538000EE70F /* ViewController.swift */; };
 		C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB6266EA538000EE70F /* Main.storyboard */; };
@@ -14,8 +19,8 @@
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
 		C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FC5266EA65F000EE70F /* Login.storyboard */; };
 		C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */; };
-		C4E83FCD266EA6CF000EE70F /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCC266EA6CF000EE70F /* ConfirmModel.swift */; };
-		C4E83FCF266EA6ED000EE70F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCE266EA6ED000EE70F /* LoginModel.swift */; };
+		C4E83FCD266EA6CF000EE70F /* RegistrationResponsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCC266EA6CF000EE70F /* RegistrationResponsesModel.swift */; };
+		C4E83FCF266EA6ED000EE70F /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCE266EA6ED000EE70F /* RegistrationModel.swift */; };
 		C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD2266EA72C000EE70F /* LoginViewController.swift */; };
 		C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */; };
 		C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD7266EA77E000EE70F /* LoadManager.swift */; };
@@ -23,17 +28,19 @@
 		C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */; };
 		C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FDF266EA7F9000EE70F /* StringExtension.swift */; };
 		C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */; };
-		C4E83FE4266EA830000EE70F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE3266EA830000EE70F /* LabelExtension.swift */; };
 		C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */; };
 		C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE9266EB4E7000EE70F /* LoginText.swift */; };
-		C4E83FEE266EB7D5000EE70F /* LoginAndConfirmFont in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FED266EB7D5000EE70F /* LoginAndConfirmFont */; };
 		C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FEF266EC126000EE70F /* TextFont.swift */; };
 		C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */; };
 		C4E83FF5266EC405000EE70F /* ColorElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF4266EC405000EE70F /* ColorElements.swift */; };
-		C4E83FF7266EC5B5000EE70F /* LoginImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF6266EC5B5000EE70F /* LoginImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmText.swift; sourceTree = "<group>"; };
+		C45BB4EF2670CDAD0057DBBB /* ConfirmFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmFontSize.swift; sourceTree = "<group>"; };
+		C45BB4F22670FC5F0057DBBB /* ConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
+		C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmInteractor.swift; sourceTree = "<group>"; };
+		C45BB4F626710BB80057DBBB /* ConfirmResponsesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResponsesModel.swift; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB4266EA538000EE70F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,8 +50,8 @@
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4E83FC5266EA65F000EE70F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		C4E83FCC266EA6CF000EE70F /* ConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
-		C4E83FCE266EA6ED000EE70F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		C4E83FCC266EA6CF000EE70F /* RegistrationResponsesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponsesModel.swift; sourceTree = "<group>"; };
+		C4E83FCE266EA6ED000EE70F /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		C4E83FD2266EA72C000EE70F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		C4E83FD7266EA77E000EE70F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
@@ -52,14 +59,11 @@
 		C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		C4E83FDF266EA7F9000EE70F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
-		C4E83FE3266EA830000EE70F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		C4E83FE9266EB4E7000EE70F /* LoginText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginText.swift; sourceTree = "<group>"; };
-		C4E83FED266EB7D5000EE70F /* LoginAndConfirmFont */ = {isa = PBXFileReference; lastKnownFileType = text; path = LoginAndConfirmFont; sourceTree = "<group>"; };
 		C4E83FEF266EC126000EE70F /* TextFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
 		C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFontSize.swift; sourceTree = "<group>"; };
 		C4E83FF4266EC405000EE70F /* ColorElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorElements.swift; sourceTree = "<group>"; };
-		C4E83FF6266EC5B5000EE70F /* LoginImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C45BB4F12670CDBB0057DBBB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */,
+				C45BB4EF2670CDAD0057DBBB /* ConfirmFontSize.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		C4E83FA4266EA538000EE70F = {
 			isa = PBXGroup;
 			children = (
@@ -92,48 +105,20 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FC7266EA680000EE70F /* Interactors */,
 				C4E83FCB266EA6BD000EE70F /* Models */,
 				C4E83FD6266EA76C000EE70F /* Managers */,
 				C4E83FD0266EA704000EE70F /* ViewControllers */,
 				C4E83FDB266EA7BF000EE70F /* Helpers */,
-				C4E83FC4266EA63B000EE70F /* StoryBoards */,
 				C4E83FE7266EA863000EE70F /* Others */,
 				C4E83FBE266EA53B000EE70F /* Info.plist */,
 			);
 			path = "Ride-Foodv02";
 			sourceTree = "<group>";
 		};
-		C4E83FC4266EA63B000EE70F /* StoryBoards */ = {
-			isa = PBXGroup;
-			children = (
-				C4E83FB6266EA538000EE70F /* Main.storyboard */,
-				C4E83FC5266EA65F000EE70F /* Login.storyboard */,
-			);
-			path = StoryBoards;
-			sourceTree = "<group>";
-		};
-		C4E83FC7266EA680000EE70F /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				C4E83FC8266EA692000EE70F /* Login */,
-			);
-			path = Interactors;
-			sourceTree = "<group>";
-		};
-		C4E83FC8266EA692000EE70F /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		C4E83FCB266EA6BD000EE70F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FCC266EA6CF000EE70F /* ConfirmModel.swift */,
-				C4E83FCE266EA6ED000EE70F /* LoginModel.swift */,
+				C4E83FF8266FF6C1000EE70F /* Structurs */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +126,7 @@
 		C4E83FD0266EA704000EE70F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C4E83FFA266FF74A000EE70F /* Main */,
 				C4E83FD1266EA70F000EE70F /* Login */,
 			);
 			path = ViewControllers;
@@ -149,8 +135,13 @@
 		C4E83FD1266EA70F000EE70F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C4E83FC5266EA65F000EE70F /* Login.storyboard */,
 				C4E83FD2266EA72C000EE70F /* LoginViewController.swift */,
+				C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */,
+				C4E83FE9266EB4E7000EE70F /* LoginText.swift */,
 				C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */,
+				C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */,
+				C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -168,9 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E83FF3266EC3A8000EE70F /* Colors */,
-				C4E83FEC266EB7A1000EE70F /* Images */,
 				C4E83FEB266EB798000EE70F /* Fonts */,
-				C4E83FE8266EB492000EE70F /* Texts */,
 				C4E83FDC266EA7C6000EE70F /* Extensions */,
 			);
 			path = Helpers;
@@ -182,7 +171,6 @@
 				C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */,
 				C4E83FDF266EA7F9000EE70F /* StringExtension.swift */,
 				C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */,
-				C4E83FE3266EA830000EE70F /* LabelExtension.swift */,
 				C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */,
 			);
 			path = Extensions;
@@ -199,30 +187,13 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
-		C4E83FE8266EB492000EE70F /* Texts */ = {
-			isa = PBXGroup;
-			children = (
-				C4E83FE9266EB4E7000EE70F /* LoginText.swift */,
-			);
-			path = Texts;
-			sourceTree = "<group>";
-		};
 		C4E83FEB266EB798000EE70F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FED266EB7D5000EE70F /* LoginAndConfirmFont */,
+				C45BB4F12670CDBB0057DBBB /* Login */,
 				C4E83FEF266EC126000EE70F /* TextFont.swift */,
-				C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		C4E83FEC266EB7A1000EE70F /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				C4E83FF6266EC5B5000EE70F /* LoginImages.swift */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		C4E83FF3266EC3A8000EE70F /* Colors */ = {
@@ -231,6 +202,33 @@
 				C4E83FF4266EC405000EE70F /* ColorElements.swift */,
 			);
 			path = Colors;
+			sourceTree = "<group>";
+		};
+		C4E83FF8266FF6C1000EE70F /* Structurs */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FF9266FF6CB000EE70F /* Login */,
+			);
+			path = Structurs;
+			sourceTree = "<group>";
+		};
+		C4E83FF9266FF6CB000EE70F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FCC266EA6CF000EE70F /* RegistrationResponsesModel.swift */,
+				C4E83FCE266EA6ED000EE70F /* RegistrationModel.swift */,
+				C45BB4F22670FC5F0057DBBB /* ConfirmModel.swift */,
+				C45BB4F626710BB80057DBBB /* ConfirmResponsesModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C4E83FFA266FF74A000EE70F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FB6266EA538000EE70F /* Main.storyboard */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,26 +302,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4E83FE4266EA830000EE70F /* LabelExtension.swift in Sources */,
 				C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */,
 				C4E83FF5266EC405000EE70F /* ColorElements.swift in Sources */,
 				C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */,
 				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
-				C4E83FCF266EA6ED000EE70F /* LoginModel.swift in Sources */,
-				C4E83FEE266EB7D5000EE70F /* LoginAndConfirmFont in Sources */,
+				C4E83FCF266EA6ED000EE70F /* RegistrationModel.swift in Sources */,
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
-				C4E83FCD266EA6CF000EE70F /* ConfirmModel.swift in Sources */,
+				C4E83FCD266EA6CF000EE70F /* RegistrationResponsesModel.swift in Sources */,
+				C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */,
 				C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */,
 				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
+				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
 				C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */,
 				C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
+				C45BB4F02670CDAD0057DBBB /* ConfirmFontSize.swift in Sources */,
+				C45BB4F726710BB80057DBBB /* ConfirmResponsesModel.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,
 				C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */,
+				C45BB4F32670FC5F0057DBBB /* ConfirmModel.swift in Sources */,
 				C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */,
 				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
 				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
-				C4E83FF7266EC5B5000EE70F /* LoginImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

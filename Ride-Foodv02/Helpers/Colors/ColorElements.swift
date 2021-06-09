@@ -10,8 +10,8 @@ import UIKit
 
 enum ColorElements {
     case blackTextColor
-    case buttonEnableColor
-    case buttonDisableColor
+    case blueColor
+    case greyButtonColor
     case grayTextColor
 }
 
@@ -21,9 +21,9 @@ extension ColorElements {
             switch self {
             case .blackTextColor:
                 return UIColor.black
-            case .buttonEnableColor:
+            case .blueColor:
                 return UIColor(red: 61/255, green: 59/255, blue: 255/255, alpha: 1)
-            case .buttonDisableColor:
+            case .greyButtonColor:
                 return UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1)
             case .grayTextColor:
                 return UIColor.gray

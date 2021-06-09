@@ -7,7 +7,8 @@
 
 import Foundation
 
+#warning("Они не нужны? вместо них enums")
 //Модель данных для отправки номера телефона/регистрации
-struct LoginModel {
-    var phone: String
+struct RegistrationModel: Decodable {
+    var phone: [String : String]
 }
