@@ -10,4 +10,12 @@ extension UIColor {
         return UIColor(named: "SupportNextButtonActiveColor") ?? .black
     }
     
+    static var SettingsHeaderColor: UIColor {
+        return UIColor(named: "SettingsHeaderColor") ?? .black
+    }
+    
+    static var SettingsBackgroundColor: UIColor {
+        return UIColor(named: "SettingsBackgroundColor") ?? .black
+    }
+    
 }

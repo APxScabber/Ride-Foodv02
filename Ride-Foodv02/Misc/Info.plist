@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SFUIDisplay-Light.otf</string>
-		<string>SFUIDisplay-Regular.otf</string>
-		<string>SFUIDisplay-Semibold.otf</string>
-	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Доступ к камере необходим, чтобы снять фотографии и отправить их в службу поддержки.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Доступ к медиатеке необходим, чтобы прикрепить файлы для вашего обращения в службу поддержки.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -32,12 +22,22 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Доступ к камере необходим, чтобы снять фотографии и отправить их в службу поддержки.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Доступ к медиатеке необходим, чтобы прикрепить файлы для вашего обращения в службу поддержки.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFUIDisplay-Light.otf</string>
+		<string>SFUIDisplay-Regular.otf</string>
+		<string>SFUIDisplay-Semibold.otf</string>
+	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Support</string>
+	<string>Settings</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
