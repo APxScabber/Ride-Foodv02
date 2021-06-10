@@ -324,6 +324,7 @@
                         <outlet property="collectionView" destination="Z5u-u7-NZI" id="esC-7t-VOz"/>
                         <outlet property="errorDescriptionLabel" destination="qCi-L5-asd" id="9vR-nx-p5l"/>
                         <outlet property="goBackView" destination="kaH-gL-l0S" id="OFN-Eq-naz"/>
+                        <outlet property="roundedView" destination="ItP-um-WwU" id="X4F-bd-Bsl"/>
                         <outlet property="sendButton" destination="nTt-io-lD3" id="CEA-mI-dM9"/>
                         <outlet property="successLabel" destination="InE-Vk-26N" id="HPC-vc-vdY"/>
                     </connections>

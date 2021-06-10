@@ -31,6 +31,7 @@ class SupportAddImagesViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(done))
         goBackView.addGestureRecognizer(tapGesture)
     }}
+    @IBOutlet weak var roundedView: RoundedView!
     @IBOutlet weak var errorDescriptionLabel: UILabel! { didSet {
         errorDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
     }}
@@ -49,6 +50,7 @@ class SupportAddImagesViewController: UIViewController {
         addImageDescriptionLabel.text = SupportConstant.messageSent
         addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
         successLabel.isHidden = false
+        roundedView.color = .clear
     }
     
     
