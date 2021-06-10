@@ -9,6 +9,7 @@ import Foundation
 
 import UIKit
 
+//Шрифт
 enum TextFont: String {
     case main = "Symbol"
 }

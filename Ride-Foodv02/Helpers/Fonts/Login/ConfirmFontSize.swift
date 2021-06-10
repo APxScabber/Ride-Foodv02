@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Два размера шрифта для ConfirmViewController
 enum ConfirmFontSize: CGFloat {
     case normal = 17
     case small = 12

@@ -9,9 +9,18 @@
 /* Begin PBXBuildFile section */
 		C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */; };
 		C45BB4F02670CDAD0057DBBB /* ConfirmFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4EF2670CDAD0057DBBB /* ConfirmFontSize.swift */; };
-		C45BB4F32670FC5F0057DBBB /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F22670FC5F0057DBBB /* ConfirmModel.swift */; };
 		C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */; };
-		C45BB4F726710BB80057DBBB /* ConfirmResponsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F626710BB80057DBBB /* ConfirmResponsesModel.swift */; };
+		C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F626710BB80057DBBB /* ConfirmModel.swift */; };
+		C45BB4FC2671527F0057DBBB /* UrlList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4FB2671527F0057DBBB /* UrlList.swift */; };
+		C45BB4FE267153B80057DBBB /* NotificationsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4FD267153B80057DBBB /* NotificationsText.swift */; };
+		C45BB52026717DDB0057DBBB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB51F26717DDA0057DBBB /* MainViewController.swift */; };
+		C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C45BB54B267226C40057DBBB /* UserDataModel.xcdatamodeld */; };
+		C45BB567267241360057DBBB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB566267241360057DBBB /* CoreDataManager.swift */; };
+		C45BB56D267244CA0057DBBB /* DefaultUserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45BB56C267244CA0057DBBB /* DefaultUserData.plist */; };
+		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
+		C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */; };
+		C4D9071626726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */; };
+		C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB4266EA538000EE70F /* ViewController.swift */; };
 		C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB6266EA538000EE70F /* Main.storyboard */; };
@@ -19,8 +28,7 @@
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
 		C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FC5266EA65F000EE70F /* Login.storyboard */; };
 		C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */; };
-		C4E83FCD266EA6CF000EE70F /* RegistrationResponsesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCC266EA6CF000EE70F /* RegistrationResponsesModel.swift */; };
-		C4E83FCF266EA6ED000EE70F /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCE266EA6ED000EE70F /* RegistrationModel.swift */; };
+		C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FCC266EA6CF000EE70F /* RegistrationModel.swift */; };
 		C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD2266EA72C000EE70F /* LoginViewController.swift */; };
 		C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */; };
 		C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FD7266EA77E000EE70F /* LoadManager.swift */; };
@@ -38,9 +46,18 @@
 /* Begin PBXFileReference section */
 		C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmText.swift; sourceTree = "<group>"; };
 		C45BB4EF2670CDAD0057DBBB /* ConfirmFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmFontSize.swift; sourceTree = "<group>"; };
-		C45BB4F22670FC5F0057DBBB /* ConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
 		C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmInteractor.swift; sourceTree = "<group>"; };
-		C45BB4F626710BB80057DBBB /* ConfirmResponsesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResponsesModel.swift; sourceTree = "<group>"; };
+		C45BB4F626710BB80057DBBB /* ConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
+		C45BB4FB2671527F0057DBBB /* UrlList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlList.swift; sourceTree = "<group>"; };
+		C45BB4FD267153B80057DBBB /* NotificationsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsText.swift; sourceTree = "<group>"; };
+		C45BB51F26717DDA0057DBBB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C45BB54C267226C40057DBBB /* UserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDataModel.xcdatamodel; sourceTree = "<group>"; };
+		C45BB566267241360057DBBB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C45BB56C267244CA0057DBBB /* DefaultUserData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultUserData.plist; sourceTree = "<group>"; };
+		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingsMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingsMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB4266EA538000EE70F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,8 +67,7 @@
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4E83FC5266EA65F000EE70F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		C4E83FCC266EA6CF000EE70F /* RegistrationResponsesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponsesModel.swift; sourceTree = "<group>"; };
-		C4E83FCE266EA6ED000EE70F /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		C4E83FCC266EA6CF000EE70F /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		C4E83FD2266EA72C000EE70F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		C4E83FD7266EA77E000EE70F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
@@ -86,9 +102,48 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		C45BB4F826714CC80057DBBB /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				C45BB4FB2671527F0057DBBB /* UrlList.swift */,
+				C45BB4FA2671524F0057DBBB /* Manager */,
+				C45BB4F926714CD30057DBBB /* Login */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		C45BB4F926714CD30057DBBB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C4E83FE9266EB4E7000EE70F /* LoginText.swift */,
+				C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C45BB4FA2671524F0057DBBB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C45BB4FD267153B80057DBBB /* NotificationsText.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		C45BB54A267226A90057DBBB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C45BB54B267226C40057DBBB /* UserDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		C4E83FA4266EA538000EE70F = {
 			isa = PBXGroup;
 			children = (
+				C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */,
+				C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */,
+				C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */,
+				C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */,
 				C4E83FAF266EA538000EE70F /* Ride-Foodv02 */,
 				C4E83FAE266EA538000EE70F /* Products */,
 			);
@@ -106,11 +161,13 @@
 			isa = PBXGroup;
 			children = (
 				C4E83FCB266EA6BD000EE70F /* Models */,
+				C45BB4F826714CC80057DBBB /* Text */,
 				C4E83FD6266EA76C000EE70F /* Managers */,
 				C4E83FD0266EA704000EE70F /* ViewControllers */,
 				C4E83FDB266EA7BF000EE70F /* Helpers */,
 				C4E83FE7266EA863000EE70F /* Others */,
 				C4E83FBE266EA53B000EE70F /* Info.plist */,
+				C45BB56C267244CA0057DBBB /* DefaultUserData.plist */,
 			);
 			path = "Ride-Foodv02";
 			sourceTree = "<group>";
@@ -118,6 +175,7 @@
 		C4E83FCB266EA6BD000EE70F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C45BB54A267226A90057DBBB /* CoreData */,
 				C4E83FF8266FF6C1000EE70F /* Structurs */,
 			);
 			path = Models;
@@ -138,10 +196,8 @@
 				C4E83FC5266EA65F000EE70F /* Login.storyboard */,
 				C4E83FD2266EA72C000EE70F /* LoginViewController.swift */,
 				C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */,
-				C4E83FE9266EB4E7000EE70F /* LoginText.swift */,
 				C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */,
 				C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */,
-				C45BB4ED2670CD1A0057DBBB /* ConfirmText.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -151,6 +207,7 @@
 			children = (
 				C4E83FD7266EA77E000EE70F /* LoadManager.swift */,
 				C4E83FD9266EA79C000EE70F /* LocalNotifications.swift */,
+				C45BB566267241360057DBBB /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -215,10 +272,8 @@
 		C4E83FF9266FF6CB000EE70F /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FCC266EA6CF000EE70F /* RegistrationResponsesModel.swift */,
-				C4E83FCE266EA6ED000EE70F /* RegistrationModel.swift */,
-				C45BB4F22670FC5F0057DBBB /* ConfirmModel.swift */,
-				C45BB4F626710BB80057DBBB /* ConfirmResponsesModel.swift */,
+				C4E83FCC266EA6CF000EE70F /* RegistrationModel.swift */,
+				C45BB4F626710BB80057DBBB /* ConfirmModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -227,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E83FB6266EA538000EE70F /* Main.storyboard */,
+				C45BB51F26717DDA0057DBBB /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -291,6 +347,7 @@
 				C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */,
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
+				C45BB56D267244CA0057DBBB /* DefaultUserData.plist in Resources */,
 				C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,25 +360,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */,
+				C45BB52026717DDB0057DBBB /* MainViewController.swift in Sources */,
 				C4E83FF5266EC405000EE70F /* ColorElements.swift in Sources */,
 				C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */,
 				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
-				C4E83FCF266EA6ED000EE70F /* RegistrationModel.swift in Sources */,
+				C45BB4FE267153B80057DBBB /* NotificationsText.swift in Sources */,
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
-				C4E83FCD266EA6CF000EE70F /* RegistrationResponsesModel.swift in Sources */,
+				C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */,
+				C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */,
+				C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */,
 				C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */,
+				C45BB4FC2671527F0057DBBB /* UrlList.swift in Sources */,
 				C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */,
 				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
+				C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */,
 				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
 				C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */,
 				C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				C45BB4F02670CDAD0057DBBB /* ConfirmFontSize.swift in Sources */,
-				C45BB4F726710BB80057DBBB /* ConfirmResponsesModel.swift in Sources */,
+				C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */,
+				C45BB567267241360057DBBB /* CoreDataManager.swift in Sources */,
+				C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,
 				C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */,
-				C45BB4F32670FC5F0057DBBB /* ConfirmModel.swift in Sources */,
 				C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */,
+				C4D9071626726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift in Sources */,
 				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
 				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
 			);
@@ -527,6 +591,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C45BB54B267226C40057DBBB /* UserDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C45BB54C267226C40057DBBB /* UserDataModel.xcdatamodel */,
+			);
+			currentVersion = C45BB54C267226C40057DBBB /* UserDataModel.xcdatamodel */;
+			path = UserDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C4E83FA5266EA538000EE70F /* Project object */;
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<dict>
+		<key>id</key>
+		<integer>0</integer>
+		<key>name</key>
+		<string></string>
+		<key>email</key>
+		<string></string>
+		<key>created_at</key>
+		<integer>0</integer>
+		<key>updated_at</key>
+		<integer>0</integer>
+		<key>deleted_at</key>
+		<integer>0</integer>
+		<key>settings</key>
+		<dict>
+			<key>language</key>
+			<string>ru</string>
+			<key>do_not_call</key>
+			<false/>
+			<key>notification_discount</key>
+			<false/>
+			<key>update_mobile_network</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//Тут весь цвет использующийся в приложение
 enum ColorElements {
     case blackTextColor
     case blueColor

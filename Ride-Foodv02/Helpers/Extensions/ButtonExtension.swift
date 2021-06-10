@@ -10,6 +10,7 @@ import UIKit
 
 extension UIButton {
     
+    //Закругляем края у кнопки
     func style() {
         self.layer.cornerRadius = self.frame.height / 4
     }

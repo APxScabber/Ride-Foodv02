@@ -7,13 +7,13 @@
 
 import Foundation
 
+//Локализация приложения
 enum Language: Equatable {
     case russian
     case english
 }
 
-
-
+//Код для установки нужного языка
 extension Language {
     var code: String {
         switch self {
@@ -25,6 +25,7 @@ extension Language {
 
 extension Language {
     
+    //Устанока выбранного языка
     init?(_ languageCode: String?) {
         switch languageCode {
         case "ru":
@@ -35,7 +36,8 @@ extension Language {
             return nil
         }
     }
-    
+
+    //Вся текстовая информация используемая в LoginViewController
     var phoneNumberLable: String {
         get {
             switch self {
@@ -70,7 +72,7 @@ extension Language {
     }
 }
 
-
+//Текс не нуждающийся в переводе
 enum LoginText: String {
     case licenseLink = "https://www.google.com/"
     case phonePrefix = "+7"

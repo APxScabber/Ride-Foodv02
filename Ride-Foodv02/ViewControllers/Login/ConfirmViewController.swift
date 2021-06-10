@@ -19,11 +19,8 @@ class ConfirmViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     //MARK: - Setup Values
-    
-    
-    
+
     private var timer: Timer?
     
     var phoneNumber = ""
@@ -34,6 +31,7 @@ class ConfirmViewController: UIViewController {
     private var colorLenght: Int!
     
     var languageCode = LoginViewController().languageCode
+    //var languageCode = Language.russian.code
     
     let loginInteractor = LoginInteractor()
     let confirmInteractor = ConfirmInteracor()
@@ -49,36 +47,48 @@ class ConfirmViewController: UIViewController {
         setupNextButton()
         
         registerForKeyboardNotification()
-
-        //Таймер обратного отсчета, для повторной отправки кода подтверждения
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setupInfoTextView), userInfo: nil, repeats: true)
+        
+        startCountDown()
+    }
+    
+    deinit {
+        print("Exit ConfirmVC")
     }
     
     //MARK: - Methods
+    
+    private func errorAlertContoller(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: Language(languageCode)?.alertButton, style: .default) { [weak self] _ in
+            self?.startCountDown()
+            self?.mainCodeTextField.text = ""
+            self?.startSetupView()
+        }
+        alertController.addAction(okButton)
+        present(alertController, animated: true, completion: nil)
+    }
     
     #warning("Повторяющийся метод, такой же испльзуется в LoginVC")
     //Регистрируем уведомления на пояаление и скрытие клавиатуры
     private func registerForKeyboardNotification() {
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyBoardWillShow),
+                                               selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyBoardWillHide),
+                                               selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
     
-    private func setupTextCodeConfirmTextField() {
-        textCodeConfirmLabel.text = Language(languageCode)?.textCodeConfirmLabel
-        textCodeConfirmLabel.font = UIFont(
-            name: TextFont.main.rawValue,
-            size: LoginFontSize.normal.rawValue)
-        textCodeConfirmLabel.textColor = ColorElements.blackTextColor.value
-    }
+    //Таймер обратного отсчета, для повторной отправки кода подтверждения
+    private func startCountDown() {
     
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setupInfoTextView), userInfo: nil, repeats: true)
+    }
+
     #warning("на лейблах непонятные кресты")
     //Задаем внешний вид лайблам под ввод кода подтвердения
     private func setupInputCodeLabels() {
@@ -102,6 +112,24 @@ class ConfirmViewController: UIViewController {
         nextButtonOutlet.isEnabled = false
     }
     
+    //Сброс всех начтроек на начальные
+    private func startSetupView() {
+        seconds = 30
+        inputLabelCount = 0
+        setupInputCodeLabels()
+        setupNextButton()
+        loginInteractor.reciveConfirmCode(from: phoneNumber)
+    }
+    
+    //Задаем параметры загаловка окна
+    private func setupTextCodeConfirmTextField() {
+        textCodeConfirmLabel.text = Language(languageCode)?.textCodeConfirmLabel
+        textCodeConfirmLabel.font = UIFont(
+            name: TextFont.main.rawValue,
+            size: LoginFontSize.normal.rawValue)
+        textCodeConfirmLabel.textColor = ColorElements.blackTextColor.value
+    }
+    
     //Создаем распознавание жестов касанием
     private func registrationTapGesture() {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(screenTap))
@@ -118,17 +146,13 @@ class ConfirmViewController: UIViewController {
     @objc func setupInfoTextView() {
         
         if seconds < 0 {
-            seconds = 30
-            inputLabelCount = 0
-            setupInputCodeLabels()
-            setupNextButton()
-            loginInteractor.reciveConfirmCode(from: phoneNumber)
+            startSetupView()
         }
         
-        #warning("Как использовать параметры внутри текста?")
-        //let licenseText = "На номер \(phoneNumber) отправлено смс с кодом. Повторная отправка через \(seconds) секунд"
-        
-        let licenseText = Language(languageCode)!.infoTextView
+        let text = Language(languageCode)!.infoTextView
+        let textArray = text.components(separatedBy: "@#^")
+
+        let licenseText = textArray[0] + phoneNumber + textArray[1] + String(seconds) + textArray[2]
         let textCount = licenseText.count
         
         #warning("Подумать как реализовать лучше, без цифр")
@@ -142,19 +166,17 @@ class ConfirmViewController: UIViewController {
                 colorLenght = 9
             }
         case .english:
-            startColorLocation = textCount - 11
-            colorLenght = 11
+            startColorLocation = textCount - 10
+            colorLenght = 10
             
             if textCount == 75 {
-                startColorLocation = textCount - 10
-                colorLenght = 10
+                startColorLocation = textCount - 9
+                colorLenght = 8
             }
         case .none:
             return
         }
-        
 
-        
         let attributedString = NSMutableAttributedString(string: licenseText)
 
         attributedString.addAttributes([ .foregroundColor : ColorElements.blueColor.value], range: NSRange(location: startColorLocation, length: colorLenght))
@@ -173,7 +195,7 @@ class ConfirmViewController: UIViewController {
     #warning("Некорректно работает, при загрузке контроллера дергается вверх и возвращается назад")
     #warning("Повторяющийся метод, такой же испльзуется в LoginVC")
     //Метод отрабатывающий появление клавиатуры
-    @objc func keyBoardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         let keyboardHeight = loginInteractor.getKeyboardHeight(notification)
         
@@ -191,7 +213,7 @@ class ConfirmViewController: UIViewController {
     
     #warning("Повторяющийся метод, такой же испльзуется в LoginVC")
     //Метод отрабатывающий скрытие клавиатуры
-    @objc func keyBoardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
        scrollView.frame.origin.y = .zero
     }
     
@@ -215,20 +237,24 @@ class ConfirmViewController: UIViewController {
         }
     }
     
+    //Проверяем код подтверждения и либо обрабатываем ошибку либо переходим на Main Storyboard
     @IBAction func nextButtonAction(_ sender: Any) {
         
-        confirmInteractor.passConfirmationCode(phoneNumber: phoneNumber, code: mainCodeTextField.text!)
-    }
+        confirmInteractor.passConfirmationCode(phoneNumber: phoneNumber,
+                                               code: mainCodeTextField.text!) { [weak self] error in
+           
+            self?.timer?.invalidate()
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            if error != nil {
+                self?.errorAlertContoller(title: Language(self?.languageCode)!.alertTitle,
+                                          message: Language(self?.languageCode)!.alertMessage)
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                self?.present(vc, animated: true, completion: nil)
+            }
+        }
     }
-    */
-
 }

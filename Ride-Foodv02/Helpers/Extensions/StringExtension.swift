@@ -9,6 +9,7 @@ import UIKit
 
 extension String {
     
+    //Форматируем телефрнный номер по заданному шаблону
     func applyPatternOnNumbers(pattern: String, replacmentCharacter: Character) -> String {
         var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
         for index in 0 ..< pattern.count {

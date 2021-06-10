@@ -8,9 +8,11 @@
 import Foundation
 import UserNotifications
 
-#warning("Что будет если пользователь отклонит уведомления?")
 //Класс для работы с локальными уведомлениями
 class LocalNotofications {
+    
+    let languageCode = LoginViewController().languageCode
+    //var languageCode = Language.russian.code
     
     static let shared = LocalNotofications()
     
@@ -19,7 +21,7 @@ class LocalNotofications {
         let notificationCenter = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
-        content.title = "Код подтверждения"
+        content.title = Language(languageCode)!.titleText
         content.body = body
         content.sound = UNNotificationSound.default
         
@@ -28,6 +30,7 @@ class LocalNotofications {
         let request = UNNotificationRequest(identifier: "notification", content: content, trigger: triger)
         
         notificationCenter.add(request) { error in
+            
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }

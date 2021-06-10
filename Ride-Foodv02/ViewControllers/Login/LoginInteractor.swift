@@ -15,7 +15,7 @@ class LoginInteractor {
         let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginText.phoneFormatEasy.rawValue,
                                                                     replacmentCharacter: "#")
         
-        let url =  URL(string: "https://skillbox.cc/api/auth/registration")
+        let url =  URL(string: registrationURL)
 
         let passData = ["phone" : formatedPhoneNumber]
         
@@ -48,6 +48,5 @@ class LoginInteractor {
         
         return keyboardHeight
     }
-    
 }
 
