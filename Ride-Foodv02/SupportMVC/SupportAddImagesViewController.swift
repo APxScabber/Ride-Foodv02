@@ -22,37 +22,56 @@ class SupportAddImagesViewController: UIViewController {
     @IBOutlet weak var addImageDescriptionLabel: UILabel! { didSet {
         addImageDescriptionLabel.font = UIFont.SFUIDisplayLight(size: 17)
     }}
-    
+    @IBOutlet weak var errorDescriptionLabel: UILabel! { didSet {
+        errorDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
+    }}
     @IBOutlet weak var successLabel: UILabel! { didSet {
         successLabel.font = UIFont.SFUIDisplayLight(size: 17)
     }}
     
-    @IBOutlet weak var goBackView: UIView! { didSet {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(done))
-        goBackView.addGestureRecognizer(tapGesture)
-    }}
     @IBOutlet weak var roundedView: RoundedView!
-    @IBOutlet weak var errorDescriptionLabel: UILabel! { didSet {
-        errorDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
-    }}
+    private let actionSheetView = SupportActionSheetView.initFromNib()
     
+    //MARK: - IBActions
+    @IBAction func dismiss(_ sender:UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        actionSheetView.frame = CGRect(x: 0, y: view.bounds.maxY, width: view.bounds.width, height: SupportConstant.actionSheetHeight)
+        actionSheetView.delegate = self
+        view.addSubview(actionSheetView)
+    }
     
     //MARK: - IBActions
     @IBAction func addImage(_ sender: UIButton) {
-        SupportActionSheet.showIn(self)
-        SupportActionSheet.delegate = self
+        enableUI(false)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: SupportConstant.actionSheetAnimationDuration, delay: 0, options: .curveLinear) {
+            self.actionSheetView.frame.origin.y -= SupportConstant.actionSheetHeight
+        }
     }
 
     @IBAction func sendFeedback(_ sender: RoundedButton) {
-        sendButton.setTitle(SupportConstant.done, for: .normal)
-        addImagesButton.buttonState = .done
-        addImageDescriptionLabel.text = SupportConstant.messageSent
-        addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
-        successLabel.isHidden = false
-        roundedView.color = .clear
+        if addImagesButton.buttonState != .done {
+            sendButton.setTitle(SupportConstant.done, for: .normal)
+            addImagesButton.buttonState = .done
+            addImageDescriptionLabel.text = SupportConstant.messageSent
+            addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
+            successLabel.isHidden = false
+            roundedView.color = .clear
+        } else {
+            //go back to main? screen or something
+        }
     }
     
+    //MARK: - EnableUI
+    
+    private func enableUI(_ yes:Bool) {
+        view.backgroundColor = yes ? .white : UIColor.SupportBackgroundColor
+        addImagesButton.isUserInteractionEnabled = yes
+        sendButton.isUserInteractionEnabled = yes
+    }
     
     @objc
     private func done() {
@@ -113,11 +132,23 @@ extension SupportAddImagesViewController: UICollectionViewDelegateFlowLayout {
 
 extension SupportAddImagesViewController: SupportActionSheetDelegate {
     
-   func goToCamera() {
+    func goToCamera() {
         ImagePicker.showWith(.camera, in: self)
+        cancel()
     }
     
     func goToLibrary() {
         ImagePicker.showWith(.photoLibrary, in: self)
+        cancel()
     }
+    
+    func cancel() {
+        enableUI(true)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: SupportConstant.actionSheetAnimationDuration, delay: 0, options: .curveLinear) {
+            self.actionSheetView.frame.origin.y += SupportConstant.actionSheetHeight
+        }
+    }
+    
+    
+   
 }

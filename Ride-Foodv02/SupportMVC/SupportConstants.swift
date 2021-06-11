@@ -18,4 +18,7 @@ struct SupportConstant {
     
     static let bottomConstraintValue: CGFloat = 25.0
     
+    static let actionSheetAnimationDuration = 0.15
+    static let actionSheetHeight: CGFloat = 200
+    
 }

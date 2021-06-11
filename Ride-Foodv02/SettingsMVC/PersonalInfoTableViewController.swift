@@ -1,9 +1,17 @@
 import UIKit
 
-class PersonalInfoTableViewController: SettingsTableViewController {
+class PersonalInfoTableViewController: UITableViewController {
 
     @IBOutlet var cells: [UITableViewCell]!
     
+    @IBAction func dismiss(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationItem.title = "Персональные данные"
+    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 { return SettingsHeaderView.createWith(SettingsConstant.name, in: self.view)}

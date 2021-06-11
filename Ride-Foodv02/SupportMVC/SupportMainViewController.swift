@@ -6,18 +6,11 @@ class SupportMainViewController: UIViewController {
     
     var text = "" { didSet { updateUI() }}
     
-    @IBOutlet weak var supportLabel: UILabel! { didSet {
-        supportLabel.font = UIFont.SFUIDisplaySemibold(size: 15)
-    }}
-
+    //MARK: - Outlets
     @IBOutlet weak var textViewLabelDescription: UILabel! { didSet  {
         textViewLabelDescription.font = UIFont.SFUIDisplayLight(size: 17)
     }}
-    
-    @IBOutlet weak var goBackView: UIView! { didSet {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismiss(_:)))
-        goBackView.addGestureRecognizer(tapGesture)
-    }}
+
     
     @IBOutlet weak var nextButton: RoundedButton! { didSet {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
@@ -27,12 +20,17 @@ class SupportMainViewController: UIViewController {
     @IBOutlet weak var textView: UITextView! { didSet {
         textView.font = UIFont.SFUIDisplayLight(size: 17)
     }}
+    //MARK: - IBActions
+    @IBAction func dismiss(_ sender:UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        navigationController?.navigationItem.title = "Служба поддержки"
     }
     
     //MARK: - Segue
@@ -61,15 +59,7 @@ class SupportMainViewController: UIViewController {
         }
         
     }
-    
-    //MARK: - Helper
-    @objc
-    private func dismiss(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended {
-            //go back in the future
-            print("go back works")
-        }
-    }
+   
 }
 
 //MARK: - UITextViewDelegate

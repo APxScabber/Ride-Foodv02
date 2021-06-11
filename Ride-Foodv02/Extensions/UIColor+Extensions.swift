@@ -18,4 +18,9 @@ extension UIColor {
         return UIColor(named: "SettingsBackgroundColor") ?? .black
     }
     
+    static var SupportBackgroundColor: UIColor {
+        return UIColor(named: "SupportBackgroundColor") ?? .black
+    }
+    
+    
 }
