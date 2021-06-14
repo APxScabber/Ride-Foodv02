@@ -8,12 +8,37 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    // MARK: - Outlets
+    
+    // MARK: - Properties
 
+    // MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        CoreDataManager().fetchCoreData { result in
+            
+            switch result {
+            case .success(let model):
+                let userData = model.first
+                
+                print(userData!.id!)
+                print(userData!.settings!.language!)
+ 
+            case .failure(let error):
+                print(error)
+            case .none:
+                return
+            }
+        }
     }
+    
+    // MARK: - Methods
+    
+    
+    // MARK: - Actions
     
 
     /*

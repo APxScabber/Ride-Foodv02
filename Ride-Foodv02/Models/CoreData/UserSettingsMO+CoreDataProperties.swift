@@ -20,6 +20,5 @@ extension UserSettingsMO {
     @NSManaged public var language: String?
     @NSManaged public var notification_discount: Bool
     @NSManaged public var update_mobile_network: Bool
-    @NSManaged public var userData: UserDataMO?
-
 }
+

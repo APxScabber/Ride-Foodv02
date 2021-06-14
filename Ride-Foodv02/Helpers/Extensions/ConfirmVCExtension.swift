@@ -1,22 +1,15 @@
 //
-//  LoginVCExtension.swift
+//  ConfirmVCExtension.swift
 //  Ride-Foodv02
 //
-//  Created by Alexey Peshekhonov on 07.06.2021.
+//  Created by Alexey Peshekhonov on 13.06.2021.
 //
 
+import Foundation
 import UIKit
 
-extension LoginViewController: UITextViewDelegate {
+extension ConfirmViewController {
 
-    // MARK: - Delegate Methods
-    
-    //Для активации гиперссылки
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        UIApplication.shared.open(URL)
-        return false
-    }
-    
     // MARK: - Methods
     
     //Регистрируем уведомления на пояаление клавиатуры
@@ -34,6 +27,12 @@ extension LoginViewController: UITextViewDelegate {
         view.addGestureRecognizer(gesture)
     }
     
+    //Таймер обратного отсчета, для повторной отправки кода подтверждения
+    func startCountDown() {
+    
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setupInfoTextView), userInfo: nil, repeats: true)
+    }
+    
     //MARK: - Animation Methods
     
     //Анимация движения кнопки вверх
@@ -44,9 +43,9 @@ extension LoginViewController: UITextViewDelegate {
             
             UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
                 
-                self?.bottomButtomConstraint.constant += keyboardHeight - (self!.bottomButtonConstraintHeight/2)
+                self?.bottomButtonConstraint.constant += keyboardHeight - (self!.bottomButtonConstraintHeight/2)
                 self?.view.layoutIfNeeded()
-                self?.topButtomConstraint.constant = 5
+                self?.topButtonConstraint.constant = 5
                 self?.view.layoutIfNeeded()
             })
         }
@@ -59,21 +58,20 @@ extension LoginViewController: UITextViewDelegate {
 
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
 
-                self?.topButtomConstraint.constant = self!.topButtonConstraintHeight
+                self?.topButtonConstraint.constant = self!.topButtonConstraintHeight
                 self?.view.layoutIfNeeded()
-                self?.bottomButtomConstraint.constant = self!.bottomButtonConstraintHeight
+                self?.bottomButtonConstraint.constant = self!.bottomButtonConstraintHeight
                 self?.view.layoutIfNeeded()
                 self?.isAnimationButton = false
             })
         }
     }
-    
+
     //MARK: - @objc Methods
     
-    #warning("Почему этот метод вызывается повторно при закрытии клавиатуры")
     //Метод отрабатывающий появление клавиатуры
     @objc func keyboardWillShow(_ notification: Notification) {
-
+        
         //Получаем высоту верхнего Safe Area
         let window = view.window
         safeAreaTopHeigh = (window?.safeAreaInsets.top)!
@@ -92,16 +90,43 @@ extension LoginViewController: UITextViewDelegate {
             }
         }
     }
-    
-    //По нажатию на экран клавиатура убирается
+
+    //Метод по нажатию на экран
     @objc func screenTap() {
         
-        phoneNumberTextField.resignFirstResponder()
- 
+        mainCodeTextField.resignFirstResponder()
+        
         if isAnimationButton {
             buttonAnimationOut()
         } else {
             scrollView.frame.origin.y = safeAreaTopHeigh
         }
+    }
+    
+    //Метод формирующий внешний вид TextView с обратеым отсчетом, а также логика поведения при истечении времени
+    @objc func setupInfoTextView() {
+        
+        if seconds < 0 {
+            startSetupView()
+        }
+
+        let licenseText = confirmInteractor.separategText(phoneNumber: phoneNumber, seconds: seconds)
+        let textCount = licenseText.count
+
+        let colorRange = confirmInteractor.selectLanguage(textCount)
+
+        let attributedString = NSMutableAttributedString(string: licenseText)
+
+        attributedString.addAttributes([ .foregroundColor : ColorElements.blueColor.value], range: NSRange(location: colorRange.start, length: colorRange.lenght))
+        attributedString.addAttribute(.foregroundColor, value: ColorElements.grayTextColor.value, range: NSRange(location: 0, length: colorRange.start))
+
+        infoTextView.attributedText = attributedString
+        
+        infoTextView.textAlignment = .center
+        
+        let padding = infoTextView.textContainer.lineFragmentPadding
+        infoTextView.textContainerInset =  UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
+        
+        seconds -= 1
     }
 }

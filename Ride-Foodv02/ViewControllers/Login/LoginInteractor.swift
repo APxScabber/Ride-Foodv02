@@ -9,10 +9,36 @@ import UIKit
 
 class LoginInteractor {
     
+    // MARK: - Methods
+    
+    //Создаем атребуты для инфо поля, для создания гиперссылки на пользовательское соглашение
+    func createTextAttribute() -> NSMutableAttributedString {
+        
+        let licenseText = LoginText.licenseInfo.text()
+        let attributedString = NSMutableAttributedString(string: licenseText)
+        
+        let userSettings = UserDefaultsManager.userSettings
+        let languageCode = userSettings!.userLanguage
+        
+        switch languageCode {
+        case "rus":
+            #warning("Почему тут без. Это связанно с типом ANY?")
+            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
+                                          range: NSRange(location: 49, length: 28))
+        case "eng":
+            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
+                                          range: NSRange(location: 60, length: 14))
+        default:
+            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
+                                          range: NSRange(location: 0, length: 0))
+        }
+        return attributedString
+    }
+    
     //Получаем с сервера код подтверждения
     func reciveConfirmCode(from phoneNumber: String) {
         
-        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginText.phoneFormatEasy.rawValue,
+        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginConstantText.phoneFormatEasy.rawValue,
                                                                     replacmentCharacter: "#")
         
         let url =  URL(string: registrationURL)

@@ -10,64 +10,125 @@ import UIKit
 import CoreData
 
 class CoreDataManager {
+    #warning("Что-то тут с потоками, все работало, а потом перестало")
+    var context: NSManagedObjectContext!
+    var userSettings: UserSettingsMO!
+    var userData: UserDataMO!
     
-    lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var userData: UserDataMO?
+    //var context2: NSManagedObjectContext!
     
-    func loadDefaultData() {
-        
-        let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
-        
-        var records = 0
-        
-        do {
-            let count = try context.count(for: fetchRequest)
-            records = count
-            
-        } catch {
-            print(error.localizedDescription)
-        }
-        print("Records: \(records)")
-        
-        guard records == 0 else {
-            print("is not Empty")
-            return }
-        
-        
+    
+//    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
 
+    init() {
         
-        let pathToFile = Bundle.main.path(forResource: "DefaultUserData", ofType: "plist")
-        let defaultData = NSDictionary(contentsOfFile: pathToFile!)!
+//        context = appDelegate.persistentContainer.newBackgroundContext()
         
-//        do {
-//            let result = try context.fetch(fetchRequest)
-//            if result.isEmpty {
-//                print("Result is Empty")
-//            } else {
-//                print(result)
-//            }
-//        } catch {
-//            print(error.localizedDescription)
-//        }
         
-//        let entity = NSEntityDescription.entity(forEntityName: "UserDataMO", in: context)
-//        let user = NSManagedObject(entity: entity!, insertInto: context) as! UserDataMO
-//
-//        let userSettings = defaultData["settings"] as! NSDictionary
-//
-//        user.id = defaultData["id"] as! Int
-//        user.name = defaultData["name"] as? String
-//        user.email = defaultData["email"] as? String
-//        user.create_at = defaultData["create_at"] as! Int
-//        user.update_at = defaultData["update_at"] as! Int
-//        user.delete_at = defaultData["delete_at"] as! Int
-//
-//        user.settings?.language = userSettings["language"] as? String
-//        user.settings?.do_not_call = userSettings["do_not_call"] as! Bool
-//        user.settings?.notification_discount = userSettings["notification_discount"] as! Bool
-//        user.settings?.update_mobile_network = userSettings["update_mobile_network"] as! Bool
-//
-//        print("All data saved")
+        DispatchQueue.main.async {
+            self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            //self.context2 = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            print("Context init")
+        }
     }
     
+    //MARK: - Methods
+    
+    //Метод загрузки данных из Core Data
+    func fetchCoreData(completion: @escaping ((Result<[UserDataMO], Error>)?) -> Void) {
+        print("fetch Method")
+        
+        
+        let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
+        let result = try! context!.fetch(fetchRequest)
+        
+        //let result = try! context.fetch(fetchRequest)
+        DispatchQueue.main.async { [weak self] in
+            
+            
+//            let backgroundContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
+//            backgroundContext.parent = self?.context
+            
+   
+            
+            
+            
+            do {
+                print("context in fetch")
+                
+                
+                
+                //let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
+                
+                
+                
+                
+                if result.isEmpty {
+
+                    let userDefaultSettings = UserDefaultsManager.userSettings
+                    let language = userDefaultSettings?.userLanguage
+                    
+                    self?.userSettings = UserSettingsMO(context: self!.context)
+                    
+                    self?.userSettings.language = language
+                    self?.userSettings.do_not_call = false
+                    self?.userSettings.notification_discount = false
+                    self?.userSettings.update_mobile_network = false
+                    
+                    self?.userData = UserDataMO(context: self!.context)
+                    
+                    self?.userData.id = nil
+                    self?.userData.name = ""
+                    self?.userData.email = ""
+                    self?.userData.create_at = nil
+                    self?.userData.update_at = nil
+                    self?.userData.delete_at = nil
+                    
+                    self?.userData.settings = self?.userSettings
+                    
+                    try self!.context.save()
+                    
+                } else {
+                    completion(.success(result))
+                }
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    //Мкетод сохранения данных в Core Data
+    func saveCoreData(model: ConfirmModel) {
+        
+//        let userData = UserDataMO(context: context)
+//        let userSettings = UserSettingsMO(context: context)
+        print("save method")
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.userData = UserDataMO(context: self!.context)
+            self?.userSettings = UserSettingsMO(context: self!.context)
+            print("context in save Method")
+            self?.userSettings.language = model.setting?.language
+            self?.userSettings.do_not_call = ((model.setting?.do_not_call) != nil)
+            self?.userSettings.notification_discount = ((model.setting?.notification_discount) != nil)
+            self?.userSettings.update_mobile_network = ((model.setting?.update_mobile_network) != nil)
+            
+            self?.userData.id = NSNumber(value: model.id)
+            self?.userData.name = model.name
+            self?.userData.email = model.email
+            self?.userData.create_at = NSNumber(value: model.created_at ?? 0)
+            self?.userData.update_at = NSNumber(value: model.updated_at ?? 0)
+            self?.userData.delete_at = NSNumber(value: model.deleted_at ?? 0)
+
+            self?.userData.settings = self?.userSettings
+            
+            do {
+                try self?.context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

@@ -16,12 +16,12 @@ extension UserDataMO {
         return NSFetchRequest<UserDataMO>(entityName: "UserDataMO")
     }
 
-    @NSManaged public var create_at: Int16
-    @NSManaged public var delete_at: Int16
+    @NSManaged public var create_at: NSNumber?
+    @NSManaged public var delete_at: NSNumber?
     @NSManaged public var email: String?
-    @NSManaged public var id: Int16
+    @NSManaged public var id: NSNumber?
     @NSManaged public var name: String?
-    @NSManaged public var update_at: Int16
+    @NSManaged public var update_at: NSNumber?
     @NSManaged public var settings: UserSettingsMO?
-
 }
+

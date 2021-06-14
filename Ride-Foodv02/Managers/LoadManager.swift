@@ -8,20 +8,6 @@
 import Foundation
 import UIKit
 
-enum DataError: Error {
-    case invalideResponse
-    case invalideData
-    case decodingError
-    case serverError
-}
-
-enum HTTPMethods: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
-}
-
 //Класс для работы с API сервера
 class LoadManager: NSObject {
     
@@ -33,7 +19,6 @@ class LoadManager: NSObject {
     func loadData<T: Decodable>(of type: T.Type, from url: URL, httpMethod: HTTPMethods, passData: [String:String],
                                 completion: @escaping result<T>) {
         
-
         //Формируем данные на отправку на сервер
         let params = passData
         
@@ -60,6 +45,7 @@ class LoadManager: NSObject {
             if 200 ... 299 ~= response.statusCode {
           
                 if let data = data {
+                    
                     do {
                         
                         let decodeData: T = try JSONDecoder().decode(T.self, from: data)
@@ -70,7 +56,6 @@ class LoadManager: NSObject {
                 } else {
                     completion(.failure(DataError.invalideData))
                 }
-                
             } else {
                 completion(.failure(DataError.serverError))
             }

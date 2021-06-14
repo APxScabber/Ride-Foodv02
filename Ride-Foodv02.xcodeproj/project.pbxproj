@@ -12,17 +12,22 @@
 		C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */; };
 		C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4F626710BB80057DBBB /* ConfirmModel.swift */; };
 		C45BB4FC2671527F0057DBBB /* UrlList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4FB2671527F0057DBBB /* UrlList.swift */; };
-		C45BB4FE267153B80057DBBB /* NotificationsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB4FD267153B80057DBBB /* NotificationsText.swift */; };
 		C45BB52026717DDB0057DBBB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB51F26717DDA0057DBBB /* MainViewController.swift */; };
 		C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C45BB54B267226C40057DBBB /* UserDataModel.xcdatamodeld */; };
 		C45BB567267241360057DBBB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45BB566267241360057DBBB /* CoreDataManager.swift */; };
-		C45BB56D267244CA0057DBBB /* DefaultUserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45BB56C267244CA0057DBBB /* DefaultUserData.plist */; };
+		C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78A7267664040034DEFA /* LoadManagerText.swift */; };
+		C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78A9267666050034DEFA /* UserDefaultsManagerText.swift */; };
+		C46E78AE2676980F0034DEFA /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78AD2676980F0034DEFA /* LabelExtension.swift */; };
+		C46E78B02676CCFA0034DEFA /* myQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78AF2676CCFA0034DEFA /* myQuestions.swift */; };
+		C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E902267621F700661C55 /* UserDefaultsModel.swift */; };
+		C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E9042676233500661C55 /* UserDefaultsManager.swift */; };
 		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
 		C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */; };
 		C4D9071626726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */; };
 		C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */; };
+		C4D9072B26742B600046CC47 /* NotificationText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9072A26742B600046CC47 /* NotificationText.swift */; };
+		C4D9072D267618D50046CC47 /* ConfirmVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9072C267618D50046CC47 /* ConfirmVCExtension.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
-		C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB4266EA538000EE70F /* ViewController.swift */; };
 		C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB6266EA538000EE70F /* Main.storyboard */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
@@ -49,18 +54,23 @@
 		C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmInteractor.swift; sourceTree = "<group>"; };
 		C45BB4F626710BB80057DBBB /* ConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
 		C45BB4FB2671527F0057DBBB /* UrlList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlList.swift; sourceTree = "<group>"; };
-		C45BB4FD267153B80057DBBB /* NotificationsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsText.swift; sourceTree = "<group>"; };
 		C45BB51F26717DDA0057DBBB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C45BB54C267226C40057DBBB /* UserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDataModel.xcdatamodel; sourceTree = "<group>"; };
 		C45BB566267241360057DBBB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		C45BB56C267244CA0057DBBB /* DefaultUserData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultUserData.plist; sourceTree = "<group>"; };
+		C46E78A7267664040034DEFA /* LoadManagerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManagerText.swift; sourceTree = "<group>"; };
+		C46E78A9267666050034DEFA /* UserDefaultsManagerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerText.swift; sourceTree = "<group>"; };
+		C46E78AD2676980F0034DEFA /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
+		C46E78AF2676CCFA0034DEFA /* myQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myQuestions.swift; sourceTree = "<group>"; };
+		C495E902267621F700661C55 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
+		C495E9042676233500661C55 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingsMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingsMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C4D9072A26742B600046CC47 /* NotificationText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationText.swift; sourceTree = "<group>"; };
+		C4D9072C267618D50046CC47 /* ConfirmVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmVCExtension.swift; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4E83FB4266EA538000EE70F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4E83FB7266EA538000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E83FBC266EA53B000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,7 +134,9 @@
 		C45BB4FA2671524F0057DBBB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				C45BB4FD267153B80057DBBB /* NotificationsText.swift */,
+				C4D9072A26742B600046CC47 /* NotificationText.swift */,
+				C46E78A7267664040034DEFA /* LoadManagerText.swift */,
+				C46E78A9267666050034DEFA /* UserDefaultsManagerText.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -133,17 +145,33 @@
 			isa = PBXGroup;
 			children = (
 				C45BB54B267226C40057DBBB /* UserDataModel.xcdatamodeld */,
+				C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */,
+				C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */,
+				C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */,
+				C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C495E9062676255500661C55 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C495E9072676256100661C55 /* Login */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C495E9072676256100661C55 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C495E902267621F700661C55 /* UserDefaultsModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		C4E83FA4266EA538000EE70F = {
 			isa = PBXGroup;
 			children = (
-				C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */,
-				C4D9071126726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift */,
-				C4D9071226726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift */,
-				C4D9071326726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift */,
 				C4E83FAF266EA538000EE70F /* Ride-Foodv02 */,
 				C4E83FAE266EA538000EE70F /* Products */,
 			);
@@ -160,14 +188,14 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
+				C46E78AF2676CCFA0034DEFA /* myQuestions.swift */,
 				C4E83FCB266EA6BD000EE70F /* Models */,
-				C45BB4F826714CC80057DBBB /* Text */,
 				C4E83FD6266EA76C000EE70F /* Managers */,
 				C4E83FD0266EA704000EE70F /* ViewControllers */,
+				C45BB4F826714CC80057DBBB /* Text */,
 				C4E83FDB266EA7BF000EE70F /* Helpers */,
 				C4E83FE7266EA863000EE70F /* Others */,
 				C4E83FBE266EA53B000EE70F /* Info.plist */,
-				C45BB56C267244CA0057DBBB /* DefaultUserData.plist */,
 			);
 			path = "Ride-Foodv02";
 			sourceTree = "<group>";
@@ -175,6 +203,7 @@
 		C4E83FCB266EA6BD000EE70F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C495E9062676255500661C55 /* Classes */,
 				C45BB54A267226A90057DBBB /* CoreData */,
 				C4E83FF8266FF6C1000EE70F /* Structurs */,
 			);
@@ -208,6 +237,7 @@
 				C4E83FD7266EA77E000EE70F /* LoadManager.swift */,
 				C4E83FD9266EA79C000EE70F /* LocalNotifications.swift */,
 				C45BB566267241360057DBBB /* CoreDataManager.swift */,
+				C495E9042676233500661C55 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -225,10 +255,12 @@
 		C4E83FDC266EA7C6000EE70F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */,
-				C4E83FDF266EA7F9000EE70F /* StringExtension.swift */,
-				C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */,
 				C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */,
+				C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */,
+				C4D9072C267618D50046CC47 /* ConfirmVCExtension.swift */,
+				C4E83FDF266EA7F9000EE70F /* StringExtension.swift */,
+				C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */,
+				C46E78AD2676980F0034DEFA /* LabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,7 +270,6 @@
 			children = (
 				C4E83FB9266EA53B000EE70F /* Assets.xcassets */,
 				C4E83FB0266EA538000EE70F /* AppDelegate.swift */,
-				C4E83FB4266EA538000EE70F /* ViewController.swift */,
 				C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */,
 			);
 			path = Others;
@@ -347,7 +378,6 @@
 				C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */,
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
-				C45BB56D267244CA0057DBBB /* DefaultUserData.plist in Resources */,
 				C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,27 +389,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D9072B26742B600046CC47 /* NotificationText.swift in Sources */,
+				C4D9072D267618D50046CC47 /* ConfirmVCExtension.swift in Sources */,
+				C46E78AE2676980F0034DEFA /* LabelExtension.swift in Sources */,
 				C4E83FDE266EA7DB000EE70F /* ButtonExtension.swift in Sources */,
 				C45BB52026717DDB0057DBBB /* MainViewController.swift in Sources */,
 				C4E83FF5266EC405000EE70F /* ColorElements.swift in Sources */,
 				C4E83FD3266EA72C000EE70F /* LoginViewController.swift in Sources */,
+				C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */,
 				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
-				C45BB4FE267153B80057DBBB /* NotificationsText.swift in Sources */,
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
 				C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */,
 				C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */,
 				C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */,
 				C45BB4FC2671527F0057DBBB /* UrlList.swift in Sources */,
-				C4E83FB5266EA538000EE70F /* ViewController.swift in Sources */,
 				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
 				C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */,
+				C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */,
 				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
+				C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */,
 				C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */,
 				C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
+				C46E78B02676CCFA0034DEFA /* myQuestions.swift in Sources */,
 				C45BB4F02670CDAD0057DBBB /* ConfirmFontSize.swift in Sources */,
 				C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */,
+				C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */,
 				C45BB567267241360057DBBB /* CoreDataManager.swift in Sources */,
 				C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,

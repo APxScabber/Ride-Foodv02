@@ -10,77 +10,55 @@ import CoreData
 
 class LoginViewController: UIViewController {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var licenseCheckBoxOutlet: UIButton!
-    @IBOutlet weak var nextButtonOutlet: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
-    //MARK: - Setup Values
+    @IBOutlet weak var nextButtonOutlet: UIButton!
+    @IBOutlet weak var bottomButtomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topButtomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Properties
     
     private let maxLenghtPhoneNumber = 19
     private let minLenghtPhoneNumber = 1
     private var isPhoneNumberCorrect = false
     private var isLicenseAccept = false
     
-    //TODO: - Сохранить эту переменную в CoreData
-    var languageCode = Language.english.code
+    var safeAreaTopHeigh: CGFloat = 0
+    var topButtonConstraintHeight: CGFloat = 304
+    var bottomButtonConstraintHeight: CGFloat = 70
+    var isAnimationButton = false
+    var keyboardHeight: CGFloat!
     
     let loginInteractor = LoginInteractor()
     
-    
-    
-    
-    
-    lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var userData: UserDataMO?
-    
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
-        
-        do {
-            let result = try context.fetch(fetchRequest)
-            if result.isEmpty {
-                print("Result is Empty")
-            } else {
-                print(result)
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        //CoreDataManager().loadDefaultData()
 
         setupPhoneNumberLabel()
         setupNextButton()
         setImageLicenseCheckBox()
         setupLicenseTextView()
-
-        phoneNumberTextField.text = LoginText.phonePrefix.rawValue
+        
+        phoneNumberTextField.text = LoginConstantText.phonePrefix.rawValue
 
         registerForKeyboardNotification()
         registrationTapGesture()
     }
-    
+
     deinit {
-        print("exit")
+        print("exit LoginVC")
     }
     
-    //MARK: - Methods
+    // MARK: - Methods
     
     //Делаем кнопку Далее активной или неактивной
     private func isNextButtonEnable() {
@@ -91,26 +69,6 @@ class LoginViewController: UIViewController {
             nextButtonOutlet.isEnabled = false
             nextButtonOutlet.backgroundColor = ColorElements.greyButtonColor.value
         }
-    }
-    
-    //Регистрируем уведомления на пояаление и скрытие клавиатуры
-    private func registerForKeyboardNotification() {
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    //Создаем распознавание жестов касанием
-    private func registrationTapGesture() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(screenTap))
-        view.addGestureRecognizer(gesture)
     }
     
     //Устанавливаем картинку на кнопку принятия Пользовательского соглашения
@@ -124,23 +82,8 @@ class LoginViewController: UIViewController {
 
     //Создаем гиперссылку на фразу "Пользовательское соглащение"
     private func setupLicenseTextView() {
-        
-        let licenseText = Language(languageCode)!.licenseInfo
-        
-        let attributedString = NSMutableAttributedString(string: licenseText)
-        
-        switch Language(languageCode) {
-        case .russian:
-            attributedString.addAttribute(.link, value: LoginText.licenseLink.rawValue,
-                                          range: NSRange(location: 49, length: 28))
-        case .english:
-            attributedString.addAttribute(.link, value: LoginText.licenseLink.rawValue,
-                                          range: NSRange(location: 60, length: 14))
-        case .none:
-            return
-        }
 
-        textView.attributedText = attributedString
+        textView.attributedText = loginInteractor.createTextAttribute()
         textView.textColor = ColorElements.grayTextColor.value
         
         let padding = textView.textContainer.lineFragmentPadding
@@ -151,46 +94,16 @@ class LoginViewController: UIViewController {
     private func setupNextButton() {
         nextButtonOutlet.style()
         isNextButtonEnable()
-        nextButtonOutlet.setTitle(Language(languageCode)?.buttonText, for: .normal)
+        nextButtonOutlet.setTitle(LoginText.buttonText.text(), for: .normal)
     }
     
     //Задаем параметры и текст phoneNumberLabel
     private func setupPhoneNumberLabel() {
-        phoneNumberLabel.text = Language(languageCode)?.phoneNumberLable
+        phoneNumberLabel.text = LoginText.phoneNumberLable.text()
         phoneNumberLabel.font = UIFont(
             name: TextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
         phoneNumberLabel.textColor = ColorElements.blackTextColor.value
-    }
-
-    //MARK: - @objc Methods
-    
-    #warning("Некорректно работает, если на клавиатуре ввести символ, то scrollView опускается")
-    //Метод отрабатывающий появление клавиатуры
-    @objc func keyboardWillShow(_ notification: Notification) {
-        
-        let keyboardHeight = loginInteractor.getKeyboardHeight(notification)
-        
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= keyboardHeight
-        if let activeField = self.nextButtonOutlet {
-            if (!aRect.contains(activeField.frame.origin)) {
-                
-                self.scrollView.frame.origin.y = -keyboardHeight + 1.5 * activeField.frame.size.height
-                //self.scrollView.contentOffset.y = -keyboardHeight + 1.5 * activeField.frame.size.height
-                
-            }
-        }
-    }
-    
-    //Метод отрабатывающий скрытие клавиатуры
-    @objc func keyboardWillHide(_ notification: Notification) {
-       scrollView.frame.origin.y = .zero
-    }
-    
-    //По нажатию на экран клавиатура убирается
-    @objc func screenTap() {
-       phoneNumberTextField.resignFirstResponder()
     }
     
     // MARK: - Actions
@@ -216,14 +129,16 @@ class LoginViewController: UIViewController {
         case maxLenghtPhoneNumber - 1:
             isPhoneNumberCorrect = true
             phoneNumberTextField.resignFirstResponder()
+            buttonAnimationOut()
+            scrollView.frame.origin.y = safeAreaTopHeigh
             
         case minLenghtPhoneNumber:
-            sender.text = LoginText.phonePrefix.rawValue
+            sender.text = LoginConstantText.phonePrefix.rawValue
             
         default:
             let formatedNumber = sender.text!
                 .applyPatternOnNumbers(pattern:
-                                        LoginText.phoneFormatFull.rawValue,
+                                        LoginConstantText.phoneFormatFull.rawValue,
                                        replacmentCharacter: "#")
             isPhoneNumberCorrect = false
             sender.text = formatedNumber
@@ -236,7 +151,7 @@ class LoginViewController: UIViewController {
     @IBAction func nextButton(_ sender: Any) {
         loginInteractor.reciveConfirmCode(from: phoneNumberTextField.text!)
     }
-    
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

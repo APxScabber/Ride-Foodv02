@@ -10,10 +10,7 @@ import UserNotifications
 
 //Класс для работы с локальными уведомлениями
 class LocalNotofications {
-    
-    let languageCode = LoginViewController().languageCode
-    //var languageCode = Language.russian.code
-    
+
     static let shared = LocalNotofications()
     
     func sendLocalNotifications(body: String) {
@@ -21,7 +18,7 @@ class LocalNotofications {
         let notificationCenter = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
-        content.title = Language(languageCode)!.titleText
+        content.title = NotificationText.title.text()
         content.body = body
         content.sound = UNNotificationSound.default
         
@@ -32,9 +29,9 @@ class LocalNotofications {
         notificationCenter.add(request) { error in
             
             if let error = error {
+                #warning("Как правильно работать с такими ошибками, или это так и дожно быть PRINT")
                 print("Error: \(error.localizedDescription)")
             }
-            
         }
     }
 }

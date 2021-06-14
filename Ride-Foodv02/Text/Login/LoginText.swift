@@ -7,73 +7,53 @@
 
 import Foundation
 
-//Локализация приложения
-enum Language: Equatable {
-    case russian
-    case english
-}
-
-//Код для установки нужного языка
-extension Language {
-    var code: String {
-        switch self {
-        case .russian: return "ru"
-        case .english: return "en"
-        }
-    }
-}
-
-extension Language {
+//Вся текстовая информация используемая в LoginViewController
+enum LoginText {
     
-    //Устанока выбранного языка
-    init?(_ languageCode: String?) {
+    case phoneNumberLable
+    case licenseInfo
+    case buttonText
+    
+    func text() -> String {
+        
+        let userSettings = UserDefaultsManager.userSettings
+        let languageCode = userSettings?.userLanguage
+        
         switch languageCode {
-        case "ru":
-            self = .russian
-        case "en":
-            self = .english
+        case "rus":
+            return rusText()
+        case "eng":
+            return engText()
         default:
-            return nil
-        }
-    }
-
-    //Вся текстовая информация используемая в LoginViewController
-    var phoneNumberLable: String {
-        get {
-            switch self {
-            case .russian:
-                return "Укажите номер телефона"
-            case .english:
-                return "Enter your phone number"
-            }
+            return ""
         }
     }
     
-    var licenseInfo: String {
-        get {
-            switch self {
-            case .russian:
-                return "Даю согласие на обработку персональных данных, с пользовательским соглашением ознакомлен"
-            case .english:
-                return "I agree to the processing of personal data, I have read the user agreement"
-            }
+    private func rusText() -> String {
+        switch self {
+        case .phoneNumberLable:
+            return "Укажите номер телефона"
+        case .licenseInfo:
+            return "Даю согласие на обработку персональных данных, с пользовательским соглашением ознакомлен"
+        case .buttonText:
+            return "Далее"
         }
     }
     
-    var buttonText: String {
-        get {
-            switch self {
-            case .russian:
-                return "Далее"
-            case .english:
-                return "Next"
-            }
+    private func engText() -> String {
+        switch self {
+        case .phoneNumberLable:
+            return "Enter your phone number"
+        case .licenseInfo:
+            return "I agree to the processing of personal data, I have read the user agreement"
+        case .buttonText:
+            return "Next"
         }
     }
 }
 
 //Текс не нуждающийся в переводе
-enum LoginText: String {
+enum LoginConstantText: String {
     case licenseLink = "https://www.google.com/"
     case phonePrefix = "+7"
     case phoneFormatFull = "+# (###) ###-##-##"

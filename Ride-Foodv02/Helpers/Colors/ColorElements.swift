@@ -14,6 +14,7 @@ enum ColorElements {
     case blueColor
     case greyButtonColor
     case grayTextColor
+    case grayLableColor
 }
 
 extension ColorElements {
@@ -28,6 +29,8 @@ extension ColorElements {
                 return UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1)
             case .grayTextColor:
                 return UIColor.gray
+            case .grayLableColor:
+                return UIColor(red: 239/255, green: 239/255, blue: 240/255, alpha: 1)
             }
         }
     }

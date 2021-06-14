@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+//        let coreDataManager = CoreDataManager()
+//        coreDataManager.context = persistentContainer.viewContext
+        
         //настраиваем LocalNotification
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self
@@ -37,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var persistentContainer: NSPersistentContainer = {
         
-        let container = NSPersistentContainer(name: "Ride-Foodv02")
+        let container = NSPersistentContainer(name: "UserDataModel")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {

@@ -8,62 +8,61 @@
 import Foundation
 
 //Вся текстовая информация используемая в ConfirmViewController
-extension Language {
+enum ConfirmText {
     
-    var textCodeConfirmLabel: String {
-        get {
-            switch self {
-            case .russian:
-                return "Код подтверждения"
-            case .english:
-                return "Confirmation code"
-            }
+    case label
+    case info
+    case button
+    case alerButton
+    case alertTitle
+    case alertMessage
+    
+    func text() -> String {
+        
+        let userSettings = UserDefaultsManager.userSettings
+        let languageCode = userSettings?.userLanguage
+        
+        switch languageCode {
+        case "rus":
+            return rusText()
+        case "eng":
+            return engText()
+        default:
+            return ""
         }
     }
     
-    var infoTextView: String {
-        get {
-            switch self {
-            case .russian:
-                return "На номер @#^ отправлено смс с кодом. Повторная отправка через @#^ секунд"
-              case .english:
-                return "An SMS with a code was sent to the number @#^. Resend in @#^ seconds"
-            }
+    private func rusText() -> String {
+        switch self {
+        case .label:
+            return "Код подтверждения"
+        case .info:
+            return "На номер @#^ отправлено смс с кодом. Повторная отправка через @#^ секунд"
+        case .alerButton:
+            return "Хорошо"
+        case .alertTitle:
+            return "Ошибка"
+        case .alertMessage:
+            return "Введен неправильный код проверки\nБудет выслан новый код проверки"
+        case .button:
+            return "Далее"
         }
     }
     
-    var alertButton: String {
-        get{
-            switch self {
-            case .russian:
-                return "Хорошо"
-              case .english:
-                return "OK"
-            }
+    private func engText() -> String {
+        switch self {
+        case .label:
+            return "Confirmation code"
+        case .info:
+            return "An SMS with a code was sent to the number @#^. Resend in @#^ seconds"
+        case .alerButton:
+            return "OK"
+        case .alertTitle:
+            return "Error"
+        case .alertMessage:
+            return "Incorrect verification code entered\nA new verification code will be sent"
+        case .button:
+            return "Next"
         }
     }
-    
-    var alertTitle: String {
-        get{
-            switch self {
-            case .russian:
-                return "Ошибка"
-              case .english:
-                return "Error"
-            }
-        }
-    }
-    
-    var alertMessage: String {
-        get{
-            switch self {
-            case .russian:
-                return "Введен неправильный код проверки\nБудет выслан новый код проверки"
-              case .english:
-                return "Incorrect verification code entered\nA new verification code will be sent"
-            }
-        }
-    }
- 
-    
 }
