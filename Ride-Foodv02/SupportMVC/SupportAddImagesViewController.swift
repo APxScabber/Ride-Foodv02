@@ -30,6 +30,8 @@ class SupportAddImagesViewController: UIViewController {
     }}
     
     @IBOutlet weak var roundedView: RoundedView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     private let actionSheetView = SupportActionSheetView.initFromNib()
     
     //MARK: - IBActions
@@ -60,6 +62,7 @@ class SupportAddImagesViewController: UIViewController {
             addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
             successLabel.isHidden = false
             roundedView.color = .clear
+            collectionView.removeFromSuperview()
         } else {
             //go back to main? screen or something
         }
@@ -88,6 +91,10 @@ extension SupportAddImagesViewController: UIImagePickerControllerDelegate, UINav
         guard let image = info[.originalImage] as? UIImage else { return }
         images.append(image)
         collectionView.reloadData()
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
     

@@ -63,14 +63,6 @@
                                     <constraint firstItem="czZ-tm-BwH" firstAttribute="top" secondItem="OWK-Xk-gto" secondAttribute="top" constant="17" id="r4P-6q-QkG"/>
                                     <constraint firstItem="E0j-pM-Zm9" firstAttribute="leading" secondItem="OWK-Xk-gto" secondAttribute="leading" constant="10" id="t4e-ab-ju8"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pal-36-pAv"/>
@@ -240,7 +232,7 @@
                         <viewLayoutGuide key="safeArea" id="JVI-Tn-Aen"/>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nTt-io-lD3" firstAttribute="bottom" secondItem="JVI-Tn-Aen" secondAttribute="bottom" constant="-8" id="5Bc-WJ-3GV"/>
+                            <constraint firstItem="JVI-Tn-Aen" firstAttribute="bottom" secondItem="nTt-io-lD3" secondAttribute="bottom" constant="8" id="5Bc-WJ-3GV"/>
                             <constraint firstItem="ItP-um-WwU" firstAttribute="top" secondItem="B8t-GD-H35" secondAttribute="top" constant="120" id="7kc-W2-efV"/>
                             <constraint firstItem="Z5u-u7-NZI" firstAttribute="top" secondItem="ItP-um-WwU" secondAttribute="bottom" constant="31" id="EcH-al-m2r"/>
                             <constraint firstItem="JVI-Tn-Aen" firstAttribute="trailing" secondItem="Z5u-u7-NZI" secondAttribute="trailing" constant="16" id="PzU-2Z-Nqg"/>
@@ -266,6 +258,7 @@
                     <connections>
                         <outlet property="addImageDescriptionLabel" destination="weD-Np-kdP" id="oor-nx-5gx"/>
                         <outlet property="addImagesButton" destination="k9A-mg-Y6i" id="dzn-hX-Xjw"/>
+                        <outlet property="bottomConstraint" destination="5Bc-WJ-3GV" id="mLU-8q-LXt"/>
                         <outlet property="collectionView" destination="Z5u-u7-NZI" id="esC-7t-VOz"/>
                         <outlet property="errorDescriptionLabel" destination="qCi-L5-asd" id="9vR-nx-p5l"/>
                         <outlet property="roundedView" destination="ItP-um-WwU" id="X4F-bd-Bsl"/>

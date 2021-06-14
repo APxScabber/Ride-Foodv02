@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-DP-MlV" customClass="SupportRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="20" y="44" width="374" height="100"/>
+                    <rect key="frame" x="20" y="689" width="374" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQE-ty-pAK">
                             <rect key="frame" x="0.0" y="49.5" width="374" height="1"/>
@@ -101,7 +101,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dD8-sx-hW0" customClass="SupportRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="25" y="159" width="364" height="50"/>
+                    <rect key="frame" x="25" y="804" width="364" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отмена" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajw-oX-aYO">
                             <rect key="frame" x="151" y="14.5" width="62" height="21"/>
@@ -122,8 +122,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="dD8-sx-hW0" firstAttribute="top" secondItem="f2T-DP-MlV" secondAttribute="bottom" constant="15" id="84t-4h-nbp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dD8-sx-hW0" secondAttribute="bottom" constant="8" id="A8e-IS-o9v"/>
                 <constraint firstItem="dD8-sx-hW0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="FHZ-mx-thP"/>
-                <constraint firstItem="f2T-DP-MlV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="MEq-Eq-0Zs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dD8-sx-hW0" secondAttribute="trailing" constant="25" id="a9b-Kg-WU5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f2T-DP-MlV" secondAttribute="trailing" constant="20" id="cSu-tL-cff"/>
                 <constraint firstItem="f2T-DP-MlV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="see-UI-dJk"/>
