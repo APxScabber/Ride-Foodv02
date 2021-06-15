@@ -19,6 +19,8 @@
 		C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78A9267666050034DEFA /* UserDefaultsManagerText.swift */; };
 		C46E78AE2676980F0034DEFA /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78AD2676980F0034DEFA /* LabelExtension.swift */; };
 		C46E78B02676CCFA0034DEFA /* myQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E78AF2676CCFA0034DEFA /* myQuestions.swift */; };
+		C47892AC26781CA200B4C737 /* ConfirmActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892AB26781CA200B4C737 /* ConfirmActions.swift */; };
+		C47892AE267894F200B4C737 /* LoginActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892AD267894F100B4C737 /* LoginActions.swift */; };
 		C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E902267621F700661C55 /* UserDefaultsModel.swift */; };
 		C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E9042676233500661C55 /* UserDefaultsManager.swift */; };
 		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
@@ -61,6 +63,8 @@
 		C46E78A9267666050034DEFA /* UserDefaultsManagerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerText.swift; sourceTree = "<group>"; };
 		C46E78AD2676980F0034DEFA /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		C46E78AF2676CCFA0034DEFA /* myQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myQuestions.swift; sourceTree = "<group>"; };
+		C47892AB26781CA200B4C737 /* ConfirmActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmActions.swift; sourceTree = "<group>"; };
+		C47892AD267894F100B4C737 /* LoginActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginActions.swift; sourceTree = "<group>"; };
 		C495E902267621F700661C55 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		C495E9042676233500661C55 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -225,8 +229,10 @@
 				C4E83FC5266EA65F000EE70F /* Login.storyboard */,
 				C4E83FD2266EA72C000EE70F /* LoginViewController.swift */,
 				C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */,
+				C47892AD267894F100B4C737 /* LoginActions.swift */,
 				C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */,
 				C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */,
+				C47892AB26781CA200B4C737 /* ConfirmActions.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */,
 				C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */,
 				C45BB4FC2671527F0057DBBB /* UrlList.swift in Sources */,
+				C47892AC26781CA200B4C737 /* ConfirmActions.swift in Sources */,
 				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
 				C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */,
 				C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */,
@@ -416,6 +423,7 @@
 				C45BB4F02670CDAD0057DBBB /* ConfirmFontSize.swift in Sources */,
 				C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */,
 				C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */,
+				C47892AE267894F200B4C737 /* LoginActions.swift in Sources */,
 				C45BB567267241360057DBBB /* CoreDataManager.swift in Sources */,
 				C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,

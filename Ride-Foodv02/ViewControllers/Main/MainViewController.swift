@@ -23,10 +23,8 @@ class MainViewController: UIViewController {
             switch result {
             case .success(let model):
                 let userData = model.first
-                
-                print(userData!.id!)
-                print(userData!.settings!.language!)
- 
+                    print(userData!.id!)
+                    print(userData!.settings!.language!)
             case .failure(let error):
                 print(error)
             case .none:

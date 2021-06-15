@@ -29,7 +29,6 @@ class LocalNotofications {
         notificationCenter.add(request) { error in
             
             if let error = error {
-                #warning("Как правильно работать с такими ошибками, или это так и дожно быть PRINT")
                 print("Error: \(error.localizedDescription)")
             }
         }

@@ -9,20 +9,20 @@ import Foundation
 
 //Класс для работы с UserDefaults
 class UserDefaultsManager {
-    
+    #warning("Не уверен в правильности выбора метода, может лучше через функции?")
     //Сохраняем и получаем из UserDefaults настройки пользователя
     static var userSettings: UserDefaultsModel! {
         get {
-            guard  let savedData = UserDefaults.standard.object(
+            guard let savedData = UserDefaults.standard.object(
                     forKey: UserDefaultKeys.userSettings.rawValue) as? Data,
                    let decodedModel = try? NSKeyedUnarchiver
                     .unarchiveTopLevelObjectWithData(savedData) as? UserDefaultsModel else
             { return UserDefaultsModel(language: UserDefaultLanguage.eng.rawValue) }
+            // TODO: - Надо возвращать нужный вариант, а не подставлять в ручную
             return decodedModel
         }
         set {
             let defaults = UserDefaults.standard
-            #warning("Почему тут rawValue")
             let key = UserDefaultKeys.userSettings.rawValue
             
             if let userModel = newValue {
@@ -32,5 +32,11 @@ class UserDefaultsManager {
                 }
             }
         }
+    }
+    
+    func getLanguage() -> String {
+        let userSettings = UserDefaultsManager.userSettings
+        guard let languageCode = userSettings?.userLanguage else { return "rus" }
+        return languageCode
     }
 }

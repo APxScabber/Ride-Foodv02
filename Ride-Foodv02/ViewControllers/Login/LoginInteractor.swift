@@ -17,12 +17,8 @@ class LoginInteractor {
         let licenseText = LoginText.licenseInfo.text()
         let attributedString = NSMutableAttributedString(string: licenseText)
         
-        let userSettings = UserDefaultsManager.userSettings
-        let languageCode = userSettings!.userLanguage
-        
-        switch languageCode {
+        switch UserDefaultsManager().getLanguage() {
         case "rus":
-            #warning("Почему тут без. Это связанно с типом ANY?")
             attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
                                           range: NSRange(location: 49, length: 28))
         case "eng":

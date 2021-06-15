@@ -16,10 +16,7 @@ enum LoginText {
     
     func text() -> String {
         
-        let userSettings = UserDefaultsManager.userSettings
-        let languageCode = userSettings?.userLanguage
-        
-        switch languageCode {
+        switch UserDefaultsManager().getLanguage() {
         case "rus":
             return rusText()
         case "eng":

@@ -46,14 +46,10 @@ class ConfirmInteracor {
     //Определяем начальную точку и длинну выделения цветом таймера в зависимости от выбранного языка
     func selectLanguage(_ textCount: Int) -> (start: Int, lenght: Int) {
         
-    #warning("к примеру вопроса из файла Questions, этот код повторяется постоянно")
-        let userSettings = UserDefaultsManager.userSettings
-        let languageCode = userSettings?.userLanguage
-        
         var startColorLocation = 0
         var colorLenght = 0
 
-        switch languageCode {
+        switch UserDefaultsManager().getLanguage() {
         
         case "rus":
             startColorLocation = textCount - 10

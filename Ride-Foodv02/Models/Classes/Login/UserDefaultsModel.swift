@@ -7,6 +7,7 @@
 
 import Foundation
 
+#warning("Что-то тут не  верно")
 //Модель данных для UserDeaults
 final class UserDefaultsModel: NSObject, NSCoding {
 
@@ -21,6 +22,6 @@ final class UserDefaultsModel: NSObject, NSCoding {
     }
     
     required init?(coder: NSCoder) {
-        userLanguage = coder.decodeObject(forKey: UserDefaultKeys.language.rawValue) as? String ?? "eng"
+        userLanguage = coder.decodeObject(forKey: UserDefaultKeys.language.rawValue) as? String ?? "rus"
     }
 }
