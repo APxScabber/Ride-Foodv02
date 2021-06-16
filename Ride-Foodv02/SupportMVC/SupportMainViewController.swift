@@ -3,6 +3,7 @@ import UIKit
 class SupportMainViewController: UIViewController {
 
     //MARK: - Public API
+    //test
     
     var text = "" { didSet { updateUI() }}
     
