@@ -78,7 +78,7 @@ class ConfirmViewController: UIViewController {
         for label in inputCodeLabel {
             label.style()
             label.textColor = LoginColors.blueColor.value
-            label.font = UIFont(name: TextFont.main.rawValue, size: ConfirmFontSize.normal.rawValue)
+            label.font = UIFont(name: MainTextFont.main.rawValue, size: ConfirmFontSize.normal.rawValue)
             label.text = ""
 
             label.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "confirmEmpty"))
@@ -107,7 +107,7 @@ class ConfirmViewController: UIViewController {
     private func setupTextCodeConfirmTextField() {
         textCodeConfirmLabel.text = ConfirmText.label.text()
         textCodeConfirmLabel.font = UIFont(
-            name: TextFont.main.rawValue,
+            name: MainTextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
         textCodeConfirmLabel.textColor = LoginColors.blackTextColor.value
     }

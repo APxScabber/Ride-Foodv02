@@ -53,7 +53,7 @@ class TariffsViewController: UIViewController {
         let carsTypeLabelArray = [carLabel, carTypeLabel]
         for label in carsTypeLabelArray {
             guard let label = label else { return }
-            label.font = UIFont(name: TextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
+            label.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
         }
         carLabel.textColor = TariffsColors.grayLabelColor.value
         carLabel.text = "Автомобили:"
@@ -62,7 +62,7 @@ class TariffsViewController: UIViewController {
     }
     
     private func setupTarifInfoLabels() {
-        tarrifInfoHeading.font = UIFont(name: TextFont.main.rawValue, size: TariffsFontSize.big.rawValue)
+        tarrifInfoHeading.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.big.rawValue)
         tarrifInfoHeading.textColor = TariffsColors.black.value
         tarrifInfoHeading.text = "О тарифах"
         

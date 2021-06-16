@@ -17,7 +17,7 @@ extension UILabel {
     func tariffsInfoStyle() {
         
         self.textColor = TariffsColors.grayLabelColor.value
-        self.font = UIFont(name: TextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
+        self.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
         self.numberOfLines = 0
         self.lineBreakMode = .byWordWrapping
         let paragraphStyle = NSMutableParagraphStyle()

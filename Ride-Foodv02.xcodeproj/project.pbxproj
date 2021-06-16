@@ -50,7 +50,7 @@
 		C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */; };
 		C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */; };
 		C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FE9266EB4E7000EE70F /* LoginText.swift */; };
-		C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FEF266EC126000EE70F /* TextFont.swift */; };
+		C4E83FF0266EC126000EE70F /* MainTextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FEF266EC126000EE70F /* MainTextFont.swift */; };
 		C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */; };
 		C4E83FF5266EC405000EE70F /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FF4266EC405000EE70F /* LoginColors.swift */; };
 /* End PBXBuildFile section */
@@ -101,7 +101,7 @@
 		C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
 		C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		C4E83FE9266EB4E7000EE70F /* LoginText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginText.swift; sourceTree = "<group>"; };
-		C4E83FEF266EC126000EE70F /* TextFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
+		C4E83FEF266EC126000EE70F /* MainTextFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextFont.swift; sourceTree = "<group>"; };
 		C4E83FF1266EC1CC000EE70F /* LoginFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFontSize.swift; sourceTree = "<group>"; };
 		C4E83FF4266EC405000EE70F /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,7 +315,7 @@
 			children = (
 				C47892B8267A0A0500B4C737 /* Tariffs */,
 				C45BB4F12670CDBB0057DBBB /* Login */,
-				C4E83FEF266EC126000EE70F /* TextFont.swift */,
+				C4E83FEF266EC126000EE70F /* MainTextFont.swift */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -450,7 +450,7 @@
 				C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */,
 				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
 				C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */,
-				C4E83FF0266EC126000EE70F /* TextFont.swift in Sources */,
+				C4E83FF0266EC126000EE70F /* MainTextFont.swift in Sources */,
 				C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				C46E78B02676CCFA0034DEFA /* myQuestions.swift in Sources */,

@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
     private func setupPhoneNumberLabel() {
         phoneNumberLabel.text = LoginText.phoneNumberLable.text()
         phoneNumberLabel.font = UIFont(
-            name: TextFont.main.rawValue,
+            name: MainTextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
         phoneNumberLabel.textColor = LoginColors.blackTextColor.value
     }
