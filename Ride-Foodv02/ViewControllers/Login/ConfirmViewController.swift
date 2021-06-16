@@ -77,7 +77,7 @@ class ConfirmViewController: UIViewController {
         
         for label in inputCodeLabel {
             label.style()
-            label.textColor = ColorElements.blueColor.value
+            label.textColor = LoginColors.blueColor.value
             label.font = UIFont(name: TextFont.main.rawValue, size: ConfirmFontSize.normal.rawValue)
             label.text = ""
 
@@ -89,7 +89,7 @@ class ConfirmViewController: UIViewController {
     private func setupNextButton() {
         
         nextButtonOutlet.style()
-        nextButtonOutlet.backgroundColor = ColorElements.greyButtonColor.value
+        nextButtonOutlet.backgroundColor = LoginColors.greyButtonColor.value
         nextButtonOutlet.setTitle(ConfirmText.button.text(), for: .normal)
         nextButtonOutlet.isEnabled = false
     }
@@ -109,7 +109,7 @@ class ConfirmViewController: UIViewController {
         textCodeConfirmLabel.font = UIFont(
             name: TextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
-        textCodeConfirmLabel.textColor = ColorElements.blackTextColor.value
+        textCodeConfirmLabel.textColor = LoginColors.blackTextColor.value
     }
     
 //    // MARK: - Actions

@@ -10,66 +10,39 @@ import UIKit
 import CoreData
 
 class CoreDataManager {
-    #warning("Что-то тут с потоками, все работало, а потом перестало")
-    //var context: NSManagedObjectContext!
-    var userSettings: UserSettingsMO!
-    var userData: UserDataMO!
     
-    private lazy var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static var shared = CoreDataManager()
     
-    //var context2: NSManagedObjectContext!
+    private lazy var context = persistentContainer.viewContext
     
-    
-//    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//    var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+    private init() {
+    }
 
-//    init() {
-//
-////        context = appDelegate.persistentContainer.newBackgroundContext()
-//
-//
-//        DispatchQueue.main.async {
-//            self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//            //self.context2 = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//            print("Context init")
-//        }
-//    }
-    
     //MARK: - Methods
     
     //Метод загрузки данных из Core Data
     func fetchCoreData(completion: @escaping ((Result<[UserDataMO], Error>)?) -> Void) {
-       // print("fetch Method")
+        
+        let fetchContext = CoreDataManager.shared.context
 
-        //let result = try! context.fetch(fetchRequest)
-        //DispatchQueue.main.async { [weak self] in
-            
-            
-//            let backgroundContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
-//            backgroundContext.parent = self?.context
-            
             do {
-                //print("context in fetch")
                 
                 let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
-                let result = try! context.fetch(fetchRequest)
-                
-                //let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
+                let result = try! fetchContext.fetch(fetchRequest)
 
                 if result.isEmpty {
 
                     let userDefaultSettings = UserDefaultsManager.userSettings
                     let language = userDefaultSettings?.userLanguage
-                    
-                    userSettings = UserSettingsMO(context: context)
+
+                    let userSettings = UserSettingsMO(context: fetchContext)
                     
                     userSettings.language = language
                     userSettings.do_not_call = false
                     userSettings.notification_discount = false
                     userSettings.update_mobile_network = false
                     
-                    userData = UserDataMO(context: context)
+                    let userData = UserDataMO(context: fetchContext)
                     
                     userData.id = nil
                     userData.name = ""
@@ -80,51 +53,71 @@ class CoreDataManager {
                     
                     userData.settings = userSettings
                     
-                    try context.save()
-                    
+                    try fetchContext.save()
                 } else {
                     
                 completion(.success(result))
-                    
                 }
             } catch {
             
                 completion(.failure(error))
-                
             }
-        //}
     }
-    
+
     //Мкетод сохранения данных в Core Data
     func saveCoreData(model: ConfirmModel) {
         
-//        let userData = UserDataMO(context: context)
-//        let userSettings = UserSettingsMO(context: context)
-        //print("save method")
-        //DispatchQueue.main.async { [weak self] in
-            
-            userData = UserDataMO(context: context)
-            userSettings = UserSettingsMO(context: context)
-            //print("context in save Method")
-            userSettings.language = model.setting?.language
-            userSettings.do_not_call = ((model.setting?.do_not_call) != nil)
-            userSettings.notification_discount = ((model.setting?.notification_discount) != nil)
-            userSettings.update_mobile_network = ((model.setting?.update_mobile_network) != nil)
-            
-            userData.id = NSNumber(value: model.id)
-            userData.name = model.name
-            userData.email = model.email
-            userData.create_at = NSNumber(value: model.created_at ?? 0)
-            userData.update_at = NSNumber(value: model.updated_at ?? 0)
-            userData.delete_at = NSNumber(value: model.deleted_at ?? 0)
+        let saveContext = CoreDataManager.shared.context
+        
+        let userData = UserDataMO(context: saveContext)
+        let userSettings = UserSettingsMO(context: saveContext)
+        
+        userSettings.language = model.setting?.language
+        userSettings.do_not_call = ((model.setting?.do_not_call) != nil)
+        userSettings.notification_discount = ((model.setting?.notification_discount) != nil)
+        userSettings.update_mobile_network = ((model.setting?.update_mobile_network) != nil)
+        
+        userData.id = NSNumber(value: model.id)
+        userData.name = model.name
+        userData.email = model.email
+        userData.create_at = NSNumber(value: model.created_at ?? 0)
+        userData.update_at = NSNumber(value: model.updated_at ?? 0)
+        userData.delete_at = NSNumber(value: model.deleted_at ?? 0)
+        
+        userData.settings = userSettings
+        
+        do {
+            try saveContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: - Core Data stack
 
-            userData.settings = userSettings
-            
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "UserDataModel")
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // MARK: - Core Data Saving support
+
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
             do {
                 try context.save()
             } catch {
-                print(error.localizedDescription)
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
-        //}
+        }
     }
 }

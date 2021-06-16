@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-//Тут весь цвет использующийся в приложение
-enum ColorElements {
+//Тут весь цвет использующийся в Login и Confirm ViewControllers
+enum LoginColors {
     case blackTextColor
     case blueColor
     case greyButtonColor
@@ -17,7 +17,7 @@ enum ColorElements {
     case grayLableColor
 }
 
-extension ColorElements {
+extension LoginColors {
     var value: UIColor {
         get {
             switch self {

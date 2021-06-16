@@ -64,10 +64,10 @@ class LoginViewController: UIViewController {
     func isNextButtonEnable() {
         if isLicenseAccept && isPhoneNumberCorrect {
             nextButtonOutlet.isEnabled = true
-            nextButtonOutlet.backgroundColor = ColorElements.blueColor.value
+            nextButtonOutlet.backgroundColor = LoginColors.blueColor.value
         } else {
             nextButtonOutlet.isEnabled = false
-            nextButtonOutlet.backgroundColor = ColorElements.greyButtonColor.value
+            nextButtonOutlet.backgroundColor = LoginColors.greyButtonColor.value
         }
     }
     
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
     private func setupLicenseTextView() {
 
         textView.attributedText = loginInteractor.createTextAttribute()
-        textView.textColor = ColorElements.grayTextColor.value
+        textView.textColor = LoginColors.grayTextColor.value
         
         let padding = textView.textContainer.lineFragmentPadding
         textView.textContainerInset =  UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
@@ -103,7 +103,7 @@ class LoginViewController: UIViewController {
         phoneNumberLabel.font = UIFont(
             name: TextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
-        phoneNumberLabel.textColor = ColorElements.blackTextColor.value
+        phoneNumberLabel.textColor = LoginColors.blackTextColor.value
     }
     
 //    // MARK: - Actions
