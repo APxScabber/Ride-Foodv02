@@ -15,7 +15,10 @@ class SupportMainViewController: UIViewController {
     @IBOutlet weak var nextButton: RoundedButton! { didSet {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
-    
+    @IBOutlet weak var roundedView: RoundedView! { didSet {
+        roundedView.cornerRadius = 15.0
+        roundedView.color = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+    }}
     @IBOutlet weak var distanceFromBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView! { didSet {
         textView.font = UIFont.SFUIDisplayLight(size: 17)

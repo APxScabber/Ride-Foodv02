@@ -14,7 +14,6 @@ class PersonalInfoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         navigationController?.navigationItem.title = "Персональные данные"
     }
     
@@ -33,17 +32,25 @@ class PersonalInfoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         view.backgroundColor = .SettingsBackgroundColor
-        cells.forEach { $0.backgroundColor = .SettingsBackgroundColor }
+        cells.forEach {
+            $0.backgroundColor = .SettingsBackgroundColor
+            $0.isUserInteractionEnabled = false
+        }
         toolBarView.textField.becomeFirstResponder()
+        
     }
     
-    @objc
-    private func showToolbarView(_ notification:NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            toolBarView.frame.origin.y -= 400
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= -100 {
+            toolBarView.dismiss()
+            view.backgroundColor = .white
+            cells.forEach {
+                $0.backgroundColor = .white
+                $0.isUserInteractionEnabled = true
+            }
         }
     }
+    
 }
 
 

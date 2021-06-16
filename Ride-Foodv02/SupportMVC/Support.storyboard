@@ -88,6 +88,7 @@
                     <connections>
                         <outlet property="distanceFromBottomConstraint" destination="cBp-vP-efq" id="RMu-Nx-HhH"/>
                         <outlet property="nextButton" destination="Ocu-zw-MiW" id="ibd-Hh-smS"/>
+                        <outlet property="roundedView" destination="OWK-Xk-gto" id="5IR-nY-RR2"/>
                         <outlet property="textView" destination="E0j-pM-Zm9" id="W8k-pp-Ctd"/>
                         <outlet property="textViewLabelDescription" destination="czZ-tm-BwH" id="fkg-NZ-0kP"/>
                     </connections>
