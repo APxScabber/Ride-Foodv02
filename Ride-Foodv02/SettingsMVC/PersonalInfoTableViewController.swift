@@ -19,7 +19,8 @@ class PersonalInfoTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        toolBarView.frame = CGRect(x: 0, y: view.bounds.maxY, width: view.bounds.width, height: 152)
+        toolBarView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: view.bounds.width, height: SettingsConstant.toolbarHeight)
+        
         view.addSubview(toolBarView)
     }
     

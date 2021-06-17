@@ -42,6 +42,7 @@
 		7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */; };
 		787D4B612677A73E002D975D /* ToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787D4B602677A73E002D975D /* ToolbarView.xib */; };
 		787D4B632677A751002D975D /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B622677A751002D975D /* ToolbarView.swift */; };
+		787D4B65267A1982002D975D /* FoodPromotionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B64267A1982002D975D /* FoodPromotionsTableViewController.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
@@ -83,6 +84,7 @@
 		7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		787D4B602677A73E002D975D /* ToolbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolbarView.xib; sourceTree = "<group>"; };
 		787D4B622677A751002D975D /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		787D4B64267A1982002D975D /* FoodPromotionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPromotionsTableViewController.swift; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				7850E8F126739C8300AA88CA /* Promotion.storyboard */,
 				7850E8F326739D4400AA88CA /* PromotionsTableViewController.swift */,
+				787D4B64267A1982002D975D /* FoodPromotionsTableViewController.swift */,
 			);
 			path = PromotionMVC;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
 				7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */,
+				787D4B65267A1982002D975D /* FoodPromotionsTableViewController.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
