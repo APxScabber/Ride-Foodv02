@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class MainViewController: UIViewController {
+class MainScreenViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView! { didSet {
         let center = CLLocationCoordinate2D(latitude: 50, longitude: 50)

@@ -41,6 +41,9 @@
                                                 <constraint firstItem="jqO-me-vv2" firstAttribute="top" secondItem="aDd-7c-Cbn" secondAttribute="top" constant="13" id="l1d-Av-qgF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="kNI-EQ-i8h" kind="show" id="xvh-NL-thb"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="RxV-ca-t9w">
                                         <rect key="frame" x="0.0" y="61.5" width="414" height="43.5"/>
@@ -85,6 +88,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKp-rx-rbV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="347.82608695652175" y="18.75"/>
+        </scene>
+        <!--Акции еда-->
+        <scene sceneID="j8q-wK-mYX">
+            <objects>
+                <tableViewController id="kNI-EQ-i8h" customClass="FoodPromotionsTableViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6aF-2k-VLf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodPromotionCell" id="dsG-d7-TWI">
+                                <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dsG-d7-TWI" id="cDt-6O-qaP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kNI-EQ-i8h" id="GGC-Nd-GLo"/>
+                            <outlet property="delegate" destination="kNI-EQ-i8h" id="gnN-Dq-4gU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Акции еда" id="TA5-oq-8t1">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="TRC-yZ-XaQ"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEO-vX-vS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1128" y="-260"/>
         </scene>
     </scenes>
     <resources>

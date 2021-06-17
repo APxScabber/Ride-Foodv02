@@ -74,7 +74,6 @@ class ToolbarView: UIView {
     
     func dismiss() {
         textField.resignFirstResponder()
-        self.frame.origin.y = UIScreen.main.bounds.height
         textField.text = nil
         hideLabelIfNeeded()
     }
