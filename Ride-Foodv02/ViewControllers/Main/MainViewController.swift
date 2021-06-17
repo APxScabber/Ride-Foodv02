@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CoreDataManager().fetchCoreData { result in
+        CoreDataManager.shared.fetchCoreData { result in
             
             switch result {
             case .success(let model):

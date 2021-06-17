@@ -117,8 +117,8 @@ extension ConfirmViewController {
 
         let attributedString = NSMutableAttributedString(string: licenseText)
 
-        attributedString.addAttributes([ .foregroundColor : ColorElements.blueColor.value], range: NSRange(location: colorRange.start, length: colorRange.lenght))
-        attributedString.addAttribute(.foregroundColor, value: ColorElements.grayTextColor.value, range: NSRange(location: 0, length: colorRange.start))
+        attributedString.addAttributes([ .foregroundColor : LoginColors.blueColor.value], range: NSRange(location: colorRange.start, length: colorRange.lenght))
+        attributedString.addAttribute(.foregroundColor, value: LoginColors.grayTextColor.value, range: NSRange(location: 0, length: colorRange.start))
 
         infoTextView.attributedText = attributedString
         

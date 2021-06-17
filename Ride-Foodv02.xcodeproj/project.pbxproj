@@ -71,7 +71,6 @@
 		78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A017267B57D7006D0DAB /* LoginViewController.swift */; };
 		78A3A022267B57E1006D0DAB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A020267B57E1006D0DAB /* MainViewController.swift */; };
 		78AEB86F267B589D0023605D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AEB86E267B589D0023605D /* Main.storyboard */; };
-		78AEB874267B59B70023605D /* ColorElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB873267B59B70023605D /* ColorElements.swift */; };
 		78AEB87B267B59C10023605D /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB875267B59C10023605D /* LoginVCExtension.swift */; };
 		78AEB87C267B59C10023605D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB876267B59C10023605D /* StringExtension.swift */; };
 		78AEB87D267B59C10023605D /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB877267B59C10023605D /* ButtonExtension.swift */; };
@@ -81,6 +80,10 @@
 		78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB882267B59D40023605D /* LoginFontSize.swift */; };
 		78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB883267B59D40023605D /* ConfirmFontSize.swift */; };
 		78AEB887267B59E20023605D /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB886267B59E20023605D /* TextFont.swift */; };
+		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
+		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
+		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
+		C47892C6267B97DB00B4C737 /* TariffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C5267B97DB00B4C737 /* TariffsModel.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
@@ -151,7 +154,6 @@
 		78A3A017267B57D7006D0DAB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78A3A020267B57E1006D0DAB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		78AEB86E267B589D0023605D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		78AEB873267B59B70023605D /* ColorElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorElements.swift; sourceTree = "<group>"; };
 		78AEB875267B59C10023605D /* LoginVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
 		78AEB876267B59C10023605D /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		78AEB877267B59C10023605D /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
@@ -161,6 +163,10 @@
 		78AEB882267B59D40023605D /* LoginFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFontSize.swift; sourceTree = "<group>"; };
 		78AEB883267B59D40023605D /* ConfirmFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFontSize.swift; sourceTree = "<group>"; };
 		78AEB886267B59E20023605D /* TextFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
+		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
+		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
+		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
+		C47892C5267B97DB00B4C737 /* TariffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsModel.swift; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -268,8 +274,8 @@
 			isa = PBXGroup;
 			children = (
 				78AEB872267B59270023605D /* Colors */,
-				78AEB871267B59250023605D /* Extensions */,
 				78AEB870267B59240023605D /* Fonts */,
+				78AEB871267B59250023605D /* Extensions */,
 				7867B4BD266FB7150031BFA0 /* ImagePicker.swift */,
 				7850E8F526739E6800AA88CA /* Settings.swift */,
 			);
@@ -310,6 +316,7 @@
 		78A39FE7267B5660006D0DAB /* Structurs */ = {
 			isa = PBXGroup;
 			children = (
+				C47892C4267B97C400B4C737 /* Tariffs */,
 				78A39FF8267B569A006D0DAB /* Login */,
 			);
 			path = Structurs;
@@ -355,9 +362,9 @@
 		78A39FFF267B56C3006D0DAB /* Text */ = {
 			isa = PBXGroup;
 			children = (
-				78A3A003267B56D2006D0DAB /* Login */,
-				78A3A002267B56D0006D0DAB /* Manager */,
 				78A3A000267B56CB006D0DAB /* UrlList.swift */,
+				78A3A002267B56D0006D0DAB /* Manager */,
+				78A3A003267B56D2006D0DAB /* Login */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -365,8 +372,8 @@
 		78A3A002267B56D0006D0DAB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				78A3A008267B56E9006D0DAB /* LoadManagerText.swift */,
 				78A3A00A267B56E9006D0DAB /* NotificationText.swift */,
+				78A3A008267B56E9006D0DAB /* LoadManagerText.swift */,
 				78A3A009267B56E9006D0DAB /* UserDefaultsManagerText.swift */,
 			);
 			path = Manager;
@@ -375,8 +382,8 @@
 		78A3A003267B56D2006D0DAB /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				78A3A005267B56E1006D0DAB /* ConfirmText.swift */,
 				78A3A004267B56E1006D0DAB /* LoginText.swift */,
+				78A3A005267B56E1006D0DAB /* ConfirmText.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -393,13 +400,13 @@
 		78A3A00F267B57C9006D0DAB /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				78A3A012267B57D7006D0DAB /* ConfirmActions.swift */,
-				78A3A011267B57D7006D0DAB /* ConfirmInteractor.swift */,
-				78A3A015267B57D7006D0DAB /* ConfirmViewController.swift */,
 				78A3A013267B57D7006D0DAB /* Login.storyboard */,
-				78A3A016267B57D7006D0DAB /* LoginActions.swift */,
-				78A3A014267B57D7006D0DAB /* LoginInteractor.swift */,
 				78A3A017267B57D7006D0DAB /* LoginViewController.swift */,
+				78A3A014267B57D7006D0DAB /* LoginInteractor.swift */,
+				78A3A016267B57D7006D0DAB /* LoginActions.swift */,
+				78A3A015267B57D7006D0DAB /* ConfirmViewController.swift */,
+				78A3A011267B57D7006D0DAB /* ConfirmInteractor.swift */,
+				78A3A012267B57D7006D0DAB /* ConfirmActions.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -416,6 +423,7 @@
 		78AEB870267B59240023605D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C47892C1267B8C9800B4C737 /* Tariffs */,
 				78AEB886267B59E20023605D /* TextFont.swift */,
 				78AEB881267B59CA0023605D /* Login */,
 			);
@@ -438,7 +446,8 @@
 		78AEB872267B59270023605D /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				78AEB873267B59B70023605D /* ColorElements.swift */,
+				C47892BD267B8B5B00B4C737 /* LoginColors.swift */,
+				C47892BF267B8B7300B4C737 /* TariffsColors.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -450,6 +459,22 @@
 				78AEB882267B59D40023605D /* LoginFontSize.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		C47892C1267B8C9800B4C737 /* Tariffs */ = {
+			isa = PBXGroup;
+			children = (
+				C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */,
+			);
+			path = Tariffs;
+			sourceTree = "<group>";
+		};
+		C47892C4267B97C400B4C737 /* Tariffs */ = {
+			isa = PBXGroup;
+			children = (
+				C47892C5267B97DB00B4C737 /* TariffsModel.swift */,
+			);
+			path = Tariffs;
 			sourceTree = "<group>";
 		};
 		C4E83FA4266EA538000EE70F = {
@@ -472,10 +497,10 @@
 			isa = PBXGroup;
 			children = (
 				78A39FFD267B56B9006D0DAB /* myQuestions.swift */,
-				78A3A00E267B57BC006D0DAB /* ViewControllers */,
-				78A39FFF267B56C3006D0DAB /* Text */,
 				78A39FE6267B5659006D0DAB /* Models */,
 				78A39FDD267B55E1006D0DAB /* Managers */,
+				78A3A00E267B57BC006D0DAB /* ViewControllers */,
+				78A39FFF267B56C3006D0DAB /* Text */,
 				7867B4E1267392E30031BFA0 /* MainScreenMVC */,
 				7867B4D12672290F0031BFA0 /* MenuMVC */,
 				7867B4B4266FAC410031BFA0 /* SupportMVC */,
@@ -585,6 +610,7 @@
 				78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */,
 				78A3A00D267B56E9006D0DAB /* NotificationText.swift in Sources */,
 				78AEB87F267B59C10023605D /* AppDelegateExtension.swift in Sources */,
+				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
@@ -599,13 +625,13 @@
 				78AEB87D267B59C10023605D /* ButtonExtension.swift in Sources */,
 				78A3A00B267B56E9006D0DAB /* LoadManagerText.swift in Sources */,
 				78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */,
+				C47892C6267B97DB00B4C737 /* TariffsModel.swift in Sources */,
 				7867B4DD26723FD10031BFA0 /* SettingsHeaderView.swift in Sources */,
 				78A39FF6267B568E006D0DAB /* UserSettingsMO+CoreDataClass.swift in Sources */,
 				7867B4D32672291D0031BFA0 /* SettingsMainViewController.swift in Sources */,
 				78A3A00C267B56E9006D0DAB /* UserDefaultsManagerText.swift in Sources */,
 				78AEB87E267B59C10023605D /* ConfirmVCExtension.swift in Sources */,
 				78A39FF4267B568E006D0DAB /* UserDataModel.xcdatamodeld in Sources */,
-				78AEB874267B59B70023605D /* ColorElements.swift in Sources */,
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,
@@ -613,9 +639,11 @@
 				7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */,
 				78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */,
 				78AEB87C267B59C10023605D /* StringExtension.swift in Sources */,
+				C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */,
 				7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */,
 				7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */,
 				78A39FF7267B568E006D0DAB /* UserDataMO+CoreDataClass.swift in Sources */,
+				C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */,
 				7867B4CE26711B120031BFA0 /* UIColor+Extensions.swift in Sources */,
 				78A3A007267B56E1006D0DAB /* ConfirmText.swift in Sources */,
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,

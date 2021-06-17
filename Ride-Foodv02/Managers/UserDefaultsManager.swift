@@ -9,7 +9,7 @@ import Foundation
 
 //Класс для работы с UserDefaults
 class UserDefaultsManager {
-    #warning("Не уверен в правильности выбора метода, может лучше через функции?")
+    
     //Сохраняем и получаем из UserDefaults настройки пользователя
     static var userSettings: UserDefaultsModel! {
         get {

@@ -12,7 +12,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="ele-CG-Wh4">
             <objects>
-                <viewController id="5Od-VF-nnY" customClass="MainScreenViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="5Od-VF-nnY" customClass="MainScreenViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wcw-4o-SMS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

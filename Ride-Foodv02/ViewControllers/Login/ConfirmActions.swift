@@ -17,7 +17,7 @@ extension ConfirmViewController {
         
         guard let text = mainCodeTextField.text else { return }
         
-        inputCodeLabel[inputLabelCount].backgroundColor = ColorElements.grayLableColor.value
+        inputCodeLabel[inputLabelCount].backgroundColor = LoginColors.grayLableColor.value
         
         let index = text.index(text.startIndex, offsetBy: inputLabelCount)
         inputCodeLabel[inputLabelCount].text = String(text[index])
@@ -27,7 +27,7 @@ extension ConfirmViewController {
         if inputLabelCount == 4 {
             
             nextButtonOutlet.isEnabled = true
-            nextButtonOutlet.backgroundColor = ColorElements.blueColor.value
+            nextButtonOutlet.backgroundColor = LoginColors.blueColor.value
             mainCodeTextField.resignFirstResponder()
             buttonAnimationOut()
             scrollView.frame.origin.y = safeAreaTopHeigh
@@ -45,8 +45,8 @@ extension ConfirmViewController {
                 self?.errorAlertContoller(title: ConfirmText.alertTitle.text(),
                                           message: ConfirmText.alertMessage.text())
             } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
+                let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainScreenViewController
                 vc.modalTransitionStyle = .coverVertical
                 vc.modalPresentationStyle = .overFullScreen
                 self?.present(vc, animated: true, completion: nil)

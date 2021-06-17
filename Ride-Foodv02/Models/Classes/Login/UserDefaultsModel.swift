@@ -7,7 +7,6 @@
 
 import Foundation
 
-#warning("Что-то тут не  верно")
 //Модель данных для UserDeaults
 final class UserDefaultsModel: NSObject, NSCoding {
 

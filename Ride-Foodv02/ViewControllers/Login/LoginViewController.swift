@@ -64,10 +64,10 @@ class LoginViewController: UIViewController {
     func isNextButtonEnable() {
         if isLicenseAccept && isPhoneNumberCorrect {
             nextButtonOutlet.isEnabled = true
-            nextButtonOutlet.backgroundColor = ColorElements.blueColor.value
+            nextButtonOutlet.backgroundColor = LoginColors.blueColor.value
         } else {
             nextButtonOutlet.isEnabled = false
-            nextButtonOutlet.backgroundColor = ColorElements.greyButtonColor.value
+            nextButtonOutlet.backgroundColor = LoginColors.greyButtonColor.value
         }
     }
     
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
     private func setupLicenseTextView() {
 
         textView.attributedText = loginInteractor.createTextAttribute()
-        textView.textColor = ColorElements.grayTextColor.value
+        textView.textColor = LoginColors.grayTextColor.value
         
         let padding = textView.textContainer.lineFragmentPadding
         textView.textContainerInset =  UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
@@ -103,38 +103,38 @@ class LoginViewController: UIViewController {
         phoneNumberLabel.font = UIFont(
             name: TextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
-        phoneNumberLabel.textColor = ColorElements.blackTextColor.value
+        phoneNumberLabel.textColor = LoginColors.blackTextColor.value
     }
     
 //    // MARK: - Actions
-//    
+//
 //    //Действие при нажатии на кнопку принятия Пользовательского соглашения
 //    @IBAction func acceptLicenseButton(_ sender: Any) {
 //        isLicenseAccept = !isLicenseAccept
 //        setImageLicenseCheckBox()
 //        isNextButtonEnable()
 //    }
-//    
+//
 //    //Проверяем корректность формата вводимого номера телефона
 //    @IBAction func checkPhoneNumberTextField(_ sender: UITextField) {
 //
 //        let count = sender.text!.count
-//        
+//
 //        switch count {
-//        
+//
 //        case maxLenghtPhoneNumber:
 //            sender.deleteBackward()
 //            isPhoneNumberCorrect = true
-//            
+//
 //        case maxLenghtPhoneNumber - 1:
 //            isPhoneNumberCorrect = true
 //            phoneNumberTextField.resignFirstResponder()
 //            buttonAnimationOut()
 //            scrollView.frame.origin.y = safeAreaTopHeigh
-//            
+//
 //        case minLenghtPhoneNumber:
 //            sender.text = LoginConstantText.phonePrefix.rawValue
-//            
+//
 //        default:
 //            let formatedNumber = sender.text!
 //                .applyPatternOnNumbers(pattern:
@@ -143,10 +143,10 @@ class LoginViewController: UIViewController {
 //            isPhoneNumberCorrect = false
 //            sender.text = formatedNumber
 //        }
-//        
+//
 //        isNextButtonEnable()
 //    }
-//    
+//
 //    //Действие при нажатии на кнопку Далее
 //    @IBAction func nextButton(_ sender: Any) {
 //        loginInteractor.reciveConfirmCode(from: phoneNumberTextField.text!)

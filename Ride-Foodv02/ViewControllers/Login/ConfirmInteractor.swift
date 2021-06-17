@@ -29,7 +29,7 @@ class ConfirmInteracor {
             case .success(let model):
                 let confirmModel = model.data
                 
-                CoreDataManager().saveCoreData(model: confirmModel)
+                CoreDataManager.shared.saveCoreData(model: confirmModel)
                 
                 DispatchQueue.main.async {
                     compitition(nil)

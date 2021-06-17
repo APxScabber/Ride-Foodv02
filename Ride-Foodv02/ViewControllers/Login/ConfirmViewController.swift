@@ -77,7 +77,7 @@ class ConfirmViewController: UIViewController {
         
         for label in inputCodeLabel {
             label.style()
-            label.textColor = ColorElements.blueColor.value
+            label.textColor = LoginColors.blueColor.value
             label.font = UIFont(name: TextFont.main.rawValue, size: ConfirmFontSize.normal.rawValue)
             label.text = ""
 
@@ -89,7 +89,7 @@ class ConfirmViewController: UIViewController {
     private func setupNextButton() {
         
         nextButtonOutlet.style()
-        nextButtonOutlet.backgroundColor = ColorElements.greyButtonColor.value
+        nextButtonOutlet.backgroundColor = LoginColors.greyButtonColor.value
         nextButtonOutlet.setTitle(ConfirmText.button.text(), for: .normal)
         nextButtonOutlet.isEnabled = false
     }
@@ -109,25 +109,25 @@ class ConfirmViewController: UIViewController {
         textCodeConfirmLabel.font = UIFont(
             name: TextFont.main.rawValue,
             size: LoginFontSize.normal.rawValue)
-        textCodeConfirmLabel.textColor = ColorElements.blackTextColor.value
+        textCodeConfirmLabel.textColor = LoginColors.blackTextColor.value
     }
     
 //    // MARK: - Actions
-//    
+//
 //    //Действие при воде кода в скрытый TextField (скрыт в Storyboard)
 //    @IBAction func editingTextField(_ sender: UITextField) {
-//        
+//
 //        guard let text = mainCodeTextField.text else { return }
-//        
+//
 //        inputCodeLabel[inputLabelCount].backgroundColor = ColorElements.grayLableColor.value
-//        
+//
 //        let index = text.index(text.startIndex, offsetBy: inputLabelCount)
 //        inputCodeLabel[inputLabelCount].text = String(text[index])
-//        
+//
 //        inputLabelCount += 1
-//        
+//
 //        if inputLabelCount == 4 {
-//            
+//
 //            nextButtonOutlet.isEnabled = true
 //            nextButtonOutlet.backgroundColor = ColorElements.blueColor.value
 //            mainCodeTextField.resignFirstResponder()
@@ -139,12 +139,12 @@ class ConfirmViewController: UIViewController {
     //класс статик функцию
     //Проверяем код подтверждения и либо обрабатываем ошибку либо переходим на Main Storyboard
 //    @IBAction func nextButtonAction(_ sender: Any) {
-//        
+//
 //        confirmInteractor.passConfirmationCode(phoneNumber: phoneNumber,
 //                                               code: mainCodeTextField.text!) { [weak self] error in
-//           
+//
 //            self?.timer?.invalidate()
-//    
+//
 //            if error != nil {
 //                self?.errorAlertContoller(title: ConfirmText.alertTitle.text(),
 //                                          message: ConfirmText.alertMessage.text())
