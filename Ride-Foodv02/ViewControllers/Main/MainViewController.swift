@@ -12,25 +12,25 @@ class MainViewController: UIViewController {
     // MARK: - Outlets
     
     // MARK: - Properties
+    
+    #warning("Убрать из этого контроллера это свойство")
+    //let tariffsInteractor = TariffsInteractor()
 
     // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        CoreDataManager.shared.fetchCoreData { result in
-            
-            switch result {
-            case .success(let model):
-                let userData = model.first
-                    print(userData!.id!)
-                    print(userData!.settings!.language!)
-            case .failure(let error):
-                print(error)
-            case .none:
-                return
-            }
-        }
+        
+//        tariffsInteractor.getUserID()
+//        guard let userID = tariffsInteractor.userID else { return }
+//
+//        tariffsInteractor.loadTariffs(userID: userID) { (dataModel) in
+//            guard let tariffsData = dataModel else { return }
+//            print("Тариф: \(tariffsData.name)")
+//            print("Автомобили: \(tariffsData.cars)")
+//            print("Описание: \(tariffsData.description)")
+//        }
+    
     }
     
     // MARK: - Methods

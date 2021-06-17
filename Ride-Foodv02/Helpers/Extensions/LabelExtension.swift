@@ -14,7 +14,7 @@ extension UILabel {
         self.layer.cornerRadius = 4
     }
     
-    func tariffsInfoStyle() {
+    func tariffsInfoStyle(text: String) {
         
         self.textColor = TariffsColors.grayLabelColor.value
         self.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
@@ -22,6 +22,6 @@ extension UILabel {
         self.lineBreakMode = .byWordWrapping
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.26
-        self.attributedText = NSMutableAttributedString(string: "Ясность нашей позиции очевидна: постоянный количественный рост и сфера нашей активности обеспечивает актуальность системы массового участия. Внезапно, ключевые особенности структуры проекта и по сей день остаются уделом либералов, которые жаждут быть объявлены нарушающими общечеловеческие нормы этики и морали. Кстати,  реплицированные с зарубежных источников, современные исследования формируют глобальную экономическую сеть.", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        self.attributedText = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 }

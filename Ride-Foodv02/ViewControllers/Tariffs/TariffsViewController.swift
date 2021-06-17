@@ -9,6 +9,7 @@ import UIKit
 
 class TariffsViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var topLineLabel: UILabel!
     @IBOutlet weak var standartButtonOutlet: UIButton!
     @IBOutlet weak var premiumButtonOutlet: UIButton!
@@ -21,21 +22,34 @@ class TariffsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var orderTaxiButtonOutlet: UIButton!
     
-
+    
+    // MARK: - Properties
+    
+    var userID: String?
+    
+    let tariffsInteractor = TariffsInteractor()
+    
+    var tarrifsButtonArray: [UIButton] = []
     
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        tarrifsButtonArray = [standartButtonOutlet, premiumButtonOutlet, businessButtonOutlet]
+        
+        tariffsInteractor.getUserID()
+        userID = tariffsInteractor.userID
         
         setupSmallTariffButtons()
         setupCarsTypeLabel()
         setupTarifInfoLabels()
         
+        getTariffsData()
+        
         
     }
     
-    // MARK: - Methods
+    // MARK: - Setups Methods
     
     private func setupSmallTariffButtons() {
         
@@ -43,6 +57,7 @@ class TariffsViewController: UIViewController {
         for button in tarrifsButtonArray {
             guard let button = button else { return }
             button.tariffsSmallStyle()
+            button.backgroundColor = TariffsColors.grayButtonColor.value
         }
         standartButtonOutlet.setTitle("Стандарт", for: .normal)
         premiumButtonOutlet.setTitle("Премиум", for: .normal)
@@ -58,15 +73,43 @@ class TariffsViewController: UIViewController {
         carLabel.textColor = TariffsColors.grayLabelColor.value
         carLabel.text = "Автомобили:"
         carTypeLabel.textColor = TariffsColors.black.value
-        carTypeLabel.text = "Mercedes C-klasse, Audi A6, BMW 5"
+        carTypeLabel.text = ""
     }
     
     private func setupTarifInfoLabels() {
         tarrifInfoHeading.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.big.rawValue)
         tarrifInfoHeading.textColor = TariffsColors.black.value
         tarrifInfoHeading.text = "О тарифах"
+        tariffInfoText.text = ""
+    }
+    
+    // MARK: - Methods
+    
+    func getTariffsData() {
         
-        tariffInfoText.tariffsInfoStyle()
+        guard let id = userID else { return }
+        
+        tariffsInteractor.loadTariffs(userID: id) { [weak self] (dataModel) in
+            guard let tariffsData = dataModel else { return }
+            
+            DispatchQueue.main.async {
+                
+                
+                
+                self?.carTypeLabel.text = tariffsData.cars
+                
+                if let image = self?.tariffsInteractor.getImage(from: tariffsData.icon) {
+                    self?.carImage.image = image
+                }
+                
+                self?.tariffInfoText.tariffsInfoStyle(text: tariffsData.description)
+            }
+
+            
+            print("Тариф: \(tariffsData.name)")
+            print("Автомобили: \(tariffsData.cars)")
+            print("Описание: \(tariffsData.description)")
+        }
     }
     
 

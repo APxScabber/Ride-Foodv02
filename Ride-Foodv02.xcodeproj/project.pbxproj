@@ -26,6 +26,8 @@
 		C47892B5267954EB00B4C737 /* TariffsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892B4267954EB00B4C737 /* TariffsInteractor.swift */; };
 		C47892B72679D4B000B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892B62679D4B000B4C737 /* TariffsColors.swift */; };
 		C47892BA267A0A3B00B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892B9267A0A3B00B4C737 /* TariffsFontSize.swift */; };
+		C47892C9267BC3F800B4C737 /* TariffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C8267BC3F800B4C737 /* TariffsModel.swift */; };
+		C47892CC267C11A900B4C737 /* TariffsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CB267C11A900B4C737 /* TariffsExtension.swift */; };
 		C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E902267621F700661C55 /* UserDefaultsModel.swift */; };
 		C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E9042676233500661C55 /* UserDefaultsManager.swift */; };
 		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
@@ -75,6 +77,8 @@
 		C47892B4267954EB00B4C737 /* TariffsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsInteractor.swift; sourceTree = "<group>"; };
 		C47892B62679D4B000B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892B9267A0A3B00B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
+		C47892C8267BC3F800B4C737 /* TariffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsModel.swift; sourceTree = "<group>"; };
+		C47892CB267C11A900B4C737 /* TariffsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsExtension.swift; sourceTree = "<group>"; };
 		C495E902267621F700661C55 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		C495E9042676233500661C55 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				C47892B2267954CF00B4C737 /* Tariffs.storyboard */,
 				C47892B0267954BA00B4C737 /* TariffsViewController.swift */,
 				C47892B4267954EB00B4C737 /* TariffsInteractor.swift */,
+				C47892CB267C11A900B4C737 /* TariffsExtension.swift */,
 			);
 			path = Tariffs;
 			sourceTree = "<group>";
@@ -181,6 +186,14 @@
 			isa = PBXGroup;
 			children = (
 				C47892B9267A0A3B00B4C737 /* TariffsFontSize.swift */,
+			);
+			path = Tariffs;
+			sourceTree = "<group>";
+		};
+		C47892C7267BC3DC00B4C737 /* Tariffs */ = {
+			isa = PBXGroup;
+			children = (
+				C47892C8267BC3F800B4C737 /* TariffsModel.swift */,
 			);
 			path = Tariffs;
 			sourceTree = "<group>";
@@ -333,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E83FF9266FF6CB000EE70F /* Login */,
+				C47892C7267BC3DC00B4C737 /* Tariffs */,
 			);
 			path = Structurs;
 			sourceTree = "<group>";
@@ -440,6 +454,8 @@
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
 				C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */,
 				C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */,
+				C47892C9267BC3F800B4C737 /* TariffsModel.swift in Sources */,
+				C47892CC267C11A900B4C737 /* TariffsExtension.swift in Sources */,
 				C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */,
 				C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */,
 				C45BB4FC2671527F0057DBBB /* UrlList.swift in Sources */,

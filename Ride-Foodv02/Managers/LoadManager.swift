@@ -16,7 +16,8 @@ class LoadManager: NSObject {
     typealias result<T> = (Result <T, Error>) -> Void
     
     //Дженерик метода для работы с сервером
-    func loadData<T: Decodable>(of type: T.Type, from url: URL, httpMethod: HTTPMethods, passData: [String:String],
+    func loadData<T: Decodable>(of type: T.Type, from url: URL, httpMethod: HTTPMethods,
+                                passData: [String:String]?,
                                 completion: @escaping result<T>) {
         
         //Формируем данные на отправку на сервер
@@ -24,11 +25,14 @@ class LoadManager: NSObject {
         
         //Формируем Request запрос
         var urlRequest = URLRequest(url: url)
+
         urlRequest.httpMethod = httpMethod.rawValue
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
-        urlRequest.httpBody = httpBody
+        if let params = params {
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
+            urlRequest.httpBody = httpBody
+        }
         
         let session = URLSession.shared
         session.dataTask(with: urlRequest) { data, response, error in
