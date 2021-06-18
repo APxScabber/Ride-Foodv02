@@ -4,6 +4,8 @@ class PersonalInfoTableViewController: UITableViewController {
     
     
     @IBOutlet var cells: [UITableViewCell]!
+    @IBOutlet weak var nameLabel: SettingsMainLabel! 
+    @IBOutlet weak var emailLabel: SettingsMainLabel!
     private var toolBarView = ToolbarView.initFromNib() { didSet {
         toolBarView.delegate = self
     }}
@@ -12,15 +14,15 @@ class PersonalInfoTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationItem.title = "Персональные данные"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = PersonalInfoConstant.personalInfo
+        updateUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         toolBarView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: view.bounds.width, height: SettingsConstant.toolbarHeight)
-        
         view.addSubview(toolBarView)
     }
     
@@ -50,6 +52,11 @@ class PersonalInfoTableViewController: UITableViewController {
                 $0.isUserInteractionEnabled = true
             }
         }
+    }
+    
+    private func updateUI() {
+        nameLabel.text = PersonalInfoConstant.nameQuestion
+        emailLabel.text = PersonalInfoConstant.emailQuestion
     }
     
 }

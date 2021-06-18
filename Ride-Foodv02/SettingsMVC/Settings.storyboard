@@ -231,7 +231,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cellularLabel" destination="f5V-8p-UsY" id="EB1-FQ-xRZ"/>
+                        <outlet property="languageChosenLabel" destination="2WC-6d-Goz" id="63E-0N-pYG"/>
+                        <outlet property="languageLabel" destination="0hF-aH-nie" id="Ryv-UJ-StZ"/>
+                        <outlet property="personalInfoLabel" destination="vgG-wZ-JxV" id="rKl-ka-3Jt"/>
+                        <outlet property="promotionsAvailableLabel" destination="9Ob-0B-JS7" id="W0l-g2-Yc5"/>
+                        <outlet property="promotionsLabel" destination="kJg-Mx-3iI" id="ngv-fO-kaj"/>
                         <outlet property="promotionsNotificationSwitch" destination="L8E-Yw-g3d" id="Iy8-sK-oGh"/>
+                        <outlet property="pushNotificationLabel" destination="W89-XC-4pe" id="g56-1H-Vvg"/>
                         <outlet property="pushNotificationSwitch" destination="aMK-Me-gnI" id="FDq-r3-7S7"/>
                         <outlet property="shouldUpdateOnCellularSwitch" destination="KKT-Ue-wBa" id="7b6-dI-QP0"/>
                     </connections>
@@ -267,7 +274,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="rQU-u9-S37">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyDot" translatesAutoresizingMaskIntoConstraints="NO" id="rQU-u9-S37">
                                                     <rect key="frame" x="374" y="15" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="5lR-jm-8TY"/>
@@ -331,6 +338,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outletCollection property="images" destination="rQU-u9-S37" collectionClass="NSMutableArray" id="Ueb-W9-cxe"/>
+                        <outletCollection property="images" destination="qdJ-aR-YvA" collectionClass="NSMutableArray" id="gTh-NW-Ths"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIP-5a-ZrM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -450,6 +461,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailLabel" destination="JD1-Zd-ygU" id="Ms3-ch-qFc"/>
+                        <outlet property="nameLabel" destination="wUy-4V-WlH" id="sVv-b2-Wgw"/>
                         <outletCollection property="cells" destination="eMA-iX-Y2t" collectionClass="NSMutableArray" id="ULr-XJ-Asp"/>
                         <outletCollection property="cells" destination="6ft-eZ-3aO" collectionClass="NSMutableArray" id="epl-B1-56u"/>
                         <outletCollection property="cells" destination="l2G-Nv-h58" collectionClass="NSMutableArray" id="AyE-KW-FQs"/>
@@ -472,7 +485,6 @@
     </scenes>
     <resources>
         <image name="BackButton" width="10" height="17"/>
-        <image name="Checkmark" width="15" height="15"/>
         <image name="Contact" width="16" height="16"/>
         <image name="EmptyDot" width="15" height="15"/>
         <systemColor name="systemBackgroundColor">

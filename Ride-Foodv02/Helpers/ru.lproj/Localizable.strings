@@ -1,0 +1,43 @@
+//MARK: - Settings
+
+"language" = "Язык";
+"languageChosen" = "Русский";
+"personalInfo" = "Персональные данные";
+"pushNotification" = "Push-уведомление вместо звонка";
+"promotionsNotification" = "Уведомления об акциях";
+"promotionsAvailable" = "Доступные акции";
+"automaticUpdateMessage" = "Автоматическое обновление данных геолокации";
+"locationUpdateMessage" = "Обновлять по сотовой сети";
+"settings" = "Настройки";
+
+//MARK: - Support
+
+"menu" = "Меню";
+"support" = "Служба поддержки";
+"paymentMethod" = "Способ оплаты";
+"tariffs" = "Тарифы";
+"promocode" = "Промокод";
+"promotions" = "Акции";
+"aboutThisApp" = "Об этом приложении (v.1)";
+
+//MARK: - Support
+
+"cancel" = "Отмена";
+"capture" = "Снять фото или видео";
+"library" = "Медиатека";
+"done" = "Отлично!";
+"messageSent" = "Обращение отправлено";
+"next" = "Далее";
+"problemDesc" = "Опишите возникшую проблему";
+"addImageDesc" = "При необходимости прикрепите изображения";
+"photoLimitDesc" = "Вы прикрепили максимальное количество фото (10)";
+"responceDesc" = "В течении часа с вами свяжется наш менеджер и постарается решить вашу проблему.";
+"send" = "Отправить";
+
+//MARK: - Personal info
+
+"name" = "Имя";
+"nameQuestion" = "Как вас зовут?";
+"emailQuestion" = "Укажите e-mail";
+"personalInfo" = "Персональные данные";
+"confirm" = "Подвердить";

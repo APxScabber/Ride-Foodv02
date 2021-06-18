@@ -232,6 +232,12 @@
                     <navigationItem key="navigationItem" id="mBN-r9-zKv"/>
                     <connections>
                         <outlet property="menuLabel" destination="6mR-67-mYo" id="IAL-qm-RkP"/>
+                        <outlet property="paymentMethodLabel" destination="CI7-65-j2q" id="pwL-U9-ylE"/>
+                        <outlet property="promocodeLabel" destination="PRJ-KV-AIS" id="ZWv-Co-aUJ"/>
+                        <outlet property="promotionLabel" destination="ZSN-hh-wpX" id="jLP-LJ-hmX"/>
+                        <outlet property="settingLabel" destination="3IB-pY-Kz4" id="BnD-2H-pUL"/>
+                        <outlet property="supportLabel" destination="62n-NS-ZAy" id="s5Y-0o-5ep"/>
+                        <outlet property="tariffsLabel" destination="kMM-s0-CZM" id="cWR-FP-r6N"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwf-9M-UMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

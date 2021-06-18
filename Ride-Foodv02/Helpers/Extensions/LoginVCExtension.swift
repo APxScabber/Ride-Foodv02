@@ -70,7 +70,6 @@ extension LoginViewController: UITextViewDelegate {
     
     //MARK: - @objc Methods
     
-    #warning("Почему этот метод вызывается повторно при закрытии клавиатуры")
     //Метод отрабатывающий появление клавиатуры
     @objc func keyboardWillShow(_ notification: Notification) {
 

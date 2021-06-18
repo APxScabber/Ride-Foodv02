@@ -1,0 +1,45 @@
+//MARK: - Settings
+
+"language" = "Language";
+"languageChosen" = "English";
+"personalInfo" = "Personal info";
+"pushNotification" = "Push-notification against calling";
+"promotionsNotification" = "Promotions notifications";
+"promotionsAvailable" = "Promotions available";
+"automaticUpdateMessage" = "Automatic updating of geolocation data";
+"locationUpdateMessage" = "Update over cellular network";
+"settings" = "Settings";
+
+//MARK: - Menu
+
+"menu" = "Menu";
+"support" = "Support";
+"paymentMethod" = "Payment method";
+"tariffs" = "Tariffs";
+"promocode" = "Promocode";
+"promotions" = "Promotions";
+"aboutThisApp" = "About this app (v.1)";
+
+//MARK: - Support
+
+"cancel" = "Cancel";
+"capture" = "Capture photo or video";
+"library" = "Library";
+"done" = "Done!";
+"messageSent" = "Message sent";
+"next" = "Next";
+"problemDesc" = "Describe the problem";
+"addImageDesc" = "Attach images if necessary";
+"photoLimitDesc" = "You attached the maximum number of photos (10)";
+"responceDesc" = "Our manager will contact you within an hour and try to solve your problem.";
+"send" = "Send";
+
+//MARK: - Personal info
+
+"name" = "Name";
+"nameQuestion" = "What is your name?";
+"emailQuestion" = "Specify e-mail";
+"personalInfo" = "Personal info";
+"confirm" = "Confirm";
+
+

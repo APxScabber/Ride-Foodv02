@@ -20,7 +20,6 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        #warning("Этот метод вынести в MainInteractor")
         CoreDataManager.shared.fetchCoreData { [weak self] result in
             
             switch result {
@@ -40,7 +39,6 @@ class MainScreenViewController: UIViewController {
         loadTariffs(userID: id)
     }
     
-    #warning("Эти методы убрать в TariffsInteractor")
     func loadTariffs(userID: String) {
         
         let urlString = separategURL(url: tariffsURL, userID: userID)
