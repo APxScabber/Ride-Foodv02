@@ -63,6 +63,7 @@ class ToolbarView: UIView {
     }
     
     private var keyboardHeight:CGFloat = 0.0
+    
     @objc
     private func showToolbarView(_ notification:NSNotification) {
         guard let userInfo = notification.userInfo else { return }
@@ -77,5 +78,12 @@ class ToolbarView: UIView {
         textField.text = nil
         hideLabelIfNeeded()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        button.setTitle(PersonalInfoConstant.confirm, for: .normal)
+    }
+    
+    
     
 }

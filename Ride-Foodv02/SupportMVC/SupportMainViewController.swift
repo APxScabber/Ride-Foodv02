@@ -3,7 +3,6 @@ import UIKit
 class SupportMainViewController: UIViewController {
 
     //MARK: - Public API
-    //test
     
     var text = "" { didSet { updateUI() }}
     
@@ -11,10 +10,13 @@ class SupportMainViewController: UIViewController {
     @IBOutlet weak var textViewLabelDescription: UILabel! { didSet  {
         textViewLabelDescription.font = UIFont.SFUIDisplayLight(size: 17)
     }}
-
     
-    @IBOutlet weak var nextButton: RoundedButton! { didSet {
+    @IBOutlet weak var nextButton: UIButton! { didSet {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+    }}
+    @IBOutlet weak var nextButtonView: RoundedView! { didSet {
+        nextButtonView.cornerRadius = 15.0
+        nextButtonView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }}
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
@@ -32,9 +34,12 @@ class SupportMainViewController: UIViewController {
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
         NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        navigationController?.navigationItem.title = "Служба поддержки"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
     }
     
     //MARK: - Segue
@@ -48,9 +53,12 @@ class SupportMainViewController: UIViewController {
     
     //MARK: - UI changes
     private func updateUI() {
-        nextButton.color = text.count < SupportConstant.minimumLeters ? UIColor.supportNextButtonInActiveColor : UIColor.SupportNextButtonActiveColor
+        nextButtonView.colorToFill = text.count < SupportConstant.minimumLeters ? UIColor.supportNextButtonInActiveColor : UIColor.SupportNextButtonActiveColor
         nextButton.isUserInteractionEnabled = text.count >= SupportConstant.minimumLeters
         textViewLabelDescription.isHidden = !text.isEmpty
+        nextButton.setTitle(SupportConstant.next, for: .normal)
+        textViewLabelDescription.text = SupportConstant.problemDesc
+        navigationItem.title = MenuConstant.support
     }
 
     @objc

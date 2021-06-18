@@ -13,10 +13,13 @@ class SupportAddImagesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var sendButton: RoundedButton! { didSet {
+    @IBOutlet weak var sendButton: UIButton! { didSet {
         sendButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
-    
+    @IBOutlet weak var sendButtonView: RoundedView! { didSet {
+        sendButtonView.cornerRadius = 15.0
+        sendButtonView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+    }}
     @IBOutlet weak var addImagesButton: SupportAddImageButton!
     
     @IBOutlet weak var addImageDescriptionLabel: UILabel! { didSet {
@@ -29,8 +32,9 @@ class SupportAddImagesViewController: UIViewController {
         successLabel.font = UIFont.SFUIDisplayLight(size: 17)
     }}
     
-    @IBOutlet weak var roundedView: RoundedView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var roundedView: RoundedView! { didSet {
+        roundedView.color = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    }}
     
     private let actionSheetView = SupportActionSheetView.initFromNib()
     
@@ -39,12 +43,6 @@ class SupportAddImagesViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        actionSheetView.frame = CGRect(x: 0, y: view.bounds.maxY, width: view.bounds.width, height: SupportConstant.actionSheetHeight)
-        actionSheetView.delegate = self
-        view.addSubview(actionSheetView)
-    }
     
     //MARK: - IBActions
     @IBAction func addImage(_ sender: UIButton) {
@@ -54,18 +52,33 @@ class SupportAddImagesViewController: UIViewController {
         }
     }
 
-    @IBAction func sendFeedback(_ sender: RoundedButton) {
+    @IBAction func sendFeedback(_ sender: UIButton) {
         if addImagesButton.buttonState != .done {
             sendButton.setTitle(SupportConstant.done, for: .normal)
             addImagesButton.buttonState = .done
             addImageDescriptionLabel.text = SupportConstant.messageSent
             addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
             successLabel.isHidden = false
+            successLabel.text = SupportConstant.responceDesc
             roundedView.color = .clear
             collectionView.removeFromSuperview()
         } else {
             //go back to main? screen or something
         }
+    }
+    
+    //MARK: - ViewController lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        actionSheetView.frame = CGRect(x: 0, y: view.bounds.maxY, width: view.bounds.width, height: SupportConstant.actionSheetHeight)
+        actionSheetView.delegate = self
+        view.addSubview(actionSheetView)
     }
     
     //MARK: - EnableUI
@@ -81,6 +94,11 @@ class SupportAddImagesViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    private func updateUI() {
+        navigationItem.title = MenuConstant.support
+        sendButton.setTitle(SupportConstant.send, for: .normal)
+        addImageDescriptionLabel.text = SupportConstant.addImageDesc
+    }
 }
 
 //MARK: - ImagePickerDelegate
