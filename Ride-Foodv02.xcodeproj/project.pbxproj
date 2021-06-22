@@ -28,6 +28,10 @@
 		C47892BA267A0A3B00B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892B9267A0A3B00B4C737 /* TariffsFontSize.swift */; };
 		C47892C9267BC3F800B4C737 /* TariffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C8267BC3F800B4C737 /* TariffsModel.swift */; };
 		C47892CC267C11A900B4C737 /* TariffsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CB267C11A900B4C737 /* TariffsExtension.swift */; };
+		C47892CE267D336400B4C737 /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CD267D336400B4C737 /* TextViewExtension.swift */; };
+		C47892D0267D34E600B4C737 /* TariffsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CF267D34E600B4C737 /* TariffsPageViewController.swift */; };
+		C47892D2267D57DE00B4C737 /* TariffsPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892D1267D57DE00B4C737 /* TariffsPageInteractor.swift */; };
+		C47892D4267F980F00B4C737 /* TariffsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892D3267F980F00B4C737 /* TariffsCollectionViewCell.swift */; };
 		C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E902267621F700661C55 /* UserDefaultsModel.swift */; };
 		C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E9042676233500661C55 /* UserDefaultsManager.swift */; };
 		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
@@ -79,6 +83,10 @@
 		C47892B9267A0A3B00B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
 		C47892C8267BC3F800B4C737 /* TariffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsModel.swift; sourceTree = "<group>"; };
 		C47892CB267C11A900B4C737 /* TariffsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsExtension.swift; sourceTree = "<group>"; };
+		C47892CD267D336400B4C737 /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
+		C47892CF267D34E600B4C737 /* TariffsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsPageViewController.swift; sourceTree = "<group>"; };
+		C47892D1267D57DE00B4C737 /* TariffsPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsPageInteractor.swift; sourceTree = "<group>"; };
+		C47892D3267F980F00B4C737 /* TariffsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C495E902267621F700661C55 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		C495E9042676233500661C55 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -175,8 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				C47892B2267954CF00B4C737 /* Tariffs.storyboard */,
+				C47892CF267D34E600B4C737 /* TariffsPageViewController.swift */,
+				C47892D1267D57DE00B4C737 /* TariffsPageInteractor.swift */,
 				C47892B0267954BA00B4C737 /* TariffsViewController.swift */,
 				C47892B4267954EB00B4C737 /* TariffsInteractor.swift */,
+				C47892D3267F980F00B4C737 /* TariffsCollectionViewCell.swift */,
 				C47892CB267C11A900B4C737 /* TariffsExtension.swift */,
 			);
 			path = Tariffs;
@@ -309,6 +320,7 @@
 				C4E83FDF266EA7F9000EE70F /* StringExtension.swift */,
 				C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */,
 				C46E78AD2676980F0034DEFA /* LabelExtension.swift */,
+				C47892CD267D336400B4C737 /* TextViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,6 +464,7 @@
 				C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */,
 				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
+				C47892CE267D336400B4C737 /* TextViewExtension.swift in Sources */,
 				C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */,
 				C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C47892C9267BC3F800B4C737 /* TariffsModel.swift in Sources */,
@@ -463,6 +476,7 @@
 				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
 				C47892BA267A0A3B00B4C737 /* TariffsFontSize.swift in Sources */,
 				C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */,
+				C47892D2267D57DE00B4C737 /* TariffsPageInteractor.swift in Sources */,
 				C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */,
 				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
 				C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */,
@@ -477,11 +491,13 @@
 				C47892AE267894F200B4C737 /* LoginActions.swift in Sources */,
 				C45BB567267241360057DBBB /* CoreDataManager.swift in Sources */,
 				C47892B5267954EB00B4C737 /* TariffsInteractor.swift in Sources */,
+				C47892D0267D34E600B4C737 /* TariffsPageViewController.swift in Sources */,
 				C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,
 				C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */,
 				C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */,
 				C4D9071626726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift in Sources */,
+				C47892D4267F980F00B4C737 /* TariffsCollectionViewCell.swift in Sources */,
 				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
 				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
 			);

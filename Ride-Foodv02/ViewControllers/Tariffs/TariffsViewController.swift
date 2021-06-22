@@ -18,7 +18,7 @@ class TariffsViewController: UIViewController {
     @IBOutlet weak var carTypeLabel: UILabel!
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var tarrifInfoHeading: UILabel!
-    @IBOutlet weak var tariffInfoText: UILabel!
+    @IBOutlet weak var tariffInfoText: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var orderTaxiButtonOutlet: UIButton!
     
@@ -26,15 +26,20 @@ class TariffsViewController: UIViewController {
     // MARK: - Properties
     
     var userID: String?
-    
-    let tariffsInteractor = TariffsInteractor()
-    
     var tarrifsButtonArray: [UIButton] = []
-    
-    
+    var indexVC = 0
+  
+    let tariffsInteractor = TariffsInteractor()
+
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = self
+//        collectionView.delegate = self
+        
+       
+        
         tarrifsButtonArray = [standartButtonOutlet, premiumButtonOutlet, businessButtonOutlet]
         
         tariffsInteractor.getUserID()
@@ -45,8 +50,6 @@ class TariffsViewController: UIViewController {
         setupTarifInfoLabels()
         
         getTariffsData()
-        
-        
     }
     
     // MARK: - Setups Methods
@@ -92,25 +95,57 @@ class TariffsViewController: UIViewController {
         tariffsInteractor.loadTariffs(userID: id) { [weak self] (dataModel) in
             guard let tariffsData = dataModel else { return }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
+                guard let indexVC = self?.indexVC else { return }
                 
+                self?.carTypeLabel.text = tariffsData[indexVC].cars
                 
-                self?.carTypeLabel.text = tariffsData.cars
-                
-                if let image = self?.tariffsInteractor.getImage(from: tariffsData.icon) {
+                if let image = self?.tariffsInteractor.getImage(from: tariffsData[indexVC].icon) {
                     self?.carImage.image = image
                 }
                 
-                self?.tariffInfoText.tariffsInfoStyle(text: tariffsData.description)
+                self?.tariffInfoText.tariffsInfoStyle(text: tariffsData[indexVC].description)
             }
-
-            
-            print("Тариф: \(tariffsData.name)")
-            print("Автомобили: \(tariffsData.cars)")
-            print("Описание: \(tariffsData.description)")
         }
     }
-    
-
 }
+
+extension TariffsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) //as! TariffsCollectionViewCell
+        
+//        cell.cellImageView.image = UIImage(named: "checkBtnOn")
+//        cell.cellLabel.text = "Allways have baby seat"
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//
+//        let linespacing: CGFloat = 5
+//        let numberOfCell: CGFloat = 3   //you need to give a type as CGFloat
+//        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
+//        return CGSize(width: cellWidth - linespacing, height: cellWidth - linespacing)
+        
+        let size = CGSize(width: 102, height: 85)
+        print(size)
+        
+        return size
+    }
+    
+    
+}
+
+
+//extension TariffsViewController: UICollectionViewDelegateFlowLayout {
+//
+//
+//}

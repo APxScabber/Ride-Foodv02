@@ -14,14 +14,14 @@ extension UILabel {
         self.layer.cornerRadius = 4
     }
     
-    func tariffsInfoStyle(text: String) {
-        
-        self.textColor = TariffsColors.grayLabelColor.value
-        self.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
-        self.numberOfLines = 0
-        self.lineBreakMode = .byWordWrapping
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.26
-        self.attributedText = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-    }
+//    func tariffsInfoStyle(text: String) {
+//        
+//        self.textColor = TariffsColors.grayLabelColor.value
+//        self.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
+//        self.numberOfLines = 0
+//        self.lineBreakMode = .byWordWrapping
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineHeightMultiple = 1.26
+//        self.attributedText = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+//    }
 }

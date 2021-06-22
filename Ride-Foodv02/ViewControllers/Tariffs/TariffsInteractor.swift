@@ -16,7 +16,7 @@ class TariffsInteractor {
     }
     
     //Загружаем данные о Тарифах
-    func loadTariffs(userID: String, completion: @escaping (TariffsModel?) -> Void) {
+    func loadTariffs(userID: String, completion: @escaping ([TariffsModel]?) -> Void) {
 
         let urlString = separategURL(url: tariffsURL, userID: userID)
         guard let url = URL(string: urlString) else { return }
@@ -25,9 +25,10 @@ class TariffsInteractor {
                                     from: url, httpMethod: .get, passData: nil) { result in
             switch result {
             case .success(let dataModel):
-                let model = dataModel.data
-                completion(model)
+                
+                completion(dataModel.data)
             case .failure(let error):
+                
                 completion(nil)
                 print("Tariffs error: \(error.localizedDescription)")
             }
@@ -52,8 +53,6 @@ class TariffsInteractor {
             case .success(let model):
                 let userData = model.first
                 self?.userID = String(describing: userData!.id!)
-                #warning("Убрать PRINT")
-                print(self!.userID!)
             case .failure(let error):
                 print(error)
             case .none:
@@ -74,6 +73,4 @@ class TariffsInteractor {
         
         return image
     }
-    
-
 }
