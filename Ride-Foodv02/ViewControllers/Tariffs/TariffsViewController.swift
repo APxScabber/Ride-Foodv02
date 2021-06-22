@@ -36,7 +36,7 @@ class TariffsViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.dataSource = self
-//        collectionView.delegate = self
+        collectionView.delegate = self
         
        
         
@@ -111,7 +111,7 @@ class TariffsViewController: UIViewController {
     }
 }
 
-extension TariffsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TariffsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
@@ -128,24 +128,24 @@ extension TariffsViewController: UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
+    
+    
+}
+
+
+extension TariffsViewController: UICollectionViewDelegateFlowLayout {
+
+    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 //
 //        let linespacing: CGFloat = 5
 //        let numberOfCell: CGFloat = 3   //you need to give a type as CGFloat
 //        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
 //        return CGSize(width: cellWidth - linespacing, height: cellWidth - linespacing)
         
-        let size = CGSize(width: 102, height: 85)
+        let size = CGSize(width: 30, height: 30)
         print(size)
         
         return size
     }
-    
-    
 }
-
-
-//extension TariffsViewController: UICollectionViewDelegateFlowLayout {
-//
-//
-//}
