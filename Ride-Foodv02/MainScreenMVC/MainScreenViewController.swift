@@ -12,6 +12,28 @@ class MainScreenViewController: UIViewController {
         mapView.setRegion(region, animated: false)
     }}
     
+    // MARK: - IBActions
+    
+    @IBAction func goToMenu(_ sender: MenuButton) {
+        
+        let menuStoryboard = UIStoryboard(name: "Menu", bundle: Bundle.main)
+        if let menuVC = menuStoryboard.instantiateInitialViewController()?.contents as? MenuTableViewController, let menuVCView = menuVC.view {
+
+            menuVCView.frame = CGRect(x: -self.view.bounds.width, y: 0, width: self.view.bounds.width - 42, height: self.view.bounds.height)
+            view.addSubview(menuVCView)
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                withDuration: 1.0,
+                delay: 0,
+                options: .curveLinear,
+                animations: { menuVCView.frame.origin.x += self.view.bounds.width  }) {
+                if $0 == .end { }
+            }
+        }
+        
+        
+    }
+    
+    
     // MARK: - Properties
 
     var userID: String?

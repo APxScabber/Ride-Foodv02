@@ -82,6 +82,7 @@
 		78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB882267B59D40023605D /* LoginFontSize.swift */; };
 		78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB883267B59D40023605D /* ConfirmFontSize.swift */; };
 		78AEB887267B59E20023605D /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB886267B59E20023605D /* TextFont.swift */; };
+		78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -168,6 +169,7 @@
 		78AEB882267B59D40023605D /* LoginFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFontSize.swift; sourceTree = "<group>"; };
 		78AEB883267B59D40023605D /* ConfirmFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFontSize.swift; sourceTree = "<group>"; };
 		78AEB886267B59E20023605D /* TextFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
+		78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				7867B4C7267106330031BFA0 /* UIFont+Extensions.swift */,
 				7867B4CB267109E90031BFA0 /* CGRect+Extensions.swift */,
 				7867B4CD26711B120031BFA0 /* UIColor+Extensions.swift */,
+				78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */,
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
+				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
 				7867B4DF2672411C0031BFA0 /* PersonalInfoTableViewController.swift in Sources */,
 				78A39FEC267B5684006D0DAB /* UserDefaultsModel.swift in Sources */,
 				7850E8F426739D4400AA88CA /* PromotionsTableViewController.swift in Sources */,
