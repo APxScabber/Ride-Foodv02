@@ -33,6 +33,7 @@
 	<string>Доступ к медиатеке необходим, чтобы прикрепить файлы для вашего обращения в службу поддержки.</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFUIDisplay-Bold.otf</string>
 		<string>SFUIDisplay-Light.otf</string>
 		<string>SFUIDisplay-Regular.otf</string>
 		<string>SFUIDisplay-Semibold.otf</string>

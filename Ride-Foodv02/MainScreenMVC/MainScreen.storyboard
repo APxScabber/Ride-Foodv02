@@ -30,6 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <connections>
                                     <action selector="goToMenu:" destination="5Od-VF-nnY" eventType="touchUpInside" id="hKm-US-6hH"/>
+                                    <segue destination="jZA-EP-QPm" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="tdd-cw-cbz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -51,6 +52,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rty-fQ-cBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-444.92753623188412" y="72.991071428571431"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="gDl-wE-9MV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Menu" id="jZA-EP-QPm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YOx-8G-695"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aa3-cO-CLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="239" y="73"/>
         </scene>
     </scenes>
     <resources>

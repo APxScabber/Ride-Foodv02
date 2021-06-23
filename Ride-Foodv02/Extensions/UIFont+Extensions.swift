@@ -14,6 +14,8 @@ extension UIFont {
         return UIFont(name: "SFUIDisplay-Semibold", size: size)
     }
     
-    
+    static func SFUIDisplayBold(size:CGFloat) -> UIFont? {
+        return UIFont(name: "SFUIDisplay-Bold", size: size)
+    }
     
 }

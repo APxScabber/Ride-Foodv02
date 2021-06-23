@@ -41,3 +41,9 @@
 "emailQuestion" = "Укажите e-mail";
 "personalInfo" = "Персональные данные";
 "confirm" = "Подвердить";
+
+//MARK: - Promotions
+
+"food" = "Еда";
+"taxi" = "Такси";
+"promotion" = "Акции";

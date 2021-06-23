@@ -43,3 +43,8 @@
 "confirm" = "Confirm";
 
 
+//MARK: - Promotions
+
+"food" = "Food";
+"taxi" = "Taxi";
+"promotion" = "Promotions";
