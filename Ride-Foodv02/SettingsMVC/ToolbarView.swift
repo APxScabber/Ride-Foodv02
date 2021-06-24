@@ -37,9 +37,7 @@ class ToolbarView: UIView {
     }
 
     
-    class func initFromNib() -> ToolbarView {
-        return Bundle(for: ToolbarView.self).loadNibNamed(String(describing: "ToolbarView"), owner: nil, options: nil)!.first as! ToolbarView
-    }
+    
     
     @objc
     private func hideLabelIfNeeded() {
@@ -59,19 +57,12 @@ class ToolbarView: UIView {
     }
     
     private func setup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     private var keyboardHeight:CGFloat = 0.0
     
-    @objc
-    private func showToolbarView(_ notification:NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.frame.origin.y -= (size.height + SettingsConstant.toolbarHeight)
-            self.keyboardHeight = size.height
-        }
-    }
+    
     
     func dismiss() {
         textField.resignFirstResponder()
@@ -85,5 +76,6 @@ class ToolbarView: UIView {
     }
     
     
-    
 }
+
+

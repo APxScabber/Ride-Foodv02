@@ -1,23 +1,23 @@
 import UIKit
 
-
-class RoundedView: UIView {
+extension UIView {
     
-    var color: UIColor = .clear { didSet { setNeedsDisplay() }}
-    
-    var cornerRadius: CGFloat = 15 { didSet { setNeedsDisplay() }}
-    
-    var colorToFill: UIColor = .clear { didSet { setNeedsDisplay() }}
-        
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(roundedRect: rect.insetBy(dx: 1, dy: 1), cornerRadius: cornerRadius)
-        color.setStroke()
-        path.stroke()
-        
-        let fillPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
-        colorToFill.setFill()
-        fillPath.fill()
-        
+    static var nib: UINib {
+        return UINib(nibName: "\(self)", bundle: .main)
     }
+    
+    static func initFromNib() -> Self {
+            func instanceFromNib<T: UIView>() -> T {
+                return nib.instantiate()
+            }
+            return instanceFromNib()
+        }
+    
+}
 
+extension UINib {
+    
+    func instantiate<T>() -> T {
+        return instantiate(withOwner: nil, options: nil).first! as! T
+    }
 }
