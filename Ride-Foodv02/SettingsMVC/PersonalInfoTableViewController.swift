@@ -14,6 +14,11 @@ class PersonalInfoTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = PersonalInfoConstant.personalInfo
@@ -22,8 +27,11 @@ class PersonalInfoTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        toolBarView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: view.bounds.width, height: SettingsConstant.toolbarHeight)
-        view.addSubview(toolBarView)
+        if let window = UIApplication.shared.keyWindow {
+            toolBarView.frame = CGRect(x: 0, y: window.bounds.height, width: view.bounds.width, height: SettingsConstant.toolbarHeight)
+            window.addSubview(toolBarView)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -40,23 +48,20 @@ class PersonalInfoTableViewController: UITableViewController {
             $0.isUserInteractionEnabled = false
         }
         toolBarView.textField.becomeFirstResponder()
-        
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y <= -100 {
-            toolBarView.dismiss()
-            view.backgroundColor = .white
-            cells.forEach {
-                $0.backgroundColor = .white
-                $0.isUserInteractionEnabled = true
-            }
-        }
-    }
     
     private func updateUI() {
         nameLabel.text = PersonalInfoConstant.nameQuestion
         emailLabel.text = PersonalInfoConstant.emailQuestion
+    }
+    
+    @objc
+    private func showToolbarView(_ notification:NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            toolBarView.frame.origin.y -= (size.height + SettingsConstant.toolbarHeight)
+        }
     }
     
 }

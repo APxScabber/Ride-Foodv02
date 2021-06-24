@@ -16,6 +16,7 @@ class SettingsMainLabel: UILabel {
         font = UIFont.SFUIDisplayRegular(size: 15)
         numberOfLines = 1
         minimumScaleFactor = 0.1
+        adjustsFontSizeToFitWidth = true
     }
 
 }

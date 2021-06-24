@@ -48,12 +48,6 @@ class SupportActionSheetView: UIView {
 
     }}
     
-    //MARK: - Initialization
-
-    class func initFromNib() -> SupportActionSheetView {
-        return Bundle(for: SupportActionSheetView.self).loadNibNamed(String(describing: "SupportActionSheetView"), owner: nil, options: nil)!.first as! SupportActionSheetView
-    }
-    
     //MARK: - Actions
 
     @objc

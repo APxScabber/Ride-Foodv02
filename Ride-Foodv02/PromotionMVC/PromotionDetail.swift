@@ -39,8 +39,4 @@ class PromotionDetail: UIView {
         }
     }
     
-    class func initFromNib() -> PromotionDetail {
-        return Bundle(for: PromotionDetail.self).loadNibNamed(String(describing: "PromotionDetail"), owner: nil, options: nil)!.first as! PromotionDetail
-    }
-    
 }

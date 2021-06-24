@@ -91,6 +91,7 @@
 		78BE4A022683675100A13641 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A012683675100A13641 /* Promotion.swift */; };
 		78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BE4A0326837B8E00A13641 /* PromotionDetail.xib */; };
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
+		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -186,6 +187,7 @@
 		78BE4A012683675100A13641 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		78BE4A0326837B8E00A13641 /* PromotionDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionDetail.xib; sourceTree = "<group>"; };
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
+		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				7850E8F526739E6800AA88CA /* Settings.swift */,
 				7802DFAF267CA0120048CF1C /* Localizable.strings */,
 				78BE49F926834BA400A13641 /* ImageFetcher.swift */,
+				78BE4A072684CF6100A13641 /* RoundedView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
 				7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */,
 				7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */,
+				78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */,
 				78A39FE5267B55EC006D0DAB /* LoadManager.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				78A3A01B267B57D7006D0DAB /* LoginInteractor.swift in Sources */,

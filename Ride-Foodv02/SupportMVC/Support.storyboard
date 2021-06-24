@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YYW-Yu-fcZ">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="YYW-Yu-fcZ" customClass="SupportMainViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j7T-xf-6FV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWK-Xk-gto" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="69" width="364" height="720"/>
+                                <rect key="frame" x="25" y="25" width="270" height="470"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-pM-Zm9">
-                                        <rect key="frame" x="10" y="10" width="344" height="702"/>
+                                        <rect key="frame" x="10" y="10" width="250" height="452"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Опишите возникшую проблему" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="czZ-tm-BwH">
-                                        <rect key="frame" x="18" y="17" width="328" height="17"/>
+                                        <rect key="frame" x="18" y="17" width="234" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="vkY-6Z-Luj"/>
                                         </constraints>
@@ -53,10 +53,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tk-Cv-xh0" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="804" width="364" height="50"/>
+                                <rect key="frame" x="25" y="510" width="270" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocu-zw-MiW">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,14 +114,14 @@
             <objects>
                 <viewController id="2Jf-bz-IJY" customClass="SupportAddImagesViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8t-GD-H35">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ItP-um-WwU" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="120" width="364" height="303.5"/>
+                                <rect key="frame" x="25" y="120" width="270" height="225"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9A-mg-Y6i" customClass="SupportAddImageButton" customModule="Ride_Foodv02" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="70" width="50" height="50"/>
+                                        <rect key="frame" x="110" y="70" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="775-ob-ff0"/>
                                             <constraint firstAttribute="height" constant="50" id="SDO-Iu-HIf"/>
@@ -130,17 +130,17 @@
                                             <action selector="addImage:" destination="2Jf-bz-IJY" eventType="touchUpInside" id="yXj-TH-waF"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="При необходимости прикрепите изображения" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="weD-Np-kdP">
-                                        <rect key="frame" x="47" y="131" width="270" height="33.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="При необходимости прикрепите изображения" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="weD-Np-kdP">
+                                        <rect key="frame" x="47" y="131" width="176" height="54"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="x1R-ZB-t7U"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="x1R-ZB-t7U"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В течении часа с вами свяжется наш менеджер и постарается решить вашу проблему" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="InE-Vk-26N">
-                                        <rect key="frame" x="47" y="171.5" width="270" height="61"/>
+                                        <rect key="frame" x="47" y="192" width="176" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="FLM-12-RgB"/>
                                         </constraints>
@@ -164,7 +164,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5u-u7-NZI">
-                                <rect key="frame" x="16" y="454.5" width="382" height="91"/>
+                                <rect key="frame" x="16" y="376" width="288" height="91"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="91" id="fru-hS-Udz"/>
@@ -222,7 +222,7 @@
                                 </connections>
                             </collectionView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы прикрепили максимальное количество фото (10) " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qCi-L5-asd">
-                                <rect key="frame" x="44" y="569.5" width="326" height="18"/>
+                                <rect key="frame" x="44" y="491" width="232" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="xMm-oP-Ob5"/>
                                 </constraints>
@@ -231,10 +231,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPh-iB-UqK" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="750" width="364" height="50"/>
+                                <rect key="frame" x="25" y="490" width="270" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ao-pi-Fbu">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="50"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>

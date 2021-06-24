@@ -15,9 +15,11 @@ class PromotionListTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         PromotionsFetcher.fetch(promotionType) { [weak self] result in
             self?.promotions = result
             self?.tableView.reloadData()
+            
         }
     }
     
@@ -54,7 +56,6 @@ class PromotionListTableViewController: UITableViewController {
            }
             promotionView.headerLabel.text = currentPromotion.title
             ImageFetcher.fetch(currentPromotion.imagesURL[0]) { data in
-                #warning("такого быть не должно, тестирую пока")
                 self.promotionView.imageView.image = UIImage(data: data)
             }
         }
