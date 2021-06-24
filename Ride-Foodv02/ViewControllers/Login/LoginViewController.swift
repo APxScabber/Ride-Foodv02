@@ -43,15 +43,27 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupPhoneNumberLabel()
-        setupNextButton()
-        setImageLicenseCheckBox()
-        setupLicenseTextView()
-        
-        phoneNumberTextField.text = LoginConstantText.phonePrefix.rawValue
+            setupPhoneNumberLabel()
+            setupNextButton()
+            setImageLicenseCheckBox()
+            setupLicenseTextView()
+            
+            phoneNumberTextField.text = LoginConstantText.phonePrefix.rawValue
 
-        registerForKeyboardNotification()
-        registrationTapGesture()
+            registerForKeyboardNotification()
+            registrationTapGesture()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if loginInteractor.loginCheck() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
+            vc.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true, completion: nil)
+        }
     }
 
     deinit {
