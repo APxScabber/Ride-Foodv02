@@ -46,23 +46,7 @@ class ToolbarView: UIView {
         button.isUserInteractionEnabled = label.isHidden
         roundedView.colorToFill = label.isHidden ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    private func setup() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-    
-    private var keyboardHeight:CGFloat = 0.0
-    
-    
+        
     
     func dismiss() {
         textField.resignFirstResponder()

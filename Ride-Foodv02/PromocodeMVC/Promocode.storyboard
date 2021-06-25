@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MML-0p-AoG">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Промокод-->
+        <scene sceneID="oHh-Xv-W8r">
+            <objects>
+                <tableViewController id="MML-0p-AoG" customClass="PromocodeMainTableViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="NDB-KR-0Oe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="Ut1-xa-ijG">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="Tly-wW-4zb">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tly-wW-4zb" id="RHx-gv-Ved">
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ввести промокод" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ju-RN-J3z" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="13" width="141" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="1Gt-WZ-IY7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Ju-RN-J3z" firstAttribute="top" secondItem="RHx-gv-Ved" secondAttribute="top" constant="13" id="ERc-92-Spm"/>
+                                                <constraint firstItem="7Ju-RN-J3z" firstAttribute="leading" secondItem="RHx-gv-Ved" secondAttribute="leading" constant="24" id="qbE-9G-9yM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="WuJ-LW-N8s" kind="show" id="K7F-Nt-wFx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="3qR-Tk-3W0">
+                                        <rect key="frame" x="0.0" y="62" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3qR-Tk-3W0" id="ebO-xK-6M5">
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="История использования" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="429-b0-1sb" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="13" width="193" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="fBg-a7-kJu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="429-b0-1sb" firstAttribute="top" secondItem="ebO-xK-6M5" secondAttribute="top" constant="13" id="QJk-D5-Xwc"/>
+                                                <constraint firstItem="429-b0-1sb" firstAttribute="leading" secondItem="ebO-xK-6M5" secondAttribute="leading" constant="24" id="esD-Of-0cX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="MML-0p-AoG" id="mCe-z3-gyh"/>
+                            <outlet property="delegate" destination="MML-0p-AoG" id="OlG-sh-GOf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Промокод" id="nH4-2Q-5gg">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="0xc-Il-yDc">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismiss:" destination="MML-0p-AoG" id="bSF-2q-DLe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="enterPromocodeLabel" destination="7Ju-RN-J3z" id="UbY-ZJ-DMW"/>
+                        <outlet property="usageHistoryLabel" destination="429-b0-1sb" id="gdL-qC-Vdh"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haR-Ms-ioa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="513" y="-110"/>
+        </scene>
+        <!--Ввести промокод-->
+        <scene sceneID="9VR-tn-WPv">
+            <objects>
+                <viewController id="WuJ-LW-N8s" customClass="EnterPromocodeViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="axx-5m-n90">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PromocodeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="q0P-PQ-BXN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q0P-PQ-BXN" secondAttribute="height" multiplier="1:1" id="84W-S9-43s"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zwu-Or-X1A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="q0P-PQ-BXN" firstAttribute="trailing" secondItem="zwu-Or-X1A" secondAttribute="trailing" id="e4h-SF-gmr"/>
+                            <constraint firstItem="q0P-PQ-BXN" firstAttribute="top" secondItem="zwu-Or-X1A" secondAttribute="top" id="m6e-6c-DqY"/>
+                            <constraint firstItem="q0P-PQ-BXN" firstAttribute="leading" secondItem="zwu-Or-X1A" secondAttribute="leading" id="uid-Jp-2fw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ввести промокод" id="E5C-nd-EzP">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="eBu-A8-sYy">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismiss:" destination="WuJ-LW-N8s" id="aZr-4M-1Hh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKZ-lq-8qF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1365.217391304348" y="-279.24107142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackButton" width="10" height="17"/>
+        <image name="PromocodeBackground" width="375" height="374.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
