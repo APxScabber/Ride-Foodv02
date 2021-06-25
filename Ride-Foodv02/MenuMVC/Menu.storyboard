@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S9T-MV-LyG">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -13,11 +13,11 @@
             <objects>
                 <tableViewController id="wRj-9Y-qVV" customClass="MenuTableViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="hdH-0i-uZW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yWe-JQ-ira">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afJ-oq-Xjv">
@@ -53,10 +53,10 @@
                             <tableViewSection id="EyC-mT-so3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="1My-cf-ip6">
-                                        <rect key="frame" x="0.0" y="117" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="117" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1My-cf-ip6" id="tFh-2I-dJr">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.33333333333331" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Служба поддержки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62n-NS-ZAy" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -79,10 +79,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="PbJ-Ip-NRF">
-                                        <rect key="frame" x="0.0" y="160.5" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="160.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PbJ-Ip-NRF" id="dZE-c7-Pqj">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.33333333333331" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Настройки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IB-pY-Kz4" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -105,10 +105,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="QOq-xf-41b">
-                                        <rect key="frame" x="0.0" y="204" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="204" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QOq-xf-41b" id="rXy-bh-wqj">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.33333333333331" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Visa" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-2a-VIR">
@@ -141,10 +141,10 @@
                             <tableViewSection id="qPF-Zw-l2d">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="JdL-cn-ECf">
-                                        <rect key="frame" x="0.0" y="283.5" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="283.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JdL-cn-ECf" id="KgZ-Sb-jLp">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.33333333333331" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тарифы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMM-s0-CZM" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -164,10 +164,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dJX-HJ-hGL">
-                                        <rect key="frame" x="0.0" y="327" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="327" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dJX-HJ-hGL" id="bv6-Nf-PVz">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.33333333333331" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Promocode" translatesAutoresizingMaskIntoConstraints="NO" id="a65-gu-lsG">
@@ -194,12 +194,15 @@
                                                 <constraint firstItem="a65-gu-lsG" firstAttribute="centerY" secondItem="bv6-Nf-PVz" secondAttribute="centerY" id="spM-E9-jHV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="a9c-ju-rv7" kind="show" id="zkC-8Z-joZ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="th9-4P-scs">
-                                        <rect key="frame" x="0.0" y="370.5" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="370.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="th9-4P-scs" id="KUq-sa-PfY">
-                                            <rect key="frame" x="0.0" y="0.0" width="294.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.33333333333331" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Акции" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSN-hh-wpX" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -274,15 +277,24 @@
             </objects>
             <point key="canvasLocation" x="1944" y="155"/>
         </scene>
+        <!--Promocode-->
+        <scene sceneID="6lv-SH-eEJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Promocode" id="a9c-ju-rv7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2zm-Vq-Wzj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6B-iv-ers" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2014" y="231"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="k9m-Xs-4qV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W1g-aQ-qDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S9T-MV-LyG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6jo-tB-6Mg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cHa-0K-WUF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -290,6 +302,7 @@
                         <segue destination="wRj-9Y-qVV" kind="relationship" relationship="rootViewController" id="ITu-4U-eSy"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W1g-aQ-qDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="479.71014492753625" y="46.875"/>
         </scene>

@@ -42,6 +42,9 @@
 		7867B4DD26723FD10031BFA0 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */; };
 		7867B4DF2672411C0031BFA0 /* PersonalInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DE2672411C0031BFA0 /* PersonalInfoTableViewController.swift */; };
 		7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */; };
+		787140C6268637E6007834ED /* Promocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787140C5268637E6007834ED /* Promocode.storyboard */; };
+		787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C726863B99007834ED /* PromocodeMainTableViewController.swift */; };
+		787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C9268640CD007834ED /* EnterPromocodeViewController.swift */; };
 		787D4B612677A73E002D975D /* ToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787D4B602677A73E002D975D /* ToolbarView.xib */; };
 		787D4B632677A751002D975D /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B622677A751002D975D /* ToolbarView.swift */; };
 		787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B64267A1982002D975D /* PromotionListTableViewController.swift */; };
@@ -92,6 +95,8 @@
 		78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BE4A0326837B8E00A13641 /* PromotionDetail.xib */; };
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
 		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
+		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
+		78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3DF472686415C0028A66B /* PromocodeToolbar.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -138,6 +143,9 @@
 		7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		7867B4DE2672411C0031BFA0 /* PersonalInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewController.swift; sourceTree = "<group>"; };
 		7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
+		787140C5268637E6007834ED /* Promocode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promocode.storyboard; sourceTree = "<group>"; };
+		787140C726863B99007834ED /* PromocodeMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeMainTableViewController.swift; sourceTree = "<group>"; };
+		787140C9268640CD007834ED /* EnterPromocodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPromocodeViewController.swift; sourceTree = "<group>"; };
 		787D4B602677A73E002D975D /* ToolbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolbarView.xib; sourceTree = "<group>"; };
 		787D4B622677A751002D975D /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		787D4B64267A1982002D975D /* PromotionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionListTableViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +196,8 @@
 		78BE4A0326837B8E00A13641 /* PromotionDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionDetail.xib; sourceTree = "<group>"; };
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
 		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
+		78D3DF472686415C0028A66B /* PromocodeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeToolbar.swift; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -327,6 +337,18 @@
 				7850E8FF2674DFBE00AA88CA /* MenuButton.swift */,
 			);
 			path = MainScreenMVC;
+			sourceTree = "<group>";
+		};
+		787140C4268637D3007834ED /* PromocodeMVC */ = {
+			isa = PBXGroup;
+			children = (
+				787140C5268637E6007834ED /* Promocode.storyboard */,
+				787140C726863B99007834ED /* PromocodeMainTableViewController.swift */,
+				787140C9268640CD007834ED /* EnterPromocodeViewController.swift */,
+				78D3DF452686414B0028A66B /* PromocodeToolbar.xib */,
+				78D3DF472686415C0028A66B /* PromocodeToolbar.swift */,
+			);
+			path = PromocodeMVC;
 			sourceTree = "<group>";
 		};
 		78A39FDD267B55E1006D0DAB /* Managers */ = {
@@ -543,6 +565,7 @@
 				7867B4B4266FAC410031BFA0 /* SupportMVC */,
 				7850E9012674FC0B00AA88CA /* SettingsMVC */,
 				7850E8F026739C7600AA88CA /* PromotionMVC */,
+				787140C4268637D3007834ED /* PromocodeMVC */,
 				7867B4E0267392CE0031BFA0 /* Helpers */,
 				7867B4B2266FAC300031BFA0 /* Extensions */,
 				7867B4A1266FA9F50031BFA0 /* Misc */,
@@ -619,6 +642,8 @@
 				78AEB86F267B589D0023605D /* Main.storyboard in Resources */,
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
 				78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */,
+				787140C6268637E6007834ED /* Promocode.storyboard in Resources */,
+				78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */,
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
 				7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
@@ -679,6 +704,7 @@
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
 				78BE49FA26834BA400A13641 /* ImageFetcher.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
+				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,
 				78A3A018267B57D7006D0DAB /* ConfirmInteractor.swift in Sources */,
 				7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */,
@@ -695,7 +721,9 @@
 				78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */,
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
+				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
+				787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */,
 				7867B4DF2672411C0031BFA0 /* PersonalInfoTableViewController.swift in Sources */,
 				78A39FEC267B5684006D0DAB /* UserDefaultsModel.swift in Sources */,
 				7850E8F426739D4400AA88CA /* PromotionsTableViewController.swift in Sources */,

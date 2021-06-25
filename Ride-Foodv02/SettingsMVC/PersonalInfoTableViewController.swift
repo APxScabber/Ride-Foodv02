@@ -31,7 +31,11 @@ class PersonalInfoTableViewController: UITableViewController {
             toolBarView.frame = CGRect(x: 0, y: window.bounds.height, width: view.bounds.width, height: SettingsConstant.toolbarHeight)
             window.addSubview(toolBarView)
         }
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        dismissToolbar()
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -59,9 +63,16 @@ class PersonalInfoTableViewController: UITableViewController {
     @objc
     private func showToolbarView(_ notification:NSNotification) {
         guard let userInfo = notification.userInfo else { return }
+        guard let window = UIApplication.shared.keyWindow else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            toolBarView.frame.origin.y -= (size.height + SettingsConstant.toolbarHeight)
+            toolBarView.frame.origin.y = window.bounds.height - (size.height + SettingsConstant.toolbarHeight)
         }
+    }
+    
+    private func dismissToolbar() {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        toolBarView.frame.origin.y = window.bounds.height
+        toolBarView.textField.resignFirstResponder()
     }
     
 }
