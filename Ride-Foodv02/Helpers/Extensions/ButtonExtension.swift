@@ -15,6 +15,6 @@ extension UIButton {
     }
     
     func tariffsSmallStyle() {
-        self.layer.cornerRadius = self.frame.height / 2.2
+        self.layer.cornerRadius = self.frame.height / 3.5
     }
 }

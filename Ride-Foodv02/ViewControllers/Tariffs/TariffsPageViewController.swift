@@ -10,8 +10,6 @@ import UIKit
 class TariffsPageViewController: UIPageViewController {
 
     var tariffsModelArray: [TariffsModel]?
-    
-    let tariffsPageInteractor = TariffsPageInteractor()
 
     override func viewDidLoad() {
         super.viewDidLoad()

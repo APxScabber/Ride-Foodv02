@@ -8,7 +8,8 @@
 import UIKit
 
 class TariffsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var cellImageView: UIImageView!
+
     @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var cellImageButton: UIButton!
     
 }

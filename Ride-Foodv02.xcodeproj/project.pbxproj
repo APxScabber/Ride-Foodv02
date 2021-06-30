@@ -30,8 +30,10 @@
 		C47892CC267C11A900B4C737 /* TariffsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CB267C11A900B4C737 /* TariffsExtension.swift */; };
 		C47892CE267D336400B4C737 /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CD267D336400B4C737 /* TextViewExtension.swift */; };
 		C47892D0267D34E600B4C737 /* TariffsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892CF267D34E600B4C737 /* TariffsPageViewController.swift */; };
-		C47892D2267D57DE00B4C737 /* TariffsPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892D1267D57DE00B4C737 /* TariffsPageInteractor.swift */; };
 		C47892D4267F980F00B4C737 /* TariffsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892D3267F980F00B4C737 /* TariffsCollectionViewCell.swift */; };
+		C48AF0EA268CAECA006B3421 /* TariffsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0E9268CAECA006B3421 /* TariffsActions.swift */; };
+		C48AF0EC268CB0E5006B3421 /* TariffsViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0EB268CB0E5006B3421 /* TariffsViewText.swift */; };
+		C48AF0EF268CB3E7006B3421 /* ConstantText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0EE268CB3E7006B3421 /* ConstantText.swift */; };
 		C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E902267621F700661C55 /* UserDefaultsModel.swift */; };
 		C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E9042676233500661C55 /* UserDefaultsManager.swift */; };
 		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
@@ -85,8 +87,10 @@
 		C47892CB267C11A900B4C737 /* TariffsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsExtension.swift; sourceTree = "<group>"; };
 		C47892CD267D336400B4C737 /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
 		C47892CF267D34E600B4C737 /* TariffsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsPageViewController.swift; sourceTree = "<group>"; };
-		C47892D1267D57DE00B4C737 /* TariffsPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsPageInteractor.swift; sourceTree = "<group>"; };
 		C47892D3267F980F00B4C737 /* TariffsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsCollectionViewCell.swift; sourceTree = "<group>"; };
+		C48AF0E9268CAECA006B3421 /* TariffsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsActions.swift; sourceTree = "<group>"; };
+		C48AF0EB268CB0E5006B3421 /* TariffsViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsViewText.swift; sourceTree = "<group>"; };
+		C48AF0EE268CB3E7006B3421 /* ConstantText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantText.swift; sourceTree = "<group>"; };
 		C495E902267621F700661C55 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		C495E9042676233500661C55 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -142,8 +146,10 @@
 			isa = PBXGroup;
 			children = (
 				C45BB4FB2671527F0057DBBB /* UrlList.swift */,
+				C48AF0EE268CB3E7006B3421 /* ConstantText.swift */,
 				C45BB4FA2671524F0057DBBB /* Manager */,
 				C45BB4F926714CD30057DBBB /* Login */,
+				C48AF0ED268CB0EC006B3421 /* Tariffs */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -184,11 +190,11 @@
 			children = (
 				C47892B2267954CF00B4C737 /* Tariffs.storyboard */,
 				C47892CF267D34E600B4C737 /* TariffsPageViewController.swift */,
-				C47892D1267D57DE00B4C737 /* TariffsPageInteractor.swift */,
 				C47892B0267954BA00B4C737 /* TariffsViewController.swift */,
 				C47892B4267954EB00B4C737 /* TariffsInteractor.swift */,
 				C47892D3267F980F00B4C737 /* TariffsCollectionViewCell.swift */,
 				C47892CB267C11A900B4C737 /* TariffsExtension.swift */,
+				C48AF0E9268CAECA006B3421 /* TariffsActions.swift */,
 			);
 			path = Tariffs;
 			sourceTree = "<group>";
@@ -205,6 +211,14 @@
 			isa = PBXGroup;
 			children = (
 				C47892C8267BC3F800B4C737 /* TariffsModel.swift */,
+			);
+			path = Tariffs;
+			sourceTree = "<group>";
+		};
+		C48AF0ED268CB0EC006B3421 /* Tariffs */ = {
+			isa = PBXGroup;
+			children = (
+				C48AF0EB268CB0E5006B3421 /* TariffsViewText.swift */,
 			);
 			path = Tariffs;
 			sourceTree = "<group>";
@@ -468,6 +482,7 @@
 				C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */,
 				C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C47892C9267BC3F800B4C737 /* TariffsModel.swift in Sources */,
+				C48AF0EC268CB0E5006B3421 /* TariffsViewText.swift in Sources */,
 				C47892CC267C11A900B4C737 /* TariffsExtension.swift in Sources */,
 				C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */,
 				C45BB4EE2670CD1A0057DBBB /* ConfirmText.swift in Sources */,
@@ -475,8 +490,8 @@
 				C47892AC26781CA200B4C737 /* ConfirmActions.swift in Sources */,
 				C4E83FEA266EB4E7000EE70F /* LoginText.swift in Sources */,
 				C47892BA267A0A3B00B4C737 /* TariffsFontSize.swift in Sources */,
+				C48AF0EF268CB3E7006B3421 /* ConstantText.swift in Sources */,
 				C45BB54D267226C40057DBBB /* UserDataModel.xcdatamodeld in Sources */,
-				C47892D2267D57DE00B4C737 /* TariffsPageInteractor.swift in Sources */,
 				C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */,
 				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
 				C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */,
@@ -500,6 +515,7 @@
 				C47892D4267F980F00B4C737 /* TariffsCollectionViewCell.swift in Sources */,
 				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
 				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
+				C48AF0EA268CAECA006B3421 /* TariffsActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

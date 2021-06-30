@@ -28,18 +28,17 @@ class TariffsViewController: UIViewController {
     var userID: String?
     var tarrifsButtonArray: [UIButton] = []
     var indexVC = 0
-  
-    let tariffsInteractor = TariffsInteractor()
+    var linespacing: CGFloat = 5
 
+    let tariffsInteractor = TariffsInteractor()
+  
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-       
-        
+
         tarrifsButtonArray = [standartButtonOutlet, premiumButtonOutlet, businessButtonOutlet]
         
         tariffsInteractor.getUserID()
@@ -48,12 +47,14 @@ class TariffsViewController: UIViewController {
         setupSmallTariffButtons()
         setupCarsTypeLabel()
         setupTarifInfoLabels()
+        setupTaxiOrderButton()
         
         getTariffsData()
     }
     
     // MARK: - Setups Methods
     
+    //Задаем параметры внешнего вида указателей тарифного плана
     private func setupSmallTariffButtons() {
         
         let tarrifsButtonArray = [standartButtonOutlet, premiumButtonOutlet, businessButtonOutlet]
@@ -62,11 +63,12 @@ class TariffsViewController: UIViewController {
             button.tariffsSmallStyle()
             button.backgroundColor = TariffsColors.grayButtonColor.value
         }
-        standartButtonOutlet.setTitle("Стандарт", for: .normal)
-        premiumButtonOutlet.setTitle("Премиум", for: .normal)
-        businessButtonOutlet.setTitle("Бизнес", for: .normal)
+        standartButtonOutlet.setTitle(TariffsViewText.standartLabel.text(), for: .normal)
+        premiumButtonOutlet.setTitle(TariffsViewText.premiumLabel.text(), for: .normal)
+        businessButtonOutlet.setTitle(TariffsViewText.businessLabel.text(), for: .normal)
     }
     
+    //Задаем параметры внешнего вида лейбла с перечнем Автомобилей
     private func setupCarsTypeLabel() {
         let carsTypeLabelArray = [carLabel, carTypeLabel]
         for label in carsTypeLabelArray {
@@ -74,20 +76,30 @@ class TariffsViewController: UIViewController {
             label.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.small.rawValue)
         }
         carLabel.textColor = TariffsColors.grayLabelColor.value
-        carLabel.text = "Автомобили:"
+        carLabel.text = TariffsViewText.carLabel.text()
         carTypeLabel.textColor = TariffsColors.black.value
-        carTypeLabel.text = ""
+        carTypeLabel.text = TariffsViewText.emptyText.text()
     }
     
+    //Задаем параметры внешнего вида информационного поля О Тарифе
     private func setupTarifInfoLabels() {
         tarrifInfoHeading.font = UIFont(name: MainTextFont.main.rawValue, size: TariffsFontSize.big.rawValue)
         tarrifInfoHeading.textColor = TariffsColors.black.value
-        tarrifInfoHeading.text = "О тарифах"
-        tariffInfoText.text = ""
+        tarrifInfoHeading.text = TariffsViewText.aboutTariffs.text()
+        tariffInfoText.text = TariffsViewText.emptyText.text()
+    }
+    
+    //Задаем внешний вид кнопки Далее
+    private func setupTaxiOrderButton() {
+        
+        orderTaxiButtonOutlet.style()
+        orderTaxiButtonOutlet.backgroundColor = TariffsColors.blueColor.value
+        orderTaxiButtonOutlet.setTitle(TariffsViewText.taxiOrderButton.text(), for: .normal)
     }
     
     // MARK: - Methods
     
+    //Размещаем полученные данные с сервера в нужные места
     func getTariffsData() {
         
         guard let id = userID else { return }
@@ -99,53 +111,35 @@ class TariffsViewController: UIViewController {
                 
                 guard let indexVC = self?.indexVC else { return }
                 
+                self?.tariffsInteractor.getAdvantagesDatas(model: tariffsData[indexVC].advantages)
+
                 self?.carTypeLabel.text = tariffsData[indexVC].cars
-                
-                if let image = self?.tariffsInteractor.getImage(from: tariffsData[indexVC].icon) {
-                    self?.carImage.image = image
-                }
-                
                 self?.tariffInfoText.tariffsInfoStyle(text: tariffsData[indexVC].description)
+                
+                self?.tariffsInteractor.getImage(from: tariffsData[indexVC].icon, completion: { image in
+                    self?.carImage.image = image
+                    self?.collectionView.reloadData()
+
+                })
             }
         }
     }
-}
 
-extension TariffsViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) //as! TariffsCollectionViewCell
-        
-//        cell.cellImageView.image = UIImage(named: "checkBtnOn")
-//        cell.cellLabel.text = "Allways have baby seat"
-        
-        return cell
-    }
-    
-
-    
-    
-}
-
-
-extension TariffsViewController: UICollectionViewDelegateFlowLayout {
-
-    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//
-//        let linespacing: CGFloat = 5
-//        let numberOfCell: CGFloat = 3   //you need to give a type as CGFloat
-//        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
-//        return CGSize(width: cellWidth - linespacing, height: cellWidth - linespacing)
-        
-        let size = CGSize(width: 30, height: 30)
-        print(size)
-        
-        return size
+    //Задаем цветовое оформление согласно выбранному тарифу
+    func setTariffsColor(for cell: TariffsCollectionViewCell) {
+        switch indexVC {
+        case 0:
+            cell.cellImageButton.tintColor = TariffsColors.standartColor.value
+            topLineLabel.backgroundColor = TariffsColors.standartColor.value
+            standartButtonOutlet.backgroundColor = TariffsColors.standartColor.value
+        case 1:
+            cell.cellImageButton.tintColor = TariffsColors.premiumColor.value
+            topLineLabel.backgroundColor = TariffsColors.premiumColor.value
+            premiumButtonOutlet.backgroundColor = TariffsColors.premiumColor.value
+        default:
+            cell.cellImageButton.tintColor = TariffsColors.businessColor.value
+            topLineLabel.backgroundColor = TariffsColors.businessColor.value
+            businessButtonOutlet.backgroundColor = TariffsColors.businessColor.value
+        }
     }
 }

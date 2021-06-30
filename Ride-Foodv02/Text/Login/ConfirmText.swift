@@ -19,10 +19,6 @@ enum ConfirmText {
     
     func text() -> String {
         
-        //создать переменную через lazy в extension
-//        let userSettings = UserDefaultsManager.userSettings
-//        let languageCode = userSettings?.userLanguage
-        
         switch UserDefaultsManager().getLanguage() {
         case "rus":
             return rusText()

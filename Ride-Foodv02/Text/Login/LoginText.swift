@@ -48,11 +48,3 @@ enum LoginText {
         }
     }
 }
-
-//Текс не нуждающийся в переводе
-enum LoginConstantText: String {
-    case licenseLink = "https://www.google.com/"
-    case phonePrefix = "+7"
-    case phoneFormatFull = "+# (###) ###-##-##"
-    case phoneFormatEasy = "###########"
-}

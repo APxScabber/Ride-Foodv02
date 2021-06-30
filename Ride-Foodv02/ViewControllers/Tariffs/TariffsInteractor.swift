@@ -12,6 +12,12 @@ class TariffsInteractor {
     
     var userID: String?
     
+    var advantagesIconsArray = [UIImage]()
+    var advantagesTitlesArray = [String]()
+    
+    private let utilityQueue = DispatchQueue.global(qos: .utility)
+    private let cache = NSCache<NSURL, UIImage>()
+    
     init() {
     }
     
@@ -62,15 +68,42 @@ class TariffsInteractor {
     }
     
     //Получаем картинку машины с сервера
-    func getImage(from server: String) -> UIImage? {
-        
-        var image: UIImage?
-        guard let url = URL(string: server) else { return nil }
-        
-        if let data = NSData(contentsOf: url) {
-            image = UIImage(data: data as Data)
+    func getImage(from server: String, completion: @escaping (UIImage?) -> Void) {
+
+        utilityQueue.async {
+            
+            guard let stringServer = NSURL(string: server) else { return }
+            
+            guard let url = URL(string: server) else { return }
+            
+            guard let data = try? Data(contentsOf: url) else { return }
+            guard let image = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                if let cachedImage = self.cache.object(forKey: stringServer) {
+                    print("Using a cached image")
+                    completion(cachedImage)
+                } else {
+                    self.cache.setObject(image, forKey: stringServer)
+                    //DispatchQueue.main.async {
+                        print("Using a original image")
+                        completion(image)
+                    //}
+                }
+            }
         }
-        
-        return image
+    }
+    
+    //Формируем массивы картинок и описания дополнительных опций в тарифе
+    func getAdvantagesDatas(model: [AdvantagesModel]) {
+
+        for data in model {
+            
+            getImage(from: data.icon) { image in
+                guard let image = image else { return }
+                self.advantagesIconsArray.append(image)
+                self.advantagesTitlesArray.append(data.name)
+            }
+        }
     }
 }

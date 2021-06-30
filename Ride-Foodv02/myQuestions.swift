@@ -7,3 +7,4 @@
 
 import Foundation
 
+#warning("как работает return если в методе испльзуется функция с completion")
