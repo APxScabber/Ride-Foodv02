@@ -48,6 +48,34 @@ class PromotionsFetcher {
     }
     }
     
+    static func getPromotionDescriptionWith(id:Int, _ completion: @escaping ( (String) -> () )) {
+        CoreDataManager.shared.fetchCoreData { result in
+        switch result {
+            case .success(let model):
+                let userData = model.first
+                if let userID = userData?.id as? Int,
+                   let url = URL(string: "https://skillbox.cc/api/user/\(userID)/promotion/\(id)") {
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        let session = URLSession(configuration: .default)
+                        let request = URLRequest(url: url)
+                        let task = session.dataTask(with: request ) { data,responce,error in
+                            if let data = data,
+                               let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+                               let dict = json as? [String:Any],
+                               let dictData = dict["data"] as? [String:Any],
+                               let desc = dictData["description"] as? String {
+                                DispatchQueue.main.async {
+                                    completion(desc)
+                                }
+                            }
+                        }
+                        task.resume()
+                    }
+                }
+        default:break
+            }
+        }
+    }
      enum PromotionType: String {
         case food = "food"
         case taxi = "taxi"

@@ -15,6 +15,9 @@ class PromotionDetail: UIView {
     @IBOutlet weak var headerLabel: UILabel! { didSet {
         headerLabel.font = UIFont.SFUIDisplayBold(size: 26)
     }}
+    @IBOutlet weak var descriptionLabel: UILabel! { didSet {
+        descriptionLabel.font = UIFont.SFUIDisplayRegular(size: 15)
+    }}
     @IBOutlet weak var errorDescriptionLabel: UILabel! { didSet {
         errorDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
         errorDescriptionLabel.isHidden = true

@@ -75,6 +75,7 @@
 		78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A016267B57D7006D0DAB /* LoginActions.swift */; };
 		78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A017267B57D7006D0DAB /* LoginViewController.swift */; };
 		78A3A022267B57E1006D0DAB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A020267B57E1006D0DAB /* MainViewController.swift */; };
+		78A4028D268C993C00B4EFE1 /* Promocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4028C268C993C00B4EFE1 /* Promocode.swift */; };
 		78AEB86F267B589D0023605D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AEB86E267B589D0023605D /* Main.storyboard */; };
 		78AEB87B267B59C10023605D /* LoginVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB875267B59C10023605D /* LoginVCExtension.swift */; };
 		78AEB87C267B59C10023605D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB876267B59C10023605D /* StringExtension.swift */; };
@@ -176,6 +177,7 @@
 		78A3A016267B57D7006D0DAB /* LoginActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginActions.swift; sourceTree = "<group>"; };
 		78A3A017267B57D7006D0DAB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78A3A020267B57E1006D0DAB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		78A4028C268C993C00B4EFE1 /* Promocode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promocode.swift; sourceTree = "<group>"; };
 		78AEB86E267B589D0023605D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		78AEB875267B59C10023605D /* LoginVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCExtension.swift; sourceTree = "<group>"; };
 		78AEB876267B59C10023605D /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				787140C5268637E6007834ED /* Promocode.storyboard */,
 				787140C726863B99007834ED /* PromocodeMainTableViewController.swift */,
 				787140C9268640CD007834ED /* EnterPromocodeViewController.swift */,
+				78A4028C268C993C00B4EFE1 /* Promocode.swift */,
 				78D3DF452686414B0028A66B /* PromocodeToolbar.xib */,
 				78D3DF472686415C0028A66B /* PromocodeToolbar.swift */,
 			);
@@ -703,6 +706,7 @@
 				78A39FF4267B568E006D0DAB /* UserDataModel.xcdatamodeld in Sources */,
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
 				78BE49FA26834BA400A13641 /* ImageFetcher.swift in Sources */,
+				78A4028D268C993C00B4EFE1 /* Promocode.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,

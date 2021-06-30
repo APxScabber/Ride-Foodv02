@@ -72,6 +72,12 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJs-bl-TMV">
+                            <rect key="frame" x="25" y="133" width="364" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -81,14 +87,18 @@
                         <constraint firstItem="5Ed-oT-Img" firstAttribute="top" secondItem="tj1-9r-wKx" secondAttribute="bottom" constant="13" id="Au7-WI-yjy"/>
                         <constraint firstItem="J1q-PF-WVe" firstAttribute="leading" secondItem="6oD-jo-NyR" secondAttribute="leading" constant="25" id="DaL-VM-9h3"/>
                         <constraint firstAttribute="trailing" secondItem="J1q-PF-WVe" secondAttribute="trailing" constant="25" id="KaZ-bX-RvC"/>
+                        <constraint firstAttribute="trailing" secondItem="oJs-bl-TMV" secondAttribute="trailing" constant="25" id="O7d-wD-KSG"/>
+                        <constraint firstItem="oJs-bl-TMV" firstAttribute="top" secondItem="5Ed-oT-Img" secondAttribute="bottom" constant="20" id="UC5-43-LDe"/>
                         <constraint firstItem="Xj8-bq-HwZ" firstAttribute="leading" secondItem="6oD-jo-NyR" secondAttribute="leading" constant="25" id="WfV-yz-QjT"/>
                         <constraint firstItem="tj1-9r-wKx" firstAttribute="top" secondItem="Jea-UD-Fry" secondAttribute="top" constant="15" id="Y0X-6C-8VQ"/>
+                        <constraint firstItem="oJs-bl-TMV" firstAttribute="leading" secondItem="6oD-jo-NyR" secondAttribute="leading" constant="25" id="ZpU-23-6me"/>
                         <constraint firstAttribute="bottom" secondItem="Jea-UD-Fry" secondAttribute="bottom" id="cqG-yq-3Uy"/>
                         <constraint firstItem="Jea-UD-Fry" firstAttribute="leading" secondItem="tj1-9r-wKx" secondAttribute="leading" constant="-25" id="deT-gF-GJM"/>
                         <constraint firstItem="Jea-UD-Fry" firstAttribute="top" secondItem="6oD-jo-NyR" secondAttribute="top" id="kMy-2A-oHF"/>
                         <constraint firstItem="J1q-PF-WVe" firstAttribute="top" secondItem="Xj8-bq-HwZ" secondAttribute="bottom" constant="9" id="lcs-Fv-G2R"/>
                         <constraint firstItem="Jea-UD-Fry" firstAttribute="leading" secondItem="6oD-jo-NyR" secondAttribute="leading" id="ptt-65-EQ3"/>
                         <constraint firstAttribute="trailing" secondItem="Xj8-bq-HwZ" secondAttribute="trailing" constant="25" id="rij-15-b0H"/>
+                        <constraint firstItem="xqt-xF-WWo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oJs-bl-TMV" secondAttribute="bottom" id="wab-dR-bnf"/>
                     </constraints>
                 </view>
                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elt-tY-0Pa">
@@ -114,6 +124,7 @@
                 <outlet property="bottomConstraint" destination="7sk-gY-ggw" id="FG6-JT-OVA"/>
                 <outlet property="buyButton" destination="xqt-xF-WWo" id="kqx-Nm-IpK"/>
                 <outlet property="buyButtonView" destination="Xj8-bq-HwZ" id="63G-VJ-ZgP"/>
+                <outlet property="descriptionLabel" destination="oJs-bl-TMV" id="omi-18-D8Q"/>
                 <outlet property="errorDescriptionLabel" destination="J1q-PF-WVe" id="dcX-mK-u0t"/>
                 <outlet property="headerLabel" destination="5Ed-oT-Img" id="LN3-ek-aXR"/>
                 <outlet property="imageView" destination="Jea-UD-Fry" id="8vJ-zh-QeL"/>

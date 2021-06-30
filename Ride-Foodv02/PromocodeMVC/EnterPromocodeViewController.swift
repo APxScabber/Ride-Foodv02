@@ -2,6 +2,21 @@ import UIKit
 
 class EnterPromocodeViewController: UIViewController {
 
+    @IBOutlet weak var checkmarkButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton! { didSet {
+        doneButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+    }}
+    @IBOutlet weak var roundedView: RoundedView! { didSet {
+        roundedView.cornerRadius = 15.0
+        roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+    }}
+    @IBOutlet weak var promocodeLabel: UILabel! { didSet {
+        promocodeLabel.font = UIFont.SFUIDisplaySemibold(size: 17)
+    }}
+    @IBOutlet weak var promocodeDescriptionLabel: UILabel! { didSet {
+        promocodeDescriptionLabel.font = UIFont.SFUIDisplayLight(size: 17)
+    }}
+    @IBOutlet weak var imageView: UIImageView!
     private var promocodeToolbar = PromocodeToolbar.initFromNib()
     
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
@@ -43,8 +58,17 @@ class EnterPromocodeViewController: UIViewController {
 
 extension EnterPromocodeViewController: PromocodeToolbarDelegate {
     
-    func activatePromocode() {
+    func activate(promocode: String) {
+        imageView.isHidden = true
+        roundedView.isHidden = false
+        checkmarkButton.isHidden = false
+        promocodeLabel.isHidden = false
+        promocodeDescriptionLabel.isHidden = false
         promocodeToolbar.dismiss()
+        Promocode.post(code: promocode) { [weak self] in
+            self?.promocodeDescriptionLabel.text = $0
+        }
     }
     
+   
 }
