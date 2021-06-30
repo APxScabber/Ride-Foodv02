@@ -108,13 +108,63 @@
                                     <constraint firstAttribute="width" secondItem="q0P-PQ-BXN" secondAttribute="height" multiplier="1:1" id="84W-S9-43s"/>
                                 </constraints>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihE-S3-laH">
+                                <rect key="frame" x="182" y="396" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cQe-EN-L9H"/>
+                                    <constraint firstAttribute="width" constant="50" id="zLa-8u-tQd"/>
+                                </constraints>
+                                <state key="normal" image="DoneButton"/>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Промокод активирован" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRd-Lb-l4T">
+                                <rect key="frame" x="112.5" y="457" width="189" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgq-yn-8aL">
+                                <rect key="frame" x="50" y="485" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSc-uj-xcc" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="25" y="733" width="364" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnd-6a-Jhm">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                        <state key="normal" title="Отлично!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4BP-T6-1Cd"/>
+                                    <constraint firstItem="Gnd-6a-Jhm" firstAttribute="leading" secondItem="wSc-uj-xcc" secondAttribute="leading" id="8to-47-fAP"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gnd-6a-Jhm" secondAttribute="bottom" id="TXJ-bk-AHx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gnd-6a-Jhm" secondAttribute="trailing" id="V4J-AY-WRf"/>
+                                    <constraint firstItem="Gnd-6a-Jhm" firstAttribute="top" secondItem="wSc-uj-xcc" secondAttribute="top" id="tAW-IO-ty2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zwu-Or-X1A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="yRd-Lb-l4T" firstAttribute="top" secondItem="ihE-S3-laH" secondAttribute="bottom" constant="11" id="5U5-BR-SC2"/>
+                            <constraint firstItem="ihE-S3-laH" firstAttribute="centerY" secondItem="axx-5m-n90" secondAttribute="centerY" id="BHY-xa-3eN"/>
+                            <constraint firstItem="wSc-uj-xcc" firstAttribute="leading" secondItem="zwu-Or-X1A" secondAttribute="leading" constant="25" id="ZfH-RZ-PAH"/>
+                            <constraint firstItem="ihE-S3-laH" firstAttribute="centerX" secondItem="axx-5m-n90" secondAttribute="centerX" id="bKl-4L-CNy"/>
                             <constraint firstItem="q0P-PQ-BXN" firstAttribute="trailing" secondItem="zwu-Or-X1A" secondAttribute="trailing" id="e4h-SF-gmr"/>
+                            <constraint firstItem="Tgq-yn-8aL" firstAttribute="leading" secondItem="zwu-Or-X1A" secondAttribute="leading" constant="50" id="lKH-D2-KUz"/>
                             <constraint firstItem="q0P-PQ-BXN" firstAttribute="top" secondItem="zwu-Or-X1A" secondAttribute="top" id="m6e-6c-DqY"/>
+                            <constraint firstItem="Tgq-yn-8aL" firstAttribute="top" secondItem="yRd-Lb-l4T" secondAttribute="bottom" constant="7" id="mae-Hu-WQ4"/>
+                            <constraint firstItem="yRd-Lb-l4T" firstAttribute="centerX" secondItem="axx-5m-n90" secondAttribute="centerX" id="n16-HR-dow"/>
+                            <constraint firstAttribute="bottom" secondItem="wSc-uj-xcc" secondAttribute="bottom" constant="59" id="sqE-jl-XEC"/>
                             <constraint firstItem="q0P-PQ-BXN" firstAttribute="leading" secondItem="zwu-Or-X1A" secondAttribute="leading" id="uid-Jp-2fw"/>
+                            <constraint firstItem="zwu-Or-X1A" firstAttribute="trailing" secondItem="wSc-uj-xcc" secondAttribute="trailing" constant="25" id="v2U-Tm-Fbe"/>
+                            <constraint firstItem="zwu-Or-X1A" firstAttribute="trailing" secondItem="Tgq-yn-8aL" secondAttribute="trailing" constant="50" id="vDZ-jn-vPe"/>
+                            <constraint firstItem="Tgq-yn-8aL" firstAttribute="centerX" secondItem="axx-5m-n90" secondAttribute="centerX" id="xfC-3y-Pdq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ввести промокод" id="E5C-nd-EzP">
@@ -125,6 +175,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="checkmarkButton" destination="ihE-S3-laH" id="p8A-GH-ROB"/>
+                        <outlet property="doneButton" destination="Gnd-6a-Jhm" id="l1Y-hR-Nsg"/>
+                        <outlet property="imageView" destination="q0P-PQ-BXN" id="20d-p6-7ep"/>
+                        <outlet property="promocodeDescriptionLabel" destination="Tgq-yn-8aL" id="RDO-gh-We0"/>
+                        <outlet property="promocodeLabel" destination="yRd-Lb-l4T" id="zqs-O3-TmP"/>
+                        <outlet property="roundedView" destination="wSc-uj-xcc" id="Ctl-GC-nmx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yKZ-lq-8qF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,6 +191,7 @@
     </scenes>
     <resources>
         <image name="BackButton" width="10" height="17"/>
+        <image name="DoneButton" width="50" height="50"/>
         <image name="PromocodeBackground" width="375" height="374.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

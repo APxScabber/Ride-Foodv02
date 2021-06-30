@@ -3,7 +3,8 @@ import UIKit
 class PromotionListTableViewController: UITableViewController {
 
     private(set) var promotions = [Promotion]()
-    
+    private let promotionView = PromotionDetail.initFromNib()
+
     var promotionType: PromotionsFetcher.PromotionType = .food { didSet {
         navigationItem.title = PromotionConstant.promotion + " " + promotionType.rawValue.localized.lowercased()
     }}
@@ -15,11 +16,9 @@ class PromotionListTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         PromotionsFetcher.fetch(promotionType) { [weak self] result in
             self?.promotions = result
             self?.tableView.reloadData()
-            
         }
     }
     
@@ -44,7 +43,6 @@ class PromotionListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    private let promotionView = PromotionDetail.initFromNib()
     
     private func showPromotionViewAt(_ index:Int) {
         if let window = UIApplication.shared.keyWindow {
@@ -57,6 +55,9 @@ class PromotionListTableViewController: UITableViewController {
             promotionView.headerLabel.text = currentPromotion.title
             ImageFetcher.fetch(currentPromotion.imagesURL[0]) { data in
                 self.promotionView.imageView.image = UIImage(data: data)
+            }
+            PromotionsFetcher.getPromotionDescriptionWith(id: promotions[index].id) { [weak self] in
+                self?.promotionView.descriptionLabel.text = $0
             }
         }
 

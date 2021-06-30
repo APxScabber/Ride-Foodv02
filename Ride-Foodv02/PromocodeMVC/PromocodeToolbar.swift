@@ -1,7 +1,7 @@
 import UIKit
 
 protocol PromocodeToolbarDelegate: AnyObject {
-    func activatePromocode()
+    func activate(promocode:String)
 }
 
 //152 total height
@@ -31,7 +31,8 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
     }}
     
     @IBAction func done(_ sender: UIButton) {
-        delegate?.activatePromocode()
+        guard let code = textField.text else { return }
+        delegate?.activate(promocode: code)
     }
 
     private var promocodeEntered: Bool { textField.text?.count == 8 }
