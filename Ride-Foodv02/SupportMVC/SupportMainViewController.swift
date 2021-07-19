@@ -67,7 +67,10 @@ class SupportMainViewController: UIViewController {
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if distanceFromBottomConstraint.constant == SupportConstant.bottomConstraintValue {
             distanceFromBottomConstraint.constant += size.height
-            } else { distanceFromBottomConstraint.constant = SupportConstant.bottomConstraintValue }
+            } else {
+                distanceFromBottomConstraint.constant = SupportConstant.bottomConstraintValue
+                textView.resignFirstResponder()
+            }
         }
         
     }

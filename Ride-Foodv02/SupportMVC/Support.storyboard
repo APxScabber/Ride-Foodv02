@@ -288,9 +288,11 @@
                         <outlet property="sendButton" destination="1ao-pi-Fbu" id="3d3-JY-7qK"/>
                         <outlet property="sendButtonView" destination="WPh-iB-UqK" id="dQq-fb-EjW"/>
                         <outlet property="successLabel" destination="InE-Vk-26N" id="HPC-vc-vdY"/>
+                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="backToMenuSegue" unwindAction="unwind:" id="hIH-KS-NGM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AS6-oB-Xce" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="SMy-hu-3eV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="79.6875"/>
         </scene>
