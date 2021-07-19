@@ -35,4 +35,9 @@ class MenuTableViewController: UITableViewController {
         promotionLabel.text = MenuConstant.promotions
     }
     
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        
+    }
+    
 }

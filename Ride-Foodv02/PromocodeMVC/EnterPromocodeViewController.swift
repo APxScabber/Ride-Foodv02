@@ -65,7 +65,7 @@ extension EnterPromocodeViewController: PromocodeToolbarDelegate {
         promocodeLabel.isHidden = false
         promocodeDescriptionLabel.isHidden = false
         promocodeToolbar.dismiss()
-        Promocode.post(code: promocode) { [weak self] in
+        PromocodeActivator.post(code: promocode) { [weak self] in
             self?.promocodeDescriptionLabel.text = $0
         }
     }
