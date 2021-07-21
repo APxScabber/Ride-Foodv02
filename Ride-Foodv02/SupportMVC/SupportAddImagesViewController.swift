@@ -63,7 +63,7 @@ class SupportAddImagesViewController: UIViewController {
             roundedView.color = .clear
             collectionView.removeFromSuperview()
         } else {
-            performSegue(withIdentifier: "backToMenuSegue", sender: sender)
+            performSegue(withIdentifier: "goToMainScreen", sender: sender)
         }
     }
     

@@ -11,15 +11,26 @@ class MainScreenViewController: UIViewController {
         let region = MKCoordinateRegion(center: center, span: span)
         mapView.setRegion(region, animated: false)
     }}
+    @IBOutlet weak var transparentView: UIView! { didSet {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenuView(_:)))
+        transparentView.addGestureRecognizer(tapGesture)
+    }}
     
+    private let menuView = MenuView.initFromNib()
     // MARK: - IBActions
     
     @IBAction func goToMenu(_ sender: MenuButton) {
-        
-        
-        
+        transparentView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: MainScreenConstants.durationForAppearingMenuView,
+            delay: 0.0,
+            options: .curveLinear,
+            animations: { self.menuView.frame.origin.x += self.view.bounds.width }) {
+            if $0 == .end { self.menuView.isVisible = true }
+        }
     }
     
+    @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
     
     // MARK: - Properties
 
@@ -28,6 +39,8 @@ class MainScreenViewController: UIViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuView.delegate = self
+        view.addSubview(menuView)
         
         CoreDataManager.shared.fetchCoreData { [weak self] result in
             
@@ -46,6 +59,13 @@ class MainScreenViewController: UIViewController {
         
         guard let id = userID else { return }
         loadTariffs(userID: id)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !menuView.isVisible {
+            menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
+        }
     }
     
     func loadTariffs(userID: String) {
@@ -75,4 +95,37 @@ class MainScreenViewController: UIViewController {
         
         return finalUrl
     }
+    
+    @objc
+    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            close()
+        }
+    }
+    
+}
+
+
+extension MainScreenViewController: MenuViewDelegate {
+
+    func close() {
+        transparentView.isHidden = true
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: MainScreenConstants.durationForDisappearingMenuView,
+            delay: 0.0,
+            options: .curveLinear,
+            animations: { self.menuView.frame.origin.x -= self.view.bounds.width }) {
+            if $0 == .end { self.menuView.isVisible = false }
+        }
+    }
+    
+    func goToStoryboard(_ name:String) {
+        let storyboard = UIStoryboard(name: name, bundle: .main)
+        if let supportVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+            supportVC.modalPresentationStyle = .fullScreen
+            supportVC.modalTransitionStyle = .coverVertical
+            present(supportVC, animated: true)
+        }
+    }
+    
 }

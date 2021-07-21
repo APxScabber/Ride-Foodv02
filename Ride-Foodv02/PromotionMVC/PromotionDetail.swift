@@ -29,6 +29,8 @@ class PromotionDetail: UIView {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     @IBAction func dismiss(_ sender: UIButton) {
+        bottomConstraint.constant = 10.0
+        errorDescriptionLabel.isHidden = true
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PromotionConstant.durationForAppearingPromotionView, delay: 0.0, options: .curveLinear) {
             self.frame.origin.y += self.bounds.height
         }
@@ -38,7 +40,7 @@ class PromotionDetail: UIView {
     @IBAction func buyButtonAction(_ sender: UIButton) {
         if errorDescriptionLabel.isHidden {
             errorDescriptionLabel.isHidden = false
-            bottomConstraint.constant += errorDescriptionLabel.bounds.height
+            bottomConstraint.constant += errorDescriptionLabel.bounds.height + 9.0
         }
     }
     

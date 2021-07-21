@@ -20,6 +20,18 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dQB-4B-Q0d">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <view hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9n1-8u-98A">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcB-1E-SAY">
+                                <rect key="frame" x="344" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4bN-jo-qxl"/>
+                                    <constraint firstAttribute="width" constant="50" id="I0y-Q4-IvE"/>
+                                </constraints>
+                                <state key="normal" image="People"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3X-Kz-mo5" customClass="MenuButton" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="20" y="64" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,43 +42,43 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <connections>
                                     <action selector="goToMenu:" destination="5Od-VF-nnY" eventType="touchUpInside" id="hKm-US-6hH"/>
-                                    <segue destination="jZA-EP-QPm" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="tdd-cw-cbz"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w74-1d-16d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="w74-1d-16d" firstAttribute="trailing" secondItem="BcB-1E-SAY" secondAttribute="trailing" constant="20" id="0g5-35-vdE"/>
+                            <constraint firstItem="BcB-1E-SAY" firstAttribute="top" secondItem="w74-1d-16d" secondAttribute="top" constant="20" id="3yX-fd-hjL"/>
+                            <constraint firstItem="w74-1d-16d" firstAttribute="trailing" secondItem="9n1-8u-98A" secondAttribute="trailing" id="9A5-UM-PYk"/>
+                            <constraint firstItem="9n1-8u-98A" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" id="Ock-os-Mgv"/>
                             <constraint firstItem="dQB-4B-Q0d" firstAttribute="top" secondItem="Wcw-4o-SMS" secondAttribute="top" id="Pld-HN-1xK"/>
                             <constraint firstAttribute="bottom" secondItem="dQB-4B-Q0d" secondAttribute="bottom" id="Qo6-tU-rGU"/>
+                            <constraint firstAttribute="bottom" secondItem="9n1-8u-98A" secondAttribute="bottom" id="VnT-3w-WFk"/>
                             <constraint firstItem="H3X-Kz-mo5" firstAttribute="top" secondItem="w74-1d-16d" secondAttribute="top" constant="20" id="ZsE-Rz-Ugb"/>
                             <constraint firstItem="H3X-Kz-mo5" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" constant="20" id="bx8-Q3-fhr"/>
                             <constraint firstItem="dQB-4B-Q0d" firstAttribute="trailing" secondItem="w74-1d-16d" secondAttribute="trailing" id="cHA-Lh-Wvc"/>
+                            <constraint firstItem="9n1-8u-98A" firstAttribute="top" secondItem="Wcw-4o-SMS" secondAttribute="top" id="kdR-wK-VTz"/>
                             <constraint firstItem="dQB-4B-Q0d" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" id="rXx-aB-5wq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="dQB-4B-Q0d" id="yQ1-jo-drB"/>
+                        <outlet property="transparentView" destination="9n1-8u-98A" id="tBg-Au-u7o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rty-fQ-cBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-444.92753623188412" y="72.991071428571431"/>
         </scene>
-        <!--Menu-->
-        <scene sceneID="gDl-wE-9MV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Menu" id="jZA-EP-QPm" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="YOx-8G-695"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Aa3-cO-CLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="239" y="73"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="People" width="60" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
