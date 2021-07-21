@@ -12,6 +12,7 @@ import CoreData
 class CoreDataManager {
     
     static var shared = CoreDataManager()
+    var isLogin: Bool?
     
     private lazy var context = persistentContainer.viewContext
     
@@ -25,43 +26,21 @@ class CoreDataManager {
         
         let fetchContext = CoreDataManager.shared.context
 
-            do {
+           // do {
                 
                 let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
                 let result = try! fetchContext.fetch(fetchRequest)
 
                 if result.isEmpty {
-
-                    let userDefaultSettings = UserDefaultsManager.userSettings
-                    let language = userDefaultSettings?.userLanguage
-
-                    let userSettings = UserSettingsMO(context: fetchContext)
-                    
-                    userSettings.language = language
-                    userSettings.do_not_call = false
-                    userSettings.notification_discount = false
-                    userSettings.update_mobile_network = false
-                    
-                    let userData = UserDataMO(context: fetchContext)
-                    
-                    userData.id = nil
-                    userData.name = ""
-                    userData.email = ""
-                    userData.create_at = nil
-                    userData.update_at = nil
-                    userData.delete_at = nil
-                    
-                    userData.settings = userSettings
-                    
-                    try fetchContext.save()
+                    isLogin = false
                 } else {
-                    
-                completion(.success(result))
+                    isLogin = true
+                    completion(.success(result))
                 }
-            } catch {
-            
-                completion(.failure(error))
-            }
+//            } catch {
+//
+//                completion(.failure(error))
+//            }
     }
 
     //Мкетод сохранения данных в Core Data

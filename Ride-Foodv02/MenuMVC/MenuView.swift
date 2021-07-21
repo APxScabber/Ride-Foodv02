@@ -31,6 +31,7 @@ class MenuView: UIView {
     }
     
     @IBAction func goToPayment(_ sender: UIButton) {
+        delegate?.goToStoryboard("PaymentWays")
     }
     
     @IBAction func goToTarrifs(_ sender: UIButton) {
