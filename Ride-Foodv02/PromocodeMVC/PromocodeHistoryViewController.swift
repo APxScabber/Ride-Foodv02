@@ -6,9 +6,12 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var segmentedControl: UISegmentedControl! { didSet {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
     }}
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var infoLabel: UILabel! { didSet {
+        infoLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
     var showActivePromocode: Bool { segmentedControl.selectedSegmentIndex == 0 }
     
     override func viewDidLoad() {
@@ -18,7 +21,7 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
     
 
     @IBAction func goBack(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,6 +62,8 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
     @objc
     private func segmentedControlChanged() {
         tableView.reloadData()
+        infoLabel.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
+        tableViewTopConstraint.constant = segmentedControl.selectedSegmentIndex == 0 ? 67 : 0
     }
     
 }

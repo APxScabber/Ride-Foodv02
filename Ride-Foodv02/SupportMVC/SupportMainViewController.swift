@@ -28,7 +28,7 @@ class SupportMainViewController: UIViewController {
     }}
     //MARK: - IBActions
     @IBAction func dismiss(_ sender:UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     //MARK: - ViewController lifecycle

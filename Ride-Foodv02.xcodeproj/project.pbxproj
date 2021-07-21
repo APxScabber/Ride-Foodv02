@@ -10,6 +10,7 @@
 		7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7802DFAF267CA0120048CF1C /* Localizable.strings */; };
 		7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFB1267CAA680048CF1C /* MenuConstant.swift */; };
 		7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */; };
+		7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39626A6F31E00335DFA /* MainScreenConstants.swift */; };
 		7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7850E8F126739C8300AA88CA /* Promotion.storyboard */; };
 		7850E8F426739D4400AA88CA /* PromotionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8F326739D4400AA88CA /* PromotionsTableViewController.swift */; };
 		7850E8F626739E6800AA88CA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8F526739E6800AA88CA /* Settings.swift */; };
@@ -60,7 +61,6 @@
 		78A39FF7267B568E006D0DAB /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FF2267B568E006D0DAB /* UserDataMO+CoreDataClass.swift */; };
 		78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FF9267B56A3006D0DAB /* ConfirmModel.swift */; };
 		78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FFA267B56A3006D0DAB /* RegistrationModel.swift */; };
-		78A39FFE267B56B9006D0DAB /* myQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FFD267B56B9006D0DAB /* myQuestions.swift */; };
 		78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A000267B56CB006D0DAB /* UrlList.swift */; };
 		78A3A006267B56E1006D0DAB /* LoginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A004267B56E1006D0DAB /* LoginText.swift */; };
 		78A3A007267B56E1006D0DAB /* ConfirmText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A3A005267B56E1006D0DAB /* ConfirmText.swift */; };
@@ -100,6 +100,8 @@
 		78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BE4A0326837B8E00A13641 /* PromotionDetail.xib */; };
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
 		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
+		78CE749126A6E064006C3417 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE749026A6E064006C3417 /* MenuView.xib */; };
+		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
 		78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3DF472686415C0028A66B /* PromocodeToolbar.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
@@ -116,6 +118,7 @@
 		7802DFB0267CA0FC0048CF1C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7802DFB1267CAA680048CF1C /* MenuConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConstant.swift; sourceTree = "<group>"; };
 		7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoConstant.swift; sourceTree = "<group>"; };
+		7841E39626A6F31E00335DFA /* MainScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConstants.swift; sourceTree = "<group>"; };
 		7850E8F126739C8300AA88CA /* Promotion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promotion.storyboard; sourceTree = "<group>"; };
 		7850E8F326739D4400AA88CA /* PromotionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsTableViewController.swift; sourceTree = "<group>"; };
 		7850E8F526739E6800AA88CA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -166,7 +169,6 @@
 		78A39FF2267B568E006D0DAB /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		78A39FF9267B56A3006D0DAB /* ConfirmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmModel.swift; sourceTree = "<group>"; };
 		78A39FFA267B56A3006D0DAB /* RegistrationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
-		78A39FFD267B56B9006D0DAB /* myQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myQuestions.swift; sourceTree = "<group>"; };
 		78A3A000267B56CB006D0DAB /* UrlList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlList.swift; sourceTree = "<group>"; };
 		78A3A004267B56E1006D0DAB /* LoginText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginText.swift; sourceTree = "<group>"; };
 		78A3A005267B56E1006D0DAB /* ConfirmText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmText.swift; sourceTree = "<group>"; };
@@ -206,6 +208,8 @@
 		78BE4A0326837B8E00A13641 /* PromotionDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionDetail.xib; sourceTree = "<group>"; };
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
 		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		78CE749026A6E064006C3417 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
+		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
 		78D3DF472686415C0028A66B /* PromocodeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeToolbar.swift; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				7867B4CF267228700031BFA0 /* Menu.storyboard */,
+				78CE749026A6E064006C3417 /* MenuView.xib */,
+				78CE749226A6E073006C3417 /* MenuView.swift */,
 				7802DFB1267CAA680048CF1C /* MenuConstant.swift */,
 				7850E8F72673B95800AA88CA /* MenuTableViewController.swift */,
 			);
@@ -344,6 +350,7 @@
 			children = (
 				7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */,
 				7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */,
+				7841E39626A6F31E00335DFA /* MainScreenConstants.swift */,
 				7850E8FF2674DFBE00AA88CA /* MenuButton.swift */,
 			);
 			path = MainScreenMVC;
@@ -570,7 +577,6 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
-				78A39FFD267B56B9006D0DAB /* myQuestions.swift */,
 				78A39FE6267B5659006D0DAB /* Models */,
 				78A39FDD267B55E1006D0DAB /* Managers */,
 				78A3A00E267B57BC006D0DAB /* ViewControllers */,
@@ -663,6 +669,7 @@
 				7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
 				7867B4D0267228700031BFA0 /* Menu.storyboard in Resources */,
+				78CE749126A6E064006C3417 /* MenuView.xib in Resources */,
 				7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */,
 				78A3A01A267B57D7006D0DAB /* Login.storyboard in Resources */,
 			);
@@ -675,6 +682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */,
 				7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */,
 				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
 				7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */,
@@ -700,7 +708,6 @@
 				78A3A006267B56E1006D0DAB /* LoginText.swift in Sources */,
 				78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */,
 				78ACFD0526A5854600C995EB /* PromocodeHistoryViewController.swift in Sources */,
-				78A39FFE267B56B9006D0DAB /* myQuestions.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
 				78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
@@ -724,6 +731,7 @@
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,
+				78CE749326A6E073006C3417 /* MenuView.swift in Sources */,
 				78A3A018267B57D7006D0DAB /* ConfirmInteractor.swift in Sources */,
 				7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */,
 				78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */,

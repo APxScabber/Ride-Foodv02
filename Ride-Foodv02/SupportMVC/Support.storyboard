@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YYW-Yu-fcZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xtq-JV-5Ak">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWK-Xk-gto" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="69" width="364" height="720"/>
+                                <rect key="frame" x="25" y="113" width="364" height="676"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-pM-Zm9">
-                                        <rect key="frame" x="10" y="10" width="344" height="702"/>
+                                        <rect key="frame" x="10" y="10" width="344" height="658"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -107,14 +107,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVr-sx-YK6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013.0434782608696" y="88.392857142857139"/>
+            <point key="canvasLocation" x="1923.1884057971015" y="88.392857142857139"/>
         </scene>
         <!--Служба поддержки-->
         <scene sceneID="dL0-4U-v0r">
             <objects>
                 <viewController id="2Jf-bz-IJY" customClass="SupportAddImagesViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8t-GD-H35">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ItP-um-WwU" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -231,7 +231,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPh-iB-UqK" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="750" width="364" height="50"/>
+                                <rect key="frame" x="25" y="804" width="364" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ao-pi-Fbu">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
@@ -288,13 +288,31 @@
                         <outlet property="sendButton" destination="1ao-pi-Fbu" id="3d3-JY-7qK"/>
                         <outlet property="sendButtonView" destination="WPh-iB-UqK" id="dQq-fb-EjW"/>
                         <outlet property="successLabel" destination="InE-Vk-26N" id="HPC-vc-vdY"/>
-                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="backToMenuSegue" unwindAction="unwind:" id="hIH-KS-NGM"/>
+                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="goToMainScreen" unwindAction="goToMainScreen:" id="1pz-Hg-IVK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AS6-oB-Xce" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="SMy-hu-3eV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1744.9275362318842" y="79.6875"/>
+            <point key="canvasLocation" x="2655.072463768116" y="79.6875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="foK-XP-ZJm">
+            <objects>
+                <navigationController storyboardIdentifier="SupportMain" automaticallyAdjustsScrollViewInsets="NO" id="Xtq-JV-5Ak" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BJg-Kh-W9M">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YYW-Yu-fcZ" kind="relationship" relationship="rootViewController" id="jWj-jo-jNX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mng-y7-0mi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013.0434782608696" y="88.392857142857139"/>
         </scene>
     </scenes>
     <resources>

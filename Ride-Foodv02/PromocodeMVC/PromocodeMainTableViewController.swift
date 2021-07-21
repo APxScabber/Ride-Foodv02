@@ -12,7 +12,7 @@ class PromocodeMainTableViewController: UITableViewController {
     }}
     
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {
