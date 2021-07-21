@@ -378,8 +378,8 @@
                                         <constraint firstAttribute="height" constant="10" id="twU-RF-kGZ"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Способ оплаты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kje-2I-vtF" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
-                                    <rect key="frame" x="64" y="13" width="123" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Способы оплаты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kje-2I-vtF" customClass="SettingsMainLabel" customModule="Ride_Foodv02" customModuleProvider="target">
+                                    <rect key="frame" x="64" y="13" width="135" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="XLp-JS-0ID"/>
                                     </constraints>

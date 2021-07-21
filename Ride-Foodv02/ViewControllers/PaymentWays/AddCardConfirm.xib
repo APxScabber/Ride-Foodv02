@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddCardConfirmView" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="235"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подтверждение" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoS-Qv-fdq">
+                    <rect key="frame" x="25" y="15" width="364" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="k9F-bv-rof"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rbt-O9-BIV">
+                    <rect key="frame" x="25" y="44" width="364" height="65"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="nqU-Rb-jjb"/>
+                    </constraints>
+                    <string key="text">Для подтверждения платёжеспособности с карты **** 2045 будет списан 1 руб. Сумма будет возвращена сразу после подтверждения из банка.</string>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNX-GV-ASE">
+                    <rect key="frame" x="25" y="119" width="364" height="50"/>
+                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="UYN-n6-CU9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                    <state key="normal" title="Подтвердить">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="confirmButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lCu-JU-Axb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7L-mo-1dO">
+                    <rect key="frame" x="25" y="175" width="364" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="LzV-Mi-yMm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                    <state key="normal" title="Отмена">
+                        <color key="titleColor" systemColor="labelColor"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="fNA-yo-Exr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TNX-GV-ASE" firstAttribute="top" secondItem="rbt-O9-BIV" secondAttribute="bottom" constant="10" id="9tJ-Le-KfW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TNX-GV-ASE" secondAttribute="trailing" constant="25" id="Abv-OD-87g"/>
+                <constraint firstItem="M7L-mo-1dO" firstAttribute="top" secondItem="TNX-GV-ASE" secondAttribute="bottom" constant="6" id="B3s-5J-99i"/>
+                <constraint firstItem="yoS-Qv-fdq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="BTJ-ye-tC7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rbt-O9-BIV" secondAttribute="trailing" constant="25" id="CHr-s8-HYe"/>
+                <constraint firstItem="rbt-O9-BIV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="RzA-Z4-v7n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="M7L-mo-1dO" secondAttribute="trailing" constant="25" id="iaJ-yS-8uO"/>
+                <constraint firstItem="M7L-mo-1dO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="j3h-OH-qVk"/>
+                <constraint firstAttribute="trailing" secondItem="yoS-Qv-fdq" secondAttribute="trailing" constant="25" id="l6W-xh-tMo"/>
+                <constraint firstItem="rbt-O9-BIV" firstAttribute="top" secondItem="yoS-Qv-fdq" secondAttribute="bottom" constant="8" symbolic="YES" id="lEh-EX-ZLN"/>
+                <constraint firstItem="TNX-GV-ASE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="w17-nq-Ppi"/>
+                <constraint firstItem="yoS-Qv-fdq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="zfv-W4-Dtc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cancelButtonOutlet" destination="M7L-mo-1dO" id="Qkz-3h-yuy"/>
+                <outlet property="confirmButtonOutlet" destination="TNX-GV-ASE" id="PZk-bq-0dF"/>
+                <outlet property="infoTextView" destination="rbt-O9-BIV" id="SuK-oB-XCQ"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="53.236607142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,5 +11,7 @@ import Foundation
 private let baseURL = "https://skillbox.cc/api"
 public let registrationURL = baseURL + "/auth/registration"
 public let confirlURL = baseURL + "/auth/confirm"
-public let tariffsURL = baseURL + "/user/@#^/tariff/1"
+public let tariffsURL = baseURL + "/user/@#^/tariff"
+public let paymentWaysURL = baseURL + "/user/@#^/payment-cards"
+public let addCardURL = baseURL + "/user/@#^/payment-card"
 
