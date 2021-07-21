@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="UserAddressMO" representedClassName="UserAddressMO" syncable="YES" codeGenerationType="class">
+        <attribute name="commentary" optional="YES" attributeType="String"/>
+        <attribute name="delivApartNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="delivEntranceNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="delivFloorNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="delivIntercomNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fullAddress" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="UserDataMO" representedClassName="UserDataMO" syncable="YES">
         <attribute name="create_at" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="delete_at" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -17,6 +26,7 @@
         <relationship name="userData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserDataMO" inverseName="settings" inverseEntity="UserDataMO"/>
     </entity>
     <elements>
+        <element name="UserAddressMO" positionX="-675" positionY="9" width="128" height="134"/>
         <element name="UserDataMO" positionX="-882.8419799804688" positionY="-57.720703125" width="128" height="148"/>
         <element name="UserSettingsMO" positionX="-399.291748046875" positionY="-23.59927368164062" width="128" height="118"/>
     </elements>
