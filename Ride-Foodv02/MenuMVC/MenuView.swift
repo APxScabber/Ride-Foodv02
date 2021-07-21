@@ -31,11 +31,10 @@ class MenuView: UIView {
     }
     
     @IBAction func goToPayment(_ sender: UIButton) {
-        
     }
     
     @IBAction func goToTarrifs(_ sender: UIButton) {
-        
+        delegate?.goToStoryboard("Tariffs")
     }
     
     @IBAction func goToPromocode(_ sender: UIButton) {

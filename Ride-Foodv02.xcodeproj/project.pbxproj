@@ -11,6 +11,16 @@
 		7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFB1267CAA680048CF1C /* MenuConstant.swift */; };
 		7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */; };
 		7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39626A6F31E00335DFA /* MainScreenConstants.swift */; };
+		7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39926A8362400335DFA /* TariffsActions.swift */; };
+		7841E3A126A8362500335DFA /* TariffsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39A26A8362400335DFA /* TariffsPageViewController.swift */; };
+		7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39B26A8362400335DFA /* TariffsViewController.swift */; };
+		7841E3A326A8362500335DFA /* TariffsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39C26A8362500335DFA /* TariffsExtension.swift */; };
+		7841E3A426A8362500335DFA /* TariffsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39D26A8362500335DFA /* TariffsInteractor.swift */; };
+		7841E3A526A8362500335DFA /* TariffsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39E26A8362500335DFA /* TariffsCollectionViewCell.swift */; };
+		7841E3A626A8362500335DFA /* Tariffs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7841E39F26A8362500335DFA /* Tariffs.storyboard */; };
+		7841E3AB26A837A300335DFA /* TariffsViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E3AA26A837A300335DFA /* TariffsViewText.swift */; };
+		7841E3AD26A837F900335DFA /* MainTextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E3AC26A837F900335DFA /* MainTextFont.swift */; };
+		7841E3AF26A8384C00335DFA /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E3AE26A8384C00335DFA /* TextViewExtension.swift */; };
 		7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7850E8F126739C8300AA88CA /* Promotion.storyboard */; };
 		7850E8F426739D4400AA88CA /* PromotionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8F326739D4400AA88CA /* PromotionsTableViewController.swift */; };
 		7850E8F626739E6800AA88CA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8F526739E6800AA88CA /* Settings.swift */; };
@@ -119,6 +129,16 @@
 		7802DFB1267CAA680048CF1C /* MenuConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConstant.swift; sourceTree = "<group>"; };
 		7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoConstant.swift; sourceTree = "<group>"; };
 		7841E39626A6F31E00335DFA /* MainScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConstants.swift; sourceTree = "<group>"; };
+		7841E39926A8362400335DFA /* TariffsActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsActions.swift; sourceTree = "<group>"; };
+		7841E39A26A8362400335DFA /* TariffsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsPageViewController.swift; sourceTree = "<group>"; };
+		7841E39B26A8362400335DFA /* TariffsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsViewController.swift; sourceTree = "<group>"; };
+		7841E39C26A8362500335DFA /* TariffsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsExtension.swift; sourceTree = "<group>"; };
+		7841E39D26A8362500335DFA /* TariffsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsInteractor.swift; sourceTree = "<group>"; };
+		7841E39E26A8362500335DFA /* TariffsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsCollectionViewCell.swift; sourceTree = "<group>"; };
+		7841E39F26A8362500335DFA /* Tariffs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tariffs.storyboard; sourceTree = "<group>"; };
+		7841E3AA26A837A300335DFA /* TariffsViewText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsViewText.swift; sourceTree = "<group>"; };
+		7841E3AC26A837F900335DFA /* MainTextFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTextFont.swift; sourceTree = "<group>"; };
+		7841E3AE26A8384C00335DFA /* TextViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
 		7850E8F126739C8300AA88CA /* Promotion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promotion.storyboard; sourceTree = "<group>"; };
 		7850E8F326739D4400AA88CA /* PromotionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsTableViewController.swift; sourceTree = "<group>"; };
 		7850E8F526739E6800AA88CA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -234,6 +254,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7841E39826A8360D00335DFA /* Tariffs */ = {
+			isa = PBXGroup;
+			children = (
+				7841E39F26A8362500335DFA /* Tariffs.storyboard */,
+				7841E39926A8362400335DFA /* TariffsActions.swift */,
+				7841E39E26A8362500335DFA /* TariffsCollectionViewCell.swift */,
+				7841E39C26A8362500335DFA /* TariffsExtension.swift */,
+				7841E39D26A8362500335DFA /* TariffsInteractor.swift */,
+				7841E39A26A8362400335DFA /* TariffsPageViewController.swift */,
+				7841E39B26A8362400335DFA /* TariffsViewController.swift */,
+			);
+			path = Tariffs;
+			sourceTree = "<group>";
+		};
+		7841E3A926A8378700335DFA /* Tariffs */ = {
+			isa = PBXGroup;
+			children = (
+				7841E3AA26A837A300335DFA /* TariffsViewText.swift */,
+			);
+			path = Tariffs;
+			sourceTree = "<group>";
+		};
 		7850E8F026739C7600AA88CA /* PromotionMVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,19 +330,6 @@
 				78BE49FD268354EC00A13641 /* SFUIDisplay-Bold.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		7867B4B2266FAC300031BFA0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */,
-				7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */,
-				7867B4C7267106330031BFA0 /* UIFont+Extensions.swift */,
-				7867B4CB267109E90031BFA0 /* CGRect+Extensions.swift */,
-				7867B4CD26711B120031BFA0 /* UIColor+Extensions.swift */,
-				78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7867B4B4266FAC410031BFA0 /* SupportMVC */ = {
@@ -446,6 +475,7 @@
 				78A3A000267B56CB006D0DAB /* UrlList.swift */,
 				78A3A002267B56D0006D0DAB /* Manager */,
 				78A3A003267B56D2006D0DAB /* Login */,
+				7841E3A926A8378700335DFA /* Tariffs */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -504,8 +534,9 @@
 		78AEB870267B59240023605D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				C47892C1267B8C9800B4C737 /* Tariffs */,
+				7841E3AC26A837F900335DFA /* MainTextFont.swift */,
 				78AEB886267B59E20023605D /* TextFont.swift */,
+				C47892C1267B8C9800B4C737 /* Tariffs */,
 				78AEB881267B59CA0023605D /* Login */,
 			);
 			path = Fonts;
@@ -514,12 +545,19 @@
 		78AEB871267B59250023605D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */,
+				7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */,
+				7867B4C7267106330031BFA0 /* UIFont+Extensions.swift */,
+				7867B4CB267109E90031BFA0 /* CGRect+Extensions.swift */,
+				7867B4CD26711B120031BFA0 /* UIColor+Extensions.swift */,
+				78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */,
 				78AEB879267B59C10023605D /* AppDelegateExtension.swift */,
 				78AEB877267B59C10023605D /* ButtonExtension.swift */,
 				78AEB878267B59C10023605D /* ConfirmVCExtension.swift */,
 				78AEB87A267B59C10023605D /* LabelExtension.swift */,
 				78AEB875267B59C10023605D /* LoginVCExtension.swift */,
 				78AEB876267B59C10023605D /* StringExtension.swift */,
+				7841E3AE26A8384C00335DFA /* TextViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -585,10 +623,10 @@
 				7867B4D12672290F0031BFA0 /* MenuMVC */,
 				7867B4B4266FAC410031BFA0 /* SupportMVC */,
 				7850E9012674FC0B00AA88CA /* SettingsMVC */,
+				7841E39826A8360D00335DFA /* Tariffs */,
 				7850E8F026739C7600AA88CA /* PromotionMVC */,
 				787140C4268637D3007834ED /* PromocodeMVC */,
 				7867B4E0267392CE0031BFA0 /* Helpers */,
-				7867B4B2266FAC300031BFA0 /* Extensions */,
 				7867B4A1266FA9F50031BFA0 /* Misc */,
 			);
 			path = "Ride-Foodv02";
@@ -662,6 +700,7 @@
 				7850E8FA2673BCF200AA88CA /* SupportActionSheetView.xib in Resources */,
 				78AEB86F267B589D0023605D /* Main.storyboard in Resources */,
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
+				7841E3A626A8362500335DFA /* Tariffs.storyboard in Resources */,
 				78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */,
 				787140C6268637E6007834ED /* Promocode.storyboard in Resources */,
 				78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */,
@@ -683,9 +722,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */,
+				7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */,
 				7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */,
 				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
 				7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */,
+				7841E3A326A8362500335DFA /* TariffsExtension.swift in Sources */,
 				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
 				78A3A01C267B57D7006D0DAB /* ConfirmViewController.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
@@ -696,6 +737,7 @@
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				78A3A01B267B57D7006D0DAB /* LoginInteractor.swift in Sources */,
 				787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */,
+				7841E3A526A8362500335DFA /* TariffsCollectionViewCell.swift in Sources */,
 				78AEB887267B59E20023605D /* TextFont.swift in Sources */,
 				78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */,
 				78A3A00D267B56E9006D0DAB /* NotificationText.swift in Sources */,
@@ -706,8 +748,10 @@
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
 				78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */,
 				78A3A006267B56E1006D0DAB /* LoginText.swift in Sources */,
+				7841E3A126A8362500335DFA /* TariffsPageViewController.swift in Sources */,
 				78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */,
 				78ACFD0526A5854600C995EB /* PromocodeHistoryViewController.swift in Sources */,
+				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
 				78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
@@ -720,6 +764,7 @@
 				7867B4DD26723FD10031BFA0 /* SettingsHeaderView.swift in Sources */,
 				78A39FF6267B568E006D0DAB /* UserSettingsMO+CoreDataClass.swift in Sources */,
 				78ACFD0726A5984C00C995EB /* PromocodeTableViewCell.swift in Sources */,
+				7841E3AB26A837A300335DFA /* TariffsViewText.swift in Sources */,
 				7867B4D32672291D0031BFA0 /* SettingsMainViewController.swift in Sources */,
 				78A3A00C267B56E9006D0DAB /* UserDefaultsManagerText.swift in Sources */,
 				78AEB87E267B59C10023605D /* ConfirmVCExtension.swift in Sources */,
@@ -738,6 +783,7 @@
 				78ACFD0B26A59E1700C995EB /* Promocodes.swift in Sources */,
 				78AEB87C267B59C10023605D /* StringExtension.swift in Sources */,
 				C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */,
+				7841E3AF26A8384C00335DFA /* TextViewExtension.swift in Sources */,
 				7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */,
 				7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */,
 				78A39FF7267B568E006D0DAB /* UserDataMO+CoreDataClass.swift in Sources */,
@@ -745,6 +791,8 @@
 				7867B4CE26711B120031BFA0 /* UIColor+Extensions.swift in Sources */,
 				78A3A007267B56E1006D0DAB /* ConfirmText.swift in Sources */,
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,
+				7841E3AD26A837F900335DFA /* MainTextFont.swift in Sources */,
+				7841E3A426A8362500335DFA /* TariffsInteractor.swift in Sources */,
 				78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */,
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
