@@ -23,7 +23,7 @@
         <!--Navigation Controller-->
         <scene sceneID="8rt-Bg-pOr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuE-0t-Mfb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Tariffs" automaticallyAdjustsScrollViewInsets="NO" id="EuE-0t-Mfb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h4y-Qu-ke9">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>

@@ -8,9 +8,12 @@
 import Foundation
 
 //Текс не нуждающийся в переводе
-enum LoginConstantText: String {
+enum ConstantText: String {
     case licenseLink = "https://www.google.com/"
     case phonePrefix = "+7"
     case phoneFormatFull = "+# (###) ###-##-##"
-    case phoneFormatEasy = "###########" 
+    case cardNumber = "#### #### #### ####"
+    case cardDate = "##/##"
+    case cardCVV = "###"
+    case normalNumberFormat = "################"
 }

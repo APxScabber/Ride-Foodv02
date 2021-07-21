@@ -34,6 +34,19 @@
 		C48AF0EA268CAECA006B3421 /* TariffsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0E9268CAECA006B3421 /* TariffsActions.swift */; };
 		C48AF0EC268CB0E5006B3421 /* TariffsViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0EB268CB0E5006B3421 /* TariffsViewText.swift */; };
 		C48AF0EF268CB3E7006B3421 /* ConstantText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0EE268CB3E7006B3421 /* ConstantText.swift */; };
+		C48AF0F2268CC69E006B3421 /* PaymentWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0F1268CC69E006B3421 /* PaymentWaysViewController.swift */; };
+		C48AF0F4268CC6B2006B3421 /* PaymentWays.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48AF0F3268CC6B2006B3421 /* PaymentWays.storyboard */; };
+		C48AF0F7268CCC49006B3421 /* PaymentWaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0F6268CCC49006B3421 /* PaymentWaysModel.swift */; };
+		C48AF0F9268CCCDF006B3421 /* PaymentWaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0F8268CCCDF006B3421 /* PaymentWaysInteractor.swift */; };
+		C48AF0FB268D9230006B3421 /* CacheImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0FA268D922F006B3421 /* CacheImageManager.swift */; };
+		C48AF0FE2691AE48006B3421 /* PaymentMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0FD2691AE48006B3421 /* PaymentMain.swift */; };
+		C48AF1002691B3AA006B3421 /* PaymentWaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF0FF2691B3AA006B3421 /* PaymentWaysTableViewCell.swift */; };
+		C48AF106269248CB006B3421 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF105269248CB006B3421 /* AddCardViewController.swift */; };
+		C48AF10826942F2B006B3421 /* PaymentWaysColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF10726942F2A006B3421 /* PaymentWaysColor.swift */; };
+		C48AF10A26944B66006B3421 /* AddCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF10926944B65006B3421 /* AddCardInteractor.swift */; };
+		C48AF10C2695FE27006B3421 /* AddCardConfirm.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48AF10B2695FE27006B3421 /* AddCardConfirm.xib */; };
+		C48AF10E2695FE49006B3421 /* AddCardConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF10D2695FE49006B3421 /* AddCardConfirmView.swift */; };
+		C48AF111269A4807006B3421 /* CardsUserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48AF110269A4806006B3421 /* CardsUserDefaultsModel.swift */; };
 		C495E903267621F700661C55 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E902267621F700661C55 /* UserDefaultsModel.swift */; };
 		C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495E9042676233500661C55 /* UserDefaultsManager.swift */; };
 		C4D9071426726B9E0046CC47 /* UserDataMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */; };
@@ -91,6 +104,19 @@
 		C48AF0E9268CAECA006B3421 /* TariffsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsActions.swift; sourceTree = "<group>"; };
 		C48AF0EB268CB0E5006B3421 /* TariffsViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsViewText.swift; sourceTree = "<group>"; };
 		C48AF0EE268CB3E7006B3421 /* ConstantText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantText.swift; sourceTree = "<group>"; };
+		C48AF0F1268CC69E006B3421 /* PaymentWaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWaysViewController.swift; sourceTree = "<group>"; };
+		C48AF0F3268CC6B2006B3421 /* PaymentWays.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentWays.storyboard; sourceTree = "<group>"; };
+		C48AF0F6268CCC49006B3421 /* PaymentWaysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWaysModel.swift; sourceTree = "<group>"; };
+		C48AF0F8268CCCDF006B3421 /* PaymentWaysInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWaysInteractor.swift; sourceTree = "<group>"; };
+		C48AF0FA268D922F006B3421 /* CacheImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageManager.swift; sourceTree = "<group>"; };
+		C48AF0FD2691AE48006B3421 /* PaymentMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMain.swift; sourceTree = "<group>"; };
+		C48AF0FF2691B3AA006B3421 /* PaymentWaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWaysTableViewCell.swift; sourceTree = "<group>"; };
+		C48AF105269248CB006B3421 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		C48AF10726942F2A006B3421 /* PaymentWaysColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWaysColor.swift; sourceTree = "<group>"; };
+		C48AF10926944B65006B3421 /* AddCardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardInteractor.swift; sourceTree = "<group>"; };
+		C48AF10B2695FE27006B3421 /* AddCardConfirm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardConfirm.xib; sourceTree = "<group>"; };
+		C48AF10D2695FE49006B3421 /* AddCardConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardConfirmView.swift; sourceTree = "<group>"; };
+		C48AF110269A4806006B3421 /* CardsUserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUserDefaultsModel.swift; sourceTree = "<group>"; };
 		C495E902267621F700661C55 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		C495E9042676233500661C55 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C4D9071026726B9E0046CC47 /* UserDataMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -147,6 +173,7 @@
 			children = (
 				C45BB4FB2671527F0057DBBB /* UrlList.swift */,
 				C48AF0EE268CB3E7006B3421 /* ConstantText.swift */,
+				C48AF0FC2691ADF5006B3421 /* PaymentWays */,
 				C45BB4FA2671524F0057DBBB /* Manager */,
 				C45BB4F926714CD30057DBBB /* Login */,
 				C48AF0ED268CB0EC006B3421 /* Tariffs */,
@@ -223,9 +250,49 @@
 			path = Tariffs;
 			sourceTree = "<group>";
 		};
+		C48AF0F0268CC65C006B3421 /*  PaymentWays */ = {
+			isa = PBXGroup;
+			children = (
+				C48AF0F3268CC6B2006B3421 /* PaymentWays.storyboard */,
+				C48AF0F1268CC69E006B3421 /* PaymentWaysViewController.swift */,
+				C48AF0F8268CCCDF006B3421 /* PaymentWaysInteractor.swift */,
+				C48AF0FF2691B3AA006B3421 /* PaymentWaysTableViewCell.swift */,
+				C48AF105269248CB006B3421 /* AddCardViewController.swift */,
+				C48AF10926944B65006B3421 /* AddCardInteractor.swift */,
+				C48AF10B2695FE27006B3421 /* AddCardConfirm.xib */,
+				C48AF10D2695FE49006B3421 /* AddCardConfirmView.swift */,
+			);
+			path = " PaymentWays";
+			sourceTree = "<group>";
+		};
+		C48AF0F5268CCC22006B3421 /* PaymentWays */ = {
+			isa = PBXGroup;
+			children = (
+				C48AF0F6268CCC49006B3421 /* PaymentWaysModel.swift */,
+			);
+			path = PaymentWays;
+			sourceTree = "<group>";
+		};
+		C48AF0FC2691ADF5006B3421 /* PaymentWays */ = {
+			isa = PBXGroup;
+			children = (
+				C48AF0FD2691AE48006B3421 /* PaymentMain.swift */,
+			);
+			path = PaymentWays;
+			sourceTree = "<group>";
+		};
+		C48AF10F269A47BD006B3421 /* PaymentWays */ = {
+			isa = PBXGroup;
+			children = (
+				C48AF110269A4806006B3421 /* CardsUserDefaultsModel.swift */,
+			);
+			path = PaymentWays;
+			sourceTree = "<group>";
+		};
 		C495E9062676255500661C55 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C48AF10F269A47BD006B3421 /* PaymentWays */,
 				C495E9072676256100661C55 /* Login */,
 			);
 			path = Classes;
@@ -283,6 +350,7 @@
 		C4E83FD0266EA704000EE70F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C48AF0F0268CC65C006B3421 /*  PaymentWays */,
 				C47892AF2679549B00B4C737 /* Tariffs */,
 				C4E83FFA266FF74A000EE70F /* Main */,
 				C4E83FD1266EA70F000EE70F /* Login */,
@@ -297,8 +365,10 @@
 				C4E83FD2266EA72C000EE70F /* LoginViewController.swift */,
 				C4E83FC9266EA6A7000EE70F /* LoginInteractor.swift */,
 				C47892AD267894F100B4C737 /* LoginActions.swift */,
+				C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */,
 				C4E83FD4266EA74D000EE70F /* ConfirmViewController.swift */,
 				C45BB4F426710A010057DBBB /* ConfirmInteractor.swift */,
+				C4D9072C267618D50046CC47 /* ConfirmVCExtension.swift */,
 				C47892AB26781CA200B4C737 /* ConfirmActions.swift */,
 			);
 			path = Login;
@@ -311,6 +381,7 @@
 				C4E83FD9266EA79C000EE70F /* LocalNotifications.swift */,
 				C45BB566267241360057DBBB /* CoreDataManager.swift */,
 				C495E9042676233500661C55 /* UserDefaultsManager.swift */,
+				C48AF0FA268D922F006B3421 /* CacheImageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -329,8 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				C4E83FE5266EA846000EE70F /* AppDelegateExtension.swift */,
-				C4E83FE1266EA813000EE70F /* LoginVCExtension.swift */,
-				C4D9072C267618D50046CC47 /* ConfirmVCExtension.swift */,
 				C4E83FDF266EA7F9000EE70F /* StringExtension.swift */,
 				C4E83FDD266EA7DB000EE70F /* ButtonExtension.swift */,
 				C46E78AD2676980F0034DEFA /* LabelExtension.swift */,
@@ -364,6 +433,7 @@
 			children = (
 				C4E83FF4266EC405000EE70F /* LoginColors.swift */,
 				C47892B62679D4B000B4C737 /* TariffsColors.swift */,
+				C48AF10726942F2A006B3421 /* PaymentWaysColor.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -371,6 +441,7 @@
 		C4E83FF8266FF6C1000EE70F /* Structurs */ = {
 			isa = PBXGroup;
 			children = (
+				C48AF0F5268CCC22006B3421 /* PaymentWays */,
 				C4E83FF9266FF6CB000EE70F /* Login */,
 				C47892C7267BC3DC00B4C737 /* Tariffs */,
 			);
@@ -455,6 +526,8 @@
 				C4E83FC6266EA65F000EE70F /* Login.storyboard in Resources */,
 				C47892B3267954CF00B4C737 /* Tariffs.storyboard in Resources */,
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
+				C48AF10C2695FE27006B3421 /* AddCardConfirm.xib in Resources */,
+				C48AF0F4268CC6B2006B3421 /* PaymentWays.storyboard in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
 				C4E83FB8266EA538000EE70F /* Main.storyboard in Resources */,
 			);
@@ -478,10 +551,13 @@
 				C495E9052676233500661C55 /* UserDefaultsManager.swift in Sources */,
 				C4E83FCA266EA6A7000EE70F /* LoginInteractor.swift in Sources */,
 				C4E83FD5266EA74D000EE70F /* ConfirmViewController.swift in Sources */,
+				C48AF10E2695FE49006B3421 /* AddCardConfirmView.swift in Sources */,
 				C47892CE267D336400B4C737 /* TextViewExtension.swift in Sources */,
+				C48AF1002691B3AA006B3421 /* PaymentWaysTableViewCell.swift in Sources */,
 				C4E83FCD266EA6CF000EE70F /* RegistrationModel.swift in Sources */,
 				C4D9071726726B9E0046CC47 /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C47892C9267BC3F800B4C737 /* TariffsModel.swift in Sources */,
+				C48AF10826942F2B006B3421 /* PaymentWaysColor.swift in Sources */,
 				C48AF0EC268CB0E5006B3421 /* TariffsViewText.swift in Sources */,
 				C47892CC267C11A900B4C737 /* TariffsExtension.swift in Sources */,
 				C4D9071526726B9E0046CC47 /* UserDataMO+CoreDataProperties.swift in Sources */,
@@ -495,6 +571,7 @@
 				C46E78A8267664040034DEFA /* LoadManagerText.swift in Sources */,
 				C45BB4F526710A010057DBBB /* ConfirmInteractor.swift in Sources */,
 				C46E78AA267666050034DEFA /* UserDefaultsManagerText.swift in Sources */,
+				C48AF106269248CB006B3421 /* AddCardViewController.swift in Sources */,
 				C4E83FF0266EC126000EE70F /* MainTextFont.swift in Sources */,
 				C4E83FF2266EC1CC000EE70F /* LoginFontSize.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
@@ -508,14 +585,21 @@
 				C47892B5267954EB00B4C737 /* TariffsInteractor.swift in Sources */,
 				C47892D0267D34E600B4C737 /* TariffsPageViewController.swift in Sources */,
 				C45BB4F726710BB80057DBBB /* ConfirmModel.swift in Sources */,
+				C48AF0FB268D9230006B3421 /* CacheImageManager.swift in Sources */,
 				C4E83FE2266EA813000EE70F /* LoginVCExtension.swift in Sources */,
 				C4E83FE0266EA7F9000EE70F /* StringExtension.swift in Sources */,
 				C4E83FDA266EA79C000EE70F /* LocalNotifications.swift in Sources */,
 				C4D9071626726B9E0046CC47 /* UserSettingsMO+CoreDataClass.swift in Sources */,
 				C47892D4267F980F00B4C737 /* TariffsCollectionViewCell.swift in Sources */,
+				C48AF0F7268CCC49006B3421 /* PaymentWaysModel.swift in Sources */,
 				C4E83FE6266EA846000EE70F /* AppDelegateExtension.swift in Sources */,
+				C48AF0FE2691AE48006B3421 /* PaymentMain.swift in Sources */,
 				C4E83FD8266EA77E000EE70F /* LoadManager.swift in Sources */,
 				C48AF0EA268CAECA006B3421 /* TariffsActions.swift in Sources */,
+				C48AF0F2268CC69E006B3421 /* PaymentWaysViewController.swift in Sources */,
+				C48AF0F9268CCCDF006B3421 /* PaymentWaysInteractor.swift in Sources */,
+				C48AF111269A4807006B3421 /* CardsUserDefaultsModel.swift in Sources */,
+				C48AF10A26944B66006B3421 /* AddCardInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

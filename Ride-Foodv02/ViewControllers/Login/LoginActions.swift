@@ -37,12 +37,12 @@ extension LoginViewController {
             scrollView.frame.origin.y = safeAreaTopHeigh
             
         case minLenghtPhoneNumber:
-            sender.text = LoginConstantText.phonePrefix.rawValue
+            sender.text = ConstantText.phonePrefix.rawValue
             
         default:
             let formatedNumber = sender.text!
                 .applyPatternOnNumbers(pattern:
-                                        LoginConstantText.phoneFormatFull.rawValue,
+                                        ConstantText.phoneFormatFull.rawValue,
                                        replacmentCharacter: "#")
             isPhoneNumberCorrect = false
             sender.text = formatedNumber

@@ -15,14 +15,14 @@ class ConfirmInteracor {
     //Отправляем код подтверждения и получаем данные пользователя
     func passConfirmationCode(phoneNumber: String, code: String, compitition: @escaping (Error?) -> Void ) {
 
-        let url =  URL(string: confirlURL)
+        guard let url =  URL(string: confirlURL) else { return }
         
-        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginConstantText.phoneFormatEasy.rawValue,
+        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: ConstantText.normalNumberFormat.rawValue,
                                                                     replacmentCharacter: "#")
         
         let passData = ["phone" : formatedPhoneNumber, "code" : code]
         
-        LoadManager.shared.loadData(of: ConfirmResponsesModel.self, from: url!, httpMethod: .post,
+        LoadManager.shared.loadData(of: ConfirmResponsesModel.self, from: url, httpMethod: .post,
                                     passData: passData) { result in
             
             switch result {
@@ -49,7 +49,7 @@ class ConfirmInteracor {
         var startColorLocation = 0
         var colorLenght = 0
 
-        switch UserDefaultsManager().getLanguage() {
+        switch UserDefaultsManager.shared.getLanguage() {
         
         case "rus":
             startColorLocation = textCount - 10

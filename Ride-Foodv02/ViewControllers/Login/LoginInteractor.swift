@@ -17,15 +17,15 @@ class LoginInteractor {
         let licenseText = LoginText.licenseInfo.text()
         let attributedString = NSMutableAttributedString(string: licenseText)
         
-        switch UserDefaultsManager().getLanguage() {
+        switch UserDefaultsManager.shared.getLanguage() {
         case "rus":
-            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
+            attributedString.addAttribute(.link, value: ConstantText.licenseLink,
                                           range: NSRange(location: 49, length: 28))
         case "eng":
-            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
+            attributedString.addAttribute(.link, value: ConstantText.licenseLink,
                                           range: NSRange(location: 60, length: 14))
         default:
-            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
+            attributedString.addAttribute(.link, value: ConstantText.licenseLink,
                                           range: NSRange(location: 0, length: 0))
         }
         return attributedString
@@ -34,7 +34,7 @@ class LoginInteractor {
     //Получаем с сервера код подтверждения
     func reciveConfirmCode(from phoneNumber: String) {
         
-        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: LoginConstantText.phoneFormatEasy.rawValue,
+        let formatedPhoneNumber = phoneNumber.applyPatternOnNumbers(pattern: ConstantText.normalNumberFormat.rawValue,
                                                                     replacmentCharacter: "#")
         
         let url =  URL(string: registrationURL)

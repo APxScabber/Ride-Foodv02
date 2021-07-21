@@ -10,11 +10,14 @@ import UIKit
 class TariffsPageViewController: UIPageViewController {
 
     var tariffsModelArray: [TariffsModel]?
+    var navigationTitle = "Тарифы"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         dataSource = self
+        
+        navigationItem.title = navigationTitle
 
         if let contentVC = showViewController(at: 0) {
             setViewControllers([contentVC], direction: .forward, animated: true, completion: nil)

@@ -18,3 +18,7 @@ enum UserDefaultLanguage: String {
     case rus = "rus"
     case eng = "eng"
 }
+
+enum NewCardsDataKey: String {
+    case newCard = "newCard"
+}

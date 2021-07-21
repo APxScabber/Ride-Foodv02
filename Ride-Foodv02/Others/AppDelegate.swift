@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         //Проверяем, зарегистрирован пользователь или нет
-//        if loginInteractor.loginCheck() {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
-//            self.window?.rootViewController = vc
-//        }
+        if loginInteractor.loginCheck() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
+            self.window?.rootViewController = vc
+        }
         
         //настраиваем LocalNotification
         let notificationCenter = UNUserNotificationCenter.current()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-//Вся текстовая информация используемая в ConfirmViewController
+//Вся текстовая информация используемая в TarifsViewController
 enum TariffsViewText {
     
     case standartLabel
@@ -20,7 +20,7 @@ enum TariffsViewText {
     
     func text() -> String {
         
-        switch UserDefaultsManager().getLanguage() {
+        switch UserDefaultsManager.shared.getLanguage() {
         case "rus":
             return rusText()
         case "eng":

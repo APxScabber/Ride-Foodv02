@@ -11,5 +11,8 @@ import Foundation
 private let baseURL = "https://skillbox.cc/api"
 public let registrationURL = baseURL + "/auth/registration"
 public let confirlURL = baseURL + "/auth/confirm"
-#warning("Обязательно поправить на принятие всех трех тарифов или можно сделать для каждого VC свой?")
 public let tariffsURL = baseURL + "/user/@#^/tariff"
+public let paymentWaysURL = baseURL + "/user/@#^/payment-cards"
+public let addCardURL = baseURL + "/user/@#^/payment-card"
+//public let addCardURL = baseURL + "/user/3/payment-card"
+//public let paymentWaysURL = baseURL + "/user/1/payment-cards"

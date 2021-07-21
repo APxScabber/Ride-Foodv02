@@ -37,16 +37,31 @@ class MainViewController: UIViewController {
     
     
     // MARK: - Actions
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func tariffsAction(_ sender: Any) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Tariffs", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "Tariffs") //as! TariffsPageViewController
+        //vc.navigationTitle = "Тарифы"
+        
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true, completion: nil)
+        //navigationController?.pushViewController(vc, animated: true)
+        
     }
-    */
-
+    
+    @IBAction func paymentWaysAction(_ sender: Any) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "PaymentWaysMain") //as! PaymentWaysViewController
+        //vc.navigationTitle = "Способы оплаты"
+       // navigationController?.pushViewController(vc, animated: true)
+        
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
 }

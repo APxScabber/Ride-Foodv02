@@ -19,7 +19,7 @@ enum ConfirmText {
     
     func text() -> String {
         
-        switch UserDefaultsManager().getLanguage() {
+        switch UserDefaultsManager.shared.getLanguage() {
         case "rus":
             return rusText()
         case "eng":
