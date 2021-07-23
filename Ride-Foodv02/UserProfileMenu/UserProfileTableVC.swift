@@ -26,6 +26,8 @@ class UserProfileTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,7 +37,11 @@ class UserProfileTableVC: UITableViewController {
     
     func configureUI(){
         tableView.backgroundView = backView
-        
+        phoneNumberLabel.text = "Введите номер телефона"
+        MyAddressesLabel.text = "Мои адреса"
+        PaymentHistoryLabel.text = "История платежей"
+        OrdersHistoryLabel.text = "История заказов"
+        PaymentMethodLabel.text = "Способы оплаты"
     }
 
     // MARK: - Table view data source
