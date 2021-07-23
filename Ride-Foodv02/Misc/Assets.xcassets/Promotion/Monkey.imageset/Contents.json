@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "hear-no-evil-monkey_1f649 2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "hear-no-evil-monkey_1f649 2@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "hear-no-evil-monkey_1f649 2@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

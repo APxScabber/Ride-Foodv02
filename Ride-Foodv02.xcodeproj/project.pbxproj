@@ -30,6 +30,8 @@
 		7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */; };
 		7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8FF2674DFBE00AA88CA /* MenuButton.swift */; };
 		7850E9032674FC4500AA88CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7850E9022674FC4500AA88CA /* Settings.storyboard */; };
+		785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785D38AD26AB09DC00DAB562 /* PromotionView.xib */; };
+		785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D38AF26AB09E700DAB562 /* PromotionView.swift */; };
 		7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A3266FAA420031BFA0 /* Support.storyboard */; };
 		7867B4A9266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A6266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf */; };
 		7867B4AA266FAB1B0031BFA0 /* SFUIDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A7266FAB1B0031BFA0 /* SFUIDisplay-Light.otf */; };
@@ -114,6 +116,8 @@
 		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
 		78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3DF472686415C0028A66B /* PromocodeToolbar.swift */; };
+		78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */; };
+		78E25AA726A98305006E6BC9 /* FoodTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */; };
 		78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */; };
 		78F1A97B26A8949000E16084 /* PaymentWaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */; };
 		78F1A97C26A8949000E16084 /* AddCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97426A8948F00E16084 /* AddCardInteractor.swift */; };
@@ -161,6 +165,8 @@
 		7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7850E8FF2674DFBE00AA88CA /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		7850E9022674FC4500AA88CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		785D38AD26AB09DC00DAB562 /* PromotionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionView.xib; sourceTree = "<group>"; };
+		785D38AF26AB09E700DAB562 /* PromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
 		7867B4A3266FAA420031BFA0 /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
 		7867B4A6266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Semibold.otf"; sourceTree = "<group>"; };
 		7867B4A7266FAB1B0031BFA0 /* SFUIDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Light.otf"; sourceTree = "<group>"; };
@@ -245,6 +251,8 @@
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
 		78D3DF472686415C0028A66B /* PromocodeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeToolbar.swift; sourceTree = "<group>"; };
+		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
+		78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTaxiView.swift; sourceTree = "<group>"; };
 		78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsUserDefaultsModel.swift; sourceTree = "<group>"; };
 		78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWaysTableViewCell.swift; sourceTree = "<group>"; };
 		78F1A97426A8948F00E16084 /* AddCardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardInteractor.swift; sourceTree = "<group>"; };
@@ -407,6 +415,10 @@
 				7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */,
 				7841E39626A6F31E00335DFA /* MainScreenConstants.swift */,
 				7850E8FF2674DFBE00AA88CA /* MenuButton.swift */,
+				78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */,
+				78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */,
+				785D38AD26AB09DC00DAB562 /* PromotionView.xib */,
+				785D38AF26AB09E700DAB562 /* PromotionView.swift */,
 			);
 			path = MainScreenMVC;
 			sourceTree = "<group>";
@@ -763,6 +775,7 @@
 			files = (
 				7867B4AA266FAB1B0031BFA0 /* SFUIDisplay-Light.otf in Resources */,
 				78F1A97E26A8949000E16084 /* PaymentWays.storyboard in Resources */,
+				78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */,
 				78F1A98126A8949000E16084 /* AddCardConfirm.xib in Resources */,
 				7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */,
 				7850E9032674FC4500AA88CA /* Settings.storyboard in Resources */,
@@ -782,6 +795,7 @@
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
 				7867B4D0267228700031BFA0 /* Menu.storyboard in Resources */,
 				78CE749126A6E064006C3417 /* MenuView.xib in Resources */,
+				785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */,
 				7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */,
 				78A3A01A267B57D7006D0DAB /* Login.storyboard in Resources */,
 			);
@@ -852,6 +866,7 @@
 				78A39FF4267B568E006D0DAB /* UserDataModel.xcdatamodeld in Sources */,
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
 				78BE49FA26834BA400A13641 /* ImageFetcher.swift in Sources */,
+				785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */,
 				78A4028D268C993C00B4EFE1 /* PromocodeActivator.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
@@ -886,6 +901,7 @@
 				78F1A97F26A8949000E16084 /* PaymentWaysViewController.swift in Sources */,
 				78A39FEC267B5684006D0DAB /* UserDefaultsModel.swift in Sources */,
 				7850E8F426739D4400AA88CA /* PromotionsTableViewController.swift in Sources */,
+				78E25AA726A98305006E6BC9 /* FoodTaxiView.swift in Sources */,
 				78BE49F82683463C00A13641 /* PromotionConstant.swift in Sources */,
 				78A3A022267B57E1006D0DAB /* MainViewController.swift in Sources */,
 				78A39FF5267B568E006D0DAB /* UserDataMO+CoreDataProperties.swift in Sources */,
