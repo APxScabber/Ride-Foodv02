@@ -113,6 +113,9 @@
 		F5382AEC26A7E32F00CAD7A6 /* Addresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5382AEB26A7E32F00CAD7A6 /* Addresses.storyboard */; };
 		F5382AEF26A7EC1300CAD7A6 /* MyAddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5382AEE26A7EC1300CAD7A6 /* MyAddressesTableViewCell.swift */; };
 		F5382AF126A7FBA800CAD7A6 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5382AF026A7FBA800CAD7A6 /* PersistanceManager.swift */; };
+		F5447CF226A8F96D0090FB9E /* UserProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5447CF126A8F96D0090FB9E /* UserProfileTableVC.swift */; };
+		F5447CF426A8F9840090FB9E /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5447CF326A8F9840090FB9E /* UserProfile.storyboard */; };
+		F5447CF726A9165C0090FB9E /* ProfileMenuBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5447CF626A9165C0090FB9E /* ProfileMenuBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +228,9 @@
 		F5382AEB26A7E32F00CAD7A6 /* Addresses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Addresses.storyboard; sourceTree = "<group>"; };
 		F5382AEE26A7EC1300CAD7A6 /* MyAddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesTableViewCell.swift; sourceTree = "<group>"; };
 		F5382AF026A7FBA800CAD7A6 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		F5447CF126A8F96D0090FB9E /* UserProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableVC.swift; sourceTree = "<group>"; };
+		F5447CF326A8F9840090FB9E /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		F5447CF626A9165C0090FB9E /* ProfileMenuBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,6 +580,7 @@
 		C4E83FAF266EA538000EE70F /* Ride-Foodv02 */ = {
 			isa = PBXGroup;
 			children = (
+				F5447CF026A8F80A0090FB9E /* UserProfileMenu */,
 				F5382ADD26A7D86700CAD7A6 /* Addresses */,
 				78A39FFD267B56B9006D0DAB /* myQuestions.swift */,
 				78A39FE6267B5659006D0DAB /* Models */,
@@ -638,6 +645,24 @@
 				F5382AEE26A7EC1300CAD7A6 /* MyAddressesTableViewCell.swift */,
 			);
 			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		F5447CF026A8F80A0090FB9E /* UserProfileMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F5447CF526A912740090FB9E /* CustomViews */,
+				F5447CF126A8F96D0090FB9E /* UserProfileTableVC.swift */,
+				F5447CF326A8F9840090FB9E /* UserProfile.storyboard */,
+			);
+			path = UserProfileMenu;
+			sourceTree = "<group>";
+		};
+		F5447CF526A912740090FB9E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F5447CF626A9165C0090FB9E /* ProfileMenuBackgroundView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -712,6 +737,7 @@
 				78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */,
 				787140C6268637E6007834ED /* Promocode.storyboard in Resources */,
 				78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */,
+				F5447CF426A8F9840090FB9E /* UserProfile.storyboard in Resources */,
 				F5382AE826A7D9A600CAD7A6 /* AddNewAddressVC.xib in Resources */,
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
 				7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */,
@@ -761,6 +787,7 @@
 				78A39FFE267B56B9006D0DAB /* myQuestions.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
 				78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */,
+				F5447CF226A8F96D0090FB9E /* UserProfileTableVC.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
 				78AEB87B267B59C10023605D /* LoginVCExtension.swift in Sources */,
 				7850E8F82673B95800AA88CA /* MenuTableViewController.swift in Sources */,
@@ -810,6 +837,7 @@
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
+				F5447CF726A9165C0090FB9E /* ProfileMenuBackgroundView.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
 				78BE4A022683675100A13641 /* Promotion.swift in Sources */,
 				78A3A019267B57D7006D0DAB /* ConfirmActions.swift in Sources */,
