@@ -95,9 +95,9 @@ class MainScreenViewController: UIViewController {
         super.viewDidAppear(animated)
         if !menuView.isVisible {
             menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
+            foodTaxiView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foodTaxiViewHeight + bottomSafeAreaConstant)
+            promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.promotionViewYOffset - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
         }
-        foodTaxiView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foodTaxiViewHeight + bottomSafeAreaConstant)
-        promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.promotionViewYOffset - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
     }
     
     func loadTariffs(userID: String) {
