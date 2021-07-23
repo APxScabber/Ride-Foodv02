@@ -14,9 +14,14 @@ class MainScreenViewController: UIViewController {
         mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
         mapView.delegate = self
     }}
+    
     @IBOutlet weak var transparentView: UIView! { didSet {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenuView(_:)))
         transparentView.addGestureRecognizer(tapGesture)
+    }}
+    
+    @IBOutlet weak var circleView: CircleView! { didSet {
+        circleView.color = .white
     }}
     // MARK: - XIB files
     
@@ -39,6 +44,10 @@ class MainScreenViewController: UIViewController {
             }) {
             if $0 == .end { self.menuView.isVisible = true }
         }
+    }
+    
+    @IBAction func goToProfile(_ sender: UIButton) {
+        goToStoryboard("UserProfile")
     }
     
     @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
@@ -155,6 +164,8 @@ class MainScreenViewController: UIViewController {
             }
         }
     }
+    
+    
     
 }
 
