@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileButton: UIButton {
+class VBButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

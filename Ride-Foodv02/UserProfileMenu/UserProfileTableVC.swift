@@ -11,7 +11,7 @@ class UserProfileTableVC: UITableViewController {
     
     
 //    let footerView = UIView()
-    let signOutButton = ProfileButton(backgroundColor: UIColor.ProfileBackgroundColor, title: "Выйти", cornerRadius: 0, textColor: .red, font: UIFont.SFUIDisplayRegular(size: 15)!, borderWidth: 1, borderColor: UIColor.ProfileButtonBorderColor.cgColor)
+    let signOutButton = VBButton(backgroundColor: UIColor.ProfileBackgroundColor, title: "Выйти", cornerRadius: 0, textColor: .red, font: UIFont.SFUIDisplayRegular(size: 15)!, borderWidth: 1, borderColor: UIColor.ProfileButtonBorderColor.cgColor)
     
     let backView = ProfileMenuBackgroundView()
     
@@ -110,6 +110,9 @@ class UserProfileTableVC: UITableViewController {
         if let supportVC = storyboard.instantiateInitialViewController() as? UINavigationController {
             supportVC.modalPresentationStyle = .fullScreen
             supportVC.modalTransitionStyle = .coverVertical
+            
+            
+            
             present(supportVC, animated: true)
         }
     }

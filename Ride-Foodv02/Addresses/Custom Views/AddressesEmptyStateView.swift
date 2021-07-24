@@ -22,11 +22,18 @@ class AddressesEmptyStateView: UIView {
     }
     
     private func configure(){
+        backgroundColor = UIColor.ProfileBackgroundColor
+        messageLabel.text = "Здесь пока пусто..."
+        messageLabel.font = UIFont.SFUIDisplayRegular(size: 26)
+        messageLabel.textColor = UIColor.DarkGrayTextColor
+        emptyImageView.image = UIImage(named: "emptyHouseImage")
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        emptyImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(messageLabel)
         addSubview(emptyImageView)
         
         NSLayoutConstraint.activate([
-            emptyImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            emptyImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 125),
             emptyImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             emptyImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             emptyImageView.heightAnchor.constraint(equalToConstant: 230),
