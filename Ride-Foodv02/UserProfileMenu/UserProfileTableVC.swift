@@ -9,52 +9,101 @@ import UIKit
 
 class UserProfileTableVC: UITableViewController {
     
+    
+//    let footerView = UIView()
+    let signOutButton = ProfileButton(backgroundColor: UIColor.ProfileBackgroundColor, title: "Выйти", cornerRadius: 0, textColor: .red, font: UIFont.SFUIDisplayRegular(size: 15)!, borderWidth: 1, borderColor: UIColor.ProfileButtonBorderColor.cgColor)
+    
     let backView = ProfileMenuBackgroundView()
     
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel! { didSet {
+        phoneNumberLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+    }}
     
-    @IBOutlet weak var MyAddressesLabel: UILabel!
+    @IBOutlet weak var MyAddressesLabel: UILabel! { didSet {
+        MyAddressesLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+    }}
     
-    @IBOutlet weak var PaymentHistoryLabel: UILabel!
+    @IBOutlet weak var PaymentHistoryLabel: UILabel! { didSet {
+        PaymentHistoryLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+    }}
     
-    @IBOutlet weak var OrdersHistoryLabel: UILabel!
+    @IBOutlet weak var OrdersHistoryLabel: UILabel! { didSet {
+        OrdersHistoryLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+    }}
     
-    @IBOutlet weak var PaymentMethodLabel: UILabel!
+    @IBOutlet weak var PaymentMethodLabel: UILabel! { didSet {
+        PaymentMethodLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+    }}
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
+        configureNavigationItem()
+        configureSignOutButton()
        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     func configureUI(){
+        tableView.isScrollEnabled = false
+       
+        tableView.addSubview(backView)
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+        backView.translatesAutoresizingMaskIntoConstraints = false
+       
+        backView.addSubview(signOutButton)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            backView.trailingAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.trailingAnchor),
+            backView.leadingAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.leadingAnchor),
+            backView.topAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.topAnchor),
+            backView.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor),
+            
+            signOutButton.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -35),
+            signOutButton.leadingAnchor.constraint(equalTo: backView.leadingAnchor),
+            signOutButton.trailingAnchor.constraint(equalTo: backView.trailingAnchor),
+            signOutButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    
         tableView.backgroundView = backView
-        phoneNumberLabel.text = "Введите номер телефона"
-        MyAddressesLabel.text = "Мои адреса"
-        PaymentHistoryLabel.text = "История платежей"
-        OrdersHistoryLabel.text = "История заказов"
-        PaymentMethodLabel.text = "Способы оплаты"
+        
+        phoneNumberLabel.text       = "Введите номер телефона"
+        MyAddressesLabel.text       = "Мои адреса"
+        PaymentHistoryLabel.text    = "История платежей"
+        OrdersHistoryLabel.text     = "История заказов"
+        PaymentMethodLabel.text     = "Способы оплаты"
+    }
+    
+    @objc func dismissVC(){
+        dismiss(animated: true)
+    }
+    
+    func configureSignOutButton(){
+        signOutButton.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+    }
+    
+    @objc func signOut(){
+        print("did sign out")
+    }
+  
+    
+    func configureNavigationItem(){
+        let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
+        doneButton.tintColor = .black
+        navigationItem.leftBarButtonItem = doneButton
+        
+        
+//        let attributes = [NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 26)]
+//        UINavigationBar.appearance().titleTextAttributes = attributes as [NSAttributedString.Key : Any]
+        
     }
 
-    // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

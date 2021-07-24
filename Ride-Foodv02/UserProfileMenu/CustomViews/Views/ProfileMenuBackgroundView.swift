@@ -1,4 +1,4 @@
-//
+
 //  ProfileMenuBackgroundView.swift
 //  Ride-Foodv02
 //
@@ -8,12 +8,7 @@
 import UIKit
 
 class ProfileMenuBackgroundView: UIView {
-    let backgroundImageView: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "UserProfileBackground")
-        return image
-    }()
+    let backgroundImageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +20,16 @@ class ProfileMenuBackgroundView: UIView {
     }
     
    private func configure(){
+    if #available(iOS 13.0, *) {
+        backgroundColor = .ProfileBackgroundColor
+    } else {
+        // Fallback on earlier versions
+    }
+    backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+    backgroundImageView.image = UIImage(named: "UserProfileBackground")
         addSubview(backgroundImageView)
+ 
+    
     NSLayoutConstraint.activate([
         backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
