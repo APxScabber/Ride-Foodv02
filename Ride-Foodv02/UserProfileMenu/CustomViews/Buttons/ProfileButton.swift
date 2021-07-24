@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileButton: UIButton {
+class VBButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -19,13 +19,13 @@ class ProfileButton: UIButton {
     
     init(backgroundColor: UIColor, title: String, cornerRadius: CGFloat, textColor: UIColor, font: UIFont, borderWidth: CGFloat, borderColor: CGColor) {
         super.init(frame: .zero)
-        self.backgroundColor = backgroundColor
+        self.backgroundColor            = backgroundColor
         self.setTitle(title, for: .normal)
-        self.layer.cornerRadius = cornerRadius
+        self.layer.cornerRadius         = cornerRadius
         self.setTitleColor(textColor, for: .normal)
-        self.layer.borderWidth = borderWidth
-        self.layer.borderColor = borderColor
-        titleLabel?.font = font
+        self.layer.borderWidth          = borderWidth
+        self.layer.borderColor          = borderColor
+        titleLabel?.font                = font
         configure()
     }
     

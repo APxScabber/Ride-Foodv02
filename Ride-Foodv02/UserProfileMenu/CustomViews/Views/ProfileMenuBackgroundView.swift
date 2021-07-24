@@ -25,8 +25,8 @@ class ProfileMenuBackgroundView: UIView {
     } else {
         // Fallback on earlier versions
     }
-    backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-    backgroundImageView.image = UIImage(named: "UserProfileBackground")
+    backgroundImageView.translatesAutoresizingMaskIntoConstraints   = false
+    backgroundImageView.image                                       = UIImage(named: "UserProfileBackground")
         addSubview(backgroundImageView)
  
     
