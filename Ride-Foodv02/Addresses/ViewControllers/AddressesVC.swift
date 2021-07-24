@@ -18,22 +18,13 @@ class AddressesVC: UIViewController {
     @IBOutlet weak var MyAddressesTableView: UITableView!
     
     
-    
-    
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem()
         fetch()
         addNewAddressButton()
         
-       
-        
     }
-    
-    
     
     func fetch(){
         PersistanceManager.shared.fetchAddresses { result in
@@ -44,7 +35,7 @@ class AddressesVC: UIViewController {
                 print(self.addresses)
                 print(self.addresses.isEmpty)
                 if self.addresses.isEmpty {
-                    print("Something is here")
+                    
                     DispatchQueue.main.async {
                         let emptyView = AddressesEmptyStateView()
                         emptyView.frame = self.MyAddressesTableView.bounds
