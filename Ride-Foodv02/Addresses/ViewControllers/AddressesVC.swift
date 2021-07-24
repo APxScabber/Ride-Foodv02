@@ -24,6 +24,7 @@ class AddressesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetch()
+        configureNavigationItem()
         
     }
     
@@ -38,6 +39,20 @@ class AddressesVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func configureNavigationItem(){
+        let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
+        doneButton.tintColor = .black
+        navigationItem.leftBarButtonItem = doneButton
+        
+        
+
+        
+    }
+    
+    @objc func dismissVC(){
+        dismiss(animated: true)
     }
 
 }

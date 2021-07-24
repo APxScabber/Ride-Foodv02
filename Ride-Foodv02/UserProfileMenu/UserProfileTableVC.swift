@@ -21,6 +21,7 @@ class UserProfileTableVC: UITableViewController {
     
     @IBOutlet weak var MyAddressesLabel: UILabel! { didSet {
         MyAddressesLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+        
     }}
     
     @IBOutlet weak var PaymentHistoryLabel: UILabel! { didSet {
@@ -98,13 +99,40 @@ class UserProfileTableVC: UITableViewController {
         navigationItem.leftBarButtonItem = doneButton
         
         
-//        let attributes = [NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 26)]
-//        UINavigationBar.appearance().titleTextAttributes = attributes as [NSAttributedString.Key : Any]
+
         
+    }
+    
+    
+    
+    func goToStoryboard(name:String) {
+        let storyboard = UIStoryboard(name: name, bundle: .main)
+        if let supportVC = storyboard.instantiateInitialViewController() as? UINavigationController {
+            supportVC.modalPresentationStyle = .fullScreen
+            supportVC.modalTransitionStyle = .coverVertical
+            present(supportVC, animated: true)
+        }
     }
 
 
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 && indexPath.row == 0  {
+            print("Номер телефона")
+            }
+        if indexPath.section == 0 && indexPath.row == 1  {
+            goToStoryboard(name: "Addresses")
+            }
+        if indexPath.section == 1 && indexPath.row == 0  {
+            print("История платежей")
+            }
+        if indexPath.section == 1 && indexPath.row == 1  {
+            print("История заказов")
+            }
+        if indexPath.section == 2 && indexPath.row == 2  {
+            print("Способы оплаты")
+            }
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
