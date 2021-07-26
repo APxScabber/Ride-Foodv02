@@ -218,7 +218,7 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "food",
-           let destination = segue.destination as? FoodMainViewController {
+           let destination = segue.destination as? FoodMainVC {
             transparentView.isHidden = false
             destination.modalPresentationStyle = .custom
         }
