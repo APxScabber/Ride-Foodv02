@@ -69,6 +69,7 @@ class AddressesVC: UIViewController {
     
     @objc func addnewAddress(){
         print("go to the new screen")
+        performSegue(withIdentifier: "addNewAddressSegue", sender: self)
     }
     
     @objc func dismissVC(){
