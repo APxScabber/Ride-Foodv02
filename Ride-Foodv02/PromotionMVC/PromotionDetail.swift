@@ -1,7 +1,13 @@
 import UIKit
 
+protocol PromotionDetailDelegate: AnyObject {
+    func dismiss()
+}
+
 class PromotionDetail: UIView {
 
+    weak var delegate: PromotionDetailDelegate?
+    
     @IBOutlet weak var buyButton: UIButton! { didSet {
         buyButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
@@ -34,7 +40,7 @@ class PromotionDetail: UIView {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PromotionConstant.durationForAppearingPromotionView, delay: 0.0, options: .curveLinear) {
             self.frame.origin.y += self.bounds.height
         }
-
+        delegate?.dismiss()
     }
     
     @IBAction func buyButtonAction(_ sender: UIButton) {

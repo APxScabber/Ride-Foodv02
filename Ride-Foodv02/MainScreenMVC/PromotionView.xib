@@ -74,6 +74,7 @@
             </constraints>
             <connections>
                 <outlet property="detailLabel" destination="H5u-tQ-P4b" id="8IH-ue-Jdt"/>
+                <outlet property="touchableView" destination="aiq-JM-ARf" id="ycs-SF-t49"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>

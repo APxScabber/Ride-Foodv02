@@ -17,10 +17,10 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-og-4ea">
                     <rect key="frame" x="25" y="720" width="340" height="80"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Taxi" translatesAutoresizingMaskIntoConstraints="NO" id="tPN-we-tgl">
+                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Taxi" translatesAutoresizingMaskIntoConstraints="NO" id="tPN-we-tgl">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-P6-hZh">
+                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-P6-hZh">
                             <rect key="frame" x="180" y="0.0" width="160" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="TQ7-P6-hZh" secondAttribute="height" multiplier="2:1" id="uve-rS-Xi2"/>
