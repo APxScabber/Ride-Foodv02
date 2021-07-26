@@ -23,12 +23,15 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var circleView: CircleView! { didSet {
         circleView.color = .white
     }}
+    
+    @IBOutlet weak var menuButton: UIButton!
+    
     // MARK: - XIB files
     
     private let menuView = MenuView.initFromNib()
     private let foodTaxiView = FoodTaxiView.initFromNib()
     private let promotionView = PromotionView.initFromNib()
-    
+    private let promotionDetailView = PromotionDetail.initFromNib()
     // MARK: - IBActions
     
     @IBAction func goToMenu(_ sender: MenuButton) {
@@ -61,9 +64,12 @@ class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         menuView.delegate = self
         foodTaxiView.delegate = self
+        promotionView.delegate = self
+        promotionDetailView.delegate = self
         view.addSubview(menuView)
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
+        view.addSubview(promotionDetailView)
         CoreDataManager.shared.fetchCoreData { [weak self] result in
             
             switch result {
@@ -97,6 +103,7 @@ class MainScreenViewController: UIViewController {
             menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
             foodTaxiView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foodTaxiViewHeight + bottomSafeAreaConstant)
             promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.promotionViewYOffset - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+            promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
         }
     }
     
@@ -202,13 +209,20 @@ extension MainScreenViewController: MenuViewDelegate {
 extension MainScreenViewController: FoodTaxiViewDelegate {
     
     func goToFood() {
-        
+        performSegue(withIdentifier: "food", sender: nil)
     }
     
     func goToTaxi() {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "food",
+           let destination = segue.destination as? FoodMainVC {
+            transparentView.isHidden = false
+            destination.modalPresentationStyle = .custom
+        }
+    }
     
 }
 
@@ -223,4 +237,49 @@ extension MainScreenViewController: MKMapViewDelegate {
         return annotationView
     }
     
+}
+
+
+extension MainScreenViewController: PromotionViewDelegate {
+    
+    func show() {
+        transparentView.isHidden = false
+        circleView.isHidden = true
+        menuButton.isHidden = true
+        let promotion = DefaultPromotion()
+        promotionDetailView.headerLabel.text = promotion.title
+        ImageFetcher.fetch(promotion.urlString) { data in
+            self.promotionDetailView.imageView.image = UIImage(data: data)
+        }
+        PromotionsFetcher.getPromotionDescriptionWith(id: promotion.id) { [weak self] in
+            self?.promotionDetailView.descriptionLabel.text = $0
+        }
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: MainScreenConstants.durationForAppearingMenuView,
+            delay: 0.0,
+            options: .curveLinear,
+            animations: {
+                self.foodTaxiView.frame.origin.y += (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
+                self.promotionView.frame.origin.y += (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
+                self.promotionDetailView.frame.origin.y -= self.view.bounds.height
+            })
+    }
+}
+
+
+extension MainScreenViewController: PromotionDetailDelegate {
+    
+    func dismiss() {
+        transparentView.isHidden = true
+        circleView.isHidden = false
+        menuButton.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: MainScreenConstants.durationForAppearingMenuView,
+            delay: 0.0,
+            options: .curveLinear,
+            animations: {
+                self.foodTaxiView.frame.origin.y -= (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
+                self.promotionView.frame.origin.y -= (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
+            })
+    }
 }

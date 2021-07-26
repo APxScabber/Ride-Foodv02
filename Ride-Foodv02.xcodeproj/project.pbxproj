@@ -10,6 +10,7 @@
 		7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7802DFAF267CA0120048CF1C /* Localizable.strings */; };
 		7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFB1267CAA680048CF1C /* MenuConstant.swift */; };
 		7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */; };
+		7835378126AF21F8005D73D6 /* FoodMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835378026AF21F8005D73D6 /* FoodMainVC.swift */; };
 		7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39626A6F31E00335DFA /* MainScreenConstants.swift */; };
 		7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39926A8362400335DFA /* TariffsActions.swift */; };
 		7841E3A126A8362500335DFA /* TariffsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39A26A8362400335DFA /* TariffsPageViewController.swift */; };
@@ -30,6 +31,9 @@
 		7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */; };
 		7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8FF2674DFBE00AA88CA /* MenuButton.swift */; };
 		7850E9032674FC4500AA88CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7850E9022674FC4500AA88CA /* Settings.storyboard */; };
+		7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D37126AED0D500441690 /* DefaultPromotion.swift */; };
+		7858D37526AED7BC00441690 /* Food.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7858D37426AED7BC00441690 /* Food.storyboard */; };
+		7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */; };
 		785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785D38AD26AB09DC00DAB562 /* PromotionView.xib */; };
 		785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D38AF26AB09E700DAB562 /* PromotionView.swift */; };
 		7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4A3266FAA420031BFA0 /* Support.storyboard */; };
@@ -158,6 +162,7 @@
 		7802DFB0267CA0FC0048CF1C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7802DFB1267CAA680048CF1C /* MenuConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConstant.swift; sourceTree = "<group>"; };
 		7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoConstant.swift; sourceTree = "<group>"; };
+		7835378026AF21F8005D73D6 /* FoodMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMainVC.swift; sourceTree = "<group>"; };
 		7841E39626A6F31E00335DFA /* MainScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConstants.swift; sourceTree = "<group>"; };
 		7841E39926A8362400335DFA /* TariffsActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsActions.swift; sourceTree = "<group>"; };
 		7841E39A26A8362400335DFA /* TariffsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsPageViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +183,9 @@
 		7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7850E8FF2674DFBE00AA88CA /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		7850E9022674FC4500AA88CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		7858D37126AED0D500441690 /* DefaultPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPromotion.swift; sourceTree = "<group>"; };
+		7858D37426AED7BC00441690 /* Food.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Food.storyboard; sourceTree = "<group>"; };
+		7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMainTableViewCell.swift; sourceTree = "<group>"; };
 		785D38AD26AB09DC00DAB562 /* PromotionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionView.xib; sourceTree = "<group>"; };
 		785D38AF26AB09E700DAB562 /* PromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
 		7867B4A3266FAA420031BFA0 /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
@@ -347,6 +355,7 @@
 				787D4B64267A1982002D975D /* PromotionListTableViewController.swift */,
 				78BE49FB2683536800A13641 /* PromotionTableViewCell.swift */,
 				78BE49FF2683671600A13641 /* PromotionsFetcher.swift */,
+				7858D37126AED0D500441690 /* DefaultPromotion.swift */,
 				78BE4A012683675100A13641 /* Promotion.swift */,
 			);
 			path = PromotionMVC;
@@ -367,6 +376,16 @@
 				787D4B622677A751002D975D /* ToolbarView.swift */,
 			);
 			path = SettingsMVC;
+			sourceTree = "<group>";
+		};
+		7858D37326AED7AD00441690 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				7858D37426AED7BC00441690 /* Food.storyboard */,
+				7835378026AF21F8005D73D6 /* FoodMainVC.swift */,
+				7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */,
+			);
+			path = Food;
 			sourceTree = "<group>";
 		};
 		7867B4A1266FA9F50031BFA0 /* Misc */ = {
@@ -799,6 +818,7 @@
 				78A3A00E267B57BC006D0DAB /* ViewControllers */,
 				78A39FFF267B56C3006D0DAB /* Text */,
 				7867B4E1267392E30031BFA0 /* MainScreenMVC */,
+				7858D37326AED7AD00441690 /* Food */,
 				7867B4D12672290F0031BFA0 /* MenuMVC */,
 				7867B4B4266FAC410031BFA0 /* SupportMVC */,
 				7850E9012674FC0B00AA88CA /* SettingsMVC */,
@@ -903,6 +923,7 @@
 				787D4B612677A73E002D975D /* ToolbarView.xib in Resources */,
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
 				78BE49FE268354ED00A13641 /* SFUIDisplay-Bold.otf in Resources */,
+				7858D37526AED7BC00441690 /* Food.storyboard in Resources */,
 				7850E8FA2673BCF200AA88CA /* SupportActionSheetView.xib in Resources */,
 				78AEB86F267B589D0023605D /* Main.storyboard in Resources */,
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
@@ -930,10 +951,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7835378126AF21F8005D73D6 /* FoodMainVC.swift in Sources */,
 				7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */,
 				7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */,
 				7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */,
 				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
+				7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */,
 				7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */,
 				7841E3A326A8362500335DFA /* TariffsExtension.swift in Sources */,
 				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
@@ -941,6 +964,7 @@
 				78A3A01C267B57D7006D0DAB /* ConfirmViewController.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
 				7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */,
+				7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */,
 				7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */,
 				78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */,
 				78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */,

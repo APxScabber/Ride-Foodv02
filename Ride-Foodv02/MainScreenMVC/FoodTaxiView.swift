@@ -7,8 +7,13 @@ protocol FoodTaxiViewDelegate: AnyObject {
 
 class FoodTaxiView: UIView {
 
-    @IBOutlet weak var foodImageView: UIImageView!
-    @IBOutlet weak var taxiImageView: UIImageView!
+    @IBOutlet weak var foodImageView: UIImageView! { didSet {
+        foodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(foodImageViewClicked(_:))))
+    }}
+    
+    @IBOutlet weak var taxiImageView: UIImageView! { didSet {
+        taxiImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(taxiImageViewClicked(_:))))
+    }}
     
     @IBOutlet weak var placeLabel: UILabel! { didSet {
         placeLabel.font = UIFont.SFUIDisplayRegular(size: 17.0)
