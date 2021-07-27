@@ -42,23 +42,23 @@ class MainScreenViewController: UIViewController {
         menuView.delegate = self
         view.addSubview(menuView)
         
-        CoreDataManager.shared.fetchCoreData { [weak self] result in
-            
-            switch result {
-            case .success(let model):
-                let userData = model.first
-                self?.userID = String(describing: userData!.id!)
-                print(self!.userID!)
-            case .failure(let error):
-                print(error)
-            case .none:
-                return
-            }
-        }
-    
-        
-        guard let id = userID else { return }
-        loadTariffs(userID: id)
+//        CoreDataManager.shared.fetchCoreData { [weak self] result in
+//
+//            switch result {
+//            case .success(let model):
+//                let userData = model.first
+//                self?.userID = String(describing: userData!.id!)
+//                print(self!.userID!)
+//            case .failure(let error):
+//                print(error)
+//            case .none:
+//                return
+//            }
+//        }
+//
+//
+//        guard let id = userID else { return }
+//        loadTariffs(userID: id)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,41 +68,42 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    func loadTariffs(userID: String) {
-        
-        let urlString = separategURL(url: tariffsURL, userID: userID)
-        guard let url = URL(string: urlString) else { return }
-        
-        LoadManager.shared.loadData(of: TariffsDataModel.self,
-                                    from: url, httpMethod: .get, passData: nil) { result in
-            switch result {
-            case .success(let dataModel):
-                let model = dataModel.data
-                print("Тариф: \(model.name)")
-                print("Автомобили: \(model.cars)")
-                print("Описание: \(model.description)")
-            case .failure(let error):
-                print("Tariffs error: \(error.localizedDescription)")
-            }
-        }
-    }
+//    func loadTariffs(userID: String) {
+//
+//        let urlString = separategURL(url: tariffsURL, userID: userID)
+//        guard let url = URL(string: urlString) else { return }
+//
+//        LoadManager.shared.loadData(of: TariffsDataModel.self,
+//                                    from: url, httpMethod: .get, passData: nil) { result in
+//            switch result {
+//            case .success(let dataModel):
+//                print(dataModel.data)
+////                let model = dataModel.data
+////                print("Тариф: \(model.name)")
+////                print("Автомобили: \(model.cars)")
+////                print("Описание: \(model.description)")
+//            case .failure(let error):
+//                print("Tariffs error: \(error.localizedDescription)")
+//            }
+//        }
+//    }
     
-    //Разбиваем текст по компонентам использую ключ в виде @#^
-    func separategURL(url: String, userID: String) -> String {
-        
-        let textArray = url.components(separatedBy: "@#^")
-        let finalUrl = textArray[0] + userID + textArray[1]
-        
-        return finalUrl
-    }
-    
+//    //Разбиваем текст по компонентам использую ключ в виде @#^
+//    func separategURL(url: String, userID: String) -> String {
+//
+//        let textArray = url.components(separatedBy: "@#^")
+//        let finalUrl = textArray[0] + userID + textArray[1]
+//
+//        return finalUrl
+//    }
+
     @objc
     private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended {
             close()
         }
     }
-    
+
 }
 
 

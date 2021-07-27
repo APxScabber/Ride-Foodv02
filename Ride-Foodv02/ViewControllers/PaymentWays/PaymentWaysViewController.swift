@@ -14,7 +14,7 @@ class PaymentWaysViewController: UIViewController {
     @IBOutlet weak var linkCardButtonOutlet: UIButton!
     
     
-    var navigationTitle = "Способы оплаты"
+    var navigationTitle = PaymentMainViewText.topTitle.text()
     
     //var userID: String?
     
@@ -52,9 +52,9 @@ class PaymentWaysViewController: UIViewController {
     
     // MARK: - Methods
     
-    //Задаем внешний вид кнопки Заказать такси
-    private func setupTaxiOrderButton() {
-        
+    //Настройка кнопки Привязать карту
+    private func setupLinkCardButton() {
+
         if textPaymentOptions[1].count == 1 {
             linkCardButtonOutlet.style()
             linkCardButtonOutlet.backgroundColor = PaymentWaysColors.blueColor.value
@@ -65,18 +65,20 @@ class PaymentWaysViewController: UIViewController {
         }
     }
     
+    // Получаем данные о картах с сервера и в соответствии я этим заполняем Table View
     private func getPaymentData() {
         paymentWaysInteractor.loadPaymentData { modelsArray in
             
             DispatchQueue.main.async {
                 self.paymentOptions = modelsArray
                 self.createPaymentOptions()
-                self.setupTaxiOrderButton()
+                self.setupLinkCardButton()
                 self.tableView.reloadData()
             }
         }
     }
     
+    // Определяем есть ли у пользователя уже привязанные к аккаунту карты или нет
     private func createPaymentOptions() {
         
         if paymentOptions.isEmpty {
@@ -92,6 +94,8 @@ class PaymentWaysViewController: UIViewController {
         }
     }
     
+    
+    // Устанавливаем в Table View Cell картинку слева
     private func setLefImage(for cell: PaymentWaysTableViewCell, section: Int, row: Int) {
         if section == 0 {
             switch row {
@@ -122,6 +126,7 @@ class PaymentWaysViewController: UIViewController {
         }
     }
     
+    // Устанавливаем в Table View Cell картинку справа
     private func setRightImage(for cell: PaymentWaysTableViewCell, section: Int, row: Int) {
         if section == 0 {
             if paymentOptions.isEmpty {
@@ -139,8 +144,6 @@ class PaymentWaysViewController: UIViewController {
         }
     }
     
-
-    
     // MARK: - Actions
     
     @IBAction func linkCardButtonAction(_ sender: Any) {
@@ -154,8 +157,6 @@ class PaymentWaysViewController: UIViewController {
     @IBAction func done(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
-
-
 }
 
 // MARK: - Extensions TableView Data Source
@@ -193,7 +194,15 @@ extension PaymentWaysViewController: UITableViewDataSource {
         } else {
             switch indexPath.section {
             case 0:
-                cell.paymentTextLabel.text = textPaymentOptions[indexPath.section][indexPath.row]
+                let inputText = textPaymentOptions[indexPath.section][indexPath.row]
+                if paymentWaysInteractor.filter(text: inputText) {
+                    let formatedCardNumber = PaymentMainViewText.cardNumber.text() + " " + inputText.suffix(4)
+                    let finallText = paymentWaysInteractor.createTextAttribute(for: formatedCardNumber)
+                    cell.paymentTextLabel.attributedText = finallText
+                } else {
+                    cell.paymentTextLabel.text = inputText
+                }
+
             case 1:
                 if indexPath.row == 0 {
                     cell.paymentTextLabel.text = ""
@@ -208,7 +217,6 @@ extension PaymentWaysViewController: UITableViewDataSource {
         
         setRightImage(for: cell, section: indexPath.section, row: indexPath.row)
         
-
         return cell
     }
  
@@ -252,10 +260,10 @@ extension PaymentWaysViewController: UITableViewDelegate {
             }
         }
             
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         view.tintColor = .clear
     }

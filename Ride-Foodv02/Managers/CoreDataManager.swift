@@ -26,8 +26,6 @@ class CoreDataManager {
         
         let fetchContext = CoreDataManager.shared.context
 
-           // do {
-                
                 let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
                 let result = try! fetchContext.fetch(fetchRequest)
 
@@ -37,10 +35,6 @@ class CoreDataManager {
                     isLogin = true
                     completion(.success(result))
                 }
-//            } catch {
-//
-//                completion(.failure(error))
-//            }
     }
 
     //Мкетод сохранения данных в Core Data

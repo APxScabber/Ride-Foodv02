@@ -11,20 +11,24 @@ class AddCardViewController: UIViewController {
     
     // MARK: - Outlets
     
+    // Outlets для Main Screen
     @IBOutlet weak var hideTextField: UITextField!
     @IBOutlet weak var bgImageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var bgImageView: UIImageView!
     
+    // Outlets для Add Card View
     @IBOutlet weak var addCardView: UIView!
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var cardDateTextField: UITextField!
     @IBOutlet weak var cardCVVTextField: UITextField!
     @IBOutlet weak var linkCardButtonOutlet: UIButton!
-    @IBOutlet var underLinesArray: [NSLayoutConstraint]!
+    @IBOutlet var underLinesArray: [UIButton]!
     
-    
+    // Outlets для Confirm Card View
     @IBOutlet weak var cardConfirmView: UIView!
+    
+    @IBOutlet weak var confirmTitleTextView: UILabel!
     @IBOutlet weak var infoTextView: UITextView!
     @IBOutlet weak var confirmButtonOutlet: UIButton!
     @IBOutlet weak var cancelButtonOutlet: UIButton!
@@ -36,11 +40,8 @@ class AddCardViewController: UIViewController {
     // MARK: - Properties
     var titleNavigation = "Новая карта"
     
-    //var addCardView: AddCardView?
-    //var addCardConfirmView: AddCardConfirmView?
     var keyboardHeight: CGFloat?
     
-   
     var cardNumber = ""
     var cardDate = ""
     var cardCVV = ""
@@ -49,16 +50,19 @@ class AddCardViewController: UIViewController {
     var isCardDateFull = false
     var isCardCVVFull = false
     
-   // var inputCardID: Int?
+    var inputCardNumber: String?
+    
+    let addCardInteractor = AddCardInteractor()
     
     // MARK: - viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = titleNavigation
         registerForKeyboardNotification()
         bgImageTopConstraint.constant = view.frame.height / 2
+        setupUnderLinesGrayColor()
     }
     
     // MARK: - viewWillAppear
@@ -76,8 +80,6 @@ class AddCardViewController: UIViewController {
     // MARK: - Methods
 
     private func setupAddCardView() {
-            
-        //mainView.backgroundColor = .clear
         addCardView.frame.size = CGSize(width: view.frame.width, height: 215)
         addCardView.frame.origin.y = view.frame.height - addCardView.frame.height
             
@@ -95,8 +97,7 @@ class AddCardViewController: UIViewController {
         linkCardButtonOutlet.isEnabled = false
     }
     
-    func setupAddCardConfirmView() {
-        //cardConfirmView.backgroundColor = .white
+    private func setupAddCardConfirmView() {
         cardConfirmView.frame.size = CGSize(width: view.frame.width, height: 265)
         cardConfirmView.frame.origin.y = view.frame.height
 
@@ -107,12 +108,26 @@ class AddCardViewController: UIViewController {
         cardConfirmView.layer.shadowOpacity = 1
         cardConfirmView.layer.shadowOffset = .zero
         cardConfirmView.layer.shadowRadius = 10
+        
+        confirmTitleTextView.text = ConfirmCardViewText.confirm.text()
 
         confirmButtonOutlet.style()
         confirmButtonOutlet.backgroundColor = TariffsColors.blueColor.value
-        confirmButtonOutlet.setTitle(PaymentMainViewText.confirmButtonText.text(), for: .normal)
-        cancelButtonOutlet.setTitle(PaymentMainViewText.cancelButtonText.text(), for: .normal)
+        confirmButtonOutlet.setTitle(ConfirmCardViewText.confirmButtonText.text(), for: .normal)
+        cancelButtonOutlet.setTitle(ConfirmCardViewText.cancelButtonText.text(), for: .normal)
         
+    }
+    
+    private func setupUnderLinesGrayColor() {
+        for line in underLinesArray {
+            line.tintColor = PaymentWaysColors.grayColor.value
+        }
+    }
+    
+    private func setupUnderLinesBlueColor() {
+        for line in underLinesArray {
+            line.tintColor = PaymentWaysColors.blueColor.value
+        }
     }
     
     private func animationAddCard() {
@@ -133,6 +148,16 @@ class AddCardViewController: UIViewController {
     
     private func animationAddCardConfirm() {
         
+        if let cardNumber = inputCardNumber {
+            let finalText = addCardInteractor.separated(text: cardNumber)
+            let textAttribute = addCardInteractor.createTextAttribute(for: finalText)
+            infoTextView.attributedText = textAttribute
+        } else {
+            infoTextView.text = addCardInteractor.separated(text: "")
+        }
+        
+        
+
         UIView.animate(withDuration: 2) {
             self.view.addSubview(self.cardConfirmView)
             self.cardConfirmView?.frame.origin.y = self.view.frame.height - self.cardConfirmView!.frame.height
@@ -141,6 +166,8 @@ class AddCardViewController: UIViewController {
             self.view.superview?.layoutIfNeeded()
         }
     }
+    
+
     
     //Регистрируем уведомления на пояаление клавиатуры
     func registerForKeyboardNotification() {
@@ -209,9 +236,11 @@ extension AddCardViewController {
         
         if isCardNumberFull && isCardDateFull && isCardCVVFull {
             linkCardButtonOutlet.backgroundColor = PaymentWaysColors.blueColor.value
+            setupUnderLinesBlueColor()
             linkCardButtonOutlet.isEnabled = true
         } else {
             linkCardButtonOutlet.backgroundColor = PaymentWaysColors.grayColor.value
+            setupUnderLinesGrayColor()
             linkCardButtonOutlet.isEnabled = false
         }
     }
@@ -229,6 +258,12 @@ extension AddCardViewController {
             isCardNumberFull = true
         } else {
             isCardNumberFull = false
+        }
+        
+        if count > 4 {
+            cardImageView.image = #imageLiteral(resourceName: "Visa")
+        } else {
+            cardImageView.image = nil
         }
         
         checkAllCardFields()
@@ -269,12 +304,17 @@ extension AddCardViewController {
     @IBAction func linkCardButtonAction(_ sender: Any) {
         
         //let passData = ["number" : cardNumber, "expiry_date" : cardDate, "cvc" : cardCVV]
+        
+        inputCardNumber = cardNumber
+        
 
         UIView.animate(withDuration: 1.5) {
 
             self.addCardView.frame.origin.y = self.view.frame.height
-            //self.addCardView.removeFromSuperview()
+
             self.cardCVVTextField.resignFirstResponder()
+            self.cardNumberTextField.resignFirstResponder()
+            self.cardDateTextField.resignFirstResponder()
 
         } completion: { _ in
             
@@ -294,6 +334,8 @@ extension AddCardViewController {
                 //            }
                 //        }
             //}
+            
+            self.addCardView.removeFromSuperview()
         }
         
         
@@ -308,6 +350,8 @@ extension AddCardViewController {
 
 
 extension AddCardViewController {
+    
+    
     @IBAction func confirmButtonAction(_ sender: Int) {
       
 

@@ -10,17 +10,25 @@ import UIKit
 class TariffsPageViewController: UIPageViewController {
 
     var tariffsModelArray: [TariffsModel]?
+    var navigationTitle = "Тарифы"
 
+    // MARK: -viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         dataSource = self
+        
+        navigationItem.title = navigationTitle
 
         if let contentVC = showViewController(at: 0) {
             setViewControllers([contentVC], direction: .forward, animated: true, completion: nil)
         }
     }
 
+    // MARK: - Methods
+    
+    // Подгружает View Controller
     func showViewController(at index: Int) -> TariffsViewController? {
 
         guard index >= 0 else { return nil }
@@ -33,8 +41,11 @@ class TariffsPageViewController: UIPageViewController {
     }
 }
 
+// MARK: - Extensions
+
 extension TariffsPageViewController: UIPageViewControllerDataSource {
     
+    // Функция отвечающая за переход на предыдщую страницу
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         var pageNumber = (viewController as! TariffsViewController).indexVC
@@ -43,6 +54,7 @@ extension TariffsPageViewController: UIPageViewControllerDataSource {
         return showViewController(at: pageNumber)
     }
     
+    // Функция отвечающая за переход на следующую страницу
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         var pageNumber = (viewController as! TariffsViewController).indexVC

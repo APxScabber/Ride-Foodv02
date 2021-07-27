@@ -14,6 +14,8 @@ class LanguageSelectionTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        UserDefaultsManager.shared.userSettings = indexPath.row == 0 ? UserDefaultsModel(language: "rus") : UserDefaultsModel(language: "eng")
         Settings.shared.language = indexPath.row == 0 ? "ru" : "en"
         Settings.shared.languageID = indexPath.row
         updateUI()

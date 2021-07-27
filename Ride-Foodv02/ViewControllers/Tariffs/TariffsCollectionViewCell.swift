@@ -11,5 +11,4 @@ class TariffsCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var cellImageButton: UIButton!
-    
 }
