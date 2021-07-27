@@ -172,10 +172,22 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+    //MARK: - Segue
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "food",
+           let destination = segue.destination as? FoodMainVC {
+            transparentView.isHidden = false
+            destination.modalPresentationStyle = .custom
+            destination.place = foodTaxiView.placeLabel.text ?? ""
+            destination.delegate = self
+            destination.region = mapView.region
+        }
+    }
     
 }
 
+//MARK: - MenuViewDelegate
 
 extension MainScreenViewController: MenuViewDelegate {
 
@@ -205,6 +217,7 @@ extension MainScreenViewController: MenuViewDelegate {
     
 }
 
+//MARK: - FoodTaxiView Delegate
 
 extension MainScreenViewController: FoodTaxiViewDelegate {
     
@@ -216,16 +229,11 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "food",
-           let destination = segue.destination as? FoodMainVC {
-            transparentView.isHidden = false
-            destination.modalPresentationStyle = .custom
-        }
-    }
+    
     
 }
 
+//MARK: - MKMapViewDelegate
 
 extension MainScreenViewController: MKMapViewDelegate {
     
@@ -239,6 +247,7 @@ extension MainScreenViewController: MKMapViewDelegate {
     
 }
 
+//MARK: - PromotionView Delegate
 
 extension MainScreenViewController: PromotionViewDelegate {
     
@@ -266,6 +275,7 @@ extension MainScreenViewController: PromotionViewDelegate {
     }
 }
 
+//MARK: - PromotionDetail Delegate
 
 extension MainScreenViewController: PromotionDetailDelegate {
     
@@ -281,5 +291,13 @@ extension MainScreenViewController: PromotionDetailDelegate {
                 self.foodTaxiView.frame.origin.y -= (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
                 self.promotionView.frame.origin.y -= (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
             })
+    }
+}
+
+
+extension MainScreenViewController: FoodMainDelegate {
+    
+    func done() {
+        transparentView.isHidden = true
     }
 }
