@@ -21,9 +21,7 @@ class PersistanceManager {
         do {
             let addresses = try! context.fetch(UserAddressMO.fetchRequest()) as [UserAddressMO]
             completion(.success(addresses))
-        } catch {
-            completion(.failure(error ))
-        }
+        } 
     }
     
     

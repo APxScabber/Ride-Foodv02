@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShopDetailView" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rh1-w7-Bup">
+                    <rect key="frame" x="25" y="779" width="364" height="73"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="73" id="SXp-4i-raQ"/>
+                    </constraints>
+                    <string key="text">«Перекресток» – крупнейшая сеть супермаркетов в России. На 30 сентября 2019 года торговая сеть «Перекресток», которая входит в состав компании X5 Retail Group, включает в себя 811 торговых объектов, расположенных в 131 городе и населенном пункте России.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5e-7l-K1u">
+                    <rect key="frame" x="13" y="765" width="388" height="1"/>
+                    <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="LEl-X2-uw4"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5i-yQ-htb">
+                    <rect key="frame" x="13" y="664" width="388" height="1"/>
+                    <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Vvn-df-oGq"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDM-53-YqA">
+                    <rect key="frame" x="0.0" y="602" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="VQc-9r-dec"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D5T-4w-ZnY">
+                    <rect key="frame" x="25" y="678" width="364" height="74"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="lAh-7K-bjS"/>
+                    </constraints>
+                    <string key="text">Хлеб и выпечка • Бакалея • Напитки • Яйцо, сыр, молоко • Кондитерские изделия • Овощи, фрукты, ягоды • Замороженные продукты • Мясо, рыба • Фермерские продукты </string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="Xc0-Bx-uTe">
+                    <rect key="frame" x="25" y="636" width="12" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="KVd-yW-Z55"/>
+                        <constraint firstAttribute="height" constant="12" id="fet-CE-TxA"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:00 - 23:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PJ-zR-4O3">
+                    <rect key="frame" x="43" y="635" width="108" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="PYV-C9-qgh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кронштадтский бульвар, 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f0b-xs-a2Q">
+                    <rect key="frame" x="25" y="616" width="213.5" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="skS-sD-Lhu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Магазин перекрёсток" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAh-QK-AOX">
+                    <rect key="frame" x="119.5" y="551" width="175" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="uPM-t6-Rxq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.23921568627450979" green="0.23137254901960785" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rc-WX-DKF">
+                    <rect key="frame" x="359" y="556.5" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ZUU-1b-MVC"/>
+                        <constraint firstAttribute="width" constant="30" id="trR-Nq-um1"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="closeButton"/>
+                    <connections>
+                        <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="7IB-gJ-ATL"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="a5i-yQ-htb" firstAttribute="top" secondItem="Xc0-Bx-uTe" secondAttribute="bottom" constant="16" id="03S-UC-IMO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f0b-xs-a2Q" secondAttribute="trailing" constant="25" id="1Bx-Va-Quj"/>
+                <constraint firstItem="8PJ-zR-4O3" firstAttribute="top" secondItem="f0b-xs-a2Q" secondAttribute="bottom" constant="1" id="1Q0-O5-hgg"/>
+                <constraint firstItem="TAh-QK-AOX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1wi-Pt-3hq"/>
+                <constraint firstItem="rh1-w7-Bup" firstAttribute="top" secondItem="O5e-7l-K1u" secondAttribute="bottom" constant="13" id="6xk-hA-hfH"/>
+                <constraint firstItem="O5e-7l-K1u" firstAttribute="top" secondItem="D5T-4w-ZnY" secondAttribute="bottom" constant="13" id="9d6-MH-736"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="D5T-4w-ZnY" secondAttribute="trailing" constant="25" id="Div-aP-12i"/>
+                <constraint firstAttribute="trailing" secondItem="a5i-yQ-htb" secondAttribute="trailing" constant="13" id="E7f-sg-Df3"/>
+                <constraint firstItem="8PJ-zR-4O3" firstAttribute="leading" secondItem="Xc0-Bx-uTe" secondAttribute="trailing" constant="6" id="JyD-OG-52G"/>
+                <constraint firstItem="cDM-53-YqA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KMO-BL-Fjr"/>
+                <constraint firstItem="D5T-4w-ZnY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="PMA-Us-sQW"/>
+                <constraint firstItem="f0b-xs-a2Q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="RGf-Ed-s2K"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rh1-w7-Bup" secondAttribute="trailing" constant="25" id="SoH-eG-Jb4"/>
+                <constraint firstItem="9rc-WX-DKF" firstAttribute="centerY" secondItem="TAh-QK-AOX" secondAttribute="centerY" id="Z0g-UB-a2q"/>
+                <constraint firstItem="Xc0-Bx-uTe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="aPr-RZ-E7w"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9rc-WX-DKF" secondAttribute="trailing" constant="25" id="aaV-Vd-mRf"/>
+                <constraint firstAttribute="trailing" secondItem="cDM-53-YqA" secondAttribute="trailing" id="amk-Yv-d6X"/>
+                <constraint firstItem="cDM-53-YqA" firstAttribute="top" secondItem="TAh-QK-AOX" secondAttribute="bottom" constant="10" id="fiQ-h7-fZl"/>
+                <constraint firstItem="O5e-7l-K1u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="hIh-KD-nbF"/>
+                <constraint firstItem="f0b-xs-a2Q" firstAttribute="top" secondItem="cDM-53-YqA" secondAttribute="bottom" constant="13" id="kuI-ML-8Ph"/>
+                <constraint firstItem="8PJ-zR-4O3" firstAttribute="centerY" secondItem="Xc0-Bx-uTe" secondAttribute="centerY" id="nVc-lg-YG5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O5e-7l-K1u" secondAttribute="trailing" constant="13" id="o2B-q2-FUC"/>
+                <constraint firstItem="rh1-w7-Bup" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="s0v-Jx-lmO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rh1-w7-Bup" secondAttribute="bottom" constant="10" id="tKW-3D-Bfe"/>
+                <constraint firstItem="a5i-yQ-htb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="vTC-zu-dZb"/>
+                <constraint firstItem="D5T-4w-ZnY" firstAttribute="top" secondItem="a5i-yQ-htb" secondAttribute="bottom" constant="13" id="zTi-HE-Mtp"/>
+            </constraints>
+            <connections>
+                <outlet property="addressLabel" destination="f0b-xs-a2Q" id="N7K-GF-gH8"/>
+                <outlet property="descriptionLabel" destination="rh1-w7-Bup" id="HKD-AY-Crb"/>
+                <outlet property="menuLabel" destination="D5T-4w-ZnY" id="Iy0-x5-jUt"/>
+                <outlet property="scheduleLabel" destination="8PJ-zR-4O3" id="bHU-WX-uSm"/>
+                <outlet property="titleLabel" destination="TAh-QK-AOX" id="Zub-IS-1r0"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Clock" width="14" height="14"/>
+        <image name="closeButton" width="30" height="30"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

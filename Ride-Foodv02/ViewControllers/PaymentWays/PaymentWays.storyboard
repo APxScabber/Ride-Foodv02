@@ -70,9 +70,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="znJ-ex-2JS" firstAttribute="centerY" secondItem="AhY-Ka-MUt" secondAttribute="centerY" id="1c7-sI-BwN"/>
                                                 <constraint firstItem="AhY-Ka-MUt" firstAttribute="centerY" secondItem="3DU-LX-Cni" secondAttribute="centerY" id="8QB-rJ-7Ji"/>
-                                                <constraint firstItem="znJ-ex-2JS" firstAttribute="centerX" secondItem="AhY-Ka-MUt" secondAttribute="centerX" id="Gi9-sv-e7s"/>
                                                 <constraint firstItem="AhY-Ka-MUt" firstAttribute="leading" secondItem="3DU-LX-Cni" secondAttribute="leading" constant="25" id="Mw9-PQ-g3H"/>
                                                 <constraint firstItem="ITz-h6-NQp" firstAttribute="centerY" secondItem="3DU-LX-Cni" secondAttribute="centerY" id="Xfi-Kl-6fW"/>
                                                 <constraint firstItem="een-8Y-9Ru" firstAttribute="leading" secondItem="ITz-h6-NQp" secondAttribute="trailing" constant="7" id="d9a-BO-XI5"/>
