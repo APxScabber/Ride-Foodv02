@@ -154,7 +154,9 @@
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
 		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
 		F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916726AB77BD008E9841 /* ProfileButton.swift */; };
-		F5BC916C26AE93ED008E9841 /* AddNewAddressTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916B26AE93ED008E9841 /* AddNewAddressTVC.swift */; };
+		F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917126AF779E008E9841 /* VBTextView.swift */; };
+		F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917326AF7B4E008E9841 /* VBMapButton.swift */; };
+		F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -308,7 +310,9 @@
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F5BC916726AB77BD008E9841 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
-		F5BC916B26AE93ED008E9841 /* AddNewAddressTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressTVC.swift; sourceTree = "<group>"; };
+		F5BC917126AF779E008E9841 /* VBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBTextView.swift; sourceTree = "<group>"; };
+		F5BC917326AF7B4E008E9841 /* VBMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBMapButton.swift; sourceTree = "<group>"; };
+		F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,6 +525,8 @@
 			isa = PBXGroup;
 			children = (
 				787A83F226AB2DB80096DFC3 /* AddressesEmptyStateView.swift */,
+				F5BC917126AF779E008E9841 /* VBTextView.swift */,
+				F5BC917326AF7B4E008E9841 /* VBMapButton.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -539,7 +545,7 @@
 				787A83E626AB2DA30096DFC3 /* Addresses.storyboard */,
 				787A83E926AB2DA30096DFC3 /* AddressesVC.swift */,
 				787A83EA26AB2DA40096DFC3 /* AddressesVC.xib */,
-				F5BC916B26AE93ED008E9841 /* AddNewAddressTVC.swift */,
+				F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -982,6 +988,7 @@
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
 				78F1A98226A8949000E16084 /* AddCardViewController.swift in Sources */,
+				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,
 				F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */,
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
 				787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */,
@@ -1001,6 +1008,7 @@
 				7850E8F82673B95800AA88CA /* MenuTableViewController.swift in Sources */,
 				78AEB87D267B59C10023605D /* ButtonExtension.swift in Sources */,
 				78A3A00B267B56E9006D0DAB /* LoadManagerText.swift in Sources */,
+				F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */,
 				78F1A97D26A8949000E16084 /* PaymentWaysInteractor.swift in Sources */,
 				78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */,
 				C47892C6267B97DB00B4C737 /* TariffsModel.swift in Sources */,
@@ -1031,6 +1039,7 @@
 				78AEB87C267B59C10023605D /* StringExtension.swift in Sources */,
 				C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */,
 				7841E3AF26A8384C00335DFA /* TextViewExtension.swift in Sources */,
+				F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */,
 				7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */,
 				7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */,
 				787A83F526AB31FA0096DFC3 /* CircleView.swift in Sources */,
@@ -1065,7 +1074,6 @@
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
-				F5BC916C26AE93ED008E9841 /* AddNewAddressTVC.swift in Sources */,
 				78BE4A022683675100A13641 /* Promotion.swift in Sources */,
 				78A3A019267B57D7006D0DAB /* ConfirmActions.swift in Sources */,
 				7867B4DB26723FA50031BFA0 /* SettingsConstant.swift in Sources */,
