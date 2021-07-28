@@ -24,6 +24,14 @@ class PersistanceManager {
         } 
     }
     
+    func addNewAddress(address: UserAddressMO){
+        do {
+            try self.context.save()
+        } catch let error {
+            print(error)
+        }
+    }
+    
     
     
     

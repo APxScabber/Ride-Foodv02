@@ -13,7 +13,12 @@ class AddressesVC: UIViewController {
     
     var addresses: [UserAddressMO] = []
     
-    @IBOutlet weak var MyAddressesBackgroundImageView: UIImageView!
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "houseBackgroundImage")
+        return imageView
+    }()
     
     @IBOutlet weak var MyAddressesTableView: UITableView!
     
@@ -23,8 +28,22 @@ class AddressesVC: UIViewController {
         configureNavigationItem()
         fetch()
         addNewAddressButton()
-        
+        addBackgroundImageView()
     }
+    func addBackgroundImageView(){
+      
+        self.MyAddressesTableView.isOpaque = false
+        MyAddressesTableView.backgroundView = backgroundImageView
+       
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 400),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -180)
+        ])
+    }
+    
     
     func fetch(){
         PersistanceManager.shared.fetchAddresses { result in
