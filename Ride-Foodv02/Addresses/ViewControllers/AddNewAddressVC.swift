@@ -281,7 +281,7 @@ class AddNewAddressVC: UIViewController {
     }
     
     @objc func addAddress(){
-       let newAddress = UserAddressMO(context: CoreDataContext)
+        let newAddress = UserAddressMO(context: CoreDataManager.shared.persistentContainer.viewContext)
         newAddress.title = addressTitleView.textView.text
         newAddress.fullAddress = addressTitleView.textView.text
         newAddress.driverCommentary = driverCommentaryView.textView.text ?? ""
