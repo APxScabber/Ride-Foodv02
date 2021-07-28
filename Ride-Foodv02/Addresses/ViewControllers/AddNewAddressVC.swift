@@ -50,6 +50,7 @@ class AddNewAddressVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTextViewDelegates()
         placeSaveButton()
         setInitialTextViewTexts()
         configureAddressStackView()
@@ -62,6 +63,16 @@ class AddNewAddressVC: UIViewController {
         
        // generalStackView.backgroundColor = .blue
         // Do any additional setup after loading the view.
+    }
+    
+    func setTextViewDelegates(){
+        let views = [addressTitleView, addressDescriptionView, driverCommentaryView, officeNumberView, intercomNumberView, entranceNumberView, floorNumber, deliveryCommentaryView]
+        views.forEach { element in
+            element.textView.delegate = self
+            if !element.textView.text.isEmpty{
+                element.placeholderLabel.isHidden = true
+            }
+        }
     }
     
     func configureNavigationItem(){
@@ -100,7 +111,6 @@ class AddNewAddressVC: UIViewController {
     @objc func keyboardDisappear(notification: NSNotification) {
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
             
-        
         // reset back the content inset to zero after keyboard is gone
         newAddressScrollView.contentInset = contentInsets
         newAddressScrollView.scrollIndicatorInsets = contentInsets
@@ -117,6 +127,30 @@ class AddNewAddressVC: UIViewController {
         floorNumber.textView.text = "Этаж"
         deliveryCommentaryView.textView.text = "Комментарий для курьера"
         
+    }
+    func setPlaceHolderTexts(textView: UITextView) -> String{
+        var textToReturn = String()
+        switch textView {
+        case addressTitleView.textView:
+           textToReturn = textView.text.isEmpty ? "Название адреса" : textView.text
+        case addressDescriptionView.textView:
+            textToReturn = textView.text.isEmpty ? "Адрес" : textView.text
+        case driverCommentaryView.textView:
+            textToReturn = textView.text.isEmpty ? "Комментарий для водителя" : textView.text
+        case officeNumberView.textView:
+            textToReturn = textView.text.isEmpty ? "Кв./офис" : textView.text
+        case intercomNumberView.textView:
+            textToReturn = textView.text.isEmpty ? "Домофон" : textView.text
+        case entranceNumberView.textView:
+            textToReturn = textView.text.isEmpty ? "Подъезд" : textView.text
+        case floorNumber.textView:
+            textToReturn = textView.text.isEmpty ? "Этаж" : textView.text
+        case deliveryCommentaryView.textView:
+            textToReturn = textView.text.isEmpty ? "Комментарий для курьера" : textView.text
+        default:
+             break
+        }
+        return textToReturn
     }
     
     func configureAddressStackView(){
@@ -243,16 +277,21 @@ class AddNewAddressVC: UIViewController {
         ])
     }
     
-    
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension AddNewAddressVC: UITextViewDelegate{
+     func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.DarkGrayTextColor {
+              textView.text = nil
+              textView.textColor = UIColor.black
+          }
+       
     }
-    */
-
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.text = setPlaceHolderTexts(textView: textView)
+        textView.textColor = UIColor.DarkGrayTextColor
+    }
+    
 }
