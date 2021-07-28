@@ -70,5 +70,19 @@ class LoginInteractor {
         
         return keyboardHeight
     }
+    
+    func loginCheck() -> Bool {
+        
+        var isLogin = false
+        
+        CoreDataManager.shared.fetchCoreData { _ in
+            
+            guard let check = CoreDataManager.shared.isLogin else { return }
+            isLogin = check
+        }
+        
+        return isLogin
+    }
 }
+
 

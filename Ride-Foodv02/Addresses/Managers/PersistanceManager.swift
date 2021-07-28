@@ -15,7 +15,7 @@ class PersistanceManager {
     private init() {
     }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = CoreDataManager.shared.persistentContainer.viewContext
     
     func fetchAddresses(completion: @escaping (Result<[UserAddressMO], Error>) -> Void){
         do {
