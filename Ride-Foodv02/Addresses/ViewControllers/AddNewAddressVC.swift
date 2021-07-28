@@ -50,7 +50,7 @@ class AddNewAddressVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextViewDelegates()
+     //   setTextViewDelegates()
         placeSaveButton()
         setInitialTextViewTexts()
         configureAddressStackView()
@@ -59,21 +59,10 @@ class AddNewAddressVC: UIViewController {
         moveViewIfKeyboardShowsUp()
         createDismisskeyboardTapGesture()
         configureNavigationItem()
-      //  newAddressParentView.backgroundColor = .gray
-        
-       // generalStackView.backgroundColor = .blue
-        // Do any additional setup after loading the view.
+  
     }
     
-    func setTextViewDelegates(){
-        let views = [addressTitleView, addressDescriptionView, driverCommentaryView, officeNumberView, intercomNumberView, entranceNumberView, floorNumber, deliveryCommentaryView]
-        views.forEach { element in
-            element.textView.delegate = self
-            if !element.textView.text.isEmpty{
-                element.placeholderLabel.isHidden = true
-            }
-        }
-    }
+
     
     func configureNavigationItem(){
         let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
@@ -117,44 +106,18 @@ class AddNewAddressVC: UIViewController {
     }
     
     func setInitialTextViewTexts(){
-        addressTitleView.textView.text = "Название адреса"
-        addressDescriptionView.textView.text = "Адрес"
-        driverCommentaryView.textView.text = "Комментарий для водителя"
+        addressTitleView.textView.placeholder = "Название адреса"
+        addressDescriptionView.textView.placeholder = "Адрес"
+        driverCommentaryView.textView.placeholder = "Комментарий для водителя"
         separatorLabel.text = "Для доставки"
-        officeNumberView.textView.text = "Кв./офис"
-        intercomNumberView.textView.text = "Домофон"
-        entranceNumberView.textView.text = "Подъезд"
-        floorNumber.textView.text = "Этаж"
-        deliveryCommentaryView.textView.text = "Комментарий для курьера"
+        officeNumberView.textView.placeholder = "Кв./офис"
+        intercomNumberView.textView.placeholder = "Домофон"
+        entranceNumberView.textView.placeholder = "Подъезд"
+        floorNumber.textView.placeholder = "Этаж"
+        deliveryCommentaryView.textView.placeholder = "Комментарий для курьера"
         
     }
-    func setPlaceHolderTexts(textView: UITextView) -> String{
-        if textView.text.isEmpty {
-            textView.textColor = UIColor.DarkGrayTextColor
-        }
-        var textToReturn = String()
-        switch textView {
-        case addressTitleView.textView:
-           textToReturn = textView.text.isEmpty ? "Название адреса" : textView.text
-        case addressDescriptionView.textView:
-            textToReturn = textView.text.isEmpty ? "Адрес" : textView.text
-        case driverCommentaryView.textView:
-            textToReturn = textView.text.isEmpty ? "Комментарий для водителя" : textView.text
-        case officeNumberView.textView:
-            textToReturn = textView.text.isEmpty ? "Кв./офис" : textView.text
-        case intercomNumberView.textView:
-            textToReturn = textView.text.isEmpty ? "Домофон" : textView.text
-        case entranceNumberView.textView:
-            textToReturn = textView.text.isEmpty ? "Подъезд" : textView.text
-        case floorNumber.textView:
-            textToReturn = textView.text.isEmpty ? "Этаж" : textView.text
-        case deliveryCommentaryView.textView:
-            textToReturn = textView.text.isEmpty ? "Комментарий для курьера" : textView.text
-        default:
-             break
-        }
-        return textToReturn
-    }
+
     
     func configureAddressStackView(){
         newAddressParentView.addSubview(generalAddressStackView)
@@ -283,7 +246,7 @@ class AddNewAddressVC: UIViewController {
     @objc func addAddress(){
         let newAddress = UserAddressMO(context: CoreDataManager.shared.persistentContainer.viewContext)
         newAddress.title = addressTitleView.textView.text
-        newAddress.fullAddress = addressTitleView.textView.text
+        newAddress.fullAddress = addressDescriptionView.textView.text
         newAddress.driverCommentary = driverCommentaryView.textView.text ?? ""
         newAddress.delivApartNumber = officeNumberView.textView.text ?? ""
         newAddress.delivIntercomNumber = intercomNumberView.textView.text ?? ""
@@ -299,18 +262,4 @@ class AddNewAddressVC: UIViewController {
 
 
 }
-extension AddNewAddressVC: UITextViewDelegate{
-     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.DarkGrayTextColor {
-              textView.text = nil
-              textView.textColor = UIColor.black
-          }
-       
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-            textView.text = setPlaceHolderTexts(textView: textView)
-     
-    }
-    
-}
+
