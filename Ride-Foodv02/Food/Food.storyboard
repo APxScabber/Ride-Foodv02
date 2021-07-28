@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRF-Va-Zgx">
-                                <rect key="frame" x="0.0" y="564" width="414" height="332"/>
+                                <rect key="frame" x="0.0" y="535" width="414" height="361"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-Jk-8qc" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                         <rect key="frame" x="25" y="267" width="364" height="50"/>
@@ -125,10 +125,10 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sa6-Gf-1E3">
-                                        <rect key="frame" x="379" y="30.5" width="10" height="8"/>
+                                        <rect key="frame" x="379" y="18.5" width="10" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="kMj-a6-7wr"/>
-                                            <constraint firstAttribute="height" constant="8" id="p6i-Bg-iaS"/>
+                                            <constraint firstAttribute="height" constant="32" id="p6i-Bg-iaS"/>
                                         </constraints>
                                         <state key="normal" image="Next"/>
                                         <connections>
@@ -137,10 +137,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eX6-bk-zBy">
-                                        <rect key="frame" x="343" y="27.5" width="33" height="14"/>
+                                        <rect key="frame" x="343" y="18.5" width="33" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="33" id="LOj-fy-2yu"/>
-                                            <constraint firstAttribute="height" constant="14" id="RdW-N7-QhV"/>
+                                            <constraint firstAttribute="height" constant="32" id="RdW-N7-QhV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <state key="normal" title="Карта">
@@ -183,7 +183,6 @@
                                     <constraint firstItem="eX6-bk-zBy" firstAttribute="centerY" secondItem="n0c-mW-aoj" secondAttribute="centerY" id="TUw-8b-4Xe"/>
                                     <constraint firstItem="Enr-XT-a8W" firstAttribute="top" secondItem="x2J-pf-Iuk" secondAttribute="bottom" id="Tlu-il-rCp"/>
                                     <constraint firstItem="x2J-pf-Iuk" firstAttribute="leading" secondItem="qRF-Va-Zgx" secondAttribute="leading" id="X7R-5r-Fdf"/>
-                                    <constraint firstAttribute="bottom" secondItem="Dxh-Jk-8qc" secondAttribute="bottom" constant="15" id="eFZ-DI-egg"/>
                                     <constraint firstItem="Dxh-Jk-8qc" firstAttribute="top" secondItem="Enr-XT-a8W" secondAttribute="bottom" constant="8" symbolic="YES" id="eTL-NH-TYx"/>
                                     <constraint firstItem="n0c-mW-aoj" firstAttribute="leading" secondItem="qRF-Va-Zgx" secondAttribute="leading" constant="25" id="hvR-Ni-oqW"/>
                                     <constraint firstAttribute="trailing" secondItem="Dxh-Jk-8qc" secondAttribute="trailing" constant="25" id="ikL-Ei-bwx"/>
@@ -198,7 +197,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-QK-Hr3" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="549" width="40" height="5"/>
+                                <rect key="frame" x="187" y="520" width="40" height="5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="iLk-zq-CcK"/>
@@ -214,6 +213,7 @@
                             <constraint firstItem="qRF-Va-Zgx" firstAttribute="top" secondItem="kFE-QK-Hr3" secondAttribute="bottom" constant="10" id="Xhg-Uu-QxA"/>
                             <constraint firstItem="qRF-Va-Zgx" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="e65-l8-ciJ"/>
                             <constraint firstItem="kFE-QK-Hr3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ey4-hI-KIO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Dxh-Jk-8qc" secondAttribute="bottom" constant="10" id="tI4-rU-3ir"/>
                         </constraints>
                     </view>
                     <connections>
@@ -309,15 +309,23 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wZx-ik-K84" secondAttribute="trailing" constant="10" id="jPU-Ae-fTR"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0s-Xv-3ot">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="M3z-ML-YXp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="l0s-Xv-3ot" firstAttribute="leading" secondItem="tvS-mu-P14" secondAttribute="leading" id="8Z4-bw-w70"/>
                             <constraint firstItem="Iaa-CY-Hw3" firstAttribute="leading" secondItem="M3z-ML-YXp" secondAttribute="leading" id="AoQ-ih-tk5"/>
                             <constraint firstItem="ctx-7b-NTh" firstAttribute="leading" secondItem="tvS-mu-P14" secondAttribute="leading" id="Byy-vh-K9b"/>
+                            <constraint firstAttribute="bottom" secondItem="l0s-Xv-3ot" secondAttribute="bottom" id="Fod-M3-7rc"/>
                             <constraint firstAttribute="bottom" secondItem="Iaa-CY-Hw3" secondAttribute="bottom" id="L5Y-23-NT5"/>
+                            <constraint firstItem="l0s-Xv-3ot" firstAttribute="top" secondItem="ctx-7b-NTh" secondAttribute="bottom" id="MT2-Lp-axn"/>
                             <constraint firstItem="Iaa-CY-Hw3" firstAttribute="trailing" secondItem="M3z-ML-YXp" secondAttribute="trailing" id="Rgn-d1-nGZ"/>
                             <constraint firstItem="Iaa-CY-Hw3" firstAttribute="top" secondItem="tvS-mu-P14" secondAttribute="top" id="TPe-wM-iMj"/>
+                            <constraint firstAttribute="trailing" secondItem="l0s-Xv-3ot" secondAttribute="trailing" id="ayO-na-kcd"/>
                             <constraint firstItem="M3z-ML-YXp" firstAttribute="trailing" secondItem="ctx-7b-NTh" secondAttribute="trailing" id="dg5-gZ-hsF"/>
                             <constraint firstItem="ctx-7b-NTh" firstAttribute="bottom" secondItem="M3z-ML-YXp" secondAttribute="bottom" id="gmZ-rc-uTP"/>
                             <constraint firstItem="zHI-ZQ-DBZ" firstAttribute="top" secondItem="M3z-ML-YXp" secondAttribute="top" constant="25" id="oqC-Cs-FhR"/>

@@ -14,7 +14,8 @@
 
 "menu" = "Menu";
 "support" = "Support";
-"paymentMethod" = "Payment method";
+"settings" = "Settings";
+"paymentWays" = "Payment ways";
 "tariffs" = "Tariffs";
 "promocode" = "Promocode";
 "promotions" = "Promotions";
@@ -48,3 +49,25 @@
 "food" = "Food";
 "taxi" = "Taxi";
 "promotion" = "Promotions";
+"goShopping" = "Go shopping!";
+"errorDescription" = "The promotion is not valid at this time. Use it in the specified time period";
+"more" = "More";
+
+//MARK: - Promocode
+
+"promocode" = "Promocode";
+"enterPromocode" = "Enter promocode";
+"historyUsage" = "History of use";
+"confirm" = "Confirm";
+"promocodeActivated" = "Promocode activated";
+"done" = "Done!";
+"active" = "Active";
+"inactivate" = "Inactive";
+"promocodeDescription" = "Please note that discounts for promotional codes for similar services are not cumulative. The promo code that expires earlier will be triggered for the next order.";
+
+
+//MARK: - Food
+
+"map" = "Map";
+"enterAdress" = "Enter delivery address";
+"confirm" = "Confirm";
