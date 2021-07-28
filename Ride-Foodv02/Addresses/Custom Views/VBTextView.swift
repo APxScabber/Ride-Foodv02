@@ -11,6 +11,8 @@ class VBTextView: UIView {
     
    public var textView = UITextView()
     
+    public var placeholderLabel = UILabel()
+    
     let bottomView = UIView()
     
     override init(frame: CGRect) {
@@ -25,6 +27,7 @@ class VBTextView: UIView {
     private func configure(){
         textView.translatesAutoresizingMaskIntoConstraints   = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
+    
         
         bottomView.backgroundColor                  = UIColor.ProfileButtonBorderColor
         textView.textColor                          = UIColor.DarkGrayTextColor
@@ -34,6 +37,12 @@ class VBTextView: UIView {
         
         addSubview(bottomView)
         addSubview(textView)
+        
+        
+       
+        
+        
+        
         let textViewPadding: CGFloat                = 7
         NSLayoutConstraint.activate([
             bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2),
@@ -45,7 +54,10 @@ class VBTextView: UIView {
             textView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: -textViewPadding),
             textView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: textViewPadding-4),
             textView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -textViewPadding),
-            textView.heightAnchor.constraint(equalToConstant: 30)
+            textView.heightAnchor.constraint(equalToConstant: 30),
+            
+           
+            
         ])
     }
     /*

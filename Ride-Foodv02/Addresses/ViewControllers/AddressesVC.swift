@@ -34,15 +34,15 @@ class AddressesVC: UIViewController {
                 self.addresses = data
                 print(self.addresses)
                 print(self.addresses.isEmpty)
-                if self.addresses.isEmpty {
-                    
+                guard !self.addresses.isEmpty else {
                     DispatchQueue.main.async {
                         let emptyView = AddressesEmptyStateView()
                         emptyView.frame = self.MyAddressesTableView.bounds
                         self.MyAddressesTableView.addSubview(emptyView)
                     }
-                
+                    return
                 }
+                self.MyAddressesTableView.reloadData()
             case .failure(let error):
                 print(error)
             }
