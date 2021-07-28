@@ -5,18 +5,22 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
  
     @IBOutlet weak var segmentedControl: UISegmentedControl! { didSet {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
+        segmentedControl.setTitle(PromocodeConstant.active, forSegmentAt: 0)
+        segmentedControl.setTitle(PromocodeConstant.inactivate, forSegmentAt: 1)
     }}
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel! { didSet {
         infoLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+        infoLabel.text = PromocodeConstant.promocodeDescription
     }}
     @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
+    
     var showActivePromocode: Bool { segmentedControl.selectedSegmentIndex == 0 }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "История использования"
+        navigationItem.title = PromocodeConstant.historyUsage
     }
     
 

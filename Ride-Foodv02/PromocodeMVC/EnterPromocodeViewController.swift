@@ -2,6 +2,8 @@ import UIKit
 
 class EnterPromocodeViewController: UIViewController {
 
+    //MARK: - Outlets
+    
     @IBOutlet weak var checkmarkButton: UIButton!
     @IBOutlet weak var doneButton: UIButton! { didSet {
         doneButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
@@ -12,6 +14,7 @@ class EnterPromocodeViewController: UIViewController {
     }}
     @IBOutlet weak var promocodeLabel: UILabel! { didSet {
         promocodeLabel.font = UIFont.SFUIDisplaySemibold(size: 17)
+        promocodeLabel.text = PromocodeConstant.promocodeActivated
     }}
     @IBOutlet weak var promocodeDescriptionLabel: UILabel! { didSet {
         promocodeDescriptionLabel.font = UIFont.SFUIDisplayLight(size: 17)
@@ -19,14 +22,19 @@ class EnterPromocodeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     private var promocodeToolbar = PromocodeToolbar.initFromNib()
     
+    //MARK: - Action
+    
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
+    
+    //MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         promocodeToolbar.delegate = self
+        navigationItem.title = PromocodeConstant.enterPromocode
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +52,7 @@ class EnterPromocodeViewController: UIViewController {
         promocodeToolbar.dismiss()
     }
     
+    //MARK: - Toolbar
     @objc
     private func showToolbarView(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
@@ -55,6 +64,7 @@ class EnterPromocodeViewController: UIViewController {
 
 }
 
+//MARK: - PromocodeToolbar delegate
 
 extension EnterPromocodeViewController: PromocodeToolbarDelegate {
     
@@ -65,6 +75,7 @@ extension EnterPromocodeViewController: PromocodeToolbarDelegate {
         promocodeLabel.isHidden = false
         promocodeDescriptionLabel.isHidden = false
         promocodeToolbar.dismiss()
+        doneButton.setTitle(PromocodeConstant.done, for: .normal)
         PromocodeActivator.post(code: promocode) { [weak self] in
             self?.promocodeDescriptionLabel.text = $0
         }

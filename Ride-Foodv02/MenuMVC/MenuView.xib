@@ -430,6 +430,12 @@
             <connections>
                 <outlet property="aboutAppLabel" destination="A5a-5v-aBE" id="bX1-l5-rMQ"/>
                 <outlet property="menuLabel" destination="Vuj-x7-d3Y" id="Vlk-wb-zn8"/>
+                <outlet property="paymentWaysLabel" destination="Kje-2I-vtF" id="Rw9-MD-0zn"/>
+                <outlet property="promocodeLabel" destination="aWY-bS-7gq" id="HZg-sx-SxJ"/>
+                <outlet property="promotionLabel" destination="ZpX-Sd-TIo" id="fxc-gt-yXV"/>
+                <outlet property="settingsLabel" destination="jbv-ty-G8Y" id="Gbe-Ol-eAa"/>
+                <outlet property="supportLabel" destination="S6Q-Ab-flu" id="vR1-6T-K8b"/>
+                <outlet property="tariffsLabel" destination="wHY-rP-xyq" id="HFA-by-DVh"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>

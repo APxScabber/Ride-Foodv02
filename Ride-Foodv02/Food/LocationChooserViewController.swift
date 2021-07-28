@@ -44,6 +44,7 @@ class LocationChooserViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton! { didSet {
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
         confirmButton.isUserInteractionEnabled = !location.isEmpty
+        confirmButton.setTitle(FoodConstants.confirm, for: .normal)
     }}
 
     //MARK: - IBActions

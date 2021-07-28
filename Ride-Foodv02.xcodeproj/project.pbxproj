@@ -42,6 +42,7 @@
 		7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */; };
 		7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7850E8FF2674DFBE00AA88CA /* MenuButton.swift */; };
 		7850E9032674FC4500AA88CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7850E9022674FC4500AA88CA /* Settings.storyboard */; };
+		785198EB26B19FC40037F7AA /* PromocodeConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785198EA26B19FC40037F7AA /* PromocodeConstant.swift */; };
 		7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D37126AED0D500441690 /* DefaultPromotion.swift */; };
 		7858D37526AED7BC00441690 /* Food.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7858D37426AED7BC00441690 /* Food.storyboard */; };
 		7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */; };
@@ -206,6 +207,7 @@
 		7850E8FD2674DA8D00AA88CA /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		7850E8FF2674DFBE00AA88CA /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		7850E9022674FC4500AA88CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		785198EA26B19FC40037F7AA /* PromocodeConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeConstant.swift; sourceTree = "<group>"; };
 		7858D37126AED0D500441690 /* DefaultPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPromotion.swift; sourceTree = "<group>"; };
 		7858D37426AED7BC00441690 /* Food.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Food.storyboard; sourceTree = "<group>"; };
 		7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMainTableViewCell.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				78D3DF452686414B0028A66B /* PromocodeToolbar.xib */,
 				78D3DF472686415C0028A66B /* PromocodeToolbar.swift */,
 				78ACFD0626A5984C00C995EB /* PromocodeTableViewCell.swift */,
+				785198EA26B19FC40037F7AA /* PromocodeConstant.swift */,
 			);
 			path = PromocodeMVC;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */,
 				78A4028D268C993C00B4EFE1 /* PromocodeActivator.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
+				785198EB26B19FC40037F7AA /* PromocodeConstant.swift in Sources */,
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
 				78F1A98A26A8950A00E16084 /* PaymentWaysModel.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,

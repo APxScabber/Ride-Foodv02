@@ -23,12 +23,16 @@ class FoodMainVC: UIViewController {
     @IBOutlet weak var twoCornerRoundedView: UIView!
     @IBOutlet weak var confirmButton: UIButton! { didSet {
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        confirmButton.setTitle(FoodConstants.confirm, for: .normal)
     }}
     
     @IBOutlet weak var mapButton: UIButton! { didSet {
         mapButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 12.0)
+        mapButton.setTitle(FoodConstants.map, for: .normal)
     }}
-    @IBOutlet weak var textField: UITextField! 
+    @IBOutlet weak var textField: UITextField! { didSet {
+        textField.placeholder = FoodConstants.enterAdress
+    }}
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
