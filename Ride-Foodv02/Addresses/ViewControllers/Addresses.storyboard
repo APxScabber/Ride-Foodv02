@@ -17,34 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKc-i6-D6s">
-                                <rect key="frame" x="0.0" y="395" width="414" height="287"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rES-M0-Qbe">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressesCell" rowHeight="60" id="LW9-dA-l5i" customClass="MyAddressesTableViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressesCell" rowHeight="70" id="LW9-dA-l5i" customClass="MyAddressesTableViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LW9-dA-l5i" id="EDq-jk-at1">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MA5-fg-EdF">
-                                                    <rect key="frame" x="50" y="11" width="38" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MA5-fg-EdF">
+                                                    <rect key="frame" x="54" y="16" width="245" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-qX-eLI">
-                                                    <rect key="frame" x="50" y="34" width="31" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-qX-eLI">
+                                                    <rect key="frame" x="54" y="39" width="277" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HouseImage" translatesAutoresizingMaskIntoConstraints="NO" id="FRi-nY-FJh">
-                                                    <rect key="frame" x="20" y="18" width="26" height="24"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="houseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FRi-nY-FJh">
+                                                    <rect key="frame" x="20" y="18" width="26" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="26" id="CCM-8z-WyG"/>
                                                         <constraint firstAttribute="width" constant="26" id="OBb-wO-NTE"/>
@@ -79,10 +76,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rES-M0-Qbe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2DI-fc-tRP"/>
-                            <constraint firstItem="YKc-i6-D6s" firstAttribute="trailing" secondItem="rES-M0-Qbe" secondAttribute="trailing" id="2tm-Vg-3XR"/>
-                            <constraint firstItem="YKc-i6-D6s" firstAttribute="leading" secondItem="rES-M0-Qbe" secondAttribute="leading" id="LHO-99-dpd"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="YKc-i6-D6s" secondAttribute="bottom" constant="180" id="RUv-q2-HXD"/>
-                            <constraint firstItem="YKc-i6-D6s" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="255" id="aNn-q8-ued"/>
                             <constraint firstItem="rES-M0-Qbe" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="etX-Kz-apr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="rES-M0-Qbe" secondAttribute="bottom" id="gqO-oB-iXD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rES-M0-Qbe" secondAttribute="trailing" id="t4t-dV-Pfb"/>
@@ -90,14 +83,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Мои адреса" id="bgm-bG-dDI"/>
                     <connections>
-                        <outlet property="MyAddressesBackgroundImageView" destination="YKc-i6-D6s" id="6Ri-ge-ULB"/>
                         <outlet property="MyAddressesTableView" destination="rES-M0-Qbe" id="9Ob-mV-4pB"/>
                         <segue destination="LwF-YW-NRM" kind="show" identifier="addNewAddressSegue" id="6X7-VE-Vf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.60000000000002" y="69.715142428785612"/>
+            <point key="canvasLocation" x="956.52173913043487" y="69.642857142857139"/>
         </scene>
         <!--Новый адрес-->
         <scene sceneID="8ai-iy-ThC">
@@ -167,7 +159,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HouseImage" width="14" height="12"/>
+        <image name="houseIcon" width="14" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

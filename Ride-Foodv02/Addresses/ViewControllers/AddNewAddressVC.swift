@@ -9,7 +9,7 @@ import UIKit
 
 class AddNewAddressVC: UIViewController {
     
-    
+    let CoreDataContext = PersistanceManager.shared.context
     
     @IBOutlet weak var newAddressScrollView: UIScrollView!
     
@@ -129,6 +129,9 @@ class AddNewAddressVC: UIViewController {
         
     }
     func setPlaceHolderTexts(textView: UITextView) -> String{
+        if textView.text.isEmpty {
+            textView.textColor = UIColor.DarkGrayTextColor
+        }
         var textToReturn = String()
         switch textView {
         case addressTitleView.textView:
@@ -268,13 +271,29 @@ class AddNewAddressVC: UIViewController {
     func placeSaveButton(){
         SaveButton.translatesAutoresizingMaskIntoConstraints = false
         newAddressParentView.addSubview(SaveButton)
-        
+        SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside)
         NSLayoutConstraint.activate([
             SaveButton.heightAnchor.constraint(equalToConstant: 50),
             SaveButton.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: 25),
             SaveButton.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -25),
             SaveButton.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -30)
         ])
+    }
+    
+    @objc func addAddress(){
+       let newAddress = UserAddressMO(context: CoreDataContext)
+        newAddress.title = addressTitleView.textView.text
+        newAddress.fullAddress = addressTitleView.textView.text
+        newAddress.driverCommentary = driverCommentaryView.textView.text ?? ""
+        newAddress.delivApartNumber = officeNumberView.textView.text ?? ""
+        newAddress.delivIntercomNumber = intercomNumberView.textView.text ?? ""
+        newAddress.delivEntranceNumber = entranceNumberView.textView.text ?? ""
+        newAddress.delivFloorNumber = floorNumber.textView.text ?? ""
+        newAddress.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
+        
+        PersistanceManager.shared.addNewAddress(address: newAddress)
+        navigationController?.popViewController(animated: true)
+        
     }
     
 
@@ -290,8 +309,8 @@ extension AddNewAddressVC: UITextViewDelegate{
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.text = setPlaceHolderTexts(textView: textView)
-        textView.textColor = UIColor.DarkGrayTextColor
+            textView.text = setPlaceHolderTexts(textView: textView)
+     
     }
     
 }
