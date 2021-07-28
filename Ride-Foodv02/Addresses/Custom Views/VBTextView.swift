@@ -9,7 +9,7 @@ import UIKit
 
 class VBTextView: UIView {
     
-   public var textView = UITextView()
+   public var textView = UITextField()
     
     public var placeholderLabel = UILabel()
     
@@ -31,17 +31,13 @@ class VBTextView: UIView {
         
         bottomView.backgroundColor                  = UIColor.ProfileButtonBorderColor
         textView.textColor                          = UIColor.DarkGrayTextColor
-        textView.isScrollEnabled = false
+        
         
         textView.font = UIFont.SFUIDisplayRegular(size: 17)
         
         addSubview(bottomView)
         addSubview(textView)
-        
-        
        
-        
-        
         
         let textViewPadding: CGFloat                = 7
         NSLayoutConstraint.activate([
@@ -60,12 +56,6 @@ class VBTextView: UIView {
             
         ])
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+  
 
 }
