@@ -29,17 +29,21 @@ class AddressesVC: UIViewController {
         fetch()
         addNewAddressButton()
         addBackgroundImageView()
+        MyAddressesTableView.tableFooterView = UIView()
     }
+    
+    
     func addBackgroundImageView(){
       
-        self.MyAddressesTableView.isOpaque = false
+    
+        view.addSubview(backgroundImageView)
         MyAddressesTableView.backgroundView = backgroundImageView
        
         
         NSLayoutConstraint.activate([
             backgroundImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 400),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 180),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -180)
         ])
     }
@@ -55,11 +59,17 @@ class AddressesVC: UIViewController {
                 print(self.addresses.isEmpty)
                 guard !self.addresses.isEmpty else {
                     DispatchQueue.main.async {
+                      
                         let emptyView = AddressesEmptyStateView()
                         emptyView.frame = self.MyAddressesTableView.bounds
                         self.MyAddressesTableView.addSubview(emptyView)
                     }
                     return
+                }
+                for i in self.MyAddressesTableView.subviews{
+                    if i is AddressesEmptyStateView{
+                        i.removeFromSuperview()
+                    }
                 }
                 self.MyAddressesTableView.reloadData()
             case .failure(let error):
@@ -86,8 +96,13 @@ class AddressesVC: UIViewController {
         ])
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! AddNewAddressVC
+        vc.delegate = self
+    }
+    
     @objc func addnewAddress(){
-        print("go to the new screen")
+        
         performSegue(withIdentifier: "addNewAddressSegue", sender: self)
     }
     
@@ -107,6 +122,14 @@ extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
         let address = addresses[indexPath.row]
         cell.configureCells(address: address)
         return cell
+    }
+    
+    
+}
+extension AddressesVC: AddNewAddressDelegate{
+    func didAddNewAddress() {
+        print("successfully implimented Protocol")
+       fetch()
     }
     
     

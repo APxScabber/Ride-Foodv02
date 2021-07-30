@@ -13,4 +13,6 @@ extension UIColor {
     static let DarkGrayTextColor            = UIColor(red: 0.541, green: 0.541, blue: 0.553, alpha: 1)
     static let SkillboxIndigoColor          = UIColor(red: 0.239, green: 0.231, blue: 1, alpha: 1)
     static let SeparatorColor               = UIColor(red: 0.942, green: 0.942, blue: 0.942, alpha: 1)
+    static let DisabledButtonBackgroundView = UIColor(red: 0.817, green: 0.817, blue: 0.817, alpha: 1)
+    static let SkillBoxBackgroundColor      = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 }

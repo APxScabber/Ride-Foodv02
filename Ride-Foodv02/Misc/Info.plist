@@ -59,5 +59,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Нам нужно Ваше местоположения для показа Вашего точного адреса</string>
 </dict>
 </plist>

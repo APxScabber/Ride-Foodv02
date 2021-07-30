@@ -30,7 +30,7 @@ class VBTextView: UIView {
     
         
         bottomView.backgroundColor                  = UIColor.ProfileButtonBorderColor
-        textView.textColor                          = UIColor.DarkGrayTextColor
+        textView.textColor                          = UIColor.black
         
         
         textView.font = UIFont.SFUIDisplayRegular(size: 17)

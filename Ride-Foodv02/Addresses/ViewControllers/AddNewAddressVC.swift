@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol AddNewAddressDelegate: AnyObject{
+    func didAddNewAddress()
+}
+
 class AddNewAddressVC: UIViewController {
+    
+   weak var delegate: AddNewAddressDelegate?
     
     let CoreDataContext = PersistanceManager.shared.context
     
@@ -17,8 +23,9 @@ class AddNewAddressVC: UIViewController {
     
 //    Save Button
     
-    let SaveButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Сохранить", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
     
+    
+    let SaveButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Сохранить", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
 //    Stack views
     var generalAddressStackView = UIStackView()
     var locationStackView = UIStackView()
@@ -51,6 +58,9 @@ class AddNewAddressVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      //   setTextViewDelegates()
+        setTextfieldDelegates()
+        setSaveButtonBehavior()
+        configureMapButton()
         placeSaveButton()
         setInitialTextViewTexts()
         configureAddressStackView()
@@ -60,6 +70,23 @@ class AddNewAddressVC: UIViewController {
         createDismisskeyboardTapGesture()
         configureNavigationItem()
   
+    }
+    
+    func setTextfieldDelegates(){
+        self.addressTitleView.textView.delegate = self
+        self.addressDescriptionView.textView.delegate = self
+    }
+    
+    func configureMapButton(){
+        mapButton.addTarget(self, action: #selector(openTheMap), for: .touchUpInside)
+    }
+    @objc func openTheMap(){
+        self.performSegue(withIdentifier: "selectLocationSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! SelectLocationVC
+        vc.delegate = self
     }
     
 
@@ -120,6 +147,8 @@ class AddNewAddressVC: UIViewController {
 
     
     func configureAddressStackView(){
+        
+        
         newAddressParentView.addSubview(generalAddressStackView)
         generalAddressStackView.axis           = .vertical
         generalAddressStackView.distribution   = .fillEqually
@@ -150,7 +179,8 @@ class AddNewAddressVC: UIViewController {
        
         locationMarkImageView.contentMode = .scaleAspectFit
         locationMarkImageView.clipsToBounds = true
-        
+      
+    
         locationMarkImageView.image = UIImage(named: "Annotation")
         
         locationStackView.addArrangedSubview(locationMarkImageView)
@@ -160,6 +190,7 @@ class AddNewAddressVC: UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: locationMarkImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 14),
             NSLayoutConstraint(item: locationMarkImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 21),
+            NSLayoutConstraint(item: locationMarkImageView, attribute: .trailing, relatedBy: .equal, toItem: addressDescriptionView, attribute: .leading, multiplier: 1, constant: -8),
             NSLayoutConstraint(item: mapButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
      
         ])
@@ -231,7 +262,13 @@ class AddNewAddressVC: UIViewController {
         ])
     }
     
+    func setSaveButtonBehavior(){
+        SaveButton.isEnabled = !addressTitleView.textView.text!.isEmpty && !addressDescriptionView.textView.text!.isEmpty
+        SaveButton.backgroundColor = SaveButton.isEnabled ? UIColor.SkillboxIndigoColor : UIColor.DisabledButtonBackgroundView
+    }
+    
     func placeSaveButton(){
+      
         SaveButton.translatesAutoresizingMaskIntoConstraints = false
         newAddressParentView.addSubview(SaveButton)
         SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside)
@@ -256,6 +293,7 @@ class AddNewAddressVC: UIViewController {
         
         PersistanceManager.shared.addNewAddress(address: newAddress)
         navigationController?.popViewController(animated: true)
+        delegate?.didAddNewAddress()
         
     }
     
@@ -263,3 +301,23 @@ class AddNewAddressVC: UIViewController {
 
 }
 
+extension AddNewAddressVC: SetLocationDelegate{
+    func locationIsSet(location: String) {
+        print("delegate successfully implemented")
+        self.addressDescriptionView.textView.text = location
+        setSaveButtonBehavior()
+       
+    }
+    
+    
+}
+
+extension AddNewAddressVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        setSaveButtonBehavior()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        setSaveButtonBehavior()
+    }
+}
