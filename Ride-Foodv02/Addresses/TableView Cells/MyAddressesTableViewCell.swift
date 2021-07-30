@@ -32,6 +32,7 @@ class MyAddressesTableViewCell: UITableViewCell {
     func configureCells(address: UserAddressMO){
         self.AddressTitleLabel.text = address.title
         self.fullAddressLabel.text = address.fullAddress
+        self.fullAddressLabel.textColor = UIColor.DarkGrayTextColor
         
     }
     

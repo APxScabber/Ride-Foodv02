@@ -163,6 +163,7 @@
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
+		F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */; };
 		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
 		F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916726AB77BD008E9841 /* ProfileButton.swift */; };
 		F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917126AF779E008E9841 /* VBTextView.swift */; };
@@ -330,6 +331,7 @@
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4E83FBC266EA53B000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
 		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F5BC916726AB77BD008E9841 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		F5BC917126AF779E008E9841 /* VBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBTextView.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				787A83E926AB2DA30096DFC3 /* AddressesVC.swift */,
 				787A83EA26AB2DA40096DFC3 /* AddressesVC.xib */,
 				F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */,
+				F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1101,6 +1104,7 @@
 				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
 				787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */,
+				F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */,
 				7867B4DF2672411C0031BFA0 /* PersonalInfoTableViewController.swift in Sources */,
 				787A83E526AB2D9B0096DFC3 /* MyAddressesTableViewCell.swift in Sources */,
 				78F1A97F26A8949000E16084 /* PaymentWaysViewController.swift in Sources */,
