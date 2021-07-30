@@ -13,6 +13,9 @@ class AddressesVC: UIViewController {
     
     var addresses: [UserAddressMO] = []
     
+    var addressToPass = UserAddressMO()
+    var gonnaUpdateAddress = false
+    
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,10 +102,13 @@ class AddressesVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddNewAddressVC
         vc.delegate = self
+        if addressToPass != nil && gonnaUpdateAddress == true {
+            vc.isUPdatingAddress = true
+            vc.passedAddress = addressToPass
+        }
     }
     
     @objc func addnewAddress(){
-        
         performSegue(withIdentifier: "addNewAddressSegue", sender: self)
     }
     
@@ -122,6 +128,13 @@ extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
         let address = addresses[indexPath.row]
         cell.configureCells(address: address)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        addressToPass = addresses[indexPath.row]
+        gonnaUpdateAddress = true
+        self.performSegue(withIdentifier: "addNewAddressSegue", sender: self)
+        gonnaUpdateAddress = false
     }
     
     
