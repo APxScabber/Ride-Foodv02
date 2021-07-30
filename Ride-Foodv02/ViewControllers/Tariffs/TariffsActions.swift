@@ -12,8 +12,8 @@ extension TariffsViewController {
     
     //При нажатии на кнопку Заказать такси переходим на главный контроллер
     @IBAction func orderTaxiAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
+        let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainScreenViewController
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true, completion: nil)

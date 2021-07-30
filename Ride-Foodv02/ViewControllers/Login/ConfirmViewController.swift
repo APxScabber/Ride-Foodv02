@@ -10,7 +10,6 @@ import UIKit
 class ConfirmViewController: UIViewController {
     
     // MARK: - Outlets
-
     @IBOutlet weak var mainCodeTextField: UITextField!
     @IBOutlet weak var textCodeConfirmLabel: UILabel!
     @IBOutlet var inputCodeLabel: [UILabel]!
@@ -23,7 +22,6 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var bottomButtonConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
-
     var timer: Timer?
     
     var phoneNumber = ""
@@ -111,50 +109,4 @@ class ConfirmViewController: UIViewController {
             size: LoginFontSize.normal.rawValue)
         textCodeConfirmLabel.textColor = LoginColors.blackTextColor.value
     }
-    
-//    // MARK: - Actions
-//
-//    //Действие при воде кода в скрытый TextField (скрыт в Storyboard)
-//    @IBAction func editingTextField(_ sender: UITextField) {
-//
-//        guard let text = mainCodeTextField.text else { return }
-//
-//        inputCodeLabel[inputLabelCount].backgroundColor = ColorElements.grayLableColor.value
-//
-//        let index = text.index(text.startIndex, offsetBy: inputLabelCount)
-//        inputCodeLabel[inputLabelCount].text = String(text[index])
-//
-//        inputLabelCount += 1
-//
-//        if inputLabelCount == 4 {
-//
-//            nextButtonOutlet.isEnabled = true
-//            nextButtonOutlet.backgroundColor = ColorElements.blueColor.value
-//            mainCodeTextField.resignFirstResponder()
-//            buttonAnimationOut()
-//            scrollView.frame.origin.y = safeAreaTopHeigh
-//        }
-//    }
-//    #warning("Что-то говорилось про вынос Action`ов куда-то. Уточнить")
-    //класс статик функцию
-    //Проверяем код подтверждения и либо обрабатываем ошибку либо переходим на Main Storyboard
-//    @IBAction func nextButtonAction(_ sender: Any) {
-//
-//        confirmInteractor.passConfirmationCode(phoneNumber: phoneNumber,
-//                                               code: mainCodeTextField.text!) { [weak self] error in
-//
-//            self?.timer?.invalidate()
-//
-//            if error != nil {
-//                self?.errorAlertContoller(title: ConfirmText.alertTitle.text(),
-//                                          message: ConfirmText.alertMessage.text())
-//            } else {
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier: "MainVC") as! MainViewController
-//                vc.modalTransitionStyle = .coverVertical
-//                vc.modalPresentationStyle = .overFullScreen
-//                self?.present(vc, animated: true, completion: nil)
-//            }
-//        }
-//    }
 }

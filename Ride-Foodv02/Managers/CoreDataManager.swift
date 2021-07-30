@@ -26,8 +26,6 @@ class CoreDataManager {
         
         let fetchContext = CoreDataManager.shared.context
 
-           // do {
-                
                 let fetchRequest: NSFetchRequest<UserDataMO> = UserDataMO.fetchRequest()
                 let result = try! fetchContext.fetch(fetchRequest)
 
@@ -37,10 +35,6 @@ class CoreDataManager {
                     isLogin = true
                     completion(.success(result))
                 }
-//            } catch {
-//
-//                completion(.failure(error))
-//            }
     }
 
     //Мкетод сохранения данных в Core Data
@@ -73,7 +67,6 @@ class CoreDataManager {
     }
     
     // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "UserDataModel")
@@ -87,7 +80,6 @@ class CoreDataManager {
     }()
 
     // MARK: - Core Data Saving support
-
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

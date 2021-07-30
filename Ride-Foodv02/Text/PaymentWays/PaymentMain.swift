@@ -11,8 +11,8 @@ import Foundation
 enum PaymentMainViewText {
     
     case addButtonText
-    case confirmButtonText
-    case cancelButtonText
+    case cardNumber
+    case topTitle
     
     func text() -> String {
         
@@ -30,10 +30,10 @@ enum PaymentMainViewText {
         switch self {
         case .addButtonText:
             return "Привязать карту"
-        case .confirmButtonText:
-            return "Подтвердить"
-        case .cancelButtonText:
-            return "Отмена"
+        case .cardNumber:
+            return "Карта ****"
+        case .topTitle:
+            return "Способы оплаты"
         }
     }
     
@@ -41,10 +41,10 @@ enum PaymentMainViewText {
         switch self {
         case .addButtonText:
             return "Link card"
-        case .confirmButtonText:
-            return "Confirm"
-        case .cancelButtonText:
-            return "Cancel"
+        case .cardNumber:
+            return "Card ****"
+        case .topTitle:
+            return "Payment ways"
         }
     }
 }
