@@ -13,6 +13,10 @@ enum PaymentMainViewText {
     case addButtonText
     case cardNumber
     case topTitle
+    case cashTV
+    case bankCardTV
+    case scoresTV
+    case addCardTV
     
     func text() -> String {
         
@@ -34,6 +38,14 @@ enum PaymentMainViewText {
             return "Карта ****"
         case .topTitle:
             return "Способы оплаты"
+        case .cashTV:
+            return "Наличные"
+        case .bankCardTV:
+            return "Банковская карта"
+        case .scoresTV:
+            return "Баллы"
+        case .addCardTV:
+            return "Добавить карту"
         }
     }
     
@@ -45,6 +57,14 @@ enum PaymentMainViewText {
             return "Card ****"
         case .topTitle:
             return "Payment ways"
+        case .cashTV:
+            return "Cash"
+        case .bankCardTV:
+            return "Bank card"
+        case .scoresTV:
+            return "Scores"
+        case .addCardTV:
+            return "Add card"
         }
     }
 }

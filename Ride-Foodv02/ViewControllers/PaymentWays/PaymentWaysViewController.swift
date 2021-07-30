@@ -21,7 +21,6 @@ class PaymentWaysViewController: UIViewController {
     let cellHeight: CGFloat = 44
     var selectedCell: Int = 0
     
-    //var textPaymentOptions = [String]()
     var textPaymentOptions = [[String]]()
     var paymentOptions = [PaymentWaysModel]()
     
@@ -33,7 +32,6 @@ class PaymentWaysViewController: UIViewController {
         navigationItem.title = navigationTitle
         
         paymentWaysInteractor.getUserID()
-        //userID = paymentWaysInteractor.userID
         
         getPaymentData()
         
@@ -41,14 +39,21 @@ class PaymentWaysViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
         
-        textPaymentOptions = [["Наличные", "Apple Pay"], ["Баллы"]]
+        textPaymentOptions = [[PaymentMainViewText.cashTV.text(), "Apple Pay"], [PaymentMainViewText.scoresTV.text()]]
         
         bgImageView.image = #imageLiteral(resourceName: "paymentWaysBG")
         
         linkCardButtonOutlet.alpha = 0
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //tableView.reloadData()
+        
         
     }
+    
+    
     
     // MARK: - Methods
     
@@ -70,6 +75,7 @@ class PaymentWaysViewController: UIViewController {
         paymentWaysInteractor.loadPaymentData { modelsArray in
             
             DispatchQueue.main.async {
+                self.paymentOptions = []
                 self.paymentOptions = modelsArray
                 self.createPaymentOptions()
                 self.setupLinkCardButton()
@@ -82,14 +88,14 @@ class PaymentWaysViewController: UIViewController {
     private func createPaymentOptions() {
         
         if paymentOptions.isEmpty {
-            let bankCard = "Банковская карта"
+            let bankCard = PaymentMainViewText.bankCardTV.text()
             textPaymentOptions[0].insert(bankCard, at: 1)
         } else {
             for i in 0 ... paymentOptions.count - 1 {
                 let index = i + 1
                 textPaymentOptions[0].insert(paymentOptions[i].number, at: index)
             }
-            let addCard = "Добавить карту"
+            let addCard = PaymentMainViewText.addCardTV.text()
             textPaymentOptions[1].insert(addCard, at: 0)
         }
     }
@@ -255,6 +261,12 @@ extension PaymentWaysViewController: UITableViewDelegate {
                 let vc = storyBoard.instantiateViewController(withIdentifier: "AddCard") as! AddCardViewController
                 //vc.titleNavigation = textPaymentOptions[indexPath.section][indexPath.row]
                 navigationController?.pushViewController(vc, animated: true)
+            case 1:
+                let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "TotalScores") as! TotalScoreViewController
+                vc.modalPresentationStyle = .formSheet
+                vc.userID = paymentWaysInteractor.userID
+                present(vc, animated: true, completion: nil)
             default :
                 print("???????")
             }

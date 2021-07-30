@@ -13,6 +13,7 @@ import UIKit
 enum PaymentWaysColors {
     case grayColor
     case blueColor
+    case yellowColor
 }
 
 extension PaymentWaysColors {
@@ -23,6 +24,8 @@ extension PaymentWaysColors {
                 return UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1)
             case .blueColor:
                 return UIColor(red: 61/255, green: 59/255, blue: 255/255, alpha: 1)
+            case .yellowColor:
+                return .systemYellow
             }
         }
     }

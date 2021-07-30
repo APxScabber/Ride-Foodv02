@@ -14,4 +14,6 @@ public let confirlURL = baseURL + "/auth/confirm"
 public let tariffsURL = baseURL + "/user/@#^/tariff"
 public let paymentWaysURL = baseURL + "/user/@#^/payment-cards"
 public let addCardURL = baseURL + "/user/@#^/payment-card"
+public let totalScoresURL = baseURL + "/user/@#^/credit"
+
 
