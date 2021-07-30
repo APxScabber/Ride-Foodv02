@@ -13,6 +13,11 @@ protocol AddNewAddressDelegate: AnyObject{
 
 class AddNewAddressVC: UIViewController {
     
+//    case of updating the address
+    
+    var isUPdatingAddress: Bool = false
+    var passedAddress: UserAddressMO?
+    
    weak var delegate: AddNewAddressDelegate?
     
     let CoreDataContext = PersistanceManager.shared.context
@@ -26,6 +31,7 @@ class AddNewAddressVC: UIViewController {
     
     
     let SaveButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Сохранить", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
+    let DeleteButton = VBButton(backgroundColor: .clear, title: "Удалить", cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor )
 //    Stack views
     var generalAddressStackView = UIStackView()
     var locationStackView = UIStackView()
@@ -58,10 +64,13 @@ class AddNewAddressVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      //   setTextViewDelegates()
+        if let currentAddress = passedAddress{
+            setUIIfUpdatingAddress(address: currentAddress)
+        }
         setTextfieldDelegates()
         setSaveButtonBehavior()
         configureMapButton()
-        placeSaveButton()
+        placeSaveAndDeleteButton()
         setInitialTextViewTexts()
         configureAddressStackView()
         configureSeparatorView()
@@ -70,6 +79,21 @@ class AddNewAddressVC: UIViewController {
         createDismisskeyboardTapGesture()
         configureNavigationItem()
   
+    }
+    
+    
+    func setUIIfUpdatingAddress(address: UserAddressMO){
+        if isUPdatingAddress{
+            addressTitleView.textView.text = address.title
+            addressDescriptionView.textView.text = address.fullAddress
+            driverCommentaryView.textView.text = address.driverCommentary
+            separatorLabel.text = "Для доставки"
+            officeNumberView.textView.text = address.delivApartNumber
+            intercomNumberView.textView.text = address.delivIntercomNumber
+            entranceNumberView.textView.text = address.delivEntranceNumber
+            floorNumber.textView.text = address.delivFloorNumber
+            deliveryCommentaryView.textView.text = address.deliveryCommentary
+        }
     }
     
     func setTextfieldDelegates(){
@@ -92,6 +116,10 @@ class AddNewAddressVC: UIViewController {
 
     
     func configureNavigationItem(){
+        if isUPdatingAddress{
+            navigationItem.title = passedAddress?.title
+        }
+        
         let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
         doneButton.tintColor = .black
         navigationItem.leftBarButtonItem = doneButton
@@ -167,7 +195,9 @@ class AddNewAddressVC: UIViewController {
     
     func addViewsToStackView(){
         configurelocationStackView()
+        if !isUPdatingAddress{
         generalAddressStackView.addArrangedSubview(addressTitleView)
+        }
         generalAddressStackView.addArrangedSubview(locationStackView)
         generalAddressStackView.addArrangedSubview(driverCommentaryView)
     }
@@ -191,7 +221,9 @@ class AddNewAddressVC: UIViewController {
             NSLayoutConstraint(item: locationMarkImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 14),
             NSLayoutConstraint(item: locationMarkImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 21),
             NSLayoutConstraint(item: locationMarkImageView, attribute: .trailing, relatedBy: .equal, toItem: addressDescriptionView, attribute: .leading, multiplier: 1, constant: -8),
-            NSLayoutConstraint(item: mapButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
+            NSLayoutConstraint(item: locationMarkImageView, attribute: .centerY, relatedBy: .equal, toItem: addressDescriptionView, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: mapButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75),
+            NSLayoutConstraint(item: mapButton, attribute: .centerY, relatedBy: .equal, toItem: addressDescriptionView, attribute: .centerY, multiplier: 1, constant: 0),
      
         ])
         
@@ -263,21 +295,47 @@ class AddNewAddressVC: UIViewController {
     }
     
     func setSaveButtonBehavior(){
+        
+        SaveButton.setTitle(!isUPdatingAddress ? "Сохранить" : "Выбрать местом назначения", for: .normal)
+        
         SaveButton.isEnabled = !addressTitleView.textView.text!.isEmpty && !addressDescriptionView.textView.text!.isEmpty
         SaveButton.backgroundColor = SaveButton.isEnabled ? UIColor.SkillboxIndigoColor : UIColor.DisabledButtonBackgroundView
     }
     
-    func placeSaveButton(){
+    func placeSaveAndDeleteButton(){
       
         SaveButton.translatesAutoresizingMaskIntoConstraints = false
         newAddressParentView.addSubview(SaveButton)
         SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside)
+        
+        if isUPdatingAddress{
+            newAddressParentView.addSubview(DeleteButton)
+            
+            DeleteButton.translatesAutoresizingMaskIntoConstraints = false
+            DeleteButton.addTarget(self, action: #selector(deleteAddress), for: .touchUpInside)
+        }
+        
+        
         NSLayoutConstraint.activate([
             SaveButton.heightAnchor.constraint(equalToConstant: 50),
             SaveButton.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: 25),
             SaveButton.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -25),
-            SaveButton.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -30)
+            SaveButton.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: isUPdatingAddress ? -90 : -30)
+        
         ])
+        
+        if isUPdatingAddress{
+            NSLayoutConstraint.activate([
+                DeleteButton.heightAnchor.constraint(equalToConstant: 50),
+                DeleteButton.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: 25),
+                DeleteButton.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -25),
+                DeleteButton.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -30)
+            ])
+        }
+    }
+    
+    @objc func deleteAddress(){
+        "Delete this address"
     }
     
     @objc func addAddress(){
