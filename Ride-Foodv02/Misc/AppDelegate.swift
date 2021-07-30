@@ -42,5 +42,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CoreDataManager.shared.saveContext()
     }
 }
-
-

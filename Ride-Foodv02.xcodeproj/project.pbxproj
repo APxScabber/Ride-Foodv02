@@ -10,6 +10,8 @@
 		7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7802DFAF267CA0120048CF1C /* Localizable.strings */; };
 		7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFB1267CAA680048CF1C /* MenuConstant.swift */; };
 		7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */; };
+		7808D7C526B44CDB00A88E12 /* CacheImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7C426B44CDB00A88E12 /* CacheImageManager.swift */; };
+		7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7C626B4593700A88E12 /* ConfirmCard.swift */; };
 		782D45CE26B00EA9006B3A98 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CD26B00EA9006B3A98 /* Shop.swift */; };
 		782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CF26B00F02006B3A98 /* ShopFetcher.swift */; };
 		782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45D126B01402006B3A98 /* ShopListViewController.swift */; };
@@ -176,6 +178,8 @@
 		7802DFB0267CA0FC0048CF1C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7802DFB1267CAA680048CF1C /* MenuConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConstant.swift; sourceTree = "<group>"; };
 		7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoConstant.swift; sourceTree = "<group>"; };
+		7808D7C426B44CDB00A88E12 /* CacheImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageManager.swift; sourceTree = "<group>"; };
+		7808D7C626B4593700A88E12 /* ConfirmCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCard.swift; sourceTree = "<group>"; };
 		782D45CD26B00EA9006B3A98 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		782D45CF26B00F02006B3A98 /* ShopFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopFetcher.swift; sourceTree = "<group>"; };
 		782D45D126B01402006B3A98 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
@@ -598,6 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */,
+				7808D7C426B44CDB00A88E12 /* CacheImageManager.swift */,
 				78A39FE1267B55EC006D0DAB /* LoadManager.swift */,
 				78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */,
 				78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */,
@@ -806,6 +811,7 @@
 			isa = PBXGroup;
 			children = (
 				78F1A98426A894C400E16084 /* PaymentMain.swift */,
+				7808D7C626B4593700A88E12 /* ConfirmCard.swift */,
 			);
 			path = PaymentWays;
 			sourceTree = "<group>";
@@ -1073,6 +1079,7 @@
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
 				78F1A98A26A8950A00E16084 /* PaymentWaysModel.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,
+				7808D7C526B44CDB00A88E12 /* CacheImageManager.swift in Sources */,
 				78CE749326A6E073006C3417 /* MenuView.swift in Sources */,
 				78A3A018267B57D7006D0DAB /* ConfirmInteractor.swift in Sources */,
 				7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */,
@@ -1118,6 +1125,7 @@
 				78A39FF5267B568E006D0DAB /* UserDataMO+CoreDataProperties.swift in Sources */,
 				78BE49FC2683536800A13641 /* PromotionTableViewCell.swift in Sources */,
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
+				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,

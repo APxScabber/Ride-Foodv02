@@ -9,7 +9,7 @@ import Foundation
 
 // Модель данных для тарифов
 struct TariffsDataModel: Decodable {
-    var data: TariffsModel
+    var data: [TariffsModel]
 }
 
 struct TariffsModel: Decodable {

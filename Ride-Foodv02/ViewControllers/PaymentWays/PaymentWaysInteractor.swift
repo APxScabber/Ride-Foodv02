@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PaymentWaysInteractor {
     
@@ -56,4 +57,61 @@ class PaymentWaysInteractor {
             }
         }
     }
+    
+//    func filter(text: String) -> (String, NSMutableAttributedString) {
+//
+//        var formatedCardNumber = ""
+//        var textattribute = NSMutableAttributedString()
+//
+//        let decimalCharacters = CharacterSet.decimalDigits
+//
+//        let decimalRange = text.rangeOfCharacter(from: decimalCharacters)
+//
+//        if decimalRange != nil {
+//            formatedCardNumber = "Карта ****" + " " + text.suffix(4)
+//            textattribute = createTextAttribute(for: formatedCardNumber)
+//        } else {
+//            formatedCardNumber = text
+//        }
+//
+//        return (formatedCardNumber, textattribute)
+//    }
+    
+    func filter(text: String) -> Bool {
+        
+        var isCard = false
+
+        let decimalCharacters = CharacterSet.decimalDigits
+
+        let decimalRange = text.rangeOfCharacter(from: decimalCharacters)
+
+        if decimalRange != nil {
+            
+            isCard = true
+        } else {
+            isCard = false
+        }
+        
+        return isCard
+    }
+    
+    
+    //Создаем атребуты для инфо поля, для выделения номера добавляемой карты
+    func createTextAttribute(for text: String) -> NSMutableAttributedString {
+        
+        let licenseText = text
+        let attributedString = NSMutableAttributedString(string: licenseText)
+
+        switch UserDefaultsManager().getLanguage() {
+        case "rus":
+            attributedString.addAttributes([ .foregroundColor : PaymentWaysColors.grayColor.value], range: NSRange(location: 6, length: 9))
+        case "eng":
+            attributedString.addAttributes([ .foregroundColor : PaymentWaysColors.grayColor.value], range: NSRange(location: 5, length: 9))
+        default:
+            attributedString.addAttributes([ .foregroundColor : PaymentWaysColors.grayColor.value], range: NSRange(location: 0, length: 0))
+        }
+        return attributedString
+    }
+    
+    
 }

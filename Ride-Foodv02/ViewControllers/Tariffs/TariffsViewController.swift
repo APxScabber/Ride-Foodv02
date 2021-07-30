@@ -29,6 +29,9 @@ class TariffsViewController: UIViewController {
     var tarrifsButtonArray: [UIButton] = []
     var indexVC = 0
     var linespacing: CGFloat = 5
+    
+    var advantagesIconsArray = [UIImage]()
+    var advantagesTitlesArray = [String]()
 
     let tariffsInteractor = TariffsInteractor()
   
@@ -89,7 +92,7 @@ class TariffsViewController: UIViewController {
         tariffInfoText.text = TariffsViewText.emptyText.text()
     }
     
-    //Задаем внешний вид кнопки Далее
+    //Задаем внешний вид кнопки Заказать такси
     private func setupTaxiOrderButton() {
         
         orderTaxiButtonOutlet.style()
@@ -107,20 +110,32 @@ class TariffsViewController: UIViewController {
         tariffsInteractor.loadTariffs(userID: id) { [weak self] (dataModel) in
             guard let tariffsData = dataModel else { return }
             
-            DispatchQueue.main.async { [weak self] in
-                
-                guard let indexVC = self?.indexVC else { return }
-                
-                self?.tariffsInteractor.getAdvantagesDatas(model: tariffsData[indexVC].advantages)
-
-                self?.carTypeLabel.text = tariffsData[indexVC].cars
-                self?.tariffInfoText.tariffsInfoStyle(text: tariffsData[indexVC].description)
-                
-                self?.tariffsInteractor.getImage(from: tariffsData[indexVC].icon, completion: { image in
-                    self?.carImage.image = image
+            //DispatchQueue.main.async { [weak self] in
+            
+            guard let indexVC = self?.indexVC else { return }
+            
+            //self?.tariffsInteractor.getAdvantagesDatas(model: tariffsData[indexVC].advantages)
+            
+            let advantagesModel = tariffsData[indexVC].advantages
+            //let advantages = CacheImageManager.shared.getAdvantagesDatas(model: advantagesModel)
+            
+            CacheImageManager.shared.getAdvantagesDatas(model: advantagesModel) { images, titles in
+                self?.advantagesIconsArray = images
+                self?.advantagesTitlesArray = titles
+                DispatchQueue.main.async {
                     self?.collectionView.reloadData()
+                }
+            }
 
-                })
+            CacheImageManager.shared.cacheImage(from: tariffsData[indexVC].icon, completion: { image in
+                DispatchQueue.main.async {
+                    self?.carImage.image = image
+                }
+            })
+            
+            DispatchQueue.main.async {
+                self?.tariffInfoText.tariffsInfoStyle(text: tariffsData[indexVC].description)
+                self?.carTypeLabel.text = tariffsData[indexVC].cars
             }
         }
     }

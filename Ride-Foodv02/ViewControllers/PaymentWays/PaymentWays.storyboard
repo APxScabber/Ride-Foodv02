@@ -70,7 +70,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="znJ-ex-2JS" firstAttribute="centerY" secondItem="AhY-Ka-MUt" secondAttribute="centerY" id="1c7-sI-BwN"/>
                                                 <constraint firstItem="AhY-Ka-MUt" firstAttribute="centerY" secondItem="3DU-LX-Cni" secondAttribute="centerY" id="8QB-rJ-7Ji"/>
+                                                <constraint firstItem="znJ-ex-2JS" firstAttribute="centerX" secondItem="AhY-Ka-MUt" secondAttribute="centerX" id="Gi9-sv-e7s"/>
                                                 <constraint firstItem="AhY-Ka-MUt" firstAttribute="leading" secondItem="3DU-LX-Cni" secondAttribute="leading" constant="25" id="Mw9-PQ-g3H"/>
                                                 <constraint firstItem="ITz-h6-NQp" firstAttribute="centerY" secondItem="3DU-LX-Cni" secondAttribute="centerY" id="Xfi-Kl-6fW"/>
                                                 <constraint firstItem="een-8Y-9Ru" firstAttribute="leading" secondItem="ITz-h6-NQp" secondAttribute="trailing" constant="7" id="d9a-BO-XI5"/>
@@ -186,6 +188,7 @@
                         <outlet property="cardImageView" destination="6rf-Wl-wIY" id="jVw-j5-Xzd"/>
                         <outlet property="cardNumberTextField" destination="oFf-VK-A86" id="drr-Dh-K7i"/>
                         <outlet property="confirmButtonOutlet" destination="VKo-pM-P4i" id="rIj-3m-4i2"/>
+                        <outlet property="confirmTitleTextView" destination="tcb-LE-fBV" id="u4B-xq-HIY"/>
                         <outlet property="hideTextField" destination="8RY-oa-kee" id="9w9-Go-KW3"/>
                         <outlet property="infoTextView" destination="EIN-sB-eDC" id="GBV-pE-yli"/>
                         <outlet property="linkCardButtonOutlet" destination="WUd-L5-UVx" id="kZx-Fa-Q02"/>
@@ -216,7 +219,7 @@
                                                         <action selector="cardDateTextFieldAction:" destination="Qyr-St-FSD" eventType="editingChanged" id="fcm-uo-Cvg"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F5-qD-TbO">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F5-qD-TbO">
                                                     <rect key="frame" x="0.0" y="33" width="154" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="v2N-xI-F5c"/>
@@ -239,7 +242,7 @@
                                                         <action selector="cardCVVTextFieldAction:" destination="Qyr-St-FSD" eventType="editingChanged" id="HHR-DC-vTa"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0g4-yD-tS2">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0g4-yD-tS2">
                                                     <rect key="frame" x="0.0" y="33" width="154" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="iEs-MM-fci"/>
@@ -277,9 +280,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="34"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Номер карты" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oFf-VK-A86">
-                                                    <rect key="frame" x="0.0" y="0.0" width="238" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="251" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="251" id="PZI-Ds-T4Q"/>
+                                                        <constraint firstAttribute="width" constant="251" id="PZI-Ds-T4Q"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
@@ -288,7 +291,8 @@
                                                     </connections>
                                                 </textField>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6rf-Wl-wIY">
-                                                    <rect key="frame" x="261" y="0.0" width="64" height="34"/>
+                                                    <rect key="frame" x="274" y="0.0" width="51" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -300,7 +304,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="oFf-VK-A86" secondAttribute="bottom" id="qZN-Hx-qjL"/>
                                             </constraints>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-6z-Osu">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-6z-Osu">
                                             <rect key="frame" x="0.0" y="34" width="325" height="1"/>
                                             <state key="normal" image="lineNumber"/>
                                         </button>

@@ -17,7 +17,7 @@ class LoadManager: NSObject {
     
     //Дженерик метода для работы с сервером
     func loadData<T: Decodable>(of type: T.Type, from url: URL, httpMethod: HTTPMethods,
-                                passData: [String:String]?,
+                                passData: [String : String]?,
                                 completion: @escaping result<T>) {
         
         //Формируем данные на отправку на сервер

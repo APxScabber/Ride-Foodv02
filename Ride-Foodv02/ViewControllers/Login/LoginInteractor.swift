@@ -84,5 +84,3 @@ class LoginInteractor {
         return isLogin
     }
 }
-
-

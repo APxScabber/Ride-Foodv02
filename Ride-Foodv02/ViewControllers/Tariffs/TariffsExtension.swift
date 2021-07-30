@@ -5,6 +5,7 @@
 //  Created by Alexey Peshekhonov on 18.06.2021.
 //
 
+
 import Foundation
 import UIKit
 
@@ -21,17 +22,15 @@ extension TariffsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TariffsCollectionViewCell
         
         cell.cellLabel.text = ""
-        let advantagesIconsArray = tariffsInteractor.advantagesIconsArray
-        let advantagesTitlesArray = tariffsInteractor.advantagesTitlesArray
         
         if !advantagesIconsArray.isEmpty && !advantagesTitlesArray.isEmpty {
             
             setTariffsColor(for: cell)
             
             cell.cellImageButton.setImage(advantagesIconsArray[indexPath.row], for: .normal)
-            //cell.cellImageView.image = advantagesIconsArray[indexPath.row]
             cell.cellLabel.text = advantagesTitlesArray[indexPath.row]
         }
+        
         return cell
     }
 }
