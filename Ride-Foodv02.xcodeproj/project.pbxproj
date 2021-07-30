@@ -12,6 +12,12 @@
 		7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */; };
 		7808D7C526B44CDB00A88E12 /* CacheImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7C426B44CDB00A88E12 /* CacheImageManager.swift */; };
 		7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7C626B4593700A88E12 /* ConfirmCard.swift */; };
+		7808D7C926B4806800A88E12 /* TotalScoresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7C826B4806800A88E12 /* TotalScoresModel.swift */; };
+		7808D7CB26B480A900A88E12 /* AddCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7CA26B480A900A88E12 /* AddCard.swift */; };
+		7808D7CD26B480C700A88E12 /* AddScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7CC26B480C700A88E12 /* AddScores.swift */; };
+		7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7CE26B480F000A88E12 /* TotalScores.swift */; };
+		7808D7D126B4818D00A88E12 /* TotalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */; };
+		7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */; };
 		782D45CE26B00EA9006B3A98 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CD26B00EA9006B3A98 /* Shop.swift */; };
 		782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CF26B00F02006B3A98 /* ShopFetcher.swift */; };
 		782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45D126B01402006B3A98 /* ShopListViewController.swift */; };
@@ -180,6 +186,12 @@
 		7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoConstant.swift; sourceTree = "<group>"; };
 		7808D7C426B44CDB00A88E12 /* CacheImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageManager.swift; sourceTree = "<group>"; };
 		7808D7C626B4593700A88E12 /* ConfirmCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCard.swift; sourceTree = "<group>"; };
+		7808D7C826B4806800A88E12 /* TotalScoresModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoresModel.swift; sourceTree = "<group>"; };
+		7808D7CA26B480A900A88E12 /* AddCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCard.swift; sourceTree = "<group>"; };
+		7808D7CC26B480C700A88E12 /* AddScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScores.swift; sourceTree = "<group>"; };
+		7808D7CE26B480F000A88E12 /* TotalScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScores.swift; sourceTree = "<group>"; };
+		7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoreViewController.swift; sourceTree = "<group>"; };
+		7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoresInteractor.swift; sourceTree = "<group>"; };
 		782D45CD26B00EA9006B3A98 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		782D45CF26B00F02006B3A98 /* ShopFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopFetcher.swift; sourceTree = "<group>"; };
 		782D45D126B01402006B3A98 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
@@ -803,6 +815,8 @@
 				78F1A97526A8948F00E16084 /* PaymentWaysInteractor.swift */,
 				78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */,
 				78F1A97726A8948F00E16084 /* PaymentWaysViewController.swift */,
+				7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */,
+				7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */,
 			);
 			path = PaymentWays;
 			sourceTree = "<group>";
@@ -811,7 +825,10 @@
 			isa = PBXGroup;
 			children = (
 				78F1A98426A894C400E16084 /* PaymentMain.swift */,
+				7808D7CE26B480F000A88E12 /* TotalScores.swift */,
 				7808D7C626B4593700A88E12 /* ConfirmCard.swift */,
+				7808D7CA26B480A900A88E12 /* AddCard.swift */,
+				7808D7CC26B480C700A88E12 /* AddScores.swift */,
 			);
 			path = PaymentWays;
 			sourceTree = "<group>";
@@ -820,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				78F1A98926A8950A00E16084 /* PaymentWaysModel.swift */,
+				7808D7C826B4806800A88E12 /* TotalScoresModel.swift */,
 			);
 			path = PaymentWays;
 			sourceTree = "<group>";
@@ -1026,6 +1044,7 @@
 				78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */,
 				78A3A00D267B56E9006D0DAB /* NotificationText.swift in Sources */,
 				78F1A98026A8949000E16084 /* AddCardConfirmView.swift in Sources */,
+				7808D7CB26B480A900A88E12 /* AddCard.swift in Sources */,
 				787A83EE26AB2DA40096DFC3 /* AddressesVC.swift in Sources */,
 				78AEB87F267B59C10023605D /* AppDelegateExtension.swift in Sources */,
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
@@ -1044,6 +1063,7 @@
 				782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */,
 				78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */,
 				78ACFD0526A5854600C995EB /* PromocodeHistoryViewController.swift in Sources */,
+				7808D7C926B4806800A88E12 /* TotalScoresModel.swift in Sources */,
 				782D45DE26B03D21006B3A98 /* ShopDetail.swift in Sources */,
 				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
@@ -1097,6 +1117,7 @@
 				78F1A98526A894C400E16084 /* PaymentMain.swift in Sources */,
 				C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */,
 				782D45D426B018EF006B3A98 /* ShopCollectionViewCell.swift in Sources */,
+				7808D7CD26B480C700A88E12 /* AddScores.swift in Sources */,
 				7867B4CE26711B120031BFA0 /* UIColor+Extensions.swift in Sources */,
 				78A3A007267B56E1006D0DAB /* ConfirmText.swift in Sources */,
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,
@@ -1120,6 +1141,7 @@
 				7850E8F426739D4400AA88CA /* PromotionsTableViewController.swift in Sources */,
 				78E25AA726A98305006E6BC9 /* FoodTaxiView.swift in Sources */,
 				782D45D826B02524006B3A98 /* ShopDetailView.swift in Sources */,
+				7808D7D126B4818D00A88E12 /* TotalScoreViewController.swift in Sources */,
 				78BE49F82683463C00A13641 /* PromotionConstant.swift in Sources */,
 				78A3A022267B57E1006D0DAB /* MainViewController.swift in Sources */,
 				78A39FF5267B568E006D0DAB /* UserDataMO+CoreDataProperties.swift in Sources */,
@@ -1127,8 +1149,10 @@
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
+				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
+				7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
 				78BE4A022683675100A13641 /* Promotion.swift in Sources */,
 				78A3A019267B57D7006D0DAB /* ConfirmActions.swift in Sources */,
