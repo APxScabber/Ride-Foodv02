@@ -312,7 +312,7 @@ class AddNewAddressVC: UIViewController {
             newAddressParentView.addSubview(DeleteButton)
             
             DeleteButton.translatesAutoresizingMaskIntoConstraints = false
-            DeleteButton.addTarget(self, action: #selector(deleteAddress), for: .touchUpInside)
+            DeleteButton.addTarget(self, action: #selector(callConfirmActionAndDelete), for: .touchUpInside)
         }
         
         
@@ -334,8 +334,12 @@ class AddNewAddressVC: UIViewController {
         }
     }
     
-    @objc func deleteAddress(){
-        "Delete this address"
+    
+    
+    
+    
+    @objc func callConfirmActionAndDelete(){
+        self.presentConfirmWindow(title: "Удалить адрес?", titleColor: .red, confirmTitle: "Удалить", cancelTitle: "Отмена")
     }
     
     @objc func addAddress(){
@@ -350,7 +354,7 @@ class AddNewAddressVC: UIViewController {
         newAddress.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
         
         PersistanceManager.shared.addNewAddress(address: newAddress)
-        navigationController?.popViewController(animated: true)
+        
         delegate?.didAddNewAddress()
         
     }
@@ -377,5 +381,42 @@ extension AddNewAddressVC: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         setSaveButtonBehavior()
+    }
+}
+
+extension AddNewAddressVC: DeleteAddressProtocol{
+    func deleteAddress() {
+        print("here gonna delete address")
+        if let addressToDelete = passedAddress{
+        self.CoreDataContext.delete(addressToDelete)
+            do{
+                try self.CoreDataContext.save()
+            } catch{
+                print(error.localizedDescription)
+            }
+            navigationController?.popViewController(animated: true)
+            delegate?.didAddNewAddress()
+            
+        }
+        
+    }
+    
+  
+    
+    
+}
+
+extension AddNewAddressVC{
+    
+    func presentConfirmWindow(title: String, titleColor: UIColor, confirmTitle: String, cancelTitle: String){
+        let confirmAlert = VBConfirmAlertVC(alertTitle: title, alertColor: titleColor, confirmTitle: confirmTitle, cancelTitle: cancelTitle)
+        confirmAlert.delegate = self
+        if #available(iOS 13.0, *) {
+            confirmAlert.modalPresentationStyle = .overFullScreen
+        } else {
+            // Fallback on earlier versions
+        }
+        confirmAlert.modalTransitionStyle = .coverVertical
+        self.present(confirmAlert, animated: true)
     }
 }
