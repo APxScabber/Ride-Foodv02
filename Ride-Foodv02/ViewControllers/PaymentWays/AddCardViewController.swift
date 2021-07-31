@@ -217,7 +217,7 @@ class AddCardViewController: UIViewController {
             //self.bgImageTopConstraint.constant = 80
             self.view.superview?.layoutIfNeeded()
         }
-    }
+        }
     
 
     

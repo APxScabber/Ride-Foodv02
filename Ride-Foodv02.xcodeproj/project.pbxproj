@@ -172,6 +172,8 @@
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
 		F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */; };
+		F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */; };
+		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
 		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
 		F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916726AB77BD008E9841 /* ProfileButton.swift */; };
 		F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917126AF779E008E9841 /* VBTextView.swift */; };
@@ -348,6 +350,8 @@
 		C4E83FBC266EA53B000EE70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
+		F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBConfirmAlertVC.swift; sourceTree = "<group>"; };
+		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F5BC916726AB77BD008E9841 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		F5BC917126AF779E008E9841 /* VBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBTextView.swift; sourceTree = "<group>"; };
@@ -555,6 +559,7 @@
 		787A83DC26AB2D380096DFC3 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				F5011DBB26B5852800DE3777 /* ViewControllers */,
 				F5BC916626AB779A008E9841 /* Buttons */,
 				F5BC916526AB7788008E9841 /* Views */,
 			);
@@ -896,10 +901,19 @@
 			path = "Ride-Foodv02";
 			sourceTree = "<group>";
 		};
+		F5011DBB26B5852800DE3777 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F5BC916226AB745E008E9841 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F5BC916326AB7475008E9841 /* UIColorExtension.swift */,
+				F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1150,9 +1164,11 @@
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
+				F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
 				7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */,
+				F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
 				78BE4A022683675100A13641 /* Promotion.swift in Sources */,
 				78A3A019267B57D7006D0DAB /* ConfirmActions.swift in Sources */,
