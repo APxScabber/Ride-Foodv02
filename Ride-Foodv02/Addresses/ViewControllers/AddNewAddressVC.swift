@@ -354,7 +354,7 @@ class AddNewAddressVC: UIViewController {
         newAddress.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
         
         PersistanceManager.shared.addNewAddress(address: newAddress)
-        
+        navigationController?.popViewController(animated: true)
         delegate?.didAddNewAddress()
         
     }
