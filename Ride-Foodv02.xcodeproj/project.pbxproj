@@ -18,6 +18,7 @@
 		7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7CE26B480F000A88E12 /* TotalScores.swift */; };
 		7808D7D126B4818D00A88E12 /* TotalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */; };
 		7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */; };
+		7808D7D526B838F000A88E12 /* EmailChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D426B838EF00A88E12 /* EmailChecker.swift */; };
 		782D45CE26B00EA9006B3A98 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CD26B00EA9006B3A98 /* Shop.swift */; };
 		782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CF26B00F02006B3A98 /* ShopFetcher.swift */; };
 		782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45D126B01402006B3A98 /* ShopListViewController.swift */; };
@@ -76,7 +77,7 @@
 		7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4D6267238D20031BFA0 /* LanguageSelectionTableViewController.swift */; };
 		7867B4DB26723FA50031BFA0 /* SettingsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DA26723FA50031BFA0 /* SettingsConstant.swift */; };
 		7867B4DD26723FD10031BFA0 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */; };
-		7867B4DF2672411C0031BFA0 /* PersonalInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DE2672411C0031BFA0 /* PersonalInfoTableViewController.swift */; };
+		7867B4DF2672411C0031BFA0 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DE2672411C0031BFA0 /* PersonalInfoViewController.swift */; };
 		7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */; };
 		787140C6268637E6007834ED /* Promocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787140C5268637E6007834ED /* Promocode.storyboard */; };
 		787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C726863B99007834ED /* PromocodeMainTableViewController.swift */; };
@@ -194,6 +195,7 @@
 		7808D7CE26B480F000A88E12 /* TotalScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScores.swift; sourceTree = "<group>"; };
 		7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoreViewController.swift; sourceTree = "<group>"; };
 		7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoresInteractor.swift; sourceTree = "<group>"; };
+		7808D7D426B838EF00A88E12 /* EmailChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailChecker.swift; sourceTree = "<group>"; };
 		782D45CD26B00EA9006B3A98 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		782D45CF26B00F02006B3A98 /* ShopFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopFetcher.swift; sourceTree = "<group>"; };
 		782D45D126B01402006B3A98 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
@@ -252,7 +254,7 @@
 		7867B4D6267238D20031BFA0 /* LanguageSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionTableViewController.swift; sourceTree = "<group>"; };
 		7867B4DA26723FA50031BFA0 /* SettingsConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConstant.swift; sourceTree = "<group>"; };
 		7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
-		7867B4DE2672411C0031BFA0 /* PersonalInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableViewController.swift; sourceTree = "<group>"; };
+		7867B4DE2672411C0031BFA0 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		787140C5268637E6007834ED /* Promocode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promocode.storyboard; sourceTree = "<group>"; };
 		787140C726863B99007834ED /* PromocodeMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeMainTableViewController.swift; sourceTree = "<group>"; };
@@ -418,7 +420,7 @@
 				7867B4D426722DC10031BFA0 /* SettingsMainLabel.swift */,
 				7867B4DA26723FA50031BFA0 /* SettingsConstant.swift */,
 				7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */,
-				7867B4DE2672411C0031BFA0 /* PersonalInfoTableViewController.swift */,
+				7867B4DE2672411C0031BFA0 /* PersonalInfoViewController.swift */,
 				7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */,
 				787D4B602677A73E002D975D /* ToolbarView.xib */,
 				787D4B622677A751002D975D /* ToolbarView.swift */,
@@ -508,6 +510,7 @@
 				78BE49F926834BA400A13641 /* ImageFetcher.swift */,
 				78BE4A072684CF6100A13641 /* RoundedView.swift */,
 				787A83F426AB31FA0096DFC3 /* CircleView.swift */,
+				7808D7D426B838EF00A88E12 /* EmailChecker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -548,7 +551,6 @@
 		787A83D726AB2D230096DFC3 /* UserProfileMenu */ = {
 			isa = PBXGroup;
 			children = (
-				F5B50C2326B6C1D90082199C /* Helpers */,
 				F5BC916226AB745E008E9841 /* Extensions */,
 				787A83DC26AB2D380096DFC3 /* CustomViews */,
 				787A83D826AB2D330096DFC3 /* UserProfile.storyboard */,
@@ -910,13 +912,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F5B50C2326B6C1D90082199C /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		F5BC916226AB745E008E9841 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1092,7 @@
 				78A3A00B267B56E9006D0DAB /* LoadManagerText.swift in Sources */,
 				F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */,
 				78F1A97D26A8949000E16084 /* PaymentWaysInteractor.swift in Sources */,
+				7808D7D526B838F000A88E12 /* EmailChecker.swift in Sources */,
 				78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */,
 				C47892C6267B97DB00B4C737 /* TariffsModel.swift in Sources */,
 				78F1A98726A894E100E16084 /* PaymentWaysColor.swift in Sources */,
@@ -1155,7 +1151,7 @@
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
 				787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */,
 				F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */,
-				7867B4DF2672411C0031BFA0 /* PersonalInfoTableViewController.swift in Sources */,
+				7867B4DF2672411C0031BFA0 /* PersonalInfoViewController.swift in Sources */,
 				787A83E526AB2D9B0096DFC3 /* MyAddressesTableViewCell.swift in Sources */,
 				78F1A97F26A8949000E16084 /* PaymentWaysViewController.swift in Sources */,
 				78A39FEC267B5684006D0DAB /* UserDefaultsModel.swift in Sources */,
