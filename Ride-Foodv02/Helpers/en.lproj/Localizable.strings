@@ -42,7 +42,10 @@
 "emailQuestion" = "Specify e-mail";
 "personalInfo" = "Personal info";
 "confirm" = "Confirm";
-
+"privacyFirst" = "By entering your data, you confirm that you have read the ";
+"privacySecond" = "user agreement, ";
+"privacyThird" = "as well as the ";
+"privacyFourth" = "privacy policy.";
 
 //MARK: - Promotions
 
