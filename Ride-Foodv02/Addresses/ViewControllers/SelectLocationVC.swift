@@ -75,6 +75,7 @@ class SelectLocationVC: UIViewController {
         setLabelAndImageBehaviour()
         setButtonBehavior()
         setLocationBackgroundView()
+        getTheDecodedAddress(mapView: mapview)
         
         // Do any additional setup after loading the view.
     }
@@ -164,54 +165,51 @@ class SelectLocationVC: UIViewController {
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-
-
+    
+    func getTheDecodedAddress(mapView: MKMapView){
+        let center = getCenterLocation(for: mapview)
+         let geocoder = CLGeocoder()
+         
+         
+         
+         geocoder.reverseGeocodeLocation(center) { [weak self] placemarks, error in
+             guard let self = self else {return}
+             if let _ = error {
+                 print("Ошибка")
+                 return
+             }
+             
+             guard let placeMark = placemarks?.first else {
+                 print("Something happened")
+                 return
+             }
+             
+             let city = placeMark.locality ?? ""
+             let streetName = placeMark.thoroughfare ?? ""
+             let streetNumber = placeMark.subThoroughfare ?? ""
+             
+             let street = "\(city) \(streetName) \(streetNumber)"
+             
+             DispatchQueue.main.async {
+                 self.locationText = street
+             }
+             
+         }
+     }
+     
 }
+
 extension SelectLocationVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-       let center = getCenterLocation(for: mapview)
-        let geocoder = CLGeocoder()
-        
+        let center = getCenterLocation(for: mapview)
         guard let previousLocation = self.previousLocation else { return }
         
         guard center.distance(from: previousLocation) > 100 else { return }
-        
-        geocoder.reverseGeocodeLocation(center) { [weak self] placemarks, error in
-            guard let self = self else {return}
-            if let _ = error {
-                print("Ошибка")
-                return
-            }
-            
-            guard let placeMark = placemarks?.first else {
-                print("Something happened")
-                return
-            }
-            
-            let city = placeMark.locality ?? ""
-            let streetName = placeMark.thoroughfare ?? ""
-            let streetNumber = placeMark.subThoroughfare ?? ""
-            
-            let street = "\(city) \(streetName) \(streetNumber)"
-            
-            DispatchQueue.main.async {
-                self.locationText = street
-            }
-            
-        }
-    }
+      getTheDecodedAddress(mapView: mapview)
+
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        guard !(annotation is MKUserLocation) else {
-//               return nil
-//           }
-//        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-//        annotationView.image = UIImage(named: "Annotation")
-//        annotationView.frame.size = CGSize(width: 30, height: 48)
-//        return annotationView
-//    }
-    
+}
 }
 
 extension SelectLocationVC: CLLocationManagerDelegate{
