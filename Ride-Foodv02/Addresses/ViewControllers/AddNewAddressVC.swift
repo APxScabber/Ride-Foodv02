@@ -11,7 +11,7 @@ protocol AddNewAddressDelegate: AnyObject{
     func didAddNewAddress()
 }
 
-class AddNewAddressVC: UIViewController {
+class AddNewAddressVC: UIViewController{
     
 //    case of updating the address
     
@@ -412,7 +412,7 @@ extension AddNewAddressVC{
         let confirmAlert = VBConfirmAlertVC(alertTitle: title, alertColor: titleColor, confirmTitle: confirmTitle, cancelTitle: cancelTitle)
         confirmAlert.delegate = self
         if #available(iOS 13.0, *) {
-            confirmAlert.modalPresentationStyle = .overFullScreen
+            confirmAlert.modalPresentationStyle = .popover
         } else {
             // Fallback on earlier versions
         }

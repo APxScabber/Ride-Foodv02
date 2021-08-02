@@ -548,6 +548,7 @@
 		787A83D726AB2D230096DFC3 /* UserProfileMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F5B50C2326B6C1D90082199C /* Helpers */,
 				F5BC916226AB745E008E9841 /* Extensions */,
 				787A83DC26AB2D380096DFC3 /* CustomViews */,
 				787A83D826AB2D330096DFC3 /* UserProfile.storyboard */,
@@ -907,6 +908,13 @@
 				F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F5B50C2326B6C1D90082199C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F5BC916226AB745E008E9841 /* Extensions */ = {
