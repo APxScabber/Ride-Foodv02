@@ -61,6 +61,8 @@ class AddNewAddressVC: UIViewController{
     var deliveryCommentaryView = VBTextView()
     
     var keyboardIsExtended: Bool = false
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +82,19 @@ class AddNewAddressVC: UIViewController{
         createDismisskeyboardTapGesture()
         configureNavigationItem()
   
+    }
+    
+    func colorBottomView(textView: UITextField){
+        let views = [addressTitleView, addressDescriptionView, driverCommentaryView, officeNumberView, intercomNumberView, entranceNumberView, floorNumber, deliveryCommentaryView]
+        views.forEach { address in
+            if address.textView == textView{
+                if address == addressDescriptionView{
+                    address.bottomView.backgroundColor = !textView.isEditing ? UIColor.ProfileButtonBorderColor : UIColor.SkillboxIndigoColor
+                    mapButton.bottomView.backgroundColor = !textView.isEditing ? UIColor.ProfileButtonBorderColor : UIColor.SkillboxIndigoColor
+                }
+                address.bottomView.backgroundColor = !textView.isEditing ? UIColor.ProfileButtonBorderColor : UIColor.SkillboxIndigoColor
+            }
+        }
     }
     
     
@@ -438,6 +453,7 @@ extension AddNewAddressVC: SetLocationDelegate{
 
 extension AddNewAddressVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        colorBottomView(textView: textField)
         if isUPdatingAddress{
          wantToUpdateAddress = true
         }
@@ -446,6 +462,7 @@ extension AddNewAddressVC: UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        colorBottomView(textView: textField)
         if isUPdatingAddress{
          wantToUpdateAddress = true
         }
