@@ -97,6 +97,13 @@ class AddNewAddressVC: UIViewController{
         }
     }
     
+    func colorLocationMark(){
+        if let text = addressDescriptionView.textView.text{
+            locationMarkImageView.image = text.isEmpty ? UIImage(named: "disabledAnnotation") : UIImage(named: "Annotation")
+        }
+     
+    }
+    
     
     func setUIIfUpdatingAddress(address: UserAddressMO){
         if isUPdatingAddress{
@@ -235,6 +242,7 @@ class AddNewAddressVC: UIViewController{
     }
     
     func configurelocationStackView(){
+        
         locationStackView.axis           = .horizontal
         locationStackView.distribution   = .fill
         locationStackView.spacing        = 0
@@ -243,7 +251,7 @@ class AddNewAddressVC: UIViewController{
         locationMarkImageView.clipsToBounds = true
       
     
-        locationMarkImageView.image = UIImage(named: "Annotation")
+        colorLocationMark()
         
         locationStackView.addArrangedSubview(locationMarkImageView)
         locationStackView.addArrangedSubview(addressDescriptionView)
@@ -444,7 +452,12 @@ extension AddNewAddressVC: SetLocationDelegate{
     func locationIsSet(location: String) {
         print("delegate successfully implemented")
         self.addressDescriptionView.textView.text = location
+        colorLocationMark()
+        if isUPdatingAddress{
+            wantToUpdateAddress = true
+        }
         setSaveButtonBehavior()
+        
        
     }
     
@@ -458,6 +471,7 @@ extension AddNewAddressVC: UITextFieldDelegate{
          wantToUpdateAddress = true
         }
         setSaveButtonBehavior()
+        colorLocationMark()
         
     }
     
@@ -467,6 +481,7 @@ extension AddNewAddressVC: UITextFieldDelegate{
          wantToUpdateAddress = true
         }
         setSaveButtonBehavior()
+        colorLocationMark()
         
     }
 }
