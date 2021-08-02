@@ -33,6 +33,7 @@ class AddressesVC: UIViewController {
         addNewAddressButton()
         addBackgroundImageView()
         MyAddressesTableView.tableFooterView = UIView()
+        
     }
     
     
@@ -135,7 +136,10 @@ extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
         gonnaUpdateAddress = true
         self.performSegue(withIdentifier: "addNewAddressSegue", sender: self)
         gonnaUpdateAddress = false
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
     
     
 }
