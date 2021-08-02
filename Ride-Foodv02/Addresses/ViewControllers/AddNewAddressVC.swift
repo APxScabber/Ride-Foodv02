@@ -11,11 +11,12 @@ protocol AddNewAddressDelegate: AnyObject{
     func didAddNewAddress()
 }
 
-class AddNewAddressVC: UIViewController {
+class AddNewAddressVC: UIViewController{
     
 //    case of updating the address
     
     var isUPdatingAddress: Bool = false
+    var wantToUpdateAddress: Bool = false
     var passedAddress: UserAddressMO?
     
    weak var delegate: AddNewAddressDelegate?
@@ -99,6 +100,13 @@ class AddNewAddressVC: UIViewController {
     func setTextfieldDelegates(){
         self.addressTitleView.textView.delegate = self
         self.addressDescriptionView.textView.delegate = self
+        self.driverCommentaryView.textView.delegate = self
+        self.officeNumberView.textView.delegate = self
+        self.intercomNumberView.textView.delegate = self
+        self.entranceNumberView.textView.delegate = self
+        self.floorNumber.textView.delegate = self
+        self.deliveryCommentaryView.textView.delegate = self
+        
     }
     
     func configureMapButton(){
@@ -296,17 +304,34 @@ class AddNewAddressVC: UIViewController {
     
     func setSaveButtonBehavior(){
         
-        SaveButton.setTitle(!isUPdatingAddress ? "Сохранить" : "Выбрать местом назначения", for: .normal)
+       
+        if wantToUpdateAddress{
+            SaveButton.setTitle("Обновить" , for: .normal)
+        } else {
+            SaveButton.setTitle(!isUPdatingAddress ? "Сохранить" : "Выбрать местом назначения", for: .normal)
+        }
         
         SaveButton.isEnabled = !addressTitleView.textView.text!.isEmpty && !addressDescriptionView.textView.text!.isEmpty
         SaveButton.backgroundColor = SaveButton.isEnabled ? UIColor.SkillboxIndigoColor : UIColor.DisabledButtonBackgroundView
+        switch SaveButton.title(for: .normal) {
+        case "Сохранить":
+            SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside)
+        case "Выбрать местом назначения":
+            SaveButton.addTarget(self, action: #selector(setAsMainAddress), for: .touchUpInside)
+        case "Обновить":
+            SaveButton.addTarget(self, action: #selector(updateAddress), for: .touchUpInside)
+        default:
+            return
+        }
+        
+      
     }
     
     func placeSaveAndDeleteButton(){
       
         SaveButton.translatesAutoresizingMaskIntoConstraints = false
         newAddressParentView.addSubview(SaveButton)
-        SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside)
+       
         
         if isUPdatingAddress{
             newAddressParentView.addSubview(DeleteButton)
@@ -342,6 +367,33 @@ class AddNewAddressVC: UIViewController {
         self.presentConfirmWindow(title: "Удалить адрес?", titleColor: .red, confirmTitle: "Удалить", cancelTitle: "Отмена")
     }
     
+    @objc func updateAddress(){
+        if isUPdatingAddress && wantToUpdateAddress {
+            if let addressToUpdate = passedAddress{
+                addressToUpdate.title = addressTitleView.textView.text
+                addressToUpdate.fullAddress = addressDescriptionView.textView.text
+                addressToUpdate.driverCommentary = driverCommentaryView.textView.text ?? ""
+                addressToUpdate.delivApartNumber = officeNumberView.textView.text ?? ""
+                addressToUpdate.delivIntercomNumber = intercomNumberView.textView.text ?? ""
+                addressToUpdate.delivEntranceNumber = entranceNumberView.textView.text ?? ""
+                addressToUpdate.delivFloorNumber = floorNumber.textView.text ?? ""
+                addressToUpdate.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
+                
+                PersistanceManager.shared.addNewAddress(address: addressToUpdate)
+                
+                setUIIfUpdatingAddress(address: addressToUpdate)
+                wantToUpdateAddress = false
+                setSaveButtonBehavior()
+            }
+         
+        }
+        
+    }
+    
+    @objc func setAsMainAddress(){
+        print("Set as main address")
+    }
+    
     @objc func addAddress(){
         let newAddress = UserAddressMO(context: CoreDataManager.shared.persistentContainer.viewContext)
         newAddress.title = addressTitleView.textView.text
@@ -354,7 +406,7 @@ class AddNewAddressVC: UIViewController {
         newAddress.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
         
         PersistanceManager.shared.addNewAddress(address: newAddress)
-        
+        navigationController?.popViewController(animated: true)
         delegate?.didAddNewAddress()
         
     }
@@ -376,11 +428,19 @@ extension AddNewAddressVC: SetLocationDelegate{
 
 extension AddNewAddressVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if isUPdatingAddress{
+         wantToUpdateAddress = true
+        }
         setSaveButtonBehavior()
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if isUPdatingAddress{
+         wantToUpdateAddress = true
+        }
         setSaveButtonBehavior()
+        
     }
 }
 
@@ -412,7 +472,7 @@ extension AddNewAddressVC{
         let confirmAlert = VBConfirmAlertVC(alertTitle: title, alertColor: titleColor, confirmTitle: confirmTitle, cancelTitle: cancelTitle)
         confirmAlert.delegate = self
         if #available(iOS 13.0, *) {
-            confirmAlert.modalPresentationStyle = .overFullScreen
+            confirmAlert.modalPresentationStyle = .popover
         } else {
             // Fallback on earlier versions
         }

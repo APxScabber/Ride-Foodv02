@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 protocol DeleteAddressProtocol {
    func deleteAddress()
    
@@ -20,13 +21,14 @@ class VBConfirmAlertVC: UIViewController {
     var confirmOptionTitle: String?
     var cancelOptionTitle: String?
     
+    
     let containerView       = UIView()
     let attributeView       = UIView()
     let titleLabel          = UILabel()
     let confirmOptionButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "" , cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor )
     let cancelOptionButton  = VBButton(backgroundColor: .clear, title: "", cornerRadius: 0, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
     
-    let horizontalPadding: CGFloat = 15
+    let horizontalPadding: CGFloat = 25
     
     
    
@@ -36,8 +38,9 @@ class VBConfirmAlertVC: UIViewController {
         self.alertTitle             = alertTitle
         self.confirmOptionTitle     = confirmTitle
         self.cancelOptionTitle      = cancelTitle
-  
+        
         super.init(nibName: nil, bundle: nil)
+        
         
     }
     
@@ -47,20 +50,21 @@ class VBConfirmAlertVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        view.insetsLayoutMarginsFromSafeArea = false
         setContainerView()
         setTitleLabel()
         setConfigureButton()
         setCancelButton()
        
         setAttributeView()
-        
+//        setBottomView()
         // Do any additional setup after loading the view.
     }
     
     func setAttributeView(){
         attributeView.translatesAutoresizingMaskIntoConstraints = false
-        attributeView.backgroundColor                           = UIColor.DisabledButtonBackgroundView
+        attributeView.backgroundColor                           = UIColor.attributeViewColor
         
         view.addSubview(attributeView)
         NSLayoutConstraint.activate([
@@ -83,7 +87,7 @@ class VBConfirmAlertVC: UIViewController {
         view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
-            containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 630)
@@ -145,20 +149,6 @@ class VBConfirmAlertVC: UIViewController {
             cancelOptionButton.topAnchor.constraint(equalTo: confirmOptionButton.bottomAnchor, constant: horizontalPadding)
         ])
     }
-    
-    
-    
-    
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
