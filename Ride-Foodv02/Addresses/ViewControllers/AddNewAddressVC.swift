@@ -193,12 +193,21 @@ class AddNewAddressVC: UIViewController{
         
         let padding: CGFloat = 25
         generalAddressStackView.translatesAutoresizingMaskIntoConstraints = false
+        if !isUPdatingAddress{
         NSLayoutConstraint.activate([
             generalAddressStackView.topAnchor.constraint(equalTo: newAddressParentView.topAnchor, constant: 7),
             generalAddressStackView.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: padding),
             generalAddressStackView.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -padding),
             generalAddressStackView.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -550)
         ])
+        } else {
+            NSLayoutConstraint.activate([
+                generalAddressStackView.topAnchor.constraint(equalTo: newAddressParentView.topAnchor, constant: 7),
+                generalAddressStackView.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: padding),
+                generalAddressStackView.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -padding),
+                generalAddressStackView.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -630)
+            ])
+        }
     }
     
     func addViewsToStackView(){
