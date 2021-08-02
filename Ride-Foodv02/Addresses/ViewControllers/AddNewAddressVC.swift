@@ -384,6 +384,7 @@ class AddNewAddressVC: UIViewController{
                 setUIIfUpdatingAddress(address: addressToUpdate)
                 wantToUpdateAddress = false
                 setSaveButtonBehavior()
+                delegate?.didAddNewAddress()
             }
          
         }
