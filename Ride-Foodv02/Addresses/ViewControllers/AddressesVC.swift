@@ -29,10 +29,17 @@ class AddressesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem()
-        fetch()
         addNewAddressButton()
-        addBackgroundImageView()
-        MyAddressesTableView.tableFooterView = UIView()
+        
+        
+       
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.addBackgroundImageView()
+        fetch()
         
     }
     
@@ -41,14 +48,16 @@ class AddressesVC: UIViewController {
       
     
         view.addSubview(backgroundImageView)
-        MyAddressesTableView.backgroundView = backgroundImageView
+        self.view.bringSubviewToFront(MyAddressesTableView)
+        self.view.bringSubviewToFront(newAddressButton)
+//        MyAddressesTableView.backgroundView = backgroundImageView
        
         
         NSLayoutConstraint.activate([
             backgroundImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            backgroundImageView.heightAnchor.constraint(equalToConstant: 180),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -180)
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 200),
+            backgroundImageView.bottomAnchor.constraint(equalTo: newAddressButton.topAnchor, constant: -150)
         ])
     }
     
@@ -63,19 +72,27 @@ class AddressesVC: UIViewController {
                 print(self.addresses.isEmpty)
                 guard !self.addresses.isEmpty else {
                     DispatchQueue.main.async {
-                      
                         let emptyView = AddressesEmptyStateView()
                         emptyView.frame = self.MyAddressesTableView.bounds
                         self.MyAddressesTableView.addSubview(emptyView)
                     }
                     return
                 }
+                DispatchQueue.main.async {
+                    
                 for i in self.MyAddressesTableView.subviews{
                     if i is AddressesEmptyStateView{
                         i.removeFromSuperview()
+                        
                     }
+                    
                 }
-                self.MyAddressesTableView.reloadData()
+              
+                    self.MyAddressesTableView.reloadData()
+                    self.MyAddressesTableView.tableFooterView = UIView()
+                   
+                }
+                
             case .failure(let error):
                 print(error)
             }
