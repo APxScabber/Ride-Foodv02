@@ -21,14 +21,14 @@ class PersonalInfoViewController: UIViewController {
         emailChoserLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
     }}
     
-    @IBOutlet weak var privacyLabel: UILabel! { didSet {
-        
-    }}
+    @IBOutlet weak var privacyLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var transparentView: UIView! { didSet {
         transparentView.isHidden = true
     }}
-
+    @IBOutlet weak var rowHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topOffsetConstraint: NSLayoutConstraint!
     
     private var toolBarView = ToolbarView.initFromNib()
     
@@ -39,12 +39,14 @@ class PersonalInfoViewController: UIViewController {
     }
     
     @IBAction func enterName(_ sender: UIButton) {
+        yOffset = sender.convert(sender.frame.origin, to: scrollView).y + sender.bounds.height
         toolBarView.text = PersonalInfoConstant.nameQuestion
         activateToolbar()
         toolBarView.state = .name
     }
     
     @IBAction func enterEmail(_ sender: UIButton) {
+        yOffset = sender.convert(sender.frame.origin, to: scrollView).y + sender.bounds.height
         toolBarView.text = PersonalInfoConstant.emailQuestion
         activateToolbar()
         toolBarView.state = .email
@@ -66,10 +68,8 @@ class PersonalInfoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let window = UIApplication.shared.keyWindow {
-            toolBarView.frame = CGRect(x: 0, y: window.bounds.height, width: view.bounds.width, height: SettingsConstant.toolbarHeight)
-            window.addSubview(toolBarView)
-        }
+        toolBarView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PersonalInfoConstant.toolbarHeight)
+        view.addSubview(toolBarView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,15 +83,33 @@ class PersonalInfoViewController: UIViewController {
         nameChoserLabel.text = PersonalInfoConstant.nameQuestion
         emailChoserLabel.text = PersonalInfoConstant.emailQuestion
         privacyLabel.attributedText = PersonalInfoConstant.privacyText
+        CoreDataManager.shared.fetchCoreData { [weak self] result in
+        switch result {
+            case .success(let model):
+                let userData = model.first
+                if userData?.name != nil {
+                    self?.nameChoserLabel.text = userData?.name
+                    self?.nameChoserLabel.textColor = .black
+                }
+                if userData?.email != nil {
+                    self?.emailChoserLabel.text = userData?.email
+                    self?.emailChoserLabel.textColor = .black
+                }
+        default: break
+            }
+        }
     }
     
-        
+    private var yOffset: CGFloat = 0.0
+    
     @objc
     private func showToolbarView(_ notification:NSNotification) {
         guard let userInfo = notification.userInfo else { return }
-        guard let window = UIApplication.shared.keyWindow else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            toolBarView.frame.origin.y = window.bounds.height - (size.height + SettingsConstant.toolbarHeight)
+            toolBarView.frame.origin.y = view.bounds.height - (size.height + PersonalInfoConstant.toolbarHeight)
+            if toolBarView.frame.origin.y < yOffset {
+                moveScrollViewYOffset(at: yOffset - toolBarView.frame.origin.y + rowHeightConstraint.constant + topOffsetConstraint.constant)
+            }
         }
     }
 
@@ -101,6 +119,13 @@ class PersonalInfoViewController: UIViewController {
         transparentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
+    private func moveScrollViewYOffset(at: CGFloat) {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PersonalInfoConstant.durationForAppearingToolbarView, delay: 0, options: .curveLinear) {
+            self.scrollView.contentOffset.y = at
+        } completion: {  if $0 == .end { }
+        }
+    }
+    
 }
 
 
@@ -108,17 +133,29 @@ extension PersonalInfoViewController: ToolbarViewDelegate {
     
     func done() {
         
-        if toolBarView.state == .name {
-            
-        } else if toolBarView.state == .email {
-            
+        CoreDataManager.shared.fetchCoreData { [weak self] result in
+        switch result {
+            case .success(let model):
+                let userData = model.first
+                if self?.toolBarView.state == .name {
+                    userData?.name = self?.toolBarView.textField.text
+                } else if self?.toolBarView.state == .email {
+                    userData?.email = self?.toolBarView.textField.text
+                }
+                CoreDataManager.shared.saveContext()
+                self?.updateUI()
+                self?.remove()
+        default: break
+            }
         }
+        
     }
     
     func remove() {
         toolBarView.dismiss()
+        moveScrollViewYOffset(at: 0)
         guard let window = UIApplication.shared.keyWindow else { return }
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PersonalInfoConstant.durationForDisappearingToolbarView, delay: 0.0, options: .curveLinear) {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PersonalInfoConstant.durationForAppearingToolbarView, delay: 0.0, options: .curveLinear) {
             self.toolBarView.frame.origin.y = window.bounds.height
         } completion: { if $0 == .end { self.transparentView.isHidden = true }
         }

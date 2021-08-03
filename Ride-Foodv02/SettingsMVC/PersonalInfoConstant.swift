@@ -8,8 +8,9 @@ struct PersonalInfoConstant {
     static var emailQuestion:String { "emailQuestion".localized }
     static var personalInfo:String { "personalInfo".localized }
     static var confirm:String { "confirm".localized }
+    static let toolbarHeight: CGFloat = 152.0
 
-    static let durationForDisappearingToolbarView = 0.25
+    static let durationForAppearingToolbarView = 0.25
     
     static private var privacyFirst:String { "privacyFirst".localized }
     static private var privacySecond:String { "privacySecond".localized }
