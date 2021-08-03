@@ -40,7 +40,7 @@ class EnterPromocodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let window = UIApplication.shared.keyWindow else { return }
-        promocodeToolbar.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: SettingsConstant.toolbarHeight)
+        promocodeToolbar.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: PromocodeConstant.toolbarHeight)
         promocodeToolbar.textField.becomeFirstResponder()
         window.addSubview(promocodeToolbar)
     }
@@ -48,7 +48,7 @@ class EnterPromocodeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         guard let window = UIApplication.shared.keyWindow else { return }
-        promocodeToolbar.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: SettingsConstant.toolbarHeight)
+        promocodeToolbar.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: PromocodeConstant.toolbarHeight)
         promocodeToolbar.dismiss()
     }
     
@@ -58,7 +58,7 @@ class EnterPromocodeViewController: UIViewController {
         guard let userInfo = notification.userInfo else { return }
         guard let window = UIApplication.shared.keyWindow else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            promocodeToolbar.frame.origin.y = window.frame.height - (size.height + SettingsConstant.toolbarHeight )
+            promocodeToolbar.frame.origin.y = window.frame.height - (size.height + PromocodeConstant.toolbarHeight )
         }
     }
 

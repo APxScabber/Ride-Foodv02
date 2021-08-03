@@ -15,7 +15,6 @@ struct SettingsConstant {
     
     static let name = "name".localized
     static let email = "E-mail"
-    static let toolbarHeight: CGFloat = 152.0
    
 }
 

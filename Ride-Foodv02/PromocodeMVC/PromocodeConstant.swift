@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 struct PromocodeConstant {
     
@@ -11,6 +12,7 @@ struct PromocodeConstant {
     static var active: String { "active".localized }
     static var inactivate: String { "inactivate".localized }
     static var promocodeDescription: String { "promocodeDescription".localized }
+    static let toolbarHeight: CGFloat = 152.0
 
     
 }
