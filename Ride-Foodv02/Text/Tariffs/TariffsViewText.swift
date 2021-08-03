@@ -45,7 +45,7 @@ enum TariffsViewText {
         case .aboutTariffs:
             return "О тарифах"
         case .taxiOrderButton:
-            return "Заказать такси2"
+            return "Заказать такси"
         }
     }
     

@@ -127,7 +127,7 @@ class UserProfileTableVC: UITableViewController {
             goToStoryboard(name: "Addresses")
             }
         if indexPath.section == 1 && indexPath.row == 0  {
-            print("История платежей")
+            goToStoryboard(name: "PaymentHistory")
             }
         if indexPath.section == 1 && indexPath.row == 1  {
             print("История заказов")

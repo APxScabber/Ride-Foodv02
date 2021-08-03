@@ -14,7 +14,7 @@ enum NotificationText {
     
     func text() -> String {
         
-        let userSettings = UserDefaultsManager.shared.userSettings
+        let userSettings = UserDefaultsManager.shared.userLanguage
         let languageCode = userSettings?.userLanguage
         
         switch languageCode {

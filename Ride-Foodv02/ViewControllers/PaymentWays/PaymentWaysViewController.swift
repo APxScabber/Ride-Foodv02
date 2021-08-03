@@ -9,14 +9,15 @@ import UIKit
 
 class PaymentWaysViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var linkCardButtonOutlet: UIButton!
     
+    // MARK: - Properties
     
     var navigationTitle = PaymentMainViewText.topTitle.text()
-    
-    //var userID: String?
     
     let cellHeight: CGFloat = 44
     var selectedCell: Int = 0
@@ -26,34 +27,32 @@ class PaymentWaysViewController: UIViewController {
     
     let paymentWaysInteractor = PaymentWaysInteractor()
     
+    // MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = navigationTitle
         
         paymentWaysInteractor.getUserID()
-        
-        getPaymentData()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
         
-        textPaymentOptions = [[PaymentMainViewText.cashTV.text(), "Apple Pay"], [PaymentMainViewText.scoresTV.text()]]
-        
         bgImageView.image = #imageLiteral(resourceName: "paymentWaysBG")
         
         linkCardButtonOutlet.alpha = 0
+        isFirstEnter()
     }
+    
+    // MARK: - viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //tableView.reloadData()
         
-        
+        getPaymentData()
     }
-    
-    
     
     // MARK: - Methods
     
@@ -70,8 +69,11 @@ class PaymentWaysViewController: UIViewController {
         }
     }
     
-    // Получаем данные о картах с сервера и в соответствии я этим заполняем Table View
+    // Получаем данные о картах с сервера и в соответствии c этим заполняем Table View
     private func getPaymentData() {
+        
+        textPaymentOptions = [[PaymentMainViewText.cashTV.text(), "Apple Pay"], [PaymentMainViewText.scoresTV.text()]]
+        
         paymentWaysInteractor.loadPaymentData { modelsArray in
             
             DispatchQueue.main.async {
@@ -85,6 +87,7 @@ class PaymentWaysViewController: UIViewController {
     }
     
     // Определяем есть ли у пользователя уже привязанные к аккаунту карты или нет
+    // Формируем массив данных для Table View
     private func createPaymentOptions() {
         
         if paymentOptions.isEmpty {
@@ -126,7 +129,7 @@ class PaymentWaysViewController: UIViewController {
                 case 1:
                     cell.leftImageView.image = UIImage(named: "scores")
                 default:
-                    break
+                    cell.leftImageView.image = nil
                 }
             }
         }
@@ -150,16 +153,33 @@ class PaymentWaysViewController: UIViewController {
         }
     }
     
+    //Проверяем первый ли это вход, если да, то показываем общее количество бонусных баллов
+    private func isFirstEnter() {
+        
+        let isFirst = UserDefaultsManager.shared.isFirstEnter
+        
+        if isFirst {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "CongratulationsScores") as! CongratulationsScoresViewController
+            vc.modalPresentationStyle = .formSheet
+            vc.userID = paymentWaysInteractor.userID
+            present(vc, animated: true, completion: nil)
+            
+            UserDefaultsManager.shared.isFirstEnter = false
+        }
+    }
+    
     // MARK: - Actions
     
+    //Действие по нажатию на кнопку Привязать карту
     @IBAction func linkCardButtonAction(_ sender: Any) {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "AddCard") as! AddCardViewController
-        //vc.titleNavigation = textPaymentOptions[indexPath.section][indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    //Действие по нажатию на кнопку Назад
     @IBAction func done(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
@@ -192,6 +212,8 @@ extension PaymentWaysViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PaymentWaysTableViewCell
         
+        cell.paymentTextLabel.text = ""
+        cell.textLabel?.text = ""
         setLefImage(for: cell, section: indexPath.section, row: indexPath.row)
         
         if textPaymentOptions[1].count == 1 {
@@ -210,7 +232,6 @@ extension PaymentWaysViewController: UITableViewDataSource {
 
             case 1:
                 if indexPath.row == 0 {
-                    cell.paymentTextLabel.text = ""
                     cell.textLabel?.text = textPaymentOptions[indexPath.section][indexPath.row]
                 } else {
                     cell.paymentTextLabel.text = textPaymentOptions[indexPath.section][indexPath.row]
@@ -244,7 +265,6 @@ extension PaymentWaysViewController: UITableViewDelegate {
                 case 1:
                     let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "AddCard") as! AddCardViewController
-                    //vc.titleNavigation = textPaymentOptions[indexPath.section][indexPath.row]
                     navigationController?.pushViewController(vc, animated: true)
                 default :
                     cellPreview.rightImageView.image = #imageLiteral(resourceName: "emptyCheckBox")
@@ -257,7 +277,6 @@ extension PaymentWaysViewController: UITableViewDelegate {
             case 0:
                 let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "AddCard") as! AddCardViewController
-                //vc.titleNavigation = textPaymentOptions[indexPath.section][indexPath.row]
                 navigationController?.pushViewController(vc, animated: true)
             case 1:
                 let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)

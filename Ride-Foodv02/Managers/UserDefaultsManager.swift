@@ -19,14 +19,14 @@ class UserDefaultsManager {
     // MARK: - Methods
     
     //Сохраняем и получаем из UserDefaults настройки пользователя
-    var userSettings: UserDefaultsModel! {
+    var userLanguage: UserDefaultsModel! {
         get {
             guard let savedData = UserDefaults.standard.object(
                     forKey: UserDefaultKeys.userSettings.rawValue) as? Data,
                    let decodedModel = try? NSKeyedUnarchiver
                     .unarchiveTopLevelObjectWithData(savedData) as? UserDefaultsModel else
-            { return UserDefaultsModel(language: UserDefaultLanguage.eng.rawValue) }
-            // TODO: - Надо возвращать нужный вариант, а не подставлять в ручную
+            { return UserDefaultsModel(language: UserDefaultLanguage.rus.rawValue) }
+            
             return decodedModel
         }
         set {
@@ -42,8 +42,25 @@ class UserDefaultsManager {
         }
     }
     
+    var isFirstEnter: Bool {
+        get {
+            guard let data = UserDefaults.standard.object(forKey: UserDefaultKeys.firstEnter.rawValue) as? Bool else
+            { return true }
+            
+            return data
+        }
+        set {
+            let defaults = UserDefaults.standard
+            let key = UserDefaultKeys.firstEnter.rawValue
+            
+            //if let newData = newValue {
+                defaults.setValue(newValue, forKey: key)
+            //}
+        }
+    }
+    
     func getLanguage() -> String {
-        let userSettings = UserDefaultsManager.shared.userSettings
+        let userSettings = UserDefaultsManager.shared.userLanguage
         guard let languageCode = userSettings?.userLanguage else { return "rus" }
         return languageCode
     }

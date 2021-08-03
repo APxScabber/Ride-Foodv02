@@ -32,6 +32,7 @@ class MainScreenViewController: UIViewController {
     private let foodTaxiView = FoodTaxiView.initFromNib()
     private let promotionView = PromotionView.initFromNib()
     private let promotionDetailView = PromotionDetail.initFromNib()
+    
     // MARK: - IBActions
     
     @IBAction func goToMenu(_ sender: MenuButton) {
@@ -54,10 +55,6 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
-    
-    // MARK: - Properties
-
-    var userID: String?
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {

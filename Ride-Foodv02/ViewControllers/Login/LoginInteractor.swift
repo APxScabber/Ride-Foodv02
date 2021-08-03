@@ -71,6 +71,8 @@ class LoginInteractor {
         return keyboardHeight
     }
     
+    
+    //Проверяем был ли ранее выполнен вход с этого устройства
     func loginCheck() -> Bool {
         
         var isLogin = false

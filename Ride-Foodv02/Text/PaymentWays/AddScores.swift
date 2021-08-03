@@ -12,7 +12,6 @@ enum AddScoresViewText {
 
     case congratulations
     case youHave
-    case addScores
     case scoresInfo
     case newOrder
     case moreDetails
@@ -32,11 +31,9 @@ enum AddScoresViewText {
     private func rusText() -> String {
         switch self {
         case .congratulations:
-            return "Поздравляем!"
+            return "Поздравляем! 🎉"
         case .youHave:
-            return "У вас"
-        case .addScores:
-            return "10 бонусных баллов"
+            return "У вас @#^ бонусных баллов"
         case .scoresInfo:
             return "Количество баллов всегда можно посмотреть в данном разделе, либо при оплате заказа"
         case .newOrder:
@@ -49,13 +46,11 @@ enum AddScoresViewText {
     private func engText() -> String {
         switch self {
         case .congratulations:
-            return "Congratulations!"
+            return "Congratulations! 🎉"
         case .youHave:
-            return "You have"
-        case .addScores:
-            return "10 bonus scores"
+            return "You have @#^ bonus credits"
         case .scoresInfo:
-            return "The number of points can always be viewed in this section, or when paying for an order"
+            return "The number of credits can always be viewed in this section, or when paying for an order"
         case .newOrder:
             return "New order"
         case .moreDetails:
