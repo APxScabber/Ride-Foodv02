@@ -37,12 +37,7 @@ class ToolbarView: UIView {
         button.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
     
-    @IBOutlet private weak var activeView: UIView! { didSet {
-        activeView.layer.cornerRadius = 15.0
-        activeView.layer.backgroundColor = UIColor.white.cgColor
-        activeView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-    }}
-
+    @IBOutlet private weak var activeView: TopRoundedView! 
     @IBOutlet weak var swipeDoneView: RoundedView! { didSet {
         swipeDoneView.cornerRadius = 15.0
         swipeDoneView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)

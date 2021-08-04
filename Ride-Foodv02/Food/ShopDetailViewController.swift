@@ -19,26 +19,24 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
         topRoundedView.cornerRadius = 10.0
         topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
     }}
-    @IBOutlet weak var twoTopCornersRoundedView: UIView! { didSet {
-        twoTopCornersRoundedView.layer.cornerRadius = 15.0
-        twoTopCornersRoundedView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-    }}
-    
+    @IBOutlet weak var twoTopCornersRoundedView: TopRoundedView!
     @IBOutlet weak var showDetailButton: UIButton! { didSet {
         showDetailButton.isUserInteractionEnabled = false
     }}
+    @IBOutlet weak var backButton: UIButton!
     
     private let shopDetailView = ShopDetailView.initFromNib()
     
     //MARK: - IBActions
     
     @IBAction func close(_ sender: UIButton) {
-        
+        dismiss(animated: true)
     }
     
     @IBAction func showDetail(_ sender: UIButton) {
         shopDetailView.isHidden = false
         showDetailButton.isUserInteractionEnabled = false
+        backButton.isUserInteractionEnabled = false
         view.subviews.filter { !$0.isKind(of: ShopDetailView.self)}.forEach { $0.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
         collectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: FoodConstants.durationForLiftingShopDetailView, delay: 0, options: .curveLinear) {
@@ -116,6 +114,7 @@ extension ShopDetailViewController: ShopDetailViewDelegate {
             self.shopDetailView.frame.origin.y += FoodConstants.shopDetailViewHeight + self.bottomSafeAreaConstant
         } completion: { if $0 == .end {
             self.showDetailButton.isUserInteractionEnabled = true
+            self.backButton.isUserInteractionEnabled = true
         }
             
         }
