@@ -82,6 +82,8 @@
 		787140C6268637E6007834ED /* Promocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787140C5268637E6007834ED /* Promocode.storyboard */; };
 		787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C726863B99007834ED /* PromocodeMainTableViewController.swift */; };
 		787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C9268640CD007834ED /* EnterPromocodeViewController.swift */; };
+		7879CDE726BA8955009D127A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7879CDE626BA8955009D127A /* Address.swift */; };
+		7879CDE926BA8AFC009D127A /* TopRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7879CDE826BA8AFC009D127A /* TopRoundedView.swift */; };
 		787A83DA26AB2D330096DFC3 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787A83D826AB2D330096DFC3 /* UserProfile.storyboard */; };
 		787A83DB26AB2D330096DFC3 /* UserProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83D926AB2D330096DFC3 /* UserProfileTableVC.swift */; };
 		787A83DE26AB2D470096DFC3 /* ProfileMenuBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83DD26AB2D470096DFC3 /* ProfileMenuBackgroundView.swift */; };
@@ -260,6 +262,8 @@
 		787140C5268637E6007834ED /* Promocode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promocode.storyboard; sourceTree = "<group>"; };
 		787140C726863B99007834ED /* PromocodeMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeMainTableViewController.swift; sourceTree = "<group>"; };
 		787140C9268640CD007834ED /* EnterPromocodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPromocodeViewController.swift; sourceTree = "<group>"; };
+		7879CDE626BA8955009D127A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		7879CDE826BA8AFC009D127A /* TopRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRoundedView.swift; sourceTree = "<group>"; };
 		787A83D826AB2D330096DFC3 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		787A83D926AB2D330096DFC3 /* UserProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableVC.swift; sourceTree = "<group>"; };
 		787A83DD26AB2D470096DFC3 /* ProfileMenuBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMenuBackgroundView.swift; sourceTree = "<group>"; };
@@ -448,6 +452,7 @@
 				782D45D926B03103006B3A98 /* ShopDetailViewController.swift */,
 				782D45DB26B038BE006B3A98 /* FoodConstants.swift */,
 				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
+				7879CDE626BA8955009D127A /* Address.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				78BE4A072684CF6100A13641 /* RoundedView.swift */,
 				787A83F426AB31FA0096DFC3 /* CircleView.swift */,
 				7808D7D426B838EF00A88E12 /* EmailChecker.swift */,
+				7879CDE826BA8AFC009D127A /* TopRoundedView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1153,6 +1159,7 @@
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
+				7879CDE926BA8AFC009D127A /* TopRoundedView.swift in Sources */,
 				787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */,
 				F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */,
 				7867B4DF2672411C0031BFA0 /* PersonalInfoViewController.swift in Sources */,
@@ -1171,6 +1178,7 @@
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
+				7879CDE726BA8955009D127A /* Address.swift in Sources */,
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
 				F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,

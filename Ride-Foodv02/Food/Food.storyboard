@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRF-Va-Zgx">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRF-Va-Zgx" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="535" width="414" height="361"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-Jk-8qc" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -122,7 +122,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите адрес доставки" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUF-DG-aJ7">
                                         <rect key="frame" x="47" y="18" width="279" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sa6-Gf-1E3">
                                         <rect key="frame" x="379" y="18.5" width="10" height="32"/>
@@ -225,6 +225,7 @@
                         <outlet property="textField" destination="hUF-DG-aJ7" id="a01-Nt-boG"/>
                         <outlet property="topRoundedView" destination="kFE-QK-Hr3" id="Sxx-px-IiR"/>
                         <outlet property="twoCornerRoundedView" destination="qRF-Va-Zgx" id="pLk-7x-SlM"/>
+                        <outlet property="underbarLineView" destination="jgP-uF-F1Z" id="LOj-9C-Kpu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -354,15 +355,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyN-Uz-MNX" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="0.0" width="40" height="5"/>
+                                <rect key="frame" x="187" y="534" width="40" height="5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="2Sc-CK-LeM"/>
                                     <constraint firstAttribute="width" constant="40" id="5Yf-4d-u2p"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAe-hB-yE8">
-                                <rect key="frame" x="0.0" y="13" width="414" height="500"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAe-hB-yE8" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="547" width="414" height="261"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Annotation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgq-iQ-M0O">
                                         <rect key="frame" x="25" y="25" width="12" height="19"/>
@@ -397,8 +398,11 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rKT-zC-EWE">
-                                        <rect key="frame" x="0.0" y="61" width="414" height="439"/>
+                                        <rect key="frame" x="0.0" y="61" width="414" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="5VR-Gl-xFn"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KGv-oG-xIY">
                                             <size key="itemSize" width="184" height="133"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -418,7 +422,7 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пятерочка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-VZ-isD">
-                                                            <rect key="frame" x="14" y="10" width="85" height="17"/>
+                                                            <rect key="frame" x="14" y="10" width="96" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="VA6-gk-ZiM"/>
                                                             </constraints>
@@ -436,10 +440,10 @@
                                                     <constraints>
                                                         <constraint firstItem="EMU-i5-DH3" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" id="1cR-wV-Zde"/>
                                                         <constraint firstAttribute="bottom" secondItem="EMU-i5-DH3" secondAttribute="bottom" id="4Ef-PF-m7c"/>
+                                                        <constraint firstItem="wTV-MS-YwB" firstAttribute="leading" secondItem="ZEO-VZ-isD" secondAttribute="trailing" id="4OH-uG-wJK"/>
                                                         <constraint firstAttribute="trailing" secondItem="EMU-i5-DH3" secondAttribute="trailing" id="5yn-FW-0tH"/>
                                                         <constraint firstItem="wTV-MS-YwB" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" constant="10" id="8m4-ai-6FO"/>
                                                         <constraint firstAttribute="trailing" secondItem="wTV-MS-YwB" secondAttribute="trailing" id="J7n-Mr-APj"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZEO-VZ-isD" secondAttribute="trailing" constant="10" id="gD2-5G-ZBY"/>
                                                         <constraint firstItem="EMU-i5-DH3" firstAttribute="leading" secondItem="k22-EQ-0UD" secondAttribute="leading" id="hIr-bP-nxh"/>
                                                         <constraint firstItem="ZEO-VZ-isD" firstAttribute="leading" secondItem="k22-EQ-0UD" secondAttribute="leading" constant="14" id="tM3-ey-6pm"/>
                                                         <constraint firstItem="ZEO-VZ-isD" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" constant="10" id="vex-R0-jXf"/>
@@ -460,6 +464,10 @@
                                             <outlet property="delegate" destination="FCz-sX-WZd" id="Bg9-gO-AVg"/>
                                         </connections>
                                     </collectionView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ec8-hB-Zxz">
+                                        <rect key="frame" x="188.5" y="112" width="37" height="37"/>
+                                        <color key="color" systemColor="systemOrangeColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
@@ -473,29 +481,32 @@
                                     <constraint firstItem="8qW-HN-gy3" firstAttribute="top" secondItem="67B-N5-2Cy" secondAttribute="bottom" constant="4" id="Yvs-rn-rt4"/>
                                     <constraint firstItem="8qW-HN-gy3" firstAttribute="leading" secondItem="LAe-hB-yE8" secondAttribute="leading" constant="47" id="iDe-Be-BF2"/>
                                     <constraint firstItem="Rgc-Oa-XeI" firstAttribute="leading" secondItem="Wgq-iQ-M0O" secondAttribute="trailing" constant="15" id="j6p-oI-O1Z"/>
-                                    <constraint firstAttribute="height" constant="500" id="rLL-nu-N0z"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rgc-Oa-XeI" secondAttribute="trailing" constant="20" id="um7-OG-OEf"/>
+                                    <constraint firstItem="Ec8-hB-Zxz" firstAttribute="centerX" secondItem="LAe-hB-yE8" secondAttribute="centerX" id="wfm-vy-qeD"/>
                                     <constraint firstAttribute="trailing" secondItem="rKT-zC-EWE" secondAttribute="trailing" id="x35-mi-41e"/>
                                     <constraint firstItem="rKT-zC-EWE" firstAttribute="top" secondItem="8qW-HN-gy3" secondAttribute="bottom" constant="8" symbolic="YES" id="xhx-KX-1Hb"/>
                                     <constraint firstItem="67B-N5-2Cy" firstAttribute="top" secondItem="Rgc-Oa-XeI" secondAttribute="bottom" constant="1" id="yAH-VG-2Mo"/>
+                                    <constraint firstItem="Ec8-hB-Zxz" firstAttribute="centerY" secondItem="LAe-hB-yE8" secondAttribute="centerY" id="yvS-Qr-a6g"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adw-pm-7h0"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xyN-Uz-MNX" firstAttribute="top" secondItem="adw-pm-7h0" secondAttribute="top" id="KMu-Zj-Cda"/>
                             <constraint firstItem="LAe-hB-yE8" firstAttribute="top" secondItem="xyN-Uz-MNX" secondAttribute="bottom" constant="8" symbolic="YES" id="iEX-Zb-V9r"/>
                             <constraint firstItem="LAe-hB-yE8" firstAttribute="leading" secondItem="adw-pm-7h0" secondAttribute="leading" id="imh-Zr-c8P"/>
                             <constraint firstItem="LAe-hB-yE8" firstAttribute="trailing" secondItem="adw-pm-7h0" secondAttribute="trailing" id="klt-Ay-yk7"/>
                             <constraint firstItem="xyN-Uz-MNX" firstAttribute="centerX" secondItem="FuY-Ox-ase" secondAttribute="centerX" id="oiu-3T-FPC"/>
+                            <constraint firstItem="adw-pm-7h0" firstAttribute="bottom" secondItem="LAe-hB-yE8" secondAttribute="bottom" id="sLB-8l-Buz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ddF-fp-gp3"/>
                     <connections>
                         <outlet property="addressLabel" destination="67B-N5-2Cy" id="grd-ja-pHI"/>
                         <outlet property="collectionView" destination="rKT-zC-EWE" id="lKo-6x-pUm"/>
+                        <outlet property="collectionViewHeightConstraint" destination="5VR-Gl-xFn" id="tgX-i3-Znj"/>
                         <outlet property="placeLabel" destination="Rgc-Oa-XeI" id="eU1-sa-Gp6"/>
+                        <outlet property="spinner" destination="Ec8-hB-Zxz" id="aDZ-k8-xjr"/>
                         <outlet property="topRoundedView" destination="xyN-Uz-MNX" id="HLu-Rg-XBW"/>
                         <outlet property="twoTopCornersRoundedView" destination="LAe-hB-yE8" id="5fx-gR-rDP"/>
                     </connections>
@@ -512,8 +523,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-bN-9yx">
-                                <rect key="frame" x="0.0" y="13" width="414" height="500"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-bN-9yx" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="308" width="414" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Магазин перекресток" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P18-Dj-Img">
                                         <rect key="frame" x="119.5" y="13" width="175" height="41"/>
@@ -621,7 +632,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLx-1Z-Uya" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="0.0" width="40" height="5"/>
+                                <rect key="frame" x="187" y="295" width="40" height="5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="QS7-Vw-STO"/>
@@ -632,15 +643,16 @@
                         <viewLayoutGuide key="safeArea" id="ols-jo-w2o"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ols-jo-w2o" firstAttribute="bottom" secondItem="E8w-b8-Wrj" secondAttribute="bottom" id="334-gZ-Jhc"/>
                             <constraint firstItem="C2w-bN-9yx" firstAttribute="top" secondItem="YLx-1Z-Uya" secondAttribute="bottom" constant="8" symbolic="YES" id="4mN-gv-GsC"/>
                             <constraint firstItem="C2w-bN-9yx" firstAttribute="leading" secondItem="ols-jo-w2o" secondAttribute="leading" id="Hns-vy-hwh"/>
-                            <constraint firstItem="YLx-1Z-Uya" firstAttribute="top" secondItem="ols-jo-w2o" secondAttribute="top" id="Z7Q-OC-qdA"/>
                             <constraint firstItem="YLx-1Z-Uya" firstAttribute="centerX" secondItem="1iT-54-tlp" secondAttribute="centerX" id="npD-fy-egY"/>
                             <constraint firstItem="C2w-bN-9yx" firstAttribute="trailing" secondItem="ols-jo-w2o" secondAttribute="trailing" id="zHS-Ia-ext"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mBO-Pr-emz"/>
                     <connections>
+                        <outlet property="backButton" destination="k0l-QM-e3B" id="qoG-jg-DoA"/>
                         <outlet property="collectionView" destination="E8w-b8-Wrj" id="Hir-Ls-kOG"/>
                         <outlet property="shopNameLabel" destination="P18-Dj-Img" id="MfQ-J6-lmZ"/>
                         <outlet property="showDetailButton" destination="gng-ff-npu" id="dGS-oB-aRl"/>
@@ -668,6 +680,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
