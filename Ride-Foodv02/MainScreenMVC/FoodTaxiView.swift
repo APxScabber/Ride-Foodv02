@@ -9,10 +9,12 @@ class FoodTaxiView: UIView {
 
     @IBOutlet weak var foodImageView: UIImageView! { didSet {
         foodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(foodImageViewClicked(_:))))
+        foodImageView.isExclusiveTouch = true
     }}
     
     @IBOutlet weak var taxiImageView: UIImageView! { didSet {
         taxiImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(taxiImageViewClicked(_:))))
+        taxiImageView.isExclusiveTouch = true
     }}
     
     @IBOutlet weak var placeLabel: UILabel! { didSet {

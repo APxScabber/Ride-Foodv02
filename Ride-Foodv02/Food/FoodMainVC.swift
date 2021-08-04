@@ -67,6 +67,7 @@ class FoodMainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
+        textField.text = place
     }
 
     //MARK: - Segue

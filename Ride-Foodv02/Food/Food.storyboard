@@ -354,14 +354,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyN-Uz-MNX" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="534" width="40" height="5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="5" id="2Sc-CK-LeM"/>
-                                    <constraint firstAttribute="width" constant="40" id="5Yf-4d-u2p"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAe-hB-yE8" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="547" width="414" height="261"/>
                                 <subviews>
@@ -489,15 +481,31 @@
                                     <constraint firstItem="Ec8-hB-Zxz" firstAttribute="centerY" secondItem="LAe-hB-yE8" secondAttribute="centerY" id="yvS-Qr-a6g"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyN-Uz-MNX" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="187" y="534" width="40" height="5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="2Sc-CK-LeM"/>
+                                    <constraint firstAttribute="width" constant="40" id="5Yf-4d-u2p"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0M-Bi-I3A">
+                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adw-pm-7h0"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Q0M-Bi-I3A" firstAttribute="leading" secondItem="FuY-Ox-ase" secondAttribute="leading" id="F0q-wE-U8F"/>
+                            <constraint firstAttribute="trailing" secondItem="Q0M-Bi-I3A" secondAttribute="trailing" id="K0e-cA-GPT"/>
+                            <constraint firstItem="Q0M-Bi-I3A" firstAttribute="top" secondItem="LAe-hB-yE8" secondAttribute="bottom" id="e24-HJ-sfP"/>
                             <constraint firstItem="LAe-hB-yE8" firstAttribute="top" secondItem="xyN-Uz-MNX" secondAttribute="bottom" constant="8" symbolic="YES" id="iEX-Zb-V9r"/>
                             <constraint firstItem="LAe-hB-yE8" firstAttribute="leading" secondItem="adw-pm-7h0" secondAttribute="leading" id="imh-Zr-c8P"/>
                             <constraint firstItem="LAe-hB-yE8" firstAttribute="trailing" secondItem="adw-pm-7h0" secondAttribute="trailing" id="klt-Ay-yk7"/>
                             <constraint firstItem="xyN-Uz-MNX" firstAttribute="centerX" secondItem="FuY-Ox-ase" secondAttribute="centerX" id="oiu-3T-FPC"/>
                             <constraint firstItem="adw-pm-7h0" firstAttribute="bottom" secondItem="LAe-hB-yE8" secondAttribute="bottom" id="sLB-8l-Buz"/>
+                            <constraint firstAttribute="bottom" secondItem="Q0M-Bi-I3A" secondAttribute="bottom" id="v5x-gd-Zn3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ddF-fp-gp3"/>
@@ -523,8 +531,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLx-1Z-Uya" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="187" y="329" width="40" height="5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="QS7-Vw-STO"/>
+                                    <constraint firstAttribute="height" constant="5" id="qhh-7B-94p"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-bN-9yx" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="308" width="414" height="500"/>
+                                <rect key="frame" x="0.0" y="342" width="414" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Магазин перекресток" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P18-Dj-Img">
                                         <rect key="frame" x="119.5" y="13" width="175" height="41"/>
@@ -620,9 +636,9 @@
                                     <constraint firstItem="E8w-b8-Wrj" firstAttribute="leading" secondItem="C2w-bN-9yx" secondAttribute="leading" id="J6H-85-b3C"/>
                                     <constraint firstAttribute="trailing" secondItem="E8w-b8-Wrj" secondAttribute="trailing" id="JZ1-hJ-N9S"/>
                                     <constraint firstItem="p5T-aN-T7H" firstAttribute="top" secondItem="P18-Dj-Img" secondAttribute="bottom" constant="10" id="KE7-yq-gOo"/>
-                                    <constraint firstAttribute="bottom" secondItem="E8w-b8-Wrj" secondAttribute="bottom" id="MiY-aF-Dfr"/>
                                     <constraint firstItem="P18-Dj-Img" firstAttribute="centerX" secondItem="C2w-bN-9yx" secondAttribute="centerX" id="Mr2-ep-SHc"/>
                                     <constraint firstItem="p5T-aN-T7H" firstAttribute="leading" secondItem="C2w-bN-9yx" secondAttribute="leading" id="PTI-QA-9hr"/>
+                                    <constraint firstAttribute="bottom" secondItem="E8w-b8-Wrj" secondAttribute="bottom" id="RRR-vK-h1Y"/>
                                     <constraint firstItem="E8w-b8-Wrj" firstAttribute="top" secondItem="p5T-aN-T7H" secondAttribute="bottom" id="SSl-6C-0vx"/>
                                     <constraint firstItem="gng-ff-npu" firstAttribute="leading" secondItem="P18-Dj-Img" secondAttribute="trailing" constant="4" id="TF8-QH-5HM"/>
                                     <constraint firstItem="k0l-QM-e3B" firstAttribute="leading" secondItem="C2w-bN-9yx" secondAttribute="leading" constant="25" id="UTb-6d-8To"/>
@@ -631,21 +647,13 @@
                                     <constraint firstAttribute="height" constant="500" id="yKV-Ra-3ca"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLx-1Z-Uya" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="295" width="40" height="5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="QS7-Vw-STO"/>
-                                    <constraint firstAttribute="height" constant="5" id="qhh-7B-94p"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ols-jo-w2o"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ols-jo-w2o" firstAttribute="bottom" secondItem="E8w-b8-Wrj" secondAttribute="bottom" id="334-gZ-Jhc"/>
                             <constraint firstItem="C2w-bN-9yx" firstAttribute="top" secondItem="YLx-1Z-Uya" secondAttribute="bottom" constant="8" symbolic="YES" id="4mN-gv-GsC"/>
                             <constraint firstItem="C2w-bN-9yx" firstAttribute="leading" secondItem="ols-jo-w2o" secondAttribute="leading" id="Hns-vy-hwh"/>
+                            <constraint firstAttribute="bottom" secondItem="C2w-bN-9yx" secondAttribute="bottom" id="Psa-sk-Fr9"/>
                             <constraint firstItem="YLx-1Z-Uya" firstAttribute="centerX" secondItem="1iT-54-tlp" secondAttribute="centerX" id="npD-fy-egY"/>
                             <constraint firstItem="C2w-bN-9yx" firstAttribute="trailing" secondItem="ols-jo-w2o" secondAttribute="trailing" id="zHS-Ia-ext"/>
                         </constraints>

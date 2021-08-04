@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PP9-WH-90b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n0b-2t-mdo">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -94,14 +94,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKp-rx-rbV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257.9710144927537" y="18.75"/>
+            <point key="canvasLocation" x="2168.1159420289855" y="18.75"/>
         </scene>
         <!--Акции еда-->
         <scene sceneID="j8q-wK-mYX">
             <objects>
                 <tableViewController id="kNI-EQ-i8h" customClass="PromotionListTableViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="144" estimatedRowHeight="144" sectionHeaderHeight="1" sectionFooterHeight="18" id="6aF-2k-VLf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="24" maxX="0.0" maxY="24"/>
@@ -194,7 +194,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEO-vX-vS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097.1014492753625" y="18.75"/>
+            <point key="canvasLocation" x="3007.2463768115945" y="18.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ALZ-KY-I6a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n0b-2t-mdo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8J-zz-qaL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PP9-WH-90b" kind="relationship" relationship="rootViewController" id="k1m-gF-5P2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2iF-Pz-phR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257.9710144927537" y="18.75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
