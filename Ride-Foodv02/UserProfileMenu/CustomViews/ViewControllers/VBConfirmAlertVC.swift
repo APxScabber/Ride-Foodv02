@@ -90,7 +90,7 @@ class VBConfirmAlertVC: UIViewController {
             containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 630)
+            containerView.heightAnchor.constraint(equalToConstant: 250)
         ])
         
     }
