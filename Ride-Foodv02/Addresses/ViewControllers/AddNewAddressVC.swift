@@ -220,14 +220,14 @@ class AddNewAddressVC: UIViewController{
             generalAddressStackView.topAnchor.constraint(equalTo: newAddressParentView.topAnchor, constant: 7),
             generalAddressStackView.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: padding),
             generalAddressStackView.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -padding),
-            generalAddressStackView.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -550)
+            generalAddressStackView.heightAnchor.constraint(equalToConstant: 130)
         ])
         } else {
             NSLayoutConstraint.activate([
                 generalAddressStackView.topAnchor.constraint(equalTo: newAddressParentView.topAnchor, constant: 7),
                 generalAddressStackView.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: padding),
                 generalAddressStackView.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -padding),
-                generalAddressStackView.bottomAnchor.constraint(equalTo: newAddressParentView.bottomAnchor, constant: -630)
+                generalAddressStackView.heightAnchor.constraint(equalToConstant: 100)
             ])
         }
     }
@@ -329,7 +329,7 @@ class AddNewAddressVC: UIViewController{
             deliveryInformationStackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
             deliveryInformationStackView.leadingAnchor.constraint(equalTo: newAddressParentView.leadingAnchor, constant: 25),
             deliveryInformationStackView.trailingAnchor.constraint(equalTo: newAddressParentView.trailingAnchor, constant: -25),
-            deliveryInformationStackView.bottomAnchor.constraint(equalTo: SaveButton.topAnchor, constant: -220)
+            deliveryInformationStackView.heightAnchor.constraint(equalToConstant: 130)
             
         ])
     }
