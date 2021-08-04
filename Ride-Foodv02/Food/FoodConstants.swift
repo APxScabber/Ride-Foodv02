@@ -8,8 +8,10 @@ struct FoodConstants {
     static var confirm: String { "confirm".localized }
 
     static let shopDetailViewHeight: CGFloat = 325.0
-    static let durationForLiftingShopDetailView = 0.3
     
+    static let durationForLiftingShopView = 0.25
+    static let durationForLiftingShopDetailView = 0.3
+
     static let tableViewRowHeight: CGFloat = 61.0
     
 }

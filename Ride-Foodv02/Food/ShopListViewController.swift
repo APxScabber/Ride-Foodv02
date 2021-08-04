@@ -75,11 +75,12 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     private func updateUI() {
         let padding: CGFloat = 10.0
         let totalOffset: CGFloat = padding*3
-        let height = (view.bounds.width - totalOffset)/4.0*3 + padding*5
+        let rows = CGFloat((shops.count + 1)/2)
+        let height = (view.bounds.width - totalOffset)/4.0*rows + padding*(rows+1)
         
         collectionViewHeightConstraint.constant = height
         
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: FoodConstants.durationForLiftingShopView) {
             self.view.layoutIfNeeded()
         } completion: { [weak self] in
             if $0 {

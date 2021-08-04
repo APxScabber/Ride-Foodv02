@@ -9,7 +9,7 @@ class PromotionsTableViewController: UITableViewController {
         taxiLabel.text = PromotionConstant.taxi
     }}
     @IBAction func dismiss(_ sender:UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     private var promotionType: [PromotionsFetcher.PromotionType] = [.food,.taxi]
