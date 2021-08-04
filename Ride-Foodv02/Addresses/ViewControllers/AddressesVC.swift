@@ -12,6 +12,7 @@ class AddressesVC: UIViewController {
     let newAddressButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Добавить адрес", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
     
     var addresses: [UserAddressMO] = []
+    var remoteAddresses: [AddressData] = []
     
     var addressToPass = UserAddressMO()
     var gonnaUpdateAddress = false
@@ -30,7 +31,7 @@ class AddressesVC: UIViewController {
         super.viewDidLoad()
         configureNavigationItem()
         addNewAddressButton()
-        
+        fetch()
         
        
         
@@ -39,7 +40,7 @@ class AddressesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.addBackgroundImageView()
-        fetch()
+        getAddressesFromServer()
         
     }
     
@@ -61,6 +62,19 @@ class AddressesVC: UIViewController {
         ])
     }
     
+    func getAddressesFromServer(){
+        AddressesNetworkManager.shared.getTheAddresses { [weak self] result in
+            guard let self = self else { return }
+            switch result{
+            case.failure(let error):
+                print("ERROR")
+                print(error)
+            case .success(let data):
+                self.remoteAddresses = data
+                print(self.remoteAddresses.count)
+            }
+        }
+    }
     
     func fetch(){
         PersistanceManager.shared.fetchAddresses { result in
