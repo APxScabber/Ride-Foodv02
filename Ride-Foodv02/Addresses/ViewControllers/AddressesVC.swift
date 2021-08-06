@@ -62,7 +62,27 @@ class AddressesVC: UIViewController {
         ])
     }
     
+    func setEmptyStateView() {
+        guard !self.addresses.isEmpty else {
+            DispatchQueue.main.async {
+                let emptyView = AddressesEmptyStateView()
+                emptyView.frame = self.MyAddressesTableView.bounds
+                self.MyAddressesTableView.addSubview(emptyView)
+            }
+            return
+        }
+        
+    for i in self.MyAddressesTableView.subviews{
+        if i is AddressesEmptyStateView{
+            i.removeFromSuperview()
+            
+        }
+        
+    }
+    }
+    
     func getAddressesFromServer(){
+        remoteAddresses.removeAll()
         AddressesNetworkManager.shared.getTheAddresses { [weak self] result in
             guard let self = self else { return }
             switch result{
@@ -70,8 +90,16 @@ class AddressesVC: UIViewController {
                 print("ERROR")
                 print(error)
             case .success(let data):
-                self.remoteAddresses = data
-                print(self.remoteAddresses.count)
+                DispatchQueue.main.async {
+                    self.remoteAddresses = data
+                    self.setEmptyStateView()
+                    self.MyAddressesTableView.reloadData()
+                    self.MyAddressesTableView.tableFooterView = UIView()
+                 
+                    
+                }
+              
+                
             }
         }
     }
@@ -84,28 +112,11 @@ class AddressesVC: UIViewController {
                 self.addresses = data
                 print(self.addresses)
                 print(self.addresses.isEmpty)
-                guard !self.addresses.isEmpty else {
-                    DispatchQueue.main.async {
-                        let emptyView = AddressesEmptyStateView()
-                        emptyView.frame = self.MyAddressesTableView.bounds
-                        self.MyAddressesTableView.addSubview(emptyView)
-                    }
-                    return
-                }
-                DispatchQueue.main.async {
-                    
-                for i in self.MyAddressesTableView.subviews{
-                    if i is AddressesEmptyStateView{
-                        i.removeFromSuperview()
-                        
-                    }
-                    
-                }
-              
+                    self.setEmptyStateView()
                     self.MyAddressesTableView.reloadData()
                     self.MyAddressesTableView.tableFooterView = UIView()
                    
-                }
+                
                 
             case .failure(let error):
                 print(error)
@@ -152,12 +163,12 @@ class AddressesVC: UIViewController {
 
 extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        addresses.count
+        remoteAddresses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressesCell", for: indexPath) as! MyAddressesTableViewCell
-        let address = addresses[indexPath.row]
+        let address = remoteAddresses[indexPath.row]
         cell.configureCells(address: address)
         return cell
     }
@@ -178,6 +189,7 @@ extension AddressesVC: AddNewAddressDelegate{
     func didAddNewAddress() {
         print("successfully implimented Protocol")
        fetch()
+        getAddressesFromServer()
     }
     
     

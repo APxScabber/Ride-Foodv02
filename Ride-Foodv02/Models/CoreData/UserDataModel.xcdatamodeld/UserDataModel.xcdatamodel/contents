@@ -8,6 +8,7 @@
         <attribute name="delivIntercomNumber" optional="YES" attributeType="String"/>
         <attribute name="driverCommentary" optional="YES" attributeType="String"/>
         <attribute name="fullAddress" optional="YES" attributeType="String"/>
+        <attribute name="isDestination" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="UserDataMO" representedClassName="UserDataMO" syncable="YES">
@@ -27,7 +28,7 @@
         <relationship name="userData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserDataMO" inverseName="settings" inverseEntity="UserDataMO"/>
     </entity>
     <elements>
-        <element name="UserAddressMO" positionX="-675" positionY="9" width="128" height="149"/>
+        <element name="UserAddressMO" positionX="-675" positionY="9" width="128" height="164"/>
         <element name="UserDataMO" positionX="-882.8419799804688" positionY="-57.720703125" width="128" height="148"/>
         <element name="UserSettingsMO" positionX="-399.291748046875" positionY="-23.59927368164062" width="128" height="118"/>
     </elements>

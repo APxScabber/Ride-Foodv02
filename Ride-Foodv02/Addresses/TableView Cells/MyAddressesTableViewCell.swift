@@ -29,9 +29,9 @@ class MyAddressesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCells(address: UserAddressMO){
-        self.AddressTitleLabel.text = address.title
-        self.fullAddressLabel.text = address.fullAddress
+    func configureCells(address: AddressData){
+        self.AddressTitleLabel.text = address.name
+        self.fullAddressLabel.text = address.address
         self.fullAddressLabel.textColor = UIColor.DarkGrayTextColor
         
     }

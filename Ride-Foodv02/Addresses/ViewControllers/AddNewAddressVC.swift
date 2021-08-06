@@ -410,8 +410,7 @@ class AddNewAddressVC: UIViewController{
                 addressToUpdate.delivEntranceNumber = entranceNumberView.textView.text ?? ""
                 addressToUpdate.delivFloorNumber = floorNumber.textView.text ?? ""
                 addressToUpdate.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
-                
-                PersistanceManager.shared.addNewAddress(address: addressToUpdate)
+                addressToUpdate.isDestination = false
                 
                 setUIIfUpdatingAddress(address: addressToUpdate)
                 wantToUpdateAddress = false
@@ -424,7 +423,15 @@ class AddNewAddressVC: UIViewController{
     }
     
     @objc func setAsMainAddress(){
-        print("Set as main address")
+        if let addressToUpdate = passedAddress{
+            addressToUpdate.isDestination = true
+            PersistanceManager.shared.addNewAddress(address: addressToUpdate)
+            print(addressToUpdate)
+            
+            navigationController?.popViewController(animated: true)
+            delegate?.didAddNewAddress()
+            
+        }
     }
     
     @objc func addAddress(){
@@ -437,8 +444,23 @@ class AddNewAddressVC: UIViewController{
         newAddress.delivEntranceNumber = entranceNumberView.textView.text ?? ""
         newAddress.delivFloorNumber = floorNumber.textView.text ?? ""
         newAddress.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
+        newAddress.isDestination = false
         
         PersistanceManager.shared.addNewAddress(address: newAddress)
+        
+        if let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: newAddress) as? [String: Any] {
+            AddressesNetworkManager.shared.sendAddressToTheServer(addressToPass: dictionaryToPass) { result in
+                switch result{
+                case .failure(let error):
+                    print(error)
+                case .success(let data):
+                    self.delegate?.didAddNewAddress()
+                    print(data)
+                }
+            }
+        }
+        
+        
         navigationController?.popViewController(animated: true)
         delegate?.didAddNewAddress()
         
