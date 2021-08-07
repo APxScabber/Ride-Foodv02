@@ -34,9 +34,11 @@ class AddressesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationItem()
         addNewAddressButton()
-//        fetch()
+        self.addBackgroundImageView()
+        configureNavigationItem()
+        
+       fetch()
         
        
         
@@ -44,7 +46,7 @@ class AddressesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.addBackgroundImageView()
+       
         getAddressesFromServer()
         
     }
@@ -57,7 +59,7 @@ class AddressesVC: UIViewController {
         self.view.bringSubviewToFront(MyAddressesTableView)
         self.view.bringSubviewToFront(newAddressButton)
 //        MyAddressesTableView.backgroundView = backgroundImageView
-       
+        self.MyAddressesTableView.tableFooterView = UIView()
         
         NSLayoutConstraint.activate([
             backgroundImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -91,6 +93,7 @@ class AddressesVC: UIViewController {
     func getAddressesFromServer(){
         
         remoteAddresses.removeAll()
+        print("There are \(remoteAddresses.count) remote addresses")
         AddressesNetworkManager.shared.getTheAddresses { [weak self] result in
             guard let self = self else { return }
             switch result{
@@ -99,11 +102,11 @@ class AddressesVC: UIViewController {
                 print(error)
             case .success(let data):
                 DispatchQueue.main.async {
+                    self.showRemoteAddresses = true
                     self.remoteAddresses = data
                     self.setEmptyStateView()
-                    self.showRemoteAddresses = true
                     self.MyAddressesTableView.reloadData()
-                    self.MyAddressesTableView.tableFooterView = UIView()
+                   
                  
                     
                 }
@@ -116,23 +119,18 @@ class AddressesVC: UIViewController {
   
     
     func fetch(){
-        showRemoteAddresses = false
+        
         PersistanceManager.shared.fetchAddresses { result in
             switch result{
             case .success(let data):
                 DispatchQueue.main.async {
-                    print("Successfully fetched")
+                    self.showRemoteAddresses = false
                     self.addresses = data
-                    print(self.addresses)
-                    print(self.addresses.isEmpty)
                         self.setEmptyStateView()
                         self.MyAddressesTableView.reloadData()
-                        self.MyAddressesTableView.tableFooterView = UIView()
-                       
+                  
                 }
                
-                
-                
             case .failure(let error):
                 print(error)
             }
@@ -213,11 +211,15 @@ extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
     
 }
 extension AddressesVC: AddNewAddressDelegate{
-    func didAddNewAddress() {
-        print("successfully implimented Protocol")
-       fetch()
-        getAddressesFromServer()
+    func didAddNewAddress(address: [AddressData]) {
+        DispatchQueue.main.async {
+            self.showRemoteAddresses = true
+            self.remoteAddresses.removeAll()
+            self.remoteAddresses = address
+            self.MyAddressesTableView.reloadData()
+        }
     }
+   
     
     
 }

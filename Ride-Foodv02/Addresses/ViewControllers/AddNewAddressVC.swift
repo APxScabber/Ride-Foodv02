@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddNewAddressDelegate: AnyObject{
-    func didAddNewAddress()
+    func didAddNewAddress(address: [AddressData])
 }
 
 class AddNewAddressVC: UIViewController{
@@ -445,7 +445,7 @@ class AddNewAddressVC: UIViewController{
         
         
         var newAddress = AddressData()
-        newAddress.id = UUID()
+        newAddress.id = UUID().hashValue
         newAddress.name = addressTitleView.textView.text
         newAddress.address = addressDescriptionView.textView.text
         newAddress.commentDriver = driverCommentaryView.textView.text ?? ""
@@ -468,7 +468,7 @@ class AddNewAddressVC: UIViewController{
                     print(error)
                     return
                 case .success(let data):
-                    self.delegate?.didAddNewAddress()
+                    self.delegate?.didAddNewAddress(address: data)
                     print(data)
                 }
             }
@@ -525,6 +525,37 @@ extension AddNewAddressVC: UITextFieldDelegate{
 extension AddNewAddressVC: DeleteAddressProtocol{
     func deleteAddress() {
         print("here gonna delete address from server")
+        if let AddressToDeleteID = passedAddress?.id{
+            AddressesNetworkManager.shared.deleteAddressFromServer(AddressID: AddressToDeleteID) { [weak self] result in
+                switch result{
+                case .failure(let error):
+                    print(error)
+                    break
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        print(data.count)
+                        self?.navigationController?.popViewController(animated: true)
+                        self?.delegate?.didAddNewAddress(address: data)
+                    }
+                  
+                }
+            }
+        } else {
+            AddressesNetworkManager.shared.deleteAddressFromServer(AddressID: 0) { [weak self] result in
+                switch result{
+                case .failure(let error):
+                    print(error)
+                    break
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        print(data.count)
+                        self?.navigationController?.popViewController(animated: true)
+                        self?.delegate?.didAddNewAddress(address: data)
+                    }
+                  
+                }
+            }
+        }
     }
     
     
