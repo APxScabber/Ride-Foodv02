@@ -9,12 +9,17 @@ import UIKit
 
 class AddressesVC: UIViewController {
     
+    let CoreDataContext = PersistanceManager.shared.context
+    
+    var showRemoteAddresses: Bool = false
+    
+    
     let newAddressButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Добавить адрес", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
     
     var addresses: [UserAddressMO] = []
     var remoteAddresses: [AddressData] = []
     
-    var addressToPass = UserAddressMO()
+    var addressToPass = AddressData()
     var gonnaUpdateAddress = false
     
     let backgroundImageView: UIImageView = {
@@ -31,7 +36,7 @@ class AddressesVC: UIViewController {
         super.viewDidLoad()
         configureNavigationItem()
         addNewAddressButton()
-        fetch()
+//        fetch()
         
        
         
@@ -63,7 +68,7 @@ class AddressesVC: UIViewController {
     }
     
     func setEmptyStateView() {
-        guard !self.addresses.isEmpty else {
+        guard !self.remoteAddresses.isEmpty else {
             DispatchQueue.main.async {
                 let emptyView = AddressesEmptyStateView()
                 emptyView.frame = self.MyAddressesTableView.bounds
@@ -71,17 +76,20 @@ class AddressesVC: UIViewController {
             }
             return
         }
-        
-    for i in self.MyAddressesTableView.subviews{
-        if i is AddressesEmptyStateView{
-            i.removeFromSuperview()
-            
+        DispatchQueue.main.async {
+            for i in self.MyAddressesTableView.subviews{
+                if i is AddressesEmptyStateView{
+                    i.removeFromSuperview()
+                    
+                }
         }
+   
         
     }
     }
     
     func getAddressesFromServer(){
+        
         remoteAddresses.removeAll()
         AddressesNetworkManager.shared.getTheAddresses { [weak self] result in
             guard let self = self else { return }
@@ -93,6 +101,7 @@ class AddressesVC: UIViewController {
                 DispatchQueue.main.async {
                     self.remoteAddresses = data
                     self.setEmptyStateView()
+                    self.showRemoteAddresses = true
                     self.MyAddressesTableView.reloadData()
                     self.MyAddressesTableView.tableFooterView = UIView()
                  
@@ -104,18 +113,24 @@ class AddressesVC: UIViewController {
         }
     }
     
+  
+    
     func fetch(){
+        showRemoteAddresses = false
         PersistanceManager.shared.fetchAddresses { result in
             switch result{
             case .success(let data):
-                print("Successfully fetched")
-                self.addresses = data
-                print(self.addresses)
-                print(self.addresses.isEmpty)
-                    self.setEmptyStateView()
-                    self.MyAddressesTableView.reloadData()
-                    self.MyAddressesTableView.tableFooterView = UIView()
-                   
+                DispatchQueue.main.async {
+                    print("Successfully fetched")
+                    self.addresses = data
+                    print(self.addresses)
+                    print(self.addresses.isEmpty)
+                        self.setEmptyStateView()
+                        self.MyAddressesTableView.reloadData()
+                        self.MyAddressesTableView.tableFooterView = UIView()
+                       
+                }
+               
                 
                 
             case .failure(let error):
@@ -163,18 +178,30 @@ class AddressesVC: UIViewController {
 
 extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        remoteAddresses.count
+        
+        return showRemoteAddresses ? remoteAddresses.count : addresses.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressesCell", for: indexPath) as! MyAddressesTableViewCell
-        let address = remoteAddresses[indexPath.row]
-        cell.configureCells(address: address)
-        return cell
+        if showRemoteAddresses {
+            let address = remoteAddresses[indexPath.row]
+          
+            cell.configureCells(address: address.name ?? "", fullAddress: address.address ?? "")
+            return cell
+        } else {
+            let address = addresses[indexPath.row]
+            cell.configureCells(address: address.title ?? "", fullAddress: address.fullAddress ?? "")
+            return cell
+        }
+        
+      
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        addressToPass = addresses[indexPath.row]
+      
+        addressToPass = remoteAddresses[indexPath.row]
         gonnaUpdateAddress = true
         self.performSegue(withIdentifier: "addNewAddressSegue", sender: self)
         gonnaUpdateAddress = false

@@ -17,7 +17,7 @@ class AddNewAddressVC: UIViewController{
     
     var isUPdatingAddress: Bool = false
     var wantToUpdateAddress: Bool = false
-    var passedAddress: UserAddressMO?
+    var passedAddress: AddressData?
     
    weak var delegate: AddNewAddressDelegate?
     
@@ -105,17 +105,17 @@ class AddNewAddressVC: UIViewController{
     }
     
     
-    func setUIIfUpdatingAddress(address: UserAddressMO){
+    func setUIIfUpdatingAddress(address: AddressData){
         if isUPdatingAddress{
-            addressTitleView.textView.text = address.title
-            addressDescriptionView.textView.text = address.fullAddress
-            driverCommentaryView.textView.text = address.driverCommentary
+            addressTitleView.textView.text = address.name
+            addressDescriptionView.textView.text = address.address
+            driverCommentaryView.textView.text = address.commentDriver
             separatorLabel.text = "Для доставки"
-            officeNumberView.textView.text = address.delivApartNumber
-            intercomNumberView.textView.text = address.delivIntercomNumber
-            entranceNumberView.textView.text = address.delivEntranceNumber
-            floorNumber.textView.text = address.delivFloorNumber
-            deliveryCommentaryView.textView.text = address.deliveryCommentary
+            officeNumberView.textView.text = placeIntIntoString(int: address.flat ?? 0)
+            intercomNumberView.textView.text = placeIntIntoString(int: address.intercom ?? 0)
+            entranceNumberView.textView.text = placeIntIntoString(int: address.entrance ?? 0)
+            floorNumber.textView.text = placeIntIntoString(int: address.floor ?? 0)
+            deliveryCommentaryView.textView.text = address.commentCourier
         }
     }
     
@@ -147,7 +147,7 @@ class AddNewAddressVC: UIViewController{
     
     func configureNavigationItem(){
         if isUPdatingAddress{
-            navigationItem.title = passedAddress?.title
+            navigationItem.title = passedAddress?.name
         }
         
         let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
@@ -400,74 +400,88 @@ class AddNewAddressVC: UIViewController{
     }
     
     @objc func updateAddress(){
-        if isUPdatingAddress && wantToUpdateAddress {
-            if let addressToUpdate = passedAddress{
-                addressToUpdate.title = addressTitleView.textView.text
-                addressToUpdate.fullAddress = addressDescriptionView.textView.text
-                addressToUpdate.driverCommentary = driverCommentaryView.textView.text ?? ""
-                addressToUpdate.delivApartNumber = officeNumberView.textView.text ?? ""
-                addressToUpdate.delivIntercomNumber = intercomNumberView.textView.text ?? ""
-                addressToUpdate.delivEntranceNumber = entranceNumberView.textView.text ?? ""
-                addressToUpdate.delivFloorNumber = floorNumber.textView.text ?? ""
-                addressToUpdate.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
-                addressToUpdate.isDestination = false
-                
-                setUIIfUpdatingAddress(address: addressToUpdate)
-                wantToUpdateAddress = false
-                setSaveButtonBehavior()
-                delegate?.didAddNewAddress()
-            }
-         
-        }
+        print("Here gonna update remote address")
+        
+        
+//        if isUPdatingAddress && wantToUpdateAddress {
+//            if let addressToUpdate = passedAddress{
+//                addressToUpdate.title = addressTitleView.textView.text
+//                addressToUpdate.fullAddress = addressDescriptionView.textView.text
+//                addressToUpdate.driverCommentary = driverCommentaryView.textView.text ?? ""
+//                addressToUpdate.delivApartNumber = officeNumberView.textView.text ?? ""
+//                addressToUpdate.delivIntercomNumber = intercomNumberView.textView.text ?? ""
+//                addressToUpdate.delivEntranceNumber = entranceNumberView.textView.text ?? ""
+//                addressToUpdate.delivFloorNumber = floorNumber.textView.text ?? ""
+//                addressToUpdate.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
+//                addressToUpdate.isDestination = false
+//
+//                setUIIfUpdatingAddress(address: addressToUpdate)
+//                wantToUpdateAddress = false
+//                setSaveButtonBehavior()
+//                delegate?.didAddNewAddress()
+//            }
+//
+//        }
         
     }
     
     @objc func setAsMainAddress(){
-        if let addressToUpdate = passedAddress{
-            addressToUpdate.isDestination = true
-            PersistanceManager.shared.addNewAddress(address: addressToUpdate)
-            print(addressToUpdate)
-            
-            navigationController?.popViewController(animated: true)
-            delegate?.didAddNewAddress()
-            
-        }
+        print("Here gonna set address as destination one")
+        
+//        if let addressToUpdate = passedAddress{
+//            addressToUpdate.isDestination = true
+//            PersistanceManager.shared.addNewAddress(address: addressToUpdate)
+//            print(addressToUpdate)
+//
+//            navigationController?.popViewController(animated: true)
+//            delegate?.didAddNewAddress()
+//
+//        }
     }
     
     @objc func addAddress(){
-        let newAddress = UserAddressMO(context: CoreDataManager.shared.persistentContainer.viewContext)
-        newAddress.title = addressTitleView.textView.text
-        newAddress.fullAddress = addressDescriptionView.textView.text
-        newAddress.driverCommentary = driverCommentaryView.textView.text ?? ""
-        newAddress.delivApartNumber = officeNumberView.textView.text ?? ""
-        newAddress.delivIntercomNumber = intercomNumberView.textView.text ?? ""
-        newAddress.delivEntranceNumber = entranceNumberView.textView.text ?? ""
-        newAddress.delivFloorNumber = floorNumber.textView.text ?? ""
-        newAddress.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
-        newAddress.isDestination = false
+        print("Here gonna add address")
         
-        PersistanceManager.shared.addNewAddress(address: newAddress)
         
-        if let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: newAddress) as? [String: Any] {
+        
+        var newAddress = AddressData()
+        newAddress.id = UUID()
+        newAddress.name = addressTitleView.textView.text
+        newAddress.address = addressDescriptionView.textView.text
+        newAddress.commentDriver = driverCommentaryView.textView.text ?? ""
+        newAddress.flat = Int(officeNumberView.textView.text ?? "") ?? 0
+        newAddress.intercom = Int(intercomNumberView.textView.text ?? "") ?? 0
+        newAddress.entrance = Int(entranceNumberView.textView.text ?? "") ?? 0
+        newAddress.floor = Int(floorNumber.textView.text ?? "") ?? 0
+        newAddress.commentCourier = deliveryCommentaryView.textView.text ?? ""
+        newAddress.destination = false
+
+//        PersistanceManager.shared.addNewAddress(address: newAddress)
+
+        guard let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: newAddress) as? [String: Any] else {
+            print("SOmething happened")
+            return
+        }
             AddressesNetworkManager.shared.sendAddressToTheServer(addressToPass: dictionaryToPass) { result in
                 switch result{
                 case .failure(let error):
                     print(error)
+                    return
                 case .success(let data):
                     self.delegate?.didAddNewAddress()
                     print(data)
                 }
             }
-        }
         
-        
+
+
         navigationController?.popViewController(animated: true)
-        delegate?.didAddNewAddress()
-        
-    }
     
 
-
+//    }
+//
+//
+    }
 }
 
 extension AddNewAddressVC: SetLocationDelegate{
@@ -510,20 +524,27 @@ extension AddNewAddressVC: UITextFieldDelegate{
 
 extension AddNewAddressVC: DeleteAddressProtocol{
     func deleteAddress() {
-        print("here gonna delete address")
-        if let addressToDelete = passedAddress{
-        self.CoreDataContext.delete(addressToDelete)
-            do{
-                try self.CoreDataContext.save()
-            } catch{
-                print(error.localizedDescription)
-            }
-            navigationController?.popViewController(animated: true)
-            delegate?.didAddNewAddress()
-            
-        }
-        
+        print("here gonna delete address from server")
     }
+    
+    
+    
+    
+//    func deleteAddress() {
+//        print("here gonna delete address")
+//        if let addressToDelete = passedAddress{
+//        self.CoreDataContext.delete(addressToDelete)
+//            do{
+//                try self.CoreDataContext.save()
+//            } catch{
+//                print(error.localizedDescription)
+//            }
+//            navigationController?.popViewController(animated: true)
+//            delegate?.didAddNewAddress()
+//
+//        }
+//
+//    }
     
   
     

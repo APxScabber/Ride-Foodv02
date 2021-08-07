@@ -9,7 +9,7 @@ import Foundation
 
 
 struct AddressData {
-    var id: Int?
+    var id: UUID?
     var name: String?
     var address: String?
     var commentDriver: String?

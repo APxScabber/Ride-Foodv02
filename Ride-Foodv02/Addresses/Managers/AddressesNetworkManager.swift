@@ -11,22 +11,33 @@ class AddressesNetworkManager {
     static let shared = AddressesNetworkManager()
     private let baseURL = "https://skillbox.cc"
     
-    
-    
-    
-    func getTheAddresses(completion: @escaping (Result<[AddressData], Error>) -> Void){
+    func getUserID() -> Int?{
+        var idToReturn = Int()
         CoreDataManager.shared.fetchCoreData { result in
             switch result{
             case .failure(let error):
-                completion(.failure(error))
+                print(error)
                 break
                 
             case .success(let data):
                 guard let id = data.first?.id as? Int else {
-                    completion(.failure(DataError.serverError))
-                    return
+                    break
                 }
-                
+                idToReturn = id
+            case .none:
+                break
+            }
+        }
+        return idToReturn
+    }
+    
+    
+    func getTheAddresses(completion: @escaping (Result<[AddressData], Error>) -> Void){
+      
+        guard let id = getUserID() else {
+            completion(.failure(DataError.invalideData))
+            return
+        }
                 
                 let endPoint = self.baseURL + "/api/user/\(id)/address"
                 
@@ -56,7 +67,7 @@ class AddressesNetworkManager {
                         var addresses = [AddressData]()
                         addressesData?.forEach({ element in
                             let address = AddressData(
-                                id: element["id"] as? Int,
+                                id: element["id"] as? UUID,
                                 name: element["name"] as? String,
                                 address: element["address"] as? String,
                                 commentDriver: element["comment_driver"] as? String,
@@ -78,47 +89,38 @@ class AddressesNetworkManager {
                 }
                 task.resume()
             
-            case .none:
-                break
-            }
-            
-            
-        }
     }
     
-    func prepareAddressForSending(address: UserAddressMO?) -> [String: Any]{
+        
+    
+    
+    func prepareAddressForSending(address: AddressData?) -> [String: Any]{
         var dictionaryToReturn = [String: Any]()
         guard let data = address else { return dictionaryToReturn }
         dictionaryToReturn = [
-            "name": data.title ?? "",
-            "address": data.fullAddress ?? "",
-            "comment_driver": data.driverCommentary ?? "",
-            "comment_courier": data.deliveryCommentary ?? "",
-            "flat": Int(data.delivApartNumber ?? "") ?? 0,
-            "intercom": Int(data.delivIntercomNumber ?? "") ?? 0 ,
-            "entrance": Int(data.delivEntranceNumber ?? "") ?? 0 ,
-            "floor": Int(data.delivFloorNumber ?? "") ?? 0 ,
-            "destination": data.isDestination 
+            "name": data.name ?? "",
+            "address": data.address ?? "",
+            "comment_driver": data.commentDriver ?? "",
+            "comment_courier": data.commentCourier ?? "",
+            "flat": data.flat ?? 0,
+            "intercom": data.intercom ?? 0,
+            "entrance": data.entrance ?? 0 ,
+            "floor": data.floor ?? 0 ,
+            "destination": data.destination ?? false
         ]
         return dictionaryToReturn
     }
     
     
     func sendAddressToTheServer(addressToPass: [String: Any], completion: @escaping (Result<[AddressData], Error>)-> Void){
+        
+        guard let id = getUserID() else {
+            completion(.failure(DataError.invalideData))
+            return
+        }
+        
       
         let JSONData = try? JSONSerialization.data(withJSONObject: addressToPass)
-        
-        CoreDataManager.shared.fetchCoreData { result in
-            switch result{
-            case .failure(let error):
-                completion(.failure(error))
-                break
-                
-            case .success(let data):
-                guard let id = data.first?.id as? Int else {
-                    completion(.failure(DataError.serverError))
-                    return
-                }
                 
                 
                 let endPoint = self.baseURL + "/api/user/\(id)/address"
@@ -153,7 +155,7 @@ class AddressesNetworkManager {
                         var addresses = [AddressData]()
                         addressesData?.forEach({ element in
                             let address = AddressData(
-                                id: element["id"] as? Int,
+                                id: element["id"] as? UUID,
                                 name: element["name"] as? String,
                                 address: element["address"] as? String,
                                 commentDriver: element["comment_driver"] as? String,
@@ -175,12 +177,16 @@ class AddressesNetworkManager {
                 }
                 task.resume()
             
-            case .none:
-                break
-            }
+           
             
             
         }
+    
+    
+    
+    func deleteAddressFromServer(){
+        
     }
+    
 }
 
