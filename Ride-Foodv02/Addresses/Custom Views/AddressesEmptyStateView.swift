@@ -33,10 +33,10 @@ class AddressesEmptyStateView: UIView {
         addSubview(emptyImageView)
         
         NSLayoutConstraint.activate([
-            emptyImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 125),
-            emptyImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            emptyImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            emptyImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            emptyImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             emptyImageView.heightAnchor.constraint(equalToConstant: 230),
+            emptyImageView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             messageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             messageLabel.topAnchor.constraint(equalTo: emptyImageView.bottomAnchor, constant: 20),

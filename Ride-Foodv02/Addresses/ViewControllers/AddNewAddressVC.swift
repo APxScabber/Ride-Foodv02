@@ -403,6 +403,48 @@ class AddNewAddressVC: UIViewController{
         print("Here gonna update remote address")
         
         
+        if isUPdatingAddress && wantToUpdateAddress{
+            var addressToUpdate = passedAddress
+            
+            addressToUpdate?.name = addressTitleView.textView.text
+            addressToUpdate?.address = addressDescriptionView.textView.text
+            addressToUpdate?.commentDriver = driverCommentaryView.textView.text ?? ""
+            addressToUpdate?.flat = Int(officeNumberView.textView.text ?? "") ?? 0
+            addressToUpdate?.intercom = Int(intercomNumberView.textView.text ?? "") ?? 0
+            addressToUpdate?.entrance = Int(entranceNumberView.textView.text ?? "") ?? 0
+            addressToUpdate?.floor = Int(floorNumber.textView.text ?? "") ?? 0
+            addressToUpdate?.commentCourier = deliveryCommentaryView.textView.text ?? ""
+            addressToUpdate?.destination = false
+            
+            guard let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: addressToUpdate) as? [String: Any] else {
+                print("SOmething happened")
+                return
+            }
+            guard let addressID = passedAddress?.id else {
+                print("Invalid ID")
+                return
+            }
+            
+            AddressesNetworkManager.shared.updateAddress(AddressID: addressID, changesToPass: dictionaryToPass) { [weak self] result in
+                switch result{
+                case .failure(let error):
+                    print(error)
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        print(data)
+                        print("Successfully updated address")
+                        self?.delegate?.didAddNewAddress(address: data)
+                        self?.wantToUpdateAddress = false
+                        self?.setSaveButtonBehavior()
+                    }
+                
+                }
+            }
+            
+            
+        }
+        
+      
 //        if isUPdatingAddress && wantToUpdateAddress {
 //            if let addressToUpdate = passedAddress{
 //                addressToUpdate.title = addressTitleView.textView.text
@@ -427,6 +469,28 @@ class AddNewAddressVC: UIViewController{
     
     @objc func setAsMainAddress(){
         print("Here gonna set address as destination one")
+        guard let addressID = passedAddress?.id else {
+            print("Invalid ID")
+            return
+        }
+        
+        let dictionaryToPass: [String: Any] = ["destination": true]
+        
+        AddressesNetworkManager.shared.updateAddress(AddressID: addressID, changesToPass: dictionaryToPass) { [weak self] result in
+            switch result{
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                DispatchQueue.main.async {
+                    print(data)
+                    print("Successfully updated address")
+                    self?.delegate?.didAddNewAddress(address: data)
+                    self?.navigationController?.popViewController(animated: true)
+                    self?.setSaveButtonBehavior()
+                }
+            
+            }
+        }
         
 //        if let addressToUpdate = passedAddress{
 //            addressToUpdate.isDestination = true
@@ -540,7 +604,7 @@ extension AddNewAddressVC: DeleteAddressProtocol{
                   
                 }
             }
-        } else {
+        } /*else {
             AddressesNetworkManager.shared.deleteAddressFromServer(AddressID: 0) { [weak self] result in
                 switch result{
                 case .failure(let error):
@@ -553,10 +617,10 @@ extension AddNewAddressVC: DeleteAddressProtocol{
                         self?.delegate?.didAddNewAddress(address: data)
                     }
                   
-                }
+                } */
             }
         }
-    }
+    
     
     
     
@@ -580,7 +644,7 @@ extension AddNewAddressVC: DeleteAddressProtocol{
   
     
     
-}
+
 
 extension AddNewAddressVC{
     

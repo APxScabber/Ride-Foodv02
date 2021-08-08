@@ -11,12 +11,12 @@ class AddressesVC: UIViewController {
     
     let CoreDataContext = PersistanceManager.shared.context
     
-    var showRemoteAddresses: Bool = false
+    var showRemoteAddresses: Bool = true
     
     
     let newAddressButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Добавить адрес", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
     
-    var addresses: [UserAddressMO] = []
+    var Localaddresses: [UserAddressMO] = []
     var remoteAddresses: [AddressData] = []
     
     var addressToPass = AddressData()
@@ -38,7 +38,7 @@ class AddressesVC: UIViewController {
         self.addBackgroundImageView()
         configureNavigationItem()
         
-       fetch()
+    //   fetch()
         
        
         
@@ -46,8 +46,8 @@ class AddressesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-       
         getAddressesFromServer()
+        
         
     }
     
@@ -69,17 +69,18 @@ class AddressesVC: UIViewController {
         ])
     }
     
-    func setEmptyStateView() {
-        guard !self.remoteAddresses.isEmpty else {
+    func setEmptyStateView(addresses: [Any]) {
+        guard !addresses.isEmpty else {
             DispatchQueue.main.async {
                 let emptyView = AddressesEmptyStateView()
-                emptyView.frame = self.MyAddressesTableView.bounds
-                self.MyAddressesTableView.addSubview(emptyView)
+                emptyView.frame = self.view.bounds
+                self.view.addSubview(emptyView)
+                self.view.bringSubviewToFront(self.newAddressButton)
             }
             return
         }
         DispatchQueue.main.async {
-            for i in self.MyAddressesTableView.subviews{
+            for i in self.view.subviews{
                 if i is AddressesEmptyStateView{
                     i.removeFromSuperview()
                     
@@ -102,9 +103,11 @@ class AddressesVC: UIViewController {
                 print(error)
             case .success(let data):
                 DispatchQueue.main.async {
+                    
                     self.showRemoteAddresses = true
                     self.remoteAddresses = data
-                    self.setEmptyStateView()
+                    print(self.remoteAddresses)
+                    self.setEmptyStateView(addresses: self.remoteAddresses)
                     self.MyAddressesTableView.reloadData()
                    
                  
@@ -125,8 +128,8 @@ class AddressesVC: UIViewController {
             case .success(let data):
                 DispatchQueue.main.async {
                     self.showRemoteAddresses = false
-                    self.addresses = data
-                        self.setEmptyStateView()
+                    self.Localaddresses = data
+                    self.setEmptyStateView(addresses: self.Localaddresses)
                         self.MyAddressesTableView.reloadData()
                   
                 }
@@ -177,22 +180,18 @@ class AddressesVC: UIViewController {
 extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return showRemoteAddresses ? remoteAddresses.count : addresses.count
+        remoteAddresses.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressesCell", for: indexPath) as! MyAddressesTableViewCell
-        if showRemoteAddresses {
+       
             let address = remoteAddresses[indexPath.row]
           
             cell.configureCells(address: address.name ?? "", fullAddress: address.address ?? "")
             return cell
-        } else {
-            let address = addresses[indexPath.row]
-            cell.configureCells(address: address.title ?? "", fullAddress: address.fullAddress ?? "")
-            return cell
-        }
+       
         
       
     }
@@ -216,6 +215,8 @@ extension AddressesVC: AddNewAddressDelegate{
             self.showRemoteAddresses = true
             self.remoteAddresses.removeAll()
             self.remoteAddresses = address
+            print(address.isEmpty)
+            self.setEmptyStateView(addresses: address)
             self.MyAddressesTableView.reloadData()
         }
     }
