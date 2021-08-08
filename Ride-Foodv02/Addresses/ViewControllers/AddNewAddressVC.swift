@@ -431,7 +431,7 @@ class AddNewAddressVC: UIViewController{
                        
                         self?.wantToUpdateAddress = false
                         self?.setSaveButtonBehavior()
-                        self?.delegate?.didAddNewAddress(address: data)
+                       
                     }
                 
                 }
