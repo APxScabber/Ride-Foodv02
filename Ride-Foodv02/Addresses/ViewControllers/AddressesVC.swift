@@ -46,6 +46,7 @@ class AddressesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+       
         getAddressesFromServer()
         
         
@@ -93,7 +94,7 @@ class AddressesVC: UIViewController {
     
     func getAddressesFromServer(){
         
-        remoteAddresses.removeAll()
+    
         print("There are \(remoteAddresses.count) remote addresses")
         AddressesNetworkManager.shared.getTheAddresses { [weak self] result in
             guard let self = self else { return }

@@ -287,20 +287,18 @@ class AddressesNetworkManager {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 guard let dict = json as? [String: Any] else {return}
-                let addressesData = dict["data"] as? [[String: Any]]
-                    let address = AddressData(
-                        id: addressesData["id"] as? Int,
-                        name: addressesData["name"] as? String,
-                        address: addressesData["address"] as? String,
-                        commentDriver: addressesData["comment_driver"] as? String,
-                        commentCourier: addressesData["comment_courier"] as? String,
-                        flat: addressesData["flat"] as? Int,
-                        intercom: addressesData["intercom"] as? Int,
-                        entrance: addressesData["entrance"] as? Int,
-                        floor: addressesData["floor"] as? Int,
-                        destination: addressesData["destination"] as? Bool)
-                 
-                print(address)
+                let addressData = dict["data"] as? [String: Any]
+                let address = AddressData(
+                    id: addressData?["id"] as? Int,
+                    name: addressData?["name"] as? String,
+                    address: addressData?["address"] as? String,
+                    commentDriver: addressData?["comment_driver"] as? String,
+                    commentCourier: addressData?["comment_courier"] as? String,
+                    flat: addressData?["flat"] as? Int,
+                    intercom: addressData?["intercom"] as? Int,
+                    entrance: addressData?["entrance"] as? Int,
+                    floor: addressData?["floor"] as? Int,
+                    destination: addressData?["destination"] as? Bool)
                 completion(.success(address))
             }
             catch {
