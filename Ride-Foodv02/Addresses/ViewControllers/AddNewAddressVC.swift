@@ -18,6 +18,7 @@ class AddNewAddressVC: UIViewController{
     var isUPdatingAddress: Bool = false
     var wantToUpdateAddress: Bool = false
     var passedAddress: AddressData?
+    var passedLocalAddress: UserAddressMO?
     
    weak var delegate: AddNewAddressDelegate?
     
@@ -173,7 +174,7 @@ class AddNewAddressVC: UIViewController{
     @objc func keyboardAppear(notification: NSNotification){
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
          else {
-           // if keyboard size is not available for some reason, dont do anything
+          
            return
          }
 
@@ -185,7 +186,7 @@ class AddNewAddressVC: UIViewController{
     @objc func keyboardDisappear(notification: NSNotification) {
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
             
-        // reset back the content inset to zero after keyboard is gone
+      
         newAddressScrollView.contentInset = contentInsets
         newAddressScrollView.scrollIndicatorInsets = contentInsets
     }
@@ -428,7 +429,7 @@ class AddNewAddressVC: UIViewController{
                     DispatchQueue.main.async {
                         print(data)
                         print("Successfully updated address")
-                       
+              
                         self?.wantToUpdateAddress = false
                         self?.setSaveButtonBehavior()
                        
@@ -443,25 +444,6 @@ class AddNewAddressVC: UIViewController{
         }
     }
 
-//        if isUPdatingAddress && wantToUpdateAddress {
-//            if let addressToUpdate = passedAddress{
-//                addressToUpdate.title = addressTitleView.textView.text
-//                addressToUpdate.fullAddress = addressDescriptionView.textView.text
-//                addressToUpdate.driverCommentary = driverCommentaryView.textView.text ?? ""
-//                addressToUpdate.delivApartNumber = officeNumberView.textView.text ?? ""
-//                addressToUpdate.delivIntercomNumber = intercomNumberView.textView.text ?? ""
-//                addressToUpdate.delivEntranceNumber = entranceNumberView.textView.text ?? ""
-//                addressToUpdate.delivFloorNumber = floorNumber.textView.text ?? ""
-//                addressToUpdate.deliveryCommentary = deliveryCommentaryView.textView.text ?? ""
-//                addressToUpdate.isDestination = false
-//
-//                setUIIfUpdatingAddress(address: addressToUpdate)
-//                wantToUpdateAddress = false
-//                setSaveButtonBehavior()
-//                delegate?.didAddNewAddress()
-//            }
-//
-//        }
         
     
 
@@ -493,17 +475,10 @@ class AddNewAddressVC: UIViewController{
             }
         }
         
-//        if let addressToUpdate = passedAddress{
-//            addressToUpdate.isDestination = true
-//            PersistanceManager.shared.addNewAddress(address: addressToUpdate)
-//            print(addressToUpdate)
-//
-//            navigationController?.popViewController(animated: true)
-//            delegate?.didAddNewAddress()
-//
-//        }
         }
 }
+    
+
     
     @objc func addAddress(){
         print("Here gonna add address")
@@ -522,7 +497,7 @@ class AddNewAddressVC: UIViewController{
         newAddress.commentCourier = deliveryCommentaryView.textView.text ?? ""
         newAddress.destination = false
 
-//        PersistanceManager.shared.addNewAddress(address: newAddress)
+
 
         guard let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: newAddress) as? [String: Any] else {
             print("SOmething happened")
@@ -535,21 +510,16 @@ class AddNewAddressVC: UIViewController{
                     return
                 case .success(let data):
                     self.delegate?.didAddNewAddress(address: data)
+         
                     print(data)
                 }
             }
-        
-
-
+       
         navigationController?.popViewController(animated: true)
-    
-
-//    }
-//
-//
+   
+    }
     }
 
-}
 extension AddNewAddressVC: SetLocationDelegate{
     func locationIsSet(location: String) {
         print("delegate successfully implemented")
@@ -606,42 +576,13 @@ extension AddNewAddressVC: DeleteAddressProtocol{
                   
                 }
             }
-        } /*else {
-            AddressesNetworkManager.shared.deleteAddressFromServer(AddressID: 0) { [weak self] result in
-                switch result{
-                case .failure(let error):
-                    print(error)
-                    break
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        print(data.count)
-                        self?.navigationController?.popViewController(animated: true)
-                        self?.delegate?.didAddNewAddress(address: data)
-                    }
-                  
-                } */
+        }
             }
         }
     
     
     
-    
-    
-//    func deleteAddress() {
-//        print("here gonna delete address")
-//        if let addressToDelete = passedAddress{
-//        self.CoreDataContext.delete(addressToDelete)
-//            do{
-//                try self.CoreDataContext.save()
-//            } catch{
-//                print(error.localizedDescription)
-//            }
-//            navigationController?.popViewController(animated: true)
-//            delegate?.didAddNewAddress()
-//
-//        }
-//
-//    }
+
     
   
     
