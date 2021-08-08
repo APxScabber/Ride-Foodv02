@@ -339,22 +339,18 @@ class AddNewAddressVC: UIViewController{
        
         if wantToUpdateAddress{
             SaveButton.setTitle("Обновить" , for: .normal)
+            SaveButton.addTarget(self, action: #selector(updateAddress), for: .touchUpInside)
         } else {
             SaveButton.setTitle(!isUPdatingAddress ? "Сохранить" : "Выбрать местом назначения", for: .normal)
+            !isUPdatingAddress ? SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside) : SaveButton.addTarget(self, action: #selector(setAsMainAddress), for: .touchUpInside)
         }
+        
+        
+        
         
         SaveButton.isEnabled = !addressTitleView.textView.text!.isEmpty && !addressDescriptionView.textView.text!.isEmpty
         SaveButton.backgroundColor = SaveButton.isEnabled ? UIColor.SkillboxIndigoColor : UIColor.DisabledButtonBackgroundView
-        switch SaveButton.title(for: .normal) {
-        case "Сохранить":
-            SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside)
-        case "Выбрать местом назначения":
-            SaveButton.addTarget(self, action: #selector(setAsMainAddress), for: .touchUpInside)
-        case "Обновить":
-            SaveButton.addTarget(self, action: #selector(updateAddress), for: .touchUpInside)
-        default:
-            return
-        }
+        
         
       
     }
@@ -414,7 +410,6 @@ class AddNewAddressVC: UIViewController{
             addressToUpdate?.entrance = Int(entranceNumberView.textView.text ?? "") ?? 0
             addressToUpdate?.floor = Int(floorNumber.textView.text ?? "") ?? 0
             addressToUpdate?.commentCourier = deliveryCommentaryView.textView.text ?? ""
-            addressToUpdate?.destination = false
             
             guard let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: addressToUpdate) as? [String: Any] else {
                 print("SOmething happened")
@@ -433,18 +428,21 @@ class AddNewAddressVC: UIViewController{
                     DispatchQueue.main.async {
                         print(data)
                         print("Successfully updated address")
-                        self?.delegate?.didAddNewAddress(address: data)
+                       
                         self?.wantToUpdateAddress = false
                         self?.setSaveButtonBehavior()
+                        self?.delegate?.didAddNewAddress(address: data)
                     }
                 
                 }
             }
             
             
+        } else {
+            print("Error")
         }
-        
-      
+    }
+
 //        if isUPdatingAddress && wantToUpdateAddress {
 //            if let addressToUpdate = passedAddress{
 //                addressToUpdate.title = addressTitleView.textView.text
@@ -465,18 +463,19 @@ class AddNewAddressVC: UIViewController{
 //
 //        }
         
-    }
     
+
     @objc func setAsMainAddress(){
+        if isUPdatingAddress == true && wantToUpdateAddress == false {
         print("Here gonna set address as destination one")
         guard let addressID = passedAddress?.id else {
             print("Invalid ID")
             return
         }
         
-        let dictionaryToPass: [String: Any] = ["destination": true]
+        let destinationToPass: [String: Any] = ["destination": true]
         
-        AddressesNetworkManager.shared.updateAddress(AddressID: addressID, changesToPass: dictionaryToPass) { [weak self] result in
+        AddressesNetworkManager.shared.updateAddress(AddressID: addressID, changesToPass: destinationToPass) { [weak self] result in
             switch result{
             case .failure(let error):
                 print(error)
@@ -484,9 +483,11 @@ class AddNewAddressVC: UIViewController{
                 DispatchQueue.main.async {
                     print(data)
                     print("Successfully updated address")
-                    self?.delegate?.didAddNewAddress(address: data)
+                    self?.setUIIfUpdatingAddress(address: data)
+               
                     self?.navigationController?.popViewController(animated: true)
-                    self?.setSaveButtonBehavior()
+                    
+                   
                 }
             
             }
@@ -501,7 +502,8 @@ class AddNewAddressVC: UIViewController{
 //            delegate?.didAddNewAddress()
 //
 //        }
-    }
+        }
+}
     
     @objc func addAddress(){
         print("Here gonna add address")
@@ -546,8 +548,8 @@ class AddNewAddressVC: UIViewController{
 //
 //
     }
-}
 
+}
 extension AddNewAddressVC: SetLocationDelegate{
     func locationIsSet(location: String) {
         print("delegate successfully implemented")

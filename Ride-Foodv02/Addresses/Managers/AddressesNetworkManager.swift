@@ -247,7 +247,7 @@ class AddressesNetworkManager {
         
     }
     
-    func updateAddress(AddressID: Int, changesToPass: [String: Any], completion: @escaping (Result<[AddressData], Error>)-> Void){
+    func updateAddress(AddressID: Int, changesToPass: [String: Any], completion: @escaping (Result<AddressData, Error>)-> Void){
         
         guard let id = getUserID() else {
             completion(.failure(DataError.invalideData))
@@ -274,7 +274,7 @@ class AddressesNetworkManager {
                 completion(.failure(DataError.invalideData))
             }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print(response)
+               
                 completion(.failure(DataError.invalideResponse))
                 return
             }
@@ -283,27 +283,25 @@ class AddressesNetworkManager {
                 completion(.failure(DataError.invalideData))
                 return
             }
+            print("RESPONSE FOR UPDATE IS \(response)")
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 guard let dict = json as? [String: Any] else {return}
                 let addressesData = dict["data"] as? [[String: Any]]
-                var addresses = [AddressData]()
-                addressesData?.forEach({ element in
                     let address = AddressData(
-                        id: element["id"] as? Int,
-                        name: element["name"] as? String,
-                        address: element["address"] as? String,
-                        commentDriver: element["comment_driver"] as? String,
-                        commentCourier: element["comment_courier"] as? String,
-                        flat: element["flat"] as? Int,
-                        intercom: element["intercom"] as? Int,
-                        entrance: element["entrance"] as? Int,
-                        floor: element["floor"] as? Int,
-                        destination: element["destination"] as? Bool)
-                    addresses.append(address)
-                })
-                print(addresses)
-                completion(.success(addresses))
+                        id: addressesData["id"] as? Int,
+                        name: addressesData["name"] as? String,
+                        address: addressesData["address"] as? String,
+                        commentDriver: addressesData["comment_driver"] as? String,
+                        commentCourier: addressesData["comment_courier"] as? String,
+                        flat: addressesData["flat"] as? Int,
+                        intercom: addressesData["intercom"] as? Int,
+                        entrance: addressesData["entrance"] as? Int,
+                        floor: addressesData["floor"] as? Int,
+                        destination: addressesData["destination"] as? Bool)
+                 
+                print(address)
+                completion(.success(address))
             }
             catch {
                 print(error.localizedDescription)
