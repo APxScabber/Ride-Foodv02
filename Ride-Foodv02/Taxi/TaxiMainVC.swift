@@ -28,12 +28,14 @@ class TaxiMainVC: UIViewController {
         super.viewDidLoad()
         addressesChooserView.delegate = self
         view.addSubview(addressesChooserView)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         addressesChooserView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: TaxiConstant.addressesChooserViewHeight)
         pinAddressesTo(view.bounds.height - TaxiConstant.addressesChooserViewHeight)
+        addressesChooserView.shopMapItems(false)
     }
     
     @objc
@@ -60,7 +62,24 @@ class TaxiMainVC: UIViewController {
         }
 
     }
+    @objc
+    private func moveAddressesChooserView(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.pinAddressesTo(self.view.bounds.height - size.height - TaxiConstant.addressesChooserViewHeight)
+            addressesChooserView.shopMapItems(true)
+        }
+    }
     
+    //MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showLocationChooser",
+           let destination = segue.destination as? LocationChooserViewController {
+            destination.delegate = self
+            destination.region = mapView.region
+        }
+    }
 }
 
 //MARK: - MapViewDelegate
@@ -82,11 +101,26 @@ extension TaxiMainVC: MKMapViewDelegate {
 extension TaxiMainVC: AddressesViewDelegate {
     
     func moveDown() {
-        
+        pinAddressesTo(view.bounds.height - TaxiConstant.addressesChooserViewHeight)
+        addressesChooserView.shopMapItems(false)
     }
     
     func next() {
         
+    }
+    
+    func showMap() {
+        performSegue(withIdentifier: "showLocationChooser", sender: nil)
+    }
+    
+}
+
+//MARK: - LocationChooserDelegate
+
+extension TaxiMainVC: LocationChooserDelegate {
+    
+    func locationChoosen(_ newLocation: String) {
+        addressesChooserView.toAddress = newLocation
     }
     
     

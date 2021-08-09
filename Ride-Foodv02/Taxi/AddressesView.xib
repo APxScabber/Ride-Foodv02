@@ -69,7 +69,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда вы хотите поехать?" textAlignment="natural" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="XDM-RK-4Ej">
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда вы хотите поехать?" textAlignment="natural" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="XDM-RK-4Ej">
                             <rect key="frame" x="52" y="26" width="294" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="8Xr-f4-DTu"/>
@@ -91,23 +91,62 @@
                                 <constraint firstAttribute="width" constant="12" id="oUx-r3-e5x"/>
                             </constraints>
                         </imageView>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHl-Vb-Ygx">
+                            <rect key="frame" x="379" y="87" width="10" height="7"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="Ww7-FK-8S6"/>
+                                <constraint firstAttribute="height" constant="7" id="f2V-d4-ARt"/>
+                            </constraints>
+                            <state key="normal" image="Next"/>
+                            <connections>
+                                <action selector="goToMap:" destination="iN0-l3-epB" eventType="touchUpInside" id="YSN-Ls-hoH"/>
+                            </connections>
+                        </button>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWe-bg-Wfu">
+                            <rect key="frame" x="334" y="77" width="1" height="27"/>
+                            <color key="backgroundColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="Gif-Ma-YAU"/>
+                                <constraint firstAttribute="height" constant="27" id="Y8k-MV-Auy"/>
+                            </constraints>
+                        </view>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2z9-si-WpM">
+                            <rect key="frame" x="343" y="83.5" width="33" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="FtW-8e-gO7"/>
+                                <constraint firstAttribute="height" constant="14" id="xfs-FC-7WZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                            <state key="normal" title="Карта">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="goToMap:" destination="iN0-l3-epB" eventType="touchUpInside" id="U2J-1d-W9S"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="CrH-yV-j0X" firstAttribute="leading" secondItem="RQC-lf-n99" secondAttribute="leading" constant="52" id="1kI-J0-awe"/>
+                        <constraint firstItem="iHl-Vb-Ygx" firstAttribute="leading" secondItem="2z9-si-WpM" secondAttribute="trailing" constant="3" id="4VH-co-CFo"/>
                         <constraint firstItem="Zkf-ds-cMR" firstAttribute="top" secondItem="XDM-RK-4Ej" secondAttribute="bottom" constant="8" id="6WG-8Y-Sek"/>
+                        <constraint firstAttribute="trailing" secondItem="iHl-Vb-Ygx" secondAttribute="trailing" constant="25" id="7mW-1L-oUG"/>
+                        <constraint firstItem="Q7J-M0-fhV" firstAttribute="top" secondItem="iHl-Vb-Ygx" secondAttribute="bottom" constant="15" id="JEY-Mq-WwQ"/>
                         <constraint firstItem="XDM-RK-4Ej" firstAttribute="leading" secondItem="RQC-lf-n99" secondAttribute="leading" constant="52" id="K1U-wu-5eR"/>
                         <constraint firstItem="CrH-yV-j0X" firstAttribute="top" secondItem="Zkf-ds-cMR" secondAttribute="bottom" constant="26" id="KGy-Iy-L17"/>
                         <constraint firstItem="Zkf-ds-cMR" firstAttribute="leading" secondItem="RQC-lf-n99" secondAttribute="leading" constant="47" id="LqJ-qE-stJ"/>
                         <constraint firstItem="xnm-O1-Qto" firstAttribute="leading" secondItem="XDM-RK-4Ej" secondAttribute="trailing" constant="10" id="QyF-0a-Pya"/>
+                        <constraint firstItem="2z9-si-WpM" firstAttribute="leading" secondItem="ZWe-bg-Wfu" secondAttribute="trailing" constant="8" id="R2X-jX-jib"/>
                         <constraint firstItem="U68-Hf-doh" firstAttribute="centerY" secondItem="XDM-RK-4Ej" secondAttribute="centerY" id="SgL-l2-BGX"/>
                         <constraint firstItem="ctR-NQ-XSI" firstAttribute="leading" secondItem="RQC-lf-n99" secondAttribute="leading" constant="25" id="Th5-N1-UId"/>
+                        <constraint firstItem="ZWe-bg-Wfu" firstAttribute="centerY" secondItem="2z9-si-WpM" secondAttribute="centerY" id="ULT-ua-Te9"/>
                         <constraint firstItem="bQ7-j9-NFI" firstAttribute="centerY" secondItem="CrH-yV-j0X" secondAttribute="centerY" id="UMg-z2-vLt"/>
                         <constraint firstAttribute="trailing" secondItem="CrH-yV-j0X" secondAttribute="trailing" constant="25" id="Vbh-BX-osg"/>
                         <constraint firstAttribute="trailing" secondItem="Zkf-ds-cMR" secondAttribute="trailing" constant="25" id="ZEV-xT-ILF"/>
                         <constraint firstItem="Q7J-M0-fhV" firstAttribute="top" secondItem="CrH-yV-j0X" secondAttribute="bottom" constant="8" id="f0g-YC-i9a"/>
                         <constraint firstAttribute="trailing" secondItem="Q7J-M0-fhV" secondAttribute="trailing" constant="25" id="flr-9e-BX4"/>
                         <constraint firstAttribute="height" constant="235" id="gSD-5T-99L"/>
+                        <constraint firstItem="2z9-si-WpM" firstAttribute="centerY" secondItem="iHl-Vb-Ygx" secondAttribute="centerY" id="gnN-fB-apK"/>
                         <constraint firstItem="Q7J-M0-fhV" firstAttribute="leading" secondItem="RQC-lf-n99" secondAttribute="leading" constant="47" id="hbS-40-yMR"/>
                         <constraint firstItem="Zkf-ds-cMR" firstAttribute="top" secondItem="xnm-O1-Qto" secondAttribute="bottom" constant="12" id="heY-gF-cNG"/>
                         <constraint firstItem="bQ7-j9-NFI" firstAttribute="leading" secondItem="RQC-lf-n99" secondAttribute="leading" constant="25" id="ijf-49-l0f"/>
@@ -138,9 +177,11 @@
                 <constraint firstItem="RQC-lf-n99" firstAttribute="top" secondItem="tcb-J1-gKv" secondAttribute="bottom" constant="10" id="vSy-OK-t4Z"/>
             </constraints>
             <connections>
+                <outlet property="arrowButton" destination="iHl-Vb-Ygx" id="pOX-We-sOg"/>
                 <outlet property="fromAnnotationView" destination="U68-Hf-doh" id="pHz-aJ-YeX"/>
                 <outlet property="fromTextField" destination="XDM-RK-4Ej" id="FEK-Vg-Q2x"/>
                 <outlet property="fromUnderbarLine" destination="Zkf-ds-cMR" id="ZjB-0n-FXR"/>
+                <outlet property="mapButton" destination="2z9-si-WpM" id="HPo-u8-237"/>
                 <outlet property="nextButton" destination="1en-Eu-9Yi" id="2PJ-JV-7Ti"/>
                 <outlet property="roundedView" destination="ctR-NQ-XSI" id="4cC-j0-DAM"/>
                 <outlet property="toAnnotationView" destination="bQ7-j9-NFI" id="6kR-sS-X63"/>
@@ -148,11 +189,13 @@
                 <outlet property="toUnderbarLine" destination="Q7J-M0-fhV" id="EEz-Gi-vUe"/>
                 <outlet property="topRoundedView" destination="tcb-J1-gKv" id="Z7j-As-VFV"/>
                 <outlet property="twoCorneredView" destination="RQC-lf-n99" id="Gpw-bK-SLx"/>
+                <outlet property="verticalLineView" destination="ZWe-bg-Wfu" id="X67-LL-kEP"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>
     </objects>
     <resources>
+        <image name="Next" width="9.5" height="7.5"/>
         <image name="RawAnnotation" width="12" height="19"/>
         <image name="visa" width="33" height="10"/>
         <systemColor name="systemBackgroundColor">

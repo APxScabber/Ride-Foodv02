@@ -3,6 +3,7 @@ import UIKit
 protocol AddressesViewDelegate: AnyObject {
     func moveDown()
     func next()
+    func showMap()
 }
 
 class AddressesView: UIView {
@@ -29,7 +30,9 @@ class AddressesView: UIView {
     
     @IBOutlet weak var toTextField:UITextField! { didSet {
         toTextField.font = UIFont.SFUIDisplayLight(size: 17.0)
+        toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
     }}
+    
     @IBOutlet weak var toAnnotationView: UIImageView!
     @IBOutlet weak var toUnderbarLine: UIView!
     
@@ -46,6 +49,11 @@ class AddressesView: UIView {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
     }}
     
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var arrowButton: UIButton!
+    @IBOutlet weak var verticalLineView: UIView!
+    
+    //MARK: - Actions
     
     @IBAction func next(_ sender: UIButton) {
         if !fromAddress.isEmpty && !toAddress.isEmpty {
@@ -53,7 +61,17 @@ class AddressesView: UIView {
         }
     }
 
+    @IBAction func goToMap(_ sender: UIButton) {
+        delegate?.showMap()
+    }
+    
     //MARK: - UI update
+    
+    func shopMapItems(_ bool:Bool) {
+        verticalLineView.isHidden = !bool
+        mapButton.isHidden = !bool
+        arrowButton.isHidden = !bool
+    }
     
     private func updateUI() {
         fromUnderbarLine.backgroundColor = fromAddress.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
@@ -63,11 +81,27 @@ class AddressesView: UIView {
         toAnnotationView.image = toAddress.isEmpty ? #imageLiteral(resourceName: "RawAnnotation") : #imageLiteral(resourceName: "Annotation")
 
         nextButton.isUserInteractionEnabled = !fromAddress.isEmpty && !toAddress.isEmpty
-        roundedView.colorToFill = (!fromAddress.isEmpty && !toAddress.isEmpty) ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        
+        roundedView.colorToFill = (!fromAddress.isEmpty && !toAddress.isEmpty) ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }
     
+    @objc
+    private func toTextFieldChanged() {
+        toAddress = toTextField.text ?? ""
+    }
     
     //MARK: - Init
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
     
     private func setup() {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(moveDown(_:)))
