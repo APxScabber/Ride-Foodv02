@@ -254,7 +254,7 @@
                                     <action selector="cancel:" destination="tAD-hR-aT0" eventType="touchUpInside" id="kzL-X5-tSn"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctx-7b-NTh">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctx-7b-NTh" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="757" width="414" height="105"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rpk-2o-ZkY" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -296,7 +296,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="qhx-zt-faR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ctx-7b-NTh" secondAttribute="leading" constant="10" id="0nJ-7K-7OJ"/>
                                     <constraint firstAttribute="bottom" secondItem="Rpk-2o-ZkY" secondAttribute="bottom" constant="10" id="JNT-xy-cTW"/>

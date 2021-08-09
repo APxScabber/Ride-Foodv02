@@ -122,24 +122,13 @@ class MainScreenViewController: UIViewController {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
-            
-            findAddressAt(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
-        }
-    }
-    
-    private func findAddressAt(_ location:CLLocation) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(location) { placemarks, Error in
-                if let foundPlacemark = placemarks?.first {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.foodTaxiView.placeLabel.text = foundPlacemark.name
-                        self?.foodTaxiView.placeAnnotationView.isHidden = false
-                    }
-                }
+            CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { [weak self] in
+                self?.foodTaxiView.placeLabel.text = $0
+                self?.foodTaxiView.placeAnnotationView.isHidden = false
             }
         }
     }
+    
     
     //MARK: - Helper
     
@@ -199,7 +188,7 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     }
     
     func goToTaxi() {
-        
+        performSegue(withIdentifier: "taxi", sender: nil)
     }
     
     
