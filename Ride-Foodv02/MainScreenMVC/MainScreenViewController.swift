@@ -53,7 +53,7 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func goToProfile(_ sender: UIButton) {
-        goToStoryboard("UserProfile")
+        goToStoryboard("Profile")
     }
     
     @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}

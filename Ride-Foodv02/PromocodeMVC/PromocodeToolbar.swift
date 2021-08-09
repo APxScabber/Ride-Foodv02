@@ -16,19 +16,21 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
 
     
     @IBOutlet weak var lineView: UIView!
+    
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
         roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }}
+    @IBOutlet weak var topRoundedView: RoundedView! { didSet {
+        topRoundedView.cornerRadius = 15.0
+        topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }}
+    
     @IBOutlet weak var button: UIButton! { didSet {
         button.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
     
-    @IBOutlet private weak var activeView: UIView! { didSet {
-        activeView.layer.cornerRadius = 15.0
-        activeView.layer.backgroundColor = UIColor.white.cgColor
-        activeView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-    }}
+    @IBOutlet private weak var activeView: TopRoundedView!
     
     @IBAction func done(_ sender: UIButton) {
         guard let code = textField.text else { return }

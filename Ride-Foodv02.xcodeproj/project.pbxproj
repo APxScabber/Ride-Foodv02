@@ -64,7 +64,6 @@
 		7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */; };
 		7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */; };
 		7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */; };
-		7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BD266FB7150031BFA0 /* ImagePicker.swift */; };
 		7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */; };
 		7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */; };
 		7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C52671043D0031BFA0 /* SupportConstants.swift */; };
@@ -97,6 +96,14 @@
 		787D4B612677A73E002D975D /* ToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787D4B602677A73E002D975D /* ToolbarView.xib */; };
 		787D4B632677A751002D975D /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B622677A751002D975D /* ToolbarView.swift */; };
 		787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B64267A1982002D975D /* PromotionListTableViewController.swift */; };
+		7895F32F26BC2DD1004F4A9D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7895F32E26BC2DD0004F4A9D /* Profile.storyboard */; };
+		7895F33126BC32C6004F4A9D /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7895F33026BC32C6004F4A9D /* ProfileTableVC.swift */; };
+		7895F33326BC339A004F4A9D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7895F33226BC339A004F4A9D /* ProfileTableViewCell.swift */; };
+		7895F33526BC36AE004F4A9D /* ProfileConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7895F33426BC36AE004F4A9D /* ProfileConstant.swift */; };
+		7895F33726BC3F57004F4A9D /* PhoneChooserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7895F33626BC3F57004F4A9D /* PhoneChooserView.xib */; };
+		7895F33926BC3F63004F4A9D /* PhoneChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7895F33826BC3F63004F4A9D /* PhoneChooserView.swift */; };
+		7895F33B26BD89AE004F4A9D /* EnterPhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7895F33A26BD89AE004F4A9D /* EnterPhoneView.xib */; };
+		7895F33D26BD89B7004F4A9D /* EnterPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7895F33C26BD89B7004F4A9D /* EnterPhoneView.swift */; };
 		78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */; };
 		78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */; };
 		78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */; };
@@ -174,9 +181,7 @@
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
 		F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */; };
 		F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */; };
-		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
 		F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */; };
-		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
 		F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916726AB77BD008E9841 /* ProfileButton.swift */; };
 		F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917126AF779E008E9841 /* VBTextView.swift */; };
 		F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917326AF7B4E008E9841 /* VBMapButton.swift */; };
@@ -242,7 +247,6 @@
 		7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportAddImagesViewController.swift; sourceTree = "<group>"; };
 		7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportMainViewController.swift; sourceTree = "<group>"; };
 		7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		7867B4BD266FB7150031BFA0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCollectionViewCell.swift; sourceTree = "<group>"; };
 		7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		7867B4C52671043D0031BFA0 /* SupportConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportConstants.swift; sourceTree = "<group>"; };
@@ -275,6 +279,14 @@
 		787D4B602677A73E002D975D /* ToolbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolbarView.xib; sourceTree = "<group>"; };
 		787D4B622677A751002D975D /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		787D4B64267A1982002D975D /* PromotionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionListTableViewController.swift; sourceTree = "<group>"; };
+		7895F32E26BC2DD0004F4A9D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		7895F33026BC32C6004F4A9D /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
+		7895F33226BC339A004F4A9D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		7895F33426BC36AE004F4A9D /* ProfileConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstant.swift; sourceTree = "<group>"; };
+		7895F33626BC3F57004F4A9D /* PhoneChooserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneChooserView.xib; sourceTree = "<group>"; };
+		7895F33826BC3F63004F4A9D /* PhoneChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneChooserView.swift; sourceTree = "<group>"; };
+		7895F33A26BD89AE004F4A9D /* EnterPhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterPhoneView.xib; sourceTree = "<group>"; };
+		7895F33C26BD89B7004F4A9D /* EnterPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneView.swift; sourceTree = "<group>"; };
 		78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -354,9 +366,7 @@
 		C4E83FBE266EA53B000EE70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
 		F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBConfirmAlertVC.swift; sourceTree = "<group>"; };
-		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesNetworkManager.swift; sourceTree = "<group>"; };
-		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F5BC916726AB77BD008E9841 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		F5BC917126AF779E008E9841 /* VBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBTextView.swift; sourceTree = "<group>"; };
 		F5BC917326AF7B4E008E9841 /* VBMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBMapButton.swift; sourceTree = "<group>"; };
@@ -507,7 +517,6 @@
 				78AEB872267B59270023605D /* Colors */,
 				78AEB870267B59240023605D /* Fonts */,
 				78AEB871267B59250023605D /* Extensions */,
-				7867B4BD266FB7150031BFA0 /* ImagePicker.swift */,
 				7850E8F526739E6800AA88CA /* Settings.swift */,
 				7802DFAF267CA0120048CF1C /* Localizable.strings */,
 				78BE49F926834BA400A13641 /* ImageFetcher.swift */,
@@ -555,10 +564,17 @@
 		787A83D726AB2D230096DFC3 /* UserProfileMenu */ = {
 			isa = PBXGroup;
 			children = (
-				F5BC916226AB745E008E9841 /* Extensions */,
 				787A83DC26AB2D380096DFC3 /* CustomViews */,
 				787A83D826AB2D330096DFC3 /* UserProfile.storyboard */,
 				787A83D926AB2D330096DFC3 /* UserProfileTableVC.swift */,
+				7895F32E26BC2DD0004F4A9D /* Profile.storyboard */,
+				7895F33026BC32C6004F4A9D /* ProfileTableVC.swift */,
+				7895F33626BC3F57004F4A9D /* PhoneChooserView.xib */,
+				7895F33826BC3F63004F4A9D /* PhoneChooserView.swift */,
+				7895F33426BC36AE004F4A9D /* ProfileConstant.swift */,
+				7895F33226BC339A004F4A9D /* ProfileTableViewCell.swift */,
+				7895F33A26BD89AE004F4A9D /* EnterPhoneView.xib */,
+				7895F33C26BD89B7004F4A9D /* EnterPhoneView.swift */,
 			);
 			path = UserProfileMenu;
 			sourceTree = "<group>";
@@ -907,15 +923,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F5BC916226AB745E008E9841 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				F5BC916326AB7475008E9841 /* UIColorExtension.swift */,
-				F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		F5BC916526AB7788008E9841 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,6 +1004,7 @@
 				78F1A98126A8949000E16084 /* AddCardConfirm.xib in Resources */,
 				7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */,
 				7850E9032674FC4500AA88CA /* Settings.storyboard in Resources */,
+				7895F33726BC3F57004F4A9D /* PhoneChooserView.xib in Resources */,
 				7867B4A9266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf in Resources */,
 				787D4B612677A73E002D975D /* ToolbarView.xib in Resources */,
 				782D45D626B0251B006B3A98 /* ShopDetailView.xib in Resources */,
@@ -1012,10 +1020,12 @@
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
 				7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
+				7895F33B26BD89AE004F4A9D /* EnterPhoneView.xib in Resources */,
 				78CE749126A6E064006C3417 /* MenuView.xib in Resources */,
 				785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */,
 				787A83DA26AB2D330096DFC3 /* UserProfile.storyboard in Resources */,
 				7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */,
+				7895F32F26BC2DD1004F4A9D /* Profile.storyboard in Resources */,
 				78A3A01A267B57D7006D0DAB /* Login.storyboard in Resources */,
 				787A83EB26AB2DA40096DFC3 /* Addresses.storyboard in Resources */,
 			);
@@ -1041,9 +1051,9 @@
 				F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */,
 				78A3A01C267B57D7006D0DAB /* ConfirmViewController.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
-				7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */,
 				F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */,
 				7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */,
+				7895F33126BC32C6004F4A9D /* ProfileTableVC.swift in Sources */,
 				7802DFB2267CAA680048CF1C /* MenuConstant.swift in Sources */,
 				78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */,
 				78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */,
@@ -1062,8 +1072,8 @@
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
 				78F1A98226A8949000E16084 /* AddCardViewController.swift in Sources */,
+				7895F33D26BD89B7004F4A9D /* EnterPhoneView.swift in Sources */,
 				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,
-				F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */,
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
 				787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
@@ -1082,6 +1092,7 @@
 				78F1A97B26A8949000E16084 /* PaymentWaysTableViewCell.swift in Sources */,
 				78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
+				7895F33926BC3F63004F4A9D /* PhoneChooserView.swift in Sources */,
 				78AEB87B267B59C10023605D /* LoginVCExtension.swift in Sources */,
 				78AEB87D267B59C10023605D /* ButtonExtension.swift in Sources */,
 				78A3A00B267B56E9006D0DAB /* LoadManagerText.swift in Sources */,
@@ -1112,6 +1123,7 @@
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
 				78F1A98A26A8950A00E16084 /* PaymentWaysModel.swift in Sources */,
 				78AEB880267B59C10023605D /* LabelExtension.swift in Sources */,
+				7895F33326BC339A004F4A9D /* ProfileTableViewCell.swift in Sources */,
 				7808D7C526B44CDB00A88E12 /* CacheImageManager.swift in Sources */,
 				78CE749326A6E073006C3417 /* MenuView.swift in Sources */,
 				78A3A018267B57D7006D0DAB /* ConfirmInteractor.swift in Sources */,
@@ -1162,9 +1174,9 @@
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
+				7895F33526BC36AE004F4A9D /* ProfileConstant.swift in Sources */,
 				7879CDE726BA8955009D127A /* Address.swift in Sources */,
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
-				F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
 				7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */,

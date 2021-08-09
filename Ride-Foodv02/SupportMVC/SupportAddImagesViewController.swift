@@ -141,6 +141,14 @@ extension SupportAddImagesViewController: UICollectionViewDelegate,UICollectionV
         images.remove(at: index)
         collectionView.reloadData()
     }
+    
+    private func showWith(_ type:UIImagePickerController.SourceType) {
+        let ipc = UIImagePickerController()
+        ipc.sourceType = type
+        ipc.allowsEditing = true
+        ipc.delegate = self
+        present(ipc, animated: true)
+    }
 }
 
 //MARK: - UICollectionViewFlowLayout
@@ -158,12 +166,12 @@ extension SupportAddImagesViewController: UICollectionViewDelegateFlowLayout {
 extension SupportAddImagesViewController: SupportActionSheetDelegate {
     
     func goToCamera() {
-        ImagePicker.showWith(.camera, in: self)
+        showWith(.camera)
         cancel()
     }
     
     func goToLibrary() {
-        ImagePicker.showWith(.photoLibrary, in: self)
+        showWith(.photoLibrary)
         cancel()
     }
     

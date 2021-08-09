@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view hidden="YES" contentMode="scaleToFill" id="226-O4-LTi" customClass="EnterPhoneView" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJs-1H-oHd" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="414" height="142"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="142" id="BII-oK-SHu"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQJ-Qj-i38" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                    <rect key="frame" x="25" y="131.5" width="364" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-tE-K0a">
+                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                            <state key="normal" title="Подвердить">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="addPhone:" destination="226-O4-LTi" eventType="touchUpInside" id="lmb-HO-F13"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ebi-tE-K0a" secondAttribute="bottom" id="064-Gk-4ac"/>
+                        <constraint firstAttribute="height" constant="50" id="SGP-Ds-nxo"/>
+                        <constraint firstItem="ebi-tE-K0a" firstAttribute="top" secondItem="fQJ-Qj-i38" secondAttribute="top" id="dOX-xD-HrP"/>
+                        <constraint firstAttribute="trailing" secondItem="ebi-tE-K0a" secondAttribute="trailing" id="oVB-cZ-kY7"/>
+                        <constraint firstItem="ebi-tE-K0a" firstAttribute="leading" secondItem="fQJ-Qj-i38" secondAttribute="leading" id="vum-c6-6gj"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+7 " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Civ-jW-ZMe">
+                    <rect key="frame" x="25" y="75" width="364" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="numberPad"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXL-Eb-AHP">
+                    <rect key="frame" x="25" y="104.5" width="364" height="1"/>
+                    <color key="backgroundColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="cn0-Hx-iGY"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGp-zA-jkt" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                    <rect key="frame" x="187" y="44" width="40" height="5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="5" id="KEI-1Y-Yib"/>
+                        <constraint firstAttribute="width" constant="40" id="tHQ-zR-2Ri"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="4Do-Bh-6oQ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rXL-Eb-AHP" firstAttribute="top" secondItem="Civ-jW-ZMe" secondAttribute="bottom" constant="10.5" id="52R-er-HPO"/>
+                <constraint firstItem="zJs-1H-oHd" firstAttribute="top" secondItem="yGp-zA-jkt" secondAttribute="bottom" constant="10" id="64Z-Tm-izv"/>
+                <constraint firstItem="zJs-1H-oHd" firstAttribute="leading" secondItem="4Do-Bh-6oQ" secondAttribute="leading" id="8hJ-gJ-HmR"/>
+                <constraint firstItem="fQJ-Qj-i38" firstAttribute="top" secondItem="rXL-Eb-AHP" secondAttribute="bottom" constant="26" id="BVq-Oo-FfE"/>
+                <constraint firstItem="Civ-jW-ZMe" firstAttribute="leading" secondItem="4Do-Bh-6oQ" secondAttribute="leading" constant="25" id="DFg-L5-Gh9"/>
+                <constraint firstItem="4Do-Bh-6oQ" firstAttribute="trailing" secondItem="rXL-Eb-AHP" secondAttribute="trailing" constant="25" id="GYK-hk-UeP"/>
+                <constraint firstItem="4Do-Bh-6oQ" firstAttribute="trailing" secondItem="zJs-1H-oHd" secondAttribute="trailing" id="YHC-AB-cp4"/>
+                <constraint firstItem="4Do-Bh-6oQ" firstAttribute="trailing" secondItem="Civ-jW-ZMe" secondAttribute="trailing" constant="25" id="Z3x-Wr-aKa"/>
+                <constraint firstItem="yGp-zA-jkt" firstAttribute="centerX" secondItem="226-O4-LTi" secondAttribute="centerX" id="bxh-vv-3Up"/>
+                <constraint firstItem="yGp-zA-jkt" firstAttribute="top" secondItem="4Do-Bh-6oQ" secondAttribute="top" id="c8q-n0-aGi"/>
+                <constraint firstItem="4Do-Bh-6oQ" firstAttribute="trailing" secondItem="fQJ-Qj-i38" secondAttribute="trailing" constant="25" id="h7a-OR-M5E"/>
+                <constraint firstItem="fQJ-Qj-i38" firstAttribute="leading" secondItem="4Do-Bh-6oQ" secondAttribute="leading" constant="25" id="p1e-5I-Jn6"/>
+                <constraint firstItem="Civ-jW-ZMe" firstAttribute="top" secondItem="yGp-zA-jkt" secondAttribute="bottom" constant="26" id="seo-82-aKA"/>
+                <constraint firstItem="rXL-Eb-AHP" firstAttribute="leading" secondItem="4Do-Bh-6oQ" secondAttribute="leading" constant="25" id="uUk-qr-gno"/>
+            </constraints>
+            <connections>
+                <outlet property="activeView" destination="zJs-1H-oHd" id="W82-RS-VU5"/>
+                <outlet property="button" destination="ebi-tE-K0a" id="A14-gr-3eq"/>
+                <outlet property="lineView" destination="rXL-Eb-AHP" id="EX3-8S-zgv"/>
+                <outlet property="roundedView" destination="fQJ-Qj-i38" id="HxM-Nl-qCM"/>
+                <outlet property="textField" destination="Civ-jW-ZMe" id="yKy-9n-IaW"/>
+                <outlet property="topRoundedView" destination="yGp-zA-jkt" id="aLh-H4-26c"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
+        </view>
+    </objects>
+</document>

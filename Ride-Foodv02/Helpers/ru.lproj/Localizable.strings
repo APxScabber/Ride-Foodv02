@@ -75,3 +75,19 @@
 "map" = "Карта";
 "enterAdress" = "Введите адрес доставки";
 "confirm" = "Подтвердить";
+
+
+//MARK: - UserProfile
+
+"userProfile" = "Личный кабинет";
+"enterPhone" = "Введите номер телефона";
+"myAddresses" = "Мои адреса";
+"paymentHistory" = "История платежей";
+"orderHistory" = "История заказов";
+"paymentWays" = "Способ оплаты";
+"logout" = "Выйти";
+"addPhone" = "Добавить номер";
+"changePhone" = "Изменить номер";
+"confirm" = "Подтвердить";
+"confirmationCode" = "Код подтверждения";
+"main" = "Основной";

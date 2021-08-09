@@ -74,3 +74,19 @@
 "map" = "Map";
 "enterAdress" = "Enter delivery address";
 "confirm" = "Confirm";
+
+//MARK: - User profile
+
+
+"userProfile" = "User profile";
+"enterPhone" = "Enter phone number";
+"myAddresses" = "My addresses";
+"paymentHistory" = "Payment history";
+"orderHistory" = "Order history";
+"paymentWays" = "Payment ways";
+"logout" = "Logout";
+"addPhone" = "Add phone";
+"changePhone" = "Change phone";
+"confirm" = "Confirm";
+"confirmationCode" = "Confirmation code";
+"main" = "Main";
