@@ -24,7 +24,9 @@ class MainScreenViewController: UIViewController {
         circleView.color = .white
     }}
     
-    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton! { didSet {
+        menuButton.isExclusiveTouch = true
+    }}
     
     // MARK: - XIB files
     
@@ -42,9 +44,9 @@ class MainScreenViewController: UIViewController {
             delay: 0.0,
             options: .curveLinear,
             animations: {
-                self.menuView.frame.origin.x += self.view.bounds.width
-                self.foodTaxiView.frame.origin.y += (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
-                self.promotionView.frame.origin.y += (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
+                self.menuView.frame.origin.x = 0
+                self.foodTaxiView.frame.origin.y = self.view.bounds.height + MainScreenConstants.promotionViewHeight + MainScreenConstants.foodTaxiYOffset
+                self.promotionView.frame.origin.y = self.view.bounds.height
             }) {
             if $0 == .end { self.menuView.isVisible = true }
         }
@@ -56,7 +58,16 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
     
+
     // MARK: - viewDidLoad
+
+    // MARK: - Properties
+
+    private var bottomSafeAreaConstant: CGFloat = 0
+
+    // MARK: - ViewController lifecycle
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.delegate = self
@@ -69,7 +80,6 @@ class MainScreenViewController: UIViewController {
         view.addSubview(promotionDetailView)
     }
     
-    private var bottomSafeAreaConstant: CGFloat = 0
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -85,21 +95,25 @@ class MainScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !menuView.isVisible {
-            menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
-            foodTaxiView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foodTaxiViewHeight + bottomSafeAreaConstant)
-            promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.promotionViewYOffset - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
-            promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
+            resetFrames()
+        }
+    }
+ 
+    
+    //MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "food",
+           let destination = segue.destination as? FoodMainVC {
+            transparentView.isHidden = false
+            destination.modalPresentationStyle = .custom
+            destination.place = foodTaxiView.placeLabel.text ?? ""
+            destination.delegate = self
+            destination.region = mapView.region
         }
     }
     
-
-    
-    @objc
-    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended {
-            close()
-        }
-    }
+    //MARK: - MapView
     
     @objc
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
@@ -131,17 +145,20 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    //MARK: - Segue
+    //MARK: - Helper
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "food",
-           let destination = segue.destination as? FoodMainVC {
-            transparentView.isHidden = false
-            destination.modalPresentationStyle = .custom
-            destination.place = foodTaxiView.placeLabel.text ?? ""
-            destination.delegate = self
-            destination.region = mapView.region
+    @objc
+    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            close()
         }
+    }
+    
+    private func resetFrames() {
+        menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
+        foodTaxiView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foodTaxiViewHeight + bottomSafeAreaConstant)
+        promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+        promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
     }
     
 }
@@ -157,9 +174,7 @@ extension MainScreenViewController: MenuViewDelegate {
             delay: 0.0,
             options: .curveLinear,
             animations: {
-                self.menuView.frame.origin.x -= self.view.bounds.width
-                self.foodTaxiView.frame.origin.y -= (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
-                self.promotionView.frame.origin.y -= (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
+                self.resetFrames()
             }) {
             if $0 == .end { self.menuView.isVisible = false }
         }
@@ -181,6 +196,9 @@ extension MainScreenViewController: MenuViewDelegate {
 extension MainScreenViewController: FoodTaxiViewDelegate {
     
     func goToFood() {
+        UIView.animate(withDuration: MainScreenConstants.durationForAppearingPromotionView) {
+            self.promotionView.alpha = 0
+        }
         performSegue(withIdentifier: "food", sender: nil)
     }
     
@@ -227,9 +245,9 @@ extension MainScreenViewController: PromotionViewDelegate {
             delay: 0.0,
             options: .curveLinear,
             animations: {
-                self.foodTaxiView.frame.origin.y += (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
-                self.promotionView.frame.origin.y += (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
-                self.promotionDetailView.frame.origin.y -= self.view.bounds.height
+                self.foodTaxiView.frame.origin.y = self.view.bounds.height + MainScreenConstants.promotionViewHeight + MainScreenConstants.foodTaxiYOffset
+                self.promotionView.frame.origin.y = self.view.bounds.height
+                self.promotionDetailView.frame.origin.y = 0
             })
     }
 }
@@ -247,16 +265,20 @@ extension MainScreenViewController: PromotionDetailDelegate {
             delay: 0.0,
             options: .curveLinear,
             animations: {
-                self.foodTaxiView.frame.origin.y -= (MainScreenConstants.foodTaxiViewHeight + self.bottomSafeAreaConstant)
-                self.promotionView.frame.origin.y -= (MainScreenConstants.promotionViewYOffset + self.bottomSafeAreaConstant)
+                self.resetFrames()
             })
     }
+   
 }
 
+//MARK: - FoodMainDelegate
 
 extension MainScreenViewController: FoodMainDelegate {
     
     func done() {
         transparentView.isHidden = true
+        UIView.animate(withDuration: MainScreenConstants.durationForAppearingPromotionView) {
+            self.promotionView.alpha = 1
+        }
     }
 }

@@ -201,6 +201,7 @@ class AddCardViewController: UIViewController {
         }
     }
     
+
 //    private func animationAddScores() {
 //        
 //        //if let cardNumber = inputCardNumber {
@@ -218,9 +219,7 @@ class AddCardViewController: UIViewController {
 //            self.view.superview?.layoutIfNeeded()
 //        }
 //    }
-    
 
-    
     //Регистрируем уведомления на пояаление клавиатуры
     func registerForKeyboardNotification() {
         

@@ -6,6 +6,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     var place = String()
     var address = String()
     var shops = [Shop]()
+    
     //MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -13,10 +14,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         topRoundedView.cornerRadius = 10.0
         topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
     }}
-    @IBOutlet weak var twoTopCornersRoundedView: UIView! { didSet {
-        twoTopCornersRoundedView.layer.cornerRadius = 15.0
-        twoTopCornersRoundedView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-    }}
+    @IBOutlet weak var twoTopCornersRoundedView: TopRoundedView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var placeLabel: UILabel! { didSet {
         placeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
@@ -26,7 +25,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         addressLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
         addressLabel.text = address
     }}
-
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
     //MARK: - ViewController lifecycle
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +34,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         ShopFetcher.fetch { [weak self] in
             self?.shops = $0
             self?.collectionView.reloadData()
+            self?.updateUI()
         }
     }
     
@@ -68,4 +69,26 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
                 destination.shopName = shops[indexPath.item].name
         }
     }
+    
+    //MARK: - UI update
+    
+    private func updateUI() {
+        let padding: CGFloat = 10.0
+        let totalOffset: CGFloat = padding*3
+        let rows = CGFloat((shops.count + 1)/2)
+        let height = (view.bounds.width - totalOffset)/4.0*rows + padding*(rows+1)
+        
+        collectionViewHeightConstraint.constant = height
+        
+        UIView.animate(withDuration: FoodConstants.durationForLiftingShopView) {
+            self.view.layoutIfNeeded()
+        } completion: { [weak self] in
+            if $0 {
+                self?.spinner.stopAnimating()
+            }
+        }
+
+        
+    }
+    
 }

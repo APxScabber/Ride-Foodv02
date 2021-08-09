@@ -32,7 +32,22 @@ class PersistanceManager {
         }
     }
     
-    
+    func deleteData() {
+       
+       
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAddressMO")
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for managedObject in results {
+                if let managedObjectData: NSManagedObject = managedObject as? NSManagedObject {
+                    context.delete(managedObjectData)
+                }
+            }
+        } catch let error as NSError {
+            print("Deleted all my data in myEntity error : \(error) \(error.userInfo)")
+        }
+    }
     
     
     

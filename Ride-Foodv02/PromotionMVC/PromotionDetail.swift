@@ -16,9 +16,8 @@ class PromotionDetail: UIView {
         buyButtonView.colorToFill = .white
         buyButtonView.cornerRadius = 15.0
     }}
-    @IBOutlet weak var imageView: UIImageView! { didSet {
-        
-    }}
+    @IBOutlet weak var imageView: UIImageView!
+    
     @IBOutlet weak var headerLabel: UILabel! { didSet {
         headerLabel.font = UIFont.SFUIDisplayBold(size: 26)
     }}
@@ -36,12 +35,7 @@ class PromotionDetail: UIView {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     @IBAction func dismiss(_ sender: UIButton) {
-        bottomConstraint.constant = 10.0
-        errorDescriptionLabel.isHidden = true
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PromotionConstant.durationForAppearingPromotionView, delay: 0.0, options: .curveLinear) {
-            self.frame.origin.y += self.bounds.height
-        }
-        delegate?.dismiss()
+        done()
     }
     
     @IBAction func buyButtonAction(_ sender: UIButton) {
@@ -51,4 +45,32 @@ class PromotionDetail: UIView {
         }
     }
     
+    @objc
+    private func done() {
+        bottomConstraint.constant = 10.0
+        errorDescriptionLabel.isHidden = true
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PromotionConstant.durationForAppearingPromotionView, delay: 0.0, options: .curveLinear) {
+            self.frame.origin.y += self.bounds.height
+        }
+        delegate?.dismiss()
+    }
+    
+    
+    //MARK: - Init
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    private func setup() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(done))
+        swipe.direction = .down
+        addGestureRecognizer(swipe)
+    }
 }

@@ -13,7 +13,7 @@ class VBTextView: UIView {
     
     public var placeholderLabel = UILabel()
     
-    let bottomView = UIView()
+    public var bottomView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
