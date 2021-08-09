@@ -172,6 +172,8 @@
 		C4A9D77626B9E49D001894F8 /* PaymentHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D77526B9E49D001894F8 /* PaymentHistoryViewController.swift */; };
 		C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D77726B9E4B0001894F8 /* PaymentHistoryInteractor.swift */; };
 		C4A9D77B26B9E6BE001894F8 /* PaymentHistoryText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D77A26B9E6BE001894F8 /* PaymentHistoryText.swift */; };
+		C4A9D7A726C00932001894F8 /* PaymentHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D7A626C00932001894F8 /* PaymentHistoryTableViewCell.swift */; };
+		C4A9D7A926C0FFC3001894F8 /* PaymentHistoryBigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D7A826C0FFC3001894F8 /* PaymentHistoryBigViewController.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
@@ -350,6 +352,8 @@
 		C4A9D77526B9E49D001894F8 /* PaymentHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewController.swift; sourceTree = "<group>"; };
 		C4A9D77726B9E4B0001894F8 /* PaymentHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryInteractor.swift; sourceTree = "<group>"; };
 		C4A9D77A26B9E6BE001894F8 /* PaymentHistoryText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryText.swift; sourceTree = "<group>"; };
+		C4A9D7A626C00932001894F8 /* PaymentHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		C4A9D7A826C0FFC3001894F8 /* PaymentHistoryBigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryBigViewController.swift; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -874,6 +878,8 @@
 				C4A9D77326B9E484001894F8 /* PaymentHistory.storyboard */,
 				C4A9D77526B9E49D001894F8 /* PaymentHistoryViewController.swift */,
 				C4A9D77726B9E4B0001894F8 /* PaymentHistoryInteractor.swift */,
+				C4A9D7A626C00932001894F8 /* PaymentHistoryTableViewCell.swift */,
+				C4A9D7A826C0FFC3001894F8 /* PaymentHistoryBigViewController.swift */,
 			);
 			path = PaymentsHistory;
 			sourceTree = "<group>";
@@ -1065,6 +1071,7 @@
 				78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */,
 				78A39FE5267B55EC006D0DAB /* LoadManager.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
+				C4A9D7A926C0FFC3001894F8 /* PaymentHistoryBigViewController.swift in Sources */,
 				C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */,
 				78A3A01B267B57D7006D0DAB /* LoginInteractor.swift in Sources */,
 				787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */,
@@ -1098,6 +1105,7 @@
 				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
 				78F1A97B26A8949000E16084 /* PaymentWaysTableViewCell.swift in Sources */,
+				C4A9D7A726C00932001894F8 /* PaymentHistoryTableViewCell.swift in Sources */,
 				78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */,
 				7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */,
 				78AEB87B267B59C10023605D /* LoginVCExtension.swift in Sources */,

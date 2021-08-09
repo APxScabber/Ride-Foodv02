@@ -273,19 +273,28 @@ extension PaymentWaysViewController: UITableViewDelegate {
                 }
             }
         } else {
-            switch indexPath.row {
-            case 0:
-                let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "AddCard") as! AddCardViewController
-                navigationController?.pushViewController(vc, animated: true)
-            case 1:
+            
+            if textPaymentOptions[1].count == 1 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "TotalScores") as! TotalScoreViewController
                 vc.modalPresentationStyle = .formSheet
                 vc.userID = paymentWaysInteractor.userID
                 present(vc, animated: true, completion: nil)
-            default :
-                print("???????")
+            } else {
+                switch indexPath.row {
+                case 0:
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "AddCard") as! AddCardViewController
+                    navigationController?.pushViewController(vc, animated: true)
+                case 1:
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "TotalScores") as! TotalScoreViewController
+                    vc.modalPresentationStyle = .formSheet
+                    vc.userID = paymentWaysInteractor.userID
+                    present(vc, animated: true, completion: nil)
+                default :
+                    print("???????")
+                }
             }
         }
             
