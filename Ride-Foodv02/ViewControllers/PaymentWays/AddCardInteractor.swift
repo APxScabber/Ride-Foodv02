@@ -11,7 +11,6 @@ import UIKit
 class AddCardInteractor {
     
     var userID: String?
-   // var cardID: Int?
     
     func postCardData(passData: [String : String], completion: @escaping (PaymentWaysModel?) -> Void) {
         

@@ -45,7 +45,7 @@ class CoreDataManager {
         let userData = UserDataMO(context: saveContext)
         let userSettings = UserSettingsMO(context: saveContext)
         
-        userSettings.language = model.setting?.language
+        userSettings.language = model.setting?.language != nil ? model.setting?.language : "rus"
         userSettings.do_not_call = ((model.setting?.do_not_call) != nil)
         userSettings.notification_discount = ((model.setting?.notification_discount) != nil)
         userSettings.update_mobile_network = ((model.setting?.update_mobile_network) != nil)

@@ -62,7 +62,7 @@ enum PaymentMainViewText {
         case .bankCardTV:
             return "Bank card"
         case .scoresTV:
-            return "Scores"
+            return "Credits"
         case .addCardTV:
             return "Add card"
         }

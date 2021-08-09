@@ -11,6 +11,7 @@ import Foundation
 enum UserDefaultKeys: String {
     case userSettings = "userSettings"
     case language = "language"
+    case firstEnter = "firstEnter"
 }
 
 //Перечень значений используемых в UserDefaults

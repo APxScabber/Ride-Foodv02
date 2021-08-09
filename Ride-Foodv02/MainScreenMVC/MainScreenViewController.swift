@@ -58,12 +58,16 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
     
+
+    // MARK: - viewDidLoad
+
     // MARK: - Properties
 
     private var bottomSafeAreaConstant: CGFloat = 0
 
     // MARK: - ViewController lifecycle
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.delegate = self

@@ -7,48 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3440EE72-6A8B-407F-9FAD-40BDE37042F1"
+            uuid = "03241566-D70C-408C-BDEA-32AFBE7C7C03"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ride-Foodv02/MainScreenMVC/MainScreenViewController.swift"
+            filePath = "Ride-Foodv02/ViewControllers/Login/ConfirmInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "loadTariffs(userID:)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "passConfirmationCode(phoneNumber:code:compitition:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AAD4C356-9DA7-4EDF-9D4F-1063EE547D1A"
+            uuid = "DDF5587A-363A-42C7-B4CE-0C6F5245AB5C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ride-Foodv02/Managers/LoadManager.swift"
+            filePath = "Ride-Foodv02/Managers/CoreDataManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "loadData(of:from:httpMethod:passData:completion:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "saveCoreData(model:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E80EC30B-6A9D-46AC-B687-0D75B7A352FD"
+            uuid = "5E244ABD-B3A3-4F3E-9B22-036E02552B55"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Ride-Foodv02/Managers/LoadManager.swift"
+            filePath = "Ride-Foodv02/ViewControllers/PaymentsHistory/PaymentHistoryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "loadData(of:from:httpMethod:passData:completion:)"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "753532D8-5C16-4A14-B3A1-25FA86C0B8E2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ride-Foodv02/ViewControllers/PaymentsHistory/PaymentHistoryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "tableView(_:heightForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
