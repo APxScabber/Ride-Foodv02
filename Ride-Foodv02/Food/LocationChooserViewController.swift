@@ -36,11 +36,8 @@ class LocationChooserViewController: UIViewController {
         roundedView.cornerRadius = 15.0
         roundedView.colorToFill = location.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
     }}
-    @IBOutlet weak var twoCornerRoundedView: UIView! { didSet {
-        twoCornerRoundedView.backgroundColor = .white
-        twoCornerRoundedView.layer.cornerRadius = 15.0
-        twoCornerRoundedView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-    }}
+    @IBOutlet weak var twoCornerRoundedView: TopRoundedView!
+    
     @IBOutlet weak var confirmButton: UIButton! { didSet {
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
         confirmButton.isUserInteractionEnabled = !location.isEmpty
@@ -72,24 +69,13 @@ class LocationChooserViewController: UIViewController {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
-            
-            findAddressAt(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
-        }
-    }
-    
-    private func findAddressAt(_ location:CLLocation) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(location) { placemarks, Error in
-                if let foundPlacemark = placemarks?.first {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.location = foundPlacemark.name ?? ""
-                        self?.locationImageView.isHidden = false
-                    }
-                }
+            CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { [weak self] in
+                self?.location = $0
+                self?.locationImageView.isHidden = false
             }
         }
     }
+    
 }
 
 //MARK: - MapViewDelegate

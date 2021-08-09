@@ -81,6 +81,7 @@
                         <outlet property="menuButton" destination="H3X-Kz-mo5" id="hU7-0Q-392"/>
                         <outlet property="transparentView" destination="9n1-8u-98A" id="tBg-Au-u7o"/>
                         <segue destination="POX-Kv-Tnz" kind="presentation" identifier="food" modalPresentationStyle="currentContext" id="6EO-Q9-Yro"/>
+                        <segue destination="clx-qq-uh9" kind="presentation" identifier="taxi" modalPresentationStyle="currentContext" id="zgO-Zl-95R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rty-fQ-cBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -94,6 +95,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUZ-O3-Ggm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="168" y="56"/>
+        </scene>
+        <!--Taxi-->
+        <scene sceneID="HEX-BY-Kzj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Taxi" id="clx-qq-uh9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kH2-FV-9qT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="153"/>
         </scene>
     </scenes>
     <resources>
