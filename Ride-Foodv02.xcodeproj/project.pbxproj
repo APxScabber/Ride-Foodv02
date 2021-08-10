@@ -83,7 +83,6 @@
 		7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4D426722DC10031BFA0 /* SettingsMainLabel.swift */; };
 		7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4D6267238D20031BFA0 /* LanguageSelectionTableViewController.swift */; };
 		7867B4DB26723FA50031BFA0 /* SettingsConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DA26723FA50031BFA0 /* SettingsConstant.swift */; };
-		7867B4DD26723FD10031BFA0 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */; };
 		7867B4DF2672411C0031BFA0 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4DE2672411C0031BFA0 /* PersonalInfoViewController.swift */; };
 		7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */; };
 		787140C6268637E6007834ED /* Promocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787140C5268637E6007834ED /* Promocode.storyboard */; };
@@ -276,7 +275,6 @@
 		7867B4D426722DC10031BFA0 /* SettingsMainLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainLabel.swift; sourceTree = "<group>"; };
 		7867B4D6267238D20031BFA0 /* LanguageSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionTableViewController.swift; sourceTree = "<group>"; };
 		7867B4DA26723FA50031BFA0 /* SettingsConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConstant.swift; sourceTree = "<group>"; };
-		7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		7867B4DE2672411C0031BFA0 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		7867B4E2267392EF0031BFA0 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		787140C5268637E6007834ED /* Promocode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promocode.storyboard; sourceTree = "<group>"; };
@@ -451,7 +449,6 @@
 				7867B4D6267238D20031BFA0 /* LanguageSelectionTableViewController.swift */,
 				7867B4D426722DC10031BFA0 /* SettingsMainLabel.swift */,
 				7867B4DA26723FA50031BFA0 /* SettingsConstant.swift */,
-				7867B4DC26723FD10031BFA0 /* SettingsHeaderView.swift */,
 				7867B4DE2672411C0031BFA0 /* PersonalInfoViewController.swift */,
 				7802DFC6267D00480048CF1C /* PersonalInfoConstant.swift */,
 				787D4B602677A73E002D975D /* ToolbarView.xib */,
@@ -1176,7 +1173,6 @@
 				78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */,
 				C47892C6267B97DB00B4C737 /* TariffsModel.swift in Sources */,
 				78F1A98726A894E100E16084 /* PaymentWaysColor.swift in Sources */,
-				7867B4DD26723FD10031BFA0 /* SettingsHeaderView.swift in Sources */,
 				78A39FF6267B568E006D0DAB /* UserSettingsMO+CoreDataClass.swift in Sources */,
 				78ACFD0726A5984C00C995EB /* PromocodeTableViewCell.swift in Sources */,
 				7841E3AB26A837A300335DFA /* TariffsViewText.swift in Sources */,
