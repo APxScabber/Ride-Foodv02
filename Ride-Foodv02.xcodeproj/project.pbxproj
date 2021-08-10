@@ -58,8 +58,6 @@
 		785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D38AF26AB09E700DAB562 /* PromotionView.swift */; };
 		785F5D8626C11CDB004503CB /* Taxi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785F5D8526C11CDB004503CB /* Taxi.storyboard */; };
 		785F5D8826C11D00004503CB /* TaxiMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D8726C11D00004503CB /* TaxiMainVC.swift */; };
-		785F5D8A26C11DF4004503CB /* AddressesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785F5D8926C11DF4004503CB /* AddressesView.xib */; };
-		785F5D8C26C11E01004503CB /* AddressesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D8B26C11E01004503CB /* AddressesView.swift */; };
 		785F5D8E26C15D41004503CB /* TaxiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D8D26C15D41004503CB /* TaxiConstant.swift */; };
 		785F5D9026C16243004503CB /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D8F26C16243004503CB /* CLLocation+Extensions.swift */; };
 		785F5D9226C16E8D004503CB /* TopRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D9126C16E8D004503CB /* TopRoundedView.swift */; };
@@ -249,8 +247,6 @@
 		785D38AF26AB09E700DAB562 /* PromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
 		785F5D8526C11CDB004503CB /* Taxi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Taxi.storyboard; sourceTree = "<group>"; };
 		785F5D8726C11D00004503CB /* TaxiMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainVC.swift; sourceTree = "<group>"; };
-		785F5D8926C11DF4004503CB /* AddressesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressesView.xib; sourceTree = "<group>"; };
-		785F5D8B26C11E01004503CB /* AddressesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesView.swift; sourceTree = "<group>"; };
 		785F5D8D26C15D41004503CB /* TaxiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiConstant.swift; sourceTree = "<group>"; };
 		785F5D8F26C16243004503CB /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		785F5D9126C16E8D004503CB /* TopRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRoundedView.swift; sourceTree = "<group>"; };
@@ -482,8 +478,6 @@
 			children = (
 				785F5D8526C11CDB004503CB /* Taxi.storyboard */,
 				785F5D8726C11D00004503CB /* TaxiMainVC.swift */,
-				785F5D8926C11DF4004503CB /* AddressesView.xib */,
-				785F5D8B26C11E01004503CB /* AddressesView.swift */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
 			);
 			path = Taxi;
@@ -1089,7 +1083,6 @@
 				785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */,
 				787A83DA26AB2D330096DFC3 /* UserProfile.storyboard in Resources */,
 				7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */,
-				785F5D8A26C11DF4004503CB /* AddressesView.xib in Resources */,
 				78A3A01A267B57D7006D0DAB /* Login.storyboard in Resources */,
 				787A83EB26AB2DA40096DFC3 /* Addresses.storyboard in Resources */,
 			);
@@ -1218,7 +1211,6 @@
 				7841E3A426A8362500335DFA /* TariffsInteractor.swift in Sources */,
 				78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */,
 				782D45DC26B038BE006B3A98 /* FoodConstants.swift in Sources */,
-				785F5D8C26C11E01004503CB /* AddressesView.swift in Sources */,
 				78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */,
 				785F5D9026C16243004503CB /* CLLocation+Extensions.swift in Sources */,
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,

@@ -110,6 +110,9 @@ class MainScreenViewController: UIViewController {
             destination.place = foodTaxiView.placeLabel.text ?? ""
             destination.delegate = self
             destination.region = mapView.region
+        } else if segue.identifier == "taxi",
+                  let destination = segue.destination as? TaxiMainVC {
+            destination.fromAddress = foodTaxiView.placeLabel.text ?? ""
         }
     }
     
