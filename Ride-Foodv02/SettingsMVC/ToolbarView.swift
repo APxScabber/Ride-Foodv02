@@ -54,7 +54,7 @@ class ToolbarView: UIView {
     //MARK: - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
-        button.setTitle(PersonalInfoConstant.confirm, for: .normal)
+        button.setTitle(Localizable.PersonalInfo.confirm.localized, for: .normal)
     }
     
     //MARK: - Helper

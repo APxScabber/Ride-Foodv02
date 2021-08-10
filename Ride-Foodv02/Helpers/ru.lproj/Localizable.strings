@@ -9,6 +9,7 @@
 "automaticUpdateMessage" = "Автоматическое обновление данных геолокации";
 "locationUpdateMessage" = "Обновлять по сотовой сети";
 "settings" = "Настройки";
+"name" = "Имя";
 
 //MARK: - Menu
 

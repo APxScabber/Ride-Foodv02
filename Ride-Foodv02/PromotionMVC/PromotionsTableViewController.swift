@@ -2,22 +2,37 @@ import UIKit
 
 class PromotionsTableViewController: UITableViewController {
 
+    //MARK: - API
+    
+    var shouldDismiss = true
+    private var promotionType: [PromotionsFetcher.PromotionType] = [.food,.taxi]
+
+    //MARK: - Outlets
     @IBOutlet weak var foodLabel: UILabel! { didSet {
-        foodLabel.text = PromotionConstant.food
+        foodLabel.text = Localizable.Promotion.food.localized
     }}
     @IBOutlet weak var taxiLabel: UILabel! { didSet {
-        taxiLabel.text = PromotionConstant.taxi
+        taxiLabel.text = Localizable.Promotion.taxi.localized
     }}
+    
+    //MARK: - Actions
+    
     @IBAction func dismiss(_ sender:UIBarButtonItem) {
-        dismiss(animated: true)
+        if shouldDismiss {
+            dismiss(animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
-    private var promotionType: [PromotionsFetcher.PromotionType] = [.food,.taxi]
+    //MARK: - Segue
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = PromotionConstant.promotion
+        navigationItem.title = Localizable.Promotion.promotion.localized
     }
+    
+    //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "promotionList",

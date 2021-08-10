@@ -54,7 +54,7 @@ class SettingsMainViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 2 {
-            return SettingsHeaderView.createWith(SettingsConstant.automaticUpdateMessage, in: self.view)
+            return createWith(Localizable.Settings.automaticUpdateMessage.localized, in: self.view)
         }
         return nil
     }
@@ -66,14 +66,34 @@ class SettingsMainViewController: UITableViewController {
     //MARK: - UpdateUI()
     
     private func updateUI() {
-        navigationItem.title = SettingsConstant.settings
-        languageLabel.text = SettingsConstant.language
-        languageChosenLabel.text = SettingsConstant.languageChosen
-        personalInfoLabel.text = SettingsConstant.personalInfo
-        pushNotificationLabel.text = SettingsConstant.pushNotification
-        promotionsLabel.text = SettingsConstant.promotionsNotification
-        promotionsAvailableLabel.text = SettingsConstant.promotionsAvailable
-        cellularLabel.text = SettingsConstant.locationUpdateMessage
+        navigationItem.title = Localizable.Settings.settings.localized
+        languageLabel.text = Localizable.Settings.language.localized
+        languageChosenLabel.text = Localizable.Settings.languageChosen.localized
+        personalInfoLabel.text = Localizable.Settings.personalInfo.localized
+        pushNotificationLabel.text = Localizable.Settings.pushNotification.localized
+        promotionsLabel.text = Localizable.Settings.promotionsNotification.localized
+        promotionsAvailableLabel.text = Localizable.Settings.promotionsAvailable.localized
+        cellularLabel.text = Localizable.Settings.locationUpdateMessage.localized
     }
     
+    private func createWith(_ text:String, in view:UIView) -> UIView {
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
+        let label = UILabel(frame: CGRect(x: 25, y: 0, width: view.bounds.width - 25, height: 14))
+        var attributes = [NSAttributedString.Key:Any]()
+        attributes[.font] = UIFont.SFUIDisplayRegular(size:12)
+        attributes[.foregroundColor] = UIColor.SettingsHeaderColor
+        let attString = NSAttributedString(string: text,attributes: attributes)
+        label.attributedText = attString
+        customView.addSubview(label)
+        return customView
+    }
+    
+    //MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "promotionSegue",
+           let destination = segue.destination as? PromotionsTableViewController {
+            destination.shouldDismiss = false
+        }
+    }
 }

@@ -40,14 +40,14 @@ class PersonalInfoViewController: UIViewController {
     
     @IBAction func enterName(_ sender: UIButton) {
         yOffset = sender.convert(sender.frame.origin, to: scrollView).y + sender.bounds.height
-        toolBarView.text = PersonalInfoConstant.nameQuestion
+        toolBarView.text = Localizable.PersonalInfo.nameQuestion.localized
         activateToolbar()
         toolBarView.state = .name
     }
     
     @IBAction func enterEmail(_ sender: UIButton) {
         yOffset = sender.convert(sender.frame.origin, to: scrollView).y + sender.bounds.height
-        toolBarView.text = PersonalInfoConstant.emailQuestion
+        toolBarView.text = Localizable.PersonalInfo.emailQuestion.localized
         activateToolbar()
         toolBarView.state = .email
     }
@@ -62,7 +62,7 @@ class PersonalInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = PersonalInfoConstant.personalInfo
+        navigationItem.title = Localizable.PersonalInfo.personalInfo.localized
         updateUI()
     }
     
@@ -79,9 +79,9 @@ class PersonalInfoViewController: UIViewController {
     
         
     private func updateUI() {
-        nameLabel.text = PersonalInfoConstant.name
-        nameChoserLabel.text = PersonalInfoConstant.nameQuestion
-        emailChoserLabel.text = PersonalInfoConstant.emailQuestion
+        nameLabel.text = Localizable.PersonalInfo.name.localized
+        nameChoserLabel.text = Localizable.PersonalInfo.nameQuestion.localized
+        emailChoserLabel.text = Localizable.PersonalInfo.emailQuestion.localized
         privacyLabel.attributedText = PersonalInfoConstant.privacyText
         CoreDataManager.shared.fetchCoreData { [weak self] result in
         switch result {

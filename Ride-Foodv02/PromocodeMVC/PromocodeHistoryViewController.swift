@@ -5,14 +5,14 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
  
     @IBOutlet weak var segmentedControl: UISegmentedControl! { didSet {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
-        segmentedControl.setTitle(PromocodeConstant.active, forSegmentAt: 0)
-        segmentedControl.setTitle(PromocodeConstant.inactivate, forSegmentAt: 1)
+        segmentedControl.setTitle(Localizable.Promocode.active.localized, forSegmentAt: 0)
+        segmentedControl.setTitle(Localizable.Promocode.inactivate.localized, forSegmentAt: 1)
     }}
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel! { didSet {
         infoLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
-        infoLabel.text = PromocodeConstant.promocodeDescription
+        infoLabel.text = Localizable.Promocode.promocodeDescription.localized
     }}
     @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
     
@@ -20,7 +20,7 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = PromocodeConstant.historyUsage
+        navigationItem.title = Localizable.Promocode.historyUsage.localized
     }
     
 

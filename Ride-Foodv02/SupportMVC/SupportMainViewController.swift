@@ -56,9 +56,9 @@ class SupportMainViewController: UIViewController {
         nextButtonView.colorToFill = text.count < SupportConstant.minimumLeters ? UIColor.supportNextButtonInActiveColor : UIColor.SupportNextButtonActiveColor
         nextButton.isUserInteractionEnabled = text.count >= SupportConstant.minimumLeters
         textViewLabelDescription.isHidden = !text.isEmpty
-        nextButton.setTitle(SupportConstant.next, for: .normal)
-        textViewLabelDescription.text = SupportConstant.problemDesc
-        navigationItem.title = MenuConstant.support
+        nextButton.setTitle(Localizable.Support.next.localized, for: .normal)
+        textViewLabelDescription.text = Localizable.Support.problemDesc.localized
+        navigationItem.title = Localizable.Menu.support.localized
     }
 
     @objc

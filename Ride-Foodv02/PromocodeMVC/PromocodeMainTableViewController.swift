@@ -4,11 +4,11 @@ class PromocodeMainTableViewController: UITableViewController {
 
 
     @IBOutlet weak var enterPromocodeLabel: SettingsMainLabel! { didSet {
-        enterPromocodeLabel.text = PromocodeConstant.enterPromocode
+        enterPromocodeLabel.text = Localizable.Promocode.enterPromocode.localized
     }}
     
     @IBOutlet weak var usageHistoryLabel: SettingsMainLabel! { didSet {
-        usageHistoryLabel.text = PromocodeConstant.historyUsage
+        usageHistoryLabel.text = Localizable.Promocode.historyUsage.localized
     }}
     
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
@@ -17,7 +17,7 @@ class PromocodeMainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = PromocodeConstant.promocode
+        navigationItem.title = Localizable.Promocode.promocode.localized
     }
 
 }

@@ -26,15 +26,15 @@ class FoodMainVC: UIViewController {
     @IBOutlet weak var underbarLineView: UIView!
     @IBOutlet weak var confirmButton: UIButton! { didSet {
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        confirmButton.setTitle(FoodConstants.confirm, for: .normal)
+        confirmButton.setTitle(Localizable.Food.confirm.localized, for: .normal)
     }}
     
     @IBOutlet weak var mapButton: UIButton! { didSet {
         mapButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 12.0)
-        mapButton.setTitle(FoodConstants.map, for: .normal)
+        mapButton.setTitle(Localizable.Food.map.localized, for: .normal)
     }}
     @IBOutlet weak var textField: UITextField! { didSet {
-        textField.placeholder = FoodConstants.enterAdress
+        textField.placeholder = Localizable.Food.enterAdress.localized
         textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }}
     @IBOutlet weak var tableView: UITableView!

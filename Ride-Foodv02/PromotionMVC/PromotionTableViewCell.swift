@@ -13,7 +13,7 @@ class PromotionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var detailsButton: UIButton! { didSet {
         detailsButton.addTarget(self, action: #selector(buttonTouched), for: .touchUpInside)
-        detailsButton.setTitle(PromotionConstant.more, for: .normal)
+        detailsButton.setTitle(Localizable.Promotion.more.localized, for: .normal)
     }}
     @IBOutlet weak private var roundedView: RoundedView! { didSet {
         roundedView.colorToFill = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3046511214)

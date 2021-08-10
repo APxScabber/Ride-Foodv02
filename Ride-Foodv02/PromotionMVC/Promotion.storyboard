@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n0b-2t-mdo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e0a-xE-yUS">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Акции-->
+        <!--Promotions Table View Controller-->
         <scene sceneID="sZp-aE-j4z">
             <objects>
                 <tableViewController id="PP9-WH-90b" customClass="PromotionsTableViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,11 +79,11 @@
                             <outlet property="delegate" destination="PP9-WH-90b" id="dgL-6i-TVU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Акции" id="DQp-2O-o1f">
-                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="mP7-Lh-hOn">
+                    <navigationItem key="navigationItem" id="bjC-Du-Uvu">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="dB5-t4-umg">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="dismiss:" destination="PP9-WH-90b" id="XeK-QW-uJg"/>
+                                <action selector="dismiss:" destination="PP9-WH-90b" id="ZfM-Ia-qGm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,7 +94,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKp-rx-rbV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168.1159420289855" y="18.75"/>
+            <point key="canvasLocation" x="3986.9565217391309" y="18.75"/>
         </scene>
         <!--Акции еда-->
         <scene sceneID="j8q-wK-mYX">
@@ -194,25 +194,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEO-vX-vS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3007.2463768115945" y="18.75"/>
+            <point key="canvasLocation" x="4827.536231884058" y="18.75"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ALZ-KY-I6a">
+        <scene sceneID="uV4-mW-OJD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n0b-2t-mdo" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e0a-xE-yUS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8J-zz-qaL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zvT-jr-5uA">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PP9-WH-90b" kind="relationship" relationship="rootViewController" id="k1m-gF-5P2"/>
+                        <segue destination="PP9-WH-90b" kind="relationship" relationship="rootViewController" id="anH-zg-M7X"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2iF-Pz-phR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTb-DP-iBg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257.9710144927537" y="18.75"/>
+            <point key="canvasLocation" x="3076.811594202899" y="18.75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

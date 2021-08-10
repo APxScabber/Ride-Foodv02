@@ -6,7 +6,7 @@ class PromotionListTableViewController: UITableViewController {
     private let promotionView = PromotionDetail.initFromNib()
 
     var promotionType: PromotionsFetcher.PromotionType = .food { didSet {
-        navigationItem.title = PromotionConstant.promotion + " " + promotionType.rawValue.localized.lowercased()
+        navigationItem.title = Localizable.Promotion.promotion.localized + " " + promotionType.rawValue.localized.lowercased()
     }}
     
     @IBAction func dismiss() {
