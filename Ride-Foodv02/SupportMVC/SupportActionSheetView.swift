@@ -67,9 +67,9 @@ class SupportActionSheetView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        captureLabel.text = SupportConstant.capture
-        cancelLabel.text = SupportConstant.cancel
-        libraryLabel.text = SupportConstant.library
+        captureLabel.text = Localizable.Support.capture.localized
+        cancelLabel.text = Localizable.Support.cancel.localized
+        libraryLabel.text = Localizable.Support.library.localized
 
     }
     

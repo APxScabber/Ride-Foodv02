@@ -14,7 +14,7 @@ class EnterPromocodeViewController: UIViewController {
     }}
     @IBOutlet weak var promocodeLabel: UILabel! { didSet {
         promocodeLabel.font = UIFont.SFUIDisplaySemibold(size: 17)
-        promocodeLabel.text = PromocodeConstant.promocodeActivated
+        promocodeLabel.text = Localizable.Promocode.promocodeActivated.localized
     }}
     @IBOutlet weak var promocodeDescriptionLabel: UILabel! { didSet {
         promocodeDescriptionLabel.font = UIFont.SFUIDisplayLight(size: 17)
@@ -34,7 +34,7 @@ class EnterPromocodeViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         promocodeToolbar.delegate = self
-        navigationItem.title = PromocodeConstant.enterPromocode
+        navigationItem.title = Localizable.Promocode.enterPromocode.localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +75,7 @@ extension EnterPromocodeViewController: PromocodeToolbarDelegate {
         promocodeLabel.isHidden = false
         promocodeDescriptionLabel.isHidden = false
         promocodeToolbar.dismiss()
-        doneButton.setTitle(PromocodeConstant.done, for: .normal)
+        doneButton.setTitle(Localizable.Promocode.done.localized, for: .normal)
         PromocodeActivator.post(code: promocode) { [weak self] in
             self?.promocodeDescriptionLabel.text = $0
         }

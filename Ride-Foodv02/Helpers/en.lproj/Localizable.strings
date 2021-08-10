@@ -9,6 +9,7 @@
 "automaticUpdateMessage" = "Automatic updating of geolocation data";
 "locationUpdateMessage" = "Update over cellular network";
 "settings" = "Settings";
+"name" = "Name";
 
 //MARK: - Menu
 

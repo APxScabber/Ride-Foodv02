@@ -3,19 +3,14 @@ import UIKit
 
 struct PersonalInfoConstant {
     
-    static var name:String { "name".localized }
-    static var nameQuestion:String { "nameQuestion".localized }
-    static var emailQuestion:String { "emailQuestion".localized }
-    static var personalInfo:String { "personalInfo".localized }
-    static var confirm:String { "confirm".localized }
     static let toolbarHeight: CGFloat = 152.0
 
     static let durationForAppearingToolbarView = 0.25
     
-    static private var privacyFirst:String { "privacyFirst".localized }
-    static private var privacySecond:String { "privacySecond".localized }
-    static private var privacyThird:String { "privacyThird".localized }
-    static private var privacyFourth:String { "privacyFourth".localized }
+    static private var privacyFirst:String { Localizable.PersonalInfo.privacyFirst.localized }
+    static private var privacySecond:String { Localizable.PersonalInfo.privacySecond.localized }
+    static private var privacyThird:String { Localizable.PersonalInfo.privacyThird.localized }
+    static private var privacyFourth:String { Localizable.PersonalInfo.privacyFourth.localized }
 
     static var privacyText:NSMutableAttributedString {
         let attrString = NSMutableAttributedString()

@@ -9,10 +9,10 @@ class PromotionsTableViewController: UITableViewController {
 
     //MARK: - Outlets
     @IBOutlet weak var foodLabel: UILabel! { didSet {
-        foodLabel.text = PromotionConstant.food
+        foodLabel.text = Localizable.Promotion.food.localized
     }}
     @IBOutlet weak var taxiLabel: UILabel! { didSet {
-        taxiLabel.text = PromotionConstant.taxi
+        taxiLabel.text = Localizable.Promotion.taxi.localized
     }}
     
     //MARK: - Actions
@@ -29,7 +29,7 @@ class PromotionsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = PromotionConstant.promotion
+        navigationItem.title = Localizable.Promotion.promotion.localized
     }
     
     //MARK: - Segue

@@ -54,7 +54,7 @@ class SettingsMainViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 2 {
-            return createWith(Localizable.SettingsEnum.automaticUpdateMessage.localized, in: self.view)
+            return createWith(Localizable.Settings.automaticUpdateMessage.localized, in: self.view)
         }
         return nil
     }
@@ -66,14 +66,14 @@ class SettingsMainViewController: UITableViewController {
     //MARK: - UpdateUI()
     
     private func updateUI() {
-        navigationItem.title = Localizable.SettingsEnum.settings.localized
-        languageLabel.text = Localizable.SettingsEnum.language.localized
-        languageChosenLabel.text = Localizable.SettingsEnum.languageChosen.localized
-        personalInfoLabel.text = Localizable.SettingsEnum.personalInfo.localized
-        pushNotificationLabel.text = Localizable.SettingsEnum.pushNotification.localized
-        promotionsLabel.text = Localizable.SettingsEnum.promotionsNotification.localized
-        promotionsAvailableLabel.text = Localizable.SettingsEnum.promotionsAvailable.localized
-        cellularLabel.text = Localizable.SettingsEnum.locationUpdateMessage.localized
+        navigationItem.title = Localizable.Settings.settings.localized
+        languageLabel.text = Localizable.Settings.language.localized
+        languageChosenLabel.text = Localizable.Settings.languageChosen.localized
+        personalInfoLabel.text = Localizable.Settings.personalInfo.localized
+        pushNotificationLabel.text = Localizable.Settings.pushNotification.localized
+        promotionsLabel.text = Localizable.Settings.promotionsNotification.localized
+        promotionsAvailableLabel.text = Localizable.Settings.promotionsAvailable.localized
+        cellularLabel.text = Localizable.Settings.locationUpdateMessage.localized
     }
     
     private func createWith(_ text:String, in view:UIView) -> UIView {

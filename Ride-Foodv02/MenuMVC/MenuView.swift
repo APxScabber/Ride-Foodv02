@@ -77,14 +77,14 @@ class MenuView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        menuLabel.text = MenuConstant.menu
-        settingsLabel.text = MenuConstant.settings
-        supportLabel.text = MenuConstant.support
-        paymentWaysLabel.text = MenuConstant.paymentWays
-        tariffsLabel.text = MenuConstant.tariffs
-        promocodeLabel.text = MenuConstant.promocode
-        promotionLabel.text = MenuConstant.promotions
-        aboutAppLabel.text = MenuConstant.aboutThisApp
+        menuLabel.text = Localizable.Menu.menu.localized
+        settingsLabel.text = Localizable.Menu.settings.localized
+        supportLabel.text = Localizable.Menu.support.localized
+        paymentWaysLabel.text = Localizable.Menu.paymentWays.localized
+        tariffsLabel.text = Localizable.Menu.tariffs.localized
+        promocodeLabel.text = Localizable.Menu.promocode.localized
+        promotionLabel.text = Localizable.Menu.promotions.localized
+        aboutAppLabel.text = Localizable.Menu.aboutThisApp.localized
     }
 
 }

@@ -54,12 +54,12 @@ class SupportAddImagesViewController: UIViewController {
 
     @IBAction func sendFeedback(_ sender: UIButton) {
         if addImagesButton.buttonState != .done {
-            sendButton.setTitle(SupportConstant.done, for: .normal)
+            sendButton.setTitle(Localizable.Support.done.localized, for: .normal)
             addImagesButton.buttonState = .done
-            addImageDescriptionLabel.text = SupportConstant.messageSent
+            addImageDescriptionLabel.text = Localizable.Support.messageSent.localized
             addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
             successLabel.isHidden = false
-            successLabel.text = SupportConstant.responceDesc
+            successLabel.text = Localizable.Support.responceDesc.localized
             roundedView.color = .clear
             collectionView.removeFromSuperview()
         } else {
@@ -95,9 +95,9 @@ class SupportAddImagesViewController: UIViewController {
     }
     
     private func updateUI() {
-        navigationItem.title = MenuConstant.support
-        sendButton.setTitle(SupportConstant.send, for: .normal)
-        addImageDescriptionLabel.text = SupportConstant.addImageDesc
+        navigationItem.title = Localizable.Menu.support.localized
+        sendButton.setTitle(Localizable.Support.send.localized, for: .normal)
+        addImageDescriptionLabel.text = Localizable.Support.addImageDesc.localized
     }
 }
 

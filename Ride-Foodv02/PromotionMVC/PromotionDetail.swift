@@ -10,7 +10,7 @@ class PromotionDetail: UIView {
     
     @IBOutlet weak var buyButton: UIButton! { didSet {
         buyButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
-        buyButton.setTitle(PromotionConstant.goShopping, for: .normal)
+        buyButton.setTitle(Localizable.Promotion.goShopping.localized, for: .normal)
     }}
     @IBOutlet private weak var buyButtonView: RoundedView! { didSet {
         buyButtonView.colorToFill = .white
@@ -27,7 +27,7 @@ class PromotionDetail: UIView {
     @IBOutlet weak var errorDescriptionLabel: UILabel! { didSet {
         errorDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
         errorDescriptionLabel.isHidden = true
-        errorDescriptionLabel.text = PromotionConstant.errorDescription
+        errorDescriptionLabel.text = Localizable.Promotion.errorDescription.localized
     }}
     @IBOutlet weak var transparentView: UIView! { didSet {
         transparentView.alpha = 0.5

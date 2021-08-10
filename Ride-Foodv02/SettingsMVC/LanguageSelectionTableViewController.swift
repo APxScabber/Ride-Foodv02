@@ -20,7 +20,7 @@ class LanguageSelectionTableViewController: UITableViewController {
     }
 
     private func updateUI() {
-        navigationItem.title =  Localizable.SettingsEnum.settings.localized
+        navigationItem.title =  Localizable.Settings.settings.localized
         images.forEach { $0.image = UIImage(named: "EmptyDot")}
         images[Settings.shared.languageID].image = UIImage(named: "Checkmark")
     }
