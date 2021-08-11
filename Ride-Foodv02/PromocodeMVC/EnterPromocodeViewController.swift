@@ -34,6 +34,7 @@ class EnterPromocodeViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         promocodeToolbar.delegate = self
+        PromocodeActivator.delegate = self
         navigationItem.title = Localizable.Promocode.enterPromocode.localized
     }
     
@@ -69,6 +70,25 @@ class EnterPromocodeViewController: UIViewController {
 extension EnterPromocodeViewController: PromocodeToolbarDelegate {
     
     func activate(promocode: String) {
+        PromocodeActivator.post(code: promocode)
+        promocodeToolbar.spinner.startAnimating()
+    }
+    
+   
+}
+
+//MARK: - PromocodeActivatorDelegate
+
+extension EnterPromocodeViewController: PromocodeActivatorDelegate {
+    
+    func promocodeFailed(_ error: String) {
+        promocodeToolbar.lineView.backgroundColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+        promocodeToolbar.errorLabel.isHidden = false
+        promocodeToolbar.errorLabel.text = error
+        promocodeToolbar.spinner.stopAnimating()
+    }
+    
+    func promocodeActivated(_ description: String) {
         imageView.isHidden = true
         roundedView.isHidden = false
         checkmarkButton.isHidden = false
@@ -76,10 +96,8 @@ extension EnterPromocodeViewController: PromocodeToolbarDelegate {
         promocodeDescriptionLabel.isHidden = false
         promocodeToolbar.dismiss()
         doneButton.setTitle(Localizable.Promocode.done.localized, for: .normal)
-        PromocodeActivator.post(code: promocode) { [weak self] in
-            self?.promocodeDescriptionLabel.text = $0
-        }
+        promocodeDescriptionLabel.text = description
+        promocodeToolbar.spinner.stopAnimating()
     }
-    
-   
 }
+
