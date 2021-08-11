@@ -8,7 +8,7 @@
 import UIKit
 
 class TariffsPageViewController: UIPageViewController {
-
+    
     var tariffsModelArray: [TariffsModel]?
     var navigationTitle = "Тарифы"
 
@@ -22,7 +22,7 @@ class TariffsPageViewController: UIPageViewController {
         navigationItem.title = navigationTitle
 
         if let contentVC = showViewController(at: 0) {
-            setViewControllers([contentVC], direction: .forward, animated: true, completion: nil)
+           setViewControllers([contentVC], direction: .forward, animated: true, completion: nil)
         }
     }
 
@@ -33,13 +33,25 @@ class TariffsPageViewController: UIPageViewController {
 
         guard index >= 0 else { return nil }
         guard index < 3 else { return nil }
+        
+        
             guard let content = storyboard?.instantiateViewController(withIdentifier: "TariffsVC") as? TariffsViewController else { return nil }
 
         content.indexVC = index
         
         return content
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
+
+
+
+
 
 // MARK: - Extensions
 extension TariffsPageViewController: UIPageViewControllerDataSource {

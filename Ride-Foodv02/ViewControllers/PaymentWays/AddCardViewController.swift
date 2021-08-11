@@ -31,20 +31,7 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var infoTextView: UITextView!
     @IBOutlet weak var confirmButtonOutlet: UIButton!
     @IBOutlet weak var cancelButtonOutlet: UIButton!
-    
-    //Outlets для Add Scores View
-//    @IBOutlet weak var addScoresView: UIView!
-//    @IBOutlet weak var congratulatioTitleLabel: UILabel!
-//    @IBOutlet weak var youHaveLabel: UILabel!
-//    @IBOutlet weak var addScoresLabel: UILabel!
-//    @IBOutlet weak var addScoresInfoLabel: UILabel!
-//    @IBOutlet weak var newOrderButtonOutlet: UIButton!
-//    @IBOutlet weak var moreDetailsButtonOutlet: UIButton!
-    
-    
-    
-    
-    
+
     // MARK: - Properties
     var titleNavigation = AddCardViewText.newCard.text()
     
@@ -81,7 +68,7 @@ class AddCardViewController: UIViewController {
         hideTextField.becomeFirstResponder()
         setupAddCardView()
         setupAddCardConfirmView()
-        //setupAddScoresView()
+
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
             self.animationAddCard()
         }
@@ -131,29 +118,6 @@ class AddCardViewController: UIViewController {
         
     }
     
-//    private func setupAddScoresView() {
-//        addScoresView.frame.size = CGSize(width: view.frame.width, height: 265)
-//        addScoresView.frame.origin.y = view.frame.height
-//
-//        addScoresView.layer.cornerRadius = view.frame.width / 16
-//        addScoresView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-//
-//        addScoresView.layer.shadowColor = UIColor.black.cgColor
-//        addScoresView.layer.shadowOpacity = 1
-//        addScoresView.layer.shadowOffset = .zero
-//        addScoresView.layer.shadowRadius = 10
-//
-//        congratulatioTitleLabel.text = AddScoresViewText.congratulations.text()
-//        youHaveLabel.text = AddScoresViewText.youHave.text()
-//        addScoresInfoLabel.text = AddScoresViewText.scoresInfo.text()
-//
-//        newOrderButtonOutlet.style()
-//        newOrderButtonOutlet.backgroundColor = TariffsColors.blueColor.value
-//        newOrderButtonOutlet.setTitle(AddScoresViewText.newOrder.text(), for: .normal)
-//        moreDetailsButtonOutlet.setTitle(AddScoresViewText.moreDetails.text(), for: .normal)
-//
-//    }
-    
     private func setupUnderLinesGrayColor() {
         for line in underLinesArray {
             line.tintColor = PaymentWaysColors.grayColor.value
@@ -200,25 +164,6 @@ class AddCardViewController: UIViewController {
             self.view.superview?.layoutIfNeeded()
         }
     }
-    
-
-//    private func animationAddScores() {
-//        
-//        //if let cardNumber = inputCardNumber {
-//        //    let finalText = addCardInteractor.separated(text: cardNumber)
-//        //    let textAttribute = addCardInteractor.createTextAttribute(for: finalText)
-//        //    infoTextView.attributedText = textAttribute
-//        //} else {
-//        //    infoTextView.text = addCardInteractor.separated(text: "")
-//       // }
-//        UIView.animate(withDuration: 2) {
-//            self.view.addSubview(self.addScoresView)
-//            self.addScoresView?.frame.origin.y = self.view.frame.height - self.addScoresView!.frame.height
-//
-//            //self.bgImageTopConstraint.constant = 80
-//            self.view.superview?.layoutIfNeeded()
-//        }
-//    }
 
     //Регистрируем уведомления на пояаление клавиатуры
     func registerForKeyboardNotification() {
@@ -245,23 +190,11 @@ class AddCardViewController: UIViewController {
     @objc func keyboardWillHide(_ notification: Notification) {
         animationAddCardConfirm()
     }
-    
-    
-
-    
-    
-    
-    
-    
 }
 
-
-
-
-
+// MARK: - Extensions
 
 extension AddCardViewController {
-
 
     // MARK: - Add Card Methods
     
@@ -353,12 +286,9 @@ extension AddCardViewController {
     }
     
     @IBAction func linkCardButtonAction(_ sender: Any) {
-        
-        
-        
+
         inputCardNumber = cardNumber
         
-
         UIView.animate(withDuration: 1.5) {
 
             self.addCardView.frame.origin.y = self.view.frame.height
@@ -411,10 +341,3 @@ extension AddCardViewController {
 }
 
 }
-
-//extension AddCardViewController {
-//    
-//    @IBAction func newOrderButtonAction(_ sender: Any) {
-//    }
-//    
-//}
