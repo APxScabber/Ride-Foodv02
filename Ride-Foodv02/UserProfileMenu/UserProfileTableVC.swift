@@ -11,7 +11,7 @@ class UserProfileTableVC: UITableViewController {
     
     
 //    let footerView = UIView()
-    let signOutButton = VBButton(backgroundColor: UIColor.ProfileBackgroundColor, title: "Выйти", cornerRadius: 0, textColor: .red, font: UIFont.SFUIDisplayRegular(size: 15)!, borderWidth: 1, borderColor: UIColor.ProfileButtonBorderColor.cgColor)
+    let signOutButton = VBButton(backgroundColor: UIColor.ProfileBackgroundColor, title: Localizable.UserProfile.logOut.localized, cornerRadius: 0, textColor: .red, font: UIFont.SFUIDisplayRegular(size: 15)!, borderWidth: 1, borderColor: UIColor.ProfileButtonBorderColor.cgColor)
     
     let backView = ProfileMenuBackgroundView()
     
@@ -44,9 +44,11 @@ class UserProfileTableVC: UITableViewController {
         configureNavigationItem()
         configureSignOutButton()
        
+        
     }
     
     func configureUI(){
+        navigationItem.title = Localizable.UserProfile.profile.localized
         tableView.isScrollEnabled = false
        
         tableView.addSubview(backView)
@@ -73,11 +75,11 @@ class UserProfileTableVC: UITableViewController {
     
         tableView.backgroundView = backView
         
-        phoneNumberLabel.text       = "Введите номер телефона"
-        MyAddressesLabel.text       = "Мои адреса"
-        PaymentHistoryLabel.text    = "История платежей"
-        OrdersHistoryLabel.text     = "История заказов"
-        PaymentMethodLabel.text     = "Способы оплаты"
+        phoneNumberLabel.text       = Localizable.UserProfile.enterPhoneNumber.localized
+        MyAddressesLabel.text       = Localizable.UserProfile.myAddresses.localized
+        PaymentHistoryLabel.text    = Localizable.UserProfile.paymentHistory.localized
+        OrdersHistoryLabel.text     = Localizable.UserProfile.ordersHistory.localized
+        PaymentMethodLabel.text     = Localizable.UserProfile.paymentMethod.localized
     }
     
     @objc func dismissVC(){

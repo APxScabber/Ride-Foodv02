@@ -28,7 +28,7 @@ class VBMapButton: UIButton {
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         
         
-        let fullString = NSMutableAttributedString(string: "Карта ")
+        let fullString = NSMutableAttributedString(string: Localizable.Addresses.map.localized)
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "MapArrow")
         let imageString = NSAttributedString(attachment: imageAttachment)
