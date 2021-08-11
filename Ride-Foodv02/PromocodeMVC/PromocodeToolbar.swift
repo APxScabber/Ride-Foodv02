@@ -14,7 +14,10 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         textField.delegate = self
     }}
 
-    
+    @IBOutlet weak var errorLabel: UILabel! { didSet {
+        errorLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
+    }}
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0

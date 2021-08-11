@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,9 +17,28 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cco-FJ-By7">
                     <rect key="frame" x="0.0" y="59" width="414" height="142"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="U4O-aT-voQ">
+                            <rect key="frame" x="188.5" y="5" width="37" height="37"/>
+                            <color key="color" systemColor="systemOrangeColor"/>
+                        </activityIndicatorView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dl-QK-Jvc">
+                            <rect key="frame" x="25" y="47" width="41.5" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="OsQ-cl-RPK"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="U4O-aT-voQ" firstAttribute="top" secondItem="cco-FJ-By7" secondAttribute="top" constant="5" id="3q5-Fd-0Uo"/>
                         <constraint firstAttribute="height" constant="142" id="Owm-xR-553"/>
+                        <constraint firstItem="5dl-QK-Jvc" firstAttribute="leading" secondItem="cco-FJ-By7" secondAttribute="leading" constant="25" id="SzJ-Pi-QjZ"/>
+                        <constraint firstItem="U4O-aT-voQ" firstAttribute="centerX" secondItem="cco-FJ-By7" secondAttribute="centerX" id="b4V-4f-xDw"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5dl-QK-Jvc" secondAttribute="trailing" constant="25" id="l3z-FU-We0"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpD-Pb-dxg" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -81,15 +101,23 @@
                 <constraint firstItem="hpD-Pb-dxg" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="26" id="jWk-H9-QPr"/>
                 <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="Tci-2b-eha" secondAttribute="trailing" constant="25" id="w3f-UW-MuM"/>
                 <constraint firstItem="cco-FJ-By7" firstAttribute="leading" secondItem="b7t-6K-VSp" secondAttribute="leading" id="wco-DX-XWo"/>
+                <constraint firstItem="5dl-QK-Jvc" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="1" id="yyX-CZ-CLL"/>
             </constraints>
             <connections>
                 <outlet property="activeView" destination="cco-FJ-By7" id="OiU-gA-J4n"/>
                 <outlet property="button" destination="YRH-rS-hIg" id="DWg-Ao-iYz"/>
+                <outlet property="errorLabel" destination="5dl-QK-Jvc" id="6RB-og-KD6"/>
                 <outlet property="lineView" destination="Tci-2b-eha" id="b0c-RR-g4N"/>
                 <outlet property="roundedView" destination="hpD-Pb-dxg" id="sAB-QF-kgF"/>
+                <outlet property="spinner" destination="U4O-aT-voQ" id="4Bj-2K-UWB"/>
                 <outlet property="textField" destination="QR0-Ja-GQS" id="Y4U-eH-6qG"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
