@@ -14,7 +14,14 @@
         <scene sceneID="CUS-6i-bzi">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xfU-5h-YJQ" customClass="TariffsPageViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="9EA-X7-Rh5"/>
+                    <navigationItem key="navigationItem" id="9EA-X7-Rh5">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="ohL-Kv-kCc">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="backButtonAction:" destination="xfU-5h-YJQ" id="A2i-pH-FiK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1re-Ra-QOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,6 +245,7 @@
                             <constraint firstItem="vqS-7z-S21" firstAttribute="trailing" secondItem="Z5b-kd-U3j" secondAttribute="trailing" constant="25" id="zCb-pO-HND"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jln-fh-ki7"/>
                     <connections>
                         <outlet property="businessButtonOutlet" destination="TdO-KY-7oA" id="cdx-eM-HB0"/>
                         <outlet property="carImage" destination="hAM-ex-4TU" id="osY-zT-g0t"/>
@@ -254,10 +262,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OB-Jq-EQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1603.125" y="91.901408450704224"/>
+            <point key="canvasLocation" x="2345" y="93"/>
         </scene>
     </scenes>
     <resources>
+        <image name="BackButton" width="10" height="17"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

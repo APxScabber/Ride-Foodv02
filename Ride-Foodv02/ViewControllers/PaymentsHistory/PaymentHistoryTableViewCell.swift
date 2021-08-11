@@ -10,7 +10,16 @@ import UIKit
 class PaymentHistoryTableViewCell: UITableViewCell {
     
    
-    @IBOutlet weak var testTextLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var serviceLabel: UILabel!
+    @IBOutlet weak var cardImage: UIImageView!
+    @IBOutlet weak var cardNumberLabel: UILabel!
+    @IBOutlet weak var paymentNumberLabel: UILabel!
+    //@IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+   // @IBOutlet weak var emailButtonOutlet: UIButton!
+    
+    @IBOutlet weak var bgImage: UIImageView!
     
 
     override func awakeFromNib() {

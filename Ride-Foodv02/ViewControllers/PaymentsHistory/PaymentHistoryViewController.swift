@@ -17,6 +17,9 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
     
     // MARK: - Outlets
     
+    
+    @IBOutlet weak var bigInfoView: UIView!
+    
     @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     
@@ -41,7 +44,7 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
         
         testArray = ["One", "Two", "Three", "Four"]
         
-        
+
         navigationItem.title = navigationTitle
         
         checkHistoryEmpty()
@@ -56,6 +59,24 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
     
     func reloadTableView() {
         tableView.reloadData()
+    }
+    
+    func bigView(posX: CGFloat, posY: CGFloat, width: CGFloat) {
+        
+        //bigInfoView.translatesAutoresizingMaskIntoConstraints = true
+        bigInfoView.frame = CGRect(x: posX, y: posY, width: width, height: 399) //399, 172
+    
+        infoLabel.frame.size.height = 2
+        infoLabel.frame.size.width = bigInfoView.frame.width - 40
+        infoLabel.translatesAutoresizingMaskIntoConstraints = true
+        
+
+        //infoLabel.layoutIfNeeded()
+        
+        
+        //bigInfoView.frame.origin.y = posY
+        view.addSubview(bigInfoView)
+
     }
     
     
@@ -78,7 +99,7 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
         //cell.transform = CGAffineTransform(scaleX: 1, y: 1)
         //cell.transform = CGAffineTransform(translationX: 0, y: cellPositionY)
         
-        let data = CellData(title: cell.testTextLabel.text!)
+        //let data = CellData(title: cell.testTextLabel.text!)
         
         //print(cell.frame.size.height)
         
@@ -87,7 +108,7 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
         
         UIView.animate(withDuration: 0.3) {
             cell.alpha = 0
-            self.presentSecondViewController(with: data)
+           // self.presentSecondViewController(with: data)
             //self.tableView.beginUpdates()
             //cell.frame.size.height = 410
             //self.cellHeight = 410
@@ -122,13 +143,14 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
     private func checkHistoryEmpty() {
 
         if testArray.isEmpty {
-            
+
             tableView.alpha = 0
             searchBar.alpha = 0
             bgImage.alpha = 1
             infoLabel.alpha = 1
-        } else {
             
+        } else {
+
             tableView.alpha = 1
             searchBar.alpha = 1
             bgImage.alpha = 0
@@ -151,25 +173,27 @@ extension PaymentHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let cell = tableView.cellForRow(at: indexPath)
+//        let cell = tableView.cellForRow(at: indexPath)
         
-        if cell?.tag == 1 {
-            cellHeight = 410
-        } else {
-            cellHeight = 172
-        }
+//        if cell?.tag == 1 {
+//            cellHeight = 410
+//        } else {
+//            cellHeight = 172
+//        }
         return cellHeight
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArray.count
+        return 1
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PaymentHistoryTableViewCell
-        cell.alpha = 1
-        cell.testTextLabel.text = testArray[indexPath.row]
+        //cell.alpha = 1
+        //cell.testTextLabel.text = testArray[indexPath.row]
+        
+        
         
         return cell
     }
@@ -183,17 +207,35 @@ extension PaymentHistoryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        bigInfoView.removeFromSuperview()
+        
         //let data = CellData(title: testArray[indexPath.row])
         let cell = tableView.cellForRow(at: indexPath) as! PaymentHistoryTableViewCell
         
-        //print(cell.frame.origin.y)
-        tableView.beginUpdates()
-        cell.tag = 1
-        tableView.endUpdates()
+        let rectOfCellInTableView = tableView.rectForRow(at: indexPath)
+        let imageBG = cell.bgImage.frame.width - 20
+        let rectOfCellInSuperview = tableView.convert(rectOfCellInTableView, to: tableView.superview)
         
-        //print(cell.frame.origin.y)
+        let x = rectOfCellInSuperview.origin.x + 20
+        let y = rectOfCellInSuperview.origin.y + 200
+        //let width = rectOfCellInSuperview
         
-        animating(cell: cell, tableView: tableView)
+        print(x)
+        print(y)
+        print(imageBG)
+        //print(rectOfCellInSuperview.origin.y)
+        //print(cell.frame.origin.y)
+        bigView(posX: x, posY: y, width: imageBG)
+        
+//
+//        //print(cell.frame.origin.y)
+//        tableView.beginUpdates()
+//        cell.tag = 1
+//        tableView.endUpdates()
+//
+//        //print(cell.frame.origin.y)
+//
+//        animating(cell: cell, tableView: tableView)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
