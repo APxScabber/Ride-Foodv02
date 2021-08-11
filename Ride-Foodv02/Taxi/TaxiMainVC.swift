@@ -9,7 +9,7 @@ class TaxiMainVC: UIViewController {
     var fromAddress = String() { didSet { updateUI() }}
     var toAddress = String() { didSet { updateUI() }}
     var addresses = [Address]()
-
+    
     //MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,6 +22,8 @@ class TaxiMainVC: UIViewController {
     
     @IBOutlet weak var fromTextField: UITextField! { didSet {
         fromTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        fromTextField.addTarget(self, action: #selector(fromTextFieldChanged), for: .editingChanged)
+        fromTextField.delegate = self
     }}
     @IBOutlet weak var fromAnnotationView: UIImageView!
     @IBOutlet weak var fromUnderbarLine: UIView!
@@ -29,6 +31,7 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var toTextField:UITextField! { didSet {
         toTextField.font = UIFont.SFUIDisplayLight(size: 17.0)
         toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
+        toTextField.delegate = self
     }}
     
     @IBOutlet weak var toAnnotationView: UIImageView!
@@ -54,7 +57,8 @@ class TaxiMainVC: UIViewController {
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addressesChooserViewHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
+    
     @IBOutlet weak var mapView: MKMapView! { didSet {
         let center = CLLocationCoordinate2D(latitude: 55.7520, longitude: 37.6175)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -75,7 +79,7 @@ class TaxiMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         PersistanceManager.shared.fetchAddresses { result in
             switch result {
             case .success(let addresses):
@@ -91,10 +95,16 @@ class TaxiMainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        shopMapItems(false)
+        showMapItems(false)
         addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + tableViewHeightConstraint.constant
     }
     
+    //MARK: - Deinit
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //MARK: - Map gesture
     @objc
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended {
@@ -112,9 +122,12 @@ class TaxiMainVC: UIViewController {
         }
     }
     
-    private func pinAddressesTo(_ y:CGFloat) {
+    //MARK: - Constaint update
+    
+    private func setBottomConstraintTo(_ y:CGFloat) {
+        bottomConstaint.constant = y
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: TaxiConstant.durationForAppearingAddressesChooserView, delay: 0.0, options: .curveLinear) {
-            self.addressesChooserView.frame.origin.y = y
+            self.view.layoutIfNeeded()
         } completion: { if $0 == .end {}
         }
 
@@ -122,11 +135,13 @@ class TaxiMainVC: UIViewController {
     @objc
     private func moveAddressesChooserView(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
-        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            pinAddressesTo(view.bounds.height - size.height - addressesChooserViewHeightConstraint.constant)
-            shopMapItems(true)
-            transparentView.isHidden = false
+        guard let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        if view.bounds.height - size.height - addressesChooserViewHeightConstraint.constant < 0 {
+            tableViewHeightConstraint.constant -= abs(view.bounds.height - size.height - addressesChooserViewHeightConstraint.constant)
+            addressesChooserViewHeightConstraint.constant -= abs(tableViewHeightConstraint.constant)
         }
+        setBottomConstraintTo(size.height)
+        showMapItems(true)
     }
     
     //MARK: - Segue
@@ -140,10 +155,11 @@ class TaxiMainVC: UIViewController {
     }
     
     //MARK: - UI update
-    func shopMapItems(_ bool:Bool) {
+    func showMapItems(_ bool:Bool) {
         verticalLineView.isHidden = !bool
         mapButton.isHidden = !bool
         arrowButton.isHidden = !bool
+        transparentView.isHidden = !bool
     }
     
     private func updateUI() {
@@ -153,13 +169,14 @@ class TaxiMainVC: UIViewController {
 
         fromUnderbarLine?.backgroundColor = fromAddress.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         toUnderbarLine?.backgroundColor = toAddress.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
-        
+
         fromAnnotationView?.image = fromAddress.isEmpty ? #imageLiteral(resourceName: "RawAnnotation") : #imageLiteral(resourceName: "Annotation")
         toAnnotationView?.image = toAddress.isEmpty ? #imageLiteral(resourceName: "RawAnnotation") : #imageLiteral(resourceName: "Annotation")
 
         nextButton?.isUserInteractionEnabled = !fromAddress.isEmpty && !toAddress.isEmpty
-        
+
         roundedView?.colorToFill = (!fromAddress.isEmpty && !toAddress.isEmpty) ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        
     }
     
     @objc
@@ -168,13 +185,24 @@ class TaxiMainVC: UIViewController {
     }
     
     @objc
+    private func fromTextFieldChanged() {
+        fromAddress = fromTextField.text ?? ""
+    }
+    
+    @objc
     private func moveDown(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {
-            toTextField.resignFirstResponder()
-            pinAddressesTo(view.bounds.height - addressesChooserViewHeightConstraint.constant)
-            shopMapItems(false)
-            transparentView.isHidden = true
+            moveDown()
         }
+    }
+    
+    private func moveDown() {
+        toTextField.resignFirstResponder()
+        fromTextField.resignFirstResponder()
+        setBottomConstraintTo(0)
+        showMapItems(false)
+        tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + tableViewHeightConstraint.constant
     }
 }
 
@@ -222,11 +250,22 @@ extension TaxiMainVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        toTextField.text = addresses[indexPath.row].fullAddress
-        updateUI()
+        toAddress = addresses[indexPath.row].fullAddress
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return FoodConstants.tableViewRowHeight
     }
+}
+
+//MARK: - UItextfield delegate
+
+extension TaxiMainVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        moveDown()
+        return true
+    }
+    
+  
 }

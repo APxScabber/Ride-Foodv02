@@ -104,21 +104,21 @@
                                                     <constraint firstAttribute="height" constant="19" id="kDK-Rd-gIE"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда вы хотите поехать?" textAlignment="natural" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-Mb-i6S">
-                                                <rect key="frame" x="52" y="77" width="337" height="20"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда вы хотите поехать?" textAlignment="natural" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-Mb-i6S">
+                                                <rect key="frame" x="52" y="77" width="274" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="xsy-wR-Yxr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда вы хотите поехать?" textAlignment="natural" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-Ov-FsO">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда вы хотите поехать?" textAlignment="natural" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-Ov-FsO">
                                                 <rect key="frame" x="52" y="22" width="294" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ZeW-g8-PGo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visa" translatesAutoresizingMaskIntoConstraints="NO" id="shC-1n-UYg">
                                                 <rect key="frame" x="356" y="28" width="33" height="10"/>
@@ -254,7 +254,7 @@
                                             <constraint firstItem="Erf-Ov-FsO" firstAttribute="leading" secondItem="CAe-Be-Iw8" secondAttribute="leading" constant="52" id="lqd-9l-Jwo"/>
                                             <constraint firstAttribute="trailing" secondItem="1kT-RR-ULY" secondAttribute="trailing" id="nSi-ec-ZI9"/>
                                             <constraint firstItem="gCr-12-evj" firstAttribute="top" secondItem="ExS-NS-pdc" secondAttribute="bottom" constant="15" id="pjg-L7-xfy"/>
-                                            <constraint firstAttribute="trailing" secondItem="kwS-Mb-i6S" secondAttribute="trailing" constant="25" id="qdf-ec-s5C"/>
+                                            <constraint firstItem="tXt-t5-Dcc" firstAttribute="leading" secondItem="kwS-Mb-i6S" secondAttribute="trailing" constant="8" id="qDk-Pq-FU6"/>
                                             <constraint firstItem="kwS-Mb-i6S" firstAttribute="leading" secondItem="CAe-Be-Iw8" secondAttribute="leading" constant="52" id="rPl-Ie-vet"/>
                                             <constraint firstItem="WwB-nP-9Ts" firstAttribute="leading" secondItem="tXt-t5-Dcc" secondAttribute="trailing" constant="8" id="rPz-gg-MNN"/>
                                             <constraint firstAttribute="trailing" secondItem="gCr-12-evj" secondAttribute="trailing" constant="25" id="tJr-Cv-jTV"/>
@@ -287,7 +287,7 @@
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YCo-r8-xNA"/>
                             <constraint firstAttribute="bottom" secondItem="Juq-6X-DDG" secondAttribute="bottom" id="YDw-Ti-DIF"/>
                             <constraint firstAttribute="bottom" secondItem="DCr-6x-uBS" secondAttribute="bottom" id="bpG-0k-2rs"/>
-                            <constraint firstItem="vA7-IQ-MSH" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="chT-G5-6a2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vA7-IQ-MSH" secondAttribute="bottom" id="chT-G5-6a2"/>
                             <constraint firstAttribute="trailing" secondItem="Juq-6X-DDG" secondAttribute="trailing" id="fpt-Vo-t3n"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="h5Z-st-aV2"/>
                             <constraint firstItem="Juq-6X-DDG" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="rDO-6m-Guz"/>
@@ -298,6 +298,7 @@
                         <outlet property="addressesChooserView" destination="vA7-IQ-MSH" id="Z4c-WN-WWw"/>
                         <outlet property="addressesChooserViewHeightConstraint" destination="96z-RY-xoO" id="321-IX-MgZ"/>
                         <outlet property="arrowButton" destination="ExS-NS-pdc" id="Oss-6w-UJx"/>
+                        <outlet property="bottomConstaint" destination="chT-G5-6a2" id="5Oo-uw-Gc5"/>
                         <outlet property="fromAnnotationView" destination="8gd-Ce-E01" id="asX-r1-tlU"/>
                         <outlet property="fromTextField" destination="Erf-Ov-FsO" id="T4m-Ld-zuq"/>
                         <outlet property="fromUnderbarLine" destination="rna-l4-o0c" id="5vb-ty-cw6"/>
