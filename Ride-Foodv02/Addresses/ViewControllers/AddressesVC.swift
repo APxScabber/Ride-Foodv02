@@ -14,7 +14,7 @@ class AddressesVC: UIViewController {
     var showRemoteAddresses: Bool = true
     
     
-    let newAddressButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Добавить адрес", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
+    let newAddressButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: Localizable.Addresses.addAddress.localized, cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
     
     var Localaddresses: [UserAddressMO] = []
     var remoteAddresses: [AddressData] = []
@@ -34,6 +34,7 @@ class AddressesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = Localizable.Addresses.myAddresses.localized
         addNewAddressButton()
         self.addBackgroundImageView()
         configureNavigationItem()

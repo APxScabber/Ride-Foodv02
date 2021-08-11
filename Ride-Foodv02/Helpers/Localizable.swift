@@ -43,6 +43,14 @@ enum Localizable {
            
     }
     
+    enum UserProfile: String, LocalizableDelegate {
+        case profile, enterPhoneNumber, myAddresses, paymentHistory, ordersHistory, paymentMethod, logOut
+    }
+    
+    enum Addresses: String, LocalizableDelegate {
+        case myAddresses, addAddress, newAddress, addressName, address, map, driverCommentary, forDelivery, appartment, intercom, entrance, floor, courierCommentary, save, update, setAsDistination, delete, deleteAddressQuestion, cancel
+    }
+    
 }
 
 

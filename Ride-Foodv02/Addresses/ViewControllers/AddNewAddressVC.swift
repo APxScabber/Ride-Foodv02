@@ -32,8 +32,8 @@ class AddNewAddressVC: UIViewController{
     
     
     
-    let SaveButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "Сохранить", cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
-    let DeleteButton = VBButton(backgroundColor: .clear, title: "Удалить", cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor )
+    let SaveButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: Localizable.Addresses.save.localized, cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
+    let DeleteButton = VBButton(backgroundColor: .clear, title: Localizable.Addresses.delete.localized, cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor )
 //    Stack views
     var generalAddressStackView = UIStackView()
     var locationStackView = UIStackView()
@@ -67,6 +67,7 @@ class AddNewAddressVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = Localizable.Addresses.newAddress.localized
      //   setTextViewDelegates()
         if let currentAddress = passedAddress{
             setUIIfUpdatingAddress(address: currentAddress)
@@ -192,15 +193,15 @@ class AddNewAddressVC: UIViewController{
     }
     
     func setInitialTextViewTexts(){
-        addressTitleView.textView.placeholder = "Название адреса"
-        addressDescriptionView.textView.placeholder = "Адрес"
-        driverCommentaryView.textView.placeholder = "Комментарий для водителя"
-        separatorLabel.text = "Для доставки"
-        officeNumberView.textView.placeholder = "Кв./офис"
-        intercomNumberView.textView.placeholder = "Домофон"
-        entranceNumberView.textView.placeholder = "Подъезд"
-        floorNumber.textView.placeholder = "Этаж"
-        deliveryCommentaryView.textView.placeholder = "Комментарий для курьера"
+        addressTitleView.textView.placeholder = Localizable.Addresses.addressName.localized
+        addressDescriptionView.textView.placeholder = Localizable.Addresses.address.localized
+        driverCommentaryView.textView.placeholder = Localizable.Addresses.driverCommentary.localized
+        separatorLabel.text = Localizable.Addresses.driverCommentary.localized
+        officeNumberView.textView.placeholder = Localizable.Addresses.appartment.localized
+        intercomNumberView.textView.placeholder = Localizable.Addresses.intercom.localized
+        entranceNumberView.textView.placeholder = Localizable.Addresses.entrance.localized
+        floorNumber.textView.placeholder = Localizable.Addresses.floor.localized
+        deliveryCommentaryView.textView.placeholder = Localizable.Addresses.courierCommentary.localized
         
     }
 
@@ -339,10 +340,10 @@ class AddNewAddressVC: UIViewController{
         
        
         if wantToUpdateAddress{
-            SaveButton.setTitle("Обновить" , for: .normal)
+            SaveButton.setTitle(Localizable.Addresses.update.localized , for: .normal)
             SaveButton.addTarget(self, action: #selector(updateAddress), for: .touchUpInside)
         } else {
-            SaveButton.setTitle(!isUPdatingAddress ? "Сохранить" : "Выбрать местом назначения", for: .normal)
+            SaveButton.setTitle(!isUPdatingAddress ? Localizable.Addresses.save.localized : Localizable.Addresses.setAsDistination.localized, for: .normal)
             !isUPdatingAddress ? SaveButton.addTarget(self, action: #selector(addAddress), for: .touchUpInside) : SaveButton.addTarget(self, action: #selector(setAsMainAddress), for: .touchUpInside)
         }
         
@@ -393,7 +394,7 @@ class AddNewAddressVC: UIViewController{
     
     
     @objc func callConfirmActionAndDelete(){
-        self.presentConfirmWindow(title: "Удалить адрес?", titleColor: .red, confirmTitle: "Удалить", cancelTitle: "Отмена")
+        self.presentConfirmWindow(title: Localizable.Addresses.deleteAddressQuestion.localized, titleColor: .red, confirmTitle: Localizable.Addresses.delete.localized, cancelTitle: Localizable.Addresses.cancel.localized)
     }
     
     @objc func updateAddress(){

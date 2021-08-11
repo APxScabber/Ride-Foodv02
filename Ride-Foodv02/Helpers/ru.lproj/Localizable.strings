@@ -76,3 +76,36 @@
 "map" = "Карта";
 "enterAdress" = "Введите адрес доставки";
 "confirm" = "Подтвердить";
+
+
+//MARK: - User Profile
+
+"profile" = "Личный кабинет";
+"enterPhoneNumber" = "Введите номер телефона";
+"myAddresses" = "Мои адреса";
+"paymentHistory" = "История платежей";
+"ordersHistory" = "История заказов";
+"paymentMethod" = "Способы оплаты";
+"logOut" = "Выйти";
+
+//MARK: - Addresses
+
+"myAddresses" = "Мои адреса";
+"addAddress" = "Добавить адрес";
+"newAddress" = "Новый адрес";
+"addressName" = "Название адреса";
+"address" = "Адрес";
+"map" = "Карта";
+"driverCommentary" = "Комментарий для водителя";
+"forDelivery" = "Для доставки";
+"appartment" = "Кв/офис";
+"intercom" = "Домофон";
+"entrance" = "Подъезд";
+"floor" = "Этаж";
+"courierCommentary" = "Комментарий для курьера";
+"save" = "Сохранить";
+"update" = "Обновить";
+"setAsDistination" = "Выбрать местом назначения";
+"delete" = "Удалить";
+"deleteAddressQuestion" = "Удалить адрес?";
+"cancel" = "Отмена";
