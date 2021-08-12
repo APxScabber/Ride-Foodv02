@@ -78,6 +78,8 @@ class MainScreenViewController: UIViewController {
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
         view.addSubview(promotionDetailView)
+        
+        GetUserIDManager.shared.getUserID()
     }
     
     

@@ -19,7 +19,7 @@ class TotalScoreViewController: UIViewController {
     
     // MARK: - Properties
     
-    var userID: String?
+    var userID = GetUserIDManager.shared.userID
     var isMoreDetailsLoad = false
     let totalScoresInteractor = TotalScoresInteractor()
 
@@ -94,5 +94,4 @@ class TotalScoreViewController: UIViewController {
         isMoreDetailsLoad = true
         dismiss(animated: true)
     }
-    
 }

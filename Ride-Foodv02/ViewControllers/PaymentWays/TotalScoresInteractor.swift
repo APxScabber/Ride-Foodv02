@@ -16,7 +16,6 @@ class TotalScoresInteractor {
         
         let url = URL(string: stringURL)
         
-        
         LoadManager.shared.loadData(of: TotalScoresDataModel.self, from: url!,
                                     httpMethod: .get, passData: nil) { result in
             

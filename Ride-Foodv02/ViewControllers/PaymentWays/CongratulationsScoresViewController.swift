@@ -19,7 +19,7 @@ class CongratulationsScoresViewController: UIViewController {
     
     // MARK: - Properties
     
-    var userID: String?
+    var userID = GetUserIDManager.shared.userID
     
     var isMoreDetailsLoad = false
     

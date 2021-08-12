@@ -10,11 +10,9 @@ import UIKit
 
 class AddCardInteractor {
     
-    var userID: String?
-    
     func postCardData(passData: [String : String], completion: @escaping (PaymentWaysModel?) -> Void) {
         
-        guard let userID = userID else { return }
+        guard let userID = GetUserIDManager.shared.userID else { return }
         
         let urlString = separategURL(url: addCardURL, userID: userID)
         guard let url = URL(string: urlString) else { return }
@@ -36,7 +34,7 @@ class AddCardInteractor {
     
     func approvedCard(with id: Int) {
         
-        guard let userID = userID else { return }
+        guard let userID = GetUserIDManager.shared.userID else { return }
         
         let firstPartURL = separategURL(url: addCardURL, userID: userID)
         
@@ -59,24 +57,6 @@ class AddCardInteractor {
 
         return finalUrl
     }
-    
-    //Получаем ID пользователя для дальнейшего использования в запросах к серверу
-    func getUserID() {
-
-        CoreDataManager.shared.fetchCoreData { [weak self] result in
-
-            switch result {
-            case .success(let model):
-                let userData = model.first
-                self?.userID = String(describing: userData!.id!)
-            case .failure(let error):
-                print(error)
-            case .none:
-                return
-            }
-        }
-    }
-    
 
     func separated(text cardNumber: String) -> String {
         

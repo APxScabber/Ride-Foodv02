@@ -10,11 +10,9 @@ import UIKit
 
 class PaymentWaysInteractor {
     
-    var userID: String?
-    
     func loadPaymentData(completion: @escaping ([PaymentWaysModel]) -> Void) {
         
-        guard let userID = userID else { return }
+        guard let userID = GetUserIDManager.shared.userID else { return }
         
         let urlString = separategURL(url: paymentWaysURL, userID: userID)
         guard let url = URL(string: urlString) else { return }
@@ -40,42 +38,6 @@ class PaymentWaysInteractor {
         
         return finalUrl
     }
-    
-    //Получаем ID пользователя для дальнейшего использования в запросах к серверу
-    func getUserID() {
-        
-        CoreDataManager.shared.fetchCoreData { [weak self] result in
-            
-            switch result {
-            case .success(let model):
-                let userData = model.first
-                self?.userID = String(describing: userData!.id!)
-            case .failure(let error):
-                print(error)
-            case .none:
-                return
-            }
-        }
-    }
-    
-//    func filter(text: String) -> (String, NSMutableAttributedString) {
-//
-//        var formatedCardNumber = ""
-//        var textattribute = NSMutableAttributedString()
-//
-//        let decimalCharacters = CharacterSet.decimalDigits
-//
-//        let decimalRange = text.rangeOfCharacter(from: decimalCharacters)
-//
-//        if decimalRange != nil {
-//            formatedCardNumber = "Карта ****" + " " + text.suffix(4)
-//            textattribute = createTextAttribute(for: formatedCardNumber)
-//        } else {
-//            formatedCardNumber = text
-//        }
-//
-//        return (formatedCardNumber, textattribute)
-//    }
     
     func filter(text: String) -> Bool {
         
