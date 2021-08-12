@@ -45,5 +45,4 @@ class MoreDetailsViewController: UIViewController {
     @IBAction func startButtonAction(_ sender: Any) {
        
     }
-    
 }

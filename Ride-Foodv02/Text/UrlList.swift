@@ -15,4 +15,5 @@ public let tariffsURL = baseURL + "/user/@#^/tariff"
 public let paymentWaysURL = baseURL + "/user/@#^/payment-cards"
 public let addCardURL = baseURL + "/user/@#^/payment-card"
 public let totalScoresURL = baseURL + "/user/@#^/credit"
+public let paymentHistoryURL = baseURL + "/user/@#^/history/payments"
 

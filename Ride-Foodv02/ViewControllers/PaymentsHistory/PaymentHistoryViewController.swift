@@ -7,155 +7,238 @@
 
 import UIKit
 
-protocol ReloadDelegate {
-    func reloadTableView()
-}
-
-class PaymentHistoryViewController: UIViewController, ReloadDelegate {
-
-    
+class PaymentHistoryViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet var mainInfoView: UIView!
+    @IBOutlet weak var dateBigViewLabel: UILabel!
+    @IBOutlet weak var serviceBigViewLabel: UILabel!
+    @IBOutlet weak var cardBigViewImage: UIImageView!
+    @IBOutlet weak var cardNumberBigViewLabel: UILabel!
+    @IBOutlet weak var paymentNumberBigViewLabel: UILabel!
+    @IBOutlet weak var infoBigViewLabel: UILabel!
+    @IBOutlet weak var priceBigViewLabel: UILabel!
     
-    @IBOutlet weak var bigInfoView: UIView!
+    @IBOutlet weak var mainButtonOutlet: UIButton!
+    @IBOutlet weak var topButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainViewInfoBG: UIImageView!
     
-    @IBOutlet weak var bgImage: UIImageView!
-    @IBOutlet weak var infoLabel: UILabel!
-    
+    @IBOutlet weak var tintLayer: UIView!
+
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var bgImage: UIImageView!
+    @IBOutlet weak var emptyItemsLabel: UILabel!
     
-    var cellHeight: CGFloat = 172
     // MARK: - Properties
     
-    let navigationTitle = PaymentHistoryText.navigationTitle.text()
+    var selectedCell: PaymentHistoryTableViewCell?
+    var mainInfoViewWidth: CGFloat?
+    var mainInfoViewHeight: CGFloat?
+    var mainInfoViewPosY: CGFloat?
     
-    var testArray = [String]()
+    var tapGesture: UITapGestureRecognizer? = nil
+    let paymentHistoryInteractor = PaymentHistoryInteractor()
+    
+    var paymentHistoryArray = [PaymentHistoryModel]()
+    
+    let navigationTitle = PaymentHistoryText.navigationTitle.text()
 
     // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnView))
+       
         tableView.delegate = self
         tableView.dataSource = self
-        
-        testArray = ["One", "Two", "Three", "Four"]
-        
+    
+        tintLayer.isHidden = true
 
         navigationItem.title = navigationTitle
+        emptyItemsLabel.text = PaymentHistoryText.emptyList.text()
         
+        getPaymentHistoryData()
         checkHistoryEmpty()
-
-        
-        
-
-
     }
     
     // MARK: - Methods
     
-    func reloadTableView() {
-        tableView.reloadData()
-    }
-    
-    func bigView(posX: CGFloat, posY: CGFloat, width: CGFloat) {
-        
-        //bigInfoView.translatesAutoresizingMaskIntoConstraints = true
-        bigInfoView.frame = CGRect(x: posX, y: posY, width: width, height: 399) //399, 172
-    
-        infoLabel.frame.size.height = 2
-        infoLabel.frame.size.width = bigInfoView.frame.width - 40
-        infoLabel.translatesAutoresizingMaskIntoConstraints = true
-        
-
-        //infoLabel.layoutIfNeeded()
-        
-        
-        //bigInfoView.frame.origin.y = posY
-        view.addSubview(bigInfoView)
-
-    }
-    
-    
-    private func presentSecondViewController(with data: CellData) {
-        let vc = UIStoryboard(name: "PaymentHistory", bundle: nil).instantiateViewController(withIdentifier: "PaymentHistoryBig") as! PaymentHistoryBigViewController
-
-        vc.modalPresentationStyle = .formSheet
-        vc.modalTransitionStyle = .crossDissolve
-        vc.data = data
-        vc.delegate = self
-        present(vc, animated: true)
-    }
-    
-    private func animating(cell: PaymentHistoryTableViewCell, tableView: UITableView) {
-        //print(cell.frame.origin.y)
-        //print(view.frame.height)
-        //let cellPositionY = cell.frame.origin.y
-       // let centerPositionY = view.frame.height // 2 - cell.frame.size.height
-        
-        //cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-        //cell.transform = CGAffineTransform(translationX: 0, y: cellPositionY)
-        
-        //let data = CellData(title: cell.testTextLabel.text!)
-        
-        //print(cell.frame.size.height)
-        
-        
-
-        
-        UIView.animate(withDuration: 0.3) {
-            cell.alpha = 0
-           // self.presentSecondViewController(with: data)
-            //self.tableView.beginUpdates()
-            //cell.frame.size.height = 410
-            //self.cellHeight = 410
-            //self.tableView.endUpdates()
-            //cell.transform = CGAffineTransform(scaleX: 1, y: 2)
-            //cell.transform = CGAffineTransform(translationX: 0, y: centerPositionY)
-            //cell.frame.origin.y = self.view.frame.height
-        } completion: { _ in
-            print(cell.frame.origin.y)
-            //print(cell.frame.origin)
-            //print(cell.frame.size.height)
-            cell.tag = 0
+    private func getPaymentHistoryData() {
+        paymentHistoryInteractor.loadPaymentHistoryData { data in
             
-            
+            self.paymentHistoryArray = data
+            DispatchQueue.main.async {
+                self.checkHistoryEmpty()
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func startUISetupMainInfoView(posY: CGFloat, width: CGFloat, height: CGFloat) {
+        
+        mainInfoView.frame = CGRect(x: 20, y: posY, width: width, height: height)
+        
+        infoBigViewLabel.alpha = 0
+        infoBigViewLabel.frame.size.width = mainInfoView.frame.width - 40
+        infoBigViewLabel.frame.size.height = 0
+        infoBigViewLabel.translatesAutoresizingMaskIntoConstraints = true
+        
+        mainButtonOutlet.style()
+        mainButtonOutlet.backgroundColor = PaymentHistoryColors.blueColor.value
+        mainButtonOutlet.alpha = 0
+        topButtonConstraint.constant = 0
+        mainViewInfoBG.alpha = 0
+        
+        tintLayer.isHidden = false
+        tintLayer.alpha = 0
+
+        view.addSubview(mainInfoView)
+    }
+    
+    func mainInfoViewAnimationIn(cell: PaymentHistoryTableViewCell) {
+        
+        topButtonConstraint.constant = 50
+
+        UIView.animate(withDuration: 1) {
+            self.mainInfoView.frame.size.height = 399
         }
         
-//        UIView.animate(withDuration: 3) {
-//            cell.transform = CGAffineTransform(scaleX: 1, y: 2.38)
-//        }
+        UIView.animate(withDuration: 1) {
 
-        
-        
+            self.mainInfoView.frame.origin.y = self.view.frame.height / 3
+        } completion: { _ in
 
+            if let tapGesture = self.tapGesture {
+                self.view.addGestureRecognizer(tapGesture)
+            }
+        }
         
-//        UIView.animate(withDuration: 2) {
-//            cell.transform = CGAffineTransform(translationX: 0, y: centerPositionY)
-//        }
+        UIView.animate(withDuration: 1) {
+            self.infoBigViewLabel.frame.size.height = 150
+        }
         
+        UIView.animate(withDuration: 1) {
+            self.infoBigViewLabel.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.mainButtonOutlet.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.mainButtonOutlet.layoutIfNeeded()
+        }
+        
+        UIView.animate(withDuration: 0.1) {
+            self.mainViewInfoBG.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 0.1) {
+            cell.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.tintLayer.alpha = 0.4
+        }
+    }
     
+    func mainInfoViewAnimationOut(cell: PaymentHistoryTableViewCell, posY: CGFloat, height: CGFloat) {
+        
+        topButtonConstraint.constant = 0
+        
+        UIView.animate(withDuration: 1) {
+            self.mainInfoView.frame.size.height = height
+        }
+        
+        UIView.animate(withDuration: 1) {
+            
+            self.mainInfoView.frame.origin.y = posY
+        } completion: { _ in
+            
+            if let tapGesture = self.tapGesture {
+                self.view.removeGestureRecognizer(tapGesture)
+                self.mainInfoView.removeFromSuperview()
+                self.tintLayer.isHidden = true
+            }
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.infoBigViewLabel.frame.size.height = 0
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.infoBigViewLabel.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.mainButtonOutlet.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
+        
+        UIView.animate(withDuration: 0.1, delay: 0.9) {
+            cell.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 0.1, delay: 0.9) {
+            self.mainViewInfoBG.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 1) {
+            self.tintLayer.alpha = 0
+        }
     }
     
     private func checkHistoryEmpty() {
 
-        if testArray.isEmpty {
+        if paymentHistoryArray.isEmpty {
 
             tableView.alpha = 0
             searchBar.alpha = 0
             bgImage.alpha = 1
-            infoLabel.alpha = 1
+            emptyItemsLabel.alpha = 1
             
         } else {
 
             tableView.alpha = 1
             searchBar.alpha = 1
             bgImage.alpha = 0
-            infoLabel.alpha = 0
+            emptyItemsLabel.alpha = 0
         }
+    }
+
+    func setBigViewData(for cell: PaymentHistoryTableViewCell) {
+        
+        serviceBigViewLabel.textColor = PaymentHistoryColors.grayColor.value
+        priceBigViewLabel.textColor = PaymentHistoryColors.grayColor.value
+        infoBigViewLabel.textColor = PaymentHistoryColors.grayColor.value
+        
+        dateBigViewLabel.text = cell.dateLabel.text
+        serviceBigViewLabel.text = cell.serviceLabel.text
+        paymentNumberBigViewLabel.text = cell.paymentNumberLabel.text
+        priceBigViewLabel.text = cell.priceLabel.text
+        cardBigViewImage.image = cell.cardImage.image
+        cardNumberBigViewLabel.text = cell.cardNumberLabel.text
+        mainButtonOutlet.setTitle(PaymentHistoryText.button.text(), for: .normal)
+    }
+    
+    // MARK: - OBJC Methods
+    
+    @objc func tapOnView() {
+        
+        guard let selectedCell = selectedCell else { return }
+        guard let mainInfoViewPosY = mainInfoViewPosY else { return }
+        guard let mainInfoViewHeight = mainInfoViewHeight else { return }
+        
+        mainInfoViewAnimationOut(cell: selectedCell,
+                                 posY: mainInfoViewPosY,
+                                 height: mainInfoViewHeight)
     }
     
     // MARK: - Actions
@@ -163,83 +246,8 @@ class PaymentHistoryViewController: UIViewController, ReloadDelegate {
     @IBAction func backButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-
 }
 
-// MARK: - Extensions TableView Data Source
 
-extension PaymentHistoryViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-//        let cell = tableView.cellForRow(at: indexPath)
-        
-//        if cell?.tag == 1 {
-//            cellHeight = 410
-//        } else {
-//            cellHeight = 172
-//        }
-        return cellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PaymentHistoryTableViewCell
-        //cell.alpha = 1
-        //cell.testTextLabel.text = testArray[indexPath.row]
-        
-        
-        
-        return cell
-    }
-    
-    
-}
-
-// MARK: - Extensions TableView Delegate
-
-extension PaymentHistoryViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        bigInfoView.removeFromSuperview()
-        
-        //let data = CellData(title: testArray[indexPath.row])
-        let cell = tableView.cellForRow(at: indexPath) as! PaymentHistoryTableViewCell
-        
-        let rectOfCellInTableView = tableView.rectForRow(at: indexPath)
-        let imageBG = cell.bgImage.frame.width - 20
-        let rectOfCellInSuperview = tableView.convert(rectOfCellInTableView, to: tableView.superview)
-        
-        let x = rectOfCellInSuperview.origin.x + 20
-        let y = rectOfCellInSuperview.origin.y + 200
-        //let width = rectOfCellInSuperview
-        
-        print(x)
-        print(y)
-        print(imageBG)
-        //print(rectOfCellInSuperview.origin.y)
-        //print(cell.frame.origin.y)
-        bigView(posX: x, posY: y, width: imageBG)
-        
-//
-//        //print(cell.frame.origin.y)
-//        tableView.beginUpdates()
-//        cell.tag = 1
-//        tableView.endUpdates()
-//
-//        //print(cell.frame.origin.y)
-//
-//        animating(cell: cell, tableView: tableView)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-}
 
 

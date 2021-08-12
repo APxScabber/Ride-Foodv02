@@ -167,6 +167,13 @@
 		78F1A98726A894E100E16084 /* PaymentWaysColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A98626A894E100E16084 /* PaymentWaysColor.swift */; };
 		78F1A98A26A8950A00E16084 /* PaymentWaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A98926A8950A00E16084 /* PaymentWaysModel.swift */; };
 		78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A98B26A8961800E16084 /* ConstantText.swift */; };
+		C446724D26C59B7D00598459 /* PaymentHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446724C26C59B7D00598459 /* PaymentHistoryModel.swift */; };
+		C446725026C5C63B00598459 /* PaymentHistoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446724F26C5C63B00598459 /* PaymentHistoryColor.swift */; };
+		C446725226C5D4B600598459 /* PaymentHistoryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446725126C5D4B600598459 /* PaymentHistoryExtensions.swift */; };
+		C446725426C5D7E700598459 /* GetUserIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446725326C5D7E700598459 /* GetUserIDManager.swift */; };
+		C446725626C5DB7100598459 /* PaymentWaysExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446725526C5DB7100598459 /* PaymentWaysExtensions.swift */; };
+		C446725826C5DC8A00598459 /* AddCardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446725726C5DC8A00598459 /* AddCardExtensions.swift */; };
+		C446725A26C5DE7B00598459 /* TariffsPageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446725926C5DE7B00598459 /* TariffsPageExtensions.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -179,7 +186,6 @@
 		C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D77726B9E4B0001894F8 /* PaymentHistoryInteractor.swift */; };
 		C4A9D77B26B9E6BE001894F8 /* PaymentHistoryText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D77A26B9E6BE001894F8 /* PaymentHistoryText.swift */; };
 		C4A9D7A726C00932001894F8 /* PaymentHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D7A626C00932001894F8 /* PaymentHistoryTableViewCell.swift */; };
-		C4A9D7A926C0FFC3001894F8 /* PaymentHistoryBigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A9D7A826C0FFC3001894F8 /* PaymentHistoryBigViewController.swift */; };
 		C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E83FB0266EA538000EE70F /* AppDelegate.swift */; };
 		C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FB9266EA53B000EE70F /* Assets.xcassets */; };
 		C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E83FBB266EA53B000EE70F /* LaunchScreen.storyboard */; };
@@ -357,6 +363,13 @@
 		78F1A98626A894E100E16084 /* PaymentWaysColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWaysColor.swift; sourceTree = "<group>"; };
 		78F1A98926A8950A00E16084 /* PaymentWaysModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWaysModel.swift; sourceTree = "<group>"; };
 		78F1A98B26A8961800E16084 /* ConstantText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantText.swift; sourceTree = "<group>"; };
+		C446724C26C59B7D00598459 /* PaymentHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryModel.swift; sourceTree = "<group>"; };
+		C446724F26C5C63B00598459 /* PaymentHistoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryColor.swift; sourceTree = "<group>"; };
+		C446725126C5D4B600598459 /* PaymentHistoryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryExtensions.swift; sourceTree = "<group>"; };
+		C446725326C5D7E700598459 /* GetUserIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserIDManager.swift; sourceTree = "<group>"; };
+		C446725526C5DB7100598459 /* PaymentWaysExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWaysExtensions.swift; sourceTree = "<group>"; };
+		C446725726C5DC8A00598459 /* AddCardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardExtensions.swift; sourceTree = "<group>"; };
+		C446725926C5DE7B00598459 /* TariffsPageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsPageExtensions.swift; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -369,7 +382,6 @@
 		C4A9D77726B9E4B0001894F8 /* PaymentHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryInteractor.swift; sourceTree = "<group>"; };
 		C4A9D77A26B9E6BE001894F8 /* PaymentHistoryText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryText.swift; sourceTree = "<group>"; };
 		C4A9D7A626C00932001894F8 /* PaymentHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		C4A9D7A826C0FFC3001894F8 /* PaymentHistoryBigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryBigViewController.swift; sourceTree = "<group>"; };
 		C4E83FAD266EA538000EE70F /* Ride-Foodv02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ride-Foodv02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E83FB0266EA538000EE70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4E83FB9266EA53B000EE70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -408,6 +420,7 @@
 				7841E39D26A8362500335DFA /* TariffsInteractor.swift */,
 				7841E39A26A8362400335DFA /* TariffsPageViewController.swift */,
 				7841E39B26A8362400335DFA /* TariffsViewController.swift */,
+				C446725926C5DE7B00598459 /* TariffsPageExtensions.swift */,
 			);
 			path = Tariffs;
 			sourceTree = "<group>";
@@ -665,6 +678,7 @@
 				78A39FE1267B55EC006D0DAB /* LoadManager.swift */,
 				78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */,
 				78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */,
+				C446725326C5D7E700598459 /* GetUserIDManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -682,6 +696,7 @@
 		78A39FE7267B5660006D0DAB /* Structurs */ = {
 			isa = PBXGroup;
 			children = (
+				C446724B26C59B5000598459 /* PaymentHistory */,
 				78F1A98826A894FD00E16084 /* PaymentWays */,
 				C47892C4267B97C400B4C737 /* Tariffs */,
 				78A39FF8267B569A006D0DAB /* Login */,
@@ -823,6 +838,7 @@
 				C47892BD267B8B5B00B4C737 /* LoginColors.swift */,
 				C47892BF267B8B7300B4C737 /* TariffsColors.swift */,
 				78F1A98626A894E100E16084 /* PaymentWaysColor.swift */,
+				C446724F26C5C63B00598459 /* PaymentHistoryColor.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -849,11 +865,13 @@
 			children = (
 				78F1A97626A8948F00E16084 /* PaymentWays.storyboard */,
 				78F1A97926A8949000E16084 /* AddCardConfirm.xib */,
-				78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */,
 				78F1A97726A8948F00E16084 /* PaymentWaysViewController.swift */,
 				78F1A97526A8948F00E16084 /* PaymentWaysInteractor.swift */,
+				C446725526C5DB7100598459 /* PaymentWaysExtensions.swift */,
+				78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */,
 				78F1A97A26A8949000E16084 /* AddCardViewController.swift */,
 				78F1A97426A8948F00E16084 /* AddCardInteractor.swift */,
+				C446725726C5DC8A00598459 /* AddCardExtensions.swift */,
 				7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */,
 				7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */,
 				C4A9D76C26B968B4001894F8 /* CongratulationsScoresViewController.swift */,
@@ -884,6 +902,14 @@
 			path = PaymentWays;
 			sourceTree = "<group>";
 		};
+		C446724B26C59B5000598459 /* PaymentHistory */ = {
+			isa = PBXGroup;
+			children = (
+				C446724C26C59B7D00598459 /* PaymentHistoryModel.swift */,
+			);
+			path = PaymentHistory;
+			sourceTree = "<group>";
+		};
 		C47892C1267B8C9800B4C737 /* Tariffs */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,7 +933,7 @@
 				C4A9D77526B9E49D001894F8 /* PaymentHistoryViewController.swift */,
 				C4A9D77726B9E4B0001894F8 /* PaymentHistoryInteractor.swift */,
 				C4A9D7A626C00932001894F8 /* PaymentHistoryTableViewCell.swift */,
-				C4A9D7A826C0FFC3001894F8 /* PaymentHistoryBigViewController.swift */,
+				C446725126C5D4B600598459 /* PaymentHistoryExtensions.swift */,
 			);
 			path = PaymentsHistory;
 			sourceTree = "<group>";
@@ -1101,6 +1127,7 @@
 				7835378126AF21F8005D73D6 /* FoodMainVC.swift in Sources */,
 				7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */,
 				7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */,
+				C446725A26C5DE7B00598459 /* TariffsPageExtensions.swift in Sources */,
 				7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */,
 				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
 				7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */,
@@ -1119,7 +1146,6 @@
 				78A39FE5267B55EC006D0DAB /* LoadManager.swift in Sources */,
 				785F5D9426C2AF01004503CB /* Localizable.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
-				C4A9D7A926C0FFC3001894F8 /* PaymentHistoryBigViewController.swift in Sources */,
 				C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */,
 				78A3A01B267B57D7006D0DAB /* LoginInteractor.swift in Sources */,
 				787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */,
@@ -1136,6 +1162,7 @@
 				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,
 				F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */,
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
+				C446725826C5DC8A00598459 /* AddCardExtensions.swift in Sources */,
 				787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */,
 				C4A9D77126B97F6D001894F8 /* MoreDetails.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
@@ -1163,11 +1190,13 @@
 				F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */,
 				78F1A97D26A8949000E16084 /* PaymentWaysInteractor.swift in Sources */,
 				7808D7D526B838F000A88E12 /* EmailChecker.swift in Sources */,
+				C446724D26C59B7D00598459 /* PaymentHistoryModel.swift in Sources */,
 				78A3A01E267B57D7006D0DAB /* LoginViewController.swift in Sources */,
 				C47892C6267B97DB00B4C737 /* TariffsModel.swift in Sources */,
 				78F1A98726A894E100E16084 /* PaymentWaysColor.swift in Sources */,
 				78A39FF6267B568E006D0DAB /* UserSettingsMO+CoreDataClass.swift in Sources */,
 				78ACFD0726A5984C00C995EB /* PromocodeTableViewCell.swift in Sources */,
+				C446725626C5DB7100598459 /* PaymentWaysExtensions.swift in Sources */,
 				7841E3AB26A837A300335DFA /* TariffsViewText.swift in Sources */,
 				7867B4D32672291D0031BFA0 /* SettingsMainViewController.swift in Sources */,
 				78A3A00C267B56E9006D0DAB /* UserDefaultsManagerText.swift in Sources */,
@@ -1221,6 +1250,7 @@
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
+				C446725426C5D7E700598459 /* GetUserIDManager.swift in Sources */,
 				C4A9D77B26B9E6BE001894F8 /* PaymentHistoryText.swift in Sources */,
 				C4A9D77626B9E49D001894F8 /* PaymentHistoryViewController.swift in Sources */,
 				787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */,
@@ -1247,11 +1277,13 @@
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
 				F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
+				C446725026C5C63B00598459 /* PaymentHistoryColor.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
 				7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */,
 				F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
 				78BE4A022683675100A13641 /* Promotion.swift in Sources */,
+				C446725226C5D4B600598459 /* PaymentHistoryExtensions.swift in Sources */,
 				78A3A019267B57D7006D0DAB /* ConfirmActions.swift in Sources */,
 				787A83F126AB2DAD0096DFC3 /* PersistanceManager.swift in Sources */,
 			);

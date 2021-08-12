@@ -9,16 +9,11 @@ import UIKit
 
 class TariffsInteractor {
     
-    var userID: String?
-    
-    init() {
-    }
-    
-    // MARK: - Methods
-    
     //Загружаем данные о Тарифах
-    func loadTariffs(userID: String, completion: @escaping ([TariffsModel]?) -> Void) {
-
+    func loadTariffs(completion: @escaping ([TariffsModel]?) -> Void) {
+        
+        guard let userID = GetUserIDManager.shared.userID else { return }
+        
         let urlString = separategURL(url: tariffsURL, userID: userID)
         guard let url = URL(string: urlString) else { return }
         
@@ -43,22 +38,5 @@ class TariffsInteractor {
         let finalUrl = textArray[0] + userID + textArray[1]
         
         return finalUrl
-    }
-    
-    //Получаем ID пользователя для дальнейшего использования в запросах к серверу
-    func getUserID() {
-        
-        CoreDataManager.shared.fetchCoreData { [weak self] result in
-            
-            switch result {
-            case .success(let model):
-                let userData = model.first
-                self?.userID = String(describing: userData!.id!)
-            case .failure(let error):
-                print(error)
-            case .none:
-                return
-            }
-        }
     }
 }

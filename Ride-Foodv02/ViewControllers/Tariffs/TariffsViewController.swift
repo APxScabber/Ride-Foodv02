@@ -24,8 +24,7 @@ class TariffsViewController: UIViewController {
     
     
     // MARK: - Properties
-    
-    var userID: String?
+
     var tarrifsButtonArray: [UIButton] = []
     var indexVC = 0
     var linespacing: CGFloat = 5
@@ -43,9 +42,6 @@ class TariffsViewController: UIViewController {
         collectionView.delegate = self
 
         tarrifsButtonArray = [standartButtonOutlet, premiumButtonOutlet, businessButtonOutlet]
-        
-        tariffsInteractor.getUserID()
-        userID = tariffsInteractor.userID
         
         setupSmallTariffButtons()
         setupCarsTypeLabel()
@@ -105,19 +101,12 @@ class TariffsViewController: UIViewController {
     //Размещаем полученные данные с сервера в нужные места
     func getTariffsData() {
         
-        guard let id = userID else { return }
-        
-        tariffsInteractor.loadTariffs(userID: id) { [weak self] (dataModel) in
+        tariffsInteractor.loadTariffs { [weak self] (dataModel) in
             guard let tariffsData = dataModel else { return }
             
-            //DispatchQueue.main.async { [weak self] in
-            
             guard let indexVC = self?.indexVC else { return }
-            
-            //self?.tariffsInteractor.getAdvantagesDatas(model: tariffsData[indexVC].advantages)
-            
+
             let advantagesModel = tariffsData[indexVC].advantages
-            //let advantages = CacheImageManager.shared.getAdvantagesDatas(model: advantagesModel)
             
             CacheImageManager.shared.getAdvantagesDatas(model: advantagesModel) { images, titles in
                 self?.advantagesIconsArray = images

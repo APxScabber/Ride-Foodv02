@@ -15,9 +15,7 @@ class PaymentHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardNumberLabel: UILabel!
     @IBOutlet weak var paymentNumberLabel: UILabel!
-    //@IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-   // @IBOutlet weak var emailButtonOutlet: UIButton!
     
     @IBOutlet weak var bgImage: UIImageView!
     
@@ -32,9 +30,4 @@ class PaymentHistoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-}
-
-struct CellData {
-    let title: String
 }

@@ -14,9 +14,6 @@ class PaymentWaysTableViewCell: UITableViewCell {
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var cardNumberLabel: UILabel!
     
-    
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +24,4 @@ class PaymentWaysTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
