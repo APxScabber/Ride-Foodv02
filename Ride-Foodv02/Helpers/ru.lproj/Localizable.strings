@@ -77,6 +77,12 @@
 "enterAdress" = "Введите адрес доставки";
 "confirm" = "Подтвердить";
 
+//MARK: - Taxi
+
+"fromAddressQuestion" = "Откуда вы хотите поехать?";
+"toAddressQuestion" = "Куда вы хотите поехать?";
+"map" = "Карта";
+"next" = "Далее";
 
 //MARK: - User Profile
 
