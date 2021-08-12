@@ -43,6 +43,10 @@ enum Localizable {
            
     }
     
+    enum Taxi:String,LocalizableDelegate {
+        case fromAddressQuestion,toAddressQuestion,map,next
+    }
+    
     enum UserProfile: String, LocalizableDelegate {
         case profile, enterPhoneNumber, myAddresses, paymentHistory, ordersHistory, paymentMethod, logOut
     }

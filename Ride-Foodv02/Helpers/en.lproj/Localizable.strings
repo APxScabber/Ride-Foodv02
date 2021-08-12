@@ -76,6 +76,13 @@
 "enterAdress" = "Enter delivery address";
 "confirm" = "Confirm";
 
+//MARK: - Taxi
+
+"fromAddressQuestion" = "Where do you want to go from?";
+"toAddressQuestion" = "Where do you want to go?";
+"map" = "Map";
+"next" = "Next";
+
 //MARK: - User Profile
 
 "profile"                    = "Profile";

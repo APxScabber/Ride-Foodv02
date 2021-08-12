@@ -148,6 +148,7 @@
 		78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BE4A0326837B8E00A13641 /* PromotionDetail.xib */; };
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
 		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
+		78C05CCB26C5353700BF5A9F /* TaxiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C05CCA26C5353700BF5A9F /* TaxiData.swift */; };
 		78CE749126A6E064006C3417 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE749026A6E064006C3417 /* MenuView.xib */; };
 		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
@@ -337,6 +338,7 @@
 		78BE4A0326837B8E00A13641 /* PromotionDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionDetail.xib; sourceTree = "<group>"; };
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
 		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		78C05CCA26C5353700BF5A9F /* TaxiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiData.swift; sourceTree = "<group>"; };
 		78CE749026A6E064006C3417 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				785F5D8526C11CDB004503CB /* Taxi.storyboard */,
 				785F5D8726C11D00004503CB /* TaxiMainVC.swift */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
+				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
 			);
 			path = Taxi;
 			sourceTree = "<group>";
@@ -1172,6 +1175,7 @@
 				782D45CE26B00EA9006B3A98 /* Shop.swift in Sources */,
 				78F1A97C26A8949000E16084 /* AddCardInteractor.swift in Sources */,
 				782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */,
+				78C05CCB26C5353700BF5A9F /* TaxiData.swift in Sources */,
 				78BE4A002683671600A13641 /* PromotionsFetcher.swift in Sources */,
 				78A39FF4267B568E006D0DAB /* UserDataModel.xcdatamodeld in Sources */,
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
