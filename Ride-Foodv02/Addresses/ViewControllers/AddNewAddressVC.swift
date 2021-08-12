@@ -141,8 +141,12 @@ class AddNewAddressVC: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! SelectLocationVC
-        vc.delegate = self
+        if let vc = segue.destination as? SelectLocationVC {
+            vc.delegate = self
+        } else if let TaxiVC = segue.destination as? TaxiMainVC{
+            TaxiVC.toAddress = passedAddress?.address ?? ""
+        }
+       
     }
     
 
@@ -446,6 +450,7 @@ class AddNewAddressVC: UIViewController{
     }
 
         
+
     
 
     @objc func setAsMainAddress(){
@@ -467,8 +472,9 @@ class AddNewAddressVC: UIViewController{
                     print(data)
                     print("Successfully updated address")
                     self?.setUIIfUpdatingAddress(address: data)
-               
-                    self?.navigationController?.popViewController(animated: true)
+                    self?.passedAddress = data
+                    self?.performSegue(withIdentifier: "ToTaxiSegue", sender: self)
+                    
                     
                    
                 }
