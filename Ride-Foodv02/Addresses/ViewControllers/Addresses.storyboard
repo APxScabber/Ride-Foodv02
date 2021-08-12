@@ -134,11 +134,22 @@
                         <outlet property="newAddressParentView" destination="b7n-AJ-DaO" id="jA8-Kr-nnb"/>
                         <outlet property="newAddressScrollView" destination="MRI-KN-BnM" id="XLh-h1-nLg"/>
                         <segue destination="mmI-fy-Wht" kind="presentation" identifier="selectLocationSegue" modalPresentationStyle="fullScreen" id="lVV-hb-oBj"/>
+                        <segue destination="mxf-OD-uGp" kind="presentation" identifier="ToTaxiSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="gQ7-AW-azU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd2-ua-ctn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1668.1159420289857" y="69.642857142857139"/>
+        </scene>
+        <!--TaxiStoryboard-->
+        <scene sceneID="h7F-8c-tIV">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="TaxiStoryboard" storyboardName="Taxi" referencedIdentifier="TaxiStoryboard" id="mxf-OD-uGp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vVM-hl-EGS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJP-kr-rq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2404" y="-38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wud-ck-E36">
