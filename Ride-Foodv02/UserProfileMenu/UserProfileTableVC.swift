@@ -9,46 +9,50 @@ import UIKit
 
 class UserProfileTableVC: UITableViewController {
     
+    var numbers: [String] = [
+        "+13456350493",
+        "+15439596832",
+        "+17530593284",
+        "+14929403929",
+    ]
     
+    
+    var enterMobilePhooneNumber = Localizable.UserProfile.enterPhoneNumber.localized
+    var myAddressesMenuItem     = Localizable.UserProfile.myAddresses.localized
+    var paymentHistoryMenuItem  = Localizable.UserProfile.paymentHistory.localized
+    var ordersHistoryMenuItem   = Localizable.UserProfile.ordersHistory.localized
+    var paymentMethodMenuItem   = Localizable.UserProfile.paymentMethod.localized
+    
+    var sectionTwoMenuItems: [String] = []
 //    let footerView = UIView()
     let signOutButton = VBButton(backgroundColor: UIColor.ProfileBackgroundColor, title: Localizable.UserProfile.logOut.localized, cornerRadius: 0, textColor: .red, font: UIFont.SFUIDisplayRegular(size: 15)!, borderWidth: 1, borderColor: UIColor.ProfileButtonBorderColor.cgColor)
     
     let backView = ProfileMenuBackgroundView()
+ 
     
-    @IBOutlet weak var phoneNumberLabel: UILabel! { didSet {
-        phoneNumberLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-    }}
-    
-    @IBOutlet weak var MyAddressesLabel: UILabel! { didSet {
-        MyAddressesLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        
-    }}
-    
-    @IBOutlet weak var PaymentHistoryLabel: UILabel! { didSet {
-        PaymentHistoryLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-    }}
-    
-    @IBOutlet weak var OrdersHistoryLabel: UILabel! { didSet {
-        OrdersHistoryLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-    }}
-    
-    @IBOutlet weak var PaymentMethodLabel: UILabel! { didSet {
-        PaymentMethodLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-    }}
+    @IBOutlet weak var PaymentMethodLabel: UILabel! 
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        configureNavigationItem()
+        
         configureSignOutButton()
        
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationItem()
+    }
+    
     func configureUI(){
-        navigationItem.title = Localizable.UserProfile.profile.localized
+        
+        
+       
+    
         tableView.isScrollEnabled = false
        
         tableView.addSubview(backView)
@@ -75,11 +79,13 @@ class UserProfileTableVC: UITableViewController {
     
         tableView.backgroundView = backView
         
-        phoneNumberLabel.text       = Localizable.UserProfile.enterPhoneNumber.localized
-        MyAddressesLabel.text       = Localizable.UserProfile.myAddresses.localized
-        PaymentHistoryLabel.text    = Localizable.UserProfile.paymentHistory.localized
-        OrdersHistoryLabel.text     = Localizable.UserProfile.ordersHistory.localized
-        PaymentMethodLabel.text     = Localizable.UserProfile.paymentMethod.localized
+        sectionTwoMenuItems = [
+            paymentHistoryMenuItem,
+            ordersHistoryMenuItem,
+            paymentMethodMenuItem
+        ]
+        tableView.reloadData()
+     
     }
     
     @objc func dismissVC(){
@@ -96,6 +102,10 @@ class UserProfileTableVC: UITableViewController {
   
     
     func configureNavigationItem(){
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = Localizable.UserProfile.profile.localized
+        navigationItem.largeTitleDisplayMode = .always
+        
         let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
         doneButton.tintColor = .black
         navigationItem.leftBarButtonItem = doneButton
@@ -118,14 +128,80 @@ class UserProfileTableVC: UITableViewController {
             present(supportVC, animated: true)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        30
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numberToReturn = 0
+        
+        if section == 0 && numbers.count != 0 {
+            numberToReturn = numbers.count + 1
+        }
+        if section == 0 && numbers.count == 0{
+            numberToReturn = 2
+        }
+        if section == 1 {
+            numberToReturn = sectionTwoMenuItems.count
+        }
+        return numberToReturn
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 && numbers.count == 0 && indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: PhoneNumberTableViewCell.identifier, for: indexPath) as! PhoneNumberTableViewCell
+            cell.phoneNumberLabel.text = enterMobilePhooneNumber
+            cell.isMainLabel.isHidden = true
+            return cell
+        }
+        if indexPath.section == 0 && indexPath.row != (numbers.count + 1) - 1 && numbers.count != 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: PhoneNumberTableViewCell.identifier, for: indexPath) as! PhoneNumberTableViewCell
+            let number = numbers[indexPath.row]
+            cell.phoneNumberLabel.text = number
+            cell.isMainLabel.isHidden = true
+            return cell
+        }
+        if indexPath.section == 0 && indexPath.row == 1 && numbers.count == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemsTableViewCell.identifier, for: indexPath) as! MenuItemsTableViewCell
+            cell.menuItemLabel.text = myAddressesMenuItem
+            return cell
+        }
+        if indexPath.section == 0 && indexPath.row == (numbers.count + 1) - 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemsTableViewCell.identifier, for: indexPath) as! MenuItemsTableViewCell
+            cell.menuItemLabel.text = myAddressesMenuItem
+            return cell
+        }
+        
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemsTableViewCell.identifier, for: indexPath) as! MenuItemsTableViewCell
+            let menuItem = sectionTwoMenuItems[indexPath.row]
+            cell.menuItemLabel.text = menuItem
+            return cell
+        }
+     return UITableViewCell()
+    }
 
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 && indexPath.row == 0  {
+        if indexPath.section == 0 && indexPath.row != (numbers.count + 1) - 1 && numbers.count != 0 {
+            print("Номер телефона")
+        }
+        
+        
+        if indexPath.section == 0 && indexPath.row == 0 && numbers.count == 0{
             print("Номер телефона")
             }
-        if indexPath.section == 0 && indexPath.row == 1  {
+        if indexPath.section == 0 && indexPath.row == 1 && numbers.count == 0{
+            goToStoryboard(name: "Addresses")
+        }
+        
+        if indexPath.section == 0 && indexPath.row == (numbers.count + 1) - 1 && numbers.count != 0 {
             goToStoryboard(name: "Addresses")
             }
         if indexPath.section == 1 && indexPath.row == 0  {

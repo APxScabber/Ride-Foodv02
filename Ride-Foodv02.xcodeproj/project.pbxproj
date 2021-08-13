@@ -202,6 +202,8 @@
 		F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917126AF779E008E9841 /* VBTextView.swift */; };
 		F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917326AF7B4E008E9841 /* VBMapButton.swift */; };
 		F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */; };
+		F5D500DE26C71AE500488D45 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */; };
+		F5D500E026C71AFA00488D45 /* MenuItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,6 +405,8 @@
 		F5BC917126AF779E008E9841 /* VBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBTextView.swift; sourceTree = "<group>"; };
 		F5BC917326AF7B4E008E9841 /* VBMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBMapButton.swift; sourceTree = "<group>"; };
 		F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressVC.swift; sourceTree = "<group>"; };
+		F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
+		F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +614,7 @@
 		787A83D726AB2D230096DFC3 /* UserProfileMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F5D500DC26C71AC400488D45 /* Custom TableView Cells */,
 				F5BC916226AB745E008E9841 /* Extensions */,
 				787A83DC26AB2D380096DFC3 /* CustomViews */,
 				787A83D826AB2D330096DFC3 /* UserProfile.storyboard */,
@@ -1035,6 +1040,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		F5D500DC26C71AC400488D45 /* Custom TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */,
+				F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */,
+			);
+			path = "Custom TableView Cells";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1190,6 +1204,7 @@
 				7808D7C926B4806800A88E12 /* TotalScoresModel.swift in Sources */,
 				782D45DE26B03D21006B3A98 /* ShopDetail.swift in Sources */,
 				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,
+				F5D500DE26C71AE500488D45 /* PhoneNumberTableViewCell.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
 				78F1A97B26A8949000E16084 /* PaymentWaysTableViewCell.swift in Sources */,
 				C4A9D7A726C00932001894F8 /* PaymentHistoryTableViewCell.swift in Sources */,
@@ -1252,6 +1267,7 @@
 				78A3A007267B56E1006D0DAB /* ConfirmText.swift in Sources */,
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,
 				7841E3AD26A837F900335DFA /* MainTextFont.swift in Sources */,
+				F5D500E026C71AFA00488D45 /* MenuItemsTableViewCell.swift in Sources */,
 				782D45DA26B03103006B3A98 /* ShopDetailViewController.swift in Sources */,
 				7841E3A426A8362500335DFA /* TariffsInteractor.swift in Sources */,
 				78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */,
