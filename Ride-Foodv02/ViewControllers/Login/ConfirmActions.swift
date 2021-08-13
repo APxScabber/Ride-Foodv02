@@ -17,20 +17,28 @@ extension ConfirmViewController {
         
         guard let text = mainCodeTextField.text else { return }
         
-        inputCodeLabel[inputLabelCount].backgroundColor = LoginColors.grayLableColor.value
-        
-        let index = text.index(text.startIndex, offsetBy: inputLabelCount)
-        inputCodeLabel[inputLabelCount].text = String(text[index])
-        
-        inputLabelCount += 1
-        
-        if inputLabelCount == 4 {
+        if text.count == inputLabelCount + 1 {
             
-            nextButtonOutlet.isEnabled = true
-            nextButtonOutlet.backgroundColor = LoginColors.blueColor.value
-            mainCodeTextField.resignFirstResponder()
-            buttonAnimationOut()
-            scrollView.frame.origin.y = safeAreaTopHeigh
+            inputCodeLabel[inputLabelCount].backgroundColor = LoginColors.grayLableColor.value
+            
+            let index = text.index(text.startIndex, offsetBy: inputLabelCount)
+            inputCodeLabel[inputLabelCount].text = String(text[index])
+            
+            inputLabelCount += 1
+            
+            if inputLabelCount == 4 {
+                
+                nextButtonOutlet.isEnabled = true
+                nextButtonOutlet.backgroundColor = LoginColors.blueColor.value
+                mainCodeTextField.resignFirstResponder()
+                buttonAnimationOut()
+                scrollView.frame.origin.y = safeAreaTopHeigh
+            }
+        } else {
+            inputLabelCount -= 1
+            inputCodeLabel[inputLabelCount].backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "confirmEmpty"))
+            inputCodeLabel[inputLabelCount].text = ""
+            
         }
     }
     
