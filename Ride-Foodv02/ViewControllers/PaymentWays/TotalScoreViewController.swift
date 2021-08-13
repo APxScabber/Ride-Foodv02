@@ -16,6 +16,7 @@ class TotalScoreViewController: UIViewController {
     
     @IBOutlet weak var newOrderButtonOutlet: UIButton!
     @IBOutlet weak var moreDetailsButtonOutlet: UIButton!
+    @IBOutlet weak var topRoundedView: TopRoundedView!
     
     // MARK: - Properties
     

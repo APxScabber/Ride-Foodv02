@@ -69,7 +69,6 @@
 		7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */; };
 		7867B4B8266FAC580031BFA0 /* SupportMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */; };
 		7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */; };
-		7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BD266FB7150031BFA0 /* ImagePicker.swift */; };
 		7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */; };
 		7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */; };
 		7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867B4C52671043D0031BFA0 /* SupportConstants.swift */; };
@@ -149,6 +148,10 @@
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
 		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
 		78C05CCB26C5353700BF5A9F /* TaxiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C05CCA26C5353700BF5A9F /* TaxiData.swift */; };
+		78C8C98626C6AE2E001C947F /* FromAddressDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C8C98526C6AE2E001C947F /* FromAddressDetailView.xib */; };
+		78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */; };
+		78C8C98A26C6CE1A001C947F /* ToAddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */; };
+		78C8C98C26C6CE5C001C947F /* ToAddressDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */; };
 		78CE749126A6E064006C3417 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE749026A6E064006C3417 /* MenuView.xib */; };
 		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
@@ -265,7 +268,6 @@
 		7867B4B5266FAC580031BFA0 /* SupportAddImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportAddImagesViewController.swift; sourceTree = "<group>"; };
 		7867B4B6266FAC580031BFA0 /* SupportMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportMainViewController.swift; sourceTree = "<group>"; };
 		7867B4BB266FAD1E0031BFA0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		7867B4BD266FB7150031BFA0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7867B4BF266FC1680031BFA0 /* SupportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCollectionViewCell.swift; sourceTree = "<group>"; };
 		7867B4C1266FCE0B0031BFA0 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		7867B4C52671043D0031BFA0 /* SupportConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportConstants.swift; sourceTree = "<group>"; };
@@ -345,6 +347,10 @@
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
 		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		78C05CCA26C5353700BF5A9F /* TaxiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiData.swift; sourceTree = "<group>"; };
+		78C8C98526C6AE2E001C947F /* FromAddressDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FromAddressDetailView.xib; sourceTree = "<group>"; };
+		78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromAddressDetailView.swift; sourceTree = "<group>"; };
+		78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToAddressDetailView.swift; sourceTree = "<group>"; };
+		78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToAddressDetailView.xib; sourceTree = "<group>"; };
 		78CE749026A6E064006C3417 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
@@ -493,6 +499,10 @@
 			children = (
 				785F5D8526C11CDB004503CB /* Taxi.storyboard */,
 				785F5D8726C11D00004503CB /* TaxiMainVC.swift */,
+				78C8C98526C6AE2E001C947F /* FromAddressDetailView.xib */,
+				78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */,
+				78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */,
+				78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
 				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
 			);
@@ -552,7 +562,6 @@
 				78AEB872267B59270023605D /* Colors */,
 				78AEB870267B59240023605D /* Fonts */,
 				78AEB871267B59250023605D /* Extensions */,
-				7867B4BD266FB7150031BFA0 /* ImagePicker.swift */,
 				7850E8F526739E6800AA88CA /* Settings.swift */,
 				785F5D9326C2AF01004503CB /* Localizable.swift */,
 				7802DFAF267CA0120048CF1C /* Localizable.strings */,
@@ -778,7 +787,6 @@
 		78A3A00E267B57BC006D0DAB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C446725B26C65EBA00598459 /* OrderHistory */,
 				C4A9D77226B9E44E001894F8 /* PaymentsHistory */,
 				78F1A97226A8947E00E16084 /* PaymentWays */,
 				7841E39826A8360D00335DFA /* Tariffs */,
@@ -909,13 +917,6 @@
 				C446724C26C59B7D00598459 /* PaymentHistoryModel.swift */,
 			);
 			path = PaymentHistory;
-			sourceTree = "<group>";
-		};
-		C446725B26C65EBA00598459 /* OrderHistory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OrderHistory;
 			sourceTree = "<group>";
 		};
 		C47892C1267B8C9800B4C737 /* Tariffs */ = {
@@ -1115,7 +1116,9 @@
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
 				7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */,
 				C4A9D77426B9E484001894F8 /* PaymentHistory.storyboard in Resources */,
+				78C8C98626C6AE2E001C947F /* FromAddressDetailView.xib in Resources */,
 				C4E83FBA266EA53B000EE70F /* Assets.xcassets in Resources */,
+				78C8C98C26C6CE5C001C947F /* ToAddressDetailView.xib in Resources */,
 				78CE749126A6E064006C3417 /* MenuView.xib in Resources */,
 				785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */,
 				787A83DA26AB2D330096DFC3 /* UserProfile.storyboard in Resources */,
@@ -1146,7 +1149,6 @@
 				F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */,
 				78A3A01C267B57D7006D0DAB /* ConfirmViewController.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
-				7867B4BE266FB7150031BFA0 /* ImagePicker.swift in Sources */,
 				F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */,
 				7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */,
 				78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */,
@@ -1162,6 +1164,7 @@
 				78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */,
 				78A3A00D267B56E9006D0DAB /* NotificationText.swift in Sources */,
 				7808D7CB26B480A900A88E12 /* AddCard.swift in Sources */,
+				78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */,
 				787A83EE26AB2DA40096DFC3 /* AddressesVC.swift in Sources */,
 				78AEB87F267B59C10023605D /* AppDelegateExtension.swift in Sources */,
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
@@ -1235,6 +1238,7 @@
 				C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */,
 				7841E3AF26A8384C00335DFA /* TextViewExtension.swift in Sources */,
 				F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */,
+				78C8C98A26C6CE1A001C947F /* ToAddressDetailView.swift in Sources */,
 				7850E8FE2674DA8D00AA88CA /* MainScreenViewController.swift in Sources */,
 				782D45E226B046DA006B3A98 /* ShopDetailCollectionViewCell.swift in Sources */,
 				7867B4C62671043D0031BFA0 /* SupportConstants.swift in Sources */,

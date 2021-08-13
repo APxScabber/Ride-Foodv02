@@ -83,10 +83,37 @@ class TaxiMainVC: UIViewController {
         mapView.delegate = self
     }}
    
-    
+    private let fromAddressDetailView = FromAddressDetailView.initFromNib()
+    private let toAddressDetailView = ToAddressDetailView.initFromNib()
+
     //MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func next(_ sender: UIButton) {
+        moveDown()
+        shouldUpdateUI = false
+        bottomConstaint.constant -= addressesChooserViewHeightConstraint.constant
+        fromAddressDetailView.isHidden = false
+        transparentView.isHidden = false
+        
+        fromAddressDetailView.frame = CGRect(x: view.bounds.width,
+                                             y: view.bounds.height - keyboardHeight - TaxiConstant.fromAddressDetailViewHeight,
+                                             width: view.bounds.width,
+                                             height: TaxiConstant.fromAddressDetailViewHeight)
+        fromAddressDetailView.placeLabel.text = fromAddress
+
+        fromAddressDetailView.textField.becomeFirstResponder()
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.fromAddressDetailView.frame.origin.x = 0
+        } completion: {  if $0 == .end {
+
+        }
+        }
+        
+        
     }
     
     //MARK: - ViewController lifecycle
@@ -106,6 +133,13 @@ class TaxiMainVC: UIViewController {
             default:break
             }
         }
+        fromAddressDetailView.delegate = self
+        fromAddressDetailView.isHidden = true
+        
+        toAddressDetailView.delegate = self
+        toAddressDetailView.isHidden = true
+        view.addSubview(fromAddressDetailView)
+        view.addSubview(toAddressDetailView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -231,6 +265,9 @@ class TaxiMainVC: UIViewController {
         shouldUpdateUI = true
         if !toAddress.isEmpty && !fromAddress.isEmpty {
             tableViewHeightConstraint.constant = 0
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
             tableViewHeightView.isHidden = true
             gradientImageView.isHidden = false
         } else {
@@ -242,22 +279,18 @@ class TaxiMainVC: UIViewController {
     
     
     private func updateConstraints() {
-        
-        if view.bounds.height - keyboardHeight - addressesChooserViewHeightConstraint.constant < 0 {
-            compressAddressesViewToFitHeight()
-        } else {
-            tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-            addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + tableViewHeightConstraint.constant
-            if view.bounds.height - keyboardHeight - addressesChooserViewHeightConstraint.constant < 0 {
-                compressAddressesViewToFitHeight()
-            }
-        }
+        tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + tableViewHeightConstraint.constant
+        compressAddressesViewToFitHeight()
     }
     
     private func compressAddressesViewToFitHeight() {
-        yOffset = abs(view.bounds.height - keyboardHeight - addressesChooserViewHeightConstraint.constant)
-        tableViewHeightConstraint.constant -= yOffset
-        addressesChooserViewHeightConstraint.constant -= yOffset
+        if view.bounds.height - keyboardHeight - addressesChooserViewHeightConstraint.constant < 0 {
+            yOffset = abs(view.bounds.height - keyboardHeight - addressesChooserViewHeightConstraint.constant)
+            tableViewHeightConstraint.constant -= yOffset
+            addressesChooserViewHeightConstraint.constant -= yOffset
+        }
+        
     }
 }
 
@@ -308,6 +341,7 @@ extension TaxiMainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         toAddress = addresses[indexPath.row].fullAddress
+        moveDown()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -328,4 +362,56 @@ extension TaxiMainVC: UITextFieldDelegate {
         responderTextField = textField
     }
   
+}
+
+//MARK: - FromAddressDetailViewDelegate
+
+extension TaxiMainVC: FromAddressDetailViewDelegate {
+    
+    func fromAddressDetailConfirm() {
+        
+        toAddressDetailView.isHidden = false
+        
+        toAddressDetailView.frame = CGRect(x: view.bounds.width,
+                                           y: view.bounds.height - keyboardHeight - TaxiConstant.toAddressDetailViewHeight,
+                                           width: view.bounds.width,
+                                           height: TaxiConstant.toAddressDetailViewHeight)
+        fromAddressDetailView.textField.resignFirstResponder()
+        toAddressDetailView.textField.becomeFirstResponder()
+        
+        toAddressDetailView.placeLabel.text = toAddress
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.toAddressDetailView.frame.origin.x = 0
+            self.fromAddressDetailView.frame.origin.x = -self.view.bounds.width
+        } completion: { if $0 == .end {}
+        }
+
+    }
+    
+    
+}
+
+//MARK: - ToAddressesDetaileViewDelegate
+
+extension TaxiMainVC: ToAddressDetailViewDelegate {
+    
+    func toAddressDetailConfirm() {
+        transparentView.isHidden = true
+        bottomConstaint.constant = 0.0
+        toAddressDetailView.textField.resignFirstResponder()
+        addressesChooserView.isUserInteractionEnabled = false
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.toAddressDetailView.frame.origin.x = -self.view.bounds.width
+        } completion: { if $0 == .end {
+            self.toAddressDetailView.removeFromSuperview()
+            self.fromAddressDetailView.removeFromSuperview()
+            self.shouldUpdateUI = true
+            self.addressesChooserView.isUserInteractionEnabled = true
+        }
+        }
+    }
+    
+    
 }

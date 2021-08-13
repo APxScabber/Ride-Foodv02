@@ -82,6 +82,10 @@
 "toAddressQuestion" = "Where do you want to go?";
 "map" = "Map";
 "next" = "Next";
+"confirm" = "Confirm";
+"fromAddressDetail" = "Specify how to get to you";
+"toAddressDetail" = "Specify where we are going";
+
 
 //MARK: - User Profile
 

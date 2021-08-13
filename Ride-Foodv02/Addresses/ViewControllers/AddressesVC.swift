@@ -200,7 +200,7 @@ class AddressesVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AddNewAddressVC
         vc.delegate = self
-        if addressToPass != nil && gonnaUpdateAddress == true {
+        if gonnaUpdateAddress {
             vc.isUPdatingAddress = true
             vc.passedAddress = addressToPass
         }

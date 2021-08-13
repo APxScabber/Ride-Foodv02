@@ -70,9 +70,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="znJ-ex-2JS" firstAttribute="centerY" secondItem="AhY-Ka-MUt" secondAttribute="centerY" id="1c7-sI-BwN"/>
                                                 <constraint firstItem="AhY-Ka-MUt" firstAttribute="centerY" secondItem="3DU-LX-Cni" secondAttribute="centerY" id="8QB-rJ-7Ji"/>
-                                                <constraint firstItem="znJ-ex-2JS" firstAttribute="centerX" secondItem="AhY-Ka-MUt" secondAttribute="centerX" id="Gi9-sv-e7s"/>
                                                 <constraint firstItem="AhY-Ka-MUt" firstAttribute="leading" secondItem="3DU-LX-Cni" secondAttribute="leading" constant="25" id="Mw9-PQ-g3H"/>
                                                 <constraint firstItem="ITz-h6-NQp" firstAttribute="centerY" secondItem="3DU-LX-Cni" secondAttribute="centerY" id="Xfi-Kl-6fW"/>
                                                 <constraint firstItem="een-8Y-9Ru" firstAttribute="leading" secondItem="ITz-h6-NQp" secondAttribute="trailing" constant="7" id="d9a-BO-XI5"/>
@@ -138,6 +136,7 @@
                         <outlet property="bgImageView" destination="cl3-fY-pV7" id="bQ0-51-sAL"/>
                         <outlet property="linkCardButtonOutlet" destination="9f0-Sr-u1r" id="yx4-4E-Q0k"/>
                         <outlet property="tableView" destination="JxZ-ty-9Qe" id="R8d-d7-DWc"/>
+                        <segue destination="Qyr-St-FSD" kind="show" identifier="addCard" id="dkj-Ar-Ppp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -153,14 +152,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newCardBG" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-ag-Hkl">
-                                <rect key="frame" x="64" y="194" width="300" height="184"/>
+                                <rect key="frame" x="64" y="238" width="300" height="184"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="184" id="T7x-o2-qbW"/>
                                     <constraint firstAttribute="width" secondItem="L9g-ag-Hkl" secondAttribute="height" multiplier="75:46" id="gxb-nG-VIf"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8RY-oa-kee">
-                                <rect key="frame" x="166" y="44" width="97" height="34"/>
+                                <rect key="frame" x="166" y="88" width="97" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -176,7 +175,14 @@
                             <constraint firstItem="L9g-ag-Hkl" firstAttribute="top" secondItem="HTK-9k-TOV" secondAttribute="top" constant="150" id="wvv-ek-Uhb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CSI-wa-dG4"/>
+                    <navigationItem key="navigationItem" id="CSI-wa-dG4">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="7Q4-7p-Mr0">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismiss:" destination="Qyr-St-FSD" id="bwg-zT-fnw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addCardView" destination="BuU-Nv-65F" id="96d-rY-ZxM"/>
                         <outlet property="bgImageTopConstraint" destination="wvv-ek-Uhb" id="Y5J-pH-RNn"/>
@@ -430,7 +436,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-RL-ufb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-RL-ufb" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="698" width="428" height="228"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plY-sS-F4F">
@@ -507,6 +513,7 @@
                         <outlet property="infoTextView" destination="d8i-WK-T0j" id="nyk-ac-8lc"/>
                         <outlet property="moreDetailsButtonOutlet" destination="Ovh-cp-gQg" id="a95-qM-qip"/>
                         <outlet property="newOrderButtonOutlet" destination="plY-sS-F4F" id="AnF-sj-Fi0"/>
+                        <outlet property="topRoundedView" destination="TnF-RL-ufb" id="5Vo-kK-Slg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMm-IF-EwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

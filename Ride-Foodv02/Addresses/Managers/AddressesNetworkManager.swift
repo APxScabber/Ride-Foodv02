@@ -139,7 +139,7 @@ class AddressesNetworkManager {
                         completion(.failure(DataError.invalideData))
                     }
                     guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                        print(response)
+                        print(response!)
                         completion(.failure(DataError.invalideResponse))
                         return
                     }
@@ -207,7 +207,7 @@ class AddressesNetworkManager {
                 completion(.failure(DataError.invalideData))
             }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print(response)
+                print(response!)
                 completion(.failure(DataError.invalideResponse))
                 return
             }

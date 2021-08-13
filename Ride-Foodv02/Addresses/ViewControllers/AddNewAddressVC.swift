@@ -417,10 +417,8 @@ class AddNewAddressVC: UIViewController{
             addressToUpdate?.floor = Int(floorNumber.textView.text ?? "") ?? 0
             addressToUpdate?.commentCourier = deliveryCommentaryView.textView.text ?? ""
             
-            guard let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: addressToUpdate) as? [String: Any] else {
-                print("SOmething happened")
-                return
-            }
+            let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: addressToUpdate)
+            
             guard let addressID = passedAddress?.id else {
                 print("Invalid ID")
                 return
@@ -506,10 +504,7 @@ class AddNewAddressVC: UIViewController{
 
 
 
-        guard let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: newAddress) as? [String: Any] else {
-            print("SOmething happened")
-            return
-        }
+        let dictionaryToPass = AddressesNetworkManager.shared.prepareAddressForSending(address: newAddress)
             AddressesNetworkManager.shared.sendAddressToTheServer(addressToPass: dictionaryToPass) { result in
                 switch result{
                 case .failure(let error):

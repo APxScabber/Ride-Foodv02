@@ -83,6 +83,9 @@
 "toAddressQuestion" = "Куда вы хотите поехать?";
 "map" = "Карта";
 "next" = "Далее";
+"confirm" = "Подтвердить";
+"fromAddressDetail" = "Уточните как до вас добраться";
+"toAddressDetail" = "Уточните куда едем";
 
 //MARK: - User Profile
 
