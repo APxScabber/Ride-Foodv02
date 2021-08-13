@@ -778,6 +778,7 @@
 		78A3A00E267B57BC006D0DAB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C446725B26C65EBA00598459 /* OrderHistory */,
 				C4A9D77226B9E44E001894F8 /* PaymentsHistory */,
 				78F1A97226A8947E00E16084 /* PaymentWays */,
 				7841E39826A8360D00335DFA /* Tariffs */,
@@ -908,6 +909,13 @@
 				C446724C26C59B7D00598459 /* PaymentHistoryModel.swift */,
 			);
 			path = PaymentHistory;
+			sourceTree = "<group>";
+		};
+		C446725B26C65EBA00598459 /* OrderHistory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OrderHistory;
 			sourceTree = "<group>";
 		};
 		C47892C1267B8C9800B4C737 /* Tariffs */ = {
