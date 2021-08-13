@@ -72,6 +72,11 @@ class AddCardViewController: UIViewController {
             self.animationAddCard()
         }
     }
+    //MARK: - Dismiss
+    
+    @IBAction func dismiss(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Methods
     private func setupAddCardView() {

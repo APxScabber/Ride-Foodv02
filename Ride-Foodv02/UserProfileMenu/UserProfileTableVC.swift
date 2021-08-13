@@ -134,8 +134,8 @@ class UserProfileTableVC: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 1  {
             print("История заказов")
             }
-        if indexPath.section == 2 && indexPath.row == 2  {
-            print("Способы оплаты")
+        if indexPath.section == 1 && indexPath.row == 2  {
+            goToStoryboard(name: "PaymentWays")
             }
     }
     /*

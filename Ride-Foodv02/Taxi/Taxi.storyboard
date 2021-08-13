@@ -65,6 +65,9 @@
                                                         <state key="normal" title="Далее">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="next:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Obg-EH-LaK"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -301,12 +304,12 @@
                         <constraints>
                             <constraint firstItem="DCr-6x-uBS" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="2ST-TJ-OGF"/>
                             <constraint firstItem="DCr-6x-uBS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="54i-Zj-bY9"/>
+                            <constraint firstItem="Juq-6X-DDG" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="34" id="Ajt-Af-ASV"/>
                             <constraint firstItem="mqu-Yw-ObF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="D1e-fd-c4f"/>
                             <constraint firstItem="mqu-Yw-ObF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="HcT-fN-2WK"/>
                             <constraint firstItem="DCr-6x-uBS" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ObW-eT-zMV"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="S5N-I4-OPl"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YCo-r8-xNA"/>
-                            <constraint firstAttribute="bottom" secondItem="Juq-6X-DDG" secondAttribute="bottom" id="YDw-Ti-DIF"/>
                             <constraint firstAttribute="bottom" secondItem="DCr-6x-uBS" secondAttribute="bottom" id="bpG-0k-2rs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vA7-IQ-MSH" secondAttribute="bottom" id="chT-G5-6a2"/>
                             <constraint firstAttribute="trailing" secondItem="Juq-6X-DDG" secondAttribute="trailing" id="fpt-Vo-t3n"/>

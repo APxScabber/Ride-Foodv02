@@ -43,9 +43,7 @@ class VBMapButton: UIButton {
         
         addSubview(leftSideAttachmentView)
         addSubview(bottomView)
-        
-        let padding: CGFloat = 1
-        
+                
         NSLayoutConstraint.activate([
             leftSideAttachmentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             leftSideAttachmentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -3),

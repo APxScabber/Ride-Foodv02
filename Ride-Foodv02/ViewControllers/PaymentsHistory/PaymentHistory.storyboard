@@ -194,6 +194,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9fx-f8-fZW">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="BackButton" id="zyf-dM-f6c">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="backButtonAction:" destination="bBr-sw-8Q9" id="N94-ih-6TN"/>
                             </connections>
@@ -518,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJi-iI-XDp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2488" y="46"/>
+            <point key="canvasLocation" x="1679" y="78"/>
         </scene>
     </scenes>
     <resources>
