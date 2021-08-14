@@ -8,12 +8,18 @@
 import UIKit
 
 
+protocol ResetEverythingProtocol {
+    func deleteEverything()
+}
+
 protocol DeleteAddressProtocol {
    func deleteAddress()
    
 }
 
 class VBConfirmAlertVC: UIViewController {
+    
+    var resetDelegate: ResetEverythingProtocol?
     
     var delegate: DeleteAddressProtocol?
     
@@ -30,6 +36,7 @@ class VBConfirmAlertVC: UIViewController {
     
     let horizontalPadding: CGFloat = 25
     
+  
     
    
     
@@ -38,6 +45,7 @@ class VBConfirmAlertVC: UIViewController {
         self.alertTitle             = alertTitle
         self.confirmOptionTitle     = confirmTitle
         self.cancelOptionTitle      = cancelTitle
+       
         
         super.init(nibName: nil, bundle: nil)
         
@@ -114,7 +122,11 @@ class VBConfirmAlertVC: UIViewController {
     @objc func confirmAction(){
         print("gonna delete")
         self.dismiss(animated: true, completion: nil)
-        delegate?.deleteAddress()
+        if let delegate = delegate {
+            delegate.deleteAddress()
+        } else if let resetDelegate = resetDelegate{
+            resetDelegate.deleteEverything()
+        }
         
     }
     

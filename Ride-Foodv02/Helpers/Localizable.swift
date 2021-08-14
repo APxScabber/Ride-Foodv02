@@ -48,7 +48,7 @@ enum Localizable {
     }
     
     enum UserProfile: String, LocalizableDelegate {
-        case profile, enterPhoneNumber, myAddresses, paymentHistory, ordersHistory, paymentMethod, logOut
+        case profile, enterPhoneNumber, myAddresses, paymentHistory, ordersHistory, paymentMethod, logOut, logoutQuestion
     }
     
     enum Addresses: String, LocalizableDelegate {
