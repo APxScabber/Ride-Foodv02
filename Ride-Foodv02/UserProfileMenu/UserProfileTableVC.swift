@@ -97,7 +97,12 @@ class UserProfileTableVC: UITableViewController {
     }
     
     @objc func signOut(){
-        print("did sign out")
+        SignOutHelper.shared.resetEverything()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.goToStoryboard(name: "Login")
+            print("did sign out")
+        }
+      
     }
   
     
@@ -127,6 +132,15 @@ class UserProfileTableVC: UITableViewController {
             
             
             present(supportVC, animated: true)
+        } else {
+            if let supportVC = storyboard.instantiateInitialViewController() {
+                supportVC.modalPresentationStyle = .fullScreen
+                supportVC.modalTransitionStyle = .crossDissolve
+                
+                
+                
+                present(supportVC, animated: true)
+        }
         }
     }
     

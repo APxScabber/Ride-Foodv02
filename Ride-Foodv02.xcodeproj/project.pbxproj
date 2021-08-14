@@ -204,6 +204,7 @@
 		F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */; };
 		F5D500DE26C71AE500488D45 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */; };
 		F5D500E026C71AFA00488D45 /* MenuItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */; };
+		F5E5661D26C8013100031140 /* SignOutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E5661C26C8013100031140 /* SignOutHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -407,6 +408,7 @@
 		F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressVC.swift; sourceTree = "<group>"; };
 		F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
 		F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsTableViewCell.swift; sourceTree = "<group>"; };
+		F5E5661C26C8013100031140 /* SignOutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -614,6 +616,7 @@
 		787A83D726AB2D230096DFC3 /* UserProfileMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F5E5661B26C8011600031140 /* Helpers */,
 				F5D500DC26C71AC400488D45 /* Custom TableView Cells */,
 				F5BC916226AB745E008E9841 /* Extensions */,
 				787A83DC26AB2D380096DFC3 /* CustomViews */,
@@ -1049,6 +1052,14 @@
 			path = "Custom TableView Cells";
 			sourceTree = "<group>";
 		};
+		F5E5661B26C8011600031140 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F5E5661C26C8013100031140 /* SignOutHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1176,6 +1187,7 @@
 				7841E3A526A8362500335DFA /* TariffsCollectionViewCell.swift in Sources */,
 				78AEB887267B59E20023605D /* TextFont.swift in Sources */,
 				78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */,
+				F5E5661D26C8013100031140 /* SignOutHelper.swift in Sources */,
 				78A3A00D267B56E9006D0DAB /* NotificationText.swift in Sources */,
 				7808D7CB26B480A900A88E12 /* AddCard.swift in Sources */,
 				78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */,
