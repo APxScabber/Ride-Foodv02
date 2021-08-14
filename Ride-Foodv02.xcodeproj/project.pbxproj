@@ -152,6 +152,9 @@
 		78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */; };
 		78C8C98A26C6CE1A001C947F /* ToAddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */; };
 		78C8C98C26C6CE5C001C947F /* ToAddressDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */; };
+		78C8C98F26C804C4001C947F /* OrderHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C8C98E26C804C4001C947F /* OrderHistory.storyboard */; };
+		78C8C99126C8073E001C947F /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C99026C8073E001C947F /* OrderHistoryVC.swift */; };
+		78C8C99326C80755001C947F /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C99226C80755001C947F /* OrderHistoryTableViewCell.swift */; };
 		78CE749126A6E064006C3417 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE749026A6E064006C3417 /* MenuView.xib */; };
 		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
@@ -353,6 +356,9 @@
 		78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromAddressDetailView.swift; sourceTree = "<group>"; };
 		78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToAddressDetailView.swift; sourceTree = "<group>"; };
 		78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToAddressDetailView.xib; sourceTree = "<group>"; };
+		78C8C98E26C804C4001C947F /* OrderHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderHistory.storyboard; sourceTree = "<group>"; };
+		78C8C99026C8073E001C947F /* OrderHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryVC.swift; sourceTree = "<group>"; };
+		78C8C99226C80755001C947F /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		78CE749026A6E064006C3417 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
@@ -792,6 +798,7 @@
 		78A3A00E267B57BC006D0DAB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				78C8C98D26C804B1001C947F /* OrderHistory */,
 				C4A9D77226B9E44E001894F8 /* PaymentsHistory */,
 				78F1A97226A8947E00E16084 /* PaymentWays */,
 				7841E39826A8360D00335DFA /* Tariffs */,
@@ -864,6 +871,16 @@
 				78AEB882267B59D40023605D /* LoginFontSize.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		78C8C98D26C804B1001C947F /* OrderHistory */ = {
+			isa = PBXGroup;
+			children = (
+				78C8C98E26C804C4001C947F /* OrderHistory.storyboard */,
+				78C8C99026C8073E001C947F /* OrderHistoryVC.swift */,
+				78C8C99226C80755001C947F /* OrderHistoryTableViewCell.swift */,
+			);
+			path = OrderHistory;
 			sourceTree = "<group>";
 		};
 		78F1A96F26A8944E00E16084 /* PaymentWays */ = {
@@ -1121,6 +1138,7 @@
 				78BE49FE268354ED00A13641 /* SFUIDisplay-Bold.otf in Resources */,
 				785F5D8626C11CDB004503CB /* Taxi.storyboard in Resources */,
 				7858D37526AED7BC00441690 /* Food.storyboard in Resources */,
+				78C8C98F26C804C4001C947F /* OrderHistory.storyboard in Resources */,
 				7850E8FA2673BCF200AA88CA /* SupportActionSheetView.xib in Resources */,
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
 				7841E3A626A8362500335DFA /* Tariffs.storyboard in Resources */,
@@ -1149,6 +1167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C8C99126C8073E001C947F /* OrderHistoryVC.swift in Sources */,
 				7835378126AF21F8005D73D6 /* FoodMainVC.swift in Sources */,
 				7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */,
 				7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */,
@@ -1201,6 +1220,7 @@
 				785F5D9226C16E8D004503CB /* TopRoundedView.swift in Sources */,
 				C4A9D76F26B97EAF001894F8 /* MoreDetailsViewController.swift in Sources */,
 				78ACFD0526A5854600C995EB /* PromocodeHistoryViewController.swift in Sources */,
+				78C8C99326C80755001C947F /* OrderHistoryTableViewCell.swift in Sources */,
 				7808D7C926B4806800A88E12 /* TotalScoresModel.swift in Sources */,
 				782D45DE26B03D21006B3A98 /* ShopDetail.swift in Sources */,
 				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,

@@ -68,6 +68,7 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
         tableView.reloadData()
         infoLabel.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
         tableViewTopConstraint.constant = segmentedControl.selectedSegmentIndex == 0 ? 67 : 0
+        UIView.animate(withDuration: 0.4) { self.view.layoutIfNeeded() }
     }
     
 }
