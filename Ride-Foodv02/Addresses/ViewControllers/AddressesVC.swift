@@ -94,7 +94,7 @@ class AddressesVC: UIViewController {
     }
     
     func createCoreDataInstance(addressesToCopy: [AddressData]?){
-        PersistanceManager.shared.deleteData()
+        SignOutHelper.shared.resetCoreDataEntity(with: "UserAddressMO")
         Localaddresses.removeAll()
         
         

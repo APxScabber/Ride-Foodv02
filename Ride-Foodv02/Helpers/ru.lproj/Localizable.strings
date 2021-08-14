@@ -95,7 +95,8 @@
 "paymentHistory" = "История платежей";
 "ordersHistory" = "История заказов";
 "paymentMethod" = "Способы оплаты";
-"logOut" = "Выйти";
+"logOut"                        = "Выйти";
+"logoutQuestion"             = "Выйти из приложения?";
 
 //MARK: - Addresses
 

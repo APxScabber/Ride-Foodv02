@@ -96,6 +96,8 @@
 "ordersHistory"              = "Orders history";
 "paymentMethod"              = "Payment methods";
 "logOut"                     = "Log out";
+"logoutQuestion"             = "Are you sure you want to log out from the app?";
+
 
 //MARK: - Addresses
 
