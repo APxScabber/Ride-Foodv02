@@ -52,7 +52,7 @@ class UserProfileTableVC: UITableViewController {
         
         
        
-    
+        extendedLayoutIncludesOpaqueBars = true
         tableView.isScrollEnabled = false
        
         tableView.addSubview(backView)
@@ -105,6 +105,7 @@ class UserProfileTableVC: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = Localizable.UserProfile.profile.localized
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(image: UIImage(named: "BackButton"), style: .done, target: self, action: #selector(dismissVC))
         doneButton.tintColor = .black
@@ -130,6 +131,10 @@ class UserProfileTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        15
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         30
     }
     
