@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UTW-TJ-wQu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--История заказов-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="OrderHistoryVC" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="120" estimatedRowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="txQ-Hf-2tK">
+                                <rect key="frame" x="0.0" y="129" width="414" height="767"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderHistoryCell" rowHeight="150" id="VAy-SI-rEb" customClass="OrderHistoryTableViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VAy-SI-rEb" id="BZr-k3-yGf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZW-mL-a1a" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="PJA-a3-SEx"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cZW-mL-a1a" secondAttribute="trailing" id="Aoe-9b-dYB"/>
+                                                <constraint firstItem="cZW-mL-a1a" firstAttribute="top" secondItem="BZr-k3-yGf" secondAttribute="top" id="YR2-8m-JD6"/>
+                                                <constraint firstItem="cZW-mL-a1a" firstAttribute="leading" secondItem="BZr-k3-yGf" secondAttribute="leading" id="ijk-Vk-pkp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="topRoundedView" destination="cZW-mL-a1a" id="f2k-WC-oWZ"/>
+                                            <outlet property="topRoundedViewHeightConstraint" destination="PJA-a3-SEx" id="w6a-eA-stL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="NE7-pB-ii7"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="UbX-QU-Azk"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здесь пока пусто..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnv-Ay-CQb">
+                                <rect key="frame" x="131.5" y="799" width="151" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="8Re-Wt-oeW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PZp-oE-iUp">
+                                <rect key="frame" x="97.5" y="98" width="219" height="32"/>
+                                <segments>
+                                    <segment title="Завершенные"/>
+                                    <segment title="Отмененные"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeOrderType:" destination="Y6W-OH-hqX" eventType="valueChanged" id="WgX-V8-d9P"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="txQ-Hf-2tK" firstAttribute="top" secondItem="PZp-oE-iUp" secondAttribute="bottom" id="64d-8B-UyM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fnv-Ay-CQb" secondAttribute="bottom" constant="32" id="CjK-JP-YcW"/>
+                            <constraint firstItem="PZp-oE-iUp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="OQR-UV-3eo"/>
+                            <constraint firstItem="PZp-oE-iUp" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YcI-kQ-jUw"/>
+                            <constraint firstItem="txQ-Hf-2tK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bsk-aC-cvy"/>
+                            <constraint firstAttribute="bottom" secondItem="txQ-Hf-2tK" secondAttribute="bottom" id="eO1-2g-LrA"/>
+                            <constraint firstItem="txQ-Hf-2tK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kgz-Ub-JrB"/>
+                            <constraint firstItem="Fnv-Ay-CQb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="oRf-Ol-GQg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="История заказов" id="GD5-RO-lRS">
+                        <barButtonItem key="leftBarButtonItem" image="BackButton" id="Fg6-Yl-of1">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismiss:" destination="Y6W-OH-hqX" id="7G1-3t-D9t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="label" destination="Fnv-Ay-CQb" id="j6M-qq-XCv"/>
+                        <outlet property="segmentedControl" destination="PZp-oE-iUp" id="ne7-ic-cmZ"/>
+                        <outlet property="tableView" destination="txQ-Hf-2tK" id="UXy-yu-ueq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986.95652173913049" y="75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fwi-d6-5Az">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UTW-TJ-wQu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C5N-xA-scD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="dDn-V6-w0q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUR-qG-hBe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76.811594202898561" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackButton" width="10" height="17"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
