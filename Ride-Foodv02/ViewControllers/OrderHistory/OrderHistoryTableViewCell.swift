@@ -36,18 +36,14 @@ class OrderHistoryTableViewCell: UITableViewCell {
     }}
     
     private func updateUI() {
-        topRoundedView.layer.backgroundColor = UIColor.white.cgColor
-        topRoundedView.layer.cornerRadius = 15.0
         
-        bottomRoundedView.layer.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1).cgColor
-        bottomRoundedView.layer.cornerRadius = 15.0
+        updateViews()
         
         if orderHistoryState == .cancel {
             topRoundedView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             bottomRoundedView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         } else {
             topRoundedView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
-
         }
         
     }
@@ -57,6 +53,10 @@ class OrderHistoryTableViewCell: UITableViewCell {
         topRoundedView.layer.backgroundColor = UIColor.white.cgColor
         topRoundedView.layer.cornerRadius = 15.0
         topRoundedView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+
+        bottomRoundedView.layer.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1).cgColor
+        bottomRoundedView.layer.cornerRadius = 15.0
+        bottomRoundedView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
 
     }
     
