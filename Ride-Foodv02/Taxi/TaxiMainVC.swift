@@ -98,13 +98,14 @@ class TaxiMainVC: UIViewController {
         fromAddressDetailView.isHidden = false
         transparentView.isHidden = false
         
+        fromAddressDetailView.textField.becomeFirstResponder()
+
         fromAddressDetailView.frame = CGRect(x: view.bounds.width,
                                              y: view.bounds.height - keyboardHeight - TaxiConstant.fromAddressDetailViewHeight,
                                              width: view.bounds.width,
                                              height: TaxiConstant.fromAddressDetailViewHeight)
         fromAddressDetailView.placeLabel.text = fromAddress
 
-        fromAddressDetailView.textField.becomeFirstResponder()
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.fromAddressDetailView.frame.origin.x = 0
