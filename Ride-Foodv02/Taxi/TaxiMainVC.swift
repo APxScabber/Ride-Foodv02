@@ -17,6 +17,7 @@ class TaxiMainVC: UIViewController {
     private var keyboardHeight: CGFloat = 0.0
     private var shouldUpdateUI = true
     private var yOffset: CGFloat = 0
+    private let taxiMainInteractor = TaxiMainInteractor()
 
     //MARK: - Outlets
     
@@ -123,17 +124,13 @@ class TaxiMainVC: UIViewController {
         super.viewDidLoad()
         updateUI()
         NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        PersistanceManager.shared.fetchAddresses { result in
-            switch result {
-            case .success(let addresses):
-                addresses.forEach {
-                    self.addresses.append(Address(title: $0.title ?? "", fullAddress: $0.fullAddress ?? ""))
-                }
-                self.tableView.reloadData()
-                self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-            default:break
-            }
-        }
+        
+
+        getAdressesFromServer()
+        
+
+        
+        
         fromAddressDetailView.delegate = self
         fromAddressDetailView.isHidden = true
         
@@ -295,10 +292,39 @@ class TaxiMainVC: UIViewController {
         
     }
     
-    //Alexey Methods
+    // MARK: - Alexey Methods
     
-    private func getUserCurrentCoordinate() {
-        //mapView.userLocation.location.coordinate
+    // Загрузка адресов с сервера
+    private func getAdressesFromServer() {
+        
+        AddressesNetworkManager.shared.getTheAddresses { result in
+            
+            switch result {
+            case .success(let adressesData):
+    
+                self.taxiMainInteractor.createCoreDataInstance(addressesToCopy: adressesData)
+                self.saveAdressesInCoreData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // Загрузка адресов из Core Data
+    func saveAdressesInCoreData() {
+        PersistanceManager.shared.fetchAddresses { result in
+            switch result {
+            case .success(let addresses):
+                addresses.forEach {
+                    self.addresses.append(Address(title: $0.title ?? "", fullAddress: $0.fullAddress ?? ""))
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
+                } 
+            default:break
+            }
+        }
     }
 }
 
