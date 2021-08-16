@@ -25,9 +25,9 @@ class PresentationController: UIPresentationController {
   
   // 2.
   override var frameOfPresentedViewInContainerView: CGRect {
-      CGRect(origin: CGPoint(x: 0, y: self.containerView!.frame.height * 0.13),
+      CGRect(origin: CGPoint(x: 0, y: self.containerView!.frame.height * 0.11),
              size: CGSize(width: self.containerView!.frame.width, height: self.containerView!.frame.height *
-              1))
+                            0.9))
   }
 
   // 3.
@@ -51,7 +51,7 @@ class PresentationController: UIPresentationController {
   // 5.
   override func containerViewWillLayoutSubviews() {
       super.containerViewWillLayoutSubviews()
-    presentedView!.roundCorners([.topLeft, .topRight], radius: 22)
+   
   }
 
   // 6.

@@ -12,11 +12,15 @@ class CategoriesAndFoodVC: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
-    @IBOutlet weak var shopTitleLabel: UILabel!
+    @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
+        shopTitleLabel.font = UIFont.SFUIDisplayRegular(size: 15)
+    }}
     
     @IBOutlet weak var containerView: UIView!
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel! {didSet{
+        titleLabel.font = UIFont.SFUIDisplaySemibold(size: 26)
+    }}
     
     @IBOutlet weak var backButton: UIButton!
     
@@ -25,17 +29,27 @@ class CategoriesAndFoodVC: UIViewController {
     @IBOutlet weak var draggableRoundView: RoundedView!
     
     
-    
+   
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpViews()
+       
+        
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpViews()
+    }
+   
+  
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+       
+        
          if !hasSetPointOrigin {
              hasSetPointOrigin = true
              pointOrigin = self.view.frame.origin
@@ -47,7 +61,10 @@ class CategoriesAndFoodVC: UIViewController {
     }
     
     func setUpViews(){
-        containerView.roundCorners([.topLeft, .topRight], radius: 15)
+//
+        
+        containerView.layer.cornerRadius = 15.0
+        containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
               view.addGestureRecognizer(panGesture)
       
