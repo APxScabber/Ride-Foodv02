@@ -92,6 +92,16 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
         return CGSize(width: width, height: width*0.75)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = shopDetail.categories[indexPath.item]
+        let storyboard = UIStoryboard(name: "Food", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SubCategoriesVC")
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        
+        self.present(vc, animated: true)
+    }
+    
     //MARK: - UI changes
     
     private func updateShopDetailView() {
@@ -118,5 +128,11 @@ extension ShopDetailViewController: ShopDetailViewDelegate {
         }
             
         }
+    }
+}
+
+extension ShopDetailViewController: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

@@ -86,6 +86,14 @@
 "fromAddressDetail" = "Specify how to get to you";
 "toAddressDetail" = "Specify where we are going";
 
+//MARK: - Order History
+ 
+"canceled" = "Canceled";
+"done" = "Finished";
+"empty" = "Still empty here...";
+"history" = "Order history";
+"cancelReason" = "Cancel reason:";
+
 
 //MARK: - User Profile
 

@@ -87,6 +87,14 @@
 "fromAddressDetail" = "Уточните как до вас добраться";
 "toAddressDetail" = "Уточните куда едем";
 
+//MARK: - Order histort
+
+"canceled" = "Отмененные";
+"done" = "Завершенные";
+"empty" = "Здесь пока пусто...";
+"history" = "История заказов";
+"cancelReason" = "Причина отмены:";
+
 //MARK: - User Profile
 
 "profile" = "Личный кабинет";

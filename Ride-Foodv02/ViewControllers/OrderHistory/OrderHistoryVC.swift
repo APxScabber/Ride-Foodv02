@@ -7,7 +7,12 @@ class OrderHistoryVC: UIViewController {
         label.font = UIFont.SFUIDisplayRegular(size: 26.0)
     }}
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl! { didSet {
+        guard let font = UIFont.SFUIDisplayRegular(size: 15.0) else { return }
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        segmentedControl.setTitle(Localizable.OrderHistory.done.localized, forSegmentAt: 0)
+        segmentedControl.setTitle(Localizable.OrderHistory.canceled.localized, forSegmentAt: 1)
+    }}
     
     //MARK: - Actions
     
@@ -16,7 +21,27 @@ class OrderHistoryVC: UIViewController {
     }
     
     @IBAction func changeOrderType(_ sender: UISegmentedControl) {
-        
+        tableView.beginUpdates()
+        tableView.visibleCells.forEach {
+            if let orderHistoryCell = $0 as? OrderHistoryTableViewCell {
+                orderHistoryCell.updateViews()
+            }
+        }
+        tableView.endUpdates()
+        perform(#selector(update), with: nil, afterDelay: 0.25)
+    }
+    
+    //MARK: - ViewController lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = Localizable.OrderHistory.history.localized
+    }
+    
+    //MARK: - Reload data
+    @objc
+    private func update() {
+        tableView.reloadData()
     }
 }
 
@@ -43,6 +68,12 @@ extension OrderHistoryVC: UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return segmentedControl.selectedSegmentIndex == 0 ? 120 : 150
+    }
     
 }
