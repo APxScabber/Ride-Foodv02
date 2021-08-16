@@ -200,6 +200,7 @@
 		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
 		F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */; };
 		F56502F626CA159700934D91 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F526CA159700934D91 /* PresentationController.swift */; };
+		F56502F826CA4D7200934D91 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F726CA4D7200934D91 /* Product.swift */; };
 		F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */; };
 		F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2A26BAC3510082199C /* AddressModel.swift */; };
 		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
@@ -409,6 +410,7 @@
 		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAndFoodVC.swift; sourceTree = "<group>"; };
 		F56502F526CA159700934D91 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		F56502F726CA4D7200934D91 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesNetworkManager.swift; sourceTree = "<group>"; };
 		F5B50C2A26BAC3510082199C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 				7879CDE626BA8955009D127A /* Address.swift */,
 				F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */,
+				F56502F726CA4D7200934D91 /* Product.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
 				78F1A98226A8949000E16084 /* AddCardViewController.swift in Sources */,
 				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,
+				F56502F826CA4D7200934D91 /* Product.swift in Sources */,
 				F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */,
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
 				C446725826C5DC8A00598459 /* AddCardExtensions.swift in Sources */,
