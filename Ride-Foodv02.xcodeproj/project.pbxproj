@@ -198,6 +198,8 @@
 		F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */; };
 		F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */; };
 		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
+		F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */; };
+		F56502F626CA159700934D91 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F526CA159700934D91 /* PresentationController.swift */; };
 		F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */; };
 		F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2A26BAC3510082199C /* AddressModel.swift */; };
 		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
@@ -405,6 +407,8 @@
 		F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
 		F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBConfirmAlertVC.swift; sourceTree = "<group>"; };
 		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAndFoodVC.swift; sourceTree = "<group>"; };
+		F56502F526CA159700934D91 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesNetworkManager.swift; sourceTree = "<group>"; };
 		F5B50C2A26BAC3510082199C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 				782D45DB26B038BE006B3A98 /* FoodConstants.swift */,
 				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 				7879CDE626BA8955009D127A /* Address.swift */,
+				F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 				787A83F426AB31FA0096DFC3 /* CircleView.swift */,
 				7808D7D426B838EF00A88E12 /* EmailChecker.swift */,
 				785F5D9126C16E8D004503CB /* TopRoundedView.swift */,
+				F56502F526CA159700934D91 /* PresentationController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1267,8 +1273,10 @@
 				78A39FF4267B568E006D0DAB /* UserDataModel.xcdatamodeld in Sources */,
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
 				78BE49FA26834BA400A13641 /* ImageFetcher.swift in Sources */,
+				F56502F626CA159700934D91 /* PresentationController.swift in Sources */,
 				785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */,
 				78A4028D268C993C00B4EFE1 /* PromocodeActivator.swift in Sources */,
+				F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
 				785198EB26B19FC40037F7AA /* PromocodeConstant.swift in Sources */,
 				78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */,
