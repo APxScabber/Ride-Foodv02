@@ -14,6 +14,7 @@ class UserProfileTableVC: UITableViewController {
         "+15439596832",
         "+17530593284",
         "+14929403929",
+      
     ]
     
     
@@ -53,7 +54,7 @@ class UserProfileTableVC: UITableViewController {
         
        
         extendedLayoutIncludesOpaqueBars = true
-        tableView.isScrollEnabled = false
+        tableView.isScrollEnabled = true
        
         tableView.addSubview(backView)
 //        tableView.translatesAutoresizingMaskIntoConstraints = false
