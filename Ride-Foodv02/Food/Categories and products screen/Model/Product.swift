@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - Product
-struct Product {
-    var data: [Datum]?
+struct ProductData: Codable {
+    var data: [Product]?
     var links: Links?
     var meta: Meta?
 }
 
 // MARK: - Datum
-struct Datum {
+struct Product: Codable {
     var id: Int?
     var name: String?
     var icon: String?
@@ -30,7 +30,7 @@ struct Datum {
 }
 
 // MARK: - Links
-struct Links {
+struct Links: Codable {
     var first: String?
     var last: String?
     var prev: String?
@@ -38,7 +38,7 @@ struct Links {
 }
 
 // MARK: - Meta
-struct Meta {
+struct Meta: Codable {
     var currentPage: Int?
     var from: Int?
     var lastPage: Int?

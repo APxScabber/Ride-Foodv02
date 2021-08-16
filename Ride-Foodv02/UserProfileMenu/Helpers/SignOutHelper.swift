@@ -22,7 +22,7 @@ class SignOutHelper{
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
         }
-       
+      
     }
     
     func resetCoreDataEntity(with entityName: String){

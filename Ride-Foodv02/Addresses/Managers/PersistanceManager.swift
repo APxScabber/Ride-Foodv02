@@ -32,7 +32,34 @@ class PersistanceManager {
         }
     }
     
+    func createCoreDataInstance(addressesToCopy: [AddressData]?, view: UIViewController){
+        SignOutHelper.shared.resetCoreDataEntity(with: "UserAddressMO")
+        
+        
+        
+        
+        guard let data = addressesToCopy else {
+            return
+        }
+        for i in data{
+            let localAddress = UserAddressMO(context: PersistanceManager.shared.context)
+           
+            localAddress.id = view.placeIntIntoString(int: i.id ?? 0)
+            localAddress.title = i.name
+            localAddress.fullAddress = i.address
+            localAddress.driverCommentary = i.commentDriver
+            localAddress.delivApartNumber = view.placeIntIntoString(int: i.flat ?? 0)
+            localAddress.delivIntercomNumber = view.placeIntIntoString(int: i.intercom ?? 0)
+            localAddress.delivEntranceNumber = view.placeIntIntoString(int: i.entrance ?? 0)
+            localAddress.delivFloorNumber = view.placeIntIntoString(int: i.floor ?? 0)
+            localAddress.deliveryCommentary = i.commentCourier
+            localAddress.isDestination = i.destination ?? false
+            
+            PersistanceManager.shared.addNewAddress(address: localAddress)
+            
+        }
    
+    }
     
     
     

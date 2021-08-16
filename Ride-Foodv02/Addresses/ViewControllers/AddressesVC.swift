@@ -93,34 +93,7 @@ class AddressesVC: UIViewController {
     }
     }
     
-    func createCoreDataInstance(addressesToCopy: [AddressData]?){
-        SignOutHelper.shared.resetCoreDataEntity(with: "UserAddressMO")
-        Localaddresses.removeAll()
-        
-        
-        
-        guard let data = addressesToCopy else {
-            return
-        }
-        for i in data{
-            let localAddress = UserAddressMO(context: PersistanceManager.shared.context)
-           
-            localAddress.id = placeIntIntoString(int: i.id ?? 0)
-            localAddress.title = i.name
-            localAddress.fullAddress = i.address
-            localAddress.driverCommentary = i.commentDriver
-            localAddress.delivApartNumber = placeIntIntoString(int: i.flat ?? 0)
-            localAddress.delivIntercomNumber = placeIntIntoString(int: i.intercom ?? 0)
-            localAddress.delivEntranceNumber = placeIntIntoString(int: i.entrance ?? 0)
-            localAddress.delivFloorNumber = placeIntIntoString(int: i.floor ?? 0)
-            localAddress.deliveryCommentary = i.commentCourier
-            localAddress.isDestination = i.destination ?? false
-            
-            PersistanceManager.shared.addNewAddress(address: localAddress)
-            
-        }
-   
-    }
+
     
     func getAddressesFromServer(){
         
@@ -137,7 +110,8 @@ class AddressesVC: UIViewController {
                     
                     self.showRemoteAddresses = true
                     self.remoteAddresses = data
-                    self.createCoreDataInstance(addressesToCopy: self.remoteAddresses)
+                    self.Localaddresses.removeAll()
+                    PersistanceManager.shared.createCoreDataInstance(addressesToCopy: self.remoteAddresses, view: self)
                     if self.remoteAddresses.isEmpty {
                         self.fetch()
                     }
@@ -259,8 +233,9 @@ extension AddressesVC: UITableViewDelegate, UITableViewDataSource{
 extension AddressesVC: AddNewAddressDelegate{
     func didAddNewAddress(address: [AddressData]) {
         DispatchQueue.main.async {
-            self.createCoreDataInstance(addressesToCopy: address)
-      
+            self.Localaddresses.removeAll()
+            
+            PersistanceManager.shared.createCoreDataInstance(addressesToCopy: address, view: self)
             self.showRemoteAddresses = true
             self.remoteAddresses.removeAll()
             self.remoteAddresses = address
