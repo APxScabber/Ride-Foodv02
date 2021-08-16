@@ -95,9 +95,14 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = shopDetail.categories[indexPath.item]
         let storyboard = UIStoryboard(name: "Food", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SubCategoriesVC")
+        let vc = storyboard.instantiateViewController(withIdentifier: "SubCategoriesVC") as! CategoriesAndFoodVC
+        vc.shopName = shopDetail.name
+        vc.mainCategoryName = item.name
+        vc.shopID = "\(shopDetail.id)"
+        vc.CategoryID = "\(item.id)"
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
+        
         
         self.present(vc, animated: true)
     }

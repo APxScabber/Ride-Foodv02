@@ -699,8 +699,8 @@
                                             <action selector="back:" destination="BNv-9P-TVi" eventType="touchUpInside" id="bAL-Ye-ujh"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Яйцо, сыр, молоко" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-yU-rlb">
-                                        <rect key="frame" x="17" y="58" width="277.5" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Яйцо, сыр, молоко" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnE-yU-rlb">
+                                        <rect key="frame" x="17" y="58" width="389" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Qvx-ls-Fuv"/>
                                         </constraints>
@@ -718,7 +718,7 @@
                                     <constraint firstItem="aTb-if-JMs" firstAttribute="top" secondItem="fRc-Tf-yRT" secondAttribute="top" id="5tF-OS-ECC"/>
                                     <constraint firstItem="fRc-Tf-yRT" firstAttribute="centerX" secondItem="DkM-i5-Ja6" secondAttribute="centerX" id="7Zb-ND-ZYD"/>
                                     <constraint firstItem="aTb-if-JMs" firstAttribute="top" secondItem="kJe-gc-E6d" secondAttribute="top" constant="9" id="Da1-iB-fd0"/>
-                                    <constraint firstItem="fRc-Tf-yRT" firstAttribute="trailing" secondItem="QnE-yU-rlb" secondAttribute="trailing" id="Ds4-ug-Tjw"/>
+                                    <constraint firstItem="fRc-Tf-yRT" firstAttribute="trailing" secondItem="QnE-yU-rlb" secondAttribute="trailing" constant="-111.5" id="Ds4-ug-Tjw"/>
                                     <constraint firstItem="aTb-if-JMs" firstAttribute="bottom" secondItem="fRc-Tf-yRT" secondAttribute="bottom" id="KKf-Ex-A62"/>
                                     <constraint firstAttribute="trailing" secondItem="DkM-i5-Ja6" secondAttribute="trailing" id="Npc-MP-Eud"/>
                                     <constraint firstItem="QnE-yU-rlb" firstAttribute="top" secondItem="aTb-if-JMs" secondAttribute="bottom" constant="8" symbolic="YES" id="Q0H-U2-Zn3"/>
@@ -762,7 +762,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lxw-k2-OaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="75"/>
+            <point key="canvasLocation" x="2411.594202898551" y="75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

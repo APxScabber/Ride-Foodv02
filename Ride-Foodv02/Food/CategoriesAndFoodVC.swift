@@ -9,6 +9,11 @@ import UIKit
 
 class CategoriesAndFoodVC: UIViewController {
     
+    var shopName: String = ""
+    var mainCategoryName: String = ""
+    var shopID: String = ""
+    var CategoryID: String = ""
+    
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
@@ -34,9 +39,9 @@ class CategoriesAndFoodVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       print(shopID)
+        print(CategoryID)
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +54,6 @@ class CategoriesAndFoodVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
        
-        
          if !hasSetPointOrigin {
              hasSetPointOrigin = true
              pointOrigin = self.view.frame.origin
@@ -61,7 +65,10 @@ class CategoriesAndFoodVC: UIViewController {
     }
     
     func setUpViews(){
-//
+//        Set storyboard label values
+        titleLabel.text = mainCategoryName
+        shopTitleLabel.text = shopName 
+        
         
         containerView.layer.cornerRadius = 15.0
         containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
