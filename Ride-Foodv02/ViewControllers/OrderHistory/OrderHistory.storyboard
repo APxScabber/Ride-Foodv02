@@ -158,6 +158,10 @@
                                 <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbz-Nj-mhQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PZp-oE-iUp">
                                 <rect key="frame" x="25" y="98" width="364" height="37"/>
                                 <constraints>
@@ -178,11 +182,15 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PZp-oE-iUp" secondAttribute="trailing" constant="25" id="3BI-yk-mZm"/>
                             <constraint firstItem="txQ-Hf-2tK" firstAttribute="top" secondItem="PZp-oE-iUp" secondAttribute="bottom" id="64d-8B-UyM"/>
                             <constraint firstItem="PZp-oE-iUp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="7DA-Gh-uVG"/>
+                            <constraint firstItem="wbz-Nj-mhQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="9oU-SQ-d5P"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fnv-Ay-CQb" secondAttribute="bottom" constant="32" id="CjK-JP-YcW"/>
                             <constraint firstItem="PZp-oE-iUp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="OQR-UV-3eo"/>
+                            <constraint firstItem="wbz-Nj-mhQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ScQ-E1-xvl"/>
+                            <constraint firstItem="wbz-Nj-mhQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="b2u-FQ-Vg1"/>
                             <constraint firstItem="txQ-Hf-2tK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bsk-aC-cvy"/>
                             <constraint firstAttribute="bottom" secondItem="txQ-Hf-2tK" secondAttribute="bottom" id="eO1-2g-LrA"/>
                             <constraint firstItem="txQ-Hf-2tK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kgz-Ub-JrB"/>
+                            <constraint firstAttribute="bottom" secondItem="wbz-Nj-mhQ" secondAttribute="bottom" id="ldg-so-WUM"/>
                             <constraint firstItem="Fnv-Ay-CQb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="oRf-Ol-GQg"/>
                         </constraints>
                     </view>
@@ -198,6 +206,7 @@
                         <outlet property="label" destination="Fnv-Ay-CQb" id="j6M-qq-XCv"/>
                         <outlet property="segmentedControl" destination="PZp-oE-iUp" id="ne7-ic-cmZ"/>
                         <outlet property="tableView" destination="txQ-Hf-2tK" id="UXy-yu-ueq"/>
+                        <outlet property="transparentView" destination="wbz-Nj-mhQ" id="F6G-pf-65G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
