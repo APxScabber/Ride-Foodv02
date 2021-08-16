@@ -10,14 +10,14 @@ import UIKit
 
 class AddCardInteractor {
     
-    func postCardData(passData: [String : String], completion: @escaping (PaymentWaysModel?) -> Void) {
+    let separetion = SeparetionText()
+    
+    func postCardData(userID: String, passData: [String : String], completion: @escaping (PaymentWaysModel?) -> Void) {
+
+        let urlString = separetion.separation(input: addCardURL, insert: userID)
         
-        guard let userID = GetUserIDManager.shared.userID else { return }
-        
-        let urlString = separategURL(url: addCardURL, userID: userID)
         guard let url = URL(string: urlString) else { return }
-        
-        
+    
         LoadManager.shared.loadData(of: PaymentWaysResponseData.self, from: url, httpMethod: .post,
                                     passData: passData) { result in
             
@@ -32,11 +32,9 @@ class AddCardInteractor {
         }
     }
     
-    func approvedCard(with id: Int) {
-        
-        guard let userID = GetUserIDManager.shared.userID else { return }
-        
-        let firstPartURL = separategURL(url: addCardURL, userID: userID)
+    func approvedCard(with id: Int, for userID: String) {
+
+        let firstPartURL = separetion.separation(input: addCardURL, insert: userID)
         
         let approvedURL = firstPartURL + "/" + String(id) + "/approved"
         
@@ -48,17 +46,8 @@ class AddCardInteractor {
         let session = URLSession.shared
         session.dataTask(with: urlRequest).resume()
     }
-    
-    //Разбиваем текст по компонентам использую ключ в виде @#^
-    func separategURL(url: String, userID: String) -> String {
 
-        let textArray = url.components(separatedBy: "@#^")
-        let finalUrl = textArray[0] + userID + textArray[1]
-
-        return finalUrl
-    }
-
-    func separated(text cardNumber: String) -> String {
+    func createShortCardNumber(text cardNumber: String) -> String {
         
         let text = ConfirmCardViewText.confirmText.text()
         let formatedCardNumber = "****" + " " + cardNumber.suffix(4)
@@ -66,23 +55,5 @@ class AddCardInteractor {
         let addCardInfo = textArray[0] + formatedCardNumber + textArray[1]
         
         return addCardInfo
-    }
-    
-    //Создаем атребуты для инфо поля, для выделения номера добавляемой карты
-    func createTextAttribute(for text: String) -> NSMutableAttributedString {
-        
-        let licenseText = text
-        let attributedString = NSMutableAttributedString(string: licenseText)
-        
-        let font = UIFont.SFUIDisplayBold(size: 12)
-        switch UserDefaultsManager().getLanguage() {
-        case "rus":
-            attributedString.addAttributes([ .font : font!], range: NSRange(location: 45, length: 9))
-        case "eng":
-            attributedString.addAttributes([ .font : font!], range: NSRange(location: 61, length: 9))
-        default:
-            attributedString.addAttributes([ .font : font!], range: NSRange(location: 0, length: 0))
-        }
-        return attributedString
     }
 }

@@ -9,12 +9,13 @@ import UIKit
 
 class TariffsInteractor {
     
+    let separetion = SeparetionText()
+    
     //Загружаем данные о Тарифах
-    func loadTariffs(completion: @escaping ([TariffsModel]?) -> Void) {
+    func loadTariffs(userID: String, completion: @escaping ([TariffsModel]?) -> Void) {
+
+        let urlString = separetion.separation(input: tariffsURL, insert: userID)
         
-        guard let userID = GetUserIDManager.shared.userID else { return }
-        
-        let urlString = separategURL(url: tariffsURL, userID: userID)
         guard let url = URL(string: urlString) else { return }
         
         LoadManager.shared.loadData(of: TariffsDataModel.self,
@@ -29,14 +30,5 @@ class TariffsInteractor {
                 print("Tariffs error: \(error.localizedDescription)")
             }
         }
-    }
-    
-    //Разбиваем текст по компонентам использую ключ в виде @#^
-    func separategURL(url: String, userID: String) -> String {
-        
-        let textArray = url.components(separatedBy: "@#^")
-        let finalUrl = textArray[0] + userID + textArray[1]
-        
-        return finalUrl
     }
 }

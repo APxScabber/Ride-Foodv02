@@ -172,7 +172,8 @@ class TaxiMainVC: UIViewController {
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
             CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { [weak self] in
-                self?.toAddress = $0
+                //self?.toAddress = $0
+                self?.fromAddress = $0
             }
         }
     }
@@ -292,6 +293,12 @@ class TaxiMainVC: UIViewController {
         }
         
     }
+    
+    //Alexey Methods
+    
+    private func getUserCurrentCoordinate() {
+        //mapView.userLocation.location.coordinate
+    }
 }
 
 //MARK: - MapViewDelegate
@@ -313,7 +320,8 @@ extension TaxiMainVC: MKMapViewDelegate {
 extension TaxiMainVC: LocationChooserDelegate {
     
     func locationChoosen(_ newLocation: String) {
-        toAddress = newLocation
+        //toAddress = newLocation
+        fromAddress = newLocation
     }
     
     

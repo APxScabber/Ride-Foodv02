@@ -79,7 +79,7 @@ class MainScreenViewController: UIViewController {
         view.addSubview(promotionView)
         view.addSubview(promotionDetailView)
         
-        GetUserIDManager.shared.getUserID()
+        //getUserID()
     }
     
     

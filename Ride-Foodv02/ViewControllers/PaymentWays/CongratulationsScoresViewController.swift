@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CongratulationsScoresViewController: UIViewController {
+class CongratulationsScoresViewController: BaseViewController {
     
     // MARK: - Outlets
     
@@ -19,8 +19,6 @@ class CongratulationsScoresViewController: UIViewController {
     
     // MARK: - Properties
     
-    var userID = GetUserIDManager.shared.userID
-    
     var isMoreDetailsLoad = false
     
     let totalScoresInteractor = TotalScoresInteractor()
@@ -29,7 +27,9 @@ class CongratulationsScoresViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        getUserID()
+        
         setupUI()
         getScores()
     }
@@ -71,11 +71,16 @@ class CongratulationsScoresViewController: UIViewController {
         totalScoresInteractor.loadScores(userID: userID) { data in
             
             let totalScores = String(data.credit)
-            let finalText = self.totalScoresInteractor.separatedTotal(scores: totalScores,
-                                                                      text: AddScoresViewText.youHave.text())
             
-           let textAttribute = self.totalScoresInteractor.createTextAttribute(for: finalText)
-        
+            let finalText = self.totalScoresInteractor.separetion.separation(input: AddScoresViewText.youHave.text(),
+                                                                             insert: totalScores)
+            
+            let textCount = finalText.count
+            let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.yellowColor.value]
+            let textAttribute = self.createTextAttribute(inputText: finalText, type: typeAttributeText,
+                                                       locRus: 6, lenRus: textCount - 6,
+                                                       locEng: 9, lenEng: textCount - 9)
+            
             DispatchQueue.main.async {
                 
                 self.youHaveTextView.attributedText = textAttribute

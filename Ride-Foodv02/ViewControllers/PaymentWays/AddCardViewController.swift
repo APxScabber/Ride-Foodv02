@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddCardViewController: UIViewController {
+class AddCardViewController: BaseViewController {
     
     // MARK: - Outlets
     
@@ -53,6 +53,8 @@ class AddCardViewController: UIViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getUserID()
         
         navigationItem.title = titleNavigation
         registerForKeyboardNotification()
@@ -153,11 +155,20 @@ class AddCardViewController: UIViewController {
     private func animationAddCardConfirm() {
         
         if let cardNumber = inputCardNumber {
-            let finalText = addCardInteractor.separated(text: cardNumber)
-            let textAttribute = addCardInteractor.createTextAttribute(for: finalText)
+            let finalText = addCardInteractor.createShortCardNumber(text: cardNumber)
+            var typeAttributeText = [NSAttributedString.Key : Any]()
+            if let font = UIFont.SFUIDisplayBold(size: 12) {
+                typeAttributeText = [ .font : font]
+            } else {
+                typeAttributeText = [.font : UIFont(name: "Symbol", size: 12)!]
+            }
+            
+            let textAttribute = createTextAttribute(inputText: finalText, type: typeAttributeText,
+                                                       locRus: 45, lenRus: 9,
+                                                       locEng: 61, lenEng: 9)
             infoTextView.attributedText = textAttribute
         } else {
-            infoTextView.text = addCardInteractor.separated(text: "")
+            infoTextView.text = addCardInteractor.createShortCardNumber(text: "")
         }
 
         UIView.animate(withDuration: 2) {

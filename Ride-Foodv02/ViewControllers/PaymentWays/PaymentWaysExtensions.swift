@@ -47,7 +47,10 @@ extension PaymentWaysViewController: UITableViewDataSource {
                 let inputText = textPaymentOptions[indexPath.section][indexPath.row]
                 if paymentWaysInteractor.filter(text: inputText) {
                     let formatedCardNumber = PaymentMainViewText.cardNumber.text() + " " + inputText.suffix(4)
-                    let finallText = paymentWaysInteractor.createTextAttribute(for: formatedCardNumber)
+                    let typeAttributeText: [NSAttributedString.Key : Any] = [ .foregroundColor : PaymentWaysColors.grayColor.value]
+                    let finallText = createTextAttribute(inputText: formatedCardNumber, type: typeAttributeText,
+                                                            locRus: 6, lenRus: 9,
+                                                            locEng: 5, lenEng: 9)
                     cell.paymentTextLabel.attributedText = finallText
                 } else {
                     cell.paymentTextLabel.text = inputText
@@ -68,7 +71,6 @@ extension PaymentWaysViewController: UITableViewDataSource {
         
         return cell
     }
- 
 }
 
 // MARK: - Extensions TableView Delegate
@@ -129,7 +131,6 @@ extension PaymentWaysViewController: UITableViewDelegate {
         }
             
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {

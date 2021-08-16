@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaymentHistoryViewController: UIViewController {
+class PaymentHistoryViewController: BaseViewController {
     
     // MARK: - Outlets
     
@@ -50,6 +50,8 @@ class PaymentHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getUserID()
 
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnView))
        
@@ -68,7 +70,10 @@ class PaymentHistoryViewController: UIViewController {
     // MARK: - Methods
     
     private func getPaymentHistoryData() {
-        paymentHistoryInteractor.loadPaymentHistoryData { data in
+        
+        guard let userID = userID else { return }
+        
+        paymentHistoryInteractor.loadPaymentHistoryData(userID: userID) { data in
             
             self.paymentHistoryArray = data
             DispatchQueue.main.async {
@@ -228,7 +233,7 @@ class PaymentHistoryViewController: UIViewController {
         mainButtonOutlet.setTitle(PaymentHistoryText.button.text(), for: .normal)
     }
     
-    // MARK: - OBJC Methods
+    // MARK: - @objc Methods
     
     @objc func tapOnView() {
         

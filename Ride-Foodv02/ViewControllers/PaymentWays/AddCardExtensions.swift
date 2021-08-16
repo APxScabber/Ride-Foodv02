@@ -114,10 +114,11 @@ extension AddCardViewController {
             self.cardDateTextField.resignFirstResponder()
 
         } completion: { _ in
+            guard let userID = self.userID else { return }
             
             let passData = ["number" : self.cardNumber, "expiry_date" : self.cardDate, "cvc" : self.cardCVV]
-            
-            self.addCardInteractor.postCardData(passData: passData) { model in
+
+            self.addCardInteractor.postCardData(userID: userID, passData: passData) { model in
                 self.cardID = model?.id
             }
             
@@ -129,13 +130,15 @@ extension AddCardViewController {
 extension AddCardViewController {
     
     @IBAction func confirmButtonAction(_ sender: Int) {
+        
+        guard let userID = userID else { return }
       
         UIView.animate(withDuration: 1.5) {
             
             self.cardConfirmView.frame.origin.y = self.view.frame.height
             
             if let cardID = self.cardID {
-                self.addCardInteractor.approvedCard(with: cardID)
+                self.addCardInteractor.approvedCard(with: cardID, for: userID)
             }
             
         } completion: { _ in

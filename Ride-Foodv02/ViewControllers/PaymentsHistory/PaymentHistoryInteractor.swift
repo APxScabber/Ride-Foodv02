@@ -10,17 +10,11 @@ import UIKit
 
 class PaymentHistoryInteractor {
     
-//    var userID: String?
+    let separetion = SeparetionText()
     
-    func loadPaymentHistoryData(completion: @escaping ([PaymentHistoryModel]) -> Void) {
-        
-        let userID = GetUserIDManager.shared.userID
-        
-        guard let userID = userID else { return }
-        
-        print(userID)
-        
-        let urlString = separategURL(url: paymentHistoryURL, userID: userID)
+    func loadPaymentHistoryData(userID: String, completion: @escaping ([PaymentHistoryModel]) -> Void) {
+
+        let urlString = separetion.separation(input: paymentHistoryURL, insert: userID)
         guard let url = URL(string: urlString) else { return }
         
         LoadManager.shared.loadData(of: PaymentHistoryDataModel.self,
@@ -34,15 +28,6 @@ class PaymentHistoryInteractor {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    //Разбиваем текст по компонентам использую ключ в виде @#^
-    func separategURL(url: String, userID: String) -> String {
-        
-        let textArray = url.components(separatedBy: "@#^")
-        let finalUrl = textArray[0] + userID + textArray[1]
-        
-        return finalUrl
     }
     
     // Метод устанавливающий картинку Наличные или Карта

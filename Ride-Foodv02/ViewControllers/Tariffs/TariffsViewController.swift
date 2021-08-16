@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TariffsViewController: UIViewController {
+class TariffsViewController: BaseViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var topLineLabel: UILabel!
@@ -37,6 +37,8 @@ class TariffsViewController: UIViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getUserID()
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -101,7 +103,9 @@ class TariffsViewController: UIViewController {
     //Размещаем полученные данные с сервера в нужные места
     func getTariffsData() {
         
-        tariffsInteractor.loadTariffs { [weak self] (dataModel) in
+        guard let userID = userID else { return }
+        
+        tariffsInteractor.loadTariffs(userID: userID) { [weak self] (dataModel) in
             guard let tariffsData = dataModel else { return }
             
             guard let indexVC = self?.indexVC else { return }
