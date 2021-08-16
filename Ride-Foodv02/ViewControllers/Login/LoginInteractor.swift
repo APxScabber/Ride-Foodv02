@@ -11,26 +11,6 @@ class LoginInteractor {
     
     // MARK: - Methods
     
-    //Создаем атребуты для инфо поля, для создания гиперссылки на пользовательское соглашение
-    func createTextAttribute() -> NSMutableAttributedString {
-        
-        let licenseText = LoginText.licenseInfo.text()
-        let attributedString = NSMutableAttributedString(string: licenseText)
-        
-        switch UserDefaultsManager().getLanguage() {
-        case "rus":
-            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
-                                          range: NSRange(location: 49, length: 28))
-        case "eng":
-            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
-                                          range: NSRange(location: 60, length: 14))
-        default:
-            attributedString.addAttribute(.link, value: LoginConstantText.licenseLink,
-                                          range: NSRange(location: 0, length: 0))
-        }
-        return attributedString
-    }
-    
     //Получаем с сервера код подтверждения
     func reciveConfirmCode(from phoneNumber: String) {
         

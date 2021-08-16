@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConfirmViewController: UIViewController {
+class ConfirmViewController: BaseViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var mainCodeTextField: UITextField!
@@ -49,10 +49,6 @@ class ConfirmViewController: UIViewController {
         startCountDown()
         
         registerForKeyboardNotification()
-    }
-    
-    deinit {
-        print("Exit ConfirmVC")
     }
     
     // MARK: - Methods

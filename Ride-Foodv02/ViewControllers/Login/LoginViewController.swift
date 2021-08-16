@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
     // MARK: - Outlets
     
@@ -78,8 +78,13 @@ class LoginViewController: UIViewController {
 
     //Создаем гиперссылку на фразу "Пользовательское соглащение"
     private func setupLicenseTextView() {
-
-        textView.attributedText = loginInteractor.createTextAttribute()
+        
+        let typeTextAttribute: [NSAttributedString.Key : Any] = [.link : LoginConstantText.licenseLink.rawValue]
+        
+        textView.attributedText = createTextAttribute(inputText: LoginText.licenseInfo.text(),
+                                                         type: typeTextAttribute,
+                                                         locRus: 49, lenRus: 28, locEng: 60, lenEng: 14)
+        
         textView.textColor = LoginColors.grayTextColor.value
         
         let padding = textView.textContainer.lineFragmentPadding

@@ -43,36 +43,6 @@ class ConfirmInteracor {
         }
     }
     
-    //Определяем начальную точку и длинну выделения цветом таймера в зависимости от выбранного языка
-    func selectLanguage(_ textCount: Int) -> (start: Int, lenght: Int) {
-        
-        var startColorLocation = 0
-        var colorLenght = 0
-
-        switch UserDefaultsManager().getLanguage() {
-        
-        case "rus":
-            startColorLocation = textCount - 10
-            colorLenght = 10
-            
-            if textCount == 85 {
-                startColorLocation = textCount - 9
-                colorLenght = 9
-            }
-        case "eng":
-            startColorLocation = textCount - 10
-            colorLenght = 10
-            
-            if textCount == 75 {
-                startColorLocation = textCount - 9
-                colorLenght = 8
-            }
-        default:
-            return (0, 0)
-        }
-        return (startColorLocation, colorLenght)
-    }
-    
     //Разбиваем текст по компонентам использую ключ в виде @#^
     func separategText(phoneNumber: String, seconds: Int) -> String {
         

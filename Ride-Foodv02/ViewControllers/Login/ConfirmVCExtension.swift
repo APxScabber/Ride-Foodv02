@@ -112,15 +112,12 @@ extension ConfirmViewController {
 
         let licenseText = confirmInteractor.separategText(phoneNumber: phoneNumber, seconds: seconds)
         let textCount = licenseText.count
-
-        let colorRange = confirmInteractor.selectLanguage(textCount)
-
-        let attributedString = NSMutableAttributedString(string: licenseText)
-
-        attributedString.addAttributes([ .foregroundColor : LoginColors.blueColor.value], range: NSRange(location: colorRange.start, length: colorRange.lenght))
-        attributedString.addAttribute(.foregroundColor, value: LoginColors.grayTextColor.value, range: NSRange(location: 0, length: colorRange.start))
-
-        infoTextView.attributedText = attributedString
+        
+        let typeTextAttribute: [NSAttributedString.Key : Any] = [.foregroundColor : LoginColors.blueColor.value]
+        
+            infoTextView.attributedText = createTextAttribute(inputText: licenseText, type: typeTextAttribute,
+                                                                 locRus: textCount - 10, lenRus: 10,
+                                                                 locEng: textCount - 10, lenEng: 10)
         
         infoTextView.textAlignment = .center
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaymentWaysViewController: UIViewController {
+class PaymentWaysViewController: BaseViewController {
     
     // MARK: - Outlets
     
@@ -31,7 +31,8 @@ class PaymentWaysViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        getUserID()
         navigationItem.title = navigationTitle
 
         tableView.delegate = self
@@ -70,9 +71,11 @@ class PaymentWaysViewController: UIViewController {
     // Получаем данные о картах с сервера и в соответствии c этим заполняем Table View
     private func getPaymentData() {
         
+        guard let userID = userID else { return }
+        
         textPaymentOptions = [[PaymentMainViewText.cashTV.text(), "Apple Pay"], [PaymentMainViewText.scoresTV.text()]]
         
-        paymentWaysInteractor.loadPaymentData { modelsArray in
+        paymentWaysInteractor.loadPaymentData(userID: userID) { modelsArray in
             
             DispatchQueue.main.async {
                 self.paymentOptions = []
