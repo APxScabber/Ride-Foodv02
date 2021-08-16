@@ -98,8 +98,8 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
         let vc = storyboard.instantiateViewController(withIdentifier: "SubCategoriesVC") as! CategoriesAndFoodVC
         vc.shopName = shopDetail.name
         vc.mainCategoryName = item.name
-        vc.shopID = "\(shopDetail.id)"
-        vc.CategoryID = "\(item.id)"
+        vc.shopID = shopDetail.id
+        vc.CategoryID = item.id
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
         

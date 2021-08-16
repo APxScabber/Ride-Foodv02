@@ -11,8 +11,8 @@ class CategoriesAndFoodVC: UIViewController {
     
     var shopName: String = ""
     var mainCategoryName: String = ""
-    var shopID: String = ""
-    var CategoryID: String = ""
+    var shopID: Int = 0
+    var CategoryID: Int = 0
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
@@ -47,6 +47,10 @@ class CategoriesAndFoodVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpViews()
+        ProductsNetworkManager.shared.getProducts(shopID: shopID, parentCategoryID: CategoryID, page: 1) { response in
+            print(response)
+        }
+        
     }
    
   
