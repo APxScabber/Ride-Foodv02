@@ -14,6 +14,8 @@ class CategoriesAndFoodVC: UIViewController {
     var shopID: Int = 0
     var CategoryID: Int = 0
     
+    var product: ProductData?
+    
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
@@ -47,13 +49,23 @@ class CategoriesAndFoodVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpViews()
-        ProductsNetworkManager.shared.getProducts(shopID: shopID, parentCategoryID: CategoryID, page: 1) { response in
-            print(response)
-        }
+        getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
         
     }
    
-  
+    func getProducts(shopID: Int, categoryID: Int, page: Int){
+        ProductsNetworkManager.shared.getProducts(shopID: shopID, parentCategoryID: categoryID, page: page) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.product = data
+                print(self.product)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
