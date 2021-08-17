@@ -9,10 +9,26 @@ import UIKit
 
 class CategoriesAndFoodVC: UIViewController {
     
+    let tableViewCellID = "tableViewCellID"
+    
+    var showSubcategories: Bool = false { didSet {
+        updateUI()
+    }}
+    
+    var subcategoriesTableView: UITableView!
+    
     var shopName: String = ""
     var mainCategoryName: String = ""
     var shopID: Int = 0
     var CategoryID: Int = 0
+    
+    var page = 1
+    var hasNoMorePages: Bool = true
+    
+    var productData: ProductData?
+    
+    var products: [Product] = []
+    var subcategories: [Product] = []
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
@@ -44,16 +60,70 @@ class CategoriesAndFoodVC: UIViewController {
         
     }
     
+    func updateUI(){
+        DispatchQueue.main.async {
+            if self.showSubcategories{
+                self.configureTableView()
+                self.subcategoriesTableView.reloadData()
+            } else {
+                return
+            }
+        }
+      
+    }
+    
+    func configureTableView(){
+        subcategoriesTableView = UITableView(frame: containerView.bounds, style: .plain)
+        containerView.addSubview(subcategoriesTableView)
+        subcategoriesTableView.translatesAutoresizingMaskIntoConstraints = false
+        subcategoriesTableView.delegate = self
+        subcategoriesTableView.dataSource = self
+        subcategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellID)
+       
+        NSLayoutConstraint.activate([
+            subcategoriesTableView.topAnchor.constraint(equalTo: tinySeparatorView.bottomAnchor, constant: 5),
+            subcategoriesTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            subcategoriesTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            subcategoriesTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpViews()
-        ProductsNetworkManager.shared.getProducts(shopID: shopID, parentCategoryID: CategoryID, page: 1) { response in
-            print(response)
-        }
+        getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
         
     }
    
-  
+    func getProducts(shopID: Int, categoryID: Int, page: Int){
+        ProductsNetworkManager.shared.getProducts(shopID: shopID, parentCategoryID: categoryID, page: page) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.productData = data
+                self.productData?.data?.forEach({ element in
+                    if element.isCategory!{
+                        self.subcategories.append(element)
+                    } else {
+                        self.products.append(element)
+                    }
+                })
+                print(self.products)
+                print(self.subcategories)
+                if self.products.isEmpty{
+                    self.showSubcategories = true
+                  
+                }
+                DispatchQueue.main.async {
+                    self.updateUI()
+                }
+               
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -72,7 +142,6 @@ class CategoriesAndFoodVC: UIViewController {
 //        Set storyboard label values
         titleLabel.text = mainCategoryName
         shopTitleLabel.text = shopName 
-        
         
         containerView.layer.cornerRadius = 15.0
         containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
@@ -113,4 +182,25 @@ class CategoriesAndFoodVC: UIViewController {
     }
     */
 
+}
+
+extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        subcategories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
+        cell.accessoryType = .disclosureIndicator
+        let subcategory = subcategories[indexPath.row]
+        cell.textLabel?.text = subcategory.name
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        UIView()
+    }
+    
+    
 }

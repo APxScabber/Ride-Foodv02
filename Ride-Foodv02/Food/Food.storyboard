@@ -709,7 +709,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkM-i5-Ja6">
-                                        <rect key="frame" x="0.0" y="110" width="414" height="2"/>
+                                        <rect key="frame" x="0.0" y="110" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -724,7 +724,7 @@
                                     <constraint firstItem="QnE-yU-rlb" firstAttribute="top" secondItem="aTb-if-JMs" secondAttribute="bottom" constant="8" symbolic="YES" id="Q0H-U2-Zn3"/>
                                     <constraint firstItem="aTb-if-JMs" firstAttribute="leading" secondItem="QnE-yU-rlb" secondAttribute="leading" id="UDJ-oS-6xB"/>
                                     <constraint firstItem="DkM-i5-Ja6" firstAttribute="top" secondItem="aTb-if-JMs" secondAttribute="bottom" constant="60" id="WdR-zJ-ivX"/>
-                                    <constraint firstItem="QnE-yU-rlb" firstAttribute="top" secondItem="DkM-i5-Ja6" secondAttribute="bottom" constant="-54" id="Yoi-7p-ayz"/>
+                                    <constraint firstItem="QnE-yU-rlb" firstAttribute="top" secondItem="DkM-i5-Ja6" secondAttribute="bottom" constant="-53" id="Yoi-7p-ayz"/>
                                     <constraint firstItem="DkM-i5-Ja6" firstAttribute="leading" secondItem="kJe-gc-E6d" secondAttribute="leading" id="h46-gT-R2U"/>
                                     <constraint firstItem="aTb-if-JMs" firstAttribute="leading" secondItem="kJe-gc-E6d" secondAttribute="leading" constant="17" id="h9B-v8-aAt"/>
                                     <constraint firstItem="fRc-Tf-yRT" firstAttribute="leading" secondItem="aTb-if-JMs" secondAttribute="trailing" constant="51" id="xg0-6B-pkB"/>

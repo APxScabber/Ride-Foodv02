@@ -207,6 +207,7 @@
 		F5011DBA26B36FDD00DE3777 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */; };
 		F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */; };
 		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
+		F50DEFD126CC604C003B9308 /* SubCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */; };
 		F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */; };
 		F56502F626CA159700934D91 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F526CA159700934D91 /* PresentationController.swift */; };
 		F56502F826CA4D7200934D91 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F726CA4D7200934D91 /* Product.swift */; };
@@ -428,6 +429,7 @@
 		F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
 		F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBConfirmAlertVC.swift; sourceTree = "<group>"; };
 		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAndFoodVC.swift; sourceTree = "<group>"; };
 		F56502F526CA159700934D91 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		F56502F726CA4D7200934D91 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -1089,6 +1091,7 @@
 		F56502FB26CAF77F00934D91 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1382,6 +1385,7 @@
 				78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */,
 				78ACFD0B26A59E1700C995EB /* Promocodes.swift in Sources */,
 				78AEB87C267B59C10023605D /* StringExtension.swift in Sources */,
+				F50DEFD126CC604C003B9308 /* SubCategoriesTableViewCell.swift in Sources */,
 				C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */,
 				7841E3AF26A8384C00335DFA /* TextViewExtension.swift in Sources */,
 				F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */,
