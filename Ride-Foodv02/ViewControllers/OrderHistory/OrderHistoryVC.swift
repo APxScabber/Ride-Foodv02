@@ -2,6 +2,10 @@ import UIKit
 
 class OrderHistoryVC: UIViewController {
 
+    //MARK: - API
+    
+    var orders = Orders()
+    
    //MARK: - Outlets
     @IBOutlet weak var label: UILabel! { didSet {
         label.font = UIFont.SFUIDisplayRegular(size: 26.0)
@@ -16,6 +20,8 @@ class OrderHistoryVC: UIViewController {
     @IBOutlet weak var transparentView: UIView! { didSet {
         transparentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveDetailViewBack(_:))))
     }}
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     let taxiDetailView = TaxiDetailView.initFromNib()
     let foodDetailView = FoodDetailView.initFromNib()
@@ -30,14 +36,19 @@ class OrderHistoryVC: UIViewController {
     }
     
     @IBAction func changeOrderType(_ sender: UISegmentedControl) {
-        tableView.beginUpdates()
         tableView.visibleCells.forEach {
             if let orderHistoryCell = $0 as? OrderHistoryTableViewCell {
                 orderHistoryCell.updateViews()
             }
         }
-        tableView.endUpdates()
-        perform(#selector(update), with: nil, afterDelay: 0.25)
+        if segmentedControl.selectedSegmentIndex == 0 {
+            label.isHidden = !orders.done.isEmpty
+            imageView.isHidden = !orders.done.isEmpty
+        } else {
+            label.isHidden = !orders.canceled.isEmpty
+            imageView.isHidden = !orders.canceled.isEmpty
+        }
+        tableView.reloadData()
     }
     
     //MARK: - ViewController lifecycle
@@ -49,13 +60,18 @@ class OrderHistoryVC: UIViewController {
         taxiDetailView.isHidden = true
         view.addSubview(foodDetailView)
         view.addSubview(taxiDetailView)
+        OrdersFetcher.fetch { [weak self] in
+            self?.orders.done = $0
+            self?.orders.canceled = $1
+            self?.tableView.reloadData()
+            self?.spinner.stopAnimating()
+            if !$0.isEmpty || !$1.isEmpty {
+                self?.imageView.isHidden = true
+                self?.label.isHidden = true
+            }
+        }
     }
-    
-    //MARK: - Reload data
-    @objc
-    private func update() {
-        tableView.reloadData()
-    }
+
 }
 
 //MARK: - UItableview datasourse
@@ -64,7 +80,7 @@ class OrderHistoryVC: UIViewController {
 extension OrderHistoryVC: UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return segmentedControl.selectedSegmentIndex == 0 ? orders.done.count : orders.canceled.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
