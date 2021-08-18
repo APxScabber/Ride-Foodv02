@@ -9,6 +9,8 @@ import UIKit
 
 class CategoriesAndFoodVC: UIViewController {
     
+    let TestSubcategories = ["Йогурты", "Замороженная продукция", "Полуфабрикаты", "Глазированные сырки", "Квас", "Творог"]
+    
     let tableViewCellID = "tableViewCellID"
     
     var showSubcategories: Bool = false { didSet {
@@ -16,6 +18,10 @@ class CategoriesAndFoodVC: UIViewController {
     }}
     
     var subcategoriesTableView: UITableView!
+    
+    var productsCollectionView: UICollectionView!
+    
+    var subcategoriesCollectionView: UICollectionView!
     
     var shopName: String = ""
     var mainCategoryName: String = ""
@@ -45,19 +51,30 @@ class CategoriesAndFoodVC: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var tinySeparatorView: UIView!
     
     @IBOutlet weak var draggableRoundView: RoundedView!
     
+    var topSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.ProfileButtonBorderColor
+        return view
+    }()
     
-   
+     var separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.ProfileButtonBorderColor
+        return view
+    }()
+    
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       print(shopID)
-        print(CategoryID)
-        
+      
+        setUpViews()
     }
     
     func updateUI(){
@@ -66,10 +83,59 @@ class CategoriesAndFoodVC: UIViewController {
                 self.configureTableView()
                 self.subcategoriesTableView.reloadData()
             } else {
-                return
+                self.configureSubcategoriesCollectionViews()
+                self.configureProductsCollectionView()
+                self.productsCollectionView.reloadData()
+                self.subcategoriesCollectionView.reloadData()
             }
         }
       
+    }
+    
+    func configureProductsCollectionView(){
+        productsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createProductsCollectionViewFlowLayour(in: containerView))
+        containerView.addSubview(productsCollectionView)
+        productsCollectionView.backgroundColor = .white
+        productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        productsCollectionView.delegate = self
+        productsCollectionView.dataSource = self
+        productsCollectionView.showsVerticalScrollIndicator = false
+        productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: ProductsCollectionViewCell.identifier)
+        
+        NSLayoutConstraint.activate([
+            productsCollectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
+            productsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            productsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            productsCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
+    }
+    
+    func configureSubcategoriesCollectionViews(){
+        subcategoriesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalCollectionViewFlowLayout(in: containerView))
+        containerView.addSubview(subcategoriesCollectionView)
+        containerView.addSubview(separatorView)
+        subcategoriesCollectionView.backgroundColor = .white
+        subcategoriesCollectionView.showsHorizontalScrollIndicator = false
+        subcategoriesCollectionView.showsVerticalScrollIndicator = false
+        subcategoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        subcategoriesCollectionView.delegate = self
+        subcategoriesCollectionView.dataSource = self
+        subcategoriesCollectionView.register(SubcategoriesCollectionViewCell.self, forCellWithReuseIdentifier: SubcategoriesCollectionViewCell.identifier)
+        
+        NSLayoutConstraint.activate([
+            subcategoriesCollectionView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 1),
+            subcategoriesCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            subcategoriesCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            subcategoriesCollectionView.heightAnchor.constraint(equalToConstant: 60),
+            
+            separatorView.topAnchor.constraint(equalTo: subcategoriesCollectionView.bottomAnchor, constant: 1),
+            separatorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
+        
+        ])
+        
     }
     
     func configureTableView(){
@@ -81,7 +147,7 @@ class CategoriesAndFoodVC: UIViewController {
         subcategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellID)
        
         NSLayoutConstraint.activate([
-            subcategoriesTableView.topAnchor.constraint(equalTo: tinySeparatorView.bottomAnchor, constant: 5),
+            subcategoriesTableView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 2),
             subcategoriesTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             subcategoriesTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             subcategoriesTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
@@ -91,7 +157,7 @@ class CategoriesAndFoodVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUpViews()
+       
         getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
         
     }
@@ -141,12 +207,24 @@ class CategoriesAndFoodVC: UIViewController {
     func setUpViews(){
 //        Set storyboard label values
         titleLabel.text = mainCategoryName
-        shopTitleLabel.text = shopName 
+      
+        shopTitleLabel.text = shopName
         
+        containerView.addSubview(topSeparatorView)
+        
+        NSLayoutConstraint.activate([
+            topSeparatorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            topSeparatorView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            topSeparatorView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            topSeparatorView.heightAnchor.constraint(equalToConstant: 0.5)
+        ])
+      
         containerView.layer.cornerRadius = 15.0
         containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
               view.addGestureRecognizer(panGesture)
+        
+    
       
     }
 
@@ -186,20 +264,48 @@ class CategoriesAndFoodVC: UIViewController {
 
 extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        subcategories.count
+        TestSubcategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
         cell.accessoryType = .disclosureIndicator
-        let subcategory = subcategories[indexPath.row]
-        cell.textLabel?.text = subcategory.name
+        let subcategory = TestSubcategories[indexPath.row]
+        cell.textLabel?.text = subcategory
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView()
+    }
+    
+    
+}
+
+extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.subcategoriesCollectionView{
+            return subcategories.count
+        } else {
+            return products.count
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.subcategoriesCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubcategoriesCollectionViewCell.identifier, for: indexPath) as! SubcategoriesCollectionViewCell
+            let subcategory = subcategories[indexPath.row]
+            cell.titleLabel.text = subcategory.name
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductsCollectionViewCell.identifier, for: indexPath) as! ProductsCollectionViewCell
+            let product = products[indexPath.row]
+            cell.setData(product: product)
+            return cell
+        }
+    
     }
     
     
