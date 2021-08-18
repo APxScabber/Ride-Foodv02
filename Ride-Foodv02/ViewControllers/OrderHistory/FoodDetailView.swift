@@ -1,20 +1,33 @@
-//
-//  FoodDetailView.swift
-//  Ride-Foodv02
-//
-//  Created by Igor on 16.08.2021.
-//
-
 import UIKit
 
-class FoodDetailView: UIView {
+class FoodDetailView: DetailView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    //MARK: - Outlets
+    
+    @IBOutlet weak var shopLabel: UILabel! { didSet {
+        shopLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    @IBOutlet weak var shopDetailLabel: UILabel!{ didSet {
+        shopDetailLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    @IBOutlet weak var courierLabel: UILabel!{ didSet {
+        courierLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    @IBOutlet weak var courierDetailLabel: UILabel!{ didSet {
+        courierDetailLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    @IBOutlet weak var orderListLabel: UILabel!{ didSet {
+        orderListLabel.font = UIFont.SFUIDisplaySemibold(size: 17.0)
+    }}
+    @IBOutlet weak var orderListDetailLabel: UILabel!{ didSet {
+        orderListDetailLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    
+    //MARK: - UI changes
+    
+    override func updateUI() {
+        super.updateUI()
+        
     }
-    */
 
 }
