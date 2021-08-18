@@ -84,10 +84,31 @@ class CategoriesAndFoodVC: UIViewController {
                 self.subcategoriesTableView.reloadData()
             } else {
                 self.configureSubcategoriesCollectionViews()
+                self.configureProductsCollectionView()
+                self.productsCollectionView.reloadData()
                 self.subcategoriesCollectionView.reloadData()
             }
         }
       
+    }
+    
+    func configureProductsCollectionView(){
+        productsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createProductsCollectionViewFlowLayour(in: containerView))
+        containerView.addSubview(productsCollectionView)
+        productsCollectionView.backgroundColor = .white
+        productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        productsCollectionView.delegate = self
+        productsCollectionView.dataSource = self
+        productsCollectionView.showsVerticalScrollIndicator = false
+        productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: ProductsCollectionViewCell.identifier)
+        
+        NSLayoutConstraint.activate([
+            productsCollectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
+            productsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            productsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            productsCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
     }
     
     func configureSubcategoriesCollectionViews(){
@@ -264,14 +285,27 @@ extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
 
 extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        TestSubcategories.count
+        if collectionView == self.subcategoriesCollectionView{
+            return subcategories.count
+        } else {
+            return products.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubcategoriesCollectionViewCell.identifier, for: indexPath) as! SubcategoriesCollectionViewCell
-        let subcategory = TestSubcategories[indexPath.row]
-        cell.titleLabel.text = subcategory
-        return cell
+        if collectionView == self.subcategoriesCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubcategoriesCollectionViewCell.identifier, for: indexPath) as! SubcategoriesCollectionViewCell
+            let subcategory = subcategories[indexPath.row]
+            cell.titleLabel.text = subcategory.name
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductsCollectionViewCell.identifier, for: indexPath) as! ProductsCollectionViewCell
+            let product = products[indexPath.row]
+            cell.setData(product: product)
+            return cell
+        }
+    
     }
     
     
