@@ -103,10 +103,10 @@ class CategoriesAndFoodVC: UIViewController {
         subcategoriesCollectionView.register(SubcategoriesCollectionViewCell.self, forCellWithReuseIdentifier: SubcategoriesCollectionViewCell.identifier)
         
         NSLayoutConstraint.activate([
-            subcategoriesCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            subcategoriesCollectionView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 1),
             subcategoriesCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             subcategoriesCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            subcategoriesCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -600),
+            subcategoriesCollectionView.heightAnchor.constraint(equalToConstant: 60),
             
             separatorView.topAnchor.constraint(equalTo: subcategoriesCollectionView.bottomAnchor, constant: 1),
             separatorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -126,7 +126,7 @@ class CategoriesAndFoodVC: UIViewController {
         subcategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellID)
        
         NSLayoutConstraint.activate([
-            subcategoriesTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            subcategoriesTableView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 2),
             subcategoriesTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             subcategoriesTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             subcategoriesTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)

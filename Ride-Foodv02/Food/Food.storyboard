@@ -727,7 +727,8 @@
                                 <rect key="frame" x="187" y="22" width="40" height="6"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="xjr-8O-oPj"/>
+                                    <constraint firstAttribute="width" constant="40" id="YT5-q7-fFL"/>
+                                    <constraint firstAttribute="height" constant="6" id="uq9-6J-NFO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -735,12 +736,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="bottom" secondItem="Jy1-aP-6JF" secondAttribute="bottom" id="AvZ-3Y-fwA"/>
+                            <constraint firstItem="kJe-gc-E6d" firstAttribute="top" secondItem="Lx3-YG-teF" secondAttribute="bottom" constant="4" id="HRk-I6-v5G"/>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="leading" secondItem="ich-B8-Wbj" secondAttribute="leading" id="Ymt-rr-NSF"/>
-                            <constraint firstItem="Lx3-YG-teF" firstAttribute="centerX" secondItem="ich-B8-Wbj" secondAttribute="centerX" id="aKe-dJ-FXS"/>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="top" secondItem="ich-B8-Wbj" secondAttribute="top" constant="32" id="hOu-hJ-S41"/>
+                            <constraint firstItem="Lx3-YG-teF" firstAttribute="centerX" secondItem="ich-B8-Wbj" secondAttribute="centerX" id="nif-RR-tM3"/>
                             <constraint firstAttribute="trailing" secondItem="kJe-gc-E6d" secondAttribute="trailing" id="qpm-Iy-AMc"/>
-                            <constraint firstItem="Lx3-YG-teF" firstAttribute="leading" secondItem="ich-B8-Wbj" secondAttribute="leading" constant="187" id="wgV-dJ-11F"/>
-                            <constraint firstItem="kJe-gc-E6d" firstAttribute="top" secondItem="Lx3-YG-teF" secondAttribute="bottom" constant="4" id="xjA-eA-mUm"/>
                         </constraints>
                     </view>
                     <connections>
