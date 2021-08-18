@@ -16,4 +16,5 @@ extension UIColor {
     static let DisabledButtonBackgroundView = UIColor(red: 0.817, green: 0.817, blue: 0.817, alpha: 1)
     static let SkillBoxBackgroundColor      = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
     static let attributeViewColor           = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+    
 }

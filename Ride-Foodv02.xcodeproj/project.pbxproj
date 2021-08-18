@@ -209,6 +209,9 @@
 		F56502F826CA4D7200934D91 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F726CA4D7200934D91 /* Product.swift */; };
 		F56502FF26CAF7E400934D91 /* ProductsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502FE26CAF7E400934D91 /* ProductsNetworkManager.swift */; };
 		F565030226CAFB3900934D91 /* VBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565030126CAFB3900934D91 /* VBError.swift */; };
+		F58FA74B26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA74A26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift */; };
+		F58FA74D26CCDB75000B8E16 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA74C26CCDB75000B8E16 /* ProductsCollectionViewCell.swift */; };
+		F58FA74F26CCE83E000B8E16 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA74E26CCE83E000B8E16 /* UIHelper.swift */; };
 		F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */; };
 		F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B50C2A26BAC3510082199C /* AddressModel.swift */; };
 		F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC916326AB7475008E9841 /* UIColorExtension.swift */; };
@@ -427,6 +430,9 @@
 		F56502F726CA4D7200934D91 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F56502FE26CAF7E400934D91 /* ProductsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsNetworkManager.swift; sourceTree = "<group>"; };
 		F565030126CAFB3900934D91 /* VBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBError.swift; sourceTree = "<group>"; };
+		F58FA74A26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		F58FA74C26CCDB75000B8E16 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		F58FA74E26CCE83E000B8E16 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		F5B50C2626B8B6470082199C /* AddressesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesNetworkManager.swift; sourceTree = "<group>"; };
 		F5B50C2A26BAC3510082199C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		F5BC916326AB7475008E9841 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -1080,6 +1086,8 @@
 			isa = PBXGroup;
 			children = (
 				F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */,
+				F58FA74A26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift */,
+				F58FA74C26CCDB75000B8E16 /* ProductsCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1104,6 +1112,7 @@
 			isa = PBXGroup;
 			children = (
 				F565030126CAFB3900934D91 /* VBError.swift */,
+				F58FA74E26CCE83E000B8E16 /* UIHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1284,6 +1293,7 @@
 				785F5D9426C2AF01004503CB /* Localizable.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */,
+				F58FA74F26CCE83E000B8E16 /* UIHelper.swift in Sources */,
 				78A3A01B267B57D7006D0DAB /* LoginInteractor.swift in Sources */,
 				787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */,
 				7841E3A526A8362500335DFA /* TariffsCollectionViewCell.swift in Sources */,
@@ -1295,6 +1305,7 @@
 				78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */,
 				787A83EE26AB2DA40096DFC3 /* AddressesVC.swift in Sources */,
 				78AEB87F267B59C10023605D /* AppDelegateExtension.swift in Sources */,
+				F58FA74D26CCDB75000B8E16 /* ProductsCollectionViewCell.swift in Sources */,
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
 				78F1A98226A8949000E16084 /* AddCardViewController.swift in Sources */,
@@ -1396,6 +1407,7 @@
 				7841E3A426A8362500335DFA /* TariffsInteractor.swift in Sources */,
 				78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */,
 				782D45DC26B038BE006B3A98 /* FoodConstants.swift in Sources */,
+				F58FA74B26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift in Sources */,
 				78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */,
 				785F5D9026C16243004503CB /* CLLocation+Extensions.swift in Sources */,
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
@@ -1588,7 +1600,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 223988V24V;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1608,7 +1620,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 223988V24V;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
