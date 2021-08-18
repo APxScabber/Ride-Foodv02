@@ -95,7 +95,7 @@ extension OrderHistoryVC: UITableViewDataSource,UITableViewDelegate {
             orderHistoryCell.orderTypeLabel.text = currentOrders[indexPath.section].type
             orderHistoryCell.orderTypeDetailLabel.text = currentOrders[indexPath.section].typeDetail
             orderHistoryCell.dateLabel.text = "7 сентября, 09:20"
-            orderHistoryCell.orderImageView.image = currentOrders[indexPath.section].type == "taxi" ? #imageLiteral(resourceName: "OrderTaxi") : #imageLiteral(resourceName: "OrderFood")
+            orderHistoryCell.orderImageView.image = currentOrders[indexPath.section].type == "Такси" ? #imageLiteral(resourceName: "OrderTaxi") : #imageLiteral(resourceName: "OrderFood")
             return orderHistoryCell
         }
         
@@ -118,6 +118,7 @@ extension OrderHistoryVC: UITableViewDataSource,UITableViewDelegate {
         } else {
             detailView = foodDetailView
         }
+        detailView?.clipsToBounds = true
         setupDetailViewWith(CGRect(x: 25, y: cellFrameInView.origin.y, width: view.bounds.width - 50, height: cellFrameInView.height))
 
         
