@@ -6,7 +6,7 @@ protocol FoodTaxiViewDelegate: AnyObject {
 }
 
 class FoodTaxiView: UIView {
-
+    
     @IBOutlet weak var foodImageView: UIImageView! { didSet {
         foodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(foodImageViewClicked(_:))))
         foodImageView.isExclusiveTouch = true

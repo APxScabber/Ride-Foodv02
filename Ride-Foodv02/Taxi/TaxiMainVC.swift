@@ -12,6 +12,7 @@ class TaxiMainVC: UIViewController {
     var currentUserCoordinate: CLLocationCoordinate2D?
 
     let taxiMainInteractor = TaxiMainInteractor()
+    let calculatingPathManager = CalculatingPathManager()
     
     //MARK: - Private properties
     
@@ -22,7 +23,6 @@ class TaxiMainVC: UIViewController {
     private var yOffset: CGFloat = 0
     
     //MARK: - Outlets
-    
     
     @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
         userLocationButtonOutlet.alpha = 0
@@ -92,6 +92,7 @@ class TaxiMainVC: UIViewController {
 
     //MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
+        
         dismiss(animated: true)
     }
     
@@ -124,7 +125,6 @@ class TaxiMainVC: UIViewController {
         userLocationButtonOutlet.alpha = 0
     }
     
-    
     //MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
@@ -143,6 +143,12 @@ class TaxiMainVC: UIViewController {
         toAddressDetailView.isHidden = true
         view.addSubview(fromAddressDetailView)
         view.addSubview(toAddressDetailView)
+
+        if let coordinate = MapKitManager.shared.currentUserCoordinate {
+            SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
+                self.fromAddress = address
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,8 +161,6 @@ class TaxiMainVC: UIViewController {
         super.viewDidAppear(animated)
         safeAreaBottomHeight = view.safeAreaInsets.bottom
         showMapItems(false)
-        
-        MapKitManager.shared.checkLocationServices(delegate: self, view: self)
     }
     
     //MARK: - Deinit
@@ -177,8 +181,9 @@ class TaxiMainVC: UIViewController {
                 userLocationButtonOutlet.alpha = userLocation == coordinate ? 0 : 1
             }
 
-            taxiMainInteractor.setMarkOnMap(map: mapView, with: coordinate) { address in
+            SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
                 self.fromAddress = address
+                MapKitManager.shared.currentUserCoordinate = coordinate
             }
         }
     }
@@ -218,7 +223,9 @@ class TaxiMainVC: UIViewController {
            let destination = segue.destination as? LocationChooserViewController {
             destination.delegate = self
             destination.region = mapView.region
-            destination.location = fromAddress
+            let fromPoint = fromTextField.text
+            let toPoint = toTextField.text
+            destination.location = fromPoint != "" && toPoint != "" ? toAddress : fromAddress
         }
     }
     
@@ -228,7 +235,7 @@ class TaxiMainVC: UIViewController {
         mapButton.isHidden = !bool && responderTextField == nil
         arrowButton.isHidden = !bool && responderTextField == nil
         
-        if !taxiMainInteractor.isPathCalculeted {
+        if !SetMapMarkersManager.shared.isPathCalculeted {
             transparentView.isHidden = !bool && responderTextField == nil
         }
         
@@ -285,7 +292,7 @@ class TaxiMainVC: UIViewController {
         tableViewHeightView.isHidden = true
  
         if toTextField.text != "" {
-            taxiMainInteractor.isFromAddressMarkSelected = false
+            SetMapMarkersManager.shared.isFromAddressMarkSelected = false
             taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { address in
                 self.toAddress = address
             }
@@ -314,57 +321,7 @@ class TaxiMainVC: UIViewController {
         
     }
     
-    // MARK: - Alexey Methods
-    
-    
-
-    
-    
-//    private func setupLocationManager() {
-//
-//        MapKitManager.shared.locationManager.delegate = self
-//        MapKitManager.shared.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//    }
-    
-//    private func checkLocationServices() {
-//        
-//        if CLLocationManager.locationServicesEnabled() {
-//            
-//            MapKitManager.shared.setupLocationManager(delegate: self)
-//            //setupLocationManager()
-//            MapKitManager.shared.checkAuthorization(view: self)
-//        } else {
-////            
-////            taxiMainInteractor.settingsAlertController(title: "Служба геолокации выключена",
-////                                                       message: "Включить?",
-////                                                       url: URL(string: "App-Prefs:root=LOCATION_SERVICES"),
-////                                                       view: self)
-//        }
-//    }
-    
-//    func checkAuthorization() {
-//
-//        switch CLLocationManager.authorizationStatus() {
-//        case .authorizedAlways:
-//            break
-//        case .authorizedWhenInUse:
-//
-//            MapKitManager.shared.locationManager.startUpdatingLocation()
-//        case .denied:
-//
-//            taxiMainInteractor.settingsAlertController(title: "Определение местороложения запрещено",
-//                                                       message: "Разрешить?",
-//                                                       url: URL(string: UIApplication.openSettingsURLString),
-//                                                       view: self)
-//        case .notDetermined:
-//
-//            MapKitManager.shared.locationManager.requestWhenInUseAuthorization()
-//        case .restricted:
-//            break
-//        @unknown default:
-//            break
-//        }
-//    }
+    // MARK: - Methods
     
     // Загрузка адресов из Core Data
     private func loadAdressesFromCoreData() {
@@ -489,8 +446,8 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
             self.addressesChooserView.isUserInteractionEnabled = true
         }
         }
-        taxiMainInteractor.calculatingPath(for: mapView)
-        taxiMainInteractor.isPathCalculeted = true
+        calculatingPathManager.calculatingPath(for: mapView)
+        SetMapMarkersManager.shared.isPathCalculeted = true
         gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
         showMapItems(true)
     }

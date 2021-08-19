@@ -5,7 +5,15 @@ import CoreLocation
 class MainScreenViewController: UIViewController {
     
     // MARK: - Outlets
+    
+    @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
+        userLocationButtonOutlet.alpha = 0
+    }}
 
+    @IBOutlet weak var userLocationButtonConstraint: NSLayoutConstraint! { didSet {
+        userLocationButtonConstraint.constant = foodTaxiView.frame.height + promotionView.touchableView.frame.height + 20
+    }}
+    
     @IBOutlet weak var mapView: MKMapView! { didSet {
         let center = CLLocationCoordinate2D(latitude: 55.7520, longitude: 37.6175)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -31,9 +39,9 @@ class MainScreenViewController: UIViewController {
     // MARK: - XIB files
     
     private let menuView = MenuView.initFromNib()
-    private let foodTaxiView = FoodTaxiView.initFromNib()
-    private let promotionView = PromotionView.initFromNib()
-    private let promotionDetailView = PromotionDetail.initFromNib()
+    let foodTaxiView = FoodTaxiView.initFromNib()
+    let promotionView = PromotionView.initFromNib()
+    let promotionDetailView = PromotionDetail.initFromNib()
     
     // MARK: - IBActions
     
@@ -58,15 +66,17 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
     
-
-    // MARK: - viewDidLoad
-
+    
+    @IBAction func userLocationButtonAction(_ sender: Any) {
+        MapKitManager.shared.locationManager.startUpdatingLocation()
+        userLocationButtonOutlet.alpha = 0
+    }
+    
     // MARK: - Properties
 
     private var bottomSafeAreaConstant: CGFloat = 0
 
     // MARK: - ViewController lifecycle
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +88,6 @@ class MainScreenViewController: UIViewController {
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
         view.addSubview(promotionDetailView)
-        
-        //getUserID()
     }
     
     
@@ -92,12 +100,27 @@ class MainScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         menuView.layoutSubviews()
+
+        MapKitManager.shared.checkLocationServices(delegate: self, view: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !menuView.isVisible {
             resetFrames()
+        }
+    }
+    
+    // MARK: - Methods
+    
+    func animationUerLocationButton() {
+        
+        let safeAreaBottomHeight = view.safeAreaInsets.bottom
+        
+        userLocationButtonConstraint.constant = foodTaxiView.frame.height - safeAreaBottomHeight
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
     }
  
@@ -115,6 +138,7 @@ class MainScreenViewController: UIViewController {
         } else if segue.identifier == "taxi",
                   let destination = segue.destination as? TaxiMainVC {
             destination.fromAddress = foodTaxiView.placeLabel.text ?? ""
+            MapKitManager.shared.currentUserCoordinate = mapView.annotations.first?.coordinate
         }
     }
     
@@ -122,22 +146,22 @@ class MainScreenViewController: UIViewController {
     
     @objc
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
+        
         if recognizer.state == .ended {
-            mapView.removeAnnotations(mapView.annotations)
-            
+
             let location = recognizer.location(in: mapView)
             let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+            
+            if let userLocation = MapKitManager.shared.currentUserCoordinate {
+                
+                userLocationButtonOutlet.alpha = userLocation == coordinate ? 0 : 1
+            }
 
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            mapView.addAnnotation(annotation)
-            CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { [weak self] in
-                self?.foodTaxiView.placeLabel.text = $0
-                self?.foodTaxiView.placeAnnotationView.isHidden = false
+            SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
+                self.foodTaxiView.placeLabel.text = address
             }
         }
     }
-    
     
     //MARK: - Helper
     
@@ -154,7 +178,6 @@ class MainScreenViewController: UIViewController {
         promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
         promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
     }
-    
 }
 
 //MARK: - MenuViewDelegate
@@ -182,7 +205,6 @@ extension MainScreenViewController: MenuViewDelegate {
             present(supportVC, animated: true)
         }
     }
-    
 }
 
 //MARK: - FoodTaxiView Delegate
@@ -198,51 +220,6 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     
     func goToTaxi() {
         performSegue(withIdentifier: "taxi", sender: nil)
-    }
-    
-    
-    
-}
-
-//MARK: - MKMapViewDelegate
-
-extension MainScreenViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else { return nil }
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-        annotationView.image = UIImage(named: "Annotation")
-        annotationView.frame.size = CGSize(width: 30, height: 48)
-        return annotationView
-    }
-    
-}
-
-//MARK: - PromotionView Delegate
-
-extension MainScreenViewController: PromotionViewDelegate {
-    
-    func show() {
-        transparentView.isHidden = false
-        circleView.isHidden = true
-        menuButton.isHidden = true
-        let promotion = DefaultPromotion()
-        promotionDetailView.headerLabel.text = promotion.title
-        ImageFetcher.fetch(promotion.urlString) { data in
-            self.promotionDetailView.imageView.image = UIImage(data: data)
-        }
-        PromotionsFetcher.getPromotionDescriptionWith(id: promotion.id) { [weak self] in
-            self?.promotionDetailView.descriptionLabel.text = $0
-        }
-        UIViewPropertyAnimator.runningPropertyAnimator(
-            withDuration: MainScreenConstants.durationForAppearingMenuView,
-            delay: 0.0,
-            options: .curveLinear,
-            animations: {
-                self.foodTaxiView.frame.origin.y = self.view.bounds.height + MainScreenConstants.promotionViewHeight + MainScreenConstants.foodTaxiYOffset
-                self.promotionView.frame.origin.y = self.view.bounds.height
-                self.promotionDetailView.frame.origin.y = 0
-            })
     }
 }
 
@@ -262,7 +239,6 @@ extension MainScreenViewController: PromotionDetailDelegate {
                 self.resetFrames()
             })
     }
-   
 }
 
 //MARK: - FoodMainDelegate

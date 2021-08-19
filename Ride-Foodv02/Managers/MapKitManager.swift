@@ -14,6 +14,7 @@ class MapKitManager {
     
     var locationManager = CLLocationManager()
     var currentUserCoordinate: CLLocationCoordinate2D?
+
     
     init() {
     }
@@ -63,6 +64,8 @@ class MapKitManager {
                                                        view: view)
         }
     }
+    
+ 
     
     private func settingsAlertController(title: String, message: String, url: URL?, view: UIViewController) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
