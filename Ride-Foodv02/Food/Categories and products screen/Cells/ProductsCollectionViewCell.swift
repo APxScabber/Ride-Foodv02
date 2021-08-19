@@ -10,11 +10,13 @@ import UIKit
 class ProductsCollectionViewCell: UICollectionViewCell {
     static let identifier = "ProductsCollectionCell"
     
-    let padding: CGFloat = 8
+    let padding: CGFloat = 6
     
     let cellBackgroundView = UIView(frame: .zero)
     
     let productImageView = UIImageView(frame: .zero)
+    
+    let topCellImageView = UIImageView(image: UIImage(named: "topSell"))
     
     let nameLabel = UILabel(frame: .zero)
     
@@ -33,18 +35,20 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     func setBackgroundView(){
         cellBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
+        self.backgroundColor = .white
       
         
      
         self.addSubview(cellBackgroundView)
+        cellBackgroundView.clipsToBounds = false
+       
         
-        self.cellBackgroundView.layer.cornerRadius = 15
-        self.cellBackgroundView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
-        self.cellBackgroundView.layer.shadowOpacity = 0.4
-        self.cellBackgroundView.layer.shadowOffset = .zero
-        self.cellBackgroundView.layer.shadowRadius = 9
-     
+        self.addShadowToView(shadow_color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.1),
+                                           offset: CGSize(width: 0, height: 0),
+                                           shadow_radius: 10,
+                                           shadow_opacity: 1,
+                                           corner_radius: 15)
+        
         NSLayoutConstraint.activate([
             cellBackgroundView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             cellBackgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
@@ -61,7 +65,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
             productImageView.topAnchor.constraint(equalTo: cellBackgroundView.topAnchor, constant: padding),
             productImageView.centerXAnchor.constraint(equalTo: cellBackgroundView.centerXAnchor),
             productImageView.widthAnchor.constraint(equalToConstant: 120),
-            productImageView.heightAnchor.constraint(equalToConstant: 120)
+            productImageView.heightAnchor.constraint(equalToConstant: 130)
         ])
     }
     
@@ -71,7 +75,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         nameLabel.numberOfLines = 0
         nameLabel.font = UIFont.SFUIDisplayRegular(size: 13)
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 8),
+            nameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 4),
             nameLabel.leadingAnchor.constraint(equalTo: cellBackgroundView.leadingAnchor, constant: 15),
             nameLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -15),
             nameLabel.heightAnchor.constraint(equalToConstant: 44)
@@ -104,7 +108,25 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    func setTopSellImageView(){
+        topCellImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(topCellImageView)
+        
+        NSLayoutConstraint.activate([
+            topCellImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            topCellImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            topCellImageView.widthAnchor.constraint(equalToConstant: 91),
+            topCellImageView.heightAnchor.constraint(equalToConstant: 20)
+        ])
+    }
+    
     func setData(product: Product){
+        
+        if product.hit != 0{
+            setTopSellImageView()
+        } else {
+            topCellImageView.removeFromSuperview()
+        }
         nameLabel.text = product.name
         priceLabel.text = "\(product.price ?? 0) руб"
         weightLabel.text = "\(product.weight ?? 0) г"
