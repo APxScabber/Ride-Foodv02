@@ -11,6 +11,7 @@ class LocationChooserViewController: UIViewController {
     //MARK: - API
     
     var region = MKCoordinateRegion()
+    let taxiMainInteractor = TaxiMainInteractor()
     
     var location = String() { didSet {
         locationLabel?.text = location
@@ -43,7 +44,16 @@ class LocationChooserViewController: UIViewController {
         confirmButton.isUserInteractionEnabled = !location.isEmpty
         confirmButton.setTitle(Localizable.Food.confirm.localized, for: .normal)
     }}
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        taxiMainInteractor.isFromAddressMarkSelected = false
+        taxiMainInteractor.getCoordinates(from: location, to: mapView) { address in
+            self.location = address
+        }
+        
+    }
+    
     //MARK: - IBActions
     
     @IBAction func cancel(_ sender: UIButton) {
@@ -54,7 +64,6 @@ class LocationChooserViewController: UIViewController {
         delegate?.locationChoosen(location)
         dismiss(animated: true)
     }
-
     
     //MARK: - Location chooser
     
@@ -75,7 +84,6 @@ class LocationChooserViewController: UIViewController {
             }
         }
     }
-    
 }
 
 //MARK: - MapViewDelegate
@@ -85,9 +93,8 @@ extension LocationChooserViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-        annotationView.image = UIImage(named: "Annotation")
+        annotationView.image = UIImage(named: "OrangeAnnotation")
         annotationView.frame.size = CGSize(width: 30, height: 48)
         return annotationView
     }
-    
 }

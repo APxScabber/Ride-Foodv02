@@ -44,7 +44,7 @@ enum Localizable {
     }
     
     enum Taxi:String,LocalizableDelegate {
-        case fromAddressQuestion,toAddressQuestion,map,next,confirm,fromAddressDetail,toAddressDetail
+        case fromAddressQuestion,toAddressQuestion,map,next,confirm,skip,fromAddressDetail,toAddressDetail
     }
     
     enum UserProfile: String, LocalizableDelegate {

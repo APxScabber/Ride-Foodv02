@@ -60,6 +60,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Нам нужно Ваше местоположения для показа Вашего точного адреса</string>
+	<string>Для точного отображения Вашего текущего местоположения</string>
 </dict>
 </plist>

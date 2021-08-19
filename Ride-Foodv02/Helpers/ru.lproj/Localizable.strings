@@ -82,6 +82,7 @@
 "fromAddressQuestion" = "Откуда вы хотите поехать?";
 "toAddressQuestion" = "Куда вы хотите поехать?";
 "map" = "Карта";
+"skip" = "Пропустить";
 "next" = "Далее";
 "confirm" = "Подтвердить";
 "fromAddressDetail" = "Уточните как до вас добраться";

@@ -42,7 +42,7 @@ class UserDefaultsManager {
         }
     }
     
-    var isFirstEnter: Bool {
+    var isFirstEnterPaymentWays: Bool {
         get {
             guard let data = UserDefaults.standard.object(forKey: UserDefaultKeys.firstEnter.rawValue) as? Bool else
             { return true }
@@ -53,9 +53,22 @@ class UserDefaultsManager {
             let defaults = UserDefaults.standard
             let key = UserDefaultKeys.firstEnter.rawValue
             
-            //if let newData = newValue {
-                defaults.setValue(newValue, forKey: key)
-            //}
+            defaults.setValue(newValue, forKey: key)
+        }
+    }
+    
+    var isFirstEnterTaxi: Bool {
+        get {
+            guard let data = UserDefaults.standard.object(forKey: UserDefaultKeys.firstEnterTaxi.rawValue) as? Bool else
+            { return true }
+            
+            return data
+        }
+        set {
+            let defaults = UserDefaults.standard
+            let key = UserDefaultKeys.firstEnterTaxi.rawValue
+            
+            defaults.setValue(newValue, forKey: key)
         }
     }
     
