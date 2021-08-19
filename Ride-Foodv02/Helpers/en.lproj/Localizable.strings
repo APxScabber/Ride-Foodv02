@@ -81,6 +81,7 @@
 "fromAddressQuestion" = "Where do you want to go from?";
 "toAddressQuestion" = "Where do you want to go?";
 "map" = "Map";
+"skip" = "Skip";
 "next" = "Next";
 "confirm" = "Confirm";
 "fromAddressDetail" = "Specify how to get to you";

@@ -7,11 +7,48 @@
 
 import UIKit
 
+fileprivate var containerView: UIView!
+
 extension UIViewController{
     func placeIntIntoString(int: Int) -> String{
         guard int != 0 else {
             return ""
         }
         return "\(int)"
+    }
+    
+    func showLoadingView(){
+        containerView = UIView(frame: view.bounds)
+        view.addSubview(containerView)
+        if #available(iOS 13.0, *) {
+            containerView.backgroundColor = .clear
+        } else {
+            // Fallback on earlier versions
+        }
+        containerView.alpha = 0
+        UIView.animate(withDuration: 0.25) {
+            containerView.alpha = 0.8
+        }
+        if #available(iOS 13.0, *) {
+            let activityIndicator = UIActivityIndicatorView(style: .large)
+            containerView.addSubview(activityIndicator)
+            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+            activityIndicator.startAnimating()
+            
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    func dismissLoadingView(){
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+            containerView = nil
+        }
     }
 }

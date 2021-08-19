@@ -1,10 +1,10 @@
-  
 //
 //  TaxiMainExtensions.swift
 //  Ride-Foodv02
 //
 //  Created by Alexey Peshekhonov on 17.08.2021.
 //
+
 import MapKit
 import CoreLocation
 
@@ -30,9 +30,11 @@ extension TaxiMainVC: CLLocationManagerDelegate {
 }
 
 //MARK: - MapViewDelegate
+
+
 extension TaxiMainVC: MKMapViewDelegate {
     
-   // Задаем внещний вид маркеров для позиции от куда едем и куда
+    //Задаем внещний вид маркеров для позиции от куда едем и куда
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let currentAnnotation = taxiMainInteractor.isFromAddressMarkSelected

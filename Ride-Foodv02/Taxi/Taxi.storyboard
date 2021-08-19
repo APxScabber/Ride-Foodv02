@@ -31,9 +31,8 @@
                                     <action selector="close:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="37T-Ve-1G1"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhI-4b-hru">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhI-4b-hru">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juq-6X-DDG">
@@ -107,7 +106,7 @@
                                                     <constraint firstAttribute="height" constant="19" id="kDK-Rd-gIE"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда вы хотите поехать?" textAlignment="natural" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-Mb-i6S">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда вы хотите поехать?" textAlignment="natural" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="kwS-Mb-i6S">
                                                 <rect key="frame" x="52" y="77" width="282" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="xsy-wR-Yxr"/>
@@ -298,6 +297,17 @@
                                     <constraint firstItem="CAe-Be-Iw8" firstAttribute="leading" secondItem="vA7-IQ-MSH" secondAttribute="leading" id="kxO-UX-Jlh"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8G-Ff-adq">
+                                <rect key="frame" x="349" y="522" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PYr-rI-CZ9"/>
+                                    <constraint firstAttribute="width" constant="60" id="zME-qg-ZJn"/>
+                                </constraints>
+                                <state key="normal" image="userLocationButton"/>
+                                <connections>
+                                    <action selector="userLocationButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nSk-xt-66M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -308,12 +318,18 @@
                             <constraint firstItem="mqu-Yw-ObF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="D1e-fd-c4f"/>
                             <constraint firstItem="mqu-Yw-ObF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="HcT-fN-2WK"/>
                             <constraint firstItem="DCr-6x-uBS" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ObW-eT-zMV"/>
+                            <constraint firstItem="GhI-4b-hru" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="OzV-5a-CvA"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="S5N-I4-OPl"/>
+                            <constraint firstItem="vA7-IQ-MSH" firstAttribute="top" secondItem="R8G-Ff-adq" secondAttribute="bottom" constant="5" id="Stu-xE-4Rr"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YCo-r8-xNA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="R8G-Ff-adq" secondAttribute="trailing" constant="5" id="bEt-1b-xfd"/>
                             <constraint firstAttribute="bottom" secondItem="DCr-6x-uBS" secondAttribute="bottom" id="bpG-0k-2rs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vA7-IQ-MSH" secondAttribute="bottom" id="chT-G5-6a2"/>
                             <constraint firstAttribute="trailing" secondItem="Juq-6X-DDG" secondAttribute="trailing" id="fpt-Vo-t3n"/>
+                            <constraint firstItem="GhI-4b-hru" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ggc-SY-mHq"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="h5Z-st-aV2"/>
+                            <constraint firstItem="GhI-4b-hru" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="mfx-xH-bfX"/>
+                            <constraint firstAttribute="bottom" secondItem="GhI-4b-hru" secondAttribute="bottom" id="qAU-YR-IIB"/>
                             <constraint firstItem="Juq-6X-DDG" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="rDO-6m-Guz"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xIv-fP-yjw"/>
                         </constraints>
@@ -341,6 +357,7 @@
                         <outlet property="topRoundedView" destination="hP9-Gw-7QP" id="Vyw-0m-9Ee"/>
                         <outlet property="transparentView" destination="GhI-4b-hru" id="U63-tj-L9d"/>
                         <outlet property="twoCorneredView" destination="CAe-Be-Iw8" id="NYj-7r-nWu"/>
+                        <outlet property="userLocationButtonOutlet" destination="R8G-Ff-adq" id="h0L-81-6h7"/>
                         <outlet property="verticalLineView" destination="tXt-t5-Dcc" id="aax-L0-SpC"/>
                     </connections>
                 </viewController>
@@ -470,6 +487,7 @@
         <image name="Gradient" width="12" height="52"/>
         <image name="Next" width="9.5" height="7.5"/>
         <image name="RawAnnotation" width="12" height="19"/>
+        <image name="userLocationButton" width="90" height="90"/>
         <image name="visa" width="33" height="10"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

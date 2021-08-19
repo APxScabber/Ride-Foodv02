@@ -157,7 +157,7 @@ class PaymentWaysViewController: BaseViewController {
     //Проверяем первый ли это вход, если да, то показываем общее количество бонусных баллов
     private func isFirstEnter() {
         
-        let isFirst = UserDefaultsManager.shared.isFirstEnter
+        let isFirst = UserDefaultsManager.shared.isFirstEnterPaymentWays
         
         if isFirst {
             let storyBoard: UIStoryboard = UIStoryboard(name: "PaymentWays", bundle: nil)
@@ -165,7 +165,7 @@ class PaymentWaysViewController: BaseViewController {
             vc.modalPresentationStyle = .formSheet
             present(vc, animated: true, completion: nil)
             
-            UserDefaultsManager.shared.isFirstEnter = false
+            UserDefaultsManager.shared.isFirstEnterPaymentWays = false
         }
     }
     

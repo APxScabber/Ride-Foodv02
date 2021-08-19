@@ -9,7 +9,7 @@ import UIKit
 
 class CategoriesAndFoodVC: UIViewController {
     
-    let TestSubcategories = ["Йогурты", "Замороженная продукция", "Полуфабрикаты", "Глазированные сырки", "Квас", "Творог"]
+    
     
     let tableViewCellID = "tableViewCellID"
     
@@ -29,7 +29,7 @@ class CategoriesAndFoodVC: UIViewController {
     var CategoryID: Int = 0
     
     var page = 1
-    var hasNoMorePages: Bool = true
+    var hasMorePages: Bool = true
     
     var productData: ProductData?
     
@@ -39,6 +39,7 @@ class CategoriesAndFoodVC: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
+   
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
         shopTitleLabel.font = UIFont.SFUIDisplayRegular(size: 15)
     }}
@@ -83,13 +84,34 @@ class CategoriesAndFoodVC: UIViewController {
                 self.configureTableView()
                 self.subcategoriesTableView.reloadData()
             } else {
-                self.configureSubcategoriesCollectionViews()
-                self.configureProductsCollectionView()
-                self.productsCollectionView.reloadData()
-                self.subcategoriesCollectionView.reloadData()
+                if !self.subcategories.isEmpty {
+                    self.configureSubcategoriesCollectionViews()
+                    self.configureProductsCollectionView()
+                    self.productsCollectionView.reloadData()
+                    self.subcategoriesCollectionView.reloadData()
+                } else {
+                   
+                    self.configureProductsCollectionView()
+                    self.productsCollectionView.reloadData()
+                    
+                }
+              
             }
         }
       
+    }
+    
+    func removeTableView(){
+        subcategoriesTableView.removeFromSuperview()
+        subcategories.removeAll()
+    }
+    
+    func removeAllCollectionViews(){
+        subcategoriesCollectionView.removeFromSuperview()
+        productsCollectionView.removeFromSuperview()
+        
+        subcategories.removeAll()
+        products.removeAll()
     }
     
     func configureProductsCollectionView(){
@@ -101,14 +123,22 @@ class CategoriesAndFoodVC: UIViewController {
         productsCollectionView.dataSource = self
         productsCollectionView.showsVerticalScrollIndicator = false
         productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: ProductsCollectionViewCell.identifier)
-        
+        if !subcategories.isEmpty {
         NSLayoutConstraint.activate([
             productsCollectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
             productsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             productsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             productsCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
-        
+        } else {
+            NSLayoutConstraint.activate([
+                productsCollectionView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 5),
+                productsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+                productsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+                productsCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            ])
+         
+        }
     }
     
     func configureSubcategoriesCollectionViews(){
@@ -163,6 +193,7 @@ class CategoriesAndFoodVC: UIViewController {
     }
    
     func getProducts(shopID: Int, categoryID: Int, page: Int){
+        self.showLoadingView()
         ProductsNetworkManager.shared.getProducts(shopID: shopID, parentCategoryID: categoryID, page: page) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -173,15 +204,21 @@ class CategoriesAndFoodVC: UIViewController {
                         self.subcategories.append(element)
                     } else {
                         self.products.append(element)
+                      
                     }
                 })
-                print(self.products)
-                print(self.subcategories)
+                if page == data.meta?.lastPage || data.meta?.lastPage == 1  { self.hasMorePages = false}
+               
+                print(self.productData?.meta as Any)
                 if self.products.isEmpty{
                     self.showSubcategories = true
                   
                 }
+                else {
+                    self.showSubcategories = false
+                }
                 DispatchQueue.main.async {
+                    self.dismissLoadingView()
                     self.updateUI()
                 }
                
@@ -264,14 +301,14 @@ class CategoriesAndFoodVC: UIViewController {
 
 extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        TestSubcategories.count
+        subcategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellID, for: indexPath)
         cell.accessoryType = .disclosureIndicator
-        let subcategory = TestSubcategories[indexPath.row]
-        cell.textLabel?.text = subcategory
+        let subcategory = subcategories[indexPath.row]
+        cell.textLabel?.text = subcategory.name
         
         return cell
     }
@@ -280,6 +317,16 @@ extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
         UIView()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.subcategoriesTableView{
+            let subcategory = subcategories[indexPath.row]
+            if let id = subcategory.id{
+                self.removeTableView()
+                self.getProducts(shopID: shopID, categoryID: id, page: 1)
+            }
+            
+        }
+    }
     
 }
 
@@ -308,5 +355,30 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
     
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.subcategoriesCollectionView{
+            let subcategory = subcategories[indexPath.row]
+            if let id = subcategory.id{
+                self.removeAllCollectionViews()
+                self.getProducts(shopID: shopID, categoryID: id, page: 1)
+            }
+            
+        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMorePages else {
+                return
+            }
+            page += 1
+            print("next page is \(page)")
+            print(productData?.meta?.currentPage)
+            getProducts(shopID: shopID, categoryID: CategoryID, page: page)
+        }
+    }
     
 }
