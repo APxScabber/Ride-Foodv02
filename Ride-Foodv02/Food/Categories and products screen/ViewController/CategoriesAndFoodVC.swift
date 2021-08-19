@@ -376,7 +376,7 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
             }
             page += 1
             print("next page is \(page)")
-            print(productData?.meta?.currentPage)
+            print(productData?.meta?.currentPage ?? 0)
             getProducts(shopID: shopID, categoryID: CategoryID, page: page)
         }
     }
