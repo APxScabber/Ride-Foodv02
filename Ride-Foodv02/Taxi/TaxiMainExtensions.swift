@@ -31,6 +31,7 @@ extension TaxiMainVC: CLLocationManagerDelegate {
 
 //MARK: - MapViewDelegate
 
+
 extension TaxiMainVC: MKMapViewDelegate {
     
     //Задаем внещний вид маркеров для позиции от куда едем и куда

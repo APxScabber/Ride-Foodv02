@@ -20,7 +20,7 @@ class TaxiMainVC: UIViewController {
     private var keyboardHeight: CGFloat = 0.0
     private var shouldUpdateUI = true
     private var yOffset: CGFloat = 0
-    
+
     //MARK: - Outlets
     
     

@@ -121,7 +121,7 @@ class TaxiDetailView: DetailView {
         super.updateUI()
         
         tariffLabel.text = order?.tariff
-        dateLabel.text = order?.date
+        dateLabel.text = "7 сентября, 09:20"
         orderDetailLabel.text = order?.typeDetail
         orderLabel.text = order?.type
         fromLocationLabel.text = order?.from

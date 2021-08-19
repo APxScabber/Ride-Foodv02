@@ -29,7 +29,7 @@ class VBConfirmAlertVC: UIViewController {
     
     
     let containerView       = UIView()
-    let attributeView       = UIView()
+    let attributeView       = RoundedView()
     let titleLabel          = UILabel()
     let confirmOptionButton = VBButton(backgroundColor: UIColor.SkillboxIndigoColor, title: "" , cornerRadius: 15, textColor: .white, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor )
     let cancelOptionButton  = VBButton(backgroundColor: .clear, title: "", cornerRadius: 0, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.white.cgColor)
@@ -72,8 +72,9 @@ class VBConfirmAlertVC: UIViewController {
     
     func setAttributeView(){
         attributeView.translatesAutoresizingMaskIntoConstraints = false
-        attributeView.backgroundColor                           = UIColor.attributeViewColor
-        
+        attributeView.backgroundColor                           = .clear
+        attributeView.cornerRadius = 15.0
+        attributeView.colorToFill = UIColor.attributeViewColor
         view.addSubview(attributeView)
         NSLayoutConstraint.activate([
             attributeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
