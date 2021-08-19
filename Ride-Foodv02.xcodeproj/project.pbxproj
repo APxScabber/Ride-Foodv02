@@ -186,6 +186,11 @@
 		C446725F26CAA30C00598459 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446725E26CAA30C00598459 /* BaseViewController.swift */; };
 		C446726126CAAA7000598459 /* SeparetionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726026CAAA7000598459 /* SeparetionText.swift */; };
 		C446726326CB047400598459 /* TaxiMainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726226CB047300598459 /* TaxiMainInteractor.swift */; };
+		C446726526CBAAB200598459 /* TaxiMainExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726426CBAAB200598459 /* TaxiMainExtensions.swift */; };
+		C446726926CD559300598459 /* MapKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726826CD559200598459 /* MapKit+Extensions.swift */; };
+		C446726B26CDCD0100598459 /* TaxiSpecifyFromTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726A26CDCD0000598459 /* TaxiSpecifyFromTo.swift */; };
+		C446726D26CE94A400598459 /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726C26CE94A400598459 /* MapKitManager.swift */; };
+		C446727126CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727026CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -402,6 +407,11 @@
 		C446725E26CAA30C00598459 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C446726026CAAA7000598459 /* SeparetionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparetionText.swift; sourceTree = "<group>"; };
 		C446726226CB047300598459 /* TaxiMainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainInteractor.swift; sourceTree = "<group>"; };
+		C446726426CBAAB200598459 /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
+		C446726826CD559200598459 /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
+		C446726A26CDCD0000598459 /* TaxiSpecifyFromTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiSpecifyFromTo.swift; sourceTree = "<group>"; };
+		C446726C26CE94A400598459 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
+		C446727026CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -523,7 +533,6 @@
 				782D45D726B02524006B3A98 /* ShopDetailView.swift */,
 				782D45D926B03103006B3A98 /* ShopDetailViewController.swift */,
 				782D45DB26B038BE006B3A98 /* FoodConstants.swift */,
-				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 				7879CDE626BA8955009D127A /* Address.swift */,
 			);
 			path = Food;
@@ -540,7 +549,9 @@
 				78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
 				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
+				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 				C446726226CB047300598459 /* TaxiMainInteractor.swift */,
+				C446726426CBAAB200598459 /* TaxiMainExtensions.swift */,
 			);
 			path = Taxi;
 			sourceTree = "<group>";
@@ -728,6 +739,7 @@
 				78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */,
 				78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */,
 				C446726026CAAA7000598459 /* SeparetionText.swift */,
+				C446726C26CE94A400598459 /* MapKitManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -878,6 +890,8 @@
 				78AEB876267B59C10023605D /* StringExtension.swift */,
 				7841E3AE26A8384C00335DFA /* TextViewExtension.swift */,
 				785F5D8F26C16243004503CB /* CLLocation+Extensions.swift */,
+				C446726826CD559200598459 /* MapKit+Extensions.swift */,
+				C446727026CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -889,6 +903,7 @@
 				C47892BF267B8B7300B4C737 /* TariffsColors.swift */,
 				78F1A98626A894E100E16084 /* PaymentWaysColor.swift */,
 				C446724F26C5C63B00598459 /* PaymentHistoryColor.swift */,
+				C446726A26CDCD0000598459 /* TaxiSpecifyFromTo.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -1268,6 +1283,7 @@
 				C446725A26C5DE7B00598459 /* TariffsPageExtensions.swift in Sources */,
 				7867B4C8267106330031BFA0 /* UIFont+Extensions.swift in Sources */,
 				7867B4B7266FAC580031BFA0 /* SupportAddImagesViewController.swift in Sources */,
+				C446726926CD559300598459 /* MapKit+Extensions.swift in Sources */,
 				7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */,
 				7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */,
 				7841E3A326A8362500335DFA /* TariffsExtension.swift in Sources */,
@@ -1281,8 +1297,10 @@
 				78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */,
 				78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */,
 				78A39FE5267B55EC006D0DAB /* LoadManager.swift in Sources */,
+				C446727126CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				785F5D9426C2AF01004503CB /* Localizable.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
+				C446726526CBAAB200598459 /* TaxiMainExtensions.swift in Sources */,
 				C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */,
 				78A3A01B267B57D7006D0DAB /* LoginInteractor.swift in Sources */,
 				787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */,
@@ -1401,6 +1419,8 @@
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
+				C446726B26CDCD0100598459 /* TaxiSpecifyFromTo.swift in Sources */,
+				C446726D26CE94A400598459 /* MapKitManager.swift in Sources */,
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
 				C4A9D77B26B9E6BE001894F8 /* PaymentHistoryText.swift in Sources */,
 				C4A9D77626B9E49D001894F8 /* PaymentHistoryViewController.swift in Sources */,

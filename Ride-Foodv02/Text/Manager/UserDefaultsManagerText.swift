@@ -12,6 +12,7 @@ enum UserDefaultKeys: String {
     case userSettings = "userSettings"
     case language = "language"
     case firstEnter = "firstEnter"
+    case firstEnterTaxi = "firstEnterTaxi"
 }
 
 //Перечень значений используемых в UserDefaults

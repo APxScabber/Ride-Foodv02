@@ -6,8 +6,19 @@ protocol ToAddressDetailViewDelegate: AnyObject {
 class ToAddressDetailView: UIView {
 
     weak var delegate: ToAddressDetailViewDelegate?
+    var isTextEmpty = true
     
     //MARK: - Outlets
+    
+    @IBOutlet weak var infoLabel: UILabel! { didSet {
+        infoLabel.font = UIFont.SFUIDisplayLight(size: 12.0)
+        infoLabel.textColor = TaxiSpecifyFromToColor.white.value
+    }}
+    @IBOutlet weak var blurEffectView: UIVisualEffectView! { didSet {
+        blurEffectView.alpha = UserDefaultsManager.shared.isFirstEnterTaxi ? 0.75 : 0
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapToBlur))
+        blurEffectView.addGestureRecognizer(tap)
+    }}
     
     @IBOutlet weak var hintView: UIView!
     @IBOutlet weak var topCorneredView: TopRoundedView!
@@ -26,7 +37,8 @@ class ToAddressDetailView: UIView {
         textField.addTarget(self, action: #selector(updateUI), for: .editingChanged)
     }}
     @IBOutlet weak var confirmButton: UIButton! { didSet {
-        confirmButton.setTitle(Localizable.Taxi.confirm.localized, for: .normal)
+        let title = isTextEmpty ? Localizable.Taxi.skip.localized : Localizable.Taxi.confirm.localized
+        confirmButton.setTitle(title, for: .normal)
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
     }}
     @IBOutlet weak var lineView: UIView!
@@ -39,14 +51,23 @@ class ToAddressDetailView: UIView {
     @IBAction func confirm(_ sender: UIButton) {
         delegate?.toAddressDetailConfirm()
     }
+    
+    @objc func tapToBlur() {
+        UIView.animate(withDuration: 0.5) {
+            self.blurEffectView.alpha = 0
+        }
+        UserDefaultsManager.shared.isFirstEnterTaxi = false
+    }
 
     
     //MARK: - Text field
     @objc
     func updateUI() {
+        isTextEmpty = textField.text == "" ? true : false
+        let title = isTextEmpty ? Localizable.Taxi.skip.localized : Localizable.Taxi.confirm.localized
+        confirmButton.setTitle(title, for: .normal)
         lineView.backgroundColor = (textField.text ?? "").isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         roundedView.colorToFill = (textField.text ?? "").isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         confirmButton.isUserInteractionEnabled = !((textField.text ?? "").isEmpty)
     }
-
 }

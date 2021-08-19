@@ -9,6 +9,9 @@ class TaxiMainVC: UIViewController {
     var fromAddress = String() { didSet { updateUI() }}
     var toAddress = String() { didSet { updateUI() }}
     var addresses = [Address]()
+    var currentUserCoordinate: CLLocationCoordinate2D?
+
+    let taxiMainInteractor = TaxiMainInteractor()
     
     //MARK: - Private properties
     
@@ -17,9 +20,13 @@ class TaxiMainVC: UIViewController {
     private var keyboardHeight: CGFloat = 0.0
     private var shouldUpdateUI = true
     private var yOffset: CGFloat = 0
-    private let taxiMainInteractor = TaxiMainInteractor()
-
+    
     //MARK: - Outlets
+    
+    
+    @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
+        userLocationButtonOutlet.alpha = 0
+    }}
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightView: UIView!
@@ -76,10 +83,6 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
     
     @IBOutlet weak var mapView: MKMapView! { didSet {
-        let center = CLLocationCoordinate2D(latitude: 55.7520, longitude: 37.6175)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: center, span: span)
-        mapView.setRegion(region, animated: false)
         mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
         mapView.delegate = self
     }}
@@ -114,23 +117,25 @@ class TaxiMainVC: UIViewController {
 
         }
         }
-        
-        
     }
+    
+    @IBAction func userLocationButtonAction(_ sender: Any) {
+        MapKitManager.shared.locationManager.startUpdatingLocation()
+        userLocationButtonOutlet.alpha = 0
+    }
+    
     
     //MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateUI()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
+        taxiMainInteractor.getAdressesFromServer(view: self)
 
-        getAdressesFromServer()
-        
-
-        
-        
         fromAddressDetailView.delegate = self
         fromAddressDetailView.isHidden = true
         
@@ -150,6 +155,8 @@ class TaxiMainVC: UIViewController {
         super.viewDidAppear(animated)
         safeAreaBottomHeight = view.safeAreaInsets.bottom
         showMapItems(false)
+        
+        MapKitManager.shared.checkLocationServices(delegate: self, view: self)
     }
     
     //MARK: - Deinit
@@ -160,18 +167,18 @@ class TaxiMainVC: UIViewController {
     //MARK: - Map gesture
     @objc
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
+
         if recognizer.state == .ended {
-            mapView.removeAnnotations(mapView.annotations)
-            
+
             let location = recognizer.location(in: mapView)
             let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+            
+            if let userLocation = MapKitManager.shared.currentUserCoordinate {
+                userLocationButtonOutlet.alpha = userLocation == coordinate ? 0 : 1
+            }
 
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            mapView.addAnnotation(annotation)
-            CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { [weak self] in
-                //self?.toAddress = $0
-                self?.fromAddress = $0
+            taxiMainInteractor.setMarkOnMap(map: mapView, with: coordinate) { address in
+                self.fromAddress = address
             }
         }
     }
@@ -184,14 +191,17 @@ class TaxiMainVC: UIViewController {
             self.view.layoutIfNeeded()
         } completion: { if $0 == .end {}
         }
-
+        
     }
+    
     @objc
     private func moveAddressesChooserView(_ notification: Notification) {
+        
         guard let userInfo = notification.userInfo else { return }
         guard let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         if keyboardHeight == 0 { keyboardHeight = size.height }
+        
         if shouldUpdateUI {
             updateConstraints()
             tableViewHeightView.isHidden = false
@@ -208,6 +218,7 @@ class TaxiMainVC: UIViewController {
            let destination = segue.destination as? LocationChooserViewController {
             destination.delegate = self
             destination.region = mapView.region
+            destination.location = fromAddress
         }
     }
     
@@ -216,7 +227,11 @@ class TaxiMainVC: UIViewController {
         verticalLineView.isHidden = !bool && responderTextField == nil
         mapButton.isHidden = !bool && responderTextField == nil
         arrowButton.isHidden = !bool && responderTextField == nil
-        transparentView.isHidden = !bool && responderTextField == nil
+        
+        if !taxiMainInteractor.isPathCalculeted {
+            transparentView.isHidden = !bool && responderTextField == nil
+        }
+        
         mapBigButton.isUserInteractionEnabled = !(!bool && responderTextField == nil)
     }
     
@@ -234,8 +249,6 @@ class TaxiMainVC: UIViewController {
         nextButton?.isUserInteractionEnabled = !fromAddress.isEmpty && !toAddress.isEmpty
 
         roundedView?.colorToFill = (!fromAddress.isEmpty && !toAddress.isEmpty) ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-        
-        gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
     }
     
     @objc
@@ -255,27 +268,36 @@ class TaxiMainVC: UIViewController {
         }
     }
     
+    //Действие при опускании окна вниз
     private func moveDown() {
-        toTextField.resignFirstResponder()
-        fromTextField.resignFirstResponder()
+        
+        view.endEditing(true)
+        
         responderTextField = nil
         setBottomConstraintTo(0)
         showMapItems(false)
         shouldUpdateUI = true
-        if !toAddress.isEmpty && !fromAddress.isEmpty {
-            tableViewHeightConstraint.constant = 0
-            UIView.animate(withDuration: 0.25) {
-                self.view.layoutIfNeeded()
-            }
-            tableViewHeightView.isHidden = true
-            gradientImageView.isHidden = false
-        } else {
-            tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-            addressesChooserViewHeightConstraint.constant += yOffset
+        tableViewHeightConstraint.constant = 0
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
         }
-        
+        tableViewHeightView.isHidden = true
+ 
+        if toTextField.text != "" {
+            taxiMainInteractor.isFromAddressMarkSelected = false
+            taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { address in
+                self.toAddress = address
+            }
+            
+        } else {
+            _ = self.mapView.annotations.compactMap { mark in
+                if mark.title == "To" {
+                    self.mapView.removeAnnotation(mark)
+                }
+            }
+        }
     }
-    
     
     private func updateConstraints() {
         tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
@@ -294,24 +316,58 @@ class TaxiMainVC: UIViewController {
     
     // MARK: - Alexey Methods
     
-    // Загрузка адресов с сервера
-    private func getAdressesFromServer() {
-        
-        AddressesNetworkManager.shared.getTheAddresses { result in
-            
-            switch result {
-            case .success(let adressesData):
     
-                self.taxiMainInteractor.createCoreDataInstance(addressesToCopy: adressesData)
-                self.saveAdressesInCoreData()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+
+    
+    
+//    private func setupLocationManager() {
+//
+//        MapKitManager.shared.locationManager.delegate = self
+//        MapKitManager.shared.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//    }
+    
+//    private func checkLocationServices() {
+//        
+//        if CLLocationManager.locationServicesEnabled() {
+//            
+//            MapKitManager.shared.setupLocationManager(delegate: self)
+//            //setupLocationManager()
+//            MapKitManager.shared.checkAuthorization(view: self)
+//        } else {
+////            
+////            taxiMainInteractor.settingsAlertController(title: "Служба геолокации выключена",
+////                                                       message: "Включить?",
+////                                                       url: URL(string: "App-Prefs:root=LOCATION_SERVICES"),
+////                                                       view: self)
+//        }
+//    }
+    
+//    func checkAuthorization() {
+//
+//        switch CLLocationManager.authorizationStatus() {
+//        case .authorizedAlways:
+//            break
+//        case .authorizedWhenInUse:
+//
+//            MapKitManager.shared.locationManager.startUpdatingLocation()
+//        case .denied:
+//
+//            taxiMainInteractor.settingsAlertController(title: "Определение местороложения запрещено",
+//                                                       message: "Разрешить?",
+//                                                       url: URL(string: UIApplication.openSettingsURLString),
+//                                                       view: self)
+//        case .notDetermined:
+//
+//            MapKitManager.shared.locationManager.requestWhenInUseAuthorization()
+//        case .restricted:
+//            break
+//        @unknown default:
+//            break
+//        }
+//    }
     
     // Загрузка адресов из Core Data
-    func saveAdressesInCoreData() {
+    private func loadAdressesFromCoreData() {
         PersistanceManager.shared.fetchAddresses { result in
             switch result {
             case .success(let addresses):
@@ -321,25 +377,11 @@ class TaxiMainVC: UIViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-                } 
+                }
             default:break
             }
         }
     }
-}
-
-//MARK: - MapViewDelegate
-
-extension TaxiMainVC: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else { return nil }
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-        annotationView.image = UIImage(named: "Annotation")
-        annotationView.frame.size = CGSize(width: 30, height: 48)
-        return annotationView
-    }
-    
 }
 
 //MARK: - LocationChooserDelegate
@@ -347,11 +389,8 @@ extension TaxiMainVC: MKMapViewDelegate {
 extension TaxiMainVC: LocationChooserDelegate {
     
     func locationChoosen(_ newLocation: String) {
-        //toAddress = newLocation
-        fromAddress = newLocation
+        toAddress = newLocation
     }
-    
-    
 }
 
 //MARK: - TableView datasourse
@@ -376,7 +415,6 @@ extension TaxiMainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         toAddress = addresses[indexPath.row].fullAddress
-        moveDown()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -395,8 +433,15 @@ extension TaxiMainVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         responderTextField = textField
+
+        if textField.tag == 1 {
+            addresses.removeAll()
+            loadAdressesFromCoreData()
+        } else {
+            moveDown()
+            addresses.removeAll()
+        }
     }
-  
 }
 
 //MARK: - FromAddressDetailViewDelegate
@@ -423,8 +468,6 @@ extension TaxiMainVC: FromAddressDetailViewDelegate {
         }
 
     }
-    
-    
 }
 
 //MARK: - ToAddressesDetaileViewDelegate
@@ -446,7 +489,9 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
             self.addressesChooserView.isUserInteractionEnabled = true
         }
         }
+        taxiMainInteractor.calculatingPath(for: mapView)
+        taxiMainInteractor.isPathCalculeted = true
+        gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
+        showMapItems(true)
     }
-    
-    
 }
