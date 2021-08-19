@@ -50,9 +50,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITz-h6-NQp">
-                                                    <rect key="frame" x="52" y="14.333333333333336" width="329" height="15"/>
+                                                    <rect key="frame" x="52" y="13" width="329" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="q2y-j9-olF"/>
+                                                        <constraint firstAttribute="height" constant="18" id="q2y-j9-olF"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -650,7 +650,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvP-Vt-p4q">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvP-Vt-p4q" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="643" width="428" height="283"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80M-eC-Zt4">

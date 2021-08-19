@@ -138,12 +138,10 @@
 		78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB883267B59D40023605D /* ConfirmFontSize.swift */; };
 		78AEB887267B59E20023605D /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB886267B59E20023605D /* TextFont.swift */; };
 		78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */; };
-		78BE49F82683463C00A13641 /* PromotionConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49F72683463C00A13641 /* PromotionConstant.swift */; };
 		78BE49FA26834BA400A13641 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49F926834BA400A13641 /* ImageFetcher.swift */; };
 		78BE49FC2683536800A13641 /* PromotionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49FB2683536800A13641 /* PromotionTableViewCell.swift */; };
 		78BE49FE268354ED00A13641 /* SFUIDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78BE49FD268354EC00A13641 /* SFUIDisplay-Bold.otf */; };
 		78BE4A002683671600A13641 /* PromotionsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49FF2683671600A13641 /* PromotionsFetcher.swift */; };
-		78BE4A022683675100A13641 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A012683675100A13641 /* Promotion.swift */; };
 		78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BE4A0326837B8E00A13641 /* PromotionDetail.xib */; };
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
 		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
@@ -151,6 +149,9 @@
 		78C86C3E26CC2525003F10D5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C3D26CC2525003F10D5 /* Order.swift */; };
 		78C86C4026CC292E003F10D5 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C3F26CC292E003F10D5 /* Orders.swift */; };
 		78C86C4226CC2964003F10D5 /* OrdersFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C4126CC2964003F10D5 /* OrdersFetcher.swift */; };
+		78C86C4426CE8F78003F10D5 /* PromotionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C4326CE8F78003F10D5 /* PromotionDataModel.swift */; };
+		78C86C4626CEA0AE003F10D5 /* TaxiTariffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C86C4526CEA0AE003F10D5 /* TaxiTariffView.xib */; };
+		78C86C4826CEA0BB003F10D5 /* TaxiTariffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C4726CEA0BB003F10D5 /* TaxiTariffView.swift */; };
 		78C8C98626C6AE2E001C947F /* FromAddressDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C8C98526C6AE2E001C947F /* FromAddressDetailView.xib */; };
 		78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */; };
 		78C8C98A26C6CE1A001C947F /* ToAddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */; };
@@ -361,12 +362,10 @@
 		78AEB883267B59D40023605D /* ConfirmFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFontSize.swift; sourceTree = "<group>"; };
 		78AEB886267B59E20023605D /* TextFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
 		78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		78BE49F72683463C00A13641 /* PromotionConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionConstant.swift; sourceTree = "<group>"; };
 		78BE49F926834BA400A13641 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		78BE49FB2683536800A13641 /* PromotionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionTableViewCell.swift; sourceTree = "<group>"; };
 		78BE49FD268354EC00A13641 /* SFUIDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Bold.otf"; sourceTree = "<group>"; };
 		78BE49FF2683671600A13641 /* PromotionsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsFetcher.swift; sourceTree = "<group>"; };
-		78BE4A012683675100A13641 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		78BE4A0326837B8E00A13641 /* PromotionDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionDetail.xib; sourceTree = "<group>"; };
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
 		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
@@ -374,6 +373,9 @@
 		78C86C3D26CC2525003F10D5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		78C86C3F26CC292E003F10D5 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
 		78C86C4126CC2964003F10D5 /* OrdersFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersFetcher.swift; sourceTree = "<group>"; };
+		78C86C4326CE8F78003F10D5 /* PromotionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDataModel.swift; sourceTree = "<group>"; };
+		78C86C4526CEA0AE003F10D5 /* TaxiTariffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxiTariffView.xib; sourceTree = "<group>"; };
+		78C86C4726CEA0BB003F10D5 /* TaxiTariffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTariffView.swift; sourceTree = "<group>"; };
 		78C8C98526C6AE2E001C947F /* FromAddressDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FromAddressDetailView.xib; sourceTree = "<group>"; };
 		78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromAddressDetailView.swift; sourceTree = "<group>"; };
 		78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToAddressDetailView.swift; sourceTree = "<group>"; };
@@ -493,13 +495,12 @@
 				7850E8F126739C8300AA88CA /* Promotion.storyboard */,
 				78BE4A0326837B8E00A13641 /* PromotionDetail.xib */,
 				78BE4A0526837DA700A13641 /* PromotionDetail.swift */,
-				78BE49F72683463C00A13641 /* PromotionConstant.swift */,
 				7850E8F326739D4400AA88CA /* PromotionsTableViewController.swift */,
 				787D4B64267A1982002D975D /* PromotionListTableViewController.swift */,
 				78BE49FB2683536800A13641 /* PromotionTableViewCell.swift */,
 				78BE49FF2683671600A13641 /* PromotionsFetcher.swift */,
 				7858D37126AED0D500441690 /* DefaultPromotion.swift */,
-				78BE4A012683675100A13641 /* Promotion.swift */,
+				78C86C4326CE8F78003F10D5 /* PromotionDataModel.swift */,
 			);
 			path = PromotionMVC;
 			sourceTree = "<group>";
@@ -555,6 +556,8 @@
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
 				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
 				C446726226CB047300598459 /* TaxiMainInteractor.swift */,
+				78C86C4526CEA0AE003F10D5 /* TaxiTariffView.xib */,
+				78C86C4726CEA0BB003F10D5 /* TaxiTariffView.swift */,
 			);
 			path = Taxi;
 			sourceTree = "<group>";
@@ -1241,6 +1244,7 @@
 				787A83EF26AB2DA40096DFC3 /* AddressesVC.xib in Resources */,
 				78F1A97E26A8949000E16084 /* PaymentWays.storyboard in Resources */,
 				78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */,
+				78C86C4626CEA0AE003F10D5 /* TaxiTariffView.xib in Resources */,
 				78F1A98126A8949000E16084 /* AddCardConfirm.xib in Resources */,
 				78C8C99B26CACCB1001C947F /* FoodDetailView.xib in Resources */,
 				7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */,
@@ -1312,6 +1316,7 @@
 				787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */,
 				7841E3A526A8362500335DFA /* TariffsCollectionViewCell.swift in Sources */,
 				78AEB887267B59E20023605D /* TextFont.swift in Sources */,
+				78C86C4826CEA0BB003F10D5 /* TaxiTariffView.swift in Sources */,
 				78A3A001267B56CB006D0DAB /* UrlList.swift in Sources */,
 				F5E5661D26C8013100031140 /* SignOutHelper.swift in Sources */,
 				78A3A00D267B56E9006D0DAB /* NotificationText.swift in Sources */,
@@ -1407,6 +1412,7 @@
 				787A83F526AB31FA0096DFC3 /* CircleView.swift in Sources */,
 				78A39FF7267B568E006D0DAB /* UserDataMO+CoreDataClass.swift in Sources */,
 				78F1A98526A894C400E16084 /* PaymentMain.swift in Sources */,
+				78C86C4426CE8F78003F10D5 /* PromotionDataModel.swift in Sources */,
 				C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */,
 				F56502FF26CAF7E400934D91 /* ProductsNetworkManager.swift in Sources */,
 				782D45D426B018EF006B3A98 /* ShopCollectionViewCell.swift in Sources */,
@@ -1446,7 +1452,6 @@
 				78E25AA726A98305006E6BC9 /* FoodTaxiView.swift in Sources */,
 				782D45D826B02524006B3A98 /* ShopDetailView.swift in Sources */,
 				7808D7D126B4818D00A88E12 /* TotalScoreViewController.swift in Sources */,
-				78BE49F82683463C00A13641 /* PromotionConstant.swift in Sources */,
 				78A39FF5267B568E006D0DAB /* UserDataMO+CoreDataProperties.swift in Sources */,
 				78BE49FC2683536800A13641 /* PromotionTableViewCell.swift in Sources */,
 				F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */,
@@ -1462,7 +1467,6 @@
 				7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */,
 				F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
-				78BE4A022683675100A13641 /* Promotion.swift in Sources */,
 				C446725226C5D4B600598459 /* PaymentHistoryExtensions.swift in Sources */,
 				78A3A019267B57D7006D0DAB /* ConfirmActions.swift in Sources */,
 				787A83F126AB2DAD0096DFC3 /* PersistanceManager.swift in Sources */,
@@ -1616,8 +1620,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
-
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1637,7 +1640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

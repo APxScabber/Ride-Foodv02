@@ -4,9 +4,7 @@ class PromotionTableViewCell: UITableViewCell {
 
     var resignationHandler: ( () -> () )?
     
-    @IBOutlet weak var background: UIImageView! { didSet {
-        layer.cornerRadius = 15.0
-    }}
+    @IBOutlet weak var background: UIImageView! 
     @IBOutlet weak var promotionLabel: UILabel! { didSet {
         promotionLabel.font = UIFont.SFUIDisplayBold(size: 20)
     }}
@@ -23,6 +21,7 @@ class PromotionTableViewCell: UITableViewCell {
     func fetchImageFrom(_ str:String) {
         ImageFetcher.fetch(str) { [weak self] data in
             self?.background.image = UIImage(data: data)
+            self?.background.layer.cornerRadius = 15.0
         }
     }
     
