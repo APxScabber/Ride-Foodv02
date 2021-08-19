@@ -2,8 +2,7 @@ import Foundation
 
 class PromotionsFetcher {
     
-    static func fetch(_ type:PromotionType, completion: @escaping ( ([Promotion]) -> () )) {
-        var promotions = [Promotion]()
+    static func fetch(_ type:PromotionType, completion: @escaping ( ([PromotionModel]) -> () )) {
         CoreDataManager.shared.fetchCoreData { result in
         switch result {
             case .success(let model):
@@ -12,34 +11,15 @@ class PromotionsFetcher {
                     let urlString = "https://skillbox.cc/api/user/\(id)/promotions/\(type.rawValue)?page=1&per_page=20"
                     if let url = URL(string: urlString) {
                         DispatchQueue.global(qos: .userInitiated).async {
-                            let session = URLSession(configuration: .default)
-                            let request = URLRequest(url: url)
-                            let task = session.dataTask(with: request ) { data,responce,error in
-                                if let data = data,
-                                   let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-                                   let dict = json as? [String:Any],
-                                   let data = dict["data"] as? [[String:Any]]{
-                                    data.forEach {
-                                        var promotion = Promotion()
-                                        if let id = $0["id"] as? Int,
-                                           let title = $0["title"] as? String,
-                                           let media = $0["media"] as? [[String:Any]] {
-                                            media.forEach { media in
-                                                if let url = media["url"] as? String {
-                                                    promotion.imagesURL.append(url)
-                                                }
-                                            }
-                                            promotion.id = id
-                                            promotion.title = title
-                                            promotions.append(promotion)
-                                        }
-                                    }
+                            LoadManager.shared.loadData(of: PromotionDataModel.self, from: url, httpMethod: .get, passData: nil) { result in
+                                switch result {
+                                case .success(let model):
                                     DispatchQueue.main.async {
-                                        completion(promotions)
+                                        completion(model.data)
                                     }
+                                default:break
                                 }
                             }
-                            task.resume()
                         }
                     }
                 }
@@ -56,20 +36,15 @@ class PromotionsFetcher {
                 if let userID = userData?.id as? Int,
                    let url = URL(string: "https://skillbox.cc/api/user/\(userID)/promotion/\(id)") {
                     DispatchQueue.global(qos: .userInitiated).async {
-                        let session = URLSession(configuration: .default)
-                        let request = URLRequest(url: url)
-                        let task = session.dataTask(with: request ) { data,responce,error in
-                            if let data = data,
-                               let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-                               let dict = json as? [String:Any],
-                               let dictData = dict["data"] as? [String:Any],
-                               let desc = dictData["description"] as? String {
+                        LoadManager.shared.loadData(of: PromotionDetailModel.self, from: url, httpMethod: .get, passData: nil) { result in
+                            switch result {
+                            case .success(let model):
                                 DispatchQueue.main.async {
-                                    completion(desc)
+                                    completion(model.data.description ?? "")
                                 }
+                            default:break
                             }
                         }
-                        task.resume()
                     }
                 }
         default:break

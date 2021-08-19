@@ -2,7 +2,7 @@ import UIKit
 
 class PromotionListTableViewController: UITableViewController {
 
-    private(set) var promotions = [Promotion]()
+    private(set) var promotions = [PromotionModel]()
     private let promotionView = PromotionDetail.initFromNib()
 
     var promotionType: PromotionsFetcher.PromotionType = .food { didSet {
@@ -30,7 +30,7 @@ class PromotionListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodPromotionCell", for: indexPath)
         if let promotionCell = cell as? PromotionTableViewCell {
             promotionCell.promotionLabel.text = promotions[indexPath.row].title
-            promotionCell.fetchImageFrom(promotions[indexPath.row].imagesURL[1])
+            promotionCell.fetchImageFrom(promotions[indexPath.row].media[0].url)
             promotionCell.resignationHandler = { [unowned self] in
                 self.showPromotionViewAt(indexPath.row)
             }
@@ -49,11 +49,11 @@ class PromotionListTableViewController: UITableViewController {
            let currentPromotion = promotions[index]
             promotionView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: view.bounds.width, height: UIScreen.main.bounds.height)
             window.addSubview(promotionView)
-            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PromotionConstant.durationForAppearingPromotionView, delay: 0.0, options: .curveLinear) {
-               self.promotionView.frame.origin.y -= self.view.bounds.height
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0.0, options: .curveLinear) {
+               self.promotionView.frame.origin.y = 0
            }
             promotionView.headerLabel.text = currentPromotion.title
-            ImageFetcher.fetch(currentPromotion.imagesURL[0]) { data in
+            ImageFetcher.fetch(currentPromotion.media[0].url) { data in
                 self.promotionView.imageView.image = UIImage(data: data)
             }
             PromotionsFetcher.getPromotionDescriptionWith(id: promotions[index].id) { [weak self] in

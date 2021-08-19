@@ -49,8 +49,8 @@ class PromotionDetail: UIView {
     private func done() {
         bottomConstraint.constant = 10.0
         errorDescriptionLabel.isHidden = true
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PromotionConstant.durationForAppearingPromotionView, delay: 0.0, options: .curveLinear) {
-            self.frame.origin.y += self.bounds.height
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0.0, options: .curveLinear) {
+            self.frame.origin.y = self.superview?.bounds.height ?? 0
         }
         delegate?.dismiss()
     }
