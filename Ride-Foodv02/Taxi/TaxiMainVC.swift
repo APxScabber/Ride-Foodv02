@@ -10,6 +10,8 @@ class TaxiMainVC: UIViewController {
     var toAddress = String() { didSet { updateUI() }}
     var addresses = [Address]()
     
+    let taxiMainInteractor = TaxiMainInteractor()
+
     //MARK: - Private properties
     
     private var safeAreaBottomHeight: CGFloat = 0.0
@@ -17,7 +19,6 @@ class TaxiMainVC: UIViewController {
     private var keyboardHeight: CGFloat = 0.0
     private var shouldUpdateUI = true
     private var yOffset: CGFloat = 0
-    private let taxiMainInteractor = TaxiMainInteractor()
 
     //MARK: - Outlets
     
@@ -328,19 +329,6 @@ class TaxiMainVC: UIViewController {
     }
 }
 
-//MARK: - MapViewDelegate
-
-extension TaxiMainVC: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else { return nil }
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-        annotationView.image = UIImage(named: "Annotation")
-        annotationView.frame.size = CGSize(width: 30, height: 48)
-        return annotationView
-    }
-    
-}
 
 //MARK: - LocationChooserDelegate
 

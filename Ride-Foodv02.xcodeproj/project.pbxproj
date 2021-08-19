@@ -167,6 +167,9 @@
 		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
 		78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3DF472686415C0028A66B /* PromocodeToolbar.swift */; };
+		78D922A926CED02C007487DD /* TaxiMainExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D922A826CED02C007487DD /* TaxiMainExtensions.swift */; };
+		78D922AB26CED052007487DD /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D922AA26CED052007487DD /* MapKitManager.swift */; };
+		78D922AD26CED175007487DD /* MapKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D922AC26CED175007487DD /* MapKit+Extensions.swift */; };
 		78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */; };
 		78E25AA726A98305006E6BC9 /* FoodTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */; };
 		78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */; };
@@ -391,6 +394,9 @@
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
 		78D3DF472686415C0028A66B /* PromocodeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeToolbar.swift; sourceTree = "<group>"; };
+		78D922A826CED02C007487DD /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
+		78D922AA26CED052007487DD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
+		78D922AC26CED175007487DD /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
 		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
 		78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTaxiView.swift; sourceTree = "<group>"; };
 		78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsUserDefaultsModel.swift; sourceTree = "<group>"; };
@@ -556,6 +562,7 @@
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
 				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
 				C446726226CB047300598459 /* TaxiMainInteractor.swift */,
+				78D922A826CED02C007487DD /* TaxiMainExtensions.swift */,
 				78C86C4526CEA0AE003F10D5 /* TaxiTariffView.xib */,
 				78C86C4726CEA0BB003F10D5 /* TaxiTariffView.swift */,
 			);
@@ -745,6 +752,7 @@
 				78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */,
 				78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */,
 				C446726026CAAA7000598459 /* SeparetionText.swift */,
+				78D922AA26CED052007487DD /* MapKitManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -895,6 +903,7 @@
 				78AEB876267B59C10023605D /* StringExtension.swift */,
 				7841E3AE26A8384C00335DFA /* TextViewExtension.swift */,
 				785F5D8F26C16243004503CB /* CLLocation+Extensions.swift */,
+				78D922AC26CED175007487DD /* MapKit+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1302,6 +1311,7 @@
 				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
 				F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */,
 				78A3A01C267B57D7006D0DAB /* ConfirmViewController.swift in Sources */,
+				78D922A926CED02C007487DD /* TaxiMainExtensions.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
 				F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */,
 				7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */,
@@ -1387,6 +1397,7 @@
 				F56502F626CA159700934D91 /* PresentationController.swift in Sources */,
 				785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */,
 				78A4028D268C993C00B4EFE1 /* PromocodeActivator.swift in Sources */,
+				78D922AD26CED175007487DD /* MapKit+Extensions.swift in Sources */,
 				F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */,
 				78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */,
 				785198EB26B19FC40037F7AA /* PromocodeConstant.swift in Sources */,
@@ -1398,6 +1409,7 @@
 				78A3A018267B57D7006D0DAB /* ConfirmInteractor.swift in Sources */,
 				785F5D8826C11D00004503CB /* TaxiMainVC.swift in Sources */,
 				7867B4C0266FC1680031BFA0 /* SupportCollectionViewCell.swift in Sources */,
+				78D922AB26CED052007487DD /* MapKitManager.swift in Sources */,
 				78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */,
 				78ACFD0B26A59E1700C995EB /* Promocodes.swift in Sources */,
 				78AEB87C267B59C10023605D /* StringExtension.swift in Sources */,
