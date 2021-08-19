@@ -2,10 +2,11 @@ import UIKit
 
 protocol PromotionViewDelegate: AnyObject {
     func show()
+    func closePromotionView()
 }
 
 class PromotionView: UIView {
-
+    
     weak var delegate: PromotionViewDelegate?
     
     @IBOutlet weak var detailLabel: UILabel! { didSet {
@@ -17,6 +18,7 @@ class PromotionView: UIView {
     }}
     
     @IBAction func close(_ sender: UIButton) {
+        delegate?.closePromotionView()
         removeFromSuperview()
     }
 
@@ -24,5 +26,4 @@ class PromotionView: UIView {
     private func showPromotion() {
         delegate?.show()
     }
-    
 }

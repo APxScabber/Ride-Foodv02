@@ -1,13 +1,14 @@
 //
-//  TaxiMainExtensions.swift
+//  MainScreenExtensions.swift
 //  Ride-Foodv02
 //
-//  Created by Alexey Peshekhonov on 17.08.2021.
+//  Created by Alexey Peshekhonov on 19.08.2021.
 //
+
 import MapKit
 import CoreLocation
 
-extension TaxiMainVC: CLLocationManagerDelegate {
+extension MainScreenViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -17,7 +18,7 @@ extension TaxiMainVC: CLLocationManagerDelegate {
             MapKitManager.shared.currentUserCoordinate = loc
             
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: loc) { address in
-                self.fromAddress = address
+                self.foodTaxiView.placeLabel.text = address
             }
         }
     }
@@ -30,7 +31,7 @@ extension TaxiMainVC: CLLocationManagerDelegate {
 
 //MARK: - MapViewDelegate
 
-extension TaxiMainVC: MKMapViewDelegate {
+extension MainScreenViewController: MKMapViewDelegate {
     
     //Задаем внещний вид маркеров для позиции от куда едем и куда
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -57,7 +58,41 @@ extension TaxiMainVC: MKMapViewDelegate {
 
         render.strokeColor = .blue
         render.lineWidth = 4
-
+        
+        
         return render
     }
 }
+
+//MARK: - PromotionView Delegate
+
+extension MainScreenViewController: PromotionViewDelegate {
+    
+    func closePromotionView() {
+        animationUerLocationButton()
+    }
+    
+    func show() {
+        transparentView.isHidden = false
+        circleView.isHidden = true
+        menuButton.isHidden = true
+        let promotion = DefaultPromotion()
+        promotionDetailView.headerLabel.text = promotion.title
+        ImageFetcher.fetch(promotion.urlString) { data in
+            self.promotionDetailView.imageView.image = UIImage(data: data)
+        }
+        PromotionsFetcher.getPromotionDescriptionWith(id: promotion.id) { [weak self] in
+            self?.promotionDetailView.descriptionLabel.text = $0
+        }
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: MainScreenConstants.durationForAppearingMenuView,
+            delay: 0.0,
+            options: .curveLinear,
+            animations: {
+                self.foodTaxiView.frame.origin.y = self.view.bounds.height + MainScreenConstants.promotionViewHeight + MainScreenConstants.foodTaxiYOffset
+                self.promotionView.frame.origin.y = self.view.bounds.height
+                self.promotionDetailView.frame.origin.y = 0
+            })
+    }
+}
+

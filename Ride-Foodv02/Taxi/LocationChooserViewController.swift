@@ -47,11 +47,10 @@ class LocationChooserViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        taxiMainInteractor.isFromAddressMarkSelected = false
+        SetMapMarkersManager.shared.isFromAddressMarkSelected = false
         taxiMainInteractor.getCoordinates(from: location, to: mapView) { address in
             self.location = address
         }
-        
     }
     
     //MARK: - IBActions

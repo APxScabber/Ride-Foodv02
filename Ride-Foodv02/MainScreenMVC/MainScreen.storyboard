@@ -45,6 +45,17 @@
                                     <constraint firstAttribute="bottom" secondItem="BcB-1E-SAY" secondAttribute="bottom" id="mjb-2Z-30A"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqT-Eh-aC3">
+                                <rect key="frame" x="339" y="752" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FEQ-MB-g3A"/>
+                                    <constraint firstAttribute="width" constant="60" id="lcd-K8-gTT"/>
+                                </constraints>
+                                <state key="normal" image="userLocationButton"/>
+                                <connections>
+                                    <action selector="userLocationButtonAction:" destination="5Od-VF-nnY" eventType="touchUpInside" id="uWy-Bt-NuY"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3X-Kz-mo5" customClass="MenuButton" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="20" y="64" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,6 +72,7 @@
                         <viewLayoutGuide key="safeArea" id="w74-1d-16d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="w74-1d-16d" firstAttribute="trailing" secondItem="kqT-Eh-aC3" secondAttribute="trailing" constant="15" id="00Y-jv-562"/>
                             <constraint firstItem="w74-1d-16d" firstAttribute="trailing" secondItem="9n1-8u-98A" secondAttribute="trailing" id="9A5-UM-PYk"/>
                             <constraint firstItem="9n1-8u-98A" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" id="Ock-os-Mgv"/>
                             <constraint firstItem="N1S-da-tim" firstAttribute="top" secondItem="w74-1d-16d" secondAttribute="top" constant="20" id="P8v-hJ-W3j"/>
@@ -73,6 +85,7 @@
                             <constraint firstItem="w74-1d-16d" firstAttribute="trailing" secondItem="N1S-da-tim" secondAttribute="trailing" constant="20" id="ij0-aO-Ytn"/>
                             <constraint firstItem="9n1-8u-98A" firstAttribute="top" secondItem="Wcw-4o-SMS" secondAttribute="top" id="kdR-wK-VTz"/>
                             <constraint firstItem="dQB-4B-Q0d" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" id="rXx-aB-5wq"/>
+                            <constraint firstItem="w74-1d-16d" firstAttribute="bottom" secondItem="kqT-Eh-aC3" secondAttribute="bottom" constant="50" id="x5z-35-nlG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -80,6 +93,8 @@
                         <outlet property="mapView" destination="dQB-4B-Q0d" id="yQ1-jo-drB"/>
                         <outlet property="menuButton" destination="H3X-Kz-mo5" id="hU7-0Q-392"/>
                         <outlet property="transparentView" destination="9n1-8u-98A" id="tBg-Au-u7o"/>
+                        <outlet property="userLocationButtonConstraint" destination="x5z-35-nlG" id="dlT-l6-Fov"/>
+                        <outlet property="userLocationButtonOutlet" destination="kqT-Eh-aC3" id="feP-BI-SRg"/>
                         <segue destination="POX-Kv-Tnz" kind="presentation" identifier="food" modalPresentationStyle="currentContext" id="6EO-Q9-Yro"/>
                         <segue destination="clx-qq-uh9" kind="presentation" identifier="taxi" modalPresentationStyle="currentContext" id="zgO-Zl-95R"/>
                     </connections>
@@ -107,6 +122,7 @@
     </scenes>
     <resources>
         <image name="People" width="16" height="16"/>
+        <image name="userLocationButton" width="90" height="90"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
