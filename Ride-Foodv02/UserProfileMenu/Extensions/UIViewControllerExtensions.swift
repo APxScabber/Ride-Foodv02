@@ -21,7 +21,7 @@ extension UIViewController{
         containerView = UIView(frame: view.bounds)
         view.addSubview(containerView)
         if #available(iOS 13.0, *) {
-            containerView.backgroundColor = .systemBackground
+            containerView.backgroundColor = .clear
         } else {
             // Fallback on earlier versions
         }

@@ -9,7 +9,7 @@ import UIKit
 
 class CategoriesAndFoodVC: UIViewController {
     
-   
+    
     
     let tableViewCellID = "tableViewCellID"
     
@@ -29,7 +29,7 @@ class CategoriesAndFoodVC: UIViewController {
     var CategoryID: Int = 0
     
     var page = 1
-    var hasNoMorePages: Bool = true
+    var hasMorePages: Bool = true
     
     var productData: ProductData?
     
@@ -39,6 +39,7 @@ class CategoriesAndFoodVC: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
+   
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
         shopTitleLabel.font = UIFont.SFUIDisplayRegular(size: 15)
     }}
@@ -203,10 +204,12 @@ class CategoriesAndFoodVC: UIViewController {
                         self.subcategories.append(element)
                     } else {
                         self.products.append(element)
+                      
                     }
                 })
-                print(self.products)
-                print(self.subcategories)
+                if page == data.meta?.lastPage || data.meta?.lastPage == 1  { self.hasMorePages = false}
+               
+                print(self.productData?.meta as Any)
                 if self.products.isEmpty{
                     self.showSubcategories = true
                   
@@ -362,6 +365,20 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
             
         }
     }
-    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMorePages else {
+                return
+            }
+            page += 1
+            print("next page is \(page)")
+            print(productData?.meta?.currentPage)
+            getProducts(shopID: shopID, categoryID: CategoryID, page: page)
+        }
+    }
     
 }
