@@ -3,7 +3,7 @@ import UIKit
 protocol ScoresViewDelegate: AnyObject {
     func closeScoresView()
     func spendAllScores()
-    func spend(scores:Int)
+    func showScoresToolbar()
 }
 
 class ScoresView: UIView {
@@ -48,7 +48,7 @@ class ScoresView: UIView {
     }
     
     @IBAction func misc(_ sender: UIButton) {
-        
+        delegate?.showScoresToolbar()
     }
     
     //MARK: - Init
