@@ -10,6 +10,11 @@ import CoreLocation
 
 class CalculatingPathManager {
     
+    static let shared = CalculatingPathManager()
+    
+    private init() {
+    }
+    
     //Расчет маршрута
     func calculatingPath(for map: MKMapView) {
         

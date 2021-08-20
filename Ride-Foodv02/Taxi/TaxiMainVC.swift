@@ -12,7 +12,7 @@ class TaxiMainVC: UIViewController {
     var currentUserCoordinate: CLLocationCoordinate2D?
 
     let taxiMainInteractor = TaxiMainInteractor()
-    let calculatingPathManager = CalculatingPathManager()
+    //let calculatingPathManager = CalculatingPathManager()
     
     //MARK: - Private properties
     
@@ -446,7 +446,7 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
             self.addressesChooserView.isUserInteractionEnabled = true
         }
         }
-        calculatingPathManager.calculatingPath(for: mapView)
+        CalculatingPathManager.shared.calculatingPath(for: mapView)
         SetMapMarkersManager.shared.isPathCalculeted = true
         gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
         showMapItems(true)
