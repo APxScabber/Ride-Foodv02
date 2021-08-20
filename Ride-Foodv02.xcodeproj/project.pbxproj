@@ -193,9 +193,9 @@
 		C446726326CB047400598459 /* TaxiMainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726226CB047300598459 /* TaxiMainInteractor.swift */; };
 		C446726B26CDCD0100598459 /* TaxiSpecifyFromTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446726A26CDCD0000598459 /* TaxiSpecifyFromTo.swift */; };
 		C446727126CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727026CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift */; };
-		C446727326CEB2E900598459 /* SetMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727226CEB2E900598459 /* SetMapMarkersManager.swift */; };
 		C446727526CEB38600598459 /* CalculatingPathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727426CEB38600598459 /* CalculatingPathManager.swift */; };
 		C446727726CEEC2D00598459 /* MainScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727626CEEC2D00598459 /* MainScreenExtensions.swift */; };
+		C446728D26CF222F00598459 /* SetMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446728C26CF222F00598459 /* SetMapMarkersManager.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -399,7 +399,7 @@
 		78D922AA26CED052007487DD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		78D922AC26CED175007487DD /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
 		78D922AE26CED423007487DD /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
-		78DE81CE26CEDB230093B698 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
+		78DE81CE26CEDB230093B698 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapKitManager.swift; path = "Ride-Foodv02/Managers/MapKitManager.swift"; sourceTree = "<group>"; };
 		78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
 		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
 		78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTaxiView.swift; sourceTree = "<group>"; };
@@ -427,9 +427,9 @@
 		C446726826CD559200598459 /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
 		C446726A26CDCD0000598459 /* TaxiSpecifyFromTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiSpecifyFromTo.swift; sourceTree = "<group>"; };
 		C446727026CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
-		C446727226CEB2E900598459 /* SetMapMarkersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapMarkersManager.swift; sourceTree = "<group>"; };
 		C446727426CEB38600598459 /* CalculatingPathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingPathManager.swift; sourceTree = "<group>"; };
 		C446727626CEEC2D00598459 /* MainScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenExtensions.swift; sourceTree = "<group>"; };
+		C446728C26CF222F00598459 /* SetMapMarkersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapMarkersManager.swift; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -584,6 +584,7 @@
 				78D922AE26CED423007487DD /* CLLocationCoordinate2D+Extensions.swift */,
 				78D922AC26CED175007487DD /* MapKit+Extensions.swift */,
 				78D922AA26CED052007487DD /* MapKitManager.swift */,
+				78DE81CE26CEDB230093B698 /* MapKitManager.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -772,10 +773,8 @@
 				78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */,
 				78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */,
 				C446726026CAAA7000598459 /* SeparetionText.swift */,
-
-				C446726C26CE94A400598459 /* MapKitManager.swift */,
-				C446727226CEB2E900598459 /* SetMapMarkersManager.swift */,
 				C446727426CEB38600598459 /* CalculatingPathManager.swift */,
+				C446728C26CF222F00598459 /* SetMapMarkersManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1471,7 +1470,6 @@
 				78A3A01D267B57D7006D0DAB /* LoginActions.swift in Sources */,
 				785F5D9026C16243004503CB /* CLLocation+Extensions.swift in Sources */,
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
-				C446727326CEB2E900598459 /* SetMapMarkersManager.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
 				C446726B26CDCD0100598459 /* TaxiSpecifyFromTo.swift in Sources */,
@@ -1499,6 +1497,7 @@
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
+				C446728D26CF222F00598459 /* SetMapMarkersManager.swift in Sources */,
 				7879CDE726BA8955009D127A /* Address.swift in Sources */,
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
 				F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */,
