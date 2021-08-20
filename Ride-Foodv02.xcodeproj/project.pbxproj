@@ -98,6 +98,10 @@
 		787D4B612677A73E002D975D /* ToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787D4B602677A73E002D975D /* ToolbarView.xib */; };
 		787D4B632677A751002D975D /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B622677A751002D975D /* ToolbarView.swift */; };
 		787D4B65267A1982002D975D /* PromotionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D4B64267A1982002D975D /* PromotionListTableViewController.swift */; };
+		78894E4626CFBD0C0044DBF4 /* TaxiTariffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */; };
+		78894E4826CFBD1A0044DBF4 /* TaxiTariffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */; };
+		78894E4A26CFF2D40044DBF4 /* ScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78894E4926CFF2D40044DBF4 /* ScoresView.swift */; };
+		78894E4C26CFF71F0044DBF4 /* ScoresView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78894E4B26CFF71F0044DBF4 /* ScoresView.xib */; };
 		78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */; };
 		78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */; };
 		78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */; };
@@ -328,6 +332,10 @@
 		787D4B602677A73E002D975D /* ToolbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolbarView.xib; sourceTree = "<group>"; };
 		787D4B622677A751002D975D /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		787D4B64267A1982002D975D /* PromotionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionListTableViewController.swift; sourceTree = "<group>"; };
+		78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxiTariffView.xib; sourceTree = "<group>"; };
+		78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTariffView.swift; sourceTree = "<group>"; };
+		78894E4926CFF2D40044DBF4 /* ScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresView.swift; sourceTree = "<group>"; };
+		78894E4B26CFF71F0044DBF4 /* ScoresView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoresView.xib; sourceTree = "<group>"; };
 		78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -573,6 +581,10 @@
 				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 				C446726226CB047300598459 /* TaxiMainInteractor.swift */,
 				78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */,
+				78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */,
+				78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */,
+				78894E4B26CFF71F0044DBF4 /* ScoresView.xib */,
+				78894E4926CFF2D40044DBF4 /* ScoresView.swift */,
 			);
 			path = Taxi;
 			sourceTree = "<group>";
@@ -1275,9 +1287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7867B4AA266FAB1B0031BFA0 /* SFUIDisplay-Light.otf in Resources */,
+				78894E4C26CFF71F0044DBF4 /* ScoresView.xib in Resources */,
 				787A83EF26AB2DA40096DFC3 /* AddressesVC.xib in Resources */,
 				78F1A97E26A8949000E16084 /* PaymentWays.storyboard in Resources */,
 				78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */,
+				78894E4626CFBD0C0044DBF4 /* TaxiTariffView.xib in Resources */,
 				78F1A98126A8949000E16084 /* AddCardConfirm.xib in Resources */,
 				78C8C99B26CACCB1001C947F /* FoodDetailView.xib in Resources */,
 				7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */,
@@ -1379,6 +1393,7 @@
 				782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */,
 				78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */,
 				785F5D9226C16E8D004503CB /* TopRoundedView.swift in Sources */,
+				78894E4826CFBD1A0044DBF4 /* TaxiTariffView.swift in Sources */,
 				78DE81CC26CED9EB0093B698 /* Shop.swift in Sources */,
 				C4A9D76F26B97EAF001894F8 /* MoreDetailsViewController.swift in Sources */,
 				78ACFD0526A5854600C995EB /* PromocodeHistoryViewController.swift in Sources */,
@@ -1495,6 +1510,7 @@
 				78BE49FC2683536800A13641 /* PromotionTableViewCell.swift in Sources */,
 				F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */,
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
+				78894E4A26CFF2D40044DBF4 /* ScoresView.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
 				C446728D26CF222F00598459 /* SetMapMarkersManager.swift in Sources */,
@@ -1660,7 +1676,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 223988V24V;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1681,7 +1697,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 223988V24V;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

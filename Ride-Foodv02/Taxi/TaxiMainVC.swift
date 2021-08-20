@@ -21,7 +21,8 @@ class TaxiMainVC: UIViewController {
     private var keyboardHeight: CGFloat = 0.0
     private var shouldUpdateUI = true
     private var yOffset: CGFloat = 0
-
+    private var shouldMakeOrder = false
+    
     //MARK: - Outlets
     
     @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
@@ -77,10 +78,12 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var arrowButton: UIButton!
     @IBOutlet weak var verticalLineView: UIView!
     @IBOutlet weak var transparentView: UIView!
+    @IBOutlet weak var wholeTransparentView: UIView!
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addressesChooserViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var mapView: MKMapView! { didSet {
         mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
@@ -89,7 +92,9 @@ class TaxiMainVC: UIViewController {
    
     private let fromAddressDetailView = FromAddressDetailView.initFromNib()
     private let toAddressDetailView = ToAddressDetailView.initFromNib()
-
+    private let taxiTariffView = TaxiTariffView.initFromNib()
+    private let scoresView = ScoresView.initFromNib()
+    
     //MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
         
@@ -97,27 +102,38 @@ class TaxiMainVC: UIViewController {
     }
     
     @IBAction func next(_ sender: UIButton) {
-        moveDown()
-        shouldUpdateUI = false
-        bottomConstaint.constant -= addressesChooserViewHeightConstraint.constant
-        fromAddressDetailView.isHidden = false
-        transparentView.isHidden = false
-        
-        fromAddressDetailView.textField.becomeFirstResponder()
+        if shouldMakeOrder {
+            if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
+            addressesChooserViewHeightConstraint.constant = 370
+            twoCorneredView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
+            topConstraint.constant = 0
+            roundedView.backgroundColor = .clear
+            taxiTariffView.isHidden = false
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+                self.view.layoutIfNeeded()
+            }
 
-        fromAddressDetailView.frame = CGRect(x: view.bounds.width,
-                                             y: view.bounds.height - keyboardHeight - TaxiConstant.fromAddressDetailViewHeight,
-                                             width: view.bounds.width,
-                                             height: TaxiConstant.fromAddressDetailViewHeight)
-        fromAddressDetailView.placeLabel.text = fromAddress
+        } else {
+            moveDown()
+            shouldUpdateUI = false
+            bottomConstaint.constant -= addressesChooserViewHeightConstraint.constant
+            fromAddressDetailView.isHidden = false
+            transparentView.isHidden = false
+            
+            fromAddressDetailView.textField.becomeFirstResponder()
 
-        
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.fromAddressDetailView.frame.origin.x = 0
-        } completion: {  if $0 == .end {
+            fromAddressDetailView.frame = CGRect(x: view.bounds.width,
+                                                 y: view.bounds.height - keyboardHeight - TaxiConstant.fromAddressDetailViewHeight,
+                                                 width: view.bounds.width,
+                                                 height: TaxiConstant.fromAddressDetailViewHeight)
+            fromAddressDetailView.placeLabel.text = fromAddress
 
+            
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+                self.fromAddressDetailView.frame.origin.x = 0
+            }
         }
-        }
+         
     }
     
     @IBAction func userLocationButtonAction(_ sender: Any) {
@@ -141,9 +157,18 @@ class TaxiMainVC: UIViewController {
         
         toAddressDetailView.delegate = self
         toAddressDetailView.isHidden = true
+        
+        taxiTariffView.isHidden = true
+        taxiTariffView.delegate = self
+        
+        scoresView.isHidden = true
+        scoresView.delegate = self
+        
         view.addSubview(fromAddressDetailView)
         view.addSubview(toAddressDetailView)
-
+        addressesChooserView.addSubview(taxiTariffView)
+        view.addSubview(scoresView)
+        
         if let coordinate = MapKitManager.shared.currentUserCoordinate {
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
                 self.fromAddress = address
@@ -161,6 +186,7 @@ class TaxiMainVC: UIViewController {
         super.viewDidAppear(animated)
         safeAreaBottomHeight = view.safeAreaInsets.bottom
         showMapItems(false)
+        taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
     }
     
     //MARK: - Deinit
@@ -282,6 +308,8 @@ class TaxiMainVC: UIViewController {
         
         responderTextField = nil
         setBottomConstraintTo(0)
+        taxiTariffView.removeFromSuperview()
+        twoCorneredView.backgroundColor = .white
         showMapItems(false)
         shouldUpdateUI = true
         tableViewHeightConstraint.constant = 0
@@ -444,6 +472,7 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
             self.fromAddressDetailView.removeFromSuperview()
             self.shouldUpdateUI = true
             self.addressesChooserView.isUserInteractionEnabled = true
+            self.shouldMakeOrder = true
         }
         }
         CalculatingPathManager.shared.calculatingPath(for: mapView)
@@ -451,4 +480,41 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
         gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
         showMapItems(true)
     }
+}
+
+//MARK: - TaxiTariffViewDelegate
+
+extension TaxiMainVC: TaxiTariffViewDelegate {
+    
+    
+    func useScores() {
+        wholeTransparentView.isHidden = false
+        scoresView.isHidden = false
+        scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 157)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.scoresView.frame.origin.y = self.view.bounds.height - 157
+        }
+
+    }
+    
+    func userPromocode() {
+        
+    }
+    
+}
+
+extension TaxiMainVC: ScoresViewDelegate {
+    func closeScoresView() {
+        
+    }
+    
+    func spendAllScores() {
+        
+    }
+    
+    func spend(scores: Int) {
+        
+    }
+    
+    
 }
