@@ -33,7 +33,7 @@ enum Localizable {
     
     enum Promocode:String,LocalizableDelegate {
         
-        case promocode,enterPromocode,historyUsage,confirm,promocodeActivated,done,active,inactivate,promocodeDescription
+        case promocode,enterPromocode,historyUsage,confirm,promocodeActivated,done,active,inactivate,promocodeDescription,scores
             
     }
     
@@ -42,6 +42,11 @@ enum Localizable {
         case map,enterAdress,confirm
            
     }
+    
+    enum Scores: String,LocalizableDelegate {
+        case me,scoresAvailable,allIn,misc
+    }
+    
     
     enum Taxi:String,LocalizableDelegate {
         case fromAddressQuestion,toAddressQuestion,map,next,confirm,skip,fromAddressDetail,toAddressDetail
