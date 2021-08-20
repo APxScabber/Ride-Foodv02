@@ -94,6 +94,7 @@ class TaxiMainVC: UIViewController {
     private let toAddressDetailView = ToAddressDetailView.initFromNib()
     private let taxiTariffView = TaxiTariffView.initFromNib()
     private let scoresView = ScoresView.initFromNib()
+    private let scoresToolbar = ScoresToolbar.initFromNib()
     
     //MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
@@ -164,10 +165,14 @@ class TaxiMainVC: UIViewController {
         scoresView.isHidden = true
         scoresView.delegate = self
         
+        scoresToolbar.isHidden = true
+        scoresToolbar.delegate = self
+        
         view.addSubview(fromAddressDetailView)
         view.addSubview(toAddressDetailView)
         addressesChooserView.addSubview(taxiTariffView)
         view.addSubview(scoresView)
+        view.addSubview(scoresToolbar)
         
         if let coordinate = MapKitManager.shared.currentUserCoordinate {
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
@@ -488,11 +493,13 @@ extension TaxiMainVC: TaxiTariffViewDelegate {
     
     
     func useScores() {
-        wholeTransparentView.isHidden = false
-        scoresView.isHidden = false
-        scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 157)
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.scoresView.frame.origin.y = self.view.bounds.height - 157
+        if !taxiTariffView.usedScores {
+            wholeTransparentView.isHidden = false
+            scoresView.isHidden = false
+            scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 157)
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+                self.scoresView.frame.origin.y = self.view.bounds.height - 157
+            }
         }
 
     }
@@ -504,17 +511,65 @@ extension TaxiMainVC: TaxiTariffViewDelegate {
 }
 
 extension TaxiMainVC: ScoresViewDelegate {
+    
+    func showScoresToolbar() {
+        scoresToolbar.isHidden = false
+        shouldUpdateUI = false
+        scoresToolbar.scores = scoresView.scores
+        scoresToolbar.textField.becomeFirstResponder()
+        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 128)
+        shouldUpdateUI = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 128
+        }
+
+    }
+    
     func closeScoresView() {
         
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.scoresView.frame.origin.y = self.view.bounds.height
+        }completion: { if $0 == .end {
+            self.wholeTransparentView.isHidden = true
+            self.scoresView.isHidden = true
+        }}
     }
     
     func spendAllScores() {
-        
+        enter(scores: scoresView.scores)
     }
     
-    func spend(scores: Int) {
+   
+    
+}
+
+//MARK: - ScoresToolbarDelegate
+
+extension TaxiMainVC: ScoresToolbarDelegate {
+    
+    func closeScoresToolbar() {
         
+        scoresToolbar.textField.resignFirstResponder()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height
+        } completion: {  if $0 == .end {
+            self.scoresToolbar.isHidden = true
+        }
+        }
     }
+    
+    func enter(scores: Int) {
+        closeScoresToolbar()
+        closeScoresView()
+        taxiTariffView.usedScores = true
+        taxiTariffView.scoresLabel.isHidden = true
+        taxiTariffView.scoresImageView.isHidden = true
+        taxiTariffView.scoresEnteredLabel.isHidden = false
+        taxiTariffView.scoresEnterValueLabel.isHidden = false
+        taxiTariffView.scoresEnterValueLabel.text = "- \(scores)"
+    }
+    
+    
     
     
 }

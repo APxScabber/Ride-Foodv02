@@ -82,14 +82,36 @@
                                         <action selector="useScores:" destination="iN0-l3-epB" eventType="touchUpInside" id="KAa-qe-ODo"/>
                                     </connections>
                                 </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtt-aG-SyA">
+                                    <rect key="frame" x="16" y="16" width="28" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="0h7-6b-Lnz"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Баллов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZB-fk-lF4">
+                                    <rect key="frame" x="47" y="16" width="57" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="E8N-Jr-lfr"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="Xtt-aG-SyA" firstAttribute="leading" secondItem="twN-2c-RZQ" secondAttribute="leading" constant="16" id="1ys-ly-pb9"/>
+                                <constraint firstItem="Xtt-aG-SyA" firstAttribute="top" secondItem="twN-2c-RZQ" secondAttribute="top" constant="16" id="OFb-Nj-uNB"/>
                                 <constraint firstItem="1SM-Lh-tZ6" firstAttribute="top" secondItem="twN-2c-RZQ" secondAttribute="top" id="Pmy-1j-Kvx"/>
+                                <constraint firstItem="QZB-fk-lF4" firstAttribute="top" secondItem="twN-2c-RZQ" secondAttribute="top" constant="16" id="R42-yh-Etm"/>
                                 <constraint firstItem="1SM-Lh-tZ6" firstAttribute="leading" secondItem="twN-2c-RZQ" secondAttribute="leading" id="R8J-3H-jZL"/>
                                 <constraint firstAttribute="height" constant="50" id="RyM-4p-uXL"/>
                                 <constraint firstAttribute="trailing" secondItem="1SM-Lh-tZ6" secondAttribute="trailing" id="Xfh-Az-tWG"/>
                                 <constraint firstItem="jxT-ik-Htx" firstAttribute="top" secondItem="twN-2c-RZQ" secondAttribute="top" constant="17" id="ZtB-CC-NfG"/>
+                                <constraint firstItem="QZB-fk-lF4" firstAttribute="leading" secondItem="Xtt-aG-SyA" secondAttribute="trailing" constant="3" id="fK6-on-Y4a"/>
                                 <constraint firstItem="eBf-mg-AJN" firstAttribute="leading" secondItem="jxT-ik-Htx" secondAttribute="trailing" constant="6" id="ggc-IS-VWr"/>
                                 <constraint firstItem="jxT-ik-Htx" firstAttribute="leading" secondItem="twN-2c-RZQ" secondAttribute="leading" constant="15" id="j79-VJ-Fqs"/>
                                 <constraint firstItem="eBf-mg-AJN" firstAttribute="top" secondItem="twN-2c-RZQ" secondAttribute="top" constant="16" id="pJa-Ce-gx4"/>
@@ -288,8 +310,12 @@
                 <outlet property="premiumLabel" destination="p8Z-rt-DlS" id="PMj-lN-BGX"/>
                 <outlet property="premiumPriceLabel" destination="vxS-HS-KXb" id="9vl-KQ-rj7"/>
                 <outlet property="premiumRoundedView" destination="aT7-PN-nXV" id="pxD-Ub-Rek"/>
+                <outlet property="promocodeImageView" destination="FBp-Wl-IVM" id="IuK-JA-Cdg"/>
                 <outlet property="promocodeLabel" destination="dvE-YS-U9D" id="3aE-0p-unJ"/>
                 <outlet property="promocodeRoundedView" destination="NoI-Cs-Vsl" id="YEZ-KA-1WI"/>
+                <outlet property="scoresEnterValueLabel" destination="Xtt-aG-SyA" id="PKV-nq-uhI"/>
+                <outlet property="scoresEnteredLabel" destination="QZB-fk-lF4" id="6M8-Ny-10Q"/>
+                <outlet property="scoresImageView" destination="jxT-ik-Htx" id="oYR-Xk-bY5"/>
                 <outlet property="scoresLabel" destination="eBf-mg-AJN" id="fP8-ER-JeL"/>
                 <outlet property="scoresRoundedView" destination="twN-2c-RZQ" id="wJY-BF-JJw"/>
                 <outlet property="standartDurationLabel" destination="wlT-kd-wLg" id="TtV-Za-eFE"/>

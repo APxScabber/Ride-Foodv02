@@ -9,14 +9,27 @@ class TaxiTariffView: UIView {
 
     weak var delegate: TaxiTariffViewDelegate?
     
+    var usedScores = false
+    var usedPromocode = false
+    
     @IBOutlet weak var scoresLabel: UILabel! { didSet {
         scoresLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
         scoresLabel.text = Localizable.Promocode.scores.localized
     }}
+    @IBOutlet weak var scoresImageView: UIImageView!
     
     @IBOutlet weak var promocodeLabel: UILabel! { didSet {
         promocodeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
         promocodeLabel.text = Localizable.Promocode.promocode.localized
+    }}
+    @IBOutlet weak var promocodeImageView: UIImageView!
+    @IBOutlet weak var scoresEnterValueLabel: UILabel! { didSet {
+        scoresEnterValueLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
+    }}
+    
+    @IBOutlet weak var scoresEnteredLabel: UILabel! { didSet {
+        scoresEnteredLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
+        scoresEnteredLabel.text = Localizable.Scores.scoresAvailable.localized
     }}
     
     @IBOutlet weak var scoresRoundedView: RoundedView! { didSet {

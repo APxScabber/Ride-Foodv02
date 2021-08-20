@@ -102,6 +102,8 @@
 		78894E4826CFBD1A0044DBF4 /* TaxiTariffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */; };
 		78894E4A26CFF2D40044DBF4 /* ScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78894E4926CFF2D40044DBF4 /* ScoresView.swift */; };
 		78894E4C26CFF71F0044DBF4 /* ScoresView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78894E4B26CFF71F0044DBF4 /* ScoresView.xib */; };
+		78894E4E26D017190044DBF4 /* ScoresToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78894E4D26D017190044DBF4 /* ScoresToolbar.xib */; };
+		78894E5026D017220044DBF4 /* ScoresToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78894E4F26D017220044DBF4 /* ScoresToolbar.swift */; };
 		78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */; };
 		78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */; };
 		78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */; };
@@ -336,6 +338,8 @@
 		78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTariffView.swift; sourceTree = "<group>"; };
 		78894E4926CFF2D40044DBF4 /* ScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresView.swift; sourceTree = "<group>"; };
 		78894E4B26CFF71F0044DBF4 /* ScoresView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoresView.xib; sourceTree = "<group>"; };
+		78894E4D26D017190044DBF4 /* ScoresToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoresToolbar.xib; sourceTree = "<group>"; };
+		78894E4F26D017220044DBF4 /* ScoresToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresToolbar.swift; sourceTree = "<group>"; };
 		78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		78A39FDF267B55EC006D0DAB /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		78A39FE0267B55EC006D0DAB /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -585,6 +589,8 @@
 				78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */,
 				78894E4B26CFF71F0044DBF4 /* ScoresView.xib */,
 				78894E4926CFF2D40044DBF4 /* ScoresView.swift */,
+				78894E4D26D017190044DBF4 /* ScoresToolbar.xib */,
+				78894E4F26D017220044DBF4 /* ScoresToolbar.swift */,
 			);
 			path = Taxi;
 			sourceTree = "<group>";
@@ -1320,6 +1326,7 @@
 				78CE749126A6E064006C3417 /* MenuView.xib in Resources */,
 				785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */,
 				787A83DA26AB2D330096DFC3 /* UserProfile.storyboard in Resources */,
+				78894E4E26D017190044DBF4 /* ScoresToolbar.xib in Resources */,
 				7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */,
 				78A3A01A267B57D7006D0DAB /* Login.storyboard in Resources */,
 				787A83EB26AB2DA40096DFC3 /* Addresses.storyboard in Resources */,
@@ -1373,6 +1380,7 @@
 				78C8C98826C6AE3C001C947F /* FromAddressDetailView.swift in Sources */,
 				787A83EE26AB2DA40096DFC3 /* AddressesVC.swift in Sources */,
 				78AEB87F267B59C10023605D /* AppDelegateExtension.swift in Sources */,
+				78894E5026D017220044DBF4 /* ScoresToolbar.swift in Sources */,
 				F58FA74D26CCDB75000B8E16 /* ProductsCollectionViewCell.swift in Sources */,
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
