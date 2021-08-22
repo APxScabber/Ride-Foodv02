@@ -60,6 +60,7 @@
 //MARK: - Promocode
 
 "promocode" = "Promocode";
+"scores" = "Scores";
 "enterPromocode" = "Enter promocode";
 "historyUsage" = "History of use";
 "confirm" = "Confirm";
@@ -75,6 +76,17 @@
 "map" = "Map";
 "enterAdress" = "Enter delivery address";
 "confirm" = "Confirm";
+
+//MARK: - Scores
+
+"me" = "You have";
+"score" = "Score";
+"scoresAvailable" = "scores";
+"allIn" = "Spend all scores at once";
+"misc" = "Other quantity";
+"scoresError" = "You have less scores than indicated";
+"scoresEnter" = "Enter the number of scores";
+
 
 //MARK: - Taxi
 

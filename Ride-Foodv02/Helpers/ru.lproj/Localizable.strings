@@ -61,6 +61,7 @@
 //MARK: - Promocode
 
 "promocode" = "Промокод";
+"scores" = "Баллы";
 "enterPromocode" = "Ввести промокод";
 "historyUsage" = "История использования";
 "confirm" = "Подтвердить";
@@ -76,6 +77,16 @@
 "map" = "Карта";
 "enterAdress" = "Введите адрес доставки";
 "confirm" = "Подтвердить";
+
+//MARK: - Scores
+
+"me" = "У вас";
+"score" = "Баллы";
+"scoresAvailable" = "баллов";
+"allIn" = "Потратить все баллы сразу";
+"misc" = "Другое количество";
+"scoresError" = "У вас меньше баллов чем указано";
+"scoresEnter" = "Введите количество баллов";
 
 //MARK: - Taxi
 
