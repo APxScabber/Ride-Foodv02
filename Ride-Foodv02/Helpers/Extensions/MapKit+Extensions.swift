@@ -10,7 +10,7 @@ import MapKit
 
 extension MKMapView {
 
-    func fitAllAnnotations(with padding: UIEdgeInsets = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)) {
+    func fitAllAnnotations(with padding: UIEdgeInsets = UIEdgeInsets(top: 100, left: 50, bottom: 50, right: 50)) {
         var zoomRect: MKMapRect = .null
         annotations.forEach({
             let annotationPoint = MKMapPoint($0.coordinate)

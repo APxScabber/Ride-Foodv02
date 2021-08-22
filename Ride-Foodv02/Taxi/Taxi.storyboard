@@ -308,9 +308,41 @@
                                     <action selector="userLocationButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nSk-xt-66M"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufl-w7-XLr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsL-Gc-CLg">
+                                <rect key="frame" x="144.5" y="64" width="125" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TaxiTime" translatesAutoresizingMaskIntoConstraints="NO" id="dfO-0r-rSI">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Dvu-dv-p1W"/>
+                                            <constraint firstAttribute="width" constant="125" id="KHo-vh-ZRg"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="Mak-ZL-Ur7"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dTg-m0-v7b"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈15 мин" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="QNT-pH-eEy">
+                                        <rect key="frame" x="0.0" y="11" width="125" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="LzA-Kr-k7n"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.97020205559999995" green="0.97203466270000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QNT-pH-eEy" firstAttribute="leading" secondItem="EsL-Gc-CLg" secondAttribute="leading" id="1tB-mq-nC3"/>
+                                    <constraint firstAttribute="trailing" secondItem="dfO-0r-rSI" secondAttribute="trailing" id="FWh-jb-wU4"/>
+                                    <constraint firstAttribute="trailing" secondItem="QNT-pH-eEy" secondAttribute="trailing" id="V9L-TF-0gB"/>
+                                    <constraint firstItem="QNT-pH-eEy" firstAttribute="centerX" secondItem="EsL-Gc-CLg" secondAttribute="centerX" id="bRe-JO-UTP"/>
+                                    <constraint firstAttribute="width" constant="125" id="edk-2i-ffS"/>
+                                    <constraint firstItem="dfO-0r-rSI" firstAttribute="leading" secondItem="EsL-Gc-CLg" secondAttribute="leading" id="gdW-2k-ZVQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="ny7-yD-rc1"/>
+                                    <constraint firstItem="dfO-0r-rSI" firstAttribute="top" secondItem="EsL-Gc-CLg" secondAttribute="top" id="oZq-Yo-5TM"/>
+                                    <constraint firstItem="QNT-pH-eEy" firstAttribute="centerY" secondItem="EsL-Gc-CLg" secondAttribute="centerY" id="s61-B6-mCg"/>
+                                    <constraint firstAttribute="bottom" secondItem="dfO-0r-rSI" secondAttribute="bottom" id="wyw-7W-dhV"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -326,6 +358,8 @@
                             <constraint firstItem="GhI-4b-hru" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="OzV-5a-CvA"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="S5N-I4-OPl"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="top" secondItem="R8G-Ff-adq" secondAttribute="bottom" constant="5" id="Stu-xE-4Rr"/>
+                            <constraint firstItem="EsL-Gc-CLg" firstAttribute="centerY" secondItem="mqu-Yw-ObF" secondAttribute="centerY" id="TwC-Eq-ooY"/>
+                            <constraint firstItem="EsL-Gc-CLg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="X6k-DA-OOG"/>
                             <constraint firstItem="vA7-IQ-MSH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YCo-r8-xNA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="R8G-Ff-adq" secondAttribute="trailing" constant="5" id="bEt-1b-xfd"/>
                             <constraint firstAttribute="bottom" secondItem="DCr-6x-uBS" secondAttribute="bottom" id="bpG-0k-2rs"/>
@@ -355,10 +389,12 @@
                         <outlet property="mapButton" destination="WwB-nP-9Ts" id="I4P-Wt-HAW"/>
                         <outlet property="mapView" destination="DCr-6x-uBS" id="H0s-zn-gDh"/>
                         <outlet property="nextButton" destination="ZJX-13-0Pv" id="Gbh-Pw-XyG"/>
+                        <outlet property="pathTimeView" destination="EsL-Gc-CLg" id="l5V-8W-JYh"/>
                         <outlet property="roundedView" destination="Kiy-AD-T5V" id="Wuc-SV-z2k"/>
                         <outlet property="tableView" destination="arv-lY-7Ae" id="R7l-sQ-mUe"/>
                         <outlet property="tableViewHeightConstraint" destination="HZf-aq-a6v" id="uhZ-E3-RHn"/>
                         <outlet property="tableViewHeightView" destination="1kT-RR-ULY" id="io1-Z8-4n0"/>
+                        <outlet property="timeLabel" destination="QNT-pH-eEy" id="NmR-M8-8qc"/>
                         <outlet property="toAnnotationView" destination="6By-MT-3rb" id="5C8-kQ-Cn6"/>
                         <outlet property="toTextField" destination="kwS-Mb-i6S" id="LU7-Fg-8zc"/>
                         <outlet property="toUnderbarLine" destination="gCr-12-evj" id="6r2-E3-Ssb"/>
@@ -497,6 +533,7 @@
         <image name="Gradient" width="12" height="52"/>
         <image name="Next" width="9.5" height="7.5"/>
         <image name="RawAnnotation" width="12" height="19"/>
+        <image name="TaxiTime" width="187.5" height="60"/>
         <image name="userLocationButton" width="90" height="90"/>
         <image name="visa" width="33" height="10"/>
         <systemColor name="systemBackgroundColor">

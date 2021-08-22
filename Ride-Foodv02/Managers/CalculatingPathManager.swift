@@ -16,7 +16,7 @@ class CalculatingPathManager {
     }
     
     //Расчет маршрута
-    func calculatingPath(for map: MKMapView) {
+    func calculatingPath(for map: MKMapView, competion: @escaping (Int) -> () ) {
         
         map.removeOverlays(map.overlays)
         
@@ -46,6 +46,9 @@ class CalculatingPathManager {
             guard let response = response else { return }
             for route in response.routes {
                 map.addOverlay(route.polyline)
+                let timeInterval = Int(route.expectedTravelTime)
+                let timeMinutes = (timeInterval / 60) % 60
+                competion(timeMinutes)
             }
         }
     }

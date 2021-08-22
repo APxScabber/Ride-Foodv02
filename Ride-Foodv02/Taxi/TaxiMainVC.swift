@@ -25,7 +25,16 @@ class TaxiMainVC: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
+    
+    @IBOutlet weak var pathTimeView: UIView! { didSet {
+        pathTimeView.alpha = 0
+    }}
+    @IBOutlet weak var timeLabel: UILabel! { didSet {
+        timeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+        timeLabel.textColor = TaxiSpecifyFromToColor.white.value
+    }}
+    
+    @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet {
         userLocationButtonOutlet.alpha = 0
     }}
     
@@ -86,6 +95,7 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var mapView: MKMapView! { didSet {
+        
         mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
         mapView.delegate = self
     }}
@@ -98,7 +108,7 @@ class TaxiMainVC: UIViewController {
     
     //MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
-        
+        SetMapMarkersManager.shared.isPathCalculeted = false
         dismiss(animated: true)
     }
     
@@ -146,13 +156,15 @@ class TaxiMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         updateUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         taxiMainInteractor.getAdressesFromServer(view: self)
-
+        
+        SetMapMarkersManager.shared.delegate = self
+        
         fromAddressDetailView.delegate = self
         fromAddressDetailView.isHidden = true
         
@@ -175,6 +187,7 @@ class TaxiMainVC: UIViewController {
         view.addSubview(scoresToolbar)
         
         if let coordinate = MapKitManager.shared.currentUserCoordinate {
+
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
                 self.fromAddress = address
             }
@@ -480,7 +493,11 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
             self.shouldMakeOrder = true
         }
         }
-        CalculatingPathManager.shared.calculatingPath(for: mapView)
+        CalculatingPathManager.shared.calculatingPath(for: mapView) { pathTime in
+            self.timeLabel.text = "≈\(pathTime) минут"
+            self.pathTimeView.alpha = 1
+        }
+        
         SetMapMarkersManager.shared.isPathCalculeted = true
         gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
         showMapItems(true)

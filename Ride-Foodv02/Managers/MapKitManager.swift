@@ -18,7 +18,6 @@ class MapKitManager {
     init() {
     }
     
-    
     private func setupLocationManager(delegate: CLLocationManagerDelegate) {
         
         MapKitManager.shared.locationManager.delegate = delegate
@@ -63,9 +62,7 @@ class MapKitManager {
                                                        view: view)
         }
     }
-    
- 
-    
+
     private func settingsAlertController(title: String, message: String, url: URL?, view: UIViewController) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let settingsButton = UIAlertAction(title: "Настройки", style: .default) { action in

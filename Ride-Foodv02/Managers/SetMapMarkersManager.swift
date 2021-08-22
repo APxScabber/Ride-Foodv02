@@ -8,9 +8,16 @@ import CoreLocation
 import UIKit
 import MapKit
 
+protocol SetMapMarkersDelegate: AnyObject {
+    func pathTime(minutes: Int)
+    func zoomAllMarketsOnMap()
+}
+
 class SetMapMarkersManager {
     
     static let shared = SetMapMarkersManager()
+    
+    weak var delegate: SetMapMarkersDelegate?
     
     var isFromAddressMarkSelected = true
     var isPathCalculeted = false
@@ -19,7 +26,7 @@ class SetMapMarkersManager {
     }
     
     // Выставляем метку на карте относительно указанным координатам
-    func setMarkOn(map: MKMapView, with coordinate: CLLocationCoordinate2D, completion: @escaping ((String) -> ())) {
+    func setMarkOn(map: MKMapView, with coordinate: CLLocationCoordinate2D, completion: @escaping (String) -> ()) {
         
         if isFromAddressMarkSelected {
             
@@ -40,13 +47,16 @@ class SetMapMarkersManager {
         annotation.coordinate = coordinate
         annotation.title = isFromAddressMarkSelected ? "From" : "To"
         map.addAnnotation(annotation)
-        map.fitAllAnnotations()
+        //map.fitAllAnnotations()
+        delegate?.zoomAllMarketsOnMap()
         CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { address in
             completion(address)
             self.isFromAddressMarkSelected = true
         }
         if isPathCalculeted {
-            CalculatingPathManager.shared.calculatingPath(for: map)
+            CalculatingPathManager.shared.calculatingPath(for: map) { pathTime in
+                    self.delegate?.pathTime(minutes: pathTime)
+            }
         }
         
         MapKitManager.shared.locationManager.stopUpdatingLocation()

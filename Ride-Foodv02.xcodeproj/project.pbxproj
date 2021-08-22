@@ -411,7 +411,7 @@
 		78D922AA26CED052007487DD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		78D922AC26CED175007487DD /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
 		78D922AE26CED423007487DD /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
-		78DE81CE26CEDB230093B698 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapKitManager.swift; path = "Ride-Foodv02/Managers/MapKitManager.swift"; sourceTree = "<group>"; };
+		78DE81CE26CEDB230093B698 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
 		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
 		78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTaxiView.swift; sourceTree = "<group>"; };
@@ -602,7 +602,6 @@
 				78D922AE26CED423007487DD /* CLLocationCoordinate2D+Extensions.swift */,
 				78D922AC26CED175007487DD /* MapKit+Extensions.swift */,
 				78D922AA26CED052007487DD /* MapKitManager.swift */,
-				78DE81CE26CEDB230093B698 /* MapKitManager.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -793,6 +792,7 @@
 				C446726026CAAA7000598459 /* SeparetionText.swift */,
 				C446727426CEB38600598459 /* CalculatingPathManager.swift */,
 				C446728C26CF222F00598459 /* SetMapMarkersManager.swift */,
+				78DE81CE26CEDB230093B698 /* MapKitManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
