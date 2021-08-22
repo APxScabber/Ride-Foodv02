@@ -227,7 +227,6 @@ class TaxiMainVC: UIViewController {
 
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
                 self.fromAddress = address
-                MapKitManager.shared.currentUserCoordinate = coordinate
             }
         }
     }

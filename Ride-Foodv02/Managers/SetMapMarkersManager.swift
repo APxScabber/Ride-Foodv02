@@ -47,8 +47,9 @@ class SetMapMarkersManager {
         annotation.coordinate = coordinate
         annotation.title = isFromAddressMarkSelected ? "From" : "To"
         map.addAnnotation(annotation)
+        MapKitManager.shared.currentUserCoordinate = coordinate
         //map.fitAllAnnotations()
-        delegate?.zoomAllMarketsOnMap()
+        
         CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { address in
             completion(address)
             self.isFromAddressMarkSelected = true
@@ -60,5 +61,6 @@ class SetMapMarkersManager {
         }
         
         MapKitManager.shared.locationManager.stopUpdatingLocation()
+        delegate?.zoomAllMarketsOnMap()
     }
 }
