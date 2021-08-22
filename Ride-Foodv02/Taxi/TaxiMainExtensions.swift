@@ -61,3 +61,23 @@ extension TaxiMainVC: MKMapViewDelegate {
         return render
     }
 }
+
+extension TaxiMainVC: SetMapMarkersDelegate {
+    
+    func zoomAllMarketsOnMap() {
+        if mapView.annotations.count < 2 {
+            guard let coordinate = MapKitManager.shared.currentUserCoordinate else { return }
+            let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
+            mapView.setRegion(region, animated: true)
+        } else {
+            mapView.fitAllAnnotations(with: UIEdgeInsets(top: 100, left: 50, bottom: 50 + addressesChooserView.frame.height, right: 50))
+        }
+    }
+    
+    func pathTime(minutes: Int) {
+        timeLabel.text = "≈\(minutes) минут"
+        pathTimeView.alpha = 1
+    }
+}

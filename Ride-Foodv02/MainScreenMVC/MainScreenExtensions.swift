@@ -17,6 +17,11 @@ extension MainScreenViewController: CLLocationManagerDelegate {
             
             MapKitManager.shared.currentUserCoordinate = loc
             
+            let center = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
+            mapView.setRegion(region, animated: true)
+
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: loc) { address in
                 self.foodTaxiView.placeLabel.text = address
             }

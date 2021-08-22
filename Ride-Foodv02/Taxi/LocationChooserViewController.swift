@@ -50,6 +50,7 @@ class LocationChooserViewController: UIViewController {
         SetMapMarkersManager.shared.isFromAddressMarkSelected = false
         taxiMainInteractor.getCoordinates(from: location, to: mapView) { address in
             self.location = address
+            
         }
     }
     
