@@ -37,4 +37,17 @@ struct UIHelper {
         
         return flowLayout
     }
+    
+    static func createTitleAttributedString(titleString: String, font: UIFont, color: UIColor, bodyString: String) -> NSMutableAttributedString{
+        let titleString = titleString
+        let myAttribute = [ NSMutableAttributedString.Key.font: font, NSMutableAttributedString.Key.foregroundColor: color ]
+        let myAttrString = NSMutableAttributedString(string: titleString, attributes: myAttribute)
+        
+        let bodyString = bodyString
+        let bodyAttribute = [ NSMutableAttributedString.Key.font: font, NSMutableAttributedString.Key.foregroundColor: UIColor.DarkGrayTextColor ]
+        let bodyAttributedString = NSAttributedString(string: bodyString, attributes: bodyAttribute)
+        myAttrString.append(bodyAttributedString)
+        
+        return myAttrString
+    }
 }
