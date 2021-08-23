@@ -145,7 +145,7 @@
                                         <constraint firstAttribute="height" constant="14" id="i6s-2t-JkP"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.77647058823529413" green="0.25882352941176467" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PremiumCar" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-4M-NuX">
@@ -161,7 +161,7 @@
                                         <constraint firstAttribute="height" constant="10" id="Bqc-c0-yB8"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -198,7 +198,7 @@
                                         <constraint firstAttribute="height" constant="10" id="uRy-QJ-SkF"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -225,7 +225,7 @@
                                 <constraint firstAttribute="height" constant="14" id="yZg-D9-ZeM"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.83137254901960778" green="0.74117647058823533" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BusinessCar" translatesAutoresizingMaskIntoConstraints="NO" id="1Of-76-oid">
@@ -269,7 +269,7 @@
                                         <constraint firstAttribute="height" constant="14" id="idb-hn-J6A"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovd-gm-hpv">
@@ -278,7 +278,7 @@
                                         <constraint firstAttribute="height" constant="10" id="uYB-7k-MwX"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -336,11 +336,13 @@
             </constraints>
             <connections>
                 <outlet property="businessDurationLabel" destination="h6f-XU-aZn" id="Zsv-q9-pFs"/>
+                <outlet property="businessImageView" destination="1Of-76-oid" id="wxm-L6-TjE"/>
                 <outlet property="businessLabel" destination="rT5-Zz-Hul" id="5Gf-kh-oBd"/>
                 <outlet property="businessOldPriceLabel" destination="XNQ-GM-bk0" id="gPU-0k-63m"/>
                 <outlet property="businessPriceLabel" destination="0Ti-3x-dgb" id="SN4-3Q-dDT"/>
                 <outlet property="businessRoundedView" destination="ifI-ai-YON" id="Czb-Ov-owo"/>
                 <outlet property="premiumDurationLabel" destination="Rd5-Uk-0Zi" id="8BZ-RF-SOy"/>
+                <outlet property="premiumImageView" destination="KYb-4M-NuX" id="0wu-3j-gC5"/>
                 <outlet property="premiumLabel" destination="p8Z-rt-DlS" id="PMj-lN-BGX"/>
                 <outlet property="premiumOldPriceLabel" destination="ruj-v3-d2T" id="3vG-Rr-S1W"/>
                 <outlet property="premiumPriceLabel" destination="vxS-HS-KXb" id="9vl-KQ-rj7"/>
@@ -354,9 +356,10 @@
                 <outlet property="scoresLabel" destination="eBf-mg-AJN" id="fP8-ER-JeL"/>
                 <outlet property="scoresRoundedView" destination="twN-2c-RZQ" id="wJY-BF-JJw"/>
                 <outlet property="standartDurationLabel" destination="wlT-kd-wLg" id="TtV-Za-eFE"/>
+                <outlet property="standartImageView" destination="nel-Dq-ti4" id="U27-Me-xtQ"/>
                 <outlet property="standartLabel" destination="GIQ-u4-a5y" id="DzX-4R-6XH"/>
                 <outlet property="standartOldPriceLabel" destination="Ovd-gm-hpv" id="kWA-HZ-TBp"/>
-                <outlet property="standartPriceLabel" destination="wlT-kd-wLg" id="Uvp-hB-8YB"/>
+                <outlet property="standartPriceLabel" destination="kha-yi-hdI" id="gHE-WN-hxP"/>
                 <outlet property="standartRoundedView" destination="fuU-zH-Ibt" id="M1p-09-1Qt"/>
             </connections>
             <point key="canvasLocation" x="115.94202898550725" y="102.45535714285714"/>

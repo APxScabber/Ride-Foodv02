@@ -120,6 +120,8 @@ class TaxiMainVC: UIViewController {
             topConstraint.constant = 0
             roundedView.backgroundColor = .clear
             taxiTariffView.isHidden = false
+            taxiTariffView.reset()
+            transparentView.isHidden = false
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.view.layoutIfNeeded()
             }
@@ -322,7 +324,7 @@ class TaxiMainVC: UIViewController {
     private func moveDown() {
         
         view.endEditing(true)
-        
+        transparentView.isHidden = true
         responderTextField = nil
         setBottomConstraintTo(0)
         taxiTariffView.removeFromSuperview()
@@ -509,7 +511,7 @@ extension TaxiMainVC: TaxiTariffViewDelegate {
     
     
     func useScores() {
-        if !taxiTariffView.usedScores {
+        if !taxiTariffView.usedScores && taxiTariffView.selectedIndex != nil {
             wholeTransparentView.isHidden = false
             scoresView.isHidden = false
             scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 157)
@@ -520,7 +522,7 @@ extension TaxiMainVC: TaxiTariffViewDelegate {
 
     }
     
-    func userPromocode() {
+    func usePromocode() {
         
     }
     
@@ -577,12 +579,7 @@ extension TaxiMainVC: ScoresToolbarDelegate {
     func enter(scores: Int) {
         closeScoresToolbar()
         closeScoresView()
-        taxiTariffView.usedScores = true
-        taxiTariffView.scoresLabel.isHidden = true
-        taxiTariffView.scoresImageView.isHidden = true
-        taxiTariffView.scoresEnteredLabel.isHidden = false
-        taxiTariffView.scoresEnterValueLabel.isHidden = false
-        taxiTariffView.scoresEnterValueLabel.text = "- \(scores)"
+        taxiTariffView.updateUIWith(scores: scores)
     }
     
     

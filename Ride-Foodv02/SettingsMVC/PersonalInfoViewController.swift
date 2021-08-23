@@ -154,7 +154,7 @@ extension PersonalInfoViewController: ToolbarViewDelegate {
     func remove() {
         toolBarView.dismiss()
         moveScrollViewYOffset(at: 0)
-        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PersonalInfoConstant.durationForAppearingToolbarView, delay: 0.0, options: .curveLinear) {
             self.toolBarView.frame.origin.y = window.bounds.height
         } completion: { if $0 == .end { self.transparentView.isHidden = true }
