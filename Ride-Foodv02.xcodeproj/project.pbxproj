@@ -408,10 +408,6 @@
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
 		78D3DF472686415C0028A66B /* PromocodeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeToolbar.swift; sourceTree = "<group>"; };
-		78D922A826CED02C007487DD /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
-		78D922AA26CED052007487DD /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
-		78D922AC26CED175007487DD /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
-		78D922AE26CED423007487DD /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
 		78DE81CE26CEDB230093B698 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
 		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
@@ -595,17 +591,6 @@
 				78894E4F26D017220044DBF4 /* ScoresToolbar.swift */,
 			);
 			path = Taxi;
-			sourceTree = "<group>";
-		};
-		7860E4FE26CED622009BBC77 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				78D922A826CED02C007487DD /* TaxiMainExtensions.swift */,
-				78D922AE26CED423007487DD /* CLLocationCoordinate2D+Extensions.swift */,
-				78D922AC26CED175007487DD /* MapKit+Extensions.swift */,
-				78D922AA26CED052007487DD /* MapKitManager.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		7867B4A1266FA9F50031BFA0 /* Misc */ = {
@@ -1088,7 +1073,6 @@
 			children = (
 				C4E83FAF266EA538000EE70F /* Ride-Foodv02 */,
 				C4E83FAE266EA538000EE70F /* Products */,
-				7860E4FE26CED622009BBC77 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1688,7 +1672,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1709,7 +1693,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

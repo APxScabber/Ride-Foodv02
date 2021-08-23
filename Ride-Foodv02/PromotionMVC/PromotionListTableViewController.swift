@@ -45,7 +45,7 @@ class PromotionListTableViewController: UITableViewController {
     
     
     private func showPromotionViewAt(_ index:Int) {
-        if let window = UIApplication.shared.keyWindow {
+        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first  {
            let currentPromotion = promotions[index]
             promotionView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: view.bounds.width, height: UIScreen.main.bounds.height)
             window.addSubview(promotionView)
