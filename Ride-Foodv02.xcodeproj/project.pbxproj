@@ -226,6 +226,7 @@
 		F56502F826CA4D7200934D91 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F726CA4D7200934D91 /* Product.swift */; };
 		F56502FF26CAF7E400934D91 /* ProductsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502FE26CAF7E400934D91 /* ProductsNetworkManager.swift */; };
 		F565030226CAFB3900934D91 /* VBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565030126CAFB3900934D91 /* VBError.swift */; };
+		F568D20F26D3158000C13E28 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F568D20E26D3158000C13E28 /* ProductViewController.swift */; };
 		F58FA74B26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA74A26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift */; };
 		F58FA74D26CCDB75000B8E16 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA74C26CCDB75000B8E16 /* ProductsCollectionViewCell.swift */; };
 		F58FA74F26CCE83E000B8E16 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA74E26CCE83E000B8E16 /* UIHelper.swift */; };
@@ -468,6 +469,7 @@
 		F56502F726CA4D7200934D91 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F56502FE26CAF7E400934D91 /* ProductsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsNetworkManager.swift; sourceTree = "<group>"; };
 		F565030126CAFB3900934D91 /* VBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBError.swift; sourceTree = "<group>"; };
+		F568D20E26D3158000C13E28 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		F58FA74A26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		F58FA74C26CCDB75000B8E16 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		F58FA74E26CCE83E000B8E16 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -1145,6 +1147,7 @@
 			isa = PBXGroup;
 			children = (
 				F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */,
+				F568D20E26D3158000C13E28 /* ProductViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1418,6 +1421,7 @@
 				78AEB87B267B59C10023605D /* LoginVCExtension.swift in Sources */,
 				78AEB87D267B59C10023605D /* ButtonExtension.swift in Sources */,
 				78A3A00B267B56E9006D0DAB /* LoadManagerText.swift in Sources */,
+				F568D20F26D3158000C13E28 /* ProductViewController.swift in Sources */,
 				78C8C99726CACC7E001C947F /* TaxiDetailView.swift in Sources */,
 				F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */,
 				78F1A97D26A8949000E16084 /* PaymentWaysInteractor.swift in Sources */,
@@ -1612,7 +1616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1668,7 +1672,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1684,9 +1688,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1705,9 +1709,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

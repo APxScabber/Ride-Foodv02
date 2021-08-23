@@ -14,7 +14,7 @@ class CategoriesAndFoodVC: UIViewController {
     let tableViewCellID = "tableViewCellID"
     
     var showSubcategories: Bool = false { didSet {
-        updateUI()
+   
     }}
     
     var subcategoriesTableView: UITableView!
@@ -39,6 +39,7 @@ class CategoriesAndFoodVC: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
+    var isPaginating: Bool = false
    
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
         shopTitleLabel.font = UIFont.SFUIDisplayRegular(size: 15)
@@ -78,6 +79,8 @@ class CategoriesAndFoodVC: UIViewController {
         setUpViews()
     }
     
+ 
+    
     func updateUI(){
         DispatchQueue.main.async {
             if self.showSubcategories{
@@ -87,18 +90,25 @@ class CategoriesAndFoodVC: UIViewController {
                 if !self.subcategories.isEmpty {
                     self.configureSubcategoriesCollectionViews()
                     self.configureProductsCollectionView()
-                    self.productsCollectionView.reloadData()
+                    self.reloadProductsCollectionView()
                     self.subcategoriesCollectionView.reloadData()
                 } else {
-                   
                     self.configureProductsCollectionView()
-                    self.productsCollectionView.reloadData()
-                    
+                    self.reloadProductsCollectionView()
                 }
-              
             }
         }
       
+    }
+    
+    func reloadProductsCollectionView(){
+        if isPaginating {
+            productsCollectionView.reloadInputViews()
+            print("reloading sections")
+        } else {
+            productsCollectionView.reloadData()
+           
+        }
     }
     
     func removeTableView(){
@@ -200,6 +210,7 @@ class CategoriesAndFoodVC: UIViewController {
             case .success(let data):
                 self.productData = data
                 self.productData?.data?.forEach({ element in
+                    
                     if element.isCategory!{
                         self.subcategories.append(element)
                     } else {
@@ -209,14 +220,8 @@ class CategoriesAndFoodVC: UIViewController {
                 })
                 if page == data.meta?.lastPage || data.meta?.lastPage == 1  { self.hasMorePages = false}
                
-                print(self.productData?.meta as Any)
-                if self.products.isEmpty{
-                    self.showSubcategories = true
-                  
-                }
-                else {
-                    self.showSubcategories = false
-                }
+                self.showSubcategories = self.products.isEmpty ? true : false
+                
                 DispatchQueue.main.async {
                     self.dismissLoadingView()
                     self.updateUI()
@@ -234,6 +239,7 @@ class CategoriesAndFoodVC: UIViewController {
          if !hasSetPointOrigin {
              hasSetPointOrigin = true
              pointOrigin = self.view.frame.origin
+        
          }
      }
     
@@ -362,7 +368,16 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
                 self.removeAllCollectionViews()
                 self.getProducts(shopID: shopID, categoryID: id, page: 1)
             }
+        } else {
+            let item = products[indexPath.item]
+            let storyboard = UIStoryboard(name: "Food", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ProductVC") as! ProductViewController
+            vc.product = item
+            vc.modalPresentationStyle = .custom
+            vc.transitioningDelegate = self
             
+            
+            self.present(vc, animated: true)
         }
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -375,10 +390,16 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
                 return
             }
             page += 1
-            print("next page is \(page)")
-            print(productData?.meta?.currentPage ?? 0)
+            isPaginating = true
             getProducts(shopID: shopID, categoryID: CategoryID, page: page)
+            
         }
     }
     
+}
+
+extension CategoriesAndFoodVC: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.11)
+    }
 }
