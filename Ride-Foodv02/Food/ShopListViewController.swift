@@ -58,6 +58,19 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         return CGSize(width: width, height: width/2.0)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shop = shops[indexPath.item]
+        let storyboard = UIStoryboard(name: "Food", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "shopDetailVC") as! ShopDetailViewController
+        vc.id = shop.id
+        vc.shopName = shop.name
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        
+        
+        self.present(vc, animated: true)
+    }
+    
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,4 +104,9 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         
     }
     
+}
+extension ShopListViewController: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.11)
+    }
 }

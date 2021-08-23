@@ -456,7 +456,6 @@
                                                     <outlet property="nameLabel" destination="ZEO-VZ-isD" id="lKz-bz-5kc"/>
                                                     <outlet property="roundedView" destination="EMU-i5-DH3" id="Xat-Ps-2nv"/>
                                                     <outlet property="shopImageView" destination="wTV-MS-YwB" id="uoc-la-dAQ"/>
-                                                    <segue destination="1cN-PW-3Es" kind="show" identifier="shopDetail" id="4h5-Hj-dC9"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -535,13 +534,13 @@
         <!--Shop Detail View Controller-->
         <scene sceneID="D6c-R5-c9q">
             <objects>
-                <viewController id="1cN-PW-3Es" customClass="ShopDetailViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shopDetailVC" id="1cN-PW-3Es" customClass="ShopDetailViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1iT-54-tlp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLx-1Z-Uya" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="329" width="40" height="5"/>
+                                <rect key="frame" x="187" y="383" width="40" height="5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="QS7-Vw-STO"/>
@@ -549,7 +548,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-bN-9yx" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="342" width="414" height="500"/>
+                                <rect key="frame" x="0.0" y="396" width="414" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Магазин перекресток" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P18-Dj-Img">
                                         <rect key="frame" x="119.5" y="13" width="175" height="41"/>
