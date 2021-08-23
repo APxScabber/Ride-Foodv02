@@ -1,6 +1,9 @@
 import UIKit
 
 class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+    
+    var hasSetPointOrigin = false
+    var pointOrigin: CGPoint?
 
     //MARK: - API
     
@@ -53,6 +56,10 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
         shopDetailView.delegate = self
         shopDetailView.isHidden = true
         view.addSubview(shopDetailView)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
+              view.addGestureRecognizer(panGesture)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +72,16 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
             self?.collectionView.reloadData()
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+       
+         if !hasSetPointOrigin {
+             hasSetPointOrigin = true
+             pointOrigin = self.view.frame.origin
+        
+         }
+     }
     
     private var bottomSafeAreaConstant: CGFloat = 0
     
@@ -116,6 +133,31 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
         shopDetailView.scheduleLabel.text = shopDetail.schedule
         shopDetailView.descriptionLabel.text = shopDetail.description
     }
+    
+    @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
+         let translation = sender.translation(in: view)
+
+         // Not allowing the user to drag the view upward
+         guard translation.y >= 0 else { return }
+
+         // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
+         view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
+
+         if sender.state == .ended {
+             let dragVelocity = sender.velocity(in: view)
+             if dragVelocity.y >= 1300 {
+                 // Velocity fast enough to dismiss the uiview
+                 self.dismiss(animated: true, completion: nil)
+             } else {
+                 // Set back to original position of the view controller
+                 UIView.animate(withDuration: 0.3) {
+                     self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 300)
+                 }
+             }
+         }
+     }
+    
+    
 }
 
 //MARK: - ShopDetailViewDelegate
