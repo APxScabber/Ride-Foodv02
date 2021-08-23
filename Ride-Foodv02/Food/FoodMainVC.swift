@@ -6,6 +6,8 @@ protocol FoodMainDelegate: AnyObject {
 }
 
 class FoodMainVC: UIViewController {
+    
+
 
     //MARK: - API
     var addresses = [Address]()
@@ -47,6 +49,8 @@ class FoodMainVC: UIViewController {
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(done))
         swipe.direction = .down
@@ -69,6 +73,8 @@ class FoodMainVC: UIViewController {
         updateUI()
         textField.text = place
     }
+    
+  
 
     //MARK: - Segue
     
@@ -89,6 +95,34 @@ class FoodMainVC: UIViewController {
             destination.region = region
             destination.delegate = self
         }
+    }
+
+    @IBAction func goToTheShopList(_ sender: Any) {
+        goToTheShopListVC(sender: nil, indexPath: nil)
+    }
+    
+    
+    func goToTheShopListVC(sender: Any?, indexPath: IndexPath?){
+        
+      if sender is FoodMainTableViewCell, let indexPath = indexPath{
+            let address = addresses[indexPath.row]
+            let storyboard = UIStoryboard(name: "Food", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
+           
+            vc.place = address.title
+            vc.address = address.fullAddress
+            vc.modalPresentationStyle = .custom
+            vc.transitioningDelegate = self
+            self.present(vc, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "Food", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
+            vc.place = place
+            vc.modalPresentationStyle = .custom
+            vc.transitioningDelegate = self
+            self.present(vc, animated: true)
+        }
+       
     }
     
     //MARK: - UI changes
@@ -144,8 +178,15 @@ extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "foodMainCell", for: indexPath)
+        if let foodMainCell = cell as? FoodMainTableViewCell {
+            goToTheShopListVC(sender: foodMainCell, indexPath: indexPath)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
+    
+   
+    
 }
 
 //MARK: - LocationChooserDelegate
@@ -158,4 +199,10 @@ extension FoodMainVC: LocationChooserDelegate {
     }
     
     
+}
+
+extension FoodMainVC: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.11)
+    }
 }

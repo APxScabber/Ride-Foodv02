@@ -39,7 +39,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="FCz-sX-WZd" kind="show" identifier="shopList" id="aV6-9z-ovV"/>
+                                                    <action selector="goToTheShopList:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="r4O-GY-IVN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -105,7 +105,6 @@
                                                 <connections>
                                                     <outlet property="addressLabel" destination="jc4-dX-OqR" id="IAL-ML-3c1"/>
                                                     <outlet property="placeLabel" destination="UPa-Ac-akw" id="a9o-SD-SFd"/>
-                                                    <segue destination="FCz-sX-WZd" kind="show" identifier="shops" id="fdH-48-1VP"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -358,13 +357,13 @@
         <!--Shop List View Controller-->
         <scene sceneID="14g-gM-goU">
             <objects>
-                <viewController id="FCz-sX-WZd" customClass="ShopListViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shopListVC" id="FCz-sX-WZd" customClass="ShopListViewController" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FuY-Ox-ase">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAe-hB-yE8" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="547" width="414" height="261"/>
+                                <rect key="frame" x="0.0" y="601" width="414" height="261"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Annotation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgq-iQ-M0O">
                                         <rect key="frame" x="25" y="25" width="12" height="19"/>
@@ -490,7 +489,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyN-Uz-MNX" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="534" width="40" height="5"/>
+                                <rect key="frame" x="187" y="588" width="40" height="5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="2Sc-CK-LeM"/>
@@ -498,7 +497,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0M-Bi-I3A">
-                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </view>
                         </subviews>
@@ -786,28 +785,28 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5a0-AN-Vpx">
-                                        <rect key="frame" x="16" y="313" width="382" height="150.5"/>
+                                        <rect key="frame" x="16" y="313" width="382" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Молоко Aroy-D кокосовое 17-19%, 500 г" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErL-9N-71W">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="20"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="переработанная мякоть кокосового ореха 70%, вода 2,99%, эмульгатор Е435 0,01%" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="iwQ-VE-OFo">
-                                                <rect key="frame" x="0.0" y="36.5" width="382" height="41"/>
+                                                <rect key="frame" x="0.0" y="36" width="382" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="SettingsHeaderColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Производитель: Thai Agri Foods Public CL." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciW-YK-AQN">
-                                                <rect key="frame" x="0.0" y="93.5" width="382" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="93" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Страна: Таиланд" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUb-5w-QZo">
-                                                <rect key="frame" x="0.0" y="130" width="382" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="129.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -953,7 +952,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aV6-9z-ovV"/>
         <segue reference="Qdm-fE-WHy"/>
     </inferredMetricsTieBreakers>
     <resources>
