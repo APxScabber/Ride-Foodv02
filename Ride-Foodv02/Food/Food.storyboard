@@ -786,8 +786,8 @@
                                             <action selector="Exit:" destination="Aw0-rm-eNR" eventType="touchUpInside" id="KCU-Ll-73P"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="5a0-AN-Vpx">
-                                        <rect key="frame" x="16" y="338" width="382" height="144.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5a0-AN-Vpx">
+                                        <rect key="frame" x="16" y="313" width="382" height="150.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Молоко Aroy-D кокосовое 17-19%, 500 г" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErL-9N-71W">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -796,19 +796,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="переработанная мякоть кокосового ореха 70%, вода 2,99%, эмульгатор Е435 0,01%" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="iwQ-VE-OFo">
-                                                <rect key="frame" x="0.0" y="34.5" width="382" height="41"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="382" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="SettingsHeaderColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Производитель: Thai Agri Foods Public CL." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciW-YK-AQN">
-                                                <rect key="frame" x="0.0" y="89.5" width="382" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="93.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Страна: Таиланд" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUb-5w-QZo">
-                                                <rect key="frame" x="0.0" y="124" width="382" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="130" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -816,10 +816,9 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5v-kj-p27">
-                                        <rect key="frame" x="85" y="25" width="244" height="308"/>
+                                        <rect key="frame" x="85" y="12" width="244" height="289"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="308" id="0vE-7z-0vp"/>
-                                            <constraint firstAttribute="height" constant="308" id="FFz-eL-h9R"/>
+                                            <constraint firstAttribute="height" constant="289" id="FFz-eL-h9R"/>
                                             <constraint firstAttribute="width" constant="244" id="T3z-ht-HKd"/>
                                         </constraints>
                                     </imageView>
@@ -911,7 +910,7 @@
                                 <constraints>
                                     <constraint firstItem="mAv-QJ-J37" firstAttribute="top" secondItem="t6E-4b-acO" secondAttribute="top" constant="39" id="2sd-lF-HdB"/>
                                     <constraint firstItem="5a0-AN-Vpx" firstAttribute="leading" secondItem="t6E-4b-acO" secondAttribute="leading" constant="16" id="48G-q1-aID"/>
-                                    <constraint firstItem="5a0-AN-Vpx" firstAttribute="top" secondItem="e5v-kj-p27" secondAttribute="bottom" constant="5" id="5T5-Ao-Ddc"/>
+                                    <constraint firstItem="5a0-AN-Vpx" firstAttribute="top" secondItem="e5v-kj-p27" secondAttribute="bottom" constant="12" id="5T5-Ao-Ddc"/>
                                     <constraint firstItem="e5v-kj-p27" firstAttribute="centerX" secondItem="t6E-4b-acO" secondAttribute="centerX" id="7Tq-5J-oTG"/>
                                     <constraint firstItem="mAv-QJ-J37" firstAttribute="leading" secondItem="e5v-kj-p27" secondAttribute="trailing" constant="31" id="BY1-4V-40W"/>
                                     <constraint firstItem="5a0-AN-Vpx" firstAttribute="centerX" secondItem="t6E-4b-acO" secondAttribute="centerX" id="IXy-sk-dwP"/>
@@ -919,9 +918,8 @@
                                     <constraint firstItem="W6l-xS-awh" firstAttribute="trailing" secondItem="mAv-QJ-J37" secondAttribute="trailing" id="Syp-ac-WfN"/>
                                     <constraint firstAttribute="trailing" secondItem="5a0-AN-Vpx" secondAttribute="trailing" constant="16" id="aEk-HE-GFE"/>
                                     <constraint firstAttribute="bottom" secondItem="W6l-xS-awh" secondAttribute="bottom" constant="59" id="eOH-5v-W20"/>
-                                    <constraint firstItem="e5v-kj-p27" firstAttribute="top" secondItem="t6E-4b-acO" secondAttribute="top" constant="25" id="mZh-gs-OLD"/>
                                     <constraint firstAttribute="trailing" secondItem="W6l-xS-awh" secondAttribute="trailing" constant="24" id="n6J-9p-eeh"/>
-                                    <constraint firstItem="e5v-kj-p27" firstAttribute="top" secondItem="t6E-4b-acO" secondAttribute="top" constant="25" id="xEC-Rm-108"/>
+                                    <constraint firstItem="e5v-kj-p27" firstAttribute="top" secondItem="t6E-4b-acO" secondAttribute="top" constant="12" id="xEC-Rm-108"/>
                                 </constraints>
                             </view>
                         </subviews>
