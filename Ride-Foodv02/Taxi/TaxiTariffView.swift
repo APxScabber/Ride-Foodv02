@@ -53,7 +53,9 @@ class TaxiTariffView: UIView {
     @IBOutlet weak var standartDurationLabel: UILabel! { didSet {
         standartDurationLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
     }}
-    
+    @IBOutlet weak var standartOldPriceLabel: UILabel! { didSet {
+        standartOldPriceLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
+    }}
     
     
     @IBOutlet weak var premiumRoundedView: RoundedView! { didSet {
@@ -68,7 +70,9 @@ class TaxiTariffView: UIView {
     @IBOutlet weak var premiumDurationLabel: UILabel! { didSet {
         premiumDurationLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
     }}
-    
+    @IBOutlet weak var premiumOldPriceLabel: UILabel! { didSet {
+        premiumOldPriceLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
+    }}
     
     @IBOutlet weak var businessRoundedView: RoundedView! { didSet {
         setup(businessRoundedView)
@@ -81,6 +85,9 @@ class TaxiTariffView: UIView {
     }}
     @IBOutlet weak var businessDurationLabel: UILabel! { didSet {
         businessDurationLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
+    }}
+    @IBOutlet weak var businessOldPriceLabel: UILabel! { didSet {
+        businessOldPriceLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
     }}
     
     //MARK: - Actions
