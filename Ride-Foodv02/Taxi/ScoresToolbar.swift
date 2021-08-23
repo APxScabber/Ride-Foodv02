@@ -22,6 +22,7 @@ class ScoresToolbar: UIView {
     @IBOutlet weak var underBarLine: UIView!
     @IBOutlet weak var errorLabel: UILabel! { didSet {
         errorLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
+        errorLabel.text = Localizable.Scores.scoresError.localized
     }}
     
     @IBOutlet weak var roundedView: RoundedView! { didSet {

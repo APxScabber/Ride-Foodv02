@@ -121,39 +121,52 @@ class TaxiTariffView: UIView {
     @objc
     private func selectStandartView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended && !usedScores {
-            reset()
             selectedIndex = 0
-            standartRoundedView.colorToFill = .white
-            standartImageView.image = #imageLiteral(resourceName: "StandartCar")
-            standartDurationLabel.textColor = #colorLiteral(red: 0.6, green: 0.8, blue: 0.2, alpha: 1)
-            standartPriceLabel.textColor = .black
+            reset()
+            updateStandartView()
         }
     }
     
+    private func updateStandartView() {
+        standartRoundedView.colorToFill = .white
+        standartImageView.image = #imageLiteral(resourceName: "StandartCar")
+        standartDurationLabel.textColor = #colorLiteral(red: 0.6, green: 0.8, blue: 0.2, alpha: 1)
+        standartPriceLabel.textColor = .black
+    }
     
     @objc
     private func selectPremiumView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended && !usedScores {
-            reset()
             selectedIndex = 1
-            premiumRoundedView.colorToFill = .white
-            premiumImageView.image = #imageLiteral(resourceName: "PremiumCar")
-            premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
-            premiumPriceLabel.textColor = .black
+            reset()
+            updatePremiumView()
         }
     }
+    
+    private func updatePremiumView() {
+        premiumRoundedView.colorToFill = .white
+        premiumImageView.image = #imageLiteral(resourceName: "PremiumCar")
+        premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
+        premiumPriceLabel.textColor = .black
+    }
+    
     
     @objc
     private func selectBusinessView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended && !usedScores {
-            reset()
             selectedIndex = 2
-            businessRoundedView.colorToFill = .white
-            businessImageView.image = #imageLiteral(resourceName: "BusinessCar")
-            businessDurationLabel.textColor = #colorLiteral(red: 0.831372549, green: 0.7411764706, blue: 0.5019607843, alpha: 1)
-            businessPriceLabel.textColor = .black
+            reset()
+            updateBusinessView()
         }
     }
+    
+    private func updateBusinessView() {
+        businessRoundedView.colorToFill = .white
+        businessImageView.image = #imageLiteral(resourceName: "BusinessCar")
+        businessDurationLabel.textColor = #colorLiteral(red: 0.831372549, green: 0.7411764706, blue: 0.5019607843, alpha: 1)
+        businessPriceLabel.textColor = .black
+    }
+    
     func reset() {
         standartRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         premiumRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
@@ -171,6 +184,7 @@ class TaxiTariffView: UIView {
         premiumPriceLabel.textColor = #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5529411765, alpha: 1)
         businessPriceLabel.textColor = #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5529411765, alpha: 1)
 
+        recreateViewIfNeeded()
     }
     
     func updateUIWith(scores:Int) {
@@ -204,5 +218,21 @@ class TaxiTariffView: UIView {
         oldLabel.attributedText = attrString
     }
     
+    
+    private func recreateViewIfNeeded() {
+        guard let index = selectedIndex else { return }
+        switch index {
+            case 0:
+                updateStandartView()
+                if usedScores { standartOldPriceLabel.isHidden = false }
+            case 1:
+                updatePremiumView()
+                if usedScores { premiumOldPriceLabel.isHidden = false }
+            case 2:
+                updateBusinessView()
+                if usedScores { businessOldPriceLabel.isHidden = false }
+        default:break
+        }
+    }
     
 }
