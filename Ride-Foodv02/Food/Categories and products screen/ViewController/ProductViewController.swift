@@ -9,6 +9,7 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
+    
     let topCellImageView = UIImageView(image: UIImage(named: "topSell"))
     
     var onSaleView = OnSaleView()
@@ -166,8 +167,12 @@ class ProductViewController: UIViewController {
     
     
     func setUpMainView(){
+
+        
         containerView.layer.cornerRadius = 15.0
         containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        
+       
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
               view.addGestureRecognizer(panGesture)
         
