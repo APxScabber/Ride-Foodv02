@@ -9,6 +9,10 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
+    let topCellImageView = UIImageView(image: UIImage(named: "topSell"))
+    
+    var onSaleView = OnSaleView()
+    
     @IBOutlet weak var containerView: UIView!
     
     
@@ -95,6 +99,19 @@ class ProductViewController: UIViewController {
     
     func setViews(with data: Product){
         self.showLoadingView()
+        
+        if data.hit != 0{
+            addTopCellImageView()
+        } else {
+            topCellImageView.removeFromSuperview()
+        }
+        
+        if let sale = data.sale, sale != 0{
+            topCellImageView.removeFromSuperview()
+            addSaleView(with: sale)
+        } else {
+            onSaleView.removeFromSuperview()
+        }
         ProductNameLabel.text = data.name
         productPriceLabel.text = "\(data.price ?? 0) руб"
         productCompositionLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Состав: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.composition ?? "")
@@ -120,6 +137,30 @@ class ProductViewController: UIViewController {
                
             }
         }
+        
+    }
+    
+    func addSaleView(with salePercentage: Int){
+        onSaleView = OnSaleView(salePercentage: salePercentage)
+        containerView.addSubview(onSaleView)
+        
+        NSLayoutConstraint.activate([
+            onSaleView.bottomAnchor.constraint(equalTo: ProductDescriptionStackView.topAnchor, constant: -18),
+            onSaleView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            onSaleView.heightAnchor.constraint(equalToConstant: 23),
+            onSaleView.widthAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    func addTopCellImageView(){
+        containerView.addSubview(topCellImageView)
+        topCellImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topCellImageView.bottomAnchor.constraint(equalTo: ProductDescriptionStackView.topAnchor, constant: -18),
+            topCellImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+            topCellImageView.heightAnchor.constraint(equalToConstant: 23),
+            topCellImageView.widthAnchor.constraint(equalToConstant: 90)
+        ])
         
     }
     
