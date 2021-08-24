@@ -24,6 +24,10 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     let weightLabel = UILabel(frame: .zero)
     
+    let oldPriceLabel = UILabel()
+    
+    var onSaleView = OnSaleView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -89,7 +93,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             priceLabel.leadingAnchor.constraint(equalTo: cellBackgroundView.leadingAnchor, constant: 15),
             priceLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -12),
-            priceLabel.widthAnchor.constraint(equalToConstant: 70),
+            priceLabel.widthAnchor.constraint(equalToConstant: 60),
             priceLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
@@ -103,7 +107,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             weightLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -15),
             weightLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -12),
-            weightLabel.widthAnchor.constraint(equalToConstant: 70),
+            weightLabel.widthAnchor.constraint(equalToConstant: 40),
             weightLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
@@ -120,6 +124,40 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    func setOnSaleView(percentage: Int){
+        onSaleView = OnSaleView(salePercentage: percentage)
+        self.addSubview(onSaleView)
+        
+        NSLayoutConstraint.activate([
+            onSaleView.topAnchor.constraint(equalTo: self.topAnchor),
+            onSaleView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            onSaleView.widthAnchor.constraint(equalToConstant: 60),
+            onSaleView.heightAnchor.constraint(equalToConstant: 20)
+        ])
+    }
+    
+    func setSalePriceLabel(price: Int, sale: Int){
+        let oldPrice = price + (price * sale / 100)
+        priceLabel.textColor = UIColor.saleOrangeColor
+        
+        
+        cellBackgroundView.addSubview(oldPriceLabel)
+        oldPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        oldPriceLabel.attributedText = NSMutableAttributedString(string: "\(oldPrice) руб", attributes: [
+                        NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                        NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 11)!,
+                        NSAttributedString.Key.foregroundColor: UIColor.DarkGrayTextColor
+                        ])
+        NSLayoutConstraint.activate([
+            oldPriceLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 2),
+            oldPriceLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
+            oldPriceLabel.widthAnchor.constraint(equalToConstant: 55),
+            oldPriceLabel.heightAnchor.constraint(equalToConstant: 20)
+            
+        ])
+        
+    }
+    
     func setData(product: Product){
         
         if product.hit != 0{
@@ -127,6 +165,17 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         } else {
             topCellImageView.removeFromSuperview()
         }
+        
+        if let sale = product.sale, sale != 0, let price = product.price{
+            topCellImageView.removeFromSuperview()
+            setOnSaleView(percentage: sale)
+            setSalePriceLabel(price: price, sale: sale)
+        } else {
+            onSaleView.removeFromSuperview()
+            oldPriceLabel.removeFromSuperview()
+            priceLabel.textColor = .black
+        }
+        
         nameLabel.text = product.name
         priceLabel.text = "\(product.price ?? 0) руб"
         weightLabel.text = "\(product.weight ?? 0) г"

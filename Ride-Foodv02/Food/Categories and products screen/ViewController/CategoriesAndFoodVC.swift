@@ -223,6 +223,7 @@ class CategoriesAndFoodVC: UIViewController {
                 self.showSubcategories = self.products.isEmpty ? true : false
                 
                 DispatchQueue.main.async {
+                    print(self.products)
                     self.dismissLoadingView()
                     self.updateUI()
                 }
