@@ -28,16 +28,16 @@ class MapKitManager {
         
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
-            break
+            MapKitManager.shared.locationManager.startUpdatingLocation()
         case .authorizedWhenInUse:
             
             MapKitManager.shared.locationManager.startUpdatingLocation()
         case .denied:
             
-            settingsAlertController(title: "Определение местороложения запрещено",
-                                                       message: "Разрешить?",
-                                                       url: URL(string: UIApplication.openSettingsURLString),
-                                                       view: view)
+            settingsAlertController(title: Localizable.MapManager.location.localized,
+                                    message: Localizable.MapManager.allowed.localized,
+                                    url: URL(string: UIApplication.openSettingsURLString),
+                                    view: view)
         case .notDetermined:
             
             MapKitManager.shared.locationManager.requestWhenInUseAuthorization()
@@ -56,21 +56,21 @@ class MapKitManager {
             checkAuthorization(view: view)
         } else {
 
-            settingsAlertController(title: "Служба геолокации выключена",
-                                                       message: "Включить?",
-                                                       url: URL(string: "App-Prefs:root=LOCATION_SERVICES"),
-                                                       view: view)
+            settingsAlertController(title: Localizable.MapManager.geolocation.localized,
+                                    message: Localizable.MapManager.turnOn.localized,
+                                    url: URL(string: "App-Prefs:root=LOCATION_SERVICES"),
+                                    view: view)
         }
     }
 
     private func settingsAlertController(title: String, message: String, url: URL?, view: UIViewController) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let settingsButton = UIAlertAction(title: "Настройки", style: .default) { action in
+        let settingsButton = UIAlertAction(title: Localizable.MapManager.geoAlertSettings.localized, style: .default) { action in
             if let url = url {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
-        let cancelButton = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: Localizable.MapManager.geoAlertCancel.localized, style: .cancel, handler: nil)
         alertController.addAction(settingsButton)
         alertController.addAction(cancelButton)
         

@@ -14,6 +14,7 @@ class FromAddressDetailView: UIView {
     @IBOutlet weak var infoLabel: UILabel! { didSet {
         infoLabel.font = UIFont.SFUIDisplayLight(size: 12.0)
         infoLabel.textColor = TaxiSpecifyFromToColor.white.value
+        infoLabel.text = Localizable.Taxi.infoFromLabel.localized
     }}
     
     @IBOutlet weak var blurEffectView: UIVisualEffectView! { didSet {

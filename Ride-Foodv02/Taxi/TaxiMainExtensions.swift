@@ -14,10 +14,9 @@ extension TaxiMainVC: CLLocationManagerDelegate {
         // Получаем координаты пользователя при активной locationManager.startUpdatingLocation()
         if let loc = manager.location?.coordinate {
             
-            MapKitManager.shared.currentUserCoordinate = loc
-            
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: loc) { address in
                 self.fromAddress = address
+                MapKitManager.shared.locationManager.stopUpdatingLocation()
             }
         }
     }
@@ -77,7 +76,7 @@ extension TaxiMainVC: SetMapMarkersDelegate {
     }
     
     func pathTime(minutes: Int) {
-        timeLabel.text = "≈\(minutes) минут"
+        timeLabel.text = "≈\(minutes) \(Localizable.Taxi.minutes.localized)"
         pathTimeView.alpha = 1
     }
 }

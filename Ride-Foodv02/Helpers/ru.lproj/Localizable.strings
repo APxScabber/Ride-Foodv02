@@ -98,6 +98,19 @@
 "confirm" = "Подтвердить";
 "fromAddressDetail" = "Уточните как до вас добраться";
 "toAddressDetail" = "Уточните куда едем";
+"minutes" = "минут";
+"infoFromLabel" = "Нажав сюда можно уточнить, как до вас добраться
+(подъезд, строения рядом или другой ориентир)";
+"infoToLabel" = "Нажав сюда можно указать ориентиры пункта назначения";
+
+//MARK: - Map Manager
+
+"location" = "Определение местороложения запрещено";
+"allowed" = "Разрешить?";
+"geolocation" = "Служба геолокации выключена";
+"geolocation" = "Включить?";
+"geoAlertSettings" = "Настройки";
+"geoAlertCancel" = "Отмена";
 
 //MARK: - Order histort
 

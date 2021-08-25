@@ -48,6 +48,7 @@ class CalculatingPathManager {
                 map.addOverlay(route.polyline)
                 let timeInterval = Int(route.expectedTravelTime)
                 let timeMinutes = (timeInterval / 60) % 60
+                map.fitAllAnnotations()
                 competion(timeMinutes)
             }
         }

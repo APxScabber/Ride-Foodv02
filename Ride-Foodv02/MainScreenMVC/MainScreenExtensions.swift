@@ -14,9 +14,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
         
         // Получаем координаты пользователя при активной locationManager.startUpdatingLocation()
         if let loc = manager.location?.coordinate {
-            
-            MapKitManager.shared.currentUserCoordinate = loc
-            
+
             let center = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
 
@@ -24,6 +22,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: loc) { address in
                 self.foodTaxiView.placeLabel.text = address
+                MapKitManager.shared.locationManager.stopUpdatingLocation()
             }
         }
     }
