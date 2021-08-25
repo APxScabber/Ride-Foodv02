@@ -167,7 +167,7 @@ class ProductViewController: UIViewController {
     
     func addSaleView(with salePercentage: Int){
         onSaleView = OnSaleView(salePercentage: salePercentage)
-        containerView.addSubview(onSaleView)
+        ProductDescriptionStackView.addSubview(onSaleView)
         
         NSLayoutConstraint.activate([
             onSaleView.bottomAnchor.constraint(equalTo: ProductDescriptionStackView.topAnchor, constant: -18),
@@ -178,7 +178,7 @@ class ProductViewController: UIViewController {
     }
     
     func addTopCellImageView(){
-        containerView.addSubview(topCellImageView)
+        ProductDescriptionStackView.addSubview(topCellImageView)
         topCellImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             topCellImageView.bottomAnchor.constraint(equalTo: ProductDescriptionStackView.topAnchor, constant: -18),
