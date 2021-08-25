@@ -9,6 +9,7 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
+    var overallSum: Int = 0
     
     let topCellImageView = UIImageView(image: UIImage(named: "topSell"))
     
@@ -47,7 +48,7 @@ class ProductViewController: UIViewController {
     }}
     
     
-    var qty: Int = 0
+    var qty: Int = 1
     
     var product = Product()
     
@@ -78,14 +79,32 @@ class ProductViewController: UIViewController {
     @IBAction func IncreaseQTY(_ sender: Any) {
         qty += 1
         QTYLbel.text = "\(qty)"
+        if let price = product.price {
+            setPriceLabelData(price: price, qty: qty)
+        }
+        
     }
     
     @IBAction func DecreaseQTY(_ sender: Any) {
-        guard qty > 0 else {
+        guard qty > 1 else {
             return
         }
         qty -= 1
         QTYLbel.text = "\(qty)"
+        if let price = product.price {
+            setPriceLabelData(price: price, qty: qty)
+        }
+    }
+    
+    func calculateOverallPrice(price: Int, count: Int) -> Int{
+        var sumToPay = Int()
+        sumToPay = price * count
+        return sumToPay
+    }
+    
+    func setPriceLabelData(price: Int, qty: Int){
+        overallSum = calculateOverallPrice(price: price, count: qty)
+        productPriceLabel.text = "\(overallSum) руб"
     }
     
     
@@ -113,8 +132,13 @@ class ProductViewController: UIViewController {
         } else {
             onSaleView.removeFromSuperview()
         }
+        
         ProductNameLabel.text = data.name
-        productPriceLabel.text = "\(data.price ?? 0) руб"
+        if let price = data.price, qty != 0{
+          setPriceLabelData(price: price, qty: qty)
+        }
+        
+        
         productCompositionLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Состав: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.composition ?? "")
         ProductManufacturerLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Производитель: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: "Неизвестен")
         productManufacturerCountryLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Страна: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.producing ?? "Страна неизвестна")
