@@ -129,6 +129,8 @@ class TaxiMainVC: UIViewController {
             roundedView.backgroundColor = .clear
             taxiTariffView.isHidden = false
             taxiTariffView.reset()
+            roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+            roundedView.isUserInteractionEnabled = false
             transparentView.isHidden = false
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.view.layoutIfNeeded()
@@ -558,9 +560,9 @@ extension TaxiMainVC: TaxiTariffViewDelegate {
         if !taxiTariffView.usedScores && taxiTariffView.selectedIndex != nil {
             wholeTransparentView.isHidden = false
             scoresView.isHidden = false
-            scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 157)
+            scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 170)
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-                self.scoresView.frame.origin.y = self.view.bounds.height - 157
+                self.scoresView.frame.origin.y = self.view.bounds.height - 170
             }
         }
 
@@ -568,6 +570,11 @@ extension TaxiMainVC: TaxiTariffViewDelegate {
     
     func usePromocode() {
         
+    }
+    
+    func tariffEntered() {
+        roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        roundedView.isUserInteractionEnabled = true
     }
     
 }
