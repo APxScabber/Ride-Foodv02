@@ -48,19 +48,16 @@ class SetMapMarkersManager {
         annotation.title = isFromAddressMarkSelected ? "From" : "To"
         map.addAnnotation(annotation)
         MapKitManager.shared.currentUserCoordinate = coordinate
-        //map.fitAllAnnotations()
         
         CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { address in
             completion(address)
-            self.isFromAddressMarkSelected = true
         }
+        
         if isPathCalculeted {
             CalculatingPathManager.shared.calculatingPath(for: map) { pathTime in
                     self.delegate?.pathTime(minutes: pathTime)
             }
         }
-        
-        MapKitManager.shared.locationManager.stopUpdatingLocation()
         delegate?.zoomAllMarketsOnMap()
     }
 }

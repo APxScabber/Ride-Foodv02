@@ -98,6 +98,19 @@
 "confirm" = "Confirm";
 "fromAddressDetail" = "Specify how to get to you";
 "toAddressDetail" = "Specify where we are going";
+"minutes" = "minutes";
+"infoFromLabel" = "By clicking here you can find out how to get to you
+(entrance, buildings nearby or other landmark)";
+"infoToLabel" = "By clicking here, you can specify the landmarks of your destination";
+
+//MARK: - Map Manager
+
+"location" = "Location detection is forbiden";
+"allowed" = "Allowed?";
+"geolocation" = "Geolocation service is turn off";
+"geolocation" = "Turn on?";
+"geoAlertSettings" = "Settings";
+"geoAlertCancel" = "Cancel";
 
 //MARK: - Order History
  

@@ -13,6 +13,7 @@ class ToAddressDetailView: UIView {
     @IBOutlet weak var infoLabel: UILabel! { didSet {
         infoLabel.font = UIFont.SFUIDisplayLight(size: 12.0)
         infoLabel.textColor = TaxiSpecifyFromToColor.white.value
+        infoLabel.text = Localizable.Taxi.infoToLabel.localized
     }}
     @IBOutlet weak var blurEffectView: UIVisualEffectView! { didSet {
         blurEffectView.alpha = UserDefaultsManager.shared.isFirstEnterTaxi ? 0.75 : 0

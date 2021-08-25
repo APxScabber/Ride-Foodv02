@@ -12,7 +12,6 @@ class TaxiMainVC: UIViewController {
     var currentUserCoordinate: CLLocationCoordinate2D?
 
     let taxiMainInteractor = TaxiMainInteractor()
-    //let calculatingPathManager = CalculatingPathManager()
     
     //MARK: - Private properties
     
@@ -39,7 +38,9 @@ class TaxiMainVC: UIViewController {
     }}
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeightView: UIView!
+    @IBOutlet weak var tableViewHeightView: UIView! { didSet {
+        tableViewHeightView.isHidden = true
+    }}
     @IBOutlet weak var addressesChooserView: UIView! { didSet {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(moveDown(_:)))
         swipe.direction = .down
@@ -50,6 +51,7 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var fromTextField: UITextField! { didSet {
         fromTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
         fromTextField.addTarget(self, action: #selector(fromTextFieldChanged), for: .editingChanged)
+        fromTextField.addTarget(self, action: #selector(fromTextFieldEnd), for: .editingDidEnd)
         fromTextField.delegate = self
         fromTextField.placeholder = Localizable.Taxi.fromAddressQuestion.localized
     }}
@@ -59,6 +61,7 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var toTextField:UITextField! { didSet {
         toTextField.font = UIFont.SFUIDisplayLight(size: 17.0)
         toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
+        toTextField.addTarget(self, action: #selector(toTextFieldEnd), for: .editingDidEnd)
         toTextField.delegate = self
         toTextField.placeholder = Localizable.Taxi.toAddressQuestion.localized
     }}
@@ -89,8 +92,12 @@ class TaxiMainVC: UIViewController {
     @IBOutlet weak var transparentView: UIView!
     @IBOutlet weak var wholeTransparentView: UIView!
     
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addressesChooserViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint! { didSet {
+        tableViewHeightConstraint.constant = 0
+    }}
+    @IBOutlet weak var addressesChooserViewHeightConstraint: NSLayoutConstraint! { didSet{
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight
+    }}
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -109,6 +116,7 @@ class TaxiMainVC: UIViewController {
     //MARK: - Actions
     @IBAction func close(_ sender: UIButton) {
         SetMapMarkersManager.shared.isPathCalculeted = false
+        SetMapMarkersManager.shared.isFromAddressMarkSelected = true
         dismiss(animated: true)
     }
     
@@ -159,6 +167,11 @@ class TaxiMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        print(addressesChooserViewHeightConstraint.constant)
+        
+        
+        MapKitManager.shared.checkLocationServices(delegate: self, view: self)
+        
         updateUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -187,25 +200,17 @@ class TaxiMainVC: UIViewController {
         addressesChooserView.addSubview(taxiTariffView)
         view.addSubview(scoresView)
         view.addSubview(scoresToolbar)
-        
-        if let coordinate = MapKitManager.shared.currentUserCoordinate {
-
-            SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
-                self.fromAddress = address
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + tableViewHeightConstraint.constant
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight
         responderTextField?.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         safeAreaBottomHeight = view.safeAreaInsets.bottom
-        showMapItems(false)
         taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
     }
     
@@ -219,7 +224,10 @@ class TaxiMainVC: UIViewController {
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
 
         if recognizer.state == .ended {
-
+            
+            
+            SetMapMarkersManager.shared.isFromAddressMarkSelected = true
+            
             let location = recognizer.location(in: mapView)
             let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
             
@@ -253,10 +261,7 @@ class TaxiMainVC: UIViewController {
         if keyboardHeight == 0 { keyboardHeight = size.height }
         
         if shouldUpdateUI {
-            updateConstraints()
-            tableViewHeightView.isHidden = false
             setBottomConstraintTo(keyboardHeight - safeAreaBottomHeight)
-            showMapItems(true)
             shouldUpdateUI = false
         }
     }
@@ -309,8 +314,18 @@ class TaxiMainVC: UIViewController {
     }
     
     @objc
+    private func toTextFieldEnd() {
+        setToMarker()
+    }
+    
+    @objc
     private func fromTextFieldChanged() {
         fromAddress = fromTextField.text ?? ""
+    }
+    
+    @objc
+    private func fromTextFieldEnd() {
+        setFromMarket()
     }
     
     @objc
@@ -337,26 +352,39 @@ class TaxiMainVC: UIViewController {
             self.view.layoutIfNeeded()
         }
         tableViewHeightView.isHidden = true
- 
-        if toTextField.text != "" {
-            SetMapMarkersManager.shared.isFromAddressMarkSelected = false
-            taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { address in
-                self.toAddress = address
+    }
+    
+    private func setFromMarket() {
+        if fromTextField.text != "" {
+            SetMapMarkersManager.shared.isFromAddressMarkSelected = true
+            taxiMainInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
+                self.fromAddress = respounceAddress
+            }
+        } else {
+            fromTextField.text = fromAddress
+            _ = self.mapView.annotations.compactMap { mark in
+                if mark.title == "From" {
+                    self.mapView.removeAnnotation(mark)
+                }
             }
             
+        }
+    }
+    
+    private func setToMarker() {
+        if toTextField.text != "" {
+            SetMapMarkersManager.shared.isFromAddressMarkSelected = false
+            taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { respounceAddress in
+                self.toAddress = respounceAddress
+            }
         } else {
+            toAddress = ""
             _ = self.mapView.annotations.compactMap { mark in
                 if mark.title == "To" {
                     self.mapView.removeAnnotation(mark)
                 }
             }
         }
-    }
-    
-    private func updateConstraints() {
-        tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + tableViewHeightConstraint.constant
-        compressAddressesViewToFitHeight()
     }
     
     private func compressAddressesViewToFitHeight() {
@@ -381,6 +409,11 @@ class TaxiMainVC: UIViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
+                    self.addressesChooserViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
+                    print("UP \(self.addressesChooserViewHeightConstraint.constant)")
+                    UIView.animate(withDuration: 0.5) {
+                        self.view.layoutIfNeeded()
+                    }
                 }
             default:break
             }
@@ -437,14 +470,26 @@ extension TaxiMainVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         responderTextField = textField
-
-        if textField.tag == 1 {
+        
+        showMapItems(true)
+        
+        switch textField.tag {
+        case 0:
+            tableViewHeightView.isHidden = true
+            addressesChooserViewHeightConstraint.constant -= tableViewHeightConstraint.constant
+            print("Down \(addressesChooserViewHeightConstraint.constant)")
+            tableViewHeightConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        case 1:
+            tableViewHeightView.isHidden = false
             addresses.removeAll()
             loadAdressesFromCoreData()
-        } else {
-            moveDown()
-            addresses.removeAll()
-        }
+            
+        default:
+            break
+        } 
     }
 }
 
@@ -495,8 +540,7 @@ extension TaxiMainVC: ToAddressDetailViewDelegate {
         }
         }
         CalculatingPathManager.shared.calculatingPath(for: mapView) { pathTime in
-            self.timeLabel.text = "≈\(pathTime) минут"
-            self.pathTimeView.alpha = 1
+            self.pathTime(minutes: pathTime)
         }
         
         SetMapMarkersManager.shared.isPathCalculeted = true
@@ -556,9 +600,6 @@ extension TaxiMainVC: ScoresViewDelegate {
     func spendAllScores() {
         enter(scores: scoresView.scores)
     }
-    
-   
-    
 }
 
 //MARK: - ScoresToolbarDelegate
@@ -581,8 +622,4 @@ extension TaxiMainVC: ScoresToolbarDelegate {
         closeScoresView()
         taxiTariffView.updateUIWith(scores: scores)
     }
-    
-    
-    
-    
 }
