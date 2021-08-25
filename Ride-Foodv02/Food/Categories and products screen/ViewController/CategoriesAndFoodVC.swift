@@ -40,6 +40,10 @@ class CategoriesAndFoodVC: UIViewController {
     var pointOrigin: CGPoint?
     
     var isPaginating: Bool = false
+    
+    var isChoosingSubSubCategory: Bool = false
+    var previousCategoryID: Int = 0
+    
    
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
         shopTitleLabel.font = UIFont.SFUIDisplayRegular(size: 15)
@@ -245,7 +249,26 @@ class CategoriesAndFoodVC: UIViewController {
      }
     
     @IBAction func back(_ sender: Any) {
-        dismiss(animated: true)
+        if isChoosingSubSubCategory{
+            if subcategoriesCollectionView != nil, productsCollectionView != nil{
+                self.removeAllCollectionViews()
+                products.removeAll()
+                subcategories.removeAll()
+            }
+           
+            if subcategoriesTableView != nil{
+                self.removeTableView()
+                subcategories.removeAll()
+                products.removeAll()
+            }
+            
+            self.getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
+            
+            isChoosingSubSubCategory = false
+        } else {
+            dismiss(animated: true)
+        }
+        
     }
     
     func setUpViews(){
@@ -326,6 +349,8 @@ extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == self.subcategoriesTableView{
+            previousCategoryID = CategoryID
+            isChoosingSubSubCategory = true
             let subcategory = subcategories[indexPath.row]
             if let id = subcategory.id{
                 self.removeTableView()
@@ -364,10 +389,16 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.subcategoriesCollectionView{
+           
+            
+            isChoosingSubSubCategory = true
+            previousCategoryID = CategoryID
+            
             let subcategory = subcategories[indexPath.row]
             if let id = subcategory.id{
                 self.removeAllCollectionViews()
                 self.getProducts(shopID: shopID, categoryID: id, page: 1)
+               
             }
         } else {
             let item = products[indexPath.item]
