@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1D-He-zF1" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="157"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gBu-YL-rfW">
                             <rect key="frame" x="143" y="18" width="128.5" height="20"/>
@@ -75,7 +75,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="157" id="1kr-RA-jPy"/>
+                        <constraint firstAttribute="height" constant="170" id="1kr-RA-jPy"/>
                         <constraint firstAttribute="trailing" secondItem="2Jq-o2-ExL" secondAttribute="trailing" constant="25" id="FEs-WH-NWv"/>
                         <constraint firstItem="gBu-YL-rfW" firstAttribute="centerX" secondItem="s1D-He-zF1" secondAttribute="centerX" id="GL6-fz-1MH"/>
                         <constraint firstItem="2Jq-o2-ExL" firstAttribute="top" secondItem="gBu-YL-rfW" secondAttribute="bottom" constant="20" id="I21-mI-txN"/>
@@ -91,7 +91,7 @@
             <viewLayoutGuide key="safeArea" id="be6-tC-na1"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="s1D-He-zF1" firstAttribute="top" secondItem="be6-tC-na1" secondAttribute="top" id="E04-Y0-GPg"/>
+                <constraint firstItem="s1D-He-zF1" firstAttribute="top" secondItem="3ml-hL-ezf" secondAttribute="top" id="E04-Y0-GPg"/>
                 <constraint firstItem="s1D-He-zF1" firstAttribute="leading" secondItem="be6-tC-na1" secondAttribute="leading" id="Fmd-Cf-C0p"/>
                 <constraint firstItem="s1D-He-zF1" firstAttribute="trailing" secondItem="be6-tC-na1" secondAttribute="trailing" id="sMS-9Y-lN3"/>
             </constraints>

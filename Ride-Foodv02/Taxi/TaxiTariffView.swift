@@ -3,6 +3,7 @@ import UIKit
 protocol TaxiTariffViewDelegate: AnyObject {
     func useScores()
     func usePromocode()
+    func tariffEntered()
 }
 
 class TaxiTariffView: UIView {
@@ -124,6 +125,7 @@ class TaxiTariffView: UIView {
             selectedIndex = 0
             reset()
             updateStandartView()
+            delegate?.tariffEntered()
         }
     }
     
@@ -140,6 +142,7 @@ class TaxiTariffView: UIView {
             selectedIndex = 1
             reset()
             updatePremiumView()
+            delegate?.tariffEntered()
         }
     }
     
@@ -157,6 +160,7 @@ class TaxiTariffView: UIView {
             selectedIndex = 2
             reset()
             updateBusinessView()
+            delegate?.tariffEntered()
         }
     }
     
