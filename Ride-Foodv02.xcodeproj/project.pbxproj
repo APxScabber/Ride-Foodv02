@@ -202,6 +202,8 @@
 		C446727526CEB38600598459 /* CalculatingPathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727426CEB38600598459 /* CalculatingPathManager.swift */; };
 		C446727726CEEC2D00598459 /* MainScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446727626CEEC2D00598459 /* MainScreenExtensions.swift */; };
 		C446728D26CF222F00598459 /* SetMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446728C26CF222F00598459 /* SetMapMarkersManager.swift */; };
+		C446729526D79D3000598459 /* SetToLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C446729426D79D2F00598459 /* SetToLocationView.xib */; };
+		C446729726D7A15600598459 /* SetToLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446729626D7A15600598459 /* SetToLocationView.swift */; };
 		C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BD267B8B5B00B4C737 /* LoginColors.swift */; };
 		C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892BF267B8B7300B4C737 /* TariffsColors.swift */; };
 		C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */; };
@@ -442,6 +444,8 @@
 		C446727426CEB38600598459 /* CalculatingPathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingPathManager.swift; sourceTree = "<group>"; };
 		C446727626CEEC2D00598459 /* MainScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenExtensions.swift; sourceTree = "<group>"; };
 		C446728C26CF222F00598459 /* SetMapMarkersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapMarkersManager.swift; sourceTree = "<group>"; };
+		C446729426D79D2F00598459 /* SetToLocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetToLocationView.xib; sourceTree = "<group>"; };
+		C446729626D7A15600598459 /* SetToLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetToLocationView.swift; sourceTree = "<group>"; };
 		C47892BD267B8B5B00B4C737 /* LoginColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginColors.swift; sourceTree = "<group>"; };
 		C47892BF267B8B7300B4C737 /* TariffsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsColors.swift; sourceTree = "<group>"; };
 		C47892C2267B8CA900B4C737 /* TariffsFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsFontSize.swift; sourceTree = "<group>"; };
@@ -678,6 +682,8 @@
 				785D38AD26AB09DC00DAB562 /* PromotionView.xib */,
 				785D38AF26AB09E700DAB562 /* PromotionView.swift */,
 				C446727626CEEC2D00598459 /* MainScreenExtensions.swift */,
+				C446729426D79D2F00598459 /* SetToLocationView.xib */,
+				C446729626D7A15600598459 /* SetToLocationView.swift */,
 			);
 			path = MainScreenMVC;
 			sourceTree = "<group>";
@@ -1322,6 +1328,7 @@
 				787140C6268637E6007834ED /* Promocode.storyboard in Resources */,
 				78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */,
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
+				C446729526D79D3000598459 /* SetToLocationView.xib in Resources */,
 				7802DFAD267CA0120048CF1C /* Localizable.strings in Resources */,
 				C4A9D77426B9E484001894F8 /* PaymentHistory.storyboard in Resources */,
 				78C8C98626C6AE2E001C947F /* FromAddressDetailView.xib in Resources */,
@@ -1522,6 +1529,7 @@
 				782D45D826B02524006B3A98 /* ShopDetailView.swift in Sources */,
 				7808D7D126B4818D00A88E12 /* TotalScoreViewController.swift in Sources */,
 				78A39FF5267B568E006D0DAB /* UserDataMO+CoreDataProperties.swift in Sources */,
+				C446729726D7A15600598459 /* SetToLocationView.swift in Sources */,
 				78BE49FC2683536800A13641 /* PromotionTableViewCell.swift in Sources */,
 				F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */,
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,

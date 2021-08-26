@@ -100,9 +100,9 @@ class TaxiMainVC: UIViewController {
     }}
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var mapView: MKMapView! { didSet {
-        
+
         mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
         mapView.delegate = self
     }}
@@ -119,7 +119,7 @@ class TaxiMainVC: UIViewController {
         SetMapMarkersManager.shared.isFromAddressMarkSelected = true
         dismiss(animated: true)
     }
-    
+
     @IBAction func next(_ sender: UIButton) {
         if shouldMakeOrder {
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
@@ -142,7 +142,7 @@ class TaxiMainVC: UIViewController {
             bottomConstaint.constant -= addressesChooserViewHeightConstraint.constant
             fromAddressDetailView.isHidden = false
             transparentView.isHidden = false
-            
+
             fromAddressDetailView.textField.becomeFirstResponder()
 
             fromAddressDetailView.frame = CGRect(x: view.bounds.width,
@@ -151,12 +151,12 @@ class TaxiMainVC: UIViewController {
                                                  height: TaxiConstant.fromAddressDetailViewHeight)
             fromAddressDetailView.placeLabel.text = fromAddress
 
-            
+
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.fromAddressDetailView.frame.origin.x = 0
             }
         }
-         
+
     }
     
     @IBAction func userLocationButtonAction(_ sender: Any) {
@@ -168,10 +168,7 @@ class TaxiMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        print(addressesChooserViewHeightConstraint.constant)
-        
-        
+
         MapKitManager.shared.checkLocationServices(delegate: self, view: self)
         
         updateUI()
@@ -226,13 +223,13 @@ class TaxiMainVC: UIViewController {
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
 
         if recognizer.state == .ended {
-            
-            
+
+
             SetMapMarkersManager.shared.isFromAddressMarkSelected = true
-            
+
             let location = recognizer.location(in: mapView)
             let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-            
+
             if let userLocation = MapKitManager.shared.currentUserCoordinate {
                 userLocationButtonOutlet.alpha = userLocation == coordinate ? 0 : 1
             }
@@ -244,24 +241,24 @@ class TaxiMainVC: UIViewController {
     }
     
     //MARK: - Constaint update
-    
+
     private func setBottomConstraintTo(_ y:CGFloat) {
         bottomConstaint.constant = y
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: TaxiConstant.durationForAppearingAddressesChooserView, delay: 0.0, options: .curveLinear) {
             self.view.layoutIfNeeded()
         } completion: { if $0 == .end {}
         }
-        
+
     }
-    
+
     @objc
     private func moveAddressesChooserView(_ notification: Notification) {
-        
+
         guard let userInfo = notification.userInfo else { return }
         guard let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
+
         if keyboardHeight == 0 { keyboardHeight = size.height }
-        
+
         if shouldUpdateUI {
             setBottomConstraintTo(keyboardHeight - safeAreaBottomHeight)
             shouldUpdateUI = false
@@ -395,7 +392,7 @@ class TaxiMainVC: UIViewController {
             tableViewHeightConstraint.constant -= yOffset
             addressesChooserViewHeightConstraint.constant -= yOffset
         }
-        
+
     }
     
     // MARK: - Methods

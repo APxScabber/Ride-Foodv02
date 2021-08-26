@@ -47,7 +47,10 @@ class SetMapMarkersManager {
         annotation.coordinate = coordinate
         annotation.title = isFromAddressMarkSelected ? "From" : "To"
         map.addAnnotation(annotation)
-        MapKitManager.shared.currentUserCoordinate = coordinate
+        
+        if annotation.title == "From" {
+            MapKitManager.shared.currentUserCoordinate = coordinate
+        }
         
         CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { address in
             completion(address)
