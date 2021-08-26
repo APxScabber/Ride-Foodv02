@@ -9,7 +9,7 @@ import UIKit
 
 class CategoriesAndFoodVC: UIViewController {
     
-    
+    var productsInCartView = FoodOrderBottomView()
     
     let tableViewCellID = "tableViewCellID"
     
@@ -35,6 +35,9 @@ class CategoriesAndFoodVC: UIViewController {
     
     var products: [Product] = []
     var subcategories: [Product] = []
+    
+    var productsInCart: [FoodOrderMO] = []
+    var overallPriceInCart: Int = 0
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
@@ -81,6 +84,40 @@ class CategoriesAndFoodVC: UIViewController {
         super.viewDidLoad()
       
         setUpViews()
+        
+    }
+    
+    func fetchCDOrderInformation(){
+        FoodPersistanceManager.shared.fetchAddresses { [weak self] result in
+            switch result{
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                self?.productsInCart = data
+            }
+        }
+    }
+    
+    func presentProductsInCartView(){
+        let padding: CGFloat = 25
+        
+        productsInCart.removeAll()
+        fetchCDOrderInformation()
+        guard productsInCart.count != 0 else { return }
+        productsInCart.forEach { product in
+            overallPriceInCart += Int((product.price * product.qty))
+        }
+        
+        productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
+        containerView.addSubview(productsInCartView)
+        
+        NSLayoutConstraint.activate([
+            productsInCartView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            productsInCartView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            productsInCartView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
+            productsInCartView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
     }
     
  
@@ -101,6 +138,7 @@ class CategoriesAndFoodVC: UIViewController {
                     self.reloadProductsCollectionView()
                 }
             }
+            self.presentProductsInCartView()
         }
       
     }
@@ -203,6 +241,7 @@ class CategoriesAndFoodVC: UIViewController {
         super.viewWillAppear(animated)
        
         getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
+        
         
     }
    
@@ -405,6 +444,7 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
             let storyboard = UIStoryboard(name: "Food", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ProductVC") as! ProductViewController
             vc.product = item
+            vc.delegate = self
             vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = self
             
@@ -434,4 +474,12 @@ extension CategoriesAndFoodVC: UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.11)
     }
+}
+
+extension CategoriesAndFoodVC: FoodOrderDelegate{
+    func productWasAddedToTheCart() {
+        presentProductsInCartView()
+    }
+    
+    
 }
