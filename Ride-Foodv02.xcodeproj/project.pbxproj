@@ -221,6 +221,8 @@
 		F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */; };
 		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
 		F50DEFD126CC604C003B9308 /* SubCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */; };
+		F542D5E426D7164E00312376 /* FoodPersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542D5E326D7164E00312376 /* FoodPersistanceManager.swift */; };
+		F542D5E626D7394800312376 /* FoodOrderBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542D5E526D7394800312376 /* FoodOrderBottomView.swift */; };
 		F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */; };
 		F56502F626CA159700934D91 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F526CA159700934D91 /* PresentationController.swift */; };
 		F56502F826CA4D7200934D91 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F726CA4D7200934D91 /* Product.swift */; };
@@ -461,6 +463,8 @@
 		F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBConfirmAlertVC.swift; sourceTree = "<group>"; };
 		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		F542D5E326D7164E00312376 /* FoodPersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPersistanceManager.swift; sourceTree = "<group>"; };
+		F542D5E526D7394800312376 /* FoodOrderBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderBottomView.swift; sourceTree = "<group>"; };
 		F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAndFoodVC.swift; sourceTree = "<group>"; };
 		F56502F526CA159700934D91 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		F56502F726CA4D7200934D91 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -1161,6 +1165,7 @@
 			isa = PBXGroup;
 			children = (
 				F56502FE26CAF7E400934D91 /* ProductsNetworkManager.swift */,
+				F542D5E326D7164E00312376 /* FoodPersistanceManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1178,6 +1183,7 @@
 			isa = PBXGroup;
 			children = (
 				F57BE60226D46D2900DE7594 /* onSaleView.swift */,
+				F542D5E526D7394800312376 /* FoodOrderBottomView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1495,6 +1501,7 @@
 				78A39FFC267B56A3006D0DAB /* RegistrationModel.swift in Sources */,
 				C4E83FB1266EA538000EE70F /* AppDelegate.swift in Sources */,
 				787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */,
+				F542D5E426D7164E00312376 /* FoodPersistanceManager.swift in Sources */,
 				C446726B26CDCD0100598459 /* TaxiSpecifyFromTo.swift in Sources */,
 				78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */,
 				C4A9D77B26B9E6BE001894F8 /* PaymentHistoryText.swift in Sources */,
@@ -1519,6 +1526,7 @@
 				F5B50C2B26BAC3510082199C /* AddressModel.swift in Sources */,
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
 				78894E4A26CFF2D40044DBF4 /* ScoresView.swift in Sources */,
+				F542D5E626D7394800312376 /* FoodOrderBottomView.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
 				C446728D26CF222F00598459 /* SetMapMarkersManager.swift in Sources */,
@@ -1705,7 +1713,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

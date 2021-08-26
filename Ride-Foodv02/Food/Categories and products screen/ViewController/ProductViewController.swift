@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol FoodOrderDelegate: class {
+    func productWasAddedToTheCart()
+}
+
 class ProductViewController: UIViewController {
+    
+    weak var delegate: FoodOrderDelegate?
     
     var overallSum: Int = 0
     
@@ -111,6 +117,14 @@ class ProductViewController: UIViewController {
     
     
     @IBAction func AddToTheCart(_ sender: Any) {
+        
+        guard qty >= 1 else {
+            print("invalid qty of products")
+            return
+        }
+        FoodPersistanceManager.shared.saveCoreDataInstance(product: product, qty: qty)
+        delegate?.productWasAddedToTheCart()
+        dismiss(animated: true, completion: nil)
     }
     
     func createDescriptionStrings(with data: Product){
