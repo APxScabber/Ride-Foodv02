@@ -88,12 +88,13 @@ class CategoriesAndFoodVC: UIViewController {
     }
     
     func fetchCDOrderInformation(){
-        FoodPersistanceManager.shared.fetchAddresses { [weak self] result in
+        FoodPersistanceManager.shared.fetchAddresses(shopID: shopID) { [weak self] result in
             switch result{
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let data):
                 self?.productsInCart = data
+                print("There are \(self?.productsInCart.count) products in cart at the moment")
             }
         }
     }
@@ -102,6 +103,7 @@ class CategoriesAndFoodVC: UIViewController {
         let padding: CGFloat = 25
         
         productsInCart.removeAll()
+        overallPriceInCart = 0
         fetchCDOrderInformation()
         guard productsInCart.count != 0 else { return }
         productsInCart.forEach { product in
@@ -445,6 +447,7 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
             let vc = storyboard.instantiateViewController(withIdentifier: "ProductVC") as! ProductViewController
             vc.product = item
             vc.delegate = self
+            vc.shopID = shopID
             vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = self
             

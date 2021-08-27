@@ -17,14 +17,19 @@ class FoodPersistanceManager{
     
     let context = CoreDataManager.shared.persistentContainer.viewContext
     
-    func fetchAddresses(completion: @escaping (Result<[FoodOrderMO], Error>) -> Void){
+    func fetchAddresses(shopID: Int, completion: @escaping (Result<[FoodOrderMO], Error>) -> Void){
+        var completionAddresses: [FoodOrderMO] = []
         do {
             let addresses = try! context.fetch(FoodOrderMO.fetchRequest()) as [FoodOrderMO]
-            completion(.success(addresses))
+            addresses.forEach { product in
+                guard product.shopID == Int64(shopID) else { return }
+                completionAddresses.append(product)
+            }
+            completion(.success(completionAddresses))
         }
     }
     
-    func saveCoreDataInstance(product: Product?, qty: Int){
+    func saveCoreDataInstance(product: Product?, qty: Int, shopID: Int){
         let saveContext = FoodPersistanceManager.shared.context
         guard qty != 0 else {
             print("qty should not be 0")
@@ -45,6 +50,7 @@ class FoodPersistanceManager{
         foodCoreDataInstance.unit           = data.unit
         foodCoreDataInstance.producing      = data.producing
         foodCoreDataInstance.image          = data.icon
+        foodCoreDataInstance.shopID         = Int64(shopID)
         
         FoodPersistanceManager.shared.saveContext()
         
