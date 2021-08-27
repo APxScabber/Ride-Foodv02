@@ -61,7 +61,7 @@ class FoodOrderBottomView: UIView {
             titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: horizontalPadding),
             titleLabel.heightAnchor.constraint(equalToConstant: 17),
-            titleLabel.widthAnchor.constraint(equalToConstant: 140),
+            titleLabel.widthAnchor.constraint(equalToConstant: 160),
             
             priceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
