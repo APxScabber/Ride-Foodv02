@@ -247,7 +247,17 @@ extension MainScreenViewController: TaxiTariffViewDelegate {
     }
     
     func usePromocode() {
-        
+        if !taxiTariffView.usedPromocode {
+            shouldUpdateUI = false
+            wholeTransparentView.isHidden = false
+            promocodeToolbar.isHidden = false
+            promocodeToolbar.textField.becomeFirstResponder()
+            promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+                self.promocodeToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - PromocodeConstant.toolbarHeight
+            }
+
+        }
     }
     
     func tariffEntered() {
@@ -256,6 +266,8 @@ extension MainScreenViewController: TaxiTariffViewDelegate {
     }
     
 }
+
+//MARK: - ScoresViewDelegate
 
 extension MainScreenViewController: ScoresViewDelegate {
     
@@ -382,6 +394,8 @@ extension MainScreenViewController: FoodMainDelegate {
     }
 }
 
+//MARK: - SetMapMarkerDelegate
+
 extension MainScreenViewController: SetMapMarkersDelegate {
     
     func zoomAllMarketsOnMap() {
@@ -401,6 +415,8 @@ extension MainScreenViewController: SetMapMarkersDelegate {
         pathTimeView.alpha = 1
     }
 }
+
+//MARK: - SetToLocationdelegate
 
 extension MainScreenViewController: SetToLocationDelegate {
     
@@ -439,3 +455,22 @@ extension MainScreenViewController: SetToLocationDelegate {
     }
 }
 
+extension MainScreenViewController: PromocodeToolbarDelegate {
+    
+    func activate(promocode: String) {
+        taxiTariffView.usedPromocode = true
+        closePromocodeToolbar()
+    }
+    
+    func closePromocodeToolbar() {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+        } completion: {  if $0 == .end {
+            self.promocodeToolbar.isHidden = true
+            self.wholeTransparentView.isHidden = true
+            self.shouldUpdateUI = true
+        }
+        }
+    }
+    
+}

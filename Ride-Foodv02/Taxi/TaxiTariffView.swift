@@ -11,7 +11,7 @@ class TaxiTariffView: UIView {
     weak var delegate: TaxiTariffViewDelegate?
     
     var usedScores = false
-    var usedPromocode = false
+    var usedPromocode = false { didSet { updatePromocodeView() }}
     var selectedIndex: Int?
     
     private let prices = [100,250,430]
@@ -27,6 +27,10 @@ class TaxiTariffView: UIView {
         promocodeLabel.text = Localizable.Promocode.promocode.localized
     }}
     @IBOutlet weak var promocodeImageView: UIImageView!
+    @IBOutlet weak var promocodeDiscountLabel: UILabel! { didSet {
+        promocodeDiscountLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
+        promocodeDiscountLabel.isHidden = true
+    }}
     @IBOutlet weak var scoresEnterValueLabel: UILabel! { didSet {
         scoresEnterValueLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
     }}
@@ -132,7 +136,7 @@ class TaxiTariffView: UIView {
     private func updateStandartView() {
         standartRoundedView.colorToFill = .white
         standartImageView.image = #imageLiteral(resourceName: "StandartCar")
-        standartDurationLabel.textColor = #colorLiteral(red: 0.6, green: 0.8, blue: 0.2, alpha: 1)
+        standartDurationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         standartPriceLabel.textColor = .black
     }
     
@@ -238,5 +242,16 @@ class TaxiTariffView: UIView {
         default:break
         }
     }
+    
+    private func updatePromocodeView() {
+        if usedPromocode {
+            promocodeDiscountLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
+            promocodeLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
+            promocodeDiscountLabel.isHidden = false
+            promocodeDiscountLabel.text = "-15%"
+            promocodeImageView.isHidden = true
+        }
+    }
+    
     
 }

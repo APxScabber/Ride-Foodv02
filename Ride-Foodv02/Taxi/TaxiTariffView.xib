@@ -43,9 +43,20 @@
                                         <action selector="usePromocode:" destination="iN0-l3-epB" eventType="touchUpInside" id="cwo-Eg-J6d"/>
                                     </connections>
                                 </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-nD-2bt">
+                                    <rect key="frame" x="16" y="0.0" width="20" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="rok-aq-eG9"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="zpM-nD-2bt" firstAttribute="top" secondItem="NoI-Cs-Vsl" secondAttribute="top" id="4b6-hJ-hSZ"/>
+                                <constraint firstAttribute="bottom" secondItem="zpM-nD-2bt" secondAttribute="bottom" id="A9t-mY-hf3"/>
                                 <constraint firstItem="FBp-Wl-IVM" firstAttribute="top" secondItem="NoI-Cs-Vsl" secondAttribute="top" constant="17" id="aPf-Ye-GfG"/>
                                 <constraint firstItem="FBp-Wl-IVM" firstAttribute="leading" secondItem="NoI-Cs-Vsl" secondAttribute="leading" constant="15" id="k36-xD-leG"/>
                                 <constraint firstAttribute="trailing" secondItem="bpO-JA-zJB" secondAttribute="trailing" id="nFM-PG-9Wl"/>
@@ -55,6 +66,7 @@
                                 <constraint firstItem="dvE-YS-U9D" firstAttribute="leading" secondItem="FBp-Wl-IVM" secondAttribute="trailing" constant="6" id="rsW-au-hoi"/>
                                 <constraint firstItem="dvE-YS-U9D" firstAttribute="top" secondItem="NoI-Cs-Vsl" secondAttribute="top" constant="16" id="tLw-C6-8ie"/>
                                 <constraint firstItem="bpO-JA-zJB" firstAttribute="top" secondItem="NoI-Cs-Vsl" secondAttribute="top" id="yP5-1U-aWj"/>
+                                <constraint firstItem="zpM-nD-2bt" firstAttribute="leading" secondItem="NoI-Cs-Vsl" secondAttribute="leading" constant="16" id="zWH-sB-gme"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twN-2c-RZQ" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -347,6 +359,7 @@
                 <outlet property="premiumOldPriceLabel" destination="ruj-v3-d2T" id="3vG-Rr-S1W"/>
                 <outlet property="premiumPriceLabel" destination="vxS-HS-KXb" id="9vl-KQ-rj7"/>
                 <outlet property="premiumRoundedView" destination="aT7-PN-nXV" id="pxD-Ub-Rek"/>
+                <outlet property="promocodeDiscountLabel" destination="zpM-nD-2bt" id="kjD-ZW-AEq"/>
                 <outlet property="promocodeImageView" destination="FBp-Wl-IVM" id="IuK-JA-Cdg"/>
                 <outlet property="promocodeLabel" destination="dvE-YS-U9D" id="3aE-0p-unJ"/>
                 <outlet property="promocodeRoundedView" destination="NoI-Cs-Vsl" id="YEZ-KA-1WI"/>
