@@ -51,6 +51,7 @@ class MainScreenViewController: UIViewController {
     }}
     @IBOutlet weak var fromAnnotationView: UIImageView!
     @IBOutlet weak var fromUnderbarLine: UIView!
+    
     @IBOutlet weak var toTextField:UITextField! { didSet {
         toTextField.font = UIFont.SFUIDisplayLight(size: 17.0)
         toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
@@ -133,6 +134,7 @@ class MainScreenViewController: UIViewController {
     let taxiTariffView = TaxiTariffView.initFromNib()
     let scoresView = ScoresView.initFromNib()
     let scoresToolbar = ScoresToolbar.initFromNib()
+    let promocodeToolbar = PromocodeToolbar.initFromNib()
     
     // MARK: - Properties
 
@@ -164,10 +166,13 @@ class MainScreenViewController: UIViewController {
         foodTaxiView.delegate = self
         promotionView.delegate = self
         promotionDetailView.delegate = self
+        promocodeToolbar.delegate = self
+        promocodeToolbar.isHidden = true
         view.addSubview(menuView)
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
         view.addSubview(promotionDetailView)
+        view.addSubview(promocodeToolbar)
     }
     
     
@@ -583,7 +588,7 @@ class MainScreenViewController: UIViewController {
     @IBAction func next(_ sender: UIButton) {
         if shouldMakeOrder {
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
-            addressesChooserViewHeightConstraint.constant = 370
+            addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
             twoCorneredView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
             topConstraint.constant = 0
             roundedView.backgroundColor = .clear

@@ -75,9 +75,9 @@
                         <constraint firstAttribute="height" constant="1" id="Ncn-sh-xYn"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-td-4da">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-td-4da" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="187" y="44" width="40" height="5"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="k4S-5m-fE2"/>
                         <constraint firstAttribute="height" constant="5" id="rLS-CO-cdc"/>
@@ -111,6 +111,7 @@
                 <outlet property="roundedView" destination="hpD-Pb-dxg" id="sAB-QF-kgF"/>
                 <outlet property="spinner" destination="U4O-aT-voQ" id="4Bj-2K-UWB"/>
                 <outlet property="textField" destination="QR0-Ja-GQS" id="Y4U-eH-6qG"/>
+                <outlet property="topRoundedView" destination="ggD-td-4da" id="woh-UA-DRd"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>

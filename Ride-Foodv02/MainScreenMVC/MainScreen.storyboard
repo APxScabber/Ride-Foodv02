@@ -319,7 +319,6 @@
                                             <constraint firstItem="Bw8-lu-zVs" firstAttribute="centerY" secondItem="376-gS-3H0" secondAttribute="centerY" id="A80-Lv-2cg"/>
                                             <constraint firstItem="VqC-aG-VcO" firstAttribute="leading" secondItem="376-gS-3H0" secondAttribute="trailing" constant="10" id="APa-32-mI9"/>
                                             <constraint firstItem="1p4-8m-Unq" firstAttribute="leading" secondItem="yi1-oo-Teb" secondAttribute="leading" id="Aur-To-6dr"/>
-                                            <constraint firstAttribute="bottom" secondItem="N5t-LY-TRY" secondAttribute="bottom" constant="44" id="Bc8-6P-BZv"/>
                                             <constraint firstItem="NqU-8c-AIh" firstAttribute="leading" secondItem="yi1-oo-Teb" secondAttribute="leading" constant="47" id="By6-aZ-2Dl"/>
                                             <constraint firstItem="376-gS-3H0" firstAttribute="leading" secondItem="Bw8-lu-zVs" secondAttribute="trailing" constant="15" id="CcM-e3-px1"/>
                                             <constraint firstItem="d9R-8k-h3g" firstAttribute="leading" secondItem="yi1-oo-Teb" secondAttribute="leading" constant="25" id="DrL-TS-4gM"/>
@@ -404,6 +403,7 @@
                             <constraint firstItem="A2U-LE-PxI" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" id="ksm-Fh-zJw"/>
                             <constraint firstItem="o45-5N-yi2" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" constant="20" id="kzB-ih-kiR"/>
                             <constraint firstItem="dQB-4B-Q0d" firstAttribute="leading" secondItem="w74-1d-16d" secondAttribute="leading" id="rXx-aB-5wq"/>
+                            <constraint firstItem="w74-1d-16d" firstAttribute="bottom" secondItem="N5t-LY-TRY" secondAttribute="bottom" constant="10" id="ycf-YA-bpv"/>
                         </constraints>
                     </view>
                     <connections>

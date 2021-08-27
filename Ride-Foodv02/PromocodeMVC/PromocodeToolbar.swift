@@ -1,7 +1,9 @@
 import UIKit
 
+@objc
 protocol PromocodeToolbarDelegate: AnyObject {
     func activate(promocode:String)
+    @objc optional func closePromocodeToolbar()
 }
 
 //152 total height
@@ -23,8 +25,13 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         roundedView.cornerRadius = 15.0
         roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }}
+    @IBOutlet weak var topRoundedView: RoundedView! { didSet {
+        topRoundedView.cornerRadius = 15.0
+        topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }}
     @IBOutlet weak var button: UIButton! { didSet {
         button.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+        button.isUserInteractionEnabled = false
     }}
     
     @IBOutlet private weak var activeView: UIView! { didSet {
@@ -69,7 +76,29 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         button.setTitle(Localizable.PersonalInfo.confirm.localized, for: .normal)
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    private func setup() {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(close(_:)))
+        swipe.direction = .down
+        addGestureRecognizer(swipe)
+    }
+    
+    @objc
+    private func close(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            textField.resignFirstResponder()
+            delegate?.closePromocodeToolbar?()
+        }
+    }
 }
 
 
