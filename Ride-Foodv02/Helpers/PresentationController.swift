@@ -16,7 +16,7 @@ class PresentationController: UIPresentationController {
   // 1.
     init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, viewHeightMultiplierPercentage: CGFloat) {
     self.viewHeightMultiplierPercentage = viewHeightMultiplierPercentage
-      let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffect = UIBlurEffect(style: .systemThinMaterialDark)
       blurEffectView = UIVisualEffectView(effect: blurEffect)
       super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
       tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissController))
