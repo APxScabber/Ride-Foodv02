@@ -10,6 +10,7 @@
         <attribute name="producing" optional="YES" attributeType="String"/>
         <attribute name="qty" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sale" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="shopID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
@@ -42,7 +43,7 @@
         <relationship name="userData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserDataMO" inverseName="settings" inverseEntity="UserDataMO"/>
     </entity>
     <elements>
-        <element name="FoodOrderMO" positionX="-675" positionY="54" width="128" height="194"/>
+        <element name="FoodOrderMO" positionX="-675" positionY="54" width="128" height="209"/>
         <element name="UserAddressMO" positionX="-675" positionY="9" width="128" height="179"/>
         <element name="UserDataMO" positionX="-882.8419799804688" positionY="-57.720703125" width="128" height="148"/>
         <element name="UserSettingsMO" positionX="-399.291748046875" positionY="-23.59927368164062" width="128" height="118"/>

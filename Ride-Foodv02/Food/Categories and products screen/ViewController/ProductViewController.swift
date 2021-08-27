@@ -13,6 +13,8 @@ protocol FoodOrderDelegate: class {
 
 class ProductViewController: UIViewController {
     
+    var shopID: Int = 0
+    
     weak var delegate: FoodOrderDelegate?
     
     var overallSum: Int = 0
@@ -122,7 +124,7 @@ class ProductViewController: UIViewController {
             print("invalid qty of products")
             return
         }
-        FoodPersistanceManager.shared.saveCoreDataInstance(product: product, qty: qty)
+        FoodPersistanceManager.shared.saveCoreDataInstance(product: product, qty: qty, shopID: shopID)
         delegate?.productWasAddedToTheCart()
         dismiss(animated: true, completion: nil)
     }
