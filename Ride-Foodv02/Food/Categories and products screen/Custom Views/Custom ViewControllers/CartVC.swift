@@ -13,8 +13,19 @@ class CartVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .tertiaryLabel
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let scrollView = UIScrollView(frame: view.bounds)
+        scrollView.backgroundColor = .systemTeal
+        view.addSubview(scrollView)
+        
+        scrollView.contentSize = CGSize(width: view.frame.size.height, height: 2200)
+        
     }
     
 
