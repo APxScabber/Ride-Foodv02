@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum presentedScreen{
+enum PresentedScreen{
     case subcategories, cart
 }
 
@@ -59,6 +59,8 @@ class CategoriesAndFoodVC: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     
+    let contentView = UIView()
+    
     @IBOutlet weak var titleLabel: UILabel! {didSet{
         titleLabel.font = UIFont.SFUIDisplaySemibold(size: 26)
     }}
@@ -87,9 +89,9 @@ class CategoriesAndFoodVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        setUpViews()
-        
+       
+        setUpViews(screenType: .subcategories)
+        configureContentView()
     }
     
     func fetchCDOrderInformation(){
@@ -104,156 +106,8 @@ class CategoriesAndFoodVC: UIViewController {
         }
     }
     
-    func presentProductsInCartView(){
-        let padding: CGFloat = 25
-        
-        productsInCart.removeAll()
-        overallPriceInCart = 0
-        fetchCDOrderInformation()
-        guard productsInCart.count != 0 else { return }
-        productsInCart.forEach { product in
-            overallPriceInCart += Int((product.price * product.qty))
-        }
-        
-        productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
-      
-        containerView.addSubview(productsInCartView)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(bottomViewTapGestureRecognizerAction))
-        productsInCartView.addGestureRecognizer(tap)
-        
-        NSLayoutConstraint.activate([
-            productsInCartView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
-            productsInCartView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-            productsInCartView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
-            productsInCartView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-    }
-    
- 
-    
-    func updateUI(screenType: presentedScreen){
-        switch screenType {
-        case .subcategories:
-            DispatchQueue.main.async {
-                if self.showSubcategories{
-                    self.configureTableView()
-                    self.subcategoriesTableView.reloadData()
-                } else {
-                    if !self.subcategories.isEmpty {
-                        self.configureSubcategoriesCollectionViews()
-                        self.configureProductsCollectionView()
-                        self.reloadProductsCollectionView()
-                        self.subcategoriesCollectionView.reloadData()
-                    } else {
-                        self.configureProductsCollectionView()
-                        self.reloadProductsCollectionView()
-                    }
-                }
-                self.presentProductsInCartView()
-            }
-        case .cart:
-            print("Here we are gonna configure cartscreen")
-            
-        }
-    
-      
-    }
-    
-    func reloadProductsCollectionView(){
-        if isPaginating {
-            productsCollectionView.reloadInputViews()
-            print("reloading sections")
-        } else {
-            productsCollectionView.reloadData()
-           
-        }
-    }
-    
-    func removeTableView(){
-        subcategoriesTableView.removeFromSuperview()
-        subcategories.removeAll()
-    }
-    
-    func removeAllCollectionViews(){
-        subcategoriesCollectionView.removeFromSuperview()
-        productsCollectionView.removeFromSuperview()
-        
-        subcategories.removeAll()
-        products.removeAll()
-    }
-    
-    func configureProductsCollectionView(){
-        productsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createProductsCollectionViewFlowLayour(in: containerView))
-        containerView.addSubview(productsCollectionView)
-        productsCollectionView.backgroundColor = .white
-        productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        productsCollectionView.delegate = self
-        productsCollectionView.dataSource = self
-        productsCollectionView.showsVerticalScrollIndicator = false
-        productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: ProductsCollectionViewCell.identifier)
-        if !subcategories.isEmpty {
-        NSLayoutConstraint.activate([
-            productsCollectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
-            productsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            productsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            productsCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        ])
-        } else {
-            NSLayoutConstraint.activate([
-                productsCollectionView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 5),
-                productsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-                productsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-                productsCollectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-            ])
-         
-        }
-    }
-    
-    func configureSubcategoriesCollectionViews(){
-        subcategoriesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalCollectionViewFlowLayout(in: containerView))
-        containerView.addSubview(subcategoriesCollectionView)
-        containerView.addSubview(separatorView)
-        subcategoriesCollectionView.backgroundColor = .white
-        subcategoriesCollectionView.showsHorizontalScrollIndicator = false
-        subcategoriesCollectionView.showsVerticalScrollIndicator = false
-        subcategoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        subcategoriesCollectionView.delegate = self
-        subcategoriesCollectionView.dataSource = self
-        subcategoriesCollectionView.register(SubcategoriesCollectionViewCell.self, forCellWithReuseIdentifier: SubcategoriesCollectionViewCell.identifier)
-        
-        NSLayoutConstraint.activate([
-            subcategoriesCollectionView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 1),
-            subcategoriesCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            subcategoriesCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            subcategoriesCollectionView.heightAnchor.constraint(equalToConstant: 60),
-            
-            separatorView.topAnchor.constraint(equalTo: subcategoriesCollectionView.bottomAnchor, constant: 1),
-            separatorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
-        
-        ])
-        
-    }
-    
-    func configureTableView(){
-        subcategoriesTableView = UITableView(frame: containerView.bounds, style: .plain)
-        containerView.addSubview(subcategoriesTableView)
-        subcategoriesTableView.translatesAutoresizingMaskIntoConstraints = false
-        subcategoriesTableView.delegate = self
-        subcategoriesTableView.dataSource = self
-        subcategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellID)
-       
-        NSLayoutConstraint.activate([
-            subcategoriesTableView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 2),
-            subcategoriesTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            subcategoriesTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            subcategoriesTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-        ])
-        
-    }
+
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -307,6 +161,201 @@ class CategoriesAndFoodVC: UIViewController {
          }
      }
     
+    // Configure screen UI
+    
+    func configureContentView(){
+        containerView.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .clear
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topSeparatorView.bottomAnchor, constant: 2),
+            contentView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
+        
+    }
+    
+    func deleteProductsAndPresentCart(){
+        self.showLoadingView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.removeAllCollectionViews()
+            self.setUpViews(screenType: .cart)
+            self.presentProductsInCartView(screenType: .cart)
+            let cartVC = CartVC()
+            cartVC.productsInCart = self.productsInCart
+            self.add(childVC: cartVC, to: self.contentView)
+            self.dismissLoadingView()
+        }
+   
+    }
+    
+    func add(childVC: UIViewController, to containerView: UIView){
+        addChild(childVC)
+        containerView.addSubview(childVC.view)
+        childVC.view.frame = containerView.bounds
+        childVC.didMove(toParent: self)
+    }
+
+    
+    func updateUI(screenType: PresentedScreen){
+        switch screenType {
+        case .subcategories:
+            DispatchQueue.main.async {
+                if self.showSubcategories{
+                    self.configureTableView()
+                    self.subcategoriesTableView.reloadData()
+                } else {
+                    if !self.subcategories.isEmpty {
+                        self.configureSubcategoriesCollectionViews()
+                        self.configureProductsCollectionView()
+                        self.reloadProductsCollectionView()
+                        self.subcategoriesCollectionView.reloadData()
+                    } else {
+                        self.configureProductsCollectionView()
+                        self.reloadProductsCollectionView()
+                    }
+                }
+                self.presentProductsInCartView(screenType: .subcategories)
+            }
+        case .cart:
+            print("Here we are gonna configure cartscreen")
+            
+        }
+    }
+    
+    func reloadProductsCollectionView(){
+        if isPaginating {
+            productsCollectionView.reloadInputViews()
+            print("reloading sections")
+        } else {
+            productsCollectionView.reloadData()
+           
+        }
+    }
+    
+    func removeTableView(){
+        subcategoriesTableView.removeFromSuperview()
+        subcategories.removeAll()
+    }
+    
+    func removeAllCollectionViews(){
+        if let subcategoriesCV = subcategoriesCollectionView{
+            subcategoriesCV.removeFromSuperview()
+        }
+        productsCollectionView.removeFromSuperview()
+        
+        subcategories.removeAll()
+        products.removeAll()
+    }
+    
+    
+    func configureTableView(){
+        subcategoriesTableView = UITableView(frame: containerView.bounds, style: .plain)
+        contentView.addSubview(subcategoriesTableView)
+        subcategoriesTableView.translatesAutoresizingMaskIntoConstraints = false
+        subcategoriesTableView.delegate = self
+        subcategoriesTableView.dataSource = self
+        subcategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellID)
+       
+        NSLayoutConstraint.activate([
+            subcategoriesTableView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            subcategoriesTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            subcategoriesTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            subcategoriesTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
+        
+    }
+    
+    func presentProductsInCartView(screenType: PresentedScreen){
+        let padding: CGFloat = 25
+        
+        productsInCart.removeAll()
+        overallPriceInCart = 0
+        fetchCDOrderInformation()
+        guard productsInCart.count != 0 else { return }
+        productsInCart.forEach { product in
+            overallPriceInCart += Int((product.price * product.qty))
+        }
+        switch screenType{
+        case .subcategories:
+            productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
+        case .cart:
+            productsInCartView = FoodOrderBottomView(title: "Перейти к оплате", price: overallPriceInCart, oldPrice: nil)
+        }
+        
+      
+        containerView.addSubview(productsInCartView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(bottomViewTapGestureRecognizerAction))
+        productsInCartView.addGestureRecognizer(tap)
+        
+        NSLayoutConstraint.activate([
+            productsInCartView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            productsInCartView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            productsInCartView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
+            productsInCartView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+    }
+    
+    func configureSubcategoriesCollectionViews(){
+        subcategoriesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalCollectionViewFlowLayout(in: containerView))
+        contentView.addSubview(subcategoriesCollectionView)
+        contentView.addSubview(separatorView)
+        subcategoriesCollectionView.backgroundColor = .white
+        subcategoriesCollectionView.showsHorizontalScrollIndicator = false
+        subcategoriesCollectionView.showsVerticalScrollIndicator = false
+        subcategoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        subcategoriesCollectionView.delegate = self
+        subcategoriesCollectionView.dataSource = self
+        subcategoriesCollectionView.register(SubcategoriesCollectionViewCell.self, forCellWithReuseIdentifier: SubcategoriesCollectionViewCell.identifier)
+        
+        NSLayoutConstraint.activate([
+            subcategoriesCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            subcategoriesCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            subcategoriesCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            subcategoriesCollectionView.heightAnchor.constraint(equalToConstant: 60),
+            
+            separatorView.topAnchor.constraint(equalTo: subcategoriesCollectionView.bottomAnchor, constant: 1),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
+        
+        ])
+        
+    }
+    
+    func configureProductsCollectionView(){
+        productsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createProductsCollectionViewFlowLayour(in: containerView))
+        contentView.addSubview(productsCollectionView)
+        productsCollectionView.backgroundColor = .white
+        productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        productsCollectionView.delegate = self
+        productsCollectionView.dataSource = self
+        productsCollectionView.showsVerticalScrollIndicator = false
+        productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: ProductsCollectionViewCell.identifier)
+        if !subcategories.isEmpty {
+        NSLayoutConstraint.activate([
+            productsCollectionView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 20),
+            productsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            productsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            productsCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        } else {
+            NSLayoutConstraint.activate([
+                productsCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
+                productsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                productsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                productsCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            ])
+         
+        }
+    }
+    
+    
     @IBAction func back(_ sender: Any) {
         if isChoosingSubSubCategory{
             if subcategoriesCollectionView != nil, productsCollectionView != nil{
@@ -330,9 +379,16 @@ class CategoriesAndFoodVC: UIViewController {
         
     }
     
-    func setUpViews(){
+    func setUpViews(screenType: PresentedScreen){
+        
+        switch screenType {
+        case .cart:
+            titleLabel.text = "Корзина"
+        case .subcategories:
+            titleLabel.text = mainCategoryName
+       
+        }
 //        Set storyboard label values
-        titleLabel.text = mainCategoryName
       
         shopTitleLabel.text = shopName
         
@@ -356,6 +412,7 @@ class CategoriesAndFoodVC: UIViewController {
     
     @objc func bottomViewTapGestureRecognizerAction(sender: UITapGestureRecognizer){
         print("Ready to reload cart items")
+        deleteProductsAndPresentCart()
     }
 
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
@@ -380,15 +437,7 @@ class CategoriesAndFoodVC: UIViewController {
              }
          }
      }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
 
 }
 
@@ -503,7 +552,7 @@ extension CategoriesAndFoodVC: UIViewControllerTransitioningDelegate{
 
 extension CategoriesAndFoodVC: FoodOrderDelegate{
     func productWasAddedToTheCart() {
-        presentProductsInCartView()
+        presentProductsInCartView(screenType: .subcategories)
     }
     
     
