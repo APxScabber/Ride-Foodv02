@@ -7,7 +7,12 @@
 
 import UIKit
 
+enum presentedScreen{
+    case subcategories, cart
+}
+
 class CategoriesAndFoodVC: UIViewController {
+
     
     var productsInCartView = FoodOrderBottomView()
     
@@ -111,7 +116,11 @@ class CategoriesAndFoodVC: UIViewController {
         }
         
         productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
+      
         containerView.addSubview(productsInCartView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(bottomViewTapGestureRecognizerAction))
+        productsInCartView.addGestureRecognizer(tap)
         
         NSLayoutConstraint.activate([
             productsInCartView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
@@ -124,24 +133,31 @@ class CategoriesAndFoodVC: UIViewController {
     
  
     
-    func updateUI(){
-        DispatchQueue.main.async {
-            if self.showSubcategories{
-                self.configureTableView()
-                self.subcategoriesTableView.reloadData()
-            } else {
-                if !self.subcategories.isEmpty {
-                    self.configureSubcategoriesCollectionViews()
-                    self.configureProductsCollectionView()
-                    self.reloadProductsCollectionView()
-                    self.subcategoriesCollectionView.reloadData()
+    func updateUI(screenType: presentedScreen){
+        switch screenType {
+        case .subcategories:
+            DispatchQueue.main.async {
+                if self.showSubcategories{
+                    self.configureTableView()
+                    self.subcategoriesTableView.reloadData()
                 } else {
-                    self.configureProductsCollectionView()
-                    self.reloadProductsCollectionView()
+                    if !self.subcategories.isEmpty {
+                        self.configureSubcategoriesCollectionViews()
+                        self.configureProductsCollectionView()
+                        self.reloadProductsCollectionView()
+                        self.subcategoriesCollectionView.reloadData()
+                    } else {
+                        self.configureProductsCollectionView()
+                        self.reloadProductsCollectionView()
+                    }
                 }
+                self.presentProductsInCartView()
             }
-            self.presentProductsInCartView()
+        case .cart:
+            print("Here we are gonna configure cartscreen")
+            
         }
+    
       
     }
     
@@ -245,6 +261,8 @@ class CategoriesAndFoodVC: UIViewController {
         getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
         
         
+        
+        
     }
    
     func getProducts(shopID: Int, categoryID: Int, page: Int){
@@ -270,7 +288,7 @@ class CategoriesAndFoodVC: UIViewController {
                 DispatchQueue.main.async {
                     print(self.products)
                     self.dismissLoadingView()
-                    self.updateUI()
+                    self.updateUI(screenType: .subcategories)
                 }
                
             case .failure(let error):
@@ -334,6 +352,10 @@ class CategoriesAndFoodVC: UIViewController {
         
     
       
+    }
+    
+    @objc func bottomViewTapGestureRecognizerAction(sender: UITapGestureRecognizer){
+        print("Ready to reload cart items")
     }
 
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
