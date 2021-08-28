@@ -184,7 +184,7 @@ class CategoriesAndFoodVC: UIViewController {
             self.removeAllCollectionViews()
             self.setUpViews(screenType: .cart)
             self.presentProductsInCartView(screenType: .cart)
-            let cartVC = CartVC()
+            let cartVC = CartVC(products: self.productsInCart)
             cartVC.productsInCart = self.productsInCart
             self.add(childVC: cartVC, to: self.contentView)
             self.dismissLoadingView()

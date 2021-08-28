@@ -224,6 +224,9 @@
 		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
 		F50DEFD126CC604C003B9308 /* SubCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */; };
 		F529F1B026D887A5007B91B4 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1AF26D887A5007B91B4 /* CartVC.swift */; };
+		F529F1B226DAE436007B91B4 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1B126DAE436007B91B4 /* DeliveryView.swift */; };
+		F529F1B426DAE4EE007B91B4 /* PromocodeCreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1B326DAE4EE007B91B4 /* PromocodeCreditView.swift */; };
+		F529F1B626DAE63A007B91B4 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1B526DAE63A007B91B4 /* CartTableViewCell.swift */; };
 		F542D5E426D7164E00312376 /* FoodPersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542D5E326D7164E00312376 /* FoodPersistanceManager.swift */; };
 		F542D5E626D7394800312376 /* FoodOrderBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542D5E526D7394800312376 /* FoodOrderBottomView.swift */; };
 		F56502F426CA138700934D91 /* CategoriesAndFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */; };
@@ -469,6 +472,9 @@
 		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		F529F1AF26D887A5007B91B4 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		F529F1B126DAE436007B91B4 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
+		F529F1B326DAE4EE007B91B4 /* PromocodeCreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeCreditView.swift; sourceTree = "<group>"; };
+		F529F1B526DAE63A007B91B4 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		F542D5E326D7164E00312376 /* FoodPersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPersistanceManager.swift; sourceTree = "<group>"; };
 		F542D5E526D7394800312376 /* FoodOrderBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderBottomView.swift; sourceTree = "<group>"; };
 		F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAndFoodVC.swift; sourceTree = "<group>"; };
@@ -1165,6 +1171,7 @@
 				F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */,
 				F58FA74A26CCDB62000B8E16 /* SubcategoriesCollectionViewCell.swift */,
 				F58FA74C26CCDB75000B8E16 /* ProductsCollectionViewCell.swift */,
+				F529F1B526DAE63A007B91B4 /* CartTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1201,6 +1208,8 @@
 				F529F1AE26D88774007B91B4 /* Custom ViewControllers */,
 				F57BE60226D46D2900DE7594 /* onSaleView.swift */,
 				F542D5E526D7394800312376 /* FoodOrderBottomView.swift */,
+				F529F1B126DAE436007B91B4 /* DeliveryView.swift */,
+				F529F1B326DAE4EE007B91B4 /* PromocodeCreditView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1420,6 +1429,7 @@
 				78A3A006267B56E1006D0DAB /* LoginText.swift in Sources */,
 				7841E3A126A8362500335DFA /* TariffsPageViewController.swift in Sources */,
 				782D45E426B07AA3006B3A98 /* LocationChooserViewController.swift in Sources */,
+				F529F1B426DAE4EE007B91B4 /* PromocodeCreditView.swift in Sources */,
 				787A83DE26AB2D470096DFC3 /* ProfileMenuBackgroundView.swift in Sources */,
 				782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */,
 				78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */,
@@ -1498,6 +1508,7 @@
 				78C86C4426CE8F78003F10D5 /* PromotionDataModel.swift in Sources */,
 				C47892C0267B8B7300B4C737 /* TariffsColors.swift in Sources */,
 				F56502FF26CAF7E400934D91 /* ProductsNetworkManager.swift in Sources */,
+				F529F1B226DAE436007B91B4 /* DeliveryView.swift in Sources */,
 				782D45D426B018EF006B3A98 /* ShopCollectionViewCell.swift in Sources */,
 				7808D7CD26B480C700A88E12 /* AddScores.swift in Sources */,
 				78C8C99526CACC76001C947F /* FoodDetailView.swift in Sources */,
@@ -1507,6 +1518,7 @@
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,
 				7841E3AD26A837F900335DFA /* MainTextFont.swift in Sources */,
 				C446727726CEEC2D00598459 /* MainScreenExtensions.swift in Sources */,
+				F529F1B626DAE63A007B91B4 /* CartTableViewCell.swift in Sources */,
 				F5D500E026C71AFA00488D45 /* MenuItemsTableViewCell.swift in Sources */,
 				782D45DA26B03103006B3A98 /* ShopDetailViewController.swift in Sources */,
 				C446726326CB047400598459 /* TaxiMainInteractor.swift in Sources */,
