@@ -186,6 +186,7 @@ class CategoriesAndFoodVC: UIViewController {
             self.presentProductsInCartView(screenType: .cart)
             let cartVC = CartVC()
             cartVC.productsInCart = self.productsInCart
+            cartVC.shopID         = self.shopID
             self.add(childVC: cartVC, to: self.contentView)
             self.dismissLoadingView()
         }
@@ -245,7 +246,10 @@ class CategoriesAndFoodVC: UIViewController {
         if let subcategoriesCV = subcategoriesCollectionView{
             subcategoriesCV.removeFromSuperview()
         }
-        productsCollectionView.removeFromSuperview()
+        if let productsCV = productsCollectionView{
+            productsCV.removeFromSuperview()
+        }
+        
         
         subcategories.removeAll()
         products.removeAll()

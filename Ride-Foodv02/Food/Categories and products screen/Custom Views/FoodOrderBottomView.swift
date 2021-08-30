@@ -55,6 +55,7 @@ class FoodOrderBottomView: UIView {
         priceLabel.textColor                                    = .white
         priceLabel.font                                         = UIFont.SFUIDisplaySemibold(size: 17)
         priceLabel.text                                         = "\(price) руб"
+        priceLabel.textAlignment                                = .right
       
         
         NSLayoutConstraint.activate([
