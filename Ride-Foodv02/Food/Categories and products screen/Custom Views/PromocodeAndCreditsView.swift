@@ -66,7 +66,7 @@ class PromocodeAndCreditsView: UIView {
             backgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
             backgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
             backgroundView.heightAnchor.constraint(equalToConstant: 50),
-            backgroundView.widthAnchor.constraint(equalToConstant: 160)
+            backgroundView.widthAnchor.constraint(equalToConstant: 170)
         ])
     }
     

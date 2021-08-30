@@ -67,7 +67,7 @@ class FoodOrderBottomView: UIView {
             priceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
             priceLabel.heightAnchor.constraint(equalToConstant: 17),
-            priceLabel.widthAnchor.constraint(equalToConstant: 87),
+            priceLabel.widthAnchor.constraint(equalToConstant: 100),
         ])
         
         if oldPrice != nil{
