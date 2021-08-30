@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PromocodeActivation" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEY-eI-3JX" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="230"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DoneButton" translatesAutoresizingMaskIntoConstraints="NO" id="1yh-Bw-3MK">
+                            <rect key="frame" x="182" y="37" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Mtn-7C-Ihc"/>
+                                <constraint firstAttribute="width" constant="50" id="nmU-2D-9gu"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Промокод активирован" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOG-MB-IfB">
+                            <rect key="frame" x="112.5" y="98" width="189" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="IHg-Qd-v6X"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По этому промокоду для вас действует скидка 10% на поездку по тарифу Premium." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxC-TF-KNu">
+                            <rect key="frame" x="64" y="125" width="286" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="ojT-h3-Vwf"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.54117647058823526" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="QxC-TF-KNu" firstAttribute="leading" secondItem="mEY-eI-3JX" secondAttribute="leading" constant="64" id="GnT-ed-4ZS"/>
+                        <constraint firstItem="1yh-Bw-3MK" firstAttribute="centerX" secondItem="mEY-eI-3JX" secondAttribute="centerX" id="Wf5-Aj-2ZR"/>
+                        <constraint firstItem="QxC-TF-KNu" firstAttribute="top" secondItem="HOG-MB-IfB" secondAttribute="bottom" constant="7" id="aQq-oP-utE"/>
+                        <constraint firstItem="1yh-Bw-3MK" firstAttribute="top" secondItem="mEY-eI-3JX" secondAttribute="top" constant="37" id="fXN-IU-hAJ"/>
+                        <constraint firstItem="HOG-MB-IfB" firstAttribute="centerX" secondItem="mEY-eI-3JX" secondAttribute="centerX" id="iEB-WY-Zm3"/>
+                        <constraint firstAttribute="trailing" secondItem="QxC-TF-KNu" secondAttribute="trailing" constant="64" id="mR7-tX-ptQ"/>
+                        <constraint firstItem="HOG-MB-IfB" firstAttribute="top" secondItem="1yh-Bw-3MK" secondAttribute="bottom" constant="11" id="mVm-s7-TjY"/>
+                        <constraint firstAttribute="height" constant="230" id="q3D-89-DLt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="mEY-eI-3JX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="FU8-4d-pHi"/>
+                <constraint firstItem="mEY-eI-3JX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="QZ6-ZY-aw1"/>
+                <constraint firstItem="mEY-eI-3JX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="q7V-Wh-RPY"/>
+            </constraints>
+            <connections>
+                <outlet property="bodyLabel" destination="QxC-TF-KNu" id="Tgr-W8-EqW"/>
+                <outlet property="titleLabel" destination="HOG-MB-IfB" id="x8M-8L-wgM"/>
+                <outlet property="twoRoundedView" destination="mEY-eI-3JX" id="VfK-HT-32T"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="84.375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="DoneButton" width="50" height="50"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

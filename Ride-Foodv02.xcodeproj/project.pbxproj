@@ -84,6 +84,8 @@
 		787140C6268637E6007834ED /* Promocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787140C5268637E6007834ED /* Promocode.storyboard */; };
 		787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C726863B99007834ED /* PromocodeMainTableViewController.swift */; };
 		787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C9268640CD007834ED /* EnterPromocodeViewController.swift */; };
+		78740C1926DD472A0078F2F7 /* PromocodeActivation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78740C1826DD472A0078F2F7 /* PromocodeActivation.xib */; };
+		78740C1B26DD47350078F2F7 /* PromocodeActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78740C1A26DD47350078F2F7 /* PromocodeActivation.swift */; };
 		7879CDE726BA8955009D127A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7879CDE626BA8955009D127A /* Address.swift */; };
 		787A83DA26AB2D330096DFC3 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787A83D826AB2D330096DFC3 /* UserProfile.storyboard */; };
 		787A83DB26AB2D330096DFC3 /* UserProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83D926AB2D330096DFC3 /* UserProfileTableVC.swift */; };
@@ -332,6 +334,8 @@
 		787140C5268637E6007834ED /* Promocode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promocode.storyboard; sourceTree = "<group>"; };
 		787140C726863B99007834ED /* PromocodeMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeMainTableViewController.swift; sourceTree = "<group>"; };
 		787140C9268640CD007834ED /* EnterPromocodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPromocodeViewController.swift; sourceTree = "<group>"; };
+		78740C1826DD472A0078F2F7 /* PromocodeActivation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeActivation.xib; sourceTree = "<group>"; };
+		78740C1A26DD47350078F2F7 /* PromocodeActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeActivation.swift; sourceTree = "<group>"; };
 		7879CDE626BA8955009D127A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		787A83D826AB2D330096DFC3 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		787A83D926AB2D330096DFC3 /* UserProfileTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableVC.swift; sourceTree = "<group>"; };
@@ -712,6 +716,8 @@
 				78ACFD0A26A59E1700C995EB /* Promocodes.swift */,
 				78D3DF452686414B0028A66B /* PromocodeToolbar.xib */,
 				78D3DF472686415C0028A66B /* PromocodeToolbar.swift */,
+				78740C1826DD472A0078F2F7 /* PromocodeActivation.xib */,
+				78740C1A26DD47350078F2F7 /* PromocodeActivation.swift */,
 				78ACFD0626A5984C00C995EB /* PromocodeTableViewCell.swift */,
 				785198EA26B19FC40037F7AA /* PromocodeConstant.swift */,
 			);
@@ -1346,6 +1352,7 @@
 				78BE49FE268354ED00A13641 /* SFUIDisplay-Bold.otf in Resources */,
 				785F5D8626C11CDB004503CB /* Taxi.storyboard in Resources */,
 				7858D37526AED7BC00441690 /* Food.storyboard in Resources */,
+				78740C1926DD472A0078F2F7 /* PromocodeActivation.xib in Resources */,
 				78C8C98F26C804C4001C947F /* OrderHistory.storyboard in Resources */,
 				7850E8FA2673BCF200AA88CA /* SupportActionSheetView.xib in Resources */,
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
@@ -1424,6 +1431,7 @@
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
 				78F1A98226A8949000E16084 /* AddCardViewController.swift in Sources */,
+				78740C1B26DD47350078F2F7 /* PromocodeActivation.swift in Sources */,
 				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,
 				F56502F826CA4D7200934D91 /* Product.swift in Sources */,
 				F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */,

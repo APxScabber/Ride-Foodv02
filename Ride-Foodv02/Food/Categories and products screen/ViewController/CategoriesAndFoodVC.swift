@@ -101,7 +101,7 @@ class CategoriesAndFoodVC: UIViewController {
                 print(error.localizedDescription)
             case .success(let data):
                 self?.productsInCart = data
-                print("There are \(self?.productsInCart.count) products in cart at the moment")
+                print("There are \(String(describing: self?.productsInCart.count)) products in cart at the moment")
             }
         }
     }

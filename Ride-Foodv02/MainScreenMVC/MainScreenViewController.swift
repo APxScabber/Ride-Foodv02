@@ -135,6 +135,7 @@ class MainScreenViewController: UIViewController {
     let scoresView = ScoresView.initFromNib()
     let scoresToolbar = ScoresToolbar.initFromNib()
     let promocodeToolbar = PromocodeToolbar.initFromNib()
+    let promocodeActivationView = PromocodeActivation.initFromNib()
     
     // MARK: - Properties
 
@@ -167,12 +168,16 @@ class MainScreenViewController: UIViewController {
         promotionView.delegate = self
         promotionDetailView.delegate = self
         promocodeToolbar.delegate = self
+        promocodeActivationView.delegate = self
         promocodeToolbar.isHidden = true
+        promocodeActivationView.isHidden = true
         view.addSubview(menuView)
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
         view.addSubview(promotionDetailView)
         view.addSubview(promocodeToolbar)
+        view.addSubview(promocodeActivationView)
+        
     }
     
     
