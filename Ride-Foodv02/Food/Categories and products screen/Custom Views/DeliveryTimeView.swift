@@ -65,7 +65,7 @@ class DeliveryTimeView: UIView {
     }
     
      func set(with deliveryTime: Int, deliveryPrice: Int){
-        mainlabel.text = "Доставим через ≈\(deliveryTime) минут"
+        mainlabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Доставим через", font: UIFont.SFUIDisplayRegular(size: 17)!, color: .black, bodyString: " ≈\(deliveryTime) мин", bodyColor: UIColor.saleOrangeColor)
         priceLabel.text = "\(deliveryPrice) руб"
     }
 
