@@ -17,12 +17,15 @@ class CartVC: UIViewController {
     
     
     let deliveryView  = DeliveryTimeView()
-    let promocodeView = PromocodeCreditView()
-    let creditView    = PromocodeCreditView()
+    let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод")
+    let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы")
     
     
     let stackView       = UIStackView()
     let scrollView      = UIScrollView()
+    
+    let promocodeAndCreditsStackView = UIStackView()
+   
     
     let deliveryTimeView = UIView()
     
@@ -84,6 +87,7 @@ class CartVC: UIViewController {
         configureStackView()
         configureTableView()
         configureDeliveryTimeView()
+        configurePromocodeAndCreditsStackView()
     }
     
     func configureScrollView(){
@@ -96,7 +100,7 @@ class CartVC: UIViewController {
         scrollView.addSubview(stackView)
         stackView.axis                                      = .vertical
         stackView.distribution                              = .fill
-        stackView.spacing                                   = 15
+        stackView.spacing                                   = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
@@ -155,17 +159,21 @@ class CartVC: UIViewController {
     }
     
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configurePromocodeAndCreditsStackView(){
+        stackView.addArrangedSubview(promocodeAndCreditsStackView)
+        promocodeAndCreditsStackView.axis                                      = .horizontal
+        promocodeAndCreditsStackView.distribution                              = .fillEqually
+        promocodeAndCreditsStackView.spacing                                   = 3
+        promocodeAndCreditsStackView.translatesAutoresizingMaskIntoConstraints = false
+        promocodeAndCreditsStackView.addArrangedSubview(promocodeView)
+        promocodeAndCreditsStackView.addArrangedSubview(creditView)
+        
+        NSLayoutConstraint.activate([
+            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            promocodeAndCreditsStackView.heightAnchor.constraint(equalToConstant: 45)
+        ])
     }
-    */
 
 }
 
