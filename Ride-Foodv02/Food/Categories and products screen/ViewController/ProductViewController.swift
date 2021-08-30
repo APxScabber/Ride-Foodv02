@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FoodOrderDelegate: class {
+protocol FoodOrderDelegate: AnyObject {
     func productWasAddedToTheCart()
 }
 

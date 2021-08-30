@@ -459,7 +459,13 @@ extension MainScreenViewController: PromocodeToolbarDelegate {
     
     func activate(promocode: String) {
         taxiTariffView.usedPromocode = true
-        closePromocodeToolbar()
+        promocodeToolbar.textField.resignFirstResponder()
+        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
+        promocodeActivationView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
+        }
     }
     
     func closePromocodeToolbar() {
@@ -472,5 +478,27 @@ extension MainScreenViewController: PromocodeToolbarDelegate {
         }
         }
     }
+}
+
+//MARK: - PromocodeActivatorDelegate
+
+extension MainScreenViewController: PromocodeActivationDelegate {
+    
+    func closePromocodeActivationView() {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height
+        } completion: { if $0 == .end {
+            self.promocodeActivationView.isHidden = true
+            self.wholeTransparentView.isHidden = true
+            self.shouldUpdateUI = true
+        }
+        }
+
+    }
+    
+    
+    
+
+    
     
 }
