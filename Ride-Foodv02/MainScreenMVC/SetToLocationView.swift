@@ -9,6 +9,7 @@ import UIKit
 
 protocol SetToLocationDelegate: AnyObject {
     func pressConfirm()
+    func zoomAllMarkers()
 }
 
 class SetToLocationView: UIView {

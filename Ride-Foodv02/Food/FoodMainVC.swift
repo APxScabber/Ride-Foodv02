@@ -90,11 +90,11 @@ class FoodMainVC: UIViewController {
            let destination = segue.destination as? ShopListViewController {
             destination.place = place
         }
-        if segue.identifier == "locationChooserVC",
-           let destination = segue.destination as? LocationChooserViewController {
-            destination.region = region
-            destination.delegate = self
-        }
+//        if segue.identifier == "locationChooserVC",
+//           let destination = segue.destination as? LocationChooserViewController {
+//            destination.region = region
+//            destination.delegate = self
+//        }
     }
 
     @IBAction func goToTheShopList(_ sender: Any) {
@@ -191,15 +191,15 @@ extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
 
 //MARK: - LocationChooserDelegate
 
-extension FoodMainVC: LocationChooserDelegate {
+//extension FoodMainVC: LocationChooserDelegate {
+//    
+//    func locationChoosen(_ newLocation: String) {
+//        place = newLocation
+//        textField?.text = place
+//    }
     
-    func locationChoosen(_ newLocation: String) {
-        place = newLocation
-        textField?.text = place
-    }
     
-    
-}
+//}
 
 extension FoodMainVC: UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {

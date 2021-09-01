@@ -15,15 +15,18 @@ extension MainScreenViewController: CLLocationManagerDelegate {
         // Получаем координаты пользователя при активной locationManager.startUpdatingLocation()
         if let loc = manager.location?.coordinate {
 
-            let center = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-
-            mapView.setRegion(region, animated: true)
+//            let center = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
+//            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+//
+//            mapView.setRegion(region, animated: true)
+            
+            
 
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: loc) { address in
                 self.foodTaxiView.placeLabel.text = address
                 self.fromAddress = address
                 MapKitManager.shared.locationManager.stopUpdatingLocation()
+                self.zoomOneMarker()
             }
         }
     }
@@ -103,12 +106,12 @@ extension MainScreenViewController: PromotionViewDelegate {
 
 //MARK: - LocationChooserDelegate
 
-extension MainScreenViewController: LocationChooserDelegate {
-    
-    func locationChoosen(_ newLocation: String) {
-        toAddress = newLocation
-    }
-}
+//extension MainScreenViewController: LocationChooserDelegate {
+//    
+//    func locationChoosen(_ newLocation: String) {
+//        toAddress = newLocation
+//    }
+//}
 
 //MARK: - TableView datasourse
 
@@ -398,17 +401,17 @@ extension MainScreenViewController: FoodMainDelegate {
 
 extension MainScreenViewController: SetMapMarkersDelegate {
     
-    func zoomAllMarketsOnMap() {
-        if mapView.annotations.count < 2 {
-            guard let coordinate = MapKitManager.shared.currentUserCoordinate else { return }
-            let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-
-            mapView.setRegion(region, animated: true)
-        } else {
-            mapView.fitAllAnnotations(with: UIEdgeInsets(top: 100, left: 50, bottom: 50 + addressesChooserView.frame.height, right: 50))
-        }
+    func zoomOneMarker() {
+        
+        guard let coordinate = MapKitManager.shared.currentUserCoordinate else { return }
+        
+        let regionRadius: CLLocationDistance = 500
+        let coordinateRegion = MKCoordinateRegion(center: coordinate,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
+    
+
     
     func pathTime(minutes: Int) {
         timeLabel.text = "≈\(minutes) \(Localizable.Taxi.minutes.localized)"
@@ -423,17 +426,10 @@ extension MainScreenViewController: SetToLocationDelegate {
     func pressConfirm() {
         
         isMainScreen = true
-        
-        //setToLocationView.endEditing(true)
-        //toTextField.becomeFirstResponder()
-        
 
-        
         UIView.animate(withDuration: 0.5) {
             
             self.setToLocationView.frame.origin.y = self.view.frame.height
-            
-            //self.setToLocationView.frame.origin.y = self.view.frame.height
             
         } completion: { _ in
             self.setToLocationView.removeFromSuperview()
@@ -444,14 +440,20 @@ extension MainScreenViewController: SetToLocationDelegate {
                 self.promotionView.alpha = 0
                 self.view.layoutIfNeeded()
             }
-            self.setFromMarket()
-            self.setToMarker()
-            //self.moveDown()
-            //self.setToLocationView.removeFromSuperview()
-            
-            //self.transparentView.isHidden = false
-            //self.bottomConstaint.constant = 0
+            self.setToAndFromMarkers()
+            self.moveDown()
+            self.zoomAllMarkers()
         }
+    }
+    
+    func zoomAllMarkers() {
+        
+        guard let coordinate = MapKitManager.shared.currentUserCoordinate else { return }
+        let regionRadius: CLLocationDistance = 500
+        //let center =
+        let coordinateRegion = MKCoordinateRegion(center: coordinate,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 }
 

@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9049D133-F50C-42FA-9000-40533178CA03"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ride-Foodv02/Managers/SetMapMarkersManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "setMarkOn(map:with:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CE4788C3-A492-4B25-B1F4-95DEBE8A3395"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -30,41 +14,9 @@
             filePath = "Ride-Foodv02/MainScreenMVC/MainScreenViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
-            landmarkName = "setFromMarket()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "83CE40B7-F57B-4C38-AD0B-0BE66B7366AE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
-            landmarkName = "pressConfirm()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DCFF626F-5E9A-4E27-9C6E-C0A492394C3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
-            landmarkName = "pressConfirm()"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
+            landmarkName = "moveDown()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,9 +30,57 @@
             filePath = "Ride-Foodv02/MainScreenMVC/MainScreenViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
-            landmarkName = "setToMarker()"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
+            landmarkName = "setFromMarket()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CEEF12D-6D62-47B7-8830-5102928F11C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB0AA44A-8086-4CB5-8D45-105F4A1660A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ride-Foodv02/Managers/SetMapMarkersManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "setMarkOn(map:with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8682A743-FC2C-4293-8B9A-130B908F82FF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "zoomOneMarker()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
