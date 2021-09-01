@@ -152,7 +152,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="YsF-02-T5w" firstAttribute="leading" secondItem="kLG-Ji-dvn" secondAttribute="leading" id="EOe-t5-KKi"/>
                                                     <constraint firstItem="YsF-02-T5w" firstAttribute="top" secondItem="kLG-Ji-dvn" secondAttribute="top" id="OJD-rA-ITp"/>

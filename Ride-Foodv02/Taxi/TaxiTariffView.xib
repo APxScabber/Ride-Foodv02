@@ -43,11 +43,8 @@
                                         <action selector="usePromocode:" destination="iN0-l3-epB" eventType="touchUpInside" id="cwo-Eg-J6d"/>
                                     </connections>
                                 </button>
-                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-nD-2bt">
-                                    <rect key="frame" x="16" y="0.0" width="20" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="rok-aq-eG9"/>
-                                    </constraints>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-nD-2bt">
+                                    <rect key="frame" x="0.0" y="0.0" width="37" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -64,9 +61,10 @@
                                 <constraint firstItem="bpO-JA-zJB" firstAttribute="leading" secondItem="NoI-Cs-Vsl" secondAttribute="leading" id="qA4-kD-qP4"/>
                                 <constraint firstAttribute="height" constant="50" id="qRH-T7-y4P"/>
                                 <constraint firstItem="dvE-YS-U9D" firstAttribute="leading" secondItem="FBp-Wl-IVM" secondAttribute="trailing" constant="6" id="rsW-au-hoi"/>
+                                <constraint firstItem="dvE-YS-U9D" firstAttribute="leading" secondItem="zpM-nD-2bt" secondAttribute="trailing" constant="4" id="sBd-52-p9q"/>
                                 <constraint firstItem="dvE-YS-U9D" firstAttribute="top" secondItem="NoI-Cs-Vsl" secondAttribute="top" constant="16" id="tLw-C6-8ie"/>
                                 <constraint firstItem="bpO-JA-zJB" firstAttribute="top" secondItem="NoI-Cs-Vsl" secondAttribute="top" id="yP5-1U-aWj"/>
-                                <constraint firstItem="zpM-nD-2bt" firstAttribute="leading" secondItem="NoI-Cs-Vsl" secondAttribute="leading" constant="16" id="zWH-sB-gme"/>
+                                <constraint firstItem="zpM-nD-2bt" firstAttribute="leading" secondItem="NoI-Cs-Vsl" secondAttribute="leading" id="zWH-sB-gme"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twN-2c-RZQ" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">

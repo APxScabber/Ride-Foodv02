@@ -101,7 +101,7 @@ class CategoriesAndFoodVC: UIViewController {
                 print(error.localizedDescription)
             case .success(let data):
                 self?.productsInCart = data
-                print("There are \(self?.productsInCart.count) products in cart at the moment")
+                print("There are \(String(describing: self?.productsInCart.count)) products in cart at the moment")
             }
         }
     }
@@ -186,6 +186,7 @@ class CategoriesAndFoodVC: UIViewController {
             self.presentProductsInCartView(screenType: .cart)
             let cartVC = CartVC()
             cartVC.productsInCart = self.productsInCart
+            cartVC.shopID         = self.shopID
             self.add(childVC: cartVC, to: self.contentView)
             self.dismissLoadingView()
         }
@@ -245,7 +246,10 @@ class CategoriesAndFoodVC: UIViewController {
         if let subcategoriesCV = subcategoriesCollectionView{
             subcategoriesCV.removeFromSuperview()
         }
-        productsCollectionView.removeFromSuperview()
+        if let productsCV = productsCollectionView{
+            productsCV.removeFromSuperview()
+        }
+        
         
         subcategories.removeAll()
         products.removeAll()

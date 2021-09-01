@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FoodOrderDelegate: class {
+protocol FoodOrderDelegate: AnyObject {
     func productWasAddedToTheCart()
 }
 
@@ -155,9 +155,9 @@ class ProductViewController: UIViewController {
         }
         
         
-        productCompositionLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Состав: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.composition ?? "")
-        ProductManufacturerLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Производитель: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: "Неизвестен")
-        productManufacturerCountryLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Страна: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.producing ?? "Страна неизвестна")
+        productCompositionLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Состав: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.composition ?? "", bodyColor: UIColor.DarkGrayTextColor)
+        ProductManufacturerLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Производитель: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: "Неизвестен", bodyColor: UIColor.DarkGrayTextColor)
+        productManufacturerCountryLabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Страна: ", font: UIFont.SFUIDisplayRegular(size: 17)!, color: UIColor.black, bodyString: data.producing ?? "Страна неизвестна", bodyColor: UIColor.DarkGrayTextColor)
         
         QTYLbel.backgroundColor = UIColor.SeparatorColor
         

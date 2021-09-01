@@ -131,6 +131,7 @@ class MainScreenViewController: UIViewController {
     let scoresView = ScoresView.initFromNib()
     let scoresToolbar = ScoresToolbar.initFromNib()
     let promocodeToolbar = PromocodeToolbar.initFromNib()
+    let promocodeActivationView = PromocodeActivation.initFromNib()
     
     // MARK: - Properties
 
@@ -164,12 +165,16 @@ class MainScreenViewController: UIViewController {
         promotionView.delegate = self
         promotionDetailView.delegate = self
         promocodeToolbar.delegate = self
+        promocodeActivationView.delegate = self
         promocodeToolbar.isHidden = true
+        promocodeActivationView.isHidden = true
         view.addSubview(menuView)
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
         view.addSubview(promotionDetailView)
         view.addSubview(promocodeToolbar)
+        view.addSubview(promocodeActivationView)
+        
     }
     
     
@@ -385,9 +390,8 @@ class MainScreenViewController: UIViewController {
                 }
                 DispatchQueue.main.async {
                     
-                    self.tableView.reloadData()
                     self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-                    self.addressesChooserViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
+                    self.tableView.reloadData()
 
                     UIView.animate(withDuration: 0.5) {
                         self.view.layoutIfNeeded()
@@ -412,6 +416,11 @@ class MainScreenViewController: UIViewController {
         tableViewHeightConstraint.constant = 0
         
         addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeAreaBottomHeight
+
+        if shouldMakeOrder {
+            roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+            roundedView.isUserInteractionEnabled = true
+        }
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }

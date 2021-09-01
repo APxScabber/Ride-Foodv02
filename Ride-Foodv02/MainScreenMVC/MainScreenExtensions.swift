@@ -156,23 +156,26 @@ extension MainScreenViewController: UITextFieldDelegate {
         responderTextField = textField
         
         showMapItems(true)
+        addresses.removeAll()
         
-        switch textField.tag {
-        case 0:
-            tableViewHeightView.isHidden = true
-            addressesChooserViewHeightConstraint.constant -= tableViewHeightConstraint.constant
-            tableViewHeightConstraint.constant = 0
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-            }
-        case 1:
-            tableViewHeightView.isHidden = false
-            addresses.removeAll()
-            loadAdressesFromCoreData()
-            
-        default:
-            break
-        }
+        loadAdressesFromCoreData()
+        
+//        switch textField.tag {
+//        case 0:
+//            tableViewHeightView.isHidden = true
+//            addressesChooserViewHeightConstraint.constant -= tableViewHeightConstraint.constant
+//            tableViewHeightConstraint.constant = 0
+//            UIView.animate(withDuration: 0.5) {
+//                self.view.layoutIfNeeded()
+//            }
+//        case 1:
+//            tableViewHeightView.isHidden = false
+//            addresses.removeAll()
+//            loadAdressesFromCoreData()
+//
+//        default:
+//            break
+//        }
     }
 }
 
@@ -280,7 +283,6 @@ extension MainScreenViewController: ScoresViewDelegate {
         scoresToolbar.scores = scoresView.scores
         scoresToolbar.textField.becomeFirstResponder()
         scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 128)
-        shouldUpdateUI = false
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 128
         }
@@ -294,6 +296,7 @@ extension MainScreenViewController: ScoresViewDelegate {
         }completion: { if $0 == .end {
             self.wholeTransparentView.isHidden = true
             self.scoresView.isHidden = true
+            self.shouldUpdateUI = true
         }}
     }
     
@@ -313,13 +316,15 @@ extension MainScreenViewController: ScoresToolbarDelegate {
             self.scoresToolbar.frame.origin.y = self.view.bounds.height
         } completion: {  if $0 == .end {
             self.scoresToolbar.isHidden = true
-        }
+            self.shouldUpdateUI = true
+            }
         }
     }
     
     func enter(scores: Int) {
         closeScoresToolbar()
         closeScoresView()
+        taxiTariffView.scoresEntered = scores
         taxiTariffView.updateUIWith(scores: scores)
     }
 }
@@ -461,7 +466,13 @@ extension MainScreenViewController: PromocodeToolbarDelegate {
     
     func activate(promocode: String) {
         taxiTariffView.usedPromocode = true
-        closePromocodeToolbar()
+        promocodeToolbar.textField.resignFirstResponder()
+        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
+        promocodeActivationView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
+        }
     }
     
     func closePromocodeToolbar() {
@@ -474,5 +485,27 @@ extension MainScreenViewController: PromocodeToolbarDelegate {
         }
         }
     }
+}
+
+//MARK: - PromocodeActivatorDelegate
+
+extension MainScreenViewController: PromocodeActivationDelegate {
+    
+    func closePromocodeActivationView() {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height
+        } completion: { if $0 == .end {
+            self.promocodeActivationView.isHidden = true
+            self.wholeTransparentView.isHidden = true
+            self.shouldUpdateUI = true
+        }
+        }
+
+    }
+    
+    
+    
+
+    
     
 }

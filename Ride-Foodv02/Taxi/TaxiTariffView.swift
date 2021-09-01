@@ -8,13 +8,17 @@ protocol TaxiTariffViewDelegate: AnyObject {
 
 class TaxiTariffView: UIView {
 
+    //MARK: - API
     weak var delegate: TaxiTariffViewDelegate?
     
-    var usedScores = false
+    var usedScores = false { didSet { updateScoresView() }}
     var usedPromocode = false { didSet { updatePromocodeView() }}
     var selectedIndex: Int?
+    var scoresEntered = 0
     
     private let prices = [100,250,430]
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var scoresLabel: UILabel! { didSet {
         scoresLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
@@ -125,9 +129,9 @@ class TaxiTariffView: UIView {
 
     @objc
     private func selectStandartView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended && !usedScores {
-            selectedIndex = 0
+        if recognizer.state == .ended  {
             reset()
+            selectedIndex = 0
             updateStandartView()
             delegate?.tariffEntered()
         }
@@ -138,13 +142,16 @@ class TaxiTariffView: UIView {
         standartImageView.image = #imageLiteral(resourceName: "StandartCar")
         standartDurationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         standartPriceLabel.textColor = .black
+        if usedScores {
+            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: prices[0] - scoresEntered)
+        }
     }
     
     @objc
     private func selectPremiumView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended && !usedScores {
-            selectedIndex = 1
+        if recognizer.state == .ended  {
             reset()
+            selectedIndex = 1
             updatePremiumView()
             delegate?.tariffEntered()
         }
@@ -155,14 +162,17 @@ class TaxiTariffView: UIView {
         premiumImageView.image = #imageLiteral(resourceName: "PremiumCar")
         premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
         premiumPriceLabel.textColor = .black
+        if usedScores {
+            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: prices[1] - scoresEntered)
+        }
     }
     
     
     @objc
     private func selectBusinessView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended && !usedScores {
-            selectedIndex = 2
+        if recognizer.state == .ended  {
             reset()
+            selectedIndex = 2
             updateBusinessView()
             delegate?.tariffEntered()
         }
@@ -173,9 +183,17 @@ class TaxiTariffView: UIView {
         businessImageView.image = #imageLiteral(resourceName: "BusinessCar")
         businessDurationLabel.textColor = #colorLiteral(red: 0.831372549, green: 0.7411764706, blue: 0.5019607843, alpha: 1)
         businessPriceLabel.textColor = .black
+        if usedScores {
+            update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: prices[2] - scoresEntered)
+        }
     }
     
     func reset() {
+        
+        selectedIndex = nil
+        if !usedScores { usedScores = false }
+        usedPromocode = false
+        
         standartRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         premiumRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         businessRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
@@ -192,6 +210,14 @@ class TaxiTariffView: UIView {
         premiumPriceLabel.textColor = #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5529411765, alpha: 1)
         businessPriceLabel.textColor = #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5529411765, alpha: 1)
 
+        standartOldPriceLabel.isHidden = true
+        premiumOldPriceLabel.isHidden = true
+        businessOldPriceLabel.isHidden = true
+
+        standartPriceLabel.text = "\(prices[0]) руб"
+        premiumPriceLabel.text = "\(prices[1]) руб"
+        businessPriceLabel.text = "\(prices[2]) руб"
+
         recreateViewIfNeeded()
     }
     
@@ -202,6 +228,7 @@ class TaxiTariffView: UIView {
         scoresEnteredLabel.isHidden = false
         scoresEnterValueLabel.isHidden = false
         scoresEnterValueLabel.text = "- \(scores)"
+        scoresRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         guard let index = selectedIndex else { return }
         switch index {
             case 0:
@@ -244,14 +271,23 @@ class TaxiTariffView: UIView {
     }
     
     private func updatePromocodeView() {
-        if usedPromocode {
-            promocodeDiscountLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
-            promocodeLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
-            promocodeDiscountLabel.isHidden = false
-            promocodeDiscountLabel.text = "-15%"
-            promocodeImageView.isHidden = true
-        }
+        
+        promocodeRoundedView.colorToFill = usedPromocode ? #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1) : .white
+        promocodeImageView.isHidden = usedPromocode
+        promocodeDiscountLabel.isHidden = !usedPromocode
+        promocodeDiscountLabel.text = "-15%"
+        promocodeLabel.font = usedPromocode ? UIFont.SFUIDisplayBold(size: 15.0) : UIFont.SFUIDisplayRegular(size: 15.0)
+
+        
     }
     
+    private func updateScoresView() {
+        
+        scoresImageView.isHidden = usedScores
+        scoresEnteredLabel.isHidden = !usedScores
+        scoresRoundedView.colorToFill = usedScores ? #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1) : .white
+        scoresEnterValueLabel.isHidden = !usedScores
+        scoresLabel.isHidden = usedScores
+    }
     
 }

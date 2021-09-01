@@ -15,6 +15,8 @@ class FoodMainVC: UIViewController {
     var region = MKCoordinateRegion()
     weak var delegate: FoodMainDelegate?
     
+   
+    
     //MARK: - Outlets
     
     @IBOutlet weak var roundedView: RoundedView! { didSet {
@@ -52,9 +54,13 @@ class FoodMainVC: UIViewController {
         
        
         NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(done))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
+        
         PersistanceManager.shared.fetchAddresses { result in
             switch result {
             case .success(let addresses):
@@ -103,7 +109,7 @@ class FoodMainVC: UIViewController {
     
     
     func goToTheShopListVC(sender: Any?, indexPath: IndexPath?){
-        
+        self.resignFirstResponder()
       if sender is FoodMainTableViewCell, let indexPath = indexPath{
             let address = addresses[indexPath.row]
             let storyboard = UIStoryboard(name: "Food", bundle: nil)
@@ -136,12 +142,22 @@ class FoodMainVC: UIViewController {
     private var shouldMoveView: Bool? = true
     
     @objc private func updateConstraintWith(_ notification: Notification) {
+        
+        shouldMoveView = true
         guard let userInfo = notification.userInfo else { return }
         guard shouldMoveView != nil else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            view.frame.origin.y -= size.height
+            if self.view.frame.origin.y == 0 {
+                       self.view.frame.origin.y -= (size.height - 40)
+                   }
             shouldMoveView = nil
         }
+    }
+    
+    @objc private func hideKeyboard(with notification: Notification){
+        if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
     }
 
     @objc

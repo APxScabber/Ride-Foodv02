@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pX-zC-jh4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="847.82608695652175" y="-568.52678571428567"/>
+            <point key="canvasLocation" x="896" y="-579"/>
         </scene>
         <!--Shop List View Controller-->
         <scene sceneID="14g-gM-goU">
@@ -816,28 +816,28 @@
                                                                 <rect key="frame" x="0.0" y="8" width="414" height="342"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5a0-AN-Vpx">
-                                                                        <rect key="frame" x="20" y="8" width="374" height="150.5"/>
+                                                                        <rect key="frame" x="20" y="8" width="374" height="150"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Молоко Aroy-D кокосовое 17-19%, 500 г" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErL-9N-71W">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20"/>
                                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="переработанная мякоть кокосового ореха 70%, вода 2,99%, эмульгатор Е435 0,01%" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="iwQ-VE-OFo">
-                                                                                <rect key="frame" x="0.0" y="36.5" width="374" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="36" width="374" height="41"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" name="SettingsHeaderColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Производитель: Thai Agri Foods Public CL." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciW-YK-AQN">
-                                                                                <rect key="frame" x="0.0" y="93.5" width="374" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="93" width="374" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Страна: Таиланд" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUb-5w-QZo">
-                                                                                <rect key="frame" x="0.0" y="130" width="374" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="129.5" width="374" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
