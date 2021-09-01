@@ -9,8 +9,6 @@ import UIKit
 
 class CartVC: UIViewController {
 
-
-    
     var shopID: Int = 0
     
     var cartTableView = UITableView()
@@ -33,15 +31,12 @@ class CartVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-       
-        // Do any additional setup after loading the view.
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         retrieveCartProducts()
-       
     }
     
     // Business Logic
@@ -56,7 +51,7 @@ class CartVC: UIViewController {
                 self.productsInCart = products
                 DispatchQueue.main.async {
                     self.cartTableView.reloadData()
-                    self.configureTableViewHeightConstraints()
+                   
                     
                 }
             }
@@ -66,22 +61,15 @@ class CartVC: UIViewController {
    
     // UI Logic
     
-//    override func updateViewConstraints() {
-//        cartTableView.heightAnchor.constraint(equalToConstant: cartTableView.contentSize.height).isActive = true
-//        super.updateViewConstraints()
-//    }
-   
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        
-        
-        
+        configureUI()
+  
     }
     
     func configureUI(){
-        view.translatesAutoresizingMaskIntoConstraints = false
+       
         view.backgroundColor = .white
         configureScrollView()
         configureStackView()
@@ -91,22 +79,33 @@ class CartVC: UIViewController {
     }
     
     func configureScrollView(){
-        scrollView.frame                    = view.bounds
+
         view.addSubview(scrollView)
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: stackView.frame.height + 600)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: scrollView.contentSize.height)
     }
     
     func configureStackView(){
         scrollView.addSubview(stackView)
         stackView.axis                                      = .vertical
         stackView.distribution                              = .fill
+        stackView.alignment                                 = .fill
         stackView.spacing                                   = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -120),
             stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor)
+            stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
+            
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
         ])
         
     }
