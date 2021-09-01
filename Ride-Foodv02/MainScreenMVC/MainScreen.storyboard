@@ -135,7 +135,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="yuA-HT-oho" secondAttribute="bottom" id="6DG-qe-T7d"/>
                                                     <constraint firstAttribute="height" constant="50" id="IJ3-qG-46v"/>

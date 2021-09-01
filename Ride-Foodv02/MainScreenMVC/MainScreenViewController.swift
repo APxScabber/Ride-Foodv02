@@ -393,9 +393,8 @@ class MainScreenViewController: UIViewController {
                 }
                 DispatchQueue.main.async {
                     
-                    self.tableView.reloadData()
                     self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-                    self.addressesChooserViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
+                    self.tableView.reloadData()
 
                     UIView.animate(withDuration: 0.5) {
                         self.view.layoutIfNeeded()
@@ -418,7 +417,10 @@ class MainScreenViewController: UIViewController {
         showMapItems(false)
         shouldUpdateUI = true
         tableViewHeightConstraint.constant = 0
-        
+        if shouldMakeOrder {
+            roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+            roundedView.isUserInteractionEnabled = true
+        }
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let safeArea = window.safeAreaInsets.bottom
         addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeArea
