@@ -189,6 +189,25 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] (action, view, completionHandler) -> Void in
+            guard let self = self else { return }
+            let product = self.productsInCart[indexPath.row]
+            
+            let context = FoodPersistanceManager.shared.context
+            context.delete(product)
+           
+            FoodPersistanceManager.shared.saveContext()
+            self.retrieveCartProducts()
+        }
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
