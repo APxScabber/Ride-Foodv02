@@ -10,60 +10,60 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FoodTaxiView" customModule="Ride_Foodv02" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="IBe-A0-PVe" customClass="FoodTaxiView" customModule="Ride_Foodv02" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="390" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h3s-og-4ea">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9yu-uH-M5g">
                     <rect key="frame" x="25" y="50" width="340" height="80"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Taxi" translatesAutoresizingMaskIntoConstraints="NO" id="tPN-we-tgl">
+                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Taxi" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-S4-bT6">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="TQ7-P6-hZh">
+                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Food" translatesAutoresizingMaskIntoConstraints="NO" id="321-Bm-NsK">
                             <rect key="frame" x="180" y="0.0" width="160" height="80"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="TQ7-P6-hZh" secondAttribute="height" multiplier="2:1" id="uve-rS-Xi2"/>
+                                <constraint firstAttribute="width" secondItem="321-Bm-NsK" secondAttribute="height" multiplier="2:1" id="pkJ-KO-ZGe"/>
                             </constraints>
                         </imageView>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-bc-hmy">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="UkY-Lj-oNE">
                     <rect key="frame" x="195" y="10" width="0.0" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="Upe-5e-BMb"/>
+                        <constraint firstAttribute="height" constant="20" id="dE7-K8-1Mz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Annotation" translatesAutoresizingMaskIntoConstraints="NO" id="rzY-s3-JzB">
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Annotation" translatesAutoresizingMaskIntoConstraints="NO" id="eNe-IX-6n7">
                     <rect key="frame" x="175" y="8" width="12" height="19"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="12" id="1IZ-sK-ZPx"/>
-                        <constraint firstAttribute="height" constant="19" id="eT8-GT-Z3z"/>
+                        <constraint firstAttribute="height" constant="19" id="Mdl-B1-Pbx"/>
+                        <constraint firstAttribute="width" constant="12" id="imP-DS-5jP"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="TeY-AB-ubh"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="h3s-og-4ea" firstAttribute="top" secondItem="WAl-bc-hmy" secondAttribute="bottom" constant="20" id="0rU-3f-8ha"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WAl-bc-hmy" secondAttribute="trailing" constant="10" id="5YJ-0I-hMj"/>
-                <constraint firstItem="rzY-s3-JzB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="6K1-Ko-lly"/>
-                <constraint firstItem="h3s-og-4ea" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="7yV-j8-xZd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h3s-og-4ea" secondAttribute="trailing" constant="25" id="8FA-dw-01L"/>
-                <constraint firstItem="WAl-bc-hmy" firstAttribute="leading" secondItem="rzY-s3-JzB" secondAttribute="trailing" constant="8" id="DbO-Wj-6sA"/>
-                <constraint firstItem="WAl-bc-hmy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IQf-vv-GvA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="h3s-og-4ea" secondAttribute="bottom" constant="10" id="QCP-J6-BGr"/>
-                <constraint firstItem="h3s-og-4ea" firstAttribute="top" secondItem="rzY-s3-JzB" secondAttribute="bottom" constant="23" id="sAW-Ln-Md6"/>
+                <constraint firstItem="TeY-AB-ubh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UkY-Lj-oNE" secondAttribute="trailing" constant="10" id="4Z0-RE-XY6"/>
+                <constraint firstItem="TeY-AB-ubh" firstAttribute="trailing" secondItem="9yu-uH-M5g" secondAttribute="trailing" constant="25" id="8Aw-8e-PWR"/>
+                <constraint firstItem="TeY-AB-ubh" firstAttribute="bottom" secondItem="9yu-uH-M5g" secondAttribute="bottom" constant="10" id="9c1-zP-2xX"/>
+                <constraint firstItem="UkY-Lj-oNE" firstAttribute="centerX" secondItem="IBe-A0-PVe" secondAttribute="centerX" id="Ltc-lv-fnM"/>
+                <constraint firstItem="9yu-uH-M5g" firstAttribute="leading" secondItem="TeY-AB-ubh" secondAttribute="leading" constant="25" id="QfK-Pv-zFc"/>
+                <constraint firstItem="9yu-uH-M5g" firstAttribute="top" secondItem="eNe-IX-6n7" secondAttribute="bottom" constant="23" id="YH5-mw-BNz"/>
+                <constraint firstItem="9yu-uH-M5g" firstAttribute="top" secondItem="UkY-Lj-oNE" secondAttribute="bottom" constant="20" id="ZFU-hG-WwR"/>
+                <constraint firstItem="eNe-IX-6n7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TeY-AB-ubh" secondAttribute="leading" constant="10" id="a6d-Sw-J32"/>
+                <constraint firstItem="UkY-Lj-oNE" firstAttribute="leading" secondItem="eNe-IX-6n7" secondAttribute="trailing" constant="8" id="jhD-o9-hNy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="foodImageView" destination="TQ7-P6-hZh" id="5rl-v9-HIr"/>
-                <outlet property="placeAnnotationView" destination="rzY-s3-JzB" id="HDE-Z5-fYc"/>
-                <outlet property="placeLabel" destination="WAl-bc-hmy" id="et7-zz-wMJ"/>
-                <outlet property="taxiImageView" destination="tPN-we-tgl" id="Fic-wp-eHK"/>
+                <outlet property="foodImageView" destination="321-Bm-NsK" id="aa7-Cb-3DC"/>
+                <outlet property="placeAnnotationView" destination="eNe-IX-6n7" id="lCR-c2-mgs"/>
+                <outlet property="placeLabel" destination="UkY-Lj-oNE" id="vlM-vo-YE1"/>
+                <outlet property="taxiImageView" destination="J9v-S4-bT6" id="4IB-D5-AbQ"/>
             </connections>
             <point key="canvasLocation" x="45" y="128"/>
         </view>

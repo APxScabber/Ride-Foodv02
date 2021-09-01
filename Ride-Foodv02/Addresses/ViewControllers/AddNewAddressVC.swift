@@ -143,10 +143,10 @@ class AddNewAddressVC: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? SelectLocationVC {
             vc.delegate = self
-        } else if let TaxiVC = segue.destination as? TaxiMainVC{
-            TaxiVC.toAddress = passedAddress?.address ?? ""
-        }
-       
+        } //else if let TaxiVC = segue.destination as? TaxiMainVC{
+//            TaxiVC.toAddress = passedAddress?.address ?? ""
+//        }
+//
     }
     
 

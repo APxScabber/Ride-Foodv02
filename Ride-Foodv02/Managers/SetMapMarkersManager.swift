@@ -10,7 +10,7 @@ import MapKit
 
 protocol SetMapMarkersDelegate: AnyObject {
     func pathTime(minutes: Int)
-    func zoomAllMarketsOnMap()
+    func zoomOneMarker()
 }
 
 class SetMapMarkersManager {
@@ -50,6 +50,7 @@ class SetMapMarkersManager {
         
         if annotation.title == "From" {
             MapKitManager.shared.currentUserCoordinate = coordinate
+            delegate?.zoomOneMarker()
         }
         
         CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).findAddress { address in
@@ -61,6 +62,6 @@ class SetMapMarkersManager {
                     self.delegate?.pathTime(minutes: pathTime)
             }
         }
-        delegate?.zoomAllMarketsOnMap()
+        
     }
 }

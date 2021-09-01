@@ -77,10 +77,7 @@ class MainScreenViewController: UIViewController {
         tableViewHeightConstraint.constant = 0
     }}
     
-    @IBOutlet weak var addressesChooserViewHeightConstraint: NSLayoutConstraint! { didSet{
-//        let safeAreaBottomHeight = view.safeAreaInsets.bottom
-//        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeAreaBottomHeight
-    }}
+    @IBOutlet weak var addressesChooserViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var bottomConstaint: NSLayoutConstraint! { didSet {
         bottomConstaint.constant = -300
@@ -96,8 +93,7 @@ class MainScreenViewController: UIViewController {
     }}
 
     @IBOutlet weak var userLocationButtonConstraint: NSLayoutConstraint! { didSet {
-        userLocationButtonConstraint.constant = addressesChooserView.frame.height + promotionView.touchableView.frame.height //5//promotionView.touchableView.frame.height + 5//foodTaxiView.frame.height// + promotionView.touchableView.frame.height + 20
-
+        userLocationButtonConstraint.constant = addressesChooserView.frame.height + promotionView.touchableView.frame.height
     }}
     
     @IBOutlet weak var mapView: MKMapView! { didSet {
@@ -144,6 +140,7 @@ class MainScreenViewController: UIViewController {
     var addresses = [Address]()
     var currentUserCoordinate: CLLocationCoordinate2D?
     var isMainScreen = true
+    var availbles = false
 
     let taxiMainInteractor = TaxiMainInteractor()
     
@@ -156,7 +153,7 @@ class MainScreenViewController: UIViewController {
     private var yOffset: CGFloat = 0
     var shouldMakeOrder = false
     
-
+    let condition = NSCondition()
 
     // MARK: - ViewController lifecycle
 
@@ -184,7 +181,7 @@ class MainScreenViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         bottomSafeAreaConstant = view.safeAreaInsets.bottom
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -193,7 +190,7 @@ class MainScreenViewController: UIViewController {
         setupSetToLocationView()
         menuView.layoutSubviews()
         
-        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight
+        //addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight
         responderTextField?.becomeFirstResponder()
         
         MapKitManager.shared.checkLocationServices(delegate: self, view: self)
@@ -299,8 +296,8 @@ class MainScreenViewController: UIViewController {
         
         updateUI()
         
-        let safeAreaBottomHeight = view.safeAreaInsets.bottom
-        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeAreaBottomHeight
+        //let safeAreaBottomHeight = view.safeAreaInsets.bottom
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + bottomSafeAreaConstant
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -417,13 +414,13 @@ class MainScreenViewController: UIViewController {
         showMapItems(false)
         shouldUpdateUI = true
         tableViewHeightConstraint.constant = 0
+        
+        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeAreaBottomHeight
+
         if shouldMakeOrder {
             roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
             roundedView.isUserInteractionEnabled = true
         }
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        let safeArea = window.safeAreaInsets.bottom
-        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeArea
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
@@ -432,6 +429,7 @@ class MainScreenViewController: UIViewController {
     
     func setFromMarket() {
         if fromAddress != "" {
+
             SetMapMarkersManager.shared.isFromAddressMarkSelected = true
             taxiMainInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
                 self.fromAddress = respounceAddress
@@ -449,6 +447,7 @@ class MainScreenViewController: UIViewController {
     
     func setToMarker() {
         if toAddress != "" {
+            
             SetMapMarkersManager.shared.isFromAddressMarkSelected = false
             taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { respounceAddress in
                 self.toAddress = respounceAddress
@@ -460,6 +459,25 @@ class MainScreenViewController: UIViewController {
                     self.mapView.removeAnnotation(mark)
                 }
             }
+        }
+    }
+    
+    func setToAndFromMarkers() {
+        if fromAddress != "" {
+            SetMapMarkersManager.shared.isFromAddressMarkSelected = true
+            taxiMainInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
+                self.fromAddress = respounceAddress
+                self.setToMarker()
+                
+            }
+        } else {
+            fromTextField.text = fromAddress
+            _ = self.mapView.annotations.compactMap { mark in
+                if mark.title == "From" {
+                    self.mapView.removeAnnotation(mark)
+                }
+            }
+            
         }
     }
     
@@ -538,6 +556,7 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+    //смена маркера установки позиции ОТКУДА ехать, на маркер КУДА ехать
     @objc
     private func toLocationEnterChanged() {
         toAddress = setToLocationView.locationTextField.text ?? ""
