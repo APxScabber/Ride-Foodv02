@@ -225,6 +225,7 @@
 		F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */; };
 		F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */; };
 		F50DEFD126CC604C003B9308 /* SubCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */; };
+		F513AFC126E1B00F00CDCFA2 /* EmptyCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F513AFC026E1B00F00CDCFA2 /* EmptyCartView.swift */; };
 		F529F1B026D887A5007B91B4 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1AF26D887A5007B91B4 /* CartVC.swift */; };
 		F529F1B426DAE4EE007B91B4 /* PromocodeCreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1B326DAE4EE007B91B4 /* PromocodeCreditView.swift */; };
 		F529F1B626DAE63A007B91B4 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F529F1B526DAE63A007B91B4 /* CartTableViewCell.swift */; };
@@ -477,6 +478,7 @@
 		F5011DBC26B5854F00DE3777 /* VBConfirmAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBConfirmAlertVC.swift; sourceTree = "<group>"; };
 		F5011DBE26B5FE9500DE3777 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F50DEFD026CC604C003B9308 /* SubCategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		F513AFC026E1B00F00CDCFA2 /* EmptyCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCartView.swift; sourceTree = "<group>"; };
 		F529F1AF26D887A5007B91B4 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		F529F1B326DAE4EE007B91B4 /* PromocodeCreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeCreditView.swift; sourceTree = "<group>"; };
 		F529F1B526DAE63A007B91B4 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
@@ -1222,6 +1224,7 @@
 				F529F1B726DB824C007B91B4 /* CartProductsQTYView.swift */,
 				F529F1BD26DCC120007B91B4 /* DeliveryTimeView.swift */,
 				F529F1BF26DCDF55007B91B4 /* PromocodeAndCreditsView.swift */,
+				F513AFC026E1B00F00CDCFA2 /* EmptyCartView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1430,6 +1433,7 @@
 				F58FA74D26CCDB75000B8E16 /* ProductsCollectionViewCell.swift in Sources */,
 				C47892C3267B8CA900B4C737 /* TariffsFontSize.swift in Sources */,
 				78A39FFB267B56A3006D0DAB /* ConfirmModel.swift in Sources */,
+				F513AFC126E1B00F00CDCFA2 /* EmptyCartView.swift in Sources */,
 				78F1A98226A8949000E16084 /* AddCardViewController.swift in Sources */,
 				78740C1B26DD47350078F2F7 /* PromocodeActivation.swift in Sources */,
 				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,

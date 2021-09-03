@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol ClearFoodCartProtocol {
+    func clearFoodCart()
+}
 
 protocol ResetEverythingProtocol {
     func deleteEverything()
@@ -23,6 +26,8 @@ class VBConfirmAlertVC: UIViewController {
     
     var delegate: DeleteAddressProtocol?
     
+    var foodCartDelegate: ClearFoodCartProtocol?
+    
     var alertTitle: String?
     var confirmOptionTitle: String?
     var cancelOptionTitle: String?
@@ -36,9 +41,6 @@ class VBConfirmAlertVC: UIViewController {
     
     let horizontalPadding: CGFloat = 25
     
-  
-    
-   
     
     @objc init(alertTitle: String, alertColor: UIColor , confirmTitle: String, cancelTitle: String) {
         self.titleLabel.textColor   = alertColor
@@ -127,6 +129,8 @@ class VBConfirmAlertVC: UIViewController {
             delegate.deleteAddress()
         } else if let resetDelegate = resetDelegate{
             resetDelegate.deleteEverything()
+        } else if let delegate = foodCartDelegate{
+            delegate.clearFoodCart()
         }
         
     }

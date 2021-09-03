@@ -399,7 +399,7 @@
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rKT-zC-EWE">
                                         <rect key="frame" x="0.0" y="61" width="414" height="200"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="5VR-Gl-xFn"/>
                                         </constraints>
@@ -418,36 +418,39 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMU-i5-DH3" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                                                            <rect key="frame" x="8" y="8" width="184" height="82"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Пятерочка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-VZ-isD">
+                                                                    <rect key="frame" x="8" y="8" width="96" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="VA6-gk-ZiM"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пятерочка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-VZ-isD">
-                                                            <rect key="frame" x="14" y="10" width="96" height="17"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="VA6-gk-ZiM"/>
+                                                                <constraint firstItem="ZEO-VZ-isD" firstAttribute="leading" secondItem="EMU-i5-DH3" secondAttribute="leading" constant="8" id="VFl-06-IDB"/>
+                                                                <constraint firstItem="ZEO-VZ-isD" firstAttribute="top" secondItem="EMU-i5-DH3" secondAttribute="top" constant="8" id="nak-NR-4gD"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wTV-MS-YwB">
-                                                            <rect key="frame" x="110" y="10" width="90" height="90"/>
+                                                            <rect key="frame" x="110" y="10" width="82" height="80"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="wTV-MS-YwB" secondAttribute="height" multiplier="1:1" id="mPB-FN-ecX"/>
+                                                                <constraint firstAttribute="width" secondItem="wTV-MS-YwB" secondAttribute="height" multiplier="1:1" constant="2" id="mPB-FN-ecX"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="EMU-i5-DH3" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" id="1cR-wV-Zde"/>
-                                                        <constraint firstAttribute="bottom" secondItem="EMU-i5-DH3" secondAttribute="bottom" id="4Ef-PF-m7c"/>
-                                                        <constraint firstItem="wTV-MS-YwB" firstAttribute="leading" secondItem="ZEO-VZ-isD" secondAttribute="trailing" id="4OH-uG-wJK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="EMU-i5-DH3" secondAttribute="trailing" id="5yn-FW-0tH"/>
+                                                        <constraint firstItem="EMU-i5-DH3" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" constant="8" id="1cR-wV-Zde"/>
+                                                        <constraint firstAttribute="bottom" secondItem="EMU-i5-DH3" secondAttribute="bottom" constant="10" id="4Ef-PF-m7c"/>
+                                                        <constraint firstAttribute="trailing" secondItem="EMU-i5-DH3" secondAttribute="trailing" constant="8" id="5yn-FW-0tH"/>
                                                         <constraint firstItem="wTV-MS-YwB" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" constant="10" id="8m4-ai-6FO"/>
-                                                        <constraint firstAttribute="trailing" secondItem="wTV-MS-YwB" secondAttribute="trailing" id="J7n-Mr-APj"/>
-                                                        <constraint firstItem="EMU-i5-DH3" firstAttribute="leading" secondItem="k22-EQ-0UD" secondAttribute="leading" id="hIr-bP-nxh"/>
-                                                        <constraint firstItem="ZEO-VZ-isD" firstAttribute="leading" secondItem="k22-EQ-0UD" secondAttribute="leading" constant="14" id="tM3-ey-6pm"/>
-                                                        <constraint firstItem="ZEO-VZ-isD" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" constant="10" id="vex-R0-jXf"/>
-                                                        <constraint firstAttribute="bottom" secondItem="wTV-MS-YwB" secondAttribute="bottom" id="xRn-aV-wcQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wTV-MS-YwB" secondAttribute="trailing" constant="8" id="J7n-Mr-APj"/>
+                                                        <constraint firstItem="EMU-i5-DH3" firstAttribute="leading" secondItem="k22-EQ-0UD" secondAttribute="leading" constant="8" id="hIr-bP-nxh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="wTV-MS-YwB" secondAttribute="bottom" constant="10" id="xRn-aV-wcQ"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="200" height="100"/>
@@ -468,7 +471,7 @@
                                         <color key="color" systemColor="systemOrangeColor"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="8qW-HN-gy3" secondAttribute="trailing" constant="25" id="2fz-11-chQ"/>
                                     <constraint firstItem="Rgc-Oa-XeI" firstAttribute="top" secondItem="LAe-hB-yE8" secondAttribute="top" constant="15" id="7Pg-zq-rWz"/>
@@ -498,7 +501,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0M-Bi-I3A">
                                 <rect key="frame" x="0.0" y="862" width="414" height="34"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adw-pm-7h0"/>
@@ -1047,9 +1050,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

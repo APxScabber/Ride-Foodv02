@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol cartVCDelegate: AnyObject {
+    func updateBottomView()
+}
+
 class CartVC: UIViewController {
 
     var shopID: Int = 0
@@ -28,6 +32,8 @@ class CartVC: UIViewController {
     let deliveryTimeView = UIView()
     
     var productsInCart: [FoodOrderMO] = []
+    
+    var delegate: cartVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +57,6 @@ class CartVC: UIViewController {
                 self.productsInCart = products
                 DispatchQueue.main.async {
                     self.cartTableView.reloadData()
-                   
-                    
                 }
             }
         }
@@ -103,9 +107,7 @@ class CartVC: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -120),
             stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
-            
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
         ])
         
     }
@@ -129,13 +131,13 @@ class CartVC: UIViewController {
         cartTableView.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.reuseID)
         
         cartTableView.invalidateIntrinsicContentSize()
-        cartTableView.estimatedRowHeight = 40
+        cartTableView.estimatedRowHeight        = 40
         cartTableView.translatesAutoresizingMaskIntoConstraints = false
-        cartTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
-        cartTableView.delegate = self
-        cartTableView.dataSource = self
+        cartTableView.frame                     = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
+        cartTableView.delegate                  = self
+        cartTableView.dataSource                = self
         cartTableView.layoutIfNeeded()
-        cartTableView.isScrollEnabled = false
+        cartTableView.isScrollEnabled           = false
         
        
         NSLayoutConstraint.activate([
@@ -152,7 +154,6 @@ class CartVC: UIViewController {
             cartTableView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         else {
-            print("content size is \(cartTableView.contentSize.height)")
             cartTableView.heightAnchor.constraint(equalToConstant: cartTableView.contentSize.height ).isActive = true
         }
     }
@@ -199,14 +200,11 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
            
             FoodPersistanceManager.shared.saveContext()
             self.retrieveCartProducts()
+            self.delegate?.updateBottomView()
         }
         return UISwipeActionsConfiguration(actions: [action])
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60

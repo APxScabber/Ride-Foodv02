@@ -14,13 +14,15 @@ enum PresentedScreen{
 class CategoriesAndFoodVC: UIViewController {
 
     
-    var productsInCartView = FoodOrderBottomView()
+    var productsInCartView: FoodOrderBottomView?
+    
+    let trashBinButton = UIButton()
+    
+    let emptyCartView = EmptyCartView()
     
     let tableViewCellID = "tableViewCellID"
     
-    var showSubcategories: Bool = false { didSet {
-   
-    }}
+    var showSubcategories: Bool = false
     
     var subcategoriesTableView: UITableView!
     
@@ -85,39 +87,76 @@ class CategoriesAndFoodVC: UIViewController {
     }()
     
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setUpViews(screenType: .subcategories)
         configureContentView()
     }
     
-    func fetchCDOrderInformation(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
+        fetchCDOrderInformation(with: .subcategories)
+    }
+    
+    
+    
+    func fetchCDOrderInformation(with screenType: PresentedScreen){
+        productsInCart.removeAll()
         FoodPersistanceManager.shared.fetchAddresses(shopID: shopID) { [weak self] result in
+            guard let self = self else { return }
             switch result{
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let data):
-                self?.productsInCart = data
-                print("There are \(String(describing: self?.productsInCart.count)) products in cart at the moment")
+                self.productsInCart = data
+                self.presentProductsInCartView(screenType: screenType)
             }
         }
     }
     
-
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
-        getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
+    func presentProductsInCartView(screenType: PresentedScreen){
+        let padding: CGFloat = 25
         
+        overallPriceInCart = 0
         
+        if let view = productsInCartView{
+            view.removeFromSuperview()
+        }
+        guard !productsInCart.isEmpty else {
+            self.productsInCartView?.removeFromSuperview()
+            productsInCartView = nil
+            return
+        }
         
+        productsInCart.forEach { product in
+            overallPriceInCart += Int((product.price * product.qty))
+        }
+        switch screenType{
+        case .subcategories:
+            productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
+        case .cart:
+            productsInCartView = FoodOrderBottomView(title: "Перейти к оплате", price: overallPriceInCart, oldPrice: nil)
+        }
+        
+        if let bottomView = productsInCartView{
+            containerView.addSubview(bottomView)
+          
+            let tap = UITapGestureRecognizer(target: self, action: #selector(bottomViewTapGestureRecognizerAction))
+            bottomView.addGestureRecognizer(tap)
+            
+            NSLayoutConstraint.activate([
+                bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+                bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+                bottomView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
+                bottomView.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
+      
         
     }
+  
    
     func getProducts(shopID: Int, categoryID: Int, page: Int){
         self.showLoadingView()
@@ -127,12 +166,10 @@ class CategoriesAndFoodVC: UIViewController {
             case .success(let data):
                 self.productData = data
                 self.productData?.data?.forEach({ element in
-                    
                     if element.isCategory!{
                         self.subcategories.append(element)
                     } else {
                         self.products.append(element)
-                      
                     }
                 })
                 if page == data.meta?.lastPage || data.meta?.lastPage == 1  { self.hasMorePages = false}
@@ -140,7 +177,6 @@ class CategoriesAndFoodVC: UIViewController {
                 self.showSubcategories = self.products.isEmpty ? true : false
                 
                 DispatchQueue.main.async {
-                    print(self.products)
                     self.dismissLoadingView()
                     self.updateUI(screenType: .subcategories)
                 }
@@ -151,9 +187,13 @@ class CategoriesAndFoodVC: UIViewController {
         }
     }
     
+    @objc func deleteCart(){
+        guard productsInCart.count != 0 else { return }
+        presentConfirmWindow(title: "Очистить корзину?", titleColor: .red, confirmTitle: "Очистить", cancelTitle: "Отмена")
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       
          if !hasSetPointOrigin {
              hasSetPointOrigin = true
              pointOrigin = self.view.frame.origin
@@ -177,16 +217,44 @@ class CategoriesAndFoodVC: UIViewController {
         
     }
     
+    func configureEmptyCartView(){
+        contentView.addSubview(emptyCartView)
+        emptyCartView.button.addTarget(self, action: #selector(getBackToShops), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            emptyCartView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            emptyCartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            emptyCartView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            emptyCartView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
+    
+    func configureTrashButton(){
+        containerView.addSubview(trashBinButton)
+        trashBinButton.addTarget(self, action: #selector(deleteCart), for: .touchUpInside)
+        trashBinButton.setImage(UIImage(named: "trashBin"), for: .normal)
+        trashBinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            trashBinButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 9),
+            trashBinButton.heightAnchor.constraint(equalToConstant: 41),
+            trashBinButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -17),
+            trashBinButton.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
+    }
+    
     func deleteProductsAndPresentCart(){
         self.showLoadingView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self = self else { return }
             self.removeAllCollectionViews()
             self.setUpViews(screenType: .cart)
-            self.presentProductsInCartView(screenType: .cart)
+            self.configureTrashButton()
+            self.fetchCDOrderInformation(with: .cart)
             let cartVC = CartVC()
             cartVC.productsInCart = self.productsInCart
             cartVC.shopID         = self.shopID
+            cartVC.delegate       = self
             self.add(childVC: cartVC, to: self.contentView)
             self.dismissLoadingView()
         }
@@ -219,7 +287,6 @@ class CategoriesAndFoodVC: UIViewController {
                         self.reloadProductsCollectionView()
                     }
                 }
-                self.presentProductsInCartView(screenType: .subcategories)
             }
         case .cart:
             print("Here we are gonna configure cartscreen")
@@ -230,7 +297,6 @@ class CategoriesAndFoodVC: UIViewController {
     func reloadProductsCollectionView(){
         if isPaginating {
             productsCollectionView.reloadInputViews()
-            print("reloading sections")
         } else {
             productsCollectionView.reloadData()
            
@@ -249,8 +315,6 @@ class CategoriesAndFoodVC: UIViewController {
         if let productsCV = productsCollectionView{
             productsCV.removeFromSuperview()
         }
-        
-        
         subcategories.removeAll()
         products.removeAll()
     }
@@ -269,38 +333,6 @@ class CategoriesAndFoodVC: UIViewController {
             subcategoriesTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             subcategoriesTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subcategoriesTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
-        
-    }
-    
-    func presentProductsInCartView(screenType: PresentedScreen){
-        let padding: CGFloat = 25
-        
-        productsInCart.removeAll()
-        overallPriceInCart = 0
-        fetchCDOrderInformation()
-        guard productsInCart.count != 0 else { return }
-        productsInCart.forEach { product in
-            overallPriceInCart += Int((product.price * product.qty))
-        }
-        switch screenType{
-        case .subcategories:
-            productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
-        case .cart:
-            productsInCartView = FoodOrderBottomView(title: "Перейти к оплате", price: overallPriceInCart, oldPrice: nil)
-        }
-        
-      
-        containerView.addSubview(productsInCartView)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(bottomViewTapGestureRecognizerAction))
-        productsInCartView.addGestureRecognizer(tap)
-        
-        NSLayoutConstraint.activate([
-            productsInCartView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
-            productsInCartView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-            productsInCartView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
-            productsInCartView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
     }
@@ -373,9 +405,7 @@ class CategoriesAndFoodVC: UIViewController {
                 subcategories.removeAll()
                 products.removeAll()
             }
-            
             self.getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
-            
             isChoosingSubSubCategory = false
         } else {
             dismiss(animated: true)
@@ -410,31 +440,28 @@ class CategoriesAndFoodVC: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
               view.addGestureRecognizer(panGesture)
         
+    }
     
-      
+    @objc func getBackToShops(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func bottomViewTapGestureRecognizerAction(sender: UITapGestureRecognizer){
-        print("Ready to reload cart items")
         deleteProductsAndPresentCart()
     }
 
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
          let translation = sender.translation(in: view)
 
-         // Not allowing the user to drag the view upward
          guard translation.y >= 0 else { return }
-
-         // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
+        
          view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
 
          if sender.state == .ended {
              let dragVelocity = sender.velocity(in: view)
              if dragVelocity.y >= 1300 {
-                 // Velocity fast enough to dismiss the uiview
                  self.dismiss(animated: true, completion: nil)
              } else {
-                 // Set back to original position of the view controller
                  UIView.animate(withDuration: 0.3) {
                      self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
                  }
@@ -506,7 +533,6 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.subcategoriesCollectionView{
            
-            
             isChoosingSubSubCategory = true
             previousCategoryID = CategoryID
             
@@ -556,7 +582,49 @@ extension CategoriesAndFoodVC: UIViewControllerTransitioningDelegate{
 
 extension CategoriesAndFoodVC: FoodOrderDelegate{
     func productWasAddedToTheCart() {
-        presentProductsInCartView(screenType: .subcategories)
+        self.fetchCDOrderInformation(with: .subcategories)
+    }
+    
+    
+}
+
+extension CategoriesAndFoodVC: cartVCDelegate{
+    func updateBottomView() {
+        self.fetchCDOrderInformation(with: .cart)
+        if productsInCart.isEmpty{
+            self.removeChild()
+            self.configureEmptyCartView()
+        }
+    }
+}
+
+extension CategoriesAndFoodVC{
+    
+    func presentConfirmWindow(title: String, titleColor: UIColor, confirmTitle: String, cancelTitle: String){
+        let confirmAlert = VBConfirmAlertVC(alertTitle: title, alertColor: titleColor, confirmTitle: confirmTitle, cancelTitle: cancelTitle)
+        confirmAlert.foodCartDelegate = self
+        if #available(iOS 13.0, *) {
+            confirmAlert.modalPresentationStyle = .popover
+        } else {
+            // Fallback on earlier versions
+        }
+        confirmAlert.modalTransitionStyle = .coverVertical
+        self.present(confirmAlert, animated: true)
+    }
+}
+
+extension CategoriesAndFoodVC: ClearFoodCartProtocol{
+    func clearFoodCart() {
+        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
+            guard let self = self else { return }
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Something went wrong")
+                return
+            }
+            self.fetchCDOrderInformation(with: .cart)
+            self.removeChild()
+            self.configureEmptyCartView()
+        }
     }
     
     
