@@ -17,5 +17,6 @@ extension UIColor {
     static let SkillBoxBackgroundColor      = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
     static let attributeViewColor           = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     static let saleOrangeColor              = UIColor(red: 0.983, green: 0.556, blue: 0.315, alpha: 1)
+    static let SkillBoxGreenColor           = UIColor(red: 0.541, green: 0.541, blue: 0.553, alpha: 1)
     
 }

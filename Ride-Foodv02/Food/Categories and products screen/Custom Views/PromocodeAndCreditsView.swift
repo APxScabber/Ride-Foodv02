@@ -7,7 +7,12 @@
 
 import UIKit
 
+enum ViewState {
+    case normal, activated
+}
 class PromocodeAndCreditsView: UIView {
+    
+    var viewState: ViewState?
     
     override public func layoutSubviews() {
            super.layoutSubviews()
@@ -15,9 +20,13 @@ class PromocodeAndCreditsView: UIView {
          
        }
     
+    
+    
     var iconImage = UIImage()
     
     var title: String = ""
+    
+    var discount: String = ""
     
     let backgroundView = UIView()
     
@@ -25,11 +34,15 @@ class PromocodeAndCreditsView: UIView {
     
     let label = UILabel()
     
-    init(image: UIImage, title: String) {
-        super.init(frame: .zero)
+    let discountLabel = UILabel()
+    
+    convenience init(image: UIImage, title: String, state: ViewState) {
+        self.init(frame: .zero)
         self.iconImage = image
         self.title = title
-        configure()
+        viewState = state
+        
+        
     }
     
     override init(frame: CGRect) {
@@ -45,16 +58,33 @@ class PromocodeAndCreditsView: UIView {
         self.backgroundColor = .clear
         self.translatesAutoresizingMaskIntoConstraints = false
         configureBackgroundView()
-        configureImageView()
+        switch viewState {
+        case .normal:
+            configureImageView()
+        case .activated:
+            configureDiscountLabel()
+        case .none:
+            break
+        }
+        
         configureLabel()
-        set(title: title, image: iconImage)
+        set(title: title, image: iconImage, discount: discount)
     }
     
     func configureBackgroundView(){
        
         self.addSubview(backgroundView)
+        
+        switch viewState {
+        case .normal:
+            backgroundView.backgroundColor = .white
+        case .activated:
+            backgroundView.backgroundColor = UIColor.SeparatorColor
+        default:
+            break
+        }
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = .white
+        
         backgroundView.layer.cornerRadius = 15
         backgroundView.layer.shadowPath = UIBezierPath(rect: backgroundView.bounds).cgPath
         backgroundView.layer.shadowRadius = 5
@@ -67,6 +97,20 @@ class PromocodeAndCreditsView: UIView {
             backgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
             backgroundView.heightAnchor.constraint(equalToConstant: 50),
             backgroundView.widthAnchor.constraint(equalToConstant: 170)
+        ])
+    }
+    
+    func configureDiscountLabel(){
+        backgroundView.addSubview(discountLabel)
+        discountLabel.textColor = UIColor.SkillBoxGreenColor
+        discountLabel.font      = UIFont.SFUIDisplayBold(size: 15)
+        discountLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            discountLabel.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
+            discountLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 15),
+            discountLabel.heightAnchor.constraint(equalToConstant: 16),
+            discountLabel.widthAnchor.constraint(equalToConstant: 20)
         ])
     }
     
@@ -86,7 +130,13 @@ class PromocodeAndCreditsView: UIView {
         backgroundView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.SFUIDisplayRegular(size: 15)
-        label.textColor = .black
+        switch viewState {
+        case .normal:
+            label.textColor = .black
+        default:
+            label.textColor = .DarkGrayTextColor
+        }
+        
         
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
@@ -95,9 +145,15 @@ class PromocodeAndCreditsView: UIView {
         ])
     }
     
-    func set(title: String, image: UIImage){
+    func set(title: String, image: UIImage?, discount: String?){
         self.label.text = title
-        self.imageView.image = image
+        if let discount = discount{
+            self.discountLabel.text = "-\(discount)"
+        }
+        if let image = image{
+            self.imageView.image = image
+        }
+       
     }
 
 }
