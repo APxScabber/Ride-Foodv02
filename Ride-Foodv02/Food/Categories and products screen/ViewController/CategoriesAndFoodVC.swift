@@ -166,12 +166,10 @@ class CategoriesAndFoodVC: UIViewController {
             case .success(let data):
                 self.productData = data
                 self.productData?.data?.forEach({ element in
-                    
                     if element.isCategory!{
                         self.subcategories.append(element)
                     } else {
                         self.products.append(element)
-                      
                     }
                 })
                 if page == data.meta?.lastPage || data.meta?.lastPage == 1  { self.hasMorePages = false}
@@ -179,7 +177,6 @@ class CategoriesAndFoodVC: UIViewController {
                 self.showSubcategories = self.products.isEmpty ? true : false
                 
                 DispatchQueue.main.async {
-                    print(self.products)
                     self.dismissLoadingView()
                     self.updateUI(screenType: .subcategories)
                 }
@@ -191,16 +188,8 @@ class CategoriesAndFoodVC: UIViewController {
     }
     
     @objc func deleteCart(){
-        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
-            guard let self = self else { return }
-            guard error == nil else {
-                print(error?.localizedDescription ?? "Something went wrong")
-                return
-            }
-            self.fetchCDOrderInformation(with: .cart)
-            self.removeChild()
-            self.configureEmptyCartView()
-        }
+        guard productsInCart.count != 0 else { return }
+        presentConfirmWindow(title: "Очистить корзину?", titleColor: .red, confirmTitle: "Очистить", cancelTitle: "Отмена")
     }
     
     override func viewDidLayoutSubviews() {
@@ -298,7 +287,6 @@ class CategoriesAndFoodVC: UIViewController {
                         self.reloadProductsCollectionView()
                     }
                 }
-             
             }
         case .cart:
             print("Here we are gonna configure cartscreen")
@@ -417,9 +405,7 @@ class CategoriesAndFoodVC: UIViewController {
                 subcategories.removeAll()
                 products.removeAll()
             }
-            
             self.getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
-            
             isChoosingSubSubCategory = false
         } else {
             dismiss(animated: true)
@@ -454,8 +440,6 @@ class CategoriesAndFoodVC: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
               view.addGestureRecognizer(panGesture)
         
-    
-      
     }
     
     @objc func getBackToShops(){
@@ -611,9 +595,36 @@ extension CategoriesAndFoodVC: cartVCDelegate{
             self.removeChild()
             self.configureEmptyCartView()
         }
-       
-       
-     
+    }
+}
+
+extension CategoriesAndFoodVC{
+    
+    func presentConfirmWindow(title: String, titleColor: UIColor, confirmTitle: String, cancelTitle: String){
+        let confirmAlert = VBConfirmAlertVC(alertTitle: title, alertColor: titleColor, confirmTitle: confirmTitle, cancelTitle: cancelTitle)
+        confirmAlert.foodCartDelegate = self
+        if #available(iOS 13.0, *) {
+            confirmAlert.modalPresentationStyle = .popover
+        } else {
+            // Fallback on earlier versions
+        }
+        confirmAlert.modalTransitionStyle = .coverVertical
+        self.present(confirmAlert, animated: true)
+    }
+}
+
+extension CategoriesAndFoodVC: ClearFoodCartProtocol{
+    func clearFoodCart() {
+        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
+            guard let self = self else { return }
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Something went wrong")
+                return
+            }
+            self.fetchCDOrderInformation(with: .cart)
+            self.removeChild()
+            self.configureEmptyCartView()
+        }
     }
     
     
