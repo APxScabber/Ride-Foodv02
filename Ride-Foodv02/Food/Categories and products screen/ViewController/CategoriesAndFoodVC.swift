@@ -16,6 +16,8 @@ class CategoriesAndFoodVC: UIViewController {
     
     var productsInCartView: FoodOrderBottomView?
     
+    let trashBinButton = UIButton()
+    
     let emptyCartView = EmptyCartView()
     
     let tableViewCellID = "tableViewCellID"
@@ -154,11 +156,7 @@ class CategoriesAndFoodVC: UIViewController {
       
         
     }
-    
-
-
-    
-
+  
    
     func getProducts(shopID: Int, categoryID: Int, page: Int){
         self.showLoadingView()
@@ -189,6 +187,19 @@ class CategoriesAndFoodVC: UIViewController {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    @objc func deleteCart(){
+        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
+            guard let self = self else { return }
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Something went wrong")
+                return
+            }
+            self.fetchCDOrderInformation(with: .cart)
+            self.removeChild()
+            self.configureEmptyCartView()
         }
     }
     
@@ -228,13 +239,28 @@ class CategoriesAndFoodVC: UIViewController {
         ])
     }
     
+    func configureTrashButton(){
+        containerView.addSubview(trashBinButton)
+        trashBinButton.addTarget(self, action: #selector(deleteCart), for: .touchUpInside)
+        trashBinButton.setImage(UIImage(named: "trashBin"), for: .normal)
+        trashBinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            trashBinButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 9),
+            trashBinButton.heightAnchor.constraint(equalToConstant: 41),
+            trashBinButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -17),
+            trashBinButton.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
+    }
+    
     func deleteProductsAndPresentCart(){
         self.showLoadingView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self = self else { return }
             self.removeAllCollectionViews()
             self.setUpViews(screenType: .cart)
-           
+            self.configureTrashButton()
             self.fetchCDOrderInformation(with: .cart)
             let cartVC = CartVC()
             cartVC.productsInCart = self.productsInCart

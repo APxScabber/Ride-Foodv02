@@ -20,8 +20,8 @@ class FoodPersistanceManager{
     func fetchAddresses(shopID: Int, completion: @escaping (Result<[FoodOrderMO], Error>) -> Void){
         var products: [FoodOrderMO] = []
         do {
-            let addresses = try! context.fetch(FoodOrderMO.fetchRequest()) as [FoodOrderMO]
-            addresses.forEach { product in
+            let food = try! context.fetch(FoodOrderMO.fetchRequest()) as [FoodOrderMO]
+            food.forEach { product in
                 guard product.shopID == Int64(shopID) else { return }
                 products.append(product)
             }
@@ -55,6 +55,21 @@ class FoodPersistanceManager{
         
         FoodPersistanceManager.shared.saveContext()
      
+    }
+    
+    func deleteCoreDataInstance(shopID: Int, completion: @escaping (Error?) -> Void){
+        let deleteContext = FoodPersistanceManager.shared.context
+        do {
+            let food = try! context.fetch(FoodOrderMO.fetchRequest()) as [FoodOrderMO]
+            food.forEach { product in
+                guard product.shopID == Int64(shopID) else { return }
+                deleteContext.delete(product)
+            }
+            completion(nil)
+        }
+        catch{
+            completion(error)
+        }
     }
     
     func saveContext(){
