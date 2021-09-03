@@ -192,8 +192,8 @@ class TaxiTariffView: UIView {
         
         selectedIndex = nil
         if !usedScores { usedScores = false }
-        usedPromocode = false
-        
+        if !usedPromocode { usedPromocode = false }
+
         standartRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         premiumRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         businessRoundedView.colorToFill = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)

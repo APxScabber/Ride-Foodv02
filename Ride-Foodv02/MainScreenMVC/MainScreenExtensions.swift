@@ -8,6 +8,8 @@
 import MapKit
 import CoreLocation
 
+//MARK: - CLLocationManagerDelegate
+
 extension MainScreenViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -77,7 +79,7 @@ extension MainScreenViewController: MKMapViewDelegate {
 extension MainScreenViewController: PromotionViewDelegate {
     
     func closePromotionView() {
-        animationUerLocationButton()
+        animationUserLocationButton()
     }
     
     func show() {
@@ -215,6 +217,9 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
         toAddressDetailView.textField.resignFirstResponder()
         addressesChooserView.isUserInteractionEnabled = false
         
+        fromTextField.isUserInteractionEnabled = false
+        toTextField.isUserInteractionEnabled = false
+        
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.toAddressDetailView.frame.origin.x = -self.view.bounds.width
         } completion: { if $0 == .end {
@@ -224,6 +229,11 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
             self.addressesChooserView.isUserInteractionEnabled = true
             self.shouldMakeOrder = true
         }
+        }
+        userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
+        
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
         }
         CalculatingPathManager.shared.calculatingPath(for: mapView) { pathTime in
             self.pathTime(minutes: pathTime)
@@ -334,16 +344,21 @@ extension MainScreenViewController: ScoresToolbarDelegate {
 extension MainScreenViewController: MenuViewDelegate {
 
     func close() {
-        transparentView.isHidden = true
-        UIViewPropertyAnimator.runningPropertyAnimator(
-            withDuration: MainScreenConstants.durationForDisappearingMenuView,
-            delay: 0.0,
-            options: .curveLinear,
-            animations: {
-                self.resetFrames()
-            }) {
-            if $0 == .end { self.menuView.isVisible = false }
+        if menuView.isVisible {
+            transparentView.isHidden = true
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                withDuration: MainScreenConstants.durationForDisappearingMenuView,
+                delay: 0.0,
+                options: .curveLinear,
+                animations: { self.resetFrames() } ) {
+                if $0 == .end {
+                    self.menuView.isVisible = false
+                    self.profileButton.isUserInteractionEnabled = true
+                    self.userLocationButtonOutlet.isUserInteractionEnabled = true
+                }
+            }
         }
+        
     }
     
     func goToStoryboard(_ name:String) {
@@ -430,7 +445,7 @@ extension MainScreenViewController: SetToLocationDelegate {
     
     func pressConfirm() {
         
-        isMainScreen = true
+//        isMainScreen = true
 
         UIView.animate(withDuration: 0.5) {
             
@@ -440,8 +455,8 @@ extension MainScreenViewController: SetToLocationDelegate {
             self.setToLocationView.removeFromSuperview()
             self.bottomConstaint.constant = 0
             UIView.animate(withDuration: 0.5) {
-                self.menuButton.alpha = 1
-                self.circleView.alpha = 1
+//                self.menuButton.alpha = 1
+//                self.circleView.alpha = 1
                 self.promotionView.alpha = 0
                 self.view.layoutIfNeeded()
             }
