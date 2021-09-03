@@ -20,7 +20,7 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
     
     @IBOutlet weak var topRoundedView: RoundedView! { didSet {
         topRoundedView.cornerRadius = 10.0
-        topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+        topRoundedView.colorToFill = UIColor.lightGray
     }}
     @IBOutlet weak var twoTopCornersRoundedView: TopRoundedView!
     @IBOutlet weak var showDetailButton: UIButton! { didSet {
