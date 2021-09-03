@@ -6,26 +6,37 @@ class MainScreenViewController: UIViewController {
     
     // MARK: - Taxi Outlets
     
+    //MARK: - Buttons
     
     @IBOutlet weak var taxiBackButtonOutlet: UIButton! { didSet {
         taxiBackButtonOutlet.alpha = 0
     }}
-    
-    @IBOutlet weak var pathTimeView: UIView! { didSet {
-        pathTimeView.alpha = 0
-    }}
-    
-    @IBOutlet weak var timeLabel: UILabel! { didSet {
-        timeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        timeLabel.textColor = TaxiSpecifyFromToColor.white.value
-    }}
-    
-    
     @IBOutlet weak var nextButton: UIButton! { didSet {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
         nextButton.setTitle(Localizable.Taxi.next.localized, for: .normal)
     }}
     
+    @IBOutlet weak var profileButton: UIButton!
+    
+    @IBOutlet weak var mapButton: UIButton! { didSet {
+        mapButton.setTitle(Localizable.Taxi.map.localized, for: .normal)
+    }}
+    
+    @IBOutlet weak var mapBigButton: UIButton!
+    @IBOutlet weak var arrowButton: UIButton!
+    @IBOutlet weak var menuButton: BackButton! { didSet {
+        menuButton.isExclusiveTouch = true
+    }}
+    
+    @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
+        userLocationButtonOutlet.alpha = 0
+    }}
+    
+    //MARK: - Views
+    
+    @IBOutlet weak var pathTimeView: UIView! { didSet {
+        pathTimeView.alpha = 0
+    }}
     @IBOutlet weak var addressesChooserView: UIView! { didSet {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(moveDown(_:)))
         swipe.direction = .down
@@ -38,40 +49,45 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var twoCorneredView: TopRoundedView!
     
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var tableViewHeightView: UIView! { didSet {
         tableViewHeightView.isHidden = true
     }}
     @IBOutlet weak var gradientImageView: UIImageView!
-    @IBOutlet weak var fromTextField: UITextField! { didSet {
-        fromTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        fromTextField.addTarget(self, action: #selector(fromTextFieldChanged), for: .editingChanged)
-        fromTextField.addTarget(self, action: #selector(fromTextFieldEnd), for: .editingDidEnd)
-        fromTextField.delegate = self
-        fromTextField.placeholder = Localizable.Taxi.fromAddressQuestion.localized
-    }}
+    
     @IBOutlet weak var fromAnnotationView: UIImageView!
     @IBOutlet weak var fromUnderbarLine: UIView!
     
-    @IBOutlet weak var toTextField:UITextField! { didSet {
-        toTextField.font = UIFont.SFUIDisplayLight(size: 17.0)
-        toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
-        toTextField.addTarget(self, action: #selector(toTextFieldEnd), for: .editingDidEnd)
-        toTextField.delegate = self
-        toTextField.placeholder = Localizable.Taxi.toAddressQuestion.localized
-    }}
     @IBOutlet weak var toAnnotationView: UIImageView!
     @IBOutlet weak var toUnderbarLine: UIView!
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
         roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }}
-    @IBOutlet weak var mapButton: UIButton! { didSet {
-        mapButton.setTitle(Localizable.Taxi.map.localized, for: .normal)
-    }}
-    @IBOutlet weak var mapBigButton: UIButton!
-    @IBOutlet weak var arrowButton: UIButton!
-    @IBOutlet weak var verticalLineView: UIView!
     
+    @IBOutlet weak var verticalLineView: UIView!
+
+
+    @IBOutlet weak var mapView: MKMapView! { didSet {
+        let center = CLLocationCoordinate2D(latitude: 55.7520, longitude: 37.6175)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: false)
+        mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
+        mapView.delegate = self
+    }}
+    
+    @IBOutlet weak var transparentView: UIView! { didSet {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenuView(_:)))
+        transparentView.addGestureRecognizer(tapGesture)
+    }}
+    @IBOutlet weak var wholeTransparentView: UIView!
+
+    @IBOutlet weak var circleView: CircleView! { didSet {
+        circleView.color = .white
+    }}
+    
+    //MARK: - Constraints
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint! { didSet {
         tableViewHeightConstraint.constant = 0
@@ -83,39 +99,37 @@ class MainScreenViewController: UIViewController {
         bottomConstaint.constant = -300
     }}
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var wholeTransparentView: UIView!
-    
-    // MARK: - Outlets
-    
-    @IBOutlet weak var userLocationButtonOutlet: UIButton! { didSet{
-        userLocationButtonOutlet.alpha = 0
-    }}
 
-    @IBOutlet weak var userLocationButtonConstraint: NSLayoutConstraint! { didSet {
-        userLocationButtonConstraint.constant = addressesChooserView.frame.height + promotionView.touchableView.frame.height
+    @IBOutlet weak var userLocationButtonBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var roundedViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var roundedViewBottomConstraint: NSLayoutConstraint! { didSet {
+        roundedViewBottomConstraint.priority = .defaultLow
     }}
     
-    @IBOutlet weak var mapView: MKMapView! { didSet {
-        let center = CLLocationCoordinate2D(latitude: 55.7520, longitude: 37.6175)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: center, span: span)
-        mapView.setRegion(region, animated: false)
-        mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mapViewTouched(_:))))
-        mapView.delegate = self
+    //MARK: - TextField
+    
+    @IBOutlet weak var fromTextField: UITextField! { didSet {
+        fromTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        fromTextField.addTarget(self, action: #selector(fromTextFieldChanged), for: .editingChanged)
+        fromTextField.addTarget(self, action: #selector(fromTextFieldEnd), for: .editingDidEnd)
+        fromTextField.delegate = self
+        fromTextField.placeholder = Localizable.Taxi.fromAddressQuestion.localized
     }}
     
-    @IBOutlet weak var transparentView: UIView! { didSet {
-        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenuView(_:)))
-        //transparentView.addGestureRecognizer(tapGesture)
+    @IBOutlet weak var toTextField:UITextField! { didSet {
+        toTextField.font = UIFont.SFUIDisplayLight(size: 17.0)
+        toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
+        toTextField.addTarget(self, action: #selector(toTextFieldEnd), for: .editingDidEnd)
+        toTextField.delegate = self
+        toTextField.placeholder = Localizable.Taxi.toAddressQuestion.localized
     }}
     
-    @IBOutlet weak var circleView: CircleView! { didSet {
-        circleView.color = .white
-    }}
+    //MARK: - Labels
     
-    @IBOutlet weak var menuButton: UIButton! { didSet {
-        menuButton.isExclusiveTouch = true
+    @IBOutlet weak var timeLabel: UILabel! { didSet {
+        timeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+        timeLabel.textColor = TaxiSpecifyFromToColor.white.value
     }}
     
     // MARK: - XIB files
@@ -140,20 +154,18 @@ class MainScreenViewController: UIViewController {
     var addresses = [Address]()
     var currentUserCoordinate: CLLocationCoordinate2D?
     var isMainScreen = true
-    var availbles = false
 
     let taxiMainInteractor = TaxiMainInteractor()
     
     private var bottomSafeAreaConstant: CGFloat = 0
     
-    private var safeAreaBottomHeight: CGFloat = 0.0
+    var safeAreaBottomHeight: CGFloat = 0.0
     var responderTextField: UITextField?
     var keyboardHeight: CGFloat = 0.0
     var shouldUpdateUI = true
     private var yOffset: CGFloat = 0
     var shouldMakeOrder = false
     
-    let condition = NSCondition()
 
     // MARK: - ViewController lifecycle
 
@@ -201,10 +213,12 @@ class MainScreenViewController: UIViewController {
         
         safeAreaBottomHeight = view.safeAreaInsets.bottom
         taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
-        
+                
         if !menuView.isVisible {
             resetFrames()
         }
+        userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
+
     }
     
     //MARK: - Deinit
@@ -214,9 +228,9 @@ class MainScreenViewController: UIViewController {
     
     // MARK: - Methods
     
-    func animationUerLocationButton() {
+    func animationUserLocationButton() {
         
-        userLocationButtonConstraint.constant -= promotionView.touchableView.frame.height //foodTaxiView.frame.height - safeAreaBottomHeight
+        userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + 10.0 - safeAreaBottomHeight
         
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
@@ -335,6 +349,8 @@ class MainScreenViewController: UIViewController {
     
     private func animatedTaxiView() {
 
+        userLocationButtonBottomConstraint.constant = 10
+        
         UIView.animate(withDuration: 0.5) {
             self.foodTaxiView.frame.origin.y = self.view.frame.height
             self.menuButton.alpha = 0
@@ -342,14 +358,12 @@ class MainScreenViewController: UIViewController {
             self.promotionView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
-            self.userLocationButtonConstraint.constant = 5
             self.bottomConstaint.constant = 0
- 
-            
+            self.userLocationButtonBottomConstraint.constant = self.addressesChooserViewHeightConstraint.constant - self.safeAreaBottomHeight
             UIView.animate(withDuration: 0.5) {
                 self.taxiBackButtonOutlet.alpha = 1
                 self.view.layoutIfNeeded()
-                print(self.userLocationButtonConstraint.constant)
+                print(self.userLocationButtonBottomConstraint.constant)
             }
         }
     }
@@ -391,9 +405,15 @@ class MainScreenViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
+                    self.addressesChooserViewHeightConstraint.constant = self.view.bounds.height - self.safeAreaBottomHeight - self.tableViewHeightConstraint.constant - self.keyboardHeight
                     self.tableView.reloadData()
 
                     UIView.animate(withDuration: 0.5) {
+                        self.view.layoutIfNeeded()
+                    }
+                    
+                    self.userLocationButtonBottomConstraint.constant = self.addressesChooserViewHeightConstraint.constant + self.keyboardHeight - self.safeAreaBottomHeight
+                    UIView.animate(withDuration: 0.25) {
                         self.view.layoutIfNeeded()
                     }
                 }
@@ -410,13 +430,14 @@ class MainScreenViewController: UIViewController {
         responderTextField = nil
         setBottomConstraintTo(0)
         taxiTariffView.removeFromSuperview()
+        roundedViewTopConstraint.priority = .required
+        roundedViewBottomConstraint.priority = .defaultLow
         twoCorneredView.backgroundColor = .white
         showMapItems(false)
         shouldUpdateUI = true
         tableViewHeightConstraint.constant = 0
-        
         addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + safeAreaBottomHeight
-
+        userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
         if shouldMakeOrder {
             roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
             roundedView.isUserInteractionEnabled = true
@@ -424,6 +445,7 @@ class MainScreenViewController: UIViewController {
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
+        nextButton.setTitle(Localizable.Taxi.next.localized, for: .normal)
         tableViewHeightView.isHidden = true
     }
     
@@ -605,7 +627,9 @@ class MainScreenViewController: UIViewController {
     func resetFrames() {
         menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
         foodTaxiView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foodTaxiViewHeight + bottomSafeAreaConstant)
-        promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+        if promotionView.superview != nil {
+            promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+        }
         promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
     }
     
@@ -615,11 +639,17 @@ class MainScreenViewController: UIViewController {
         if shouldMakeOrder {
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
+            nextButton.setTitle(Localizable.Taxi.order.localized, for: .normal)
+            userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
             twoCorneredView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
-            topConstraint.constant = 0
+//            topConstraint.constant = 0
             roundedView.backgroundColor = .clear
+            roundedViewTopConstraint.priority = .defaultLow
+            roundedViewBottomConstraint.priority = .required
             taxiTariffView.isHidden = false
             taxiTariffView.reset()
+            taxiTariffView.usedScores = false
+            taxiTariffView.usedPromocode = false
             roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
             roundedView.isUserInteractionEnabled = false
             transparentView.isHidden = false
@@ -641,10 +671,13 @@ class MainScreenViewController: UIViewController {
                                                  width: view.bounds.width,
                                                  height: TaxiConstant.fromAddressDetailViewHeight)
             fromAddressDetailView.placeLabel.text = fromAddress
-
+            userLocationButtonBottomConstraint.constant = fromAddressDetailView.bounds.height + keyboardHeight - safeAreaBottomHeight
             
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.fromAddressDetailView.frame.origin.x = 0
+            }
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
             }
         }
          
@@ -653,6 +686,8 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func goToMenu(_ sender: MenuButton) {
         transparentView.isHidden = false
+        profileButton.isUserInteractionEnabled = false
+        userLocationButtonOutlet.isUserInteractionEnabled = false
         UIViewPropertyAnimator.runningPropertyAnimator(
             withDuration: MainScreenConstants.durationForAppearingMenuView,
             delay: 0.0,
@@ -666,6 +701,13 @@ class MainScreenViewController: UIViewController {
         }
     }
     
+    @objc
+    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            close()
+        }
+    }
+    
     @IBAction func goToProfile(_ sender: UIButton) {
         goToStoryboard("UserProfile")
     }
@@ -675,14 +717,19 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func userLocationButtonAction(_ sender: Any) {
         MapKitManager.shared.locationManager.startUpdatingLocation()
-        userLocationButtonOutlet.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.userLocationButtonOutlet.alpha = 0
+        }
     }
     
     @IBAction func taxiBackButtonAction(_ sender: UIButton) {
         
         bottomConstaint.constant = -300
-        userLocationButtonConstraint.constant = addressesChooserView.frame.height + promotionView.touchableView.frame.height
+        userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 10.0 - safeAreaBottomHeight
         
+        fromTextField.isUserInteractionEnabled = true
+        toTextField.isUserInteractionEnabled = true
+        shouldMakeOrder = false
         UIView.animate(withDuration: 0.5) {
             self.taxiBackButtonOutlet.alpha = 0
             self.view.layoutIfNeeded()
@@ -694,7 +741,7 @@ class MainScreenViewController: UIViewController {
                 self.circleView.alpha = 1
                 self.promotionView.alpha = 1
                 self.view.layoutIfNeeded()
-                print(self.userLocationButtonConstraint.constant)
+                print(self.userLocationButtonBottomConstraint.constant)
             }
         }
 

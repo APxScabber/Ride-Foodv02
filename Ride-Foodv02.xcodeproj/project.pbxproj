@@ -84,6 +84,7 @@
 		787140C6268637E6007834ED /* Promocode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787140C5268637E6007834ED /* Promocode.storyboard */; };
 		787140C826863B99007834ED /* PromocodeMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C726863B99007834ED /* PromocodeMainTableViewController.swift */; };
 		787140CA268640CD007834ED /* EnterPromocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787140C9268640CD007834ED /* EnterPromocodeViewController.swift */; };
+		7873A49926E237B50066A457 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7873A49826E237B50066A457 /* BackButton.swift */; };
 		78740C1926DD472A0078F2F7 /* PromocodeActivation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78740C1826DD472A0078F2F7 /* PromocodeActivation.xib */; };
 		78740C1B26DD47350078F2F7 /* PromocodeActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78740C1A26DD47350078F2F7 /* PromocodeActivation.swift */; };
 		7879CDE726BA8955009D127A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7879CDE626BA8955009D127A /* Address.swift */; };
@@ -335,6 +336,7 @@
 		787140C5268637E6007834ED /* Promocode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promocode.storyboard; sourceTree = "<group>"; };
 		787140C726863B99007834ED /* PromocodeMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeMainTableViewController.swift; sourceTree = "<group>"; };
 		787140C9268640CD007834ED /* EnterPromocodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPromocodeViewController.swift; sourceTree = "<group>"; };
+		7873A49826E237B50066A457 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		78740C1826DD472A0078F2F7 /* PromocodeActivation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeActivation.xib; sourceTree = "<group>"; };
 		78740C1A26DD47350078F2F7 /* PromocodeActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeActivation.swift; sourceTree = "<group>"; };
 		7879CDE626BA8955009D127A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 				78BE49F926834BA400A13641 /* ImageFetcher.swift */,
 				78BE4A072684CF6100A13641 /* RoundedView.swift */,
 				787A83F426AB31FA0096DFC3 /* CircleView.swift */,
+				7873A49826E237B50066A457 /* BackButton.swift */,
 				7808D7D426B838EF00A88E12 /* EmailChecker.swift */,
 				785F5D9126C16E8D004503CB /* TopRoundedView.swift */,
 				C446725E26CAA30C00598459 /* BaseViewController.swift */,
@@ -1411,6 +1414,7 @@
 				78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */,
 				78A39FE5267B55EC006D0DAB /* LoadManager.swift in Sources */,
 				C446727126CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
+				7873A49926E237B50066A457 /* BackButton.swift in Sources */,
 				785F5D9426C2AF01004503CB /* Localizable.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */,
