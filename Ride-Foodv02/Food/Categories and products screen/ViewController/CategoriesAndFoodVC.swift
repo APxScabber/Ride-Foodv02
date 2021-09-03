@@ -20,9 +20,7 @@ class CategoriesAndFoodVC: UIViewController {
     
     let tableViewCellID = "tableViewCellID"
     
-    var showSubcategories: Bool = false { didSet {
-   
-    }}
+    var showSubcategories: Bool = false
     
     var subcategoriesTableView: UITableView!
     
@@ -87,7 +85,6 @@ class CategoriesAndFoodVC: UIViewController {
     }()
     
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +98,8 @@ class CategoriesAndFoodVC: UIViewController {
         fetchCDOrderInformation(with: .subcategories)
     }
     
+    
+    
     func fetchCDOrderInformation(with screenType: PresentedScreen){
         productsInCart.removeAll()
         FoodPersistanceManager.shared.fetchAddresses(shopID: shopID) { [weak self] result in
@@ -110,7 +109,6 @@ class CategoriesAndFoodVC: UIViewController {
                 print(error.localizedDescription)
             case .success(let data):
                 self.productsInCart = data
-                print("There are \(String(describing: self.productsInCart.count)) products in cart at the moment")
                 self.presentProductsInCartView(screenType: screenType)
             }
         }
@@ -124,9 +122,7 @@ class CategoriesAndFoodVC: UIViewController {
         if let view = productsInCartView{
             view.removeFromSuperview()
         }
-        
         guard !productsInCart.isEmpty else {
-            print(productsInCartView)
             self.productsInCartView?.removeFromSuperview()
             productsInCartView = nil
             return
@@ -198,7 +194,6 @@ class CategoriesAndFoodVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       
          if !hasSetPointOrigin {
              hasSetPointOrigin = true
              pointOrigin = self.view.frame.origin
@@ -224,7 +219,7 @@ class CategoriesAndFoodVC: UIViewController {
     
     func configureEmptyCartView(){
         contentView.addSubview(emptyCartView)
-        emptyCartView.button.addTarget(self, action: #selector(getToShops), for: .touchUpInside)
+        emptyCartView.button.addTarget(self, action: #selector(getBackToShops), for: .touchUpInside)
         NSLayoutConstraint.activate([
             emptyCartView.topAnchor.constraint(equalTo: contentView.topAnchor),
             emptyCartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -288,7 +283,6 @@ class CategoriesAndFoodVC: UIViewController {
     func reloadProductsCollectionView(){
         if isPaginating {
             productsCollectionView.reloadInputViews()
-            print("reloading sections")
         } else {
             productsCollectionView.reloadData()
            
@@ -438,7 +432,7 @@ class CategoriesAndFoodVC: UIViewController {
       
     }
     
-    @objc func getToShops(){
+    @objc func getBackToShops(){
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -449,19 +443,15 @@ class CategoriesAndFoodVC: UIViewController {
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
          let translation = sender.translation(in: view)
 
-         // Not allowing the user to drag the view upward
          guard translation.y >= 0 else { return }
-
-         // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
+        
          view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
 
          if sender.state == .ended {
              let dragVelocity = sender.velocity(in: view)
              if dragVelocity.y >= 1300 {
-                 // Velocity fast enough to dismiss the uiview
                  self.dismiss(animated: true, completion: nil)
              } else {
-                 // Set back to original position of the view controller
                  UIView.animate(withDuration: 0.3) {
                      self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
                  }
@@ -533,7 +523,6 @@ extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.subcategoriesCollectionView{
            
-            
             isChoosingSubSubCategory = true
             previousCategoryID = CategoryID
             

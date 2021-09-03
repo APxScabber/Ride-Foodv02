@@ -13,6 +13,13 @@ class ShopCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
         roundedView.colorToFill = .white
+        
+        roundedView.addShadowToView(shadow_color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.1),
+                                         offset: CGSize(width: 0, height: 0),
+                                         shadow_radius: 10,
+                                         shadow_opacity: 1,
+                                         corner_radius: 15)
+        
     }}
     
     

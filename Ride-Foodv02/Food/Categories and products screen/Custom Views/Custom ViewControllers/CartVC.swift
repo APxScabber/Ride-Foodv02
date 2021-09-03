@@ -57,8 +57,6 @@ class CartVC: UIViewController {
                 self.productsInCart = products
                 DispatchQueue.main.async {
                     self.cartTableView.reloadData()
-                   
-                    
                 }
             }
         }
@@ -109,9 +107,7 @@ class CartVC: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -120),
             stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
-            
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
         ])
         
     }
