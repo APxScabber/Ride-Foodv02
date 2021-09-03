@@ -96,6 +96,7 @@
 "skip" = "Skip";
 "next" = "Next";
 "confirm" = "Confirm";
+"order" = "Order";
 "fromAddressDetail" = "Specify how to get to you";
 "toAddressDetail" = "Specify where we are going";
 "minutes" = "minutes";

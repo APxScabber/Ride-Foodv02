@@ -19,6 +19,7 @@ class PromotionView: UIView {
     
     @IBAction func close(_ sender: UIButton) {
         delegate?.closePromotionView()
+        frame.size = .zero
         removeFromSuperview()
     }
 
