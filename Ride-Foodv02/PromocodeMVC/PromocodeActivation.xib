@@ -34,7 +34,7 @@
                             <color key="textColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По этому промокоду для вас действует скидка 10% на поездку по тарифу Premium." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxC-TF-KNu">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По этому промокоду для вас действует скидка 10% на поездку по тарифу Premium." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="QxC-TF-KNu">
                             <rect key="frame" x="64" y="125" width="286" height="75"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="75" id="ojT-h3-Vwf"/>
@@ -43,11 +43,21 @@
                             <color key="textColor" red="0.54117647058823526" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2t2-Eh-l4T" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <rect key="frame" x="187" y="10" width="40" height="5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="4D2-9e-flf"/>
+                                <constraint firstAttribute="width" constant="40" id="WSS-SZ-nsm"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="QxC-TF-KNu" firstAttribute="leading" secondItem="mEY-eI-3JX" secondAttribute="leading" constant="64" id="GnT-ed-4ZS"/>
+                        <constraint firstItem="2t2-Eh-l4T" firstAttribute="top" secondItem="mEY-eI-3JX" secondAttribute="top" constant="10" id="H87-AI-p3p"/>
                         <constraint firstItem="1yh-Bw-3MK" firstAttribute="centerX" secondItem="mEY-eI-3JX" secondAttribute="centerX" id="Wf5-Aj-2ZR"/>
+                        <constraint firstItem="2t2-Eh-l4T" firstAttribute="centerX" secondItem="mEY-eI-3JX" secondAttribute="centerX" id="Wi2-T8-lMX"/>
                         <constraint firstItem="QxC-TF-KNu" firstAttribute="top" secondItem="HOG-MB-IfB" secondAttribute="bottom" constant="7" id="aQq-oP-utE"/>
                         <constraint firstItem="1yh-Bw-3MK" firstAttribute="top" secondItem="mEY-eI-3JX" secondAttribute="top" constant="37" id="fXN-IU-hAJ"/>
                         <constraint firstItem="HOG-MB-IfB" firstAttribute="centerX" secondItem="mEY-eI-3JX" secondAttribute="centerX" id="iEB-WY-Zm3"/>
@@ -67,6 +77,7 @@
             <connections>
                 <outlet property="bodyLabel" destination="QxC-TF-KNu" id="Tgr-W8-EqW"/>
                 <outlet property="titleLabel" destination="HOG-MB-IfB" id="x8M-8L-wgM"/>
+                <outlet property="topRoundedView" destination="2t2-Eh-l4T" id="Bbm-kI-8i2"/>
                 <outlet property="twoRoundedView" destination="mEY-eI-3JX" id="VfK-HT-32T"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="84.375"/>

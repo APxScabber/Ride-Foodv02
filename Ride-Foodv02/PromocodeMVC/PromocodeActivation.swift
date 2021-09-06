@@ -21,7 +21,10 @@ class PromocodeActivation: UIView {
     }}
 
     @IBOutlet weak var twoRoundedView: TopRoundedView!
-    
+    @IBOutlet weak var topRoundedView: RoundedView! { didSet {
+        topRoundedView.cornerRadius = 10.0
+        topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.49701049)
+    }}
     //MARK: - Init
     
     override init(frame: CGRect) {

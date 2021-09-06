@@ -178,6 +178,8 @@ class MainScreenViewController: UIViewController {
         promotionDetailView.delegate = self
         promocodeToolbar.delegate = self
         promocodeActivationView.delegate = self
+        PromocodeActivator.delegate = self
+
         promocodeToolbar.isHidden = true
         promocodeActivationView.isHidden = true
         view.addSubview(menuView)
@@ -688,6 +690,8 @@ class MainScreenViewController: UIViewController {
         transparentView.isHidden = false
         profileButton.isUserInteractionEnabled = false
         userLocationButtonOutlet.isUserInteractionEnabled = false
+        circleView.isHidden = true
+        userLocationButtonOutlet.isHidden = true
         UIViewPropertyAnimator.runningPropertyAnimator(
             withDuration: MainScreenConstants.durationForAppearingMenuView,
             delay: 0.0,

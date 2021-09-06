@@ -346,6 +346,8 @@ extension MainScreenViewController: MenuViewDelegate {
     func close() {
         if menuView.isVisible {
             transparentView.isHidden = true
+            userLocationButtonOutlet.isHidden = false
+            circleView.isHidden = false
             UIViewPropertyAnimator.runningPropertyAnimator(
                 withDuration: MainScreenConstants.durationForDisappearingMenuView,
                 delay: 0.0,
@@ -480,14 +482,8 @@ extension MainScreenViewController: SetToLocationDelegate {
 extension MainScreenViewController: PromocodeToolbarDelegate {
     
     func activate(promocode: String) {
-        taxiTariffView.usedPromocode = true
-        promocodeToolbar.textField.resignFirstResponder()
-        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
-        promocodeActivationView.isHidden = false
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
-            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
-        }
+        PromocodeActivator.post(code: promocode)
+        promocodeToolbar.spinner.startAnimating()
     }
     
     func closePromocodeToolbar() {
@@ -517,10 +513,32 @@ extension MainScreenViewController: PromocodeActivationDelegate {
         }
 
     }
-    
-    
-    
+  
+}
 
+
+//MARK: - PromocodeActivatorDelegate
+
+extension MainScreenViewController: PromocodeActivatorDelegate {
+    
+    func promocodeActivated(_ description: String) {
+        taxiTariffView.usedPromocode = true
+        promocodeToolbar.textField.resignFirstResponder()
+        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
+        promocodeActivationView.bodyLabel.text = description
+        promocodeActivationView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
+        }
+    }
+    
+    func promocodeFailed(_ error: String) {
+        promocodeToolbar.lineView.backgroundColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+        promocodeToolbar.errorLabel.isHidden = false
+        promocodeToolbar.errorLabel.text = error
+        promocodeToolbar.spinner.stopAnimating()
+    }
     
     
 }
