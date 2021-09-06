@@ -36,12 +36,12 @@ class PromocodeAndCreditsView: UIView {
     
     let discountLabel = UILabel()
     
-    convenience init(image: UIImage, title: String, state: ViewState) {
-        self.init(frame: .zero)
+    init(image: UIImage, title: String, state: ViewState) {
+        super.init(frame: .zero)
         self.iconImage = image
         self.title = title
-        viewState = state
-        
+        self.viewState = state
+        configure()
         
     }
     
@@ -137,23 +137,36 @@ class PromocodeAndCreditsView: UIView {
             label.textColor = .DarkGrayTextColor
         }
         
+        switch viewState {
+        case .normal:
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
+                label.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
+                label.heightAnchor.constraint(equalToConstant: 19)
+            ])
+        case .activated:
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: discountLabel.trailingAnchor, constant: 8),
+                label.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
+                label.heightAnchor.constraint(equalToConstant: 19)
+            ])
         
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
-            label.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
-            label.heightAnchor.constraint(equalToConstant: 19)
-        ])
+        case .none:
+            break
+        }
+      
     }
     
     func set(title: String, image: UIImage?, discount: String?){
         self.label.text = title
-        if let discount = discount{
-            self.discountLabel.text = "-\(discount)"
-        }
-        if let image = image{
+        switch viewState {
+        case .normal:
             self.imageView.image = image
-        }
-       
+        case .activated:
+            self.discountLabel.text = "-\(discount)"
+        case .none:
+        break
     }
 
+}
 }
