@@ -19,8 +19,8 @@ class CartVC: UIViewController {
     
     
     let deliveryView  = DeliveryTimeView()
-    let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод")
-    let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы")
+    let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод", state: .normal)
+    let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы", state: .normal)
     
     
     let stackView       = UIStackView()
