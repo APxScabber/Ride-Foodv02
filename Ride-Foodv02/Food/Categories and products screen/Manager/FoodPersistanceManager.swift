@@ -67,9 +67,9 @@ class FoodPersistanceManager{
             }
             completion(nil)
         }
-        catch{
-            completion(error)
-        }
+//        catch{
+//            completion(error)
+//        }
     }
     
     func saveContext(){

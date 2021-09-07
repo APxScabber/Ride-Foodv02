@@ -77,6 +77,7 @@ class FoodMainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
+        updateViewConstraints()
         textField.text = place
     }
     
@@ -96,11 +97,11 @@ class FoodMainVC: UIViewController {
            let destination = segue.destination as? ShopListViewController {
             destination.place = place
         }
-//        if segue.identifier == "locationChooserVC",
-//           let destination = segue.destination as? LocationChooserViewController {
-//            destination.region = region
-//            destination.delegate = self
-//        }
+        if segue.identifier == "locationChooser",
+           let destination = segue.destination as? LocationChooserViewController {
+            destination.region = region
+            destination.delegate = self
+        }
     }
 
     @IBAction func goToTheShopList(_ sender: Any) {
@@ -139,18 +140,17 @@ class FoodMainVC: UIViewController {
         confirmButton?.isUserInteractionEnabled = !place.isEmpty
     }
     
-    private var shouldMoveView: Bool? = true
+   // private var shouldMoveView: Bool? = true
     
     @objc private func updateConstraintWith(_ notification: Notification) {
         
-        shouldMoveView = true
+       // shouldMoveView = true
         guard let userInfo = notification.userInfo else { return }
-        guard shouldMoveView != nil else { return }
+      //  guard shouldMoveView != nil else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                       self.view.frame.origin.y -= (size.height - 40)
-                   }
-            shouldMoveView = nil
+            guard let superview = view.superview else { return }
+            self.view.frame.origin.y = superview.frame.height - size.height - self.view.bounds.height
+         //   shouldMoveView = nil
         }
     }
     
@@ -207,15 +207,17 @@ extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
 
 //MARK: - LocationChooserDelegate
 
-//extension FoodMainVC: LocationChooserDelegate {
-//    
-//    func locationChoosen(_ newLocation: String) {
-//        place = newLocation
-//        textField?.text = place
-//    }
+extension FoodMainVC: LocationChooserDelegate {
+    
+    func locationChoosen(_ newLocation: String) {
+        place = newLocation
+        textField.text = place
+    }
     
     
-//}
+}
+
+//MARK: - UIViewControllerTransitioningDelegate
 
 extension FoodMainVC: UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
