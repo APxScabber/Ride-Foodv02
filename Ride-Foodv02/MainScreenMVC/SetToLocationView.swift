@@ -21,6 +21,7 @@ class SetToLocationView: UIView {
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var locationTextField: UITextField! { didSet {
         locationTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        locationTextField.isUserInteractionEnabled = false
     }}
     @IBOutlet weak var roundedView: RoundedView!
     @IBOutlet weak var confirmButton: UIButton!

@@ -163,7 +163,7 @@ class PromocodeAndCreditsView: UIView {
         case .normal:
             self.imageView.image = image
         case .activated:
-            self.discountLabel.text = "-\(discount)"
+            self.discountLabel.text = "-\(String(describing: discount))"
         case .none:
         break
     }

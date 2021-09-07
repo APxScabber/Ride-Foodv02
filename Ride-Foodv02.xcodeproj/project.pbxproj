@@ -595,6 +595,7 @@
 				782D45D926B03103006B3A98 /* ShopDetailViewController.swift */,
 				782D45DB26B038BE006B3A98 /* FoodConstants.swift */,
 				7879CDE626BA8955009D127A /* Address.swift */,
+				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -610,7 +611,6 @@
 				78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
 				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
-				782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */,
 				C446726226CB047300598459 /* TaxiMainInteractor.swift */,
 				78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */,
 				78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */,
@@ -1769,7 +1769,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
