@@ -70,7 +70,10 @@ class CategoriesAndFoodVC: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     
     
-    @IBOutlet weak var draggableRoundView: RoundedView!
+    @IBOutlet weak var draggableRoundView: RoundedView! { didSet {
+        draggableRoundView.cornerRadius = 10.0
+        draggableRoundView.colorToFill = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+    }}
     
     var topSeparatorView: UIView = {
         let view = UIView()
