@@ -40,10 +40,19 @@ class ProductViewController: UIViewController {
     
     @IBOutlet weak var productManufacturerCountryLabel: UILabel!
     
-    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel! { didSet {
+        productPriceLabel.font = UIFont.SFUIDisplaySemibold(size: 17.0)
+    }}
     
     @IBOutlet weak var AddToTheCartButton: UIButton! { didSet{
-        AddToTheCartButton.layer.cornerRadius = 15
+//        AddToTheCartButton.layer.cornerRadius = 15
+        AddToTheCartButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        AddToTheCartButton.titleLabel?.minimumScaleFactor = 0.5
+    }}
+    
+    @IBOutlet weak var AddToTheCartRoundedView: RoundedView! { didSet  {
+        AddToTheCartRoundedView.cornerRadius = 15.0
+        AddToTheCartRoundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
     }}
     
     @IBOutlet weak var QTYPlusButton: UIButton!
@@ -241,14 +250,6 @@ class ProductViewController: UIViewController {
              }
          }
      }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

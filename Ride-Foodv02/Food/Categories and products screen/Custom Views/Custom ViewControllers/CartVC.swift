@@ -163,14 +163,14 @@ class CartVC: UIViewController {
         stackView.addArrangedSubview(promocodeAndCreditsStackView)
         promocodeAndCreditsStackView.axis                                      = .horizontal
         promocodeAndCreditsStackView.distribution                              = .fillEqually
-        promocodeAndCreditsStackView.spacing                                   = 3
+        promocodeAndCreditsStackView.spacing                                   = 10
         promocodeAndCreditsStackView.translatesAutoresizingMaskIntoConstraints = false
         promocodeAndCreditsStackView.addArrangedSubview(promocodeView)
         promocodeAndCreditsStackView.addArrangedSubview(creditView)
         
         NSLayoutConstraint.activate([
-            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 25),
+            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: -25),
             promocodeAndCreditsStackView.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
