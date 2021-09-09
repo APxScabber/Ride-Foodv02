@@ -54,8 +54,8 @@ class ProductsCollectionViewCell: UICollectionViewCell {
                                            corner_radius: 15)
         
         NSLayoutConstraint.activate([
-            cellBackgroundView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-            cellBackgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
+            cellBackgroundView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            cellBackgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             cellBackgroundView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             cellBackgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
         ])
@@ -76,14 +76,17 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     func setNameLabel(){
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         cellBackgroundView.addSubview(nameLabel)
-        nameLabel.numberOfLines = 0
         nameLabel.font = UIFont.SFUIDisplayRegular(size: 13)
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 4),
             nameLabel.leadingAnchor.constraint(equalTo: cellBackgroundView.leadingAnchor, constant: 15),
             nameLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -15),
-            nameLabel.heightAnchor.constraint(equalToConstant: 44)
+            nameLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -5)
+//            nameLabel.heightAnchor.constraint(equalToConstant: 44)
         ])
+        nameLabel.numberOfLines = 0
+        nameLabel.minimumScaleFactor = 0.3
+        nameLabel.adjustsFontSizeToFitWidth = true
     }
     
     func setPriceLabel(){
@@ -93,9 +96,10 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             priceLabel.leadingAnchor.constraint(equalTo: cellBackgroundView.leadingAnchor, constant: 15),
             priceLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -12),
-            priceLabel.widthAnchor.constraint(equalToConstant: 60),
-            priceLabel.heightAnchor.constraint(equalToConstant: 20)
+            priceLabel.widthAnchor.constraint(equalToConstant: 46),
+            priceLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
+        setup(priceLabel)
     }
     
     func setWeightLabel(){
@@ -107,9 +111,11 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             weightLabel.trailingAnchor.constraint(equalTo: cellBackgroundView.trailingAnchor, constant: -15),
             weightLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -12),
-            weightLabel.widthAnchor.constraint(equalToConstant: 40),
-            weightLabel.heightAnchor.constraint(equalToConstant: 20)
+//            weightLabel.leadingAnchor.constraint(equalTo: oldPriceLabel.trailingAnchor, constant: 2),
+//            weightLabel.widthAnchor.constraint(equalToConstant: 30),
+            weightLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
+        setup(weightLabel)
     }
     
     func setTopSellImageView(){
@@ -145,17 +151,18 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         oldPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         oldPriceLabel.attributedText = NSMutableAttributedString(string: "\(oldPrice) руб", attributes: [
                         NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                        NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 11)!,
+                        NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 13)!,
                         NSAttributedString.Key.foregroundColor: UIColor.DarkGrayTextColor
                         ])
         NSLayoutConstraint.activate([
-            oldPriceLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 2),
-            oldPriceLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
-            oldPriceLabel.widthAnchor.constraint(equalToConstant: 55),
-            oldPriceLabel.heightAnchor.constraint(equalToConstant: 20)
-            
+            oldPriceLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 5),
+//            oldPriceLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
+            oldPriceLabel.trailingAnchor.constraint(equalTo: weightLabel.leadingAnchor, constant: -5),
+            oldPriceLabel.bottomAnchor.constraint(equalTo: cellBackgroundView.bottomAnchor, constant: -12),
+//            oldPriceLabel.widthAnchor.constraint(equalToConstant: 55),
+            oldPriceLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
-        
+        setup(oldPriceLabel)
     }
     
     func setData(product: Product){
@@ -197,10 +204,16 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     func configure(){
         setBackgroundView()
         setImageView()
-        setNameLabel()
         setPriceLabel()
+        setNameLabel()
         setWeightLabel()
         
     }
     
+    
+    private func setup(_ label: UILabel) {
+        label.numberOfLines = 1
+        label.minimumScaleFactor = 0.3
+        label.adjustsFontSizeToFitWidth = true
+    }
 }
