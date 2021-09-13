@@ -17,13 +17,6 @@ extension MainScreenViewController: CLLocationManagerDelegate {
         // Получаем координаты пользователя при активной locationManager.startUpdatingLocation()
         if let loc = manager.location?.coordinate {
 
-//            let center = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-//            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//
-//            mapView.setRegion(region, animated: true)
-            
-            
-
             SetMapMarkersManager.shared.setMarkOn(map: mapView, with: loc) { address in
                 self.foodTaxiView.placeLabel.text = address
                 self.fromAddress = address
@@ -446,8 +439,6 @@ extension MainScreenViewController: SetMapMarkersDelegate {
 extension MainScreenViewController: SetToLocationDelegate {
     
     func pressConfirm() {
-        
-//        isMainScreen = true
 
         UIView.animate(withDuration: 0.5) {
             
@@ -457,8 +448,6 @@ extension MainScreenViewController: SetToLocationDelegate {
             self.setToLocationView.removeFromSuperview()
             self.bottomConstaint.constant = 0
             UIView.animate(withDuration: 0.5) {
-//                self.menuButton.alpha = 1
-//                self.circleView.alpha = 1
                 self.promotionView.alpha = 0
                 self.view.layoutIfNeeded()
             }
