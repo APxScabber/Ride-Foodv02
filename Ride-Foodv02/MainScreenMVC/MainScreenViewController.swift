@@ -214,7 +214,6 @@ class MainScreenViewController: UIViewController {
         super.viewDidAppear(animated)
         
         safeAreaBottomHeight = view.safeAreaInsets.bottom
-        taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
                 
         if !menuView.isVisible {
             resetFrames()
@@ -638,13 +637,15 @@ class MainScreenViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func next(_ sender: UIButton) {
+        
         if shouldMakeOrder {
-            if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
+            
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
+            if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
+            taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
             nextButton.setTitle(Localizable.Taxi.order.localized, for: .normal)
             userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
             twoCorneredView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
-//            topConstraint.constant = 0
             roundedView.backgroundColor = .clear
             roundedViewTopConstraint.priority = .defaultLow
             roundedViewBottomConstraint.priority = .required

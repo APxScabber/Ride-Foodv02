@@ -13,20 +13,22 @@ protocol cartVCDelegate: AnyObject {
 
 class CartVC: UIViewController {
 
+    //MARK: - API
+    
     var shopID: Int = 0
     
     var cartTableView = UITableView()
     
     
     let deliveryView  = DeliveryTimeView()
-    let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод", state: .normal)
-    let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы", state: .normal)
+   // let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод", state: .normal)
+   // let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы", state: .normal)
     
     
     let stackView       = UIStackView()
     let scrollView      = UIScrollView()
     
-    let promocodeAndCreditsStackView = UIStackView()
+   // let promocodeAndCreditsStackView = UIStackView()
    
     
     let deliveryTimeView = UIView()
@@ -35,14 +37,18 @@ class CartVC: UIViewController {
     
     var delegate: cartVCDelegate?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-    }
+    //MARK: - ViewController lifecycle
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         retrieveCartProducts()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureUI()
+  
     }
     
     // Business Logic
@@ -65,13 +71,7 @@ class CartVC: UIViewController {
    
     // UI Logic
     
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        configureUI()
-  
-    }
-    
+
     func configureUI(){
        
         view.backgroundColor = .white
@@ -160,22 +160,24 @@ class CartVC: UIViewController {
     
     
     func configurePromocodeAndCreditsStackView(){
-        stackView.addArrangedSubview(promocodeAndCreditsStackView)
-        promocodeAndCreditsStackView.axis                                      = .horizontal
-        promocodeAndCreditsStackView.distribution                              = .fillEqually
-        promocodeAndCreditsStackView.spacing                                   = 10
-        promocodeAndCreditsStackView.translatesAutoresizingMaskIntoConstraints = false
-        promocodeAndCreditsStackView.addArrangedSubview(promocodeView)
-        promocodeAndCreditsStackView.addArrangedSubview(creditView)
-        
-        NSLayoutConstraint.activate([
-            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 25),
-            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: -25),
-            promocodeAndCreditsStackView.heightAnchor.constraint(equalToConstant: 45)
-        ])
+//        stackView.addArrangedSubview(promocodeAndCreditsStackView)
+//        promocodeAndCreditsStackView.axis                                      = .horizontal
+//        promocodeAndCreditsStackView.distribution                              = .fillEqually
+//        promocodeAndCreditsStackView.spacing                                   = 10
+//        promocodeAndCreditsStackView.translatesAutoresizingMaskIntoConstraints = false
+//        promocodeAndCreditsStackView.addArrangedSubview(promocodeView)
+//        promocodeAndCreditsStackView.addArrangedSubview(creditView)
+//
+//        NSLayoutConstraint.activate([
+//            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 25),
+//            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: -25),
+//            promocodeAndCreditsStackView.heightAnchor.constraint(equalToConstant: 45)
+//        ])
     }
 
 }
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

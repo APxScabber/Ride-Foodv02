@@ -153,3 +153,9 @@
 "delete" = "Удалить";
 "deleteAddressQuestion" = "Удалить адрес?";
 "cancel" = "Отмена";
+
+//MARK: - Delivery
+
+"deliveryTime" = "Доставим через";
+"deliveryMin" = "мин";
+"deliveryMoney" = "руб";

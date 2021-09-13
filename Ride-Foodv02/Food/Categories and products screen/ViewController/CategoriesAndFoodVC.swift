@@ -13,6 +13,7 @@ enum PresentedScreen{
 
 class CategoriesAndFoodVC: UIViewController {
 
+//MARK: - API
     
     var productsInCartView: FoodOrderBottomView?
     
@@ -54,14 +55,14 @@ class CategoriesAndFoodVC: UIViewController {
     var isChoosingSubSubCategory: Bool = false
     var previousCategoryID: Int = 0
     
-   
+ //MARK: - Outlets
+    
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
         shopTitleLabel.font = UIFont.SFUIDisplayRegular(size: 15)
     }}
     
     @IBOutlet weak var containerView: UIView!
     
-    let contentView = UIView()
     
     @IBOutlet weak var titleLabel: UILabel! {didSet{
         titleLabel.font = UIFont.SFUIDisplaySemibold(size: 26)
@@ -75,6 +76,10 @@ class CategoriesAndFoodVC: UIViewController {
         draggableRoundView.colorToFill = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
     }}
     
+    //MARK: - UIViews
+    
+    let contentView = UIView()
+
     var topSeparatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +95,8 @@ class CategoriesAndFoodVC: UIViewController {
     }()
     
     
-
+//MARK: - ViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews(screenType: .subcategories)
@@ -103,6 +109,14 @@ class CategoriesAndFoodVC: UIViewController {
         fetchCDOrderInformation(with: .subcategories)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+         if !hasSetPointOrigin {
+             hasSetPointOrigin = true
+             pointOrigin = self.view.frame.origin
+        
+         }
+     }
     
     
     func fetchCDOrderInformation(with screenType: PresentedScreen){
@@ -195,14 +209,6 @@ class CategoriesAndFoodVC: UIViewController {
         presentConfirmWindow(title: "Очистить корзину?", titleColor: .red, confirmTitle: "Очистить", cancelTitle: "Отмена")
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-         if !hasSetPointOrigin {
-             hasSetPointOrigin = true
-             pointOrigin = self.view.frame.origin
-        
-         }
-     }
     
     // Configure screen UI
     
