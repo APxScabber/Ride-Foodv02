@@ -146,6 +146,7 @@
 		78AEB884267B59D40023605D /* LoginFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB882267B59D40023605D /* LoginFontSize.swift */; };
 		78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB883267B59D40023605D /* ConfirmFontSize.swift */; };
 		78AEB887267B59E20023605D /* TextFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AEB886267B59E20023605D /* TextFont.swift */; };
+		78B0F61326F09D9C001FFEC7 /* SwipeDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0F61226F09D9C001FFEC7 /* SwipeDownView.swift */; };
 		78BE49F026825B2000A13641 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */; };
 		78BE49FA26834BA400A13641 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49F926834BA400A13641 /* ImageFetcher.swift */; };
 		78BE49FC2683536800A13641 /* PromotionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE49FB2683536800A13641 /* PromotionTableViewCell.swift */; };
@@ -154,7 +155,6 @@
 		78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BE4A0326837B8E00A13641 /* PromotionDetail.xib */; };
 		78BE4A0626837DA700A13641 /* PromotionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A0526837DA700A13641 /* PromotionDetail.swift */; };
 		78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE4A072684CF6100A13641 /* RoundedView.swift */; };
-		78C05CCB26C5353700BF5A9F /* TaxiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C05CCA26C5353700BF5A9F /* TaxiData.swift */; };
 		78C86C3E26CC2525003F10D5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C3D26CC2525003F10D5 /* Order.swift */; };
 		78C86C4026CC292E003F10D5 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C3F26CC292E003F10D5 /* Orders.swift */; };
 		78C86C4226CC2964003F10D5 /* OrdersFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86C4126CC2964003F10D5 /* OrdersFetcher.swift */; };
@@ -179,6 +179,9 @@
 		78DE81D126CEDBD80093B698 /* TaxiMainExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */; };
 		78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */; };
 		78E25AA726A98305006E6BC9 /* FoodTaxiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */; };
+		78E8DB1926F0DFF5008C72C9 /* PromocodeScoresView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8DB1826F0DFF5008C72C9 /* PromocodeScoresView.xib */; };
+		78E8DB1B26F0E18F008C72C9 /* PromocodeScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8DB1A26F0E18F008C72C9 /* PromocodeScoresView.swift */; };
+		78E8DB1D26F102FE008C72C9 /* ShadowRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8DB1C26F102FE008C72C9 /* ShadowRoundedView.swift */; };
 		78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */; };
 		78F1A97B26A8949000E16084 /* PaymentWaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */; };
 		78F1A97C26A8949000E16084 /* AddCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97426A8948F00E16084 /* AddCardInteractor.swift */; };
@@ -398,6 +401,7 @@
 		78AEB882267B59D40023605D /* LoginFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFontSize.swift; sourceTree = "<group>"; };
 		78AEB883267B59D40023605D /* ConfirmFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFontSize.swift; sourceTree = "<group>"; };
 		78AEB886267B59E20023605D /* TextFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFont.swift; sourceTree = "<group>"; };
+		78B0F61226F09D9C001FFEC7 /* SwipeDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDownView.swift; sourceTree = "<group>"; };
 		78BE49EF26825B2000A13641 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		78BE49F926834BA400A13641 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		78BE49FB2683536800A13641 /* PromotionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionTableViewCell.swift; sourceTree = "<group>"; };
@@ -406,7 +410,6 @@
 		78BE4A0326837B8E00A13641 /* PromotionDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionDetail.xib; sourceTree = "<group>"; };
 		78BE4A0526837DA700A13641 /* PromotionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetail.swift; sourceTree = "<group>"; };
 		78BE4A072684CF6100A13641 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
-		78C05CCA26C5353700BF5A9F /* TaxiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiData.swift; sourceTree = "<group>"; };
 		78C86C3D26CC2525003F10D5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		78C86C3F26CC292E003F10D5 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
 		78C86C4126CC2964003F10D5 /* OrdersFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersFetcher.swift; sourceTree = "<group>"; };
@@ -430,6 +433,9 @@
 		78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiMainExtensions.swift; sourceTree = "<group>"; };
 		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
 		78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTaxiView.swift; sourceTree = "<group>"; };
+		78E8DB1826F0DFF5008C72C9 /* PromocodeScoresView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeScoresView.xib; sourceTree = "<group>"; };
+		78E8DB1A26F0E18F008C72C9 /* PromocodeScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeScoresView.swift; sourceTree = "<group>"; };
+		78E8DB1C26F102FE008C72C9 /* ShadowRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRoundedView.swift; sourceTree = "<group>"; };
 		78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsUserDefaultsModel.swift; sourceTree = "<group>"; };
 		78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWaysTableViewCell.swift; sourceTree = "<group>"; };
 		78F1A97426A8948F00E16084 /* AddCardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardInteractor.swift; sourceTree = "<group>"; };
@@ -610,11 +616,12 @@
 				78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */,
 				78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
-				78C05CCA26C5353700BF5A9F /* TaxiData.swift */,
 				C446726226CB047300598459 /* TaxiMainInteractor.swift */,
 				78DE81D026CEDBD80093B698 /* TaxiMainExtensions.swift */,
-				78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */,
+				78E8DB1A26F0E18F008C72C9 /* PromocodeScoresView.swift */,
+				78E8DB1826F0DFF5008C72C9 /* PromocodeScoresView.xib */,
 				78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */,
+				78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */,
 				78894E4B26CFF71F0044DBF4 /* ScoresView.xib */,
 				78894E4926CFF2D40044DBF4 /* ScoresView.swift */,
 				78894E4D26D017190044DBF4 /* ScoresToolbar.xib */,
@@ -685,8 +692,10 @@
 				7873A49826E237B50066A457 /* BackButton.swift */,
 				7808D7D426B838EF00A88E12 /* EmailChecker.swift */,
 				785F5D9126C16E8D004503CB /* TopRoundedView.swift */,
+				78B0F61226F09D9C001FFEC7 /* SwipeDownView.swift */,
 				C446725E26CAA30C00598459 /* BaseViewController.swift */,
 				F56502F526CA159700934D91 /* PresentationController.swift */,
+				78E8DB1C26F102FE008C72C9 /* ShadowRoundedView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1364,6 +1373,7 @@
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
 				7841E3A626A8362500335DFA /* Tariffs.storyboard in Resources */,
 				78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */,
+				78E8DB1926F0DFF5008C72C9 /* PromocodeScoresView.xib in Resources */,
 				787140C6268637E6007834ED /* Promocode.storyboard in Resources */,
 				78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */,
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
@@ -1464,6 +1474,7 @@
 				78C8C99326C80755001C947F /* OrderHistoryTableViewCell.swift in Sources */,
 				7808D7C926B4806800A88E12 /* TotalScoresModel.swift in Sources */,
 				782D45DE26B03D21006B3A98 /* ShopDetail.swift in Sources */,
+				78E8DB1D26F102FE008C72C9 /* ShadowRoundedView.swift in Sources */,
 				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,
 				F5D500DE26C71AE500488D45 /* PhoneNumberTableViewCell.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
@@ -1495,7 +1506,6 @@
 				78AEB87E267B59C10023605D /* ConfirmVCExtension.swift in Sources */,
 				78F1A97C26A8949000E16084 /* AddCardInteractor.swift in Sources */,
 				782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */,
-				78C05CCB26C5353700BF5A9F /* TaxiData.swift in Sources */,
 				78BE4A002683671600A13641 /* PromotionsFetcher.swift in Sources */,
 				78A39FF4267B568E006D0DAB /* UserDataModel.xcdatamodeld in Sources */,
 				7850E8FC2673BD3400AA88CA /* SupportActionSheetView.swift in Sources */,
@@ -1565,6 +1575,7 @@
 				7867B4DF2672411C0031BFA0 /* PersonalInfoViewController.swift in Sources */,
 				C4A9D76D26B968B5001894F8 /* CongratulationsScoresViewController.swift in Sources */,
 				787A83E526AB2D9B0096DFC3 /* MyAddressesTableViewCell.swift in Sources */,
+				78B0F61326F09D9C001FFEC7 /* SwipeDownView.swift in Sources */,
 				78F1A97F26A8949000E16084 /* PaymentWaysViewController.swift in Sources */,
 				78A39FEC267B5684006D0DAB /* UserDefaultsModel.swift in Sources */,
 				785F5D8E26C15D41004503CB /* TaxiConstant.swift in Sources */,
@@ -1584,6 +1595,7 @@
 				F542D5E626D7394800312376 /* FoodOrderBottomView.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
+				78E8DB1B26F0E18F008C72C9 /* PromocodeScoresView.swift in Sources */,
 				C446728D26CF222F00598459 /* SetMapMarkersManager.swift in Sources */,
 				7879CDE726BA8955009D127A /* Address.swift in Sources */,
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,

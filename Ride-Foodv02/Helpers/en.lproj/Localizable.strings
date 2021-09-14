@@ -65,7 +65,7 @@
 "historyUsage" = "History of use";
 "confirm" = "Confirm";
 "promocodeActivated" = "Promocode activated";
-"done" = "Done!";
+"promocodeDone" = "Done!";
 "active" = "Active";
 "inactivate" = "Inactive";
 "promocodeDescription" = "Please note that discounts for promotional codes for similar services are not cumulative. The promo code that expires earlier will be triggered for the next order.";
@@ -76,6 +76,13 @@
 "map" = "Map";
 "enterAdress" = "Enter delivery address";
 "confirm" = "Confirm";
+"placeOrder" = "Place an order";
+"goToPayment" = "Go to payment";
+"bin" = "Bin";
+"remove" = "Remove";
+"clearBinQuestion" = "Clear bin?";
+"clearBin" = "Clear";
+"cancel" = "Cancel";
 
 //MARK: - Scores
 

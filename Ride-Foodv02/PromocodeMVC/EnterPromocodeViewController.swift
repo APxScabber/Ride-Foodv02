@@ -7,6 +7,7 @@ class EnterPromocodeViewController: UIViewController {
     @IBOutlet weak var checkmarkButton: UIButton!
     @IBOutlet weak var doneButton: UIButton! { didSet {
         doneButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+        doneButton.isUserInteractionEnabled = false
     }}
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
@@ -26,6 +27,10 @@ class EnterPromocodeViewController: UIViewController {
     
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func close(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
     //MARK: - ViewController lifecycle
@@ -95,9 +100,10 @@ extension EnterPromocodeViewController: PromocodeActivatorDelegate {
         promocodeLabel.isHidden = false
         promocodeDescriptionLabel.isHidden = false
         promocodeToolbar.dismiss()
-        doneButton.setTitle(Localizable.Promocode.done.localized, for: .normal)
+        doneButton.setTitle(Localizable.Promocode.promocodeDone.localized, for: .normal)
         promocodeDescriptionLabel.text = description
         promocodeToolbar.spinner.stopAnimating()
+        doneButton.isUserInteractionEnabled = true
     }
 }
 

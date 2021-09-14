@@ -10,7 +10,9 @@ class ScoresView: UIView {
 
     //MARK: - API
     
-    var scores = 86
+    var scores = 0 { didSet {
+        scoresLabel.text = "\(scores) \(Localizable.Scores.scoresAvailable.localized)"
+    }}
     weak var delegate: ScoresViewDelegate?
     
     //MARK: - Outlets
@@ -22,7 +24,6 @@ class ScoresView: UIView {
     
     @IBOutlet weak var scoresLabel: UILabel! { didSet {
         scoresLabel.font = UIFont.SFUIDisplayRegular(size: 17.0 )
-        scoresLabel.text = "\(scores) \(Localizable.Scores.scoresAvailable.localized)"
     }}
     
     @IBOutlet weak var roundedView: RoundedView! { didSet {

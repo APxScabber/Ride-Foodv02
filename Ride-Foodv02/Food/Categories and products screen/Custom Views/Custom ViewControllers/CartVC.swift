@@ -11,7 +11,7 @@ protocol cartVCDelegate: AnyObject {
     func updateBottomView()
 }
 
-class CartVC: UIViewController {
+class CartVC: BaseViewController {
 
     //MARK: - API
     
@@ -21,16 +21,14 @@ class CartVC: UIViewController {
     
     
     let deliveryView  = DeliveryTimeView()
-   // let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод", state: .normal)
-   // let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы", state: .normal)
-    
     
     let stackView       = UIStackView()
     let scrollView      = UIScrollView()
-    
-   // let promocodeAndCreditsStackView = UIStackView()
-   
-    
+       
+    let promocodeScoreView = PromocodeScoresView.initFromNib()
+    let scoresView = ScoresView.initFromNib()
+    let promocodeToolbar = PromocodeToolbar.initFromNib()
+
     let deliveryTimeView = UIView()
     
     var productsInCart: [FoodOrderMO] = []
@@ -39,6 +37,16 @@ class CartVC: UIViewController {
 
     //MARK: - ViewController lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        promocodeScoreView.delegate = self
+        scrollView.addSubview(promocodeScoreView)
+        promocodeToolbar.isHidden = true
+        scoresView.isHidden = true
+        view.addSubview(promocodeToolbar)
+        view.addSubview(scoresView)
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,8 +56,7 @@ class CartVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configureUI()
-  
-    }
+      }
     
     // Business Logic
     
@@ -79,7 +86,7 @@ class CartVC: UIViewController {
         configureStackView()
         configureTableView()
         configureDeliveryTimeView()
-        configurePromocodeAndCreditsStackView()
+        configurePromocodeScoresView()
     }
     
     func configureScrollView(){
@@ -158,21 +165,14 @@ class CartVC: UIViewController {
         }
     }
     
-    
-    func configurePromocodeAndCreditsStackView(){
-//        stackView.addArrangedSubview(promocodeAndCreditsStackView)
-//        promocodeAndCreditsStackView.axis                                      = .horizontal
-//        promocodeAndCreditsStackView.distribution                              = .fillEqually
-//        promocodeAndCreditsStackView.spacing                                   = 10
-//        promocodeAndCreditsStackView.translatesAutoresizingMaskIntoConstraints = false
-//        promocodeAndCreditsStackView.addArrangedSubview(promocodeView)
-//        promocodeAndCreditsStackView.addArrangedSubview(creditView)
-//
-//        NSLayoutConstraint.activate([
-//            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 25),
-//            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: -25),
-//            promocodeAndCreditsStackView.heightAnchor.constraint(equalToConstant: 45)
-//        ])
+    func configurePromocodeScoresView() {
+        promocodeScoreView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            promocodeScoreView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            promocodeScoreView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            promocodeScoreView.heightAnchor.constraint(equalToConstant: 50),
+            promocodeScoreView.topAnchor.constraint(equalTo: deliveryView.bottomAnchor, constant: 10)
+        ])
     }
 
 }
@@ -193,7 +193,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] (action, view, completionHandler) -> Void in
+        let action = UIContextualAction(style: .destructive, title: Localizable.Food.remove.localized) { [weak self] (action, view, completionHandler) -> Void in
             guard let self = self else { return }
             let product = self.productsInCart[indexPath.row]
             
@@ -222,6 +222,44 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 8
+    }
+    
+    
+}
+
+//MARK: - PromocodeScoresViewDelegate
+
+extension CartVC: PromocodeScoresViewDelegate {
+    
+    func useScores() {
+        scoresView.isHidden = false
+        scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 170)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.scoresView.frame.origin.y = self.view.bounds.height - 170
+        }
+        
+        guard let userID = userID else { return }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let totalScoresInteractor = TotalScoresInteractor()
+            totalScoresInteractor.loadScores(userID: userID) { data in
+                DispatchQueue.main.async {
+                    self.scoresView.scores = data.credit
+                }
+            }
+        }
+
+    }
+    
+    func usePromocode() {
+        promocodeToolbar.isHidden = false
+        promocodeToolbar.textField.becomeFirstResponder()
+        promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight
+        }
+
+        
     }
     
     
