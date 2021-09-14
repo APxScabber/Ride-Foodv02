@@ -152,9 +152,9 @@ class CategoriesAndFoodVC: UIViewController {
         }
         switch screenType{
         case .subcategories:
-            productsInCartView = FoodOrderBottomView(title: "Оформить заказ", price: overallPriceInCart, oldPrice: nil)
+            productsInCartView = FoodOrderBottomView(title: Localizable.Food.placeOrder.localized, price: overallPriceInCart, oldPrice: nil)
         case .cart:
-            productsInCartView = FoodOrderBottomView(title: "Перейти к оплате", price: overallPriceInCart, oldPrice: nil)
+            productsInCartView = FoodOrderBottomView(title: Localizable.Food.goToPayment.localized, price: overallPriceInCart, oldPrice: nil)
         }
         
         if let bottomView = productsInCartView{
@@ -206,7 +206,7 @@ class CategoriesAndFoodVC: UIViewController {
     
     @objc func deleteCart(){
         guard productsInCart.count != 0 else { return }
-        presentConfirmWindow(title: "Очистить корзину?", titleColor: .red, confirmTitle: "Очистить", cancelTitle: "Отмена")
+        presentConfirmWindow(title: Localizable.Food.clearBinQuestion.localized, titleColor: .red, confirmTitle: Localizable.Food.clearBin.localized, cancelTitle: Localizable.Food.cancel.localized)
     }
     
     
@@ -426,7 +426,7 @@ class CategoriesAndFoodVC: UIViewController {
         
         switch screenType {
         case .cart:
-            titleLabel.text = "Корзина"
+            titleLabel.text = Localizable.Food.bin.localized
         case .subcategories:
             titleLabel.text = mainCategoryName
        

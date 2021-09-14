@@ -33,13 +33,13 @@ enum Localizable {
     
     enum Promocode:String,LocalizableDelegate {
         
-        case promocode,enterPromocode,historyUsage,confirm,promocodeActivated,done,active,inactivate,promocodeDescription,scores
+        case promocode,enterPromocode,historyUsage,confirm,promocodeActivated,promocodeDone,active,inactivate,promocodeDescription,scores
             
     }
     
     enum Food:String,LocalizableDelegate {
         
-        case map,enterAdress,confirm
+        case map,enterAdress,confirm,placeOrder,goToPayment,bin,remove,clearBinQuestion,clearBin,cancel
            
     }
     

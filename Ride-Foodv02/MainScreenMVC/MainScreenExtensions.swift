@@ -151,26 +151,9 @@ extension MainScreenViewController: UITextFieldDelegate {
         responderTextField = textField
         
         showMapItems(true)
-        addresses.removeAll()
         
-        loadAdressesFromCoreData()
+        if addresses.isEmpty { loadAdressesFromCoreData() }
         
-//        switch textField.tag {
-//        case 0:
-//            tableViewHeightView.isHidden = true
-//            addressesChooserViewHeightConstraint.constant -= tableViewHeightConstraint.constant
-//            tableViewHeightConstraint.constant = 0
-//            UIView.animate(withDuration: 0.5) {
-//                self.view.layoutIfNeeded()
-//            }
-//        case 1:
-//            tableViewHeightView.isHidden = false
-//            addresses.removeAll()
-//            loadAdressesFromCoreData()
-//
-//        default:
-//            break
-//        }
     }
 }
 
@@ -242,37 +225,54 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
 
 extension MainScreenViewController: TaxiTariffViewDelegate {
     
+    func tariffEntered() {
+        roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        roundedView.isUserInteractionEnabled = true
+        nextButton.isUserInteractionEnabled = true
+    }
+    
+}
+
+
+//MARK: - PromocodeScoresViewDelegate
+
+extension MainScreenViewController: PromocodeScoresViewDelegate {
     
     func useScores() {
-        if !taxiTariffView.usedScores && taxiTariffView.selectedIndex != nil {
+        if taxiTariffView.selectedIndex != nil {
             wholeTransparentView.isHidden = false
             scoresView.isHidden = false
             scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 170)
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.scoresView.frame.origin.y = self.view.bounds.height - 170
             }
+            
+            guard let userID = userID else { return }
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                let totalScoresInteractor = TotalScoresInteractor()
+                totalScoresInteractor.loadScores(userID: userID) { data in
+                    DispatchQueue.main.async {
+                        self.scoresView.scores = data.credit
+                    }
+                }
+            }
+            
         }
 
     }
     
     func usePromocode() {
-        if !taxiTariffView.usedPromocode {
-            shouldUpdateUI = false
-            wholeTransparentView.isHidden = false
-            promocodeToolbar.isHidden = false
-            promocodeToolbar.textField.becomeFirstResponder()
-            promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
-            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-                self.promocodeToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - PromocodeConstant.toolbarHeight
-            }
-
+        shouldUpdateUI = false
+        wholeTransparentView.isHidden = false
+        promocodeToolbar.isHidden = false
+        promocodeToolbar.textField.becomeFirstResponder()
+        promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - PromocodeConstant.toolbarHeight
         }
-    }
-    
-    func tariffEntered() {
-        roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
-        roundedView.isUserInteractionEnabled = true
-        nextButton.isUserInteractionEnabled = true
+
+        
     }
     
 }
@@ -329,6 +329,7 @@ extension MainScreenViewController: ScoresToolbarDelegate {
         closeScoresToolbar()
         closeScoresView()
         taxiTariffView.scoresEntered = scores
+        promocodeScoresView.scores = scores
         taxiTariffView.updateUIWith(scores: scores)
     }
 }
@@ -512,7 +513,7 @@ extension MainScreenViewController: PromocodeActivationDelegate {
 extension MainScreenViewController: PromocodeActivatorDelegate {
     
     func promocodeActivated(_ description: String) {
-        taxiTariffView.usedPromocode = true
+        promocodeScoresView.usedPromocode = true
         promocodeToolbar.textField.resignFirstResponder()
         promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
         promocodeActivationView.bodyLabel.text = description

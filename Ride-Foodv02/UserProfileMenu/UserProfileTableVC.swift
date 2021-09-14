@@ -60,7 +60,7 @@ class UserProfileTableVC: UITableViewController {
 //        tableView.translatesAutoresizingMaskIntoConstraints = false
         backView.translatesAutoresizingMaskIntoConstraints = false
        
-        backView.addSubview(signOutButton)
+        view.addSubview(signOutButton)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
