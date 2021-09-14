@@ -790,11 +790,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpJ-7L-eKg">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="4AE-Ay-nhM"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6E-4b-acO">
-                                <rect key="frame" x="0.0" y="200" width="414" height="662"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsx-Id-eQQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dSE-G5-kar">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
@@ -905,7 +912,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6l-xS-awh">
-                                        <rect key="frame" x="15" y="602" width="384" height="50"/>
+                                        <rect key="frame" x="15" y="708" width="384" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Xt-Js-nPI">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
@@ -1014,7 +1021,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="W6l-xS-awh" secondAttribute="bottom" constant="10" id="KON-jO-1hS"/>
+                                    <constraint firstAttribute="bottom" secondItem="W6l-xS-awh" secondAttribute="bottom" constant="44" id="KON-jO-1hS"/>
                                     <constraint firstItem="W6l-xS-awh" firstAttribute="leading" secondItem="t6E-4b-acO" secondAttribute="leading" constant="15" id="Mpy-zU-zIN"/>
                                     <constraint firstItem="W6l-xS-awh" firstAttribute="centerX" secondItem="rsx-Id-eQQ" secondAttribute="centerX" id="Qxe-p6-mxe"/>
                                     <constraint firstItem="rsx-Id-eQQ" firstAttribute="top" secondItem="t6E-4b-acO" secondAttribute="top" id="eS7-Fg-roS"/>
@@ -1026,13 +1033,6 @@
                                     <constraint firstAttribute="trailing" secondItem="rsx-Id-eQQ" secondAttribute="trailing" id="xey-Io-Ms9"/>
                                 </constraints>
                             </view>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpJ-7L-eKg">
-                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="4AE-Ay-nhM"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aM5-X6-j6y"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1041,9 +1041,9 @@
                             <constraint firstAttribute="trailing" secondItem="hpJ-7L-eKg" secondAttribute="trailing" id="N7W-f8-iQv"/>
                             <constraint firstItem="hpJ-7L-eKg" firstAttribute="leading" secondItem="8ty-ek-qwp" secondAttribute="leading" id="Op6-fv-Qvy"/>
                             <constraint firstItem="t6E-4b-acO" firstAttribute="leading" secondItem="aM5-X6-j6y" secondAttribute="leading" id="QDl-bQ-tKk"/>
-                            <constraint firstItem="t6E-4b-acO" firstAttribute="top" secondItem="aM5-X6-j6y" secondAttribute="top" constant="156" id="W1i-0G-Efe"/>
+                            <constraint firstItem="t6E-4b-acO" firstAttribute="top" secondItem="aM5-X6-j6y" secondAttribute="top" constant="50" id="W1i-0G-Efe"/>
                             <constraint firstAttribute="bottom" secondItem="hpJ-7L-eKg" secondAttribute="bottom" id="pWS-sf-MlV"/>
-                            <constraint firstItem="hpJ-7L-eKg" firstAttribute="top" secondItem="t6E-4b-acO" secondAttribute="bottom" id="rS8-N5-egK"/>
+                            <constraint firstAttribute="bottom" secondItem="t6E-4b-acO" secondAttribute="bottom" id="xGo-T2-mfw"/>
                         </constraints>
                     </view>
                     <connections>

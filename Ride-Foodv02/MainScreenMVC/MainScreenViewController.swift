@@ -221,7 +221,6 @@ class MainScreenViewController: UIViewController {
         super.viewDidAppear(animated)
         
         safeAreaBottomHeight = view.safeAreaInsets.bottom
-        
                 
         if !menuView.isVisible {
             resetFrames()

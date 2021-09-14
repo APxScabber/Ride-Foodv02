@@ -21,13 +21,8 @@ class DeliveryTimeView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    
+    
     func configure(){
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.SeparatorColor
@@ -65,8 +60,8 @@ class DeliveryTimeView: UIView {
     }
     
      func set(with deliveryTime: Int, deliveryPrice: Int){
-        mainlabel.attributedText = UIHelper.createTitleAttributedString(titleString: "Доставим через", font: UIFont.SFUIDisplayRegular(size: 17)!, color: .black, bodyString: " ≈\(deliveryTime) мин", bodyColor: UIColor.saleOrangeColor)
-        priceLabel.text = "\(deliveryPrice) руб"
+        mainlabel.attributedText = UIHelper.createTitleAttributedString(titleString: Localizable.Delivery.deliveryTime.localized, font: UIFont.SFUIDisplayRegular(size: 17)!, color: .black, bodyString: " ≈\(deliveryTime) \(Localizable.Delivery.deliveryMin.localized)", bodyColor: UIColor.saleOrangeColor)
+        priceLabel.text = "\(deliveryPrice) \(Localizable.Delivery.deliveryMoney.localized)"
     }
 
 }

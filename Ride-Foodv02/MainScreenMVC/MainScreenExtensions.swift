@@ -272,6 +272,7 @@ extension MainScreenViewController: TaxiTariffViewDelegate {
     func tariffEntered() {
         roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         roundedView.isUserInteractionEnabled = true
+        nextButton.isUserInteractionEnabled = true
     }
     
 }

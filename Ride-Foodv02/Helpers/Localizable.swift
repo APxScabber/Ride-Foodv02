@@ -68,6 +68,10 @@ enum Localizable {
         case canceled,done,empty,history,cancelReason
     }
     
+    enum Delivery: String,LocalizableDelegate {
+        case deliveryTime, deliveryMin, deliveryMoney
+    }
+    
 }
 
 
