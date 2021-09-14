@@ -189,9 +189,8 @@ class TaxiTariffView: UIView {
     }
     
     func reset() {
-        
-        frame.size.height = 155
 
+        frame.size.height = 155
         selectedIndex = nil
         if !usedScores { usedScores = false }
         if !usedPromocode { usedPromocode = false }

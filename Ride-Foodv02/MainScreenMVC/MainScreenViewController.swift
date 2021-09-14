@@ -37,6 +37,9 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var pathTimeView: UIView! { didSet {
         pathTimeView.alpha = 0
     }}
+    
+    @IBOutlet weak var pathTimeBG: UIImageView!
+    
     @IBOutlet weak var addressesChooserView: UIView! { didSet {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(moveDown(_:)))
         swipe.direction = .down
@@ -166,7 +169,9 @@ class MainScreenViewController: UIViewController {
     private var yOffset: CGFloat = 0
     var shouldMakeOrder = false
     
-
+    var isTaxiOrdered = false
+    var isFoodOrdered = false
+    
     // MARK: - ViewController lifecycle
 
     override func viewDidLoad() {
@@ -188,6 +193,8 @@ class MainScreenViewController: UIViewController {
         view.addSubview(promotionDetailView)
         view.addSubview(promocodeToolbar)
         view.addSubview(promocodeActivationView)
+        
+        pathTimeBG.image = #imageLiteral(resourceName: "TaxiTime")
         
     }
     
@@ -638,14 +645,21 @@ class MainScreenViewController: UIViewController {
     
     @IBAction func next(_ sender: UIButton) {
         
+        if isTaxiOrdered {
+            returnToMainView()
+            foodTaxiView.placeAnnotationView.alpha = 0
+            foodTaxiView.placeLabel.text = ""
+
+        }
+        
         if shouldMakeOrder {
-            
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
             taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
             nextButton.setTitle(Localizable.Taxi.order.localized, for: .normal)
             userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
             twoCorneredView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
+
             roundedView.backgroundColor = .clear
             roundedViewTopConstraint.priority = .defaultLow
             roundedViewBottomConstraint.priority = .required
@@ -655,10 +669,12 @@ class MainScreenViewController: UIViewController {
             taxiTariffView.usedPromocode = false
             roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
             roundedView.isUserInteractionEnabled = false
-            transparentView.isHidden = false
+            transparentView.isHidden = true
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.view.layoutIfNeeded()
             }
+            
+            isTaxiOrdered = true
 
         } else {
             moveDown()
@@ -682,6 +698,7 @@ class MainScreenViewController: UIViewController {
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }
+            userLocationButtonOutlet.alpha = 0
         }
          
     }
@@ -692,7 +709,7 @@ class MainScreenViewController: UIViewController {
         profileButton.isUserInteractionEnabled = false
         userLocationButtonOutlet.isUserInteractionEnabled = false
         circleView.isHidden = true
-        userLocationButtonOutlet.isHidden = true
+        userLocationButtonOutlet.alpha = 0
         UIViewPropertyAnimator.runningPropertyAnimator(
             withDuration: MainScreenConstants.durationForAppearingMenuView,
             delay: 0.0,
@@ -727,14 +744,9 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    @IBAction func taxiBackButtonAction(_ sender: UIButton) {
-        
+    func returnToMainView() {
         bottomConstaint.constant = -300
         userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 10.0 - safeAreaBottomHeight
-        
-        fromTextField.isUserInteractionEnabled = true
-        toTextField.isUserInteractionEnabled = true
-        shouldMakeOrder = false
         UIView.animate(withDuration: 0.5) {
             self.taxiBackButtonOutlet.alpha = 0
             self.view.layoutIfNeeded()
@@ -744,14 +756,35 @@ class MainScreenViewController: UIViewController {
                 self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
                 self.menuButton.alpha = 1
                 self.circleView.alpha = 1
-                self.promotionView.alpha = 1
+                self.promotionView.alpha = 0
+                if self.isTaxiOrdered {
+                    self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+                    self.timeLabel.text = "1 активный заказ"
+                    self.pathTimeView.alpha = 1
+                } else {
+                    self.pathTimeView.alpha = 0
+                }
+                self.userLocationButtonOutlet.alpha = 0
                 self.view.layoutIfNeeded()
-                print(self.userLocationButtonBottomConstraint.constant)
             }
         }
+    }
+    
+    @IBAction func taxiBackButtonAction(_ sender: UIButton) {
+        
+        returnToMainView()
 
+        fromTextField.isUserInteractionEnabled = true
+        toTextField.isUserInteractionEnabled = true
+        shouldMakeOrder = false
+        promotionView.alpha = 1
+
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
         SetMapMarkersManager.shared.isPathCalculeted = false
+        isTaxiOrdered = false
         SetMapMarkersManager.shared.isFromAddressMarkSelected = true
+        MapKitManager.shared.locationManager.startUpdatingLocation()
     }
     
     @IBAction func mapButtonAction(_ sender: Any) {
