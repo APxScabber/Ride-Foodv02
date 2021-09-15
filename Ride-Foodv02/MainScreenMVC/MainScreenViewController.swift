@@ -679,8 +679,8 @@ class MainScreenViewController: BaseViewController {
             returnToMainView()
             foodTaxiView.placeAnnotationView.alpha = 0
             foodTaxiView.placeLabel.text = ""
-            
-            taxiOrderInfo.alpha = 1
+
+//            taxiOrderInfo.alpha = 0
 
             taxiTariffView.scoresEntered = 0
             promocodeScoresView.reset()
@@ -706,7 +706,7 @@ class MainScreenViewController: BaseViewController {
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.view.layoutIfNeeded()
             }
-            
+            promocodeScoresView.frame.size.height = 50.0
             isTaxiOrdered = true
 
         } else {
