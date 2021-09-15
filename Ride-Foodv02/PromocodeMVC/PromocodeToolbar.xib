@@ -42,7 +42,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpD-Pb-dxg" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="25" y="131" width="364" height="50"/>
+                    <rect key="frame" x="25" y="125" width="364" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-rS-hIg">
                             <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
@@ -98,7 +98,7 @@
                 <constraint firstItem="QR0-Ja-GQS" firstAttribute="top" secondItem="ggD-td-4da" secondAttribute="bottom" constant="26" id="NjL-Ud-dWA"/>
                 <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="QR0-Ja-GQS" secondAttribute="trailing" constant="25" id="eKE-3G-gIn"/>
                 <constraint firstItem="Tci-2b-eha" firstAttribute="top" secondItem="QR0-Ja-GQS" secondAttribute="bottom" constant="10.5" id="gga-yX-UXS"/>
-                <constraint firstItem="hpD-Pb-dxg" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="26" id="jWk-H9-QPr"/>
+                <constraint firstItem="hpD-Pb-dxg" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="20" id="jWk-H9-QPr"/>
                 <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="Tci-2b-eha" secondAttribute="trailing" constant="25" id="w3f-UW-MuM"/>
                 <constraint firstItem="cco-FJ-By7" firstAttribute="leading" secondItem="b7t-6K-VSp" secondAttribute="leading" id="wco-DX-XWo"/>
                 <constraint firstItem="5dl-QK-Jvc" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="1" id="yyX-CZ-CLL"/>

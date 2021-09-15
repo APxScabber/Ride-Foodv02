@@ -72,10 +72,19 @@
                                 <action selector="misc:" destination="3ml-hL-ezf" eventType="touchUpInside" id="lhg-Lj-ziu"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5a-cZ-zd5" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <rect key="frame" x="187" y="5" width="40" height="5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="3xn-8I-zHO"/>
+                                <constraint firstAttribute="height" constant="5" id="xt8-vi-Tuu"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="170" id="1kr-RA-jPy"/>
+                        <constraint firstItem="y5a-cZ-zd5" firstAttribute="centerX" secondItem="s1D-He-zF1" secondAttribute="centerX" id="A9b-SW-i8t"/>
                         <constraint firstAttribute="trailing" secondItem="2Jq-o2-ExL" secondAttribute="trailing" constant="25" id="FEs-WH-NWv"/>
                         <constraint firstItem="gBu-YL-rfW" firstAttribute="centerX" secondItem="s1D-He-zF1" secondAttribute="centerX" id="GL6-fz-1MH"/>
                         <constraint firstItem="2Jq-o2-ExL" firstAttribute="top" secondItem="gBu-YL-rfW" secondAttribute="bottom" constant="20" id="I21-mI-txN"/>
@@ -83,6 +92,7 @@
                         <constraint firstItem="2Jq-o2-ExL" firstAttribute="leading" secondItem="s1D-He-zF1" secondAttribute="leading" constant="25" id="Y9s-r9-LOz"/>
                         <constraint firstItem="rXH-Hj-UhZ" firstAttribute="top" secondItem="2Jq-o2-ExL" secondAttribute="bottom" constant="16" id="cA8-oe-IFR"/>
                         <constraint firstItem="rXH-Hj-UhZ" firstAttribute="centerX" secondItem="s1D-He-zF1" secondAttribute="centerX" id="gGL-f8-UWd"/>
+                        <constraint firstItem="y5a-cZ-zd5" firstAttribute="top" secondItem="s1D-He-zF1" secondAttribute="top" constant="5" id="i3U-JZ-PO0"/>
                         <constraint firstAttribute="trailing" secondItem="rXH-Hj-UhZ" secondAttribute="trailing" constant="16" id="ktG-R9-Hel"/>
                         <constraint firstItem="gBu-YL-rfW" firstAttribute="top" secondItem="s1D-He-zF1" secondAttribute="top" constant="18" id="vOK-oe-xgv"/>
                     </constraints>

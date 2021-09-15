@@ -415,7 +415,7 @@
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rKT-zC-EWE">
                                         <rect key="frame" x="0.0" y="61" width="414" height="200"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="5VR-Gl-xFn"/>
                                         </constraints>
@@ -433,7 +433,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMU-i5-DH3" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMU-i5-DH3" customClass="ShadowRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="8" width="184" height="82"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пятерочка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-VZ-isD">
@@ -459,6 +459,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="EMU-i5-DH3" firstAttribute="top" secondItem="k22-EQ-0UD" secondAttribute="top" constant="8" id="1cR-wV-Zde"/>
                                                         <constraint firstAttribute="bottom" secondItem="EMU-i5-DH3" secondAttribute="bottom" constant="10" id="4Ef-PF-m7c"/>
@@ -470,10 +471,10 @@
                                                         <constraint firstAttribute="bottom" secondItem="wTV-MS-YwB" secondAttribute="bottom" constant="10" id="xRn-aV-wcQ"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <size key="customSize" width="200" height="100"/>
                                                 <connections>
                                                     <outlet property="nameLabel" destination="ZEO-VZ-isD" id="lKz-bz-5kc"/>
-                                                    <outlet property="roundedView" destination="EMU-i5-DH3" id="Xat-Ps-2nv"/>
                                                     <outlet property="shopImageView" destination="wTV-MS-YwB" id="uoc-la-dAQ"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -707,6 +708,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lx3-YG-teF" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="187" y="22" width="40" height="6"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="YT5-q7-fFL"/>
+                                    <constraint firstAttribute="height" constant="6" id="uq9-6J-NFO"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJe-gc-E6d">
                                 <rect key="frame" x="0.0" y="32" width="414" height="830"/>
                                 <subviews>
@@ -750,12 +759,22 @@
                                     <constraint firstItem="fRc-Tf-yRT" firstAttribute="centerX" secondItem="kJe-gc-E6d" secondAttribute="centerX" id="uv3-5a-aM2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lx3-YG-teF" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="187" y="22" width="40" height="6"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRu-fh-H4B" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="32" width="414" height="864"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQi-Uw-QNu">
+                                        <rect key="frame" x="0.0" y="828" width="414" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="4bQ-mO-BJg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49610628039631621" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="YT5-q7-fFL"/>
-                                    <constraint firstAttribute="height" constant="6" id="uq9-6J-NFO"/>
+                                    <constraint firstItem="iQi-Uw-QNu" firstAttribute="leading" secondItem="YRu-fh-H4B" secondAttribute="leading" id="293-ga-ahG"/>
+                                    <constraint firstAttribute="bottom" secondItem="iQi-Uw-QNu" secondAttribute="bottom" id="4gC-AS-dWi"/>
+                                    <constraint firstAttribute="trailing" secondItem="iQi-Uw-QNu" secondAttribute="trailing" id="dHQ-VJ-qiM"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -764,10 +783,14 @@
                         <constraints>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="bottom" secondItem="Jy1-aP-6JF" secondAttribute="bottom" id="AvZ-3Y-fwA"/>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="top" secondItem="Lx3-YG-teF" secondAttribute="bottom" constant="4" id="HRk-I6-v5G"/>
+                            <constraint firstItem="YRu-fh-H4B" firstAttribute="leading" secondItem="Jy1-aP-6JF" secondAttribute="leading" id="Tvp-Uw-YwF"/>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="leading" secondItem="ich-B8-Wbj" secondAttribute="leading" id="Ymt-rr-NSF"/>
+                            <constraint firstItem="YRu-fh-H4B" firstAttribute="top" secondItem="ich-B8-Wbj" secondAttribute="top" constant="32" id="brd-uA-3eU"/>
                             <constraint firstItem="kJe-gc-E6d" firstAttribute="top" secondItem="ich-B8-Wbj" secondAttribute="top" constant="32" id="hOu-hJ-S41"/>
                             <constraint firstItem="Lx3-YG-teF" firstAttribute="centerX" secondItem="ich-B8-Wbj" secondAttribute="centerX" id="nif-RR-tM3"/>
                             <constraint firstAttribute="trailing" secondItem="kJe-gc-E6d" secondAttribute="trailing" id="qpm-Iy-AMc"/>
+                            <constraint firstAttribute="bottom" secondItem="YRu-fh-H4B" secondAttribute="bottom" id="sM3-qQ-WYc"/>
+                            <constraint firstItem="YRu-fh-H4B" firstAttribute="trailing" secondItem="Jy1-aP-6JF" secondAttribute="trailing" id="zgg-c5-IHJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -776,11 +799,12 @@
                         <outlet property="draggableRoundView" destination="Lx3-YG-teF" id="xTD-qz-pKg"/>
                         <outlet property="shopTitleLabel" destination="fRc-Tf-yRT" id="Qml-aJ-ukl"/>
                         <outlet property="titleLabel" destination="QnE-yU-rlb" id="0R0-y8-nTB"/>
+                        <outlet property="transparentView" destination="YRu-fh-H4B" id="dsy-4H-3L2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lxw-k2-OaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2406" y="75"/>
+            <point key="canvasLocation" x="2405.7971014492755" y="75"/>
         </scene>
         <!--Product View Controller-->
         <scene sceneID="bCb-vc-jxq">

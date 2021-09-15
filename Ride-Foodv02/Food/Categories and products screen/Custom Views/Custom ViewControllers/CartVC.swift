@@ -9,6 +9,7 @@ import UIKit
 
 protocol cartVCDelegate: AnyObject {
     func updateBottomView()
+    func setupKeyboardHeight(_ value: CGFloat)
 }
 
 class CartVC: UIViewController {
@@ -21,16 +22,12 @@ class CartVC: UIViewController {
     
     
     let deliveryView  = DeliveryTimeView()
-   // let promocodeView = PromocodeAndCreditsView(image: UIImage(named: "Promocode")!, title: "Промокод", state: .normal)
-   // let creditView    = PromocodeAndCreditsView(image: UIImage(named: "scores")!, title: "Баллы", state: .normal)
-    
     
     let stackView       = UIStackView()
     let scrollView      = UIScrollView()
-    
-   // let promocodeAndCreditsStackView = UIStackView()
-   
-    
+       
+    let promocodeScoreView = PromocodeScoresView.initFromNib()
+
     let deliveryTimeView = UIView()
     
     var productsInCart: [FoodOrderMO] = []
@@ -39,6 +36,11 @@ class CartVC: UIViewController {
 
     //MARK: - ViewController lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        scrollView.addSubview(promocodeScoreView)
+        NotificationCenter.default.addObserver(self, selector: #selector(setKeyboardHeight(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,8 +50,7 @@ class CartVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configureUI()
-  
-    }
+      }
     
     // Business Logic
     
@@ -76,10 +77,10 @@ class CartVC: UIViewController {
        
         view.backgroundColor = .white
         configureScrollView()
+        configurePromocodeScoresView()
         configureStackView()
         configureTableView()
         configureDeliveryTimeView()
-        configurePromocodeAndCreditsStackView()
     }
     
     func configureScrollView(){
@@ -103,8 +104,8 @@ class CartVC: UIViewController {
         stackView.spacing                                   = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -120),
+         //   stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: promocodeScoreView.topAnchor, constant: -10),
             stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -158,23 +159,26 @@ class CartVC: UIViewController {
         }
     }
     
-    
-    func configurePromocodeAndCreditsStackView(){
-//        stackView.addArrangedSubview(promocodeAndCreditsStackView)
-//        promocodeAndCreditsStackView.axis                                      = .horizontal
-//        promocodeAndCreditsStackView.distribution                              = .fillEqually
-//        promocodeAndCreditsStackView.spacing                                   = 10
-//        promocodeAndCreditsStackView.translatesAutoresizingMaskIntoConstraints = false
-//        promocodeAndCreditsStackView.addArrangedSubview(promocodeView)
-//        promocodeAndCreditsStackView.addArrangedSubview(creditView)
-//
-//        NSLayoutConstraint.activate([
-//            promocodeAndCreditsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 25),
-//            promocodeAndCreditsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: -25),
-//            promocodeAndCreditsStackView.heightAnchor.constraint(equalToConstant: 45)
-//        ])
+    func configurePromocodeScoresView() {
+        promocodeScoreView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            promocodeScoreView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            promocodeScoreView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            promocodeScoreView.heightAnchor.constraint(equalToConstant: 50),
+           // promocodeScoreView.topAnchor.constraint(equalTo: deliveryView.bottomAnchor, constant: 10)
+            promocodeScoreView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+        ])
     }
 
+    @objc
+    private func setKeyboardHeight(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard UIApplication.shared.windows.filter({$0.isKeyWindow}).first != nil else { return }
+        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            delegate?.setupKeyboardHeight(size.height)
+        }
+    }
+    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -193,7 +197,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] (action, view, completionHandler) -> Void in
+        let action = UIContextualAction(style: .destructive, title: Localizable.Food.remove.localized) { [weak self] (action, view, completionHandler) -> Void in
             guard let self = self else { return }
             let product = self.productsInCart[indexPath.row]
             
@@ -226,3 +230,4 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
     
     
 }
+

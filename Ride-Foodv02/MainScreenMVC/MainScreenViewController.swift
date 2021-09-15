@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MainScreenViewController: UIViewController {
+class MainScreenViewController: BaseViewController {
     
     // MARK: - Taxi Outlets
     
@@ -145,6 +145,7 @@ class MainScreenViewController: UIViewController {
     let fromAddressDetailView = FromAddressDetailView.initFromNib()
     let toAddressDetailView = ToAddressDetailView.initFromNib()
     let taxiTariffView = TaxiTariffView.initFromNib()
+    let promocodeScoresView = PromocodeScoresView.initFromNib()
     let scoresView = ScoresView.initFromNib()
     let scoresToolbar = ScoresToolbar.initFromNib()
     let promocodeToolbar = PromocodeToolbar.initFromNib()
@@ -186,7 +187,7 @@ class MainScreenViewController: UIViewController {
         promocodeToolbar.delegate = self
         promocodeActivationView.delegate = self
         PromocodeActivator.delegate = self
-
+        promocodeScoresView.delegate = self
         promocodeToolbar.isHidden = true
         promocodeActivationView.isHidden = true
         setupTaxiOrderInfoView()
@@ -415,17 +416,15 @@ class MainScreenViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-                    self.addressesChooserViewHeightConstraint.constant = self.view.bounds.height - self.safeAreaBottomHeight - self.tableViewHeightConstraint.constant - self.keyboardHeight
+                    self.addressesChooserViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
+                    self.compressAddressesViewToFitHeight()
+                    self.userLocationButtonBottomConstraint.constant = self.addressesChooserViewHeightConstraint.constant + self.keyboardHeight - self.safeAreaBottomHeight
                     self.tableView.reloadData()
 
                     UIView.animate(withDuration: 0.5) {
                         self.view.layoutIfNeeded()
                     }
                     
-                    self.userLocationButtonBottomConstraint.constant = self.addressesChooserViewHeightConstraint.constant + self.keyboardHeight - self.safeAreaBottomHeight
-                    UIView.animate(withDuration: 0.25) {
-                        self.view.layoutIfNeeded()
-                    }
                 }
             default:break
             }
@@ -436,6 +435,7 @@ class MainScreenViewController: UIViewController {
     func moveDown() {
         
         view.endEditing(true)
+        addresses.removeAll()
         transparentView.isHidden = true
         responderTextField = nil
         setBottomConstraintTo(0)
@@ -681,25 +681,25 @@ class MainScreenViewController: UIViewController {
             foodTaxiView.placeLabel.text = ""
             
             taxiOrderInfo.alpha = 1
-            
+
+            taxiTariffView.scoresEntered = 0
+            promocodeScoresView.reset()
 
         }
         
         if shouldMakeOrder {
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
-            taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 155)
+            if promocodeScoresView.superview == nil { addressesChooserView.addSubview(promocodeScoresView)}
+            taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 100)
+            promocodeScoresView.frame = CGRect(x: 0, y: 235, width: view.bounds.width, height: 50)
             nextButton.setTitle(Localizable.Taxi.order.localized, for: .normal)
             userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
-            twoCorneredView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
-
             roundedView.backgroundColor = .clear
             roundedViewTopConstraint.priority = .defaultLow
             roundedViewBottomConstraint.priority = .required
             taxiTariffView.isHidden = false
             taxiTariffView.reset()
-            taxiTariffView.usedScores = false
-            taxiTariffView.usedPromocode = false
             roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
             roundedView.isUserInteractionEnabled = false
             transparentView.isHidden = true
@@ -789,7 +789,7 @@ class MainScreenViewController: UIViewController {
                 self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
                 self.menuButton.alpha = 1
                 self.circleView.alpha = 1
-                self.promotionView.alpha = 0
+                self.promotionView.alpha = 1
                 if self.isTaxiOrdered {
                     self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
                     self.timeLabel.text = "1 активный заказ"
@@ -804,14 +804,14 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func taxiBackButtonAction(_ sender: UIButton) {
+        promotionView.alpha = 0
         
         returnToMainView()
 
         fromTextField.isUserInteractionEnabled = true
         toTextField.isUserInteractionEnabled = true
         shouldMakeOrder = false
-        promotionView.alpha = 1
-
+        addresses.removeAll()
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
         SetMapMarkersManager.shared.isPathCalculeted = false
