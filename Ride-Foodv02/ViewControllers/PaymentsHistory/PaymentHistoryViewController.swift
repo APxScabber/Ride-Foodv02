@@ -110,6 +110,7 @@ class PaymentHistoryViewController: BaseViewController {
 
         UIView.animate(withDuration: 1) {
             self.mainInfoView.frame.size.height = 399
+            //self.mainInfoView.layoutIfNeeded()
         }
         
         UIView.animate(withDuration: 1) {
@@ -124,6 +125,7 @@ class PaymentHistoryViewController: BaseViewController {
         
         UIView.animate(withDuration: 1) {
             self.infoBigViewLabel.frame.size.height = 150
+            self.infoBigViewLabel.layoutIfNeeded()
         }
         
         UIView.animate(withDuration: 1) {
@@ -135,7 +137,8 @@ class PaymentHistoryViewController: BaseViewController {
         }
         
         UIView.animate(withDuration: 1) {
-            self.mainButtonOutlet.layoutIfNeeded()
+           // self.topButtonConstraint.constant = 50
+            self.view.layoutIfNeeded()
         }
         
         UIView.animate(withDuration: 0.1) {

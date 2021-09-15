@@ -150,6 +150,8 @@ class MainScreenViewController: UIViewController {
     let promocodeToolbar = PromocodeToolbar.initFromNib()
     let promocodeActivationView = PromocodeActivation.initFromNib()
     
+    let taxiOrderInfo = TaxiOrderInfo.initFromNib()
+    
     // MARK: - Properties
 
     var fromAddress = String() { didSet { updateUI() }}
@@ -187,6 +189,7 @@ class MainScreenViewController: UIViewController {
 
         promocodeToolbar.isHidden = true
         promocodeActivationView.isHidden = true
+        setupTaxiOrderInfoView()
         view.addSubview(menuView)
         view.addSubview(foodTaxiView)
         view.addSubview(promotionView)
@@ -211,7 +214,6 @@ class MainScreenViewController: UIViewController {
         setupSetToLocationView()
         menuView.layoutSubviews()
         
-        //addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight
         responderTextField?.becomeFirstResponder()
         
         MapKitManager.shared.checkLocationServices(delegate: self, view: self)
@@ -520,6 +522,31 @@ class MainScreenViewController: UIViewController {
         
     }
     
+    private func setupTaxiOrderInfoView() {
+        let height:CGFloat = 434
+        let posY = foodTaxiView.frame.height + height
+        let width = foodTaxiView.frame.width
+        
+        taxiOrderInfo.frame = CGRect(x: 0, y: posY, width: width, height: height)
+        taxiOrderInfo.layer.cornerRadius = 20
+        taxiOrderInfo.alpha = 0
+        //infoBigViewLabel.alpha = 0
+        //infoBigViewLabel.frame.size.width = mainInfoView.frame.width - 40
+        //infoBigViewLabel.frame.size.height = 0
+        //infoBigViewLabel.translatesAutoresizingMaskIntoConstraints = true
+        
+        //mainButtonOutlet.style()
+        //mainButtonOutlet.backgroundColor = PaymentHistoryColors.blueColor.value
+        //mainButtonOutlet.alpha = 0
+        //topButtonConstraint.constant = 0
+        //mainViewInfoBG.alpha = 0
+        
+        //tintLayer.isHidden = false
+       // tintLayer.alpha = 0
+
+        view.addSubview(taxiOrderInfo)
+    }
+    
     
     // MARK: - @objc Taxi Methods
     
@@ -560,27 +587,30 @@ class MainScreenViewController: UIViewController {
     
     @objc
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
-
-        if recognizer.state == .ended {
-            
-            SetMapMarkersManager.shared.isFromAddressMarkSelected = isMainScreen ? true : false
-            
-            let location = recognizer.location(in: mapView)
-            let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-            
-            if let userLocation = MapKitManager.shared.currentUserCoordinate {
-                userLocationButtonOutlet.alpha = userLocation == coordinate ? 0 : 1
-            }
-
-            SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
+        
+        if !isTaxiOrdered {
+            if recognizer.state == .ended {
                 
                 
-                if self.isMainScreen {
-                    self.fromAddress = address
-                    self.foodTaxiView.placeLabel.text = self.fromAddress
-                } else {
-                    self.toAddress = address
-                    self.setToLocationView.locationTextField.text = self.toAddress
+                SetMapMarkersManager.shared.isFromAddressMarkSelected = isMainScreen ? true : false
+                
+                let location = recognizer.location(in: mapView)
+                let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+                
+                if let userLocation = MapKitManager.shared.currentUserCoordinate {
+                    userLocationButtonOutlet.alpha = userLocation == coordinate ? 0 : 1
+                }
+
+                SetMapMarkersManager.shared.setMarkOn(map: mapView, with: coordinate) { address in
+                    
+                    
+                    if self.isMainScreen {
+                        self.fromAddress = address
+                        self.foodTaxiView.placeLabel.text = self.fromAddress
+                    } else {
+                        self.toAddress = address
+                        self.setToLocationView.locationTextField.text = self.toAddress
+                    }
                 }
             }
         }
@@ -649,6 +679,9 @@ class MainScreenViewController: UIViewController {
             returnToMainView()
             foodTaxiView.placeAnnotationView.alpha = 0
             foodTaxiView.placeLabel.text = ""
+            
+            taxiOrderInfo.alpha = 1
+            
 
         }
         
