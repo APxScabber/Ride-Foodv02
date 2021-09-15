@@ -182,6 +182,9 @@
 		78E8DB1926F0DFF5008C72C9 /* PromocodeScoresView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8DB1826F0DFF5008C72C9 /* PromocodeScoresView.xib */; };
 		78E8DB1B26F0E18F008C72C9 /* PromocodeScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8DB1A26F0E18F008C72C9 /* PromocodeScoresView.swift */; };
 		78E8DB1D26F102FE008C72C9 /* ShadowRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8DB1C26F102FE008C72C9 /* ShadowRoundedView.swift */; };
+		78E8DB1F26F25294008C72C9 /* CashBackNeededView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8DB1E26F25294008C72C9 /* CashBackNeededView.swift */; };
+		78E8DB2126F25562008C72C9 /* CashBackNeededView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E8DB2026F25562008C72C9 /* CashBackNeededView.xib */; };
+		78E8DB2326F25E2D008C72C9 /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E8DB2226F25E2D008C72C9 /* SafeArea.swift */; };
 		78F1A97126A8946600E16084 /* CardsUserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */; };
 		78F1A97B26A8949000E16084 /* PaymentWaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */; };
 		78F1A97C26A8949000E16084 /* AddCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1A97426A8948F00E16084 /* AddCardInteractor.swift */; };
@@ -436,6 +439,9 @@
 		78E8DB1826F0DFF5008C72C9 /* PromocodeScoresView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeScoresView.xib; sourceTree = "<group>"; };
 		78E8DB1A26F0E18F008C72C9 /* PromocodeScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeScoresView.swift; sourceTree = "<group>"; };
 		78E8DB1C26F102FE008C72C9 /* ShadowRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRoundedView.swift; sourceTree = "<group>"; };
+		78E8DB1E26F25294008C72C9 /* CashBackNeededView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashBackNeededView.swift; sourceTree = "<group>"; };
+		78E8DB2026F25562008C72C9 /* CashBackNeededView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashBackNeededView.xib; sourceTree = "<group>"; };
+		78E8DB2226F25E2D008C72C9 /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
 		78F1A97026A8946600E16084 /* CardsUserDefaultsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsUserDefaultsModel.swift; sourceTree = "<group>"; };
 		78F1A97326A8948F00E16084 /* PaymentWaysTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWaysTableViewCell.swift; sourceTree = "<group>"; };
 		78F1A97426A8948F00E16084 /* AddCardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardInteractor.swift; sourceTree = "<group>"; };
@@ -684,6 +690,7 @@
 				78AEB870267B59240023605D /* Fonts */,
 				78AEB871267B59250023605D /* Extensions */,
 				7850E8F526739E6800AA88CA /* Settings.swift */,
+				78E8DB2226F25E2D008C72C9 /* SafeArea.swift */,
 				785F5D9326C2AF01004503CB /* Localizable.swift */,
 				7802DFAF267CA0120048CF1C /* Localizable.strings */,
 				78BE49F926834BA400A13641 /* ImageFetcher.swift */,
@@ -1237,6 +1244,8 @@
 				F529F1BD26DCC120007B91B4 /* DeliveryTimeView.swift */,
 				F529F1BF26DCDF55007B91B4 /* PromocodeAndCreditsView.swift */,
 				F513AFC026E1B00F00CDCFA2 /* EmptyCartView.swift */,
+				78E8DB1E26F25294008C72C9 /* CashBackNeededView.swift */,
+				78E8DB2026F25562008C72C9 /* CashBackNeededView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1358,6 +1367,7 @@
 				78F1A98126A8949000E16084 /* AddCardConfirm.xib in Resources */,
 				78C8C99B26CACCB1001C947F /* FoodDetailView.xib in Resources */,
 				7867B4E3267392EF0031BFA0 /* MainScreen.storyboard in Resources */,
+				78E8DB2126F25562008C72C9 /* CashBackNeededView.xib in Resources */,
 				7850E9032674FC4500AA88CA /* Settings.storyboard in Resources */,
 				78C8C99926CACCAA001C947F /* TaxiDetailView.xib in Resources */,
 				7867B4A9266FAB1B0031BFA0 /* SFUIDisplay-Semibold.otf in Resources */,
@@ -1421,6 +1431,7 @@
 				F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */,
 				7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */,
 				78BE4A082684CF6100A13641 /* RoundedView.swift in Sources */,
+				78E8DB2326F25E2D008C72C9 /* SafeArea.swift in Sources */,
 				78F1A98C26A8961800E16084 /* ConstantText.swift in Sources */,
 				78A39FE5267B55EC006D0DAB /* LoadManager.swift in Sources */,
 				C446727126CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
@@ -1459,6 +1470,7 @@
 				C4A9D77126B97F6D001894F8 /* MoreDetails.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
 				78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */,
+				78E8DB1F26F25294008C72C9 /* CashBackNeededView.swift in Sources */,
 				78A3A006267B56E1006D0DAB /* LoginText.swift in Sources */,
 				7841E3A126A8362500335DFA /* TariffsPageViewController.swift in Sources */,
 				782D45E426B07AA3006B3A98 /* LocationChooserViewController.swift in Sources */,

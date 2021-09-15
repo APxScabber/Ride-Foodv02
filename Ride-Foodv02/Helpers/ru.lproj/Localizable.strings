@@ -166,3 +166,9 @@
 "deliveryTime" = "Доставим через";
 "deliveryMin" = "мин";
 "deliveryMoney" = "руб";
+
+//MARK: - CashBack
+
+"cashBackTitle" = "С какой суммы потребуется сдача?";
+"cashBackLeftPrice" = "1000 руб";
+"cashBackRightPric" = "5000 руб";

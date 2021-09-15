@@ -96,6 +96,9 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
     private func close(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended {
             textField.resignFirstResponder()
+            spinner.stopAnimating()
+            textField.text = "R-"
+            updateState()
             delegate?.closePromocodeToolbar?()
         }
     }

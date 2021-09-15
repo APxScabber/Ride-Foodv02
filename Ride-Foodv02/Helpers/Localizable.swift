@@ -72,6 +72,10 @@ enum Localizable {
         case deliveryTime, deliveryMin, deliveryMoney
     }
     
+    enum CashBack: String,LocalizableDelegate {
+        case cashBackTitle,cashBackLeftPrice,cashBackRightPrice
+    }
+    
 }
 
 
