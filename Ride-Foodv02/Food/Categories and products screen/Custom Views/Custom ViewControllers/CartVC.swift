@@ -9,9 +9,10 @@ import UIKit
 
 protocol cartVCDelegate: AnyObject {
     func updateBottomView()
+    func setupKeyboardHeight(_ value: CGFloat)
 }
 
-class CartVC: BaseViewController {
+class CartVC: UIViewController {
 
     //MARK: - API
     
@@ -26,8 +27,6 @@ class CartVC: BaseViewController {
     let scrollView      = UIScrollView()
        
     let promocodeScoreView = PromocodeScoresView.initFromNib()
-    let scoresView = ScoresView.initFromNib()
-    let promocodeToolbar = PromocodeToolbar.initFromNib()
 
     let deliveryTimeView = UIView()
     
@@ -39,13 +38,8 @@ class CartVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        promocodeScoreView.delegate = self
         scrollView.addSubview(promocodeScoreView)
-        promocodeToolbar.isHidden = true
-        scoresView.isHidden = true
-        view.addSubview(promocodeToolbar)
-        view.addSubview(scoresView)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(setKeyboardHeight(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,10 +77,10 @@ class CartVC: BaseViewController {
        
         view.backgroundColor = .white
         configureScrollView()
+        configurePromocodeScoresView()
         configureStackView()
         configureTableView()
         configureDeliveryTimeView()
-        configurePromocodeScoresView()
     }
     
     func configureScrollView(){
@@ -110,8 +104,8 @@ class CartVC: BaseViewController {
         stackView.spacing                                   = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -120),
+         //   stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: promocodeScoreView.topAnchor, constant: -10),
             stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -171,10 +165,20 @@ class CartVC: BaseViewController {
             promocodeScoreView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             promocodeScoreView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             promocodeScoreView.heightAnchor.constraint(equalToConstant: 50),
-            promocodeScoreView.topAnchor.constraint(equalTo: deliveryView.bottomAnchor, constant: 10)
+           // promocodeScoreView.topAnchor.constraint(equalTo: deliveryView.bottomAnchor, constant: 10)
+            promocodeScoreView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
     }
 
+    @objc
+    private func setKeyboardHeight(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard UIApplication.shared.windows.filter({$0.isKeyWindow}).first != nil else { return }
+        if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            delegate?.setupKeyboardHeight(size.height)
+        }
+    }
+    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -227,40 +231,3 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-//MARK: - PromocodeScoresViewDelegate
-
-extension CartVC: PromocodeScoresViewDelegate {
-    
-    func useScores() {
-        scoresView.isHidden = false
-        scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 170)
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.scoresView.frame.origin.y = self.view.bounds.height - 170
-        }
-        
-        guard let userID = userID else { return }
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let totalScoresInteractor = TotalScoresInteractor()
-            totalScoresInteractor.loadScores(userID: userID) { data in
-                DispatchQueue.main.async {
-                    self.scoresView.scores = data.credit
-                }
-            }
-        }
-
-    }
-    
-    func usePromocode() {
-        promocodeToolbar.isHidden = false
-        promocodeToolbar.textField.becomeFirstResponder()
-        promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight
-        }
-
-        
-    }
-    
-    
-}

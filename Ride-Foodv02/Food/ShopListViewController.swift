@@ -104,7 +104,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         let rows = CGFloat((shops.count + 1)/2)
         let height = (view.bounds.width - totalOffset)/4.0*rows + padding*(rows+1)
         
-        collectionViewHeightConstraint.constant = height
+        collectionViewHeightConstraint.constant = height + CGFloat(SafeArea.shared.bottom)
         
         UIView.animate(withDuration: FoodConstants.durationForLiftingShopView) {
             self.view.layoutIfNeeded()

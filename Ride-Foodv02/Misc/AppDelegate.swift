@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 guard settings.authorizationStatus == .authorized else { return }
             }
         }
+        SafeArea.shared.top = Float(window?.safeAreaInsets.top ?? 0)
+        SafeArea.shared.bottom = Float(window?.safeAreaInsets.bottom ?? 0)
+        
         return true
     }
     
