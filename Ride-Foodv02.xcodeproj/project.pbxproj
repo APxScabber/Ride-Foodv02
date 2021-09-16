@@ -738,10 +738,10 @@
 				78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */,
 				78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */,
 				785D38AD26AB09DC00DAB562 /* PromotionView.xib */,
+				C471DFD626F0E82E005158E8 /* TaxiOrderInfo.swift */,
 				785D38AF26AB09E700DAB562 /* PromotionView.swift */,
 				C446729426D79D2F00598459 /* SetToLocationView.xib */,
 				C446729626D7A15600598459 /* SetToLocationView.swift */,
-				C471DFD626F0E82E005158E8 /* TaxiOrderInfo.swift */,
 				C471DFD826F0E839005158E8 /* TaxiOrderInfo.xib */,
 			);
 			path = MainScreenMVC;

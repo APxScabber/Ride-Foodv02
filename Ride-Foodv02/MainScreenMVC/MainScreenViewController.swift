@@ -151,7 +151,7 @@ class MainScreenViewController: BaseViewController {
     let promocodeToolbar = PromocodeToolbar.initFromNib()
     let promocodeActivationView = PromocodeActivation.initFromNib()
     
-    let taxiOrderInfo = TaxiOrderInfo.initFromNib()
+    let taxiOrderInfoView = TaxiOrderInfo.initFromNib()
     
     // MARK: - Properties
 
@@ -523,13 +523,28 @@ class MainScreenViewController: BaseViewController {
     }
     
     private func setupTaxiOrderInfoView() {
-        let height:CGFloat = 434
-        let posY = foodTaxiView.frame.height + height
-        let width = foodTaxiView.frame.width
         
-        taxiOrderInfo.frame = CGRect(x: 0, y: posY, width: width, height: height)
-        taxiOrderInfo.layer.cornerRadius = 20
-        taxiOrderInfo.alpha = 0
+        let tap = UITapGestureRecognizer(target: self, action: #selector(taxiOrderedInfoTap))
+        taxiOrderInfoView.addGestureRecognizer(tap)
+        
+        let height:CGFloat = 169
+        let posY = view.frame.height - foodTaxiView.frame.height - height - 50
+        let width = view.bounds.width
+
+        taxiOrderInfoView.frame = CGRect(x: 0, y: posY, width: width, height: height)
+        
+        taxiOrderInfoView.layer.shadowColor = UIColor.black.cgColor
+        taxiOrderInfoView.layer.shadowOpacity = 0.1
+        taxiOrderInfoView.layer.shadowOffset = .zero
+        taxiOrderInfoView.layer.shadowRadius = 20
+        
+        taxiOrderInfoView.layer.shadowPath = UIBezierPath(rect: taxiOrderInfoView.bounds).cgPath
+        taxiOrderInfoView.layer.shouldRasterize = true
+        taxiOrderInfoView.layer.rasterizationScale = UIScreen.main.scale
+        
+        taxiOrderInfoView.alpha = 0
+        
+        
         //infoBigViewLabel.alpha = 0
         //infoBigViewLabel.frame.size.width = mainInfoView.frame.width - 40
         //infoBigViewLabel.frame.size.height = 0
@@ -544,11 +559,36 @@ class MainScreenViewController: BaseViewController {
         //tintLayer.isHidden = false
        // tintLayer.alpha = 0
 
-        view.addSubview(taxiOrderInfo)
+        view.addSubview(taxiOrderInfoView)
     }
     
     
     // MARK: - @objc Taxi Methods
+    
+    @objc
+    private func taxiOrderedInfoTap() {
+        
+        if taxiOrderInfoView.frame.height == 169 {
+            UIView.animate(withDuration: 2) {
+                self.foodTaxiView.frame.origin.y = self.view.frame.height
+                let height:CGFloat = 434
+                self.taxiOrderInfoView.frame.size.height = height
+                let posY = self.view.frame.height - height
+                self.taxiOrderInfoView.frame.origin.y = posY
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            UIView.animate(withDuration: 2) {
+                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
+                let height:CGFloat = 169
+                self.taxiOrderInfoView.frame.size.height = height
+                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+
+    }
     
     @objc
     private func moveAddressesChooserView(_ notification: Notification) {
@@ -679,11 +719,14 @@ class MainScreenViewController: BaseViewController {
             returnToMainView()
             foodTaxiView.placeAnnotationView.alpha = 0
             foodTaxiView.placeLabel.text = ""
-
-//            taxiOrderInfo.alpha = 0
+            UIView.animate(withDuration: 1) {
+                self.taxiOrderInfoView.alpha = 1
+            }
 
             taxiTariffView.scoresEntered = 0
             promocodeScoresView.reset()
+            
+            promotionView.alpha = 0
 
         }
         
@@ -779,7 +822,7 @@ class MainScreenViewController: BaseViewController {
     
     func returnToMainView() {
         bottomConstaint.constant = -300
-        userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 10.0 - safeAreaBottomHeight
+        //userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 10.0 - safeAreaBottomHeight
         UIView.animate(withDuration: 0.5) {
             self.taxiBackButtonOutlet.alpha = 0
             self.view.layoutIfNeeded()
@@ -789,7 +832,7 @@ class MainScreenViewController: BaseViewController {
                 self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
                 self.menuButton.alpha = 1
                 self.circleView.alpha = 1
-                self.promotionView.alpha = 1
+                //self.promotionView.alpha = 1
                 if self.isTaxiOrdered {
                     self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
                     self.timeLabel.text = "1 активный заказ"

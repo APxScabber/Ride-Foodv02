@@ -8,13 +8,13 @@
 import UIKit
 
 class TaxiOrderInfo: UIView {
+    
+    @IBOutlet weak var mainView: UIView! { didSet {
+        mainView.layer.cornerRadius = 15
+        mainView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }}
+    
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+
 
 }
