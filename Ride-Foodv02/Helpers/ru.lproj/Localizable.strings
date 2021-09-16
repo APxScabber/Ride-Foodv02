@@ -171,4 +171,15 @@
 
 "cashBackTitle" = "С какой суммы потребуется сдача?";
 "cashBackLeftPrice" = "1000 руб";
-"cashBackRightPric" = "5000 руб";
+"cashBackRightPrice" = "5000 руб";
+
+//MARK: - FoodOrder
+
+"foodOrderCheckout" = "Оформление заказа";
+"foodOrderDeliveryAddress" = "Адрес доставки";
+"foodOrderPaymentWays" = "Способ оплаты";
+"foodOrderCash" = "Наличные";
+"foodOrderCard" = "Карта";
+"foodOrderPay" = "Оплатить";
+"foodOrder" = "Заказать";
+"foodOrderMoney" = "руб";

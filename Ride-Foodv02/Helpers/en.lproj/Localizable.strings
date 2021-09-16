@@ -174,3 +174,15 @@
 "cashBackTitle" = "How much do you need to change?";
 "cashBackLeftPrice" = "1000 rub";
 "cashBackRightPric" = "5000 rub";
+
+
+//MARK: - FoodOrder
+
+"foodOrderCheckout" = "Checkout";
+"foodOrderDeliveryAddress" = "Delivery address";
+"foodOrderPaymentWays" = "Payment way";
+"foodOrderCash" = "Cash";
+"foodOrderCard" = "Card";
+"foodOrderPay" = "Pay";
+"foodOrder" = "Order";
+"foodOrderMoney" = "rub";

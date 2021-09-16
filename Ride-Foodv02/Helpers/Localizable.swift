@@ -76,6 +76,10 @@ enum Localizable {
         case cashBackTitle,cashBackLeftPrice,cashBackRightPrice
     }
     
+    
+    enum FoodOrder: String,LocalizableDelegate {
+        case foodOrderCheckout,foodOrderDeliveryAddress,foodOrderPaymentWays,foodOrderCash,foodOrderCard,foodOrderPay,foodOrder,foodOrderMoney
+    }
 }
 
 
