@@ -59,6 +59,8 @@ class CategoriesAndFoodVC: BaseViewController {
     var isChoosingSubSubCategory: Bool = false
     var previousCategoryID: Int = 0
     
+    var presentedScreen: PresentedScreen = .subcategories
+    
  //MARK: - Outlets
     
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
@@ -258,22 +260,34 @@ class CategoriesAndFoodVC: BaseViewController {
         
     }
     
+    //MARK: - deleteProductsAndPresentCart
+    
     func deleteProductsAndPresentCart(){
-        self.showLoadingView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            guard let self = self else { return }
-            self.removeAllCollectionViews()
-            self.setUpViews(screenType: .cart)
-            self.configureTrashButton()
-            self.fetchCDOrderInformation(with: .cart)
-            let cartVC = CartVC()
-            cartVC.productsInCart = self.productsInCart
-            cartVC.shopID         = self.shopID
-            cartVC.delegate       = self
-            cartVC.promocodeScoreView.delegate = self
-            self.add(childVC: cartVC, to: self.contentView)
-            self.dismissLoadingView()
+        if presentedScreen == .subcategories {
+            self.showLoadingView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self = self else { return }
+                self.removeAllCollectionViews()
+                self.setUpViews(screenType: .cart)
+                self.configureTrashButton()
+                self.fetchCDOrderInformation(with: .cart)
+                let cartVC = CartVC()
+                cartVC.productsInCart = self.productsInCart
+                cartVC.shopID         = self.shopID
+                cartVC.delegate       = self
+                cartVC.promocodeScoreView.delegate = self
+                self.add(childVC: cartVC, to: self.contentView)
+                self.dismissLoadingView()
+            }
+            presentedScreen = .cart
+        } else {
+            let storyboard = UIStoryboard(name: "Food", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "FoodOrderVC") as! FoodOrderVC
+            vc.modalPresentationStyle = .custom
+            vc.transitioningDelegate = self
+            present(vc, animated: true)
         }
+        
    
     }
     

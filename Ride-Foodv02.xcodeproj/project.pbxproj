@@ -29,6 +29,8 @@
 		782D45E026B03ED4006B3A98 /* ShopDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45DF26B03ED4006B3A98 /* ShopDetailFetcher.swift */; };
 		782D45E226B046DA006B3A98 /* ShopDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45E126B046DA006B3A98 /* ShopDetailCollectionViewCell.swift */; };
 		782D45E426B07AA3006B3A98 /* LocationChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */; };
+		782F832826F380DD005C1AD4 /* FoodOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F832726F380DD005C1AD4 /* FoodOrderVC.swift */; };
+		782F832A26F38F16005C1AD4 /* FoodOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F832926F38F16005C1AD4 /* FoodOrderCell.swift */; };
 		7835378126AF21F8005D73D6 /* FoodMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835378026AF21F8005D73D6 /* FoodMainVC.swift */; };
 		7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39626A6F31E00335DFA /* MainScreenConstants.swift */; };
 		7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39926A8362400335DFA /* TariffsActions.swift */; };
@@ -290,6 +292,8 @@
 		782D45DF26B03ED4006B3A98 /* ShopDetailFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailFetcher.swift; sourceTree = "<group>"; };
 		782D45E126B046DA006B3A98 /* ShopDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChooserViewController.swift; sourceTree = "<group>"; };
+		782F832726F380DD005C1AD4 /* FoodOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderVC.swift; sourceTree = "<group>"; };
+		782F832926F38F16005C1AD4 /* FoodOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderCell.swift; sourceTree = "<group>"; };
 		7835378026AF21F8005D73D6 /* FoodMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMainVC.swift; sourceTree = "<group>"; };
 		7841E39626A6F31E00335DFA /* MainScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConstants.swift; sourceTree = "<group>"; };
 		7841E39926A8362400335DFA /* TariffsActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsActions.swift; sourceTree = "<group>"; };
@@ -538,6 +542,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		782F832B26F3A879005C1AD4 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				782F832726F380DD005C1AD4 /* FoodOrderVC.swift */,
+				782F832926F38F16005C1AD4 /* FoodOrderCell.swift */,
+				78E8DB2026F25562008C72C9 /* CashBackNeededView.xib */,
+				78E8DB1E26F25294008C72C9 /* CashBackNeededView.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		7841E39826A8360D00335DFA /* Tariffs */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +610,7 @@
 		7858D37326AED7AD00441690 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				782F832B26F3A879005C1AD4 /* Order */,
 				F56502F926CAF71E00934D91 /* Categories and products screen */,
 				7858D37426AED7BC00441690 /* Food.storyboard */,
 				7835378026AF21F8005D73D6 /* FoodMainVC.swift */,
@@ -1250,8 +1266,6 @@
 				F529F1BD26DCC120007B91B4 /* DeliveryTimeView.swift */,
 				F529F1BF26DCDF55007B91B4 /* PromocodeAndCreditsView.swift */,
 				F513AFC026E1B00F00CDCFA2 /* EmptyCartView.swift */,
-				78E8DB1E26F25294008C72C9 /* CashBackNeededView.swift */,
-				78E8DB2026F25562008C72C9 /* CashBackNeededView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1429,11 +1443,13 @@
 				7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */,
 				78C86C3E26CC2525003F10D5 /* Order.swift in Sources */,
 				7867B4CA267108920031BFA0 /* SupportAddImageButton.swift in Sources */,
+				782F832A26F38F16005C1AD4 /* FoodOrderCell.swift in Sources */,
 				7841E3A326A8362500335DFA /* TariffsExtension.swift in Sources */,
 				782D45E026B03ED4006B3A98 /* ShopDetailFetcher.swift in Sources */,
 				7867B4BC266FAD1E0031BFA0 /* UIView+Extensions.swift in Sources */,
 				F5BC916826AB77BD008E9841 /* ProfileButton.swift in Sources */,
 				78A3A01C267B57D7006D0DAB /* ConfirmViewController.swift in Sources */,
+				782F832826F380DD005C1AD4 /* FoodOrderVC.swift in Sources */,
 				7867B4D7267238D20031BFA0 /* LanguageSelectionTableViewController.swift in Sources */,
 				F5B50C2726B8B6470082199C /* AddressesNetworkManager.swift in Sources */,
 				7858D37226AED0D500441690 /* DefaultPromotion.swift in Sources */,
