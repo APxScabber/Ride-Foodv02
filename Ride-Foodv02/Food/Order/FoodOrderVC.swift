@@ -1,6 +1,6 @@
 import UIKit
 
-class FoodOrderVC: UIViewController {
+class FoodOrderVC: BaseViewController {
 
     //MARK: - API
     
@@ -108,7 +108,41 @@ class FoodOrderVC: UIViewController {
         cashBackNeededView.isHidden = true
         cashBackNeededView.delegate = self
         view.addSubview(cashBackNeededView)
+        placeLabel.text = CurrentAddress.shared.place
+        addressLabel.text = CurrentAddress.shared.address
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let userID = userID else { return }
+        let paymentWaysInteractor = PaymentWaysInteractor()
+        DispatchQueue.global(qos: .userInitiated).async {
+            paymentWaysInteractor.loadPaymentData(userID: userID) { cards in
+                var numbers = [String]()
+                var images = [UIImage]()
+                if !cards.isEmpty {
+                    cards.forEach {
+                        let lastFourDigits = "****" + $0.number.suffix(4)
+                        numbers.append(lastFourDigits)
+                        images.append(#imageLiteral(resourceName: "Visa"))
+                    }
+                    self.paymentWays.insert(contentsOf: numbers, at: 1)
+                    self.paymentImages.insert(contentsOf: images, at: 1)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.tableViewHeightConstraint.constant += CGFloat(44 * numbers.count)
+                        self.containerViewHeightConstraint.constant += CGFloat(44 * numbers.count)
+                        UIView.animate(withDuration: 0.25) {
+                            self.view.layoutIfNeeded()
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    
     //MARK: - Helper
     
     @objc
@@ -125,15 +159,20 @@ class FoodOrderVC: UIViewController {
 extension FoodOrderVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return paymentWays.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodOrderCell", for: indexPath)
         if let foodOrderCell = cell as? FoodOrderCell {
-            foodOrderCell.paymentLabel.text = paymentWays[indexPath.row]
             foodOrderCell.leftImageView.image = paymentImages[indexPath.row]
             foodOrderCell.rightImageView.image = UIImage(named: "EmptyDot")
+            foodOrderCell.paymentLabel.text = paymentWays[indexPath.row]
+            if paymentWays.count != 2 && indexPath.row != 0 && indexPath.row != paymentWays.count - 1 {
+                foodOrderCell.lastFourCardDigitsLabel.isHidden = false
+                foodOrderCell.lastFourCardDigitsLabel.text = paymentWays[indexPath.row]
+                foodOrderCell.paymentLabel.text = Localizable.FoodOrder.foodOrderCard.localized
+            }
             if let selectedIndex = selectedIndex,selectedIndex == indexPath {
                 foodOrderCell.rightImageView.image = #imageLiteral(resourceName: "selectedCheckBox")
             }
@@ -150,16 +189,19 @@ extension FoodOrderVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedIndex = indexPath
         tableView.reloadData()
         if indexPath.row == 0 { //наличные, нужно показать экран со сдачей
             paymentButton.setTitle(Localizable.FoodOrder.foodOrder.localized, for: .normal)
+            containerViewHeightConstraint.constant += 50
         } else { // убрать экран со сдачей
             paymentButton.setTitle(Localizable.FoodOrder.foodOrderPay.localized, for: .normal)
+            if selectedIndex?.row == 0 {
+                containerViewHeightConstraint.constant -= 50
+            }
         }
+        selectedIndex = indexPath
         cashBackViewHeightConstraint.constant = indexPath.row == 0 ? 44 : 0
         cashbackView.isHidden = indexPath.row != 0
-        containerViewHeightConstraint.constant = indexPath.row == 0 ? 400 : 350
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }

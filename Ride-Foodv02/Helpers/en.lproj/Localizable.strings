@@ -172,9 +172,8 @@
 //MARK: - CashBack
 
 "cashBackTitle" = "How much do you need to change?";
-"cashBackLeftPrice" = "1000 rub";
-"cashBackRightPric" = "5000 rub";
-
+"cashBackLeftPrice" = "from 1000 rub";
+"cashBackRightPric" = "from 5000 rub";
 
 //MARK: - FoodOrder
 

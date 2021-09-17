@@ -60,7 +60,8 @@ class FoodMainVC: UIViewController {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(done))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
-        
+        CurrentAddress.shared.place = ""
+        CurrentAddress.shared.address = ""
         PersistanceManager.shared.fetchAddresses { result in
             switch result {
             case .success(let addresses):
@@ -86,17 +87,6 @@ class FoodMainVC: UIViewController {
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "shops",
-           let destination = segue.destination as? ShopListViewController,
-           let cell = sender as? FoodMainTableViewCell,
-           let indexPath = tableView.indexPath(for: cell) {
-            destination.place = addresses[indexPath.row].title
-            destination.address = addresses[indexPath.row].fullAddress
-        }
-        if segue.identifier == "shopList",
-           let destination = segue.destination as? ShopListViewController {
-            destination.place = place
-        }
         if segue.identifier == "locationChooser",
            let destination = segue.destination as? LocationChooserViewController {
             destination.region = region
@@ -105,31 +95,18 @@ class FoodMainVC: UIViewController {
     }
 
     @IBAction func goToTheShopList(_ sender: Any) {
-        goToTheShopListVC(sender: nil, indexPath: nil)
+        CurrentAddress.shared.address = textField.text ?? ""
+        goToTheShopListVC()
     }
     
     
-    func goToTheShopListVC(sender: Any?, indexPath: IndexPath?){
-        self.resignFirstResponder()
-      if sender is FoodMainTableViewCell, let indexPath = indexPath{
-            let address = addresses[indexPath.row]
-            let storyboard = UIStoryboard(name: "Food", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
-           
-            vc.place = address.title
-            vc.address = address.fullAddress
-            vc.modalPresentationStyle = .custom
-            vc.transitioningDelegate = self
-            self.present(vc, animated: true)
-        } else {
-            let storyboard = UIStoryboard(name: "Food", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
-            vc.place = place
-            vc.modalPresentationStyle = .custom
-            vc.transitioningDelegate = self
-            self.present(vc, animated: true)
-        }
-       
+    func goToTheShopListVC(){
+        resignFirstResponder()
+        let storyboard = UIStoryboard(name: "Food", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        self.present(vc, animated: true)
     }
     
     //MARK: - UI changes
@@ -194,11 +171,11 @@ extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "foodMainCell", for: indexPath)
-        if let foodMainCell = cell as? FoodMainTableViewCell {
-            goToTheShopListVC(sender: foodMainCell, indexPath: indexPath)
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
+        CurrentAddress.shared.place = addresses[indexPath.row].title
+        CurrentAddress.shared.address = addresses[indexPath.row].fullAddress
+        textField.text = CurrentAddress.shared.address
+        goToTheShopListVC()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
    

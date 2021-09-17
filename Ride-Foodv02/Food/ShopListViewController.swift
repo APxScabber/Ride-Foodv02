@@ -6,8 +6,6 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     var pointOrigin: CGPoint?
     
     //MARK: - API
-    var place = String()
-    var address = String()
     var shops = [Shop]()
     
     //MARK: - Outlets
@@ -22,11 +20,11 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     
     @IBOutlet weak var placeLabel: UILabel! { didSet {
         placeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        placeLabel.text = place
+        placeLabel.text = CurrentAddress.shared.place
     }}
     @IBOutlet weak var addressLabel: UILabel! { didSet {
         addressLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
-        addressLabel.text = address
+        addressLabel.text = CurrentAddress.shared.address
     }}
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     

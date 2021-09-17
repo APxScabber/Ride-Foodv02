@@ -285,6 +285,7 @@ class CategoriesAndFoodVC: BaseViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "FoodOrderVC") as! FoodOrderVC
             vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = self
+            vc.totalPrice = overallPriceInCart
             present(vc, animated: true)
         }
         
