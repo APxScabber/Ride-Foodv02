@@ -1452,6 +1452,7 @@
                         <outlet property="paymentWaysLabel" destination="KZt-mP-QJ5" id="L5y-K8-tBU"/>
                         <outlet property="placeLabel" destination="NF2-kl-AWi" id="jAl-dI-hc8"/>
                         <outlet property="tableView" destination="cgm-VB-Yzv" id="eZg-rS-pmD"/>
+                        <outlet property="tableViewHeightConstraint" destination="8lv-QX-hea" id="tNL-TR-wWR"/>
                         <outlet property="topRoundedView" destination="WTM-QE-Uwh" id="CPP-VX-nHP"/>
                         <outlet property="totalPriceLabel" destination="vIJ-jL-uuM" id="iAd-iF-PqR"/>
                         <outlet property="transparentView" destination="Bns-OZ-N6h" id="FWv-QU-4Bj"/>

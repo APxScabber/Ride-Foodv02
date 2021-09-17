@@ -170,8 +170,8 @@
 //MARK: - CashBack
 
 "cashBackTitle" = "С какой суммы потребуется сдача?";
-"cashBackLeftPrice" = "1000 руб";
-"cashBackRightPrice" = "5000 руб";
+"cashBackLeftPrice" = "с 1000 руб";
+"cashBackRightPrice" = "с 5000 руб";
 
 //MARK: - FoodOrder
 
@@ -183,3 +183,4 @@
 "foodOrderPay" = "Оплатить";
 "foodOrder" = "Заказать";
 "foodOrderMoney" = "руб";
+"foodOrderFrom" = "с";

@@ -31,6 +31,7 @@
 		782D45E426B07AA3006B3A98 /* LocationChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */; };
 		782F832826F380DD005C1AD4 /* FoodOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F832726F380DD005C1AD4 /* FoodOrderVC.swift */; };
 		782F832A26F38F16005C1AD4 /* FoodOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F832926F38F16005C1AD4 /* FoodOrderCell.swift */; };
+		782F832D26F4F71F005C1AD4 /* CurrentAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F832C26F4F71F005C1AD4 /* CurrentAddress.swift */; };
 		7835378126AF21F8005D73D6 /* FoodMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835378026AF21F8005D73D6 /* FoodMainVC.swift */; };
 		7841E39726A6F31E00335DFA /* MainScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39626A6F31E00335DFA /* MainScreenConstants.swift */; };
 		7841E3A026A8362500335DFA /* TariffsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841E39926A8362400335DFA /* TariffsActions.swift */; };
@@ -294,6 +295,7 @@
 		782D45E326B07AA3006B3A98 /* LocationChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChooserViewController.swift; sourceTree = "<group>"; };
 		782F832726F380DD005C1AD4 /* FoodOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderVC.swift; sourceTree = "<group>"; };
 		782F832926F38F16005C1AD4 /* FoodOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderCell.swift; sourceTree = "<group>"; };
+		782F832C26F4F71F005C1AD4 /* CurrentAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAddress.swift; sourceTree = "<group>"; };
 		7835378026AF21F8005D73D6 /* FoodMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMainVC.swift; sourceTree = "<group>"; };
 		7841E39626A6F31E00335DFA /* MainScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConstants.swift; sourceTree = "<group>"; };
 		7841E39926A8362400335DFA /* TariffsActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TariffsActions.swift; sourceTree = "<group>"; };
@@ -711,6 +713,7 @@
 				78AEB871267B59250023605D /* Extensions */,
 				7850E8F526739E6800AA88CA /* Settings.swift */,
 				78E8DB2226F25E2D008C72C9 /* SafeArea.swift */,
+				782F832C26F4F71F005C1AD4 /* CurrentAddress.swift */,
 				785F5D9326C2AF01004503CB /* Localizable.swift */,
 				7802DFAF267CA0120048CF1C /* Localizable.strings */,
 				78BE49F926834BA400A13641 /* ImageFetcher.swift */,
@@ -1487,6 +1490,7 @@
 				F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */,
 				F56502F826CA4D7200934D91 /* Product.swift in Sources */,
 				F5BC916426AB7475008E9841 /* UIColorExtension.swift in Sources */,
+				782F832D26F4F71F005C1AD4 /* CurrentAddress.swift in Sources */,
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
 				C446725826C5DC8A00598459 /* AddCardExtensions.swift in Sources */,
 				787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */,
