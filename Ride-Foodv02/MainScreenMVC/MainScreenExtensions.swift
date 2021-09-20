@@ -212,6 +212,7 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
             self.view.layoutIfNeeded()
         }
         CalculatingPathManager.shared.calculatingPath(for: mapView) { pathTime in
+            self.timeRemainig = pathTime
             self.pathTime(minutes: pathTime)
         }
         
@@ -224,13 +225,13 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
 //MARK: - TaxiTariffViewDelegate
 
 extension MainScreenViewController: TaxiTariffViewDelegate {
-    
-    func tariffEntered() {
+    func tariffEntered(index: Int) {
+        
         roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         roundedView.isUserInteractionEnabled = true
         nextButton.isUserInteractionEnabled = true
+        taxiTariffSelected = index
     }
-    
 }
 
 

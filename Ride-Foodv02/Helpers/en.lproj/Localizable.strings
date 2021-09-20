@@ -110,6 +110,7 @@
 "infoFromLabel" = "By clicking here you can find out how to get to you
 (entrance, buildings nearby or other landmark)";
 "infoToLabel" = "By clicking here, you can specify the landmarks of your destination";
+"remainingTime" = "The remaining time ≈@#^ min";
 
 //MARK: - Map Manager
 
