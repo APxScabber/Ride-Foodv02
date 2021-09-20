@@ -69,7 +69,7 @@ enum Localizable {
     }
     
     enum Delivery: String,LocalizableDelegate {
-        case deliveryTime, deliveryMin, deliveryMoney
+        case deliveryTime, deliveryMin, deliveryMoney,deliveryActiveOrder
     }
     
     enum CashBack: String,LocalizableDelegate {
@@ -78,8 +78,10 @@ enum Localizable {
     
     
     enum FoodOrder: String,LocalizableDelegate {
-        case foodOrderCheckout,foodOrderDeliveryAddress,foodOrderPaymentWays,foodOrderCash,foodOrderCard,foodOrderPay,foodOrder,foodOrderMoney
+        case foodOrderCheckout,foodOrderDeliveryAddress,foodOrderPaymentWays,foodOrderCash,foodOrderCard,foodOrderPay,foodOrder,foodOrderMoney,foodOrderCongrats,foodOrderPayment,foodOrderNewOrder,foodOrderSeeYouAgain,foodOrderDeliveryFood
     }
+    
+    
 }
 
 

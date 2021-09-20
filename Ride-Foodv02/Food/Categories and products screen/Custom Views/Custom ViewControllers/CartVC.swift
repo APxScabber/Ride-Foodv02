@@ -33,12 +33,17 @@ class CartVC: UIViewController {
     var productsInCart: [FoodOrderMO] = []
     
     var delegate: cartVCDelegate?
-
+    
+    let deliveryPrice = 200
+    var cartTotalPrice = 0
+    
+    var totalPrice: Int { deliveryPrice + cartTotalPrice }
+    
     //MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.addSubview(promocodeScoreView)
+        view.addSubview(promocodeScoreView)
         NotificationCenter.default.addObserver(self, selector: #selector(setKeyboardHeight(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
@@ -77,10 +82,10 @@ class CartVC: UIViewController {
        
         view.backgroundColor = .white
         configureScrollView()
-        configurePromocodeScoresView()
         configureStackView()
         configureTableView()
         configureDeliveryTimeView()
+        configurePromocodeScoresView()
     }
     
     func configureScrollView(){
@@ -104,8 +109,8 @@ class CartVC: UIViewController {
         stackView.spacing                                   = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-         //   stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: promocodeScoreView.topAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -120),
             stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -116,7 +121,7 @@ class CartVC: UIViewController {
     func configureDeliveryTimeView(){
         stackView.addArrangedSubview(deliveryView)
         deliveryView.translatesAutoresizingMaskIntoConstraints = false
-        deliveryView.set(with: 45, deliveryPrice: 0)
+        deliveryView.set(with: 45, deliveryPrice: deliveryPrice)
         
         NSLayoutConstraint.activate([
             deliveryView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -160,13 +165,15 @@ class CartVC: UIViewController {
     }
     
     func configurePromocodeScoresView() {
+        stackView.addArrangedSubview(promocodeScoreView)
+        promocodeScoreView.translatesAutoresizingMaskIntoConstraints = false
         promocodeScoreView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             promocodeScoreView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             promocodeScoreView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             promocodeScoreView.heightAnchor.constraint(equalToConstant: 50),
            // promocodeScoreView.topAnchor.constraint(equalTo: deliveryView.bottomAnchor, constant: 10)
-            promocodeScoreView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+//            promocodeScoreView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
     }
 
@@ -228,6 +235,8 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
         return 8
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
