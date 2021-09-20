@@ -35,13 +35,32 @@ class DriverSearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        sendRequest()
     }
     
     @objc func cancel(){
         delegate?.cancel()
     }
     
-    
+    func sendRequest(){
+        guard let id = AddressesNetworkManager.shared.getUserID() else {
+            print("Invalid ID")
+            return
+        }
+        TaxiNetworkingManager.shared.searchForDrivers(id: id, tariff: tariff, from: fromAddress, to: toAddress, paymentCard: paymentCard, paymentMethod: paymentMethod, promoCodes: promocodes, credit: credits) { [weak self] result in
+            guard let self = self else { return }
+            switch result{
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.sendRequest()
+                }
+               
+            case .success(let data):
+                print(data)
+            }
+        }
+    }
     
     func configure(){
         view.backgroundColor = .white
