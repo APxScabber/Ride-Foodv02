@@ -535,9 +535,7 @@ extension MainScreenViewController: PromocodeActivatorDelegate {
     
 }
 
-
 //MARK: - OrderCompleteViewDelegate
-
 extension MainScreenViewController: OrderCompleteViewDelegate {
     
     func orderCompleteViewClose() {

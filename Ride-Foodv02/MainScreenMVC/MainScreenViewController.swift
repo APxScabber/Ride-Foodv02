@@ -833,6 +833,27 @@ class MainScreenViewController: BaseViewController {
         promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
     }
     
+    func placeContainerView() {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.addressesChooserView.frame.origin.y = self.view.frame.height
+            self.addressesChooserView.alpha = 0
+            self.taxiBackButtonOutlet.alpha = 0
+            self.circleView.alpha = 0
+            self.promotionView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.configureContainerView()
+        }
+        
+     
+        
+      
+        
+        
+        
+    }
+    
     // MARK: - Actions
     
     @IBAction func next(_ sender: UIButton) {
@@ -840,7 +861,7 @@ class MainScreenViewController: BaseViewController {
         if isTaxiOrdered {
             
             pressTaxiOrderButton()
-            placeContainerView()
+            //placeContainerView()
         }
 
         if shouldMakeOrder {
