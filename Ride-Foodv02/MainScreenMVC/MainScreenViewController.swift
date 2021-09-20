@@ -152,6 +152,8 @@ class MainScreenViewController: BaseViewController {
     let promocodeActivationView = PromocodeActivation.initFromNib()
     
     let taxiOrderInfoView = TaxiOrderInfo.initFromNib()
+    let orderCompleteView = OrderCompleteView.initFromNib()
+    let deliveryMainView = DeliveryMainView.initFromNib()
     
     // MARK: - Search driver screen content
     
@@ -167,7 +169,7 @@ class MainScreenViewController: BaseViewController {
 
     let taxiMainInteractor = TaxiMainInteractor()
     
-    private var bottomSafeAreaConstant: CGFloat = 0
+    var bottomSafeAreaConstant: CGFloat = 0
     
     var safeAreaBottomHeight: CGFloat = 0.0
     var responderTextField: UITextField?
@@ -741,6 +743,9 @@ class MainScreenViewController: BaseViewController {
         if promotionView.superview != nil {
             promotionView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
         }
+        if deliveryMainView.superview != nil {
+            deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: 45.0)
+        }
         promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
     }
     
@@ -849,6 +854,7 @@ class MainScreenViewController: BaseViewController {
                 self.menuView.frame.origin.x = 0
                 self.foodTaxiView.frame.origin.y = self.view.bounds.height + MainScreenConstants.promotionViewHeight + MainScreenConstants.foodTaxiYOffset
                 self.promotionView.frame.origin.y = self.view.bounds.height
+                self.deliveryMainView.frame.origin.y = self.view.bounds.height
             }) {
             if $0 == .end { self.menuView.isVisible = true }
         }
@@ -950,4 +956,20 @@ class MainScreenViewController: BaseViewController {
             }
         }
     }
+    
+    @IBAction func unwindSegueFromFood(_ segue: UIStoryboardSegue) {
+        transparentView.isHidden = true
+        mapView.isUserInteractionEnabled = false
+        menuButton.isUserInteractionEnabled = false
+        profileButton.isUserInteractionEnabled = false
+        view.addSubview(orderCompleteView)
+        orderCompleteView.delegate = self
+        orderCompleteView.reset()
+        orderCompleteView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 380)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.orderCompleteView.frame.origin.y = self.view.bounds.height - 380
+        }
+
+    }
+    
 }

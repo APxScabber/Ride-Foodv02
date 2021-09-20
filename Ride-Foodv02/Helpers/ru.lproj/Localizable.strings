@@ -166,6 +166,7 @@
 "deliveryTime" = "Доставим через";
 "deliveryMin" = "мин";
 "deliveryMoney" = "руб";
+"deliveryActiveOrder" = "активный заказ";
 
 //MARK: - CashBack
 
@@ -184,3 +185,8 @@
 "foodOrder" = "Заказать";
 "foodOrderMoney" = "руб";
 "foodOrderFrom" = "с";
+"foodOrderCongrats" = "Благодарим за заказ!";
+"foodOrderPayment" = "Платёж № 54216687";
+"foodOrderNewOrder" = "Новый заказ";
+"foodOrderSeeYouAgain" = "Будем рады вам снова :)";
+"foodOrderDeliveryFood" = "Доставка еды";
