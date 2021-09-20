@@ -50,7 +50,7 @@ class BaseViewController: UIViewController {
             attributedString.addAttributes(type, range: NSRange(location: locRus, length: lenRus))
         case "eng":
             
-            attributedString.addAttributes(type, range: NSRange(location: locRus, length: lenRus))
+            attributedString.addAttributes(type, range: NSRange(location: locEng, length: lenEng))
         default:
             attributedString.addAttributes(type, range: NSRange(location: 0, length: 0))
         }

@@ -1,7 +1,7 @@
 import UIKit
 
 protocol TaxiTariffViewDelegate: AnyObject {
-    func tariffEntered()
+    func tariffEntered(index: Int)
 }
 
 class TaxiTariffView: UIView {
@@ -79,7 +79,7 @@ class TaxiTariffView: UIView {
             reset()
             selectedIndex = 0
             updateStandartView()
-            delegate?.tariffEntered()
+            delegate?.tariffEntered(index: selectedIndex ?? 0)
         }
     }
     
@@ -99,7 +99,7 @@ class TaxiTariffView: UIView {
             reset()
             selectedIndex = 1
             updatePremiumView()
-            delegate?.tariffEntered()
+            delegate?.tariffEntered(index: selectedIndex ?? 1)
         }
     }
     
@@ -120,7 +120,7 @@ class TaxiTariffView: UIView {
             reset()
             selectedIndex = 2
             updateBusinessView()
-            delegate?.tariffEntered()
+            delegate?.tariffEntered(index: selectedIndex ?? 2)
         }
     }
     

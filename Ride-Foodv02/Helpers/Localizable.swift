@@ -49,7 +49,7 @@ enum Localizable {
     
     
     enum Taxi:String,LocalizableDelegate {
-        case fromAddressQuestion,toAddressQuestion,map,next,confirm,skip,fromAddressDetail,toAddressDetail, minutes, infoFromLabel, infoToLabel, order
+        case fromAddressQuestion,toAddressQuestion,map,next,confirm,skip,fromAddressDetail,toAddressDetail, minutes, infoFromLabel, infoToLabel, order, remainingTime
     }
     
     enum MapManager: String, LocalizableDelegate {

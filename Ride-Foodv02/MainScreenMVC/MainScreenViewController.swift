@@ -166,8 +166,9 @@ class MainScreenViewController: BaseViewController {
     var addresses = [Address]()
     var currentUserCoordinate: CLLocationCoordinate2D?
     var isMainScreen = true
-
-    let taxiMainInteractor = TaxiMainInteractor()
+    
+    let mainScreenInteractor = MainScreenInteractor()
+    let separationText = SeparetionText()
     
     var bottomSafeAreaConstant: CGFloat = 0
     
@@ -178,6 +179,9 @@ class MainScreenViewController: BaseViewController {
     private var yOffset: CGFloat = 0
     var shouldMakeOrder = false
     
+    var taxiTariffSelected = 0
+    var timeRemainig: Int?
+    
     var isTaxiOrdered = false
     var isFoodOrdered = false
     
@@ -185,6 +189,11 @@ class MainScreenViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        foodTaxiView.layer.shadowColor = UIColor.black.cgColor
+        foodTaxiView.layer.shadowOpacity = 0.3
+        foodTaxiView.layer.shadowOffset = .zero
+        foodTaxiView.layer.shadowRadius = 20
         
         menuView.delegate = self
         foodTaxiView.delegate = self
@@ -354,43 +363,45 @@ class MainScreenViewController: BaseViewController {
     
     func loadSetupsTaxi() {
         
-        updateUI()
+        if !isTaxiOrdered {
+            
+            updateUI()
         
-        //let safeAreaBottomHeight = view.safeAreaInsets.bottom
-        addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + bottomSafeAreaConstant
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(moveDownView(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        taxiMainInteractor.getAdressesFromServer(view: self)
-        
-        SetMapMarkersManager.shared.delegate = self
-        
-        fromAddressDetailView.delegate = self
-        fromAddressDetailView.isHidden = true
-        
-        toAddressDetailView.delegate = self
-        toAddressDetailView.isHidden = true
-        
-        taxiTariffView.isHidden = true
-        taxiTariffView.delegate = self
-        
-        scoresView.isHidden = true
-        scoresView.delegate = self
-        
-        scoresToolbar.isHidden = true
-        scoresToolbar.delegate = self
-        
-        setToLocationView.delegate = self
-        
-        view.addSubview(fromAddressDetailView)
-        view.addSubview(toAddressDetailView)
-        addressesChooserView.addSubview(taxiTariffView)
-        view.addSubview(scoresView)
-        view.addSubview(scoresToolbar)
-        
-        animatedTaxiView()
+            addressesChooserViewHeightConstraint.constant = TaxiConstant.addressesChooserViewHeight + bottomSafeAreaConstant
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(moveAddressesChooserView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(moveDownView(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+            
+            mainScreenInteractor.getAdressesFromServer(view: self)
+            
+            SetMapMarkersManager.shared.delegate = self
+            
+            fromAddressDetailView.delegate = self
+            fromAddressDetailView.isHidden = true
+            
+            toAddressDetailView.delegate = self
+            toAddressDetailView.isHidden = true
+            
+            taxiTariffView.isHidden = true
+            taxiTariffView.delegate = self
+            
+            scoresView.isHidden = true
+            scoresView.delegate = self
+            
+            scoresToolbar.isHidden = true
+            scoresToolbar.delegate = self
+            
+            setToLocationView.delegate = self
+            
+            view.addSubview(fromAddressDetailView)
+            view.addSubview(toAddressDetailView)
+            addressesChooserView.addSubview(taxiTariffView)
+            view.addSubview(scoresView)
+            view.addSubview(scoresToolbar)
+            
+            animatedTaxiView()
+        }
     }
     
     private func animatedTaxiView() {
@@ -416,26 +427,7 @@ class MainScreenViewController: BaseViewController {
     
 
     func setupSetToLocationView() {
-        setToLocationView.frame.size = CGSize(width: view.frame.width, height: 200)
-        setToLocationView.frame.origin.y = view.frame.height
-            
-        setToLocationView.layer.cornerRadius = view.frame.width / 16
-        setToLocationView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-            
-        setToLocationView.layer.shadowColor = UIColor.black.cgColor
-        setToLocationView.layer.shadowOpacity = 1
-        setToLocationView.layer.shadowOffset = .zero
-        setToLocationView.layer.shadowRadius = 10
-        
-        setToLocationView.layer.cornerRadius = 15
-        setToLocationView.confirmButton.layer.cornerRadius = 15
-        setToLocationView.confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        setToLocationView.confirmButton.setTitleColor(.white, for: .normal)
-        setToLocationView.confirmButton.backgroundColor = .blue
-        setToLocationView.confirmButton.setTitle(Localizable.Food.confirm.localized, for: .normal)
-        
-        setToLocationView.locationTextField.text = ""
-        
+        mainScreenInteractor.setupLocation(view: setToLocationView, for: view)
         setToLocationView.locationTextField.addTarget(self, action: #selector(toLocationEnterChanged), for: .editingChanged)
         
     }
@@ -498,7 +490,7 @@ class MainScreenViewController: BaseViewController {
         if fromAddress != "" {
 
             SetMapMarkersManager.shared.isFromAddressMarkSelected = true
-            taxiMainInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
+            mainScreenInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
                 self.fromAddress = respounceAddress
             }
         } else {
@@ -516,7 +508,7 @@ class MainScreenViewController: BaseViewController {
         if toAddress != "" {
             
             SetMapMarkersManager.shared.isFromAddressMarkSelected = false
-            taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { respounceAddress in
+            mainScreenInteractor.getCoordinates(from: toAddress, to: mapView) { respounceAddress in
                 self.toAddress = respounceAddress
             }
         } else {
@@ -532,7 +524,7 @@ class MainScreenViewController: BaseViewController {
     func setToAndFromMarkers() {
         if fromAddress != "" {
             SetMapMarkersManager.shared.isFromAddressMarkSelected = true
-            taxiMainInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
+            mainScreenInteractor.getCoordinates(from: fromAddress, to: mapView) { respounceAddress in
                 self.fromAddress = respounceAddress
                 self.setToMarker()
                 
@@ -544,7 +536,6 @@ class MainScreenViewController: BaseViewController {
                     self.mapView.removeAnnotation(mark)
                 }
             }
-            
         }
     }
     
@@ -559,70 +550,163 @@ class MainScreenViewController: BaseViewController {
     
     private func setupTaxiOrderInfoView() {
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(taxiOrderedInfoTap))
-        taxiOrderInfoView.addGestureRecognizer(tap)
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(taxiInfoSwipeUp(_:)))
+        swipeUp.direction = .up
+        taxiOrderInfoView.addGestureRecognizer(swipeUp)
         
-        let height:CGFloat = 169
-        let posY = view.frame.height - foodTaxiView.frame.height - height - 50
-        let width = view.bounds.width
-
-        taxiOrderInfoView.frame = CGRect(x: 0, y: posY, width: width, height: height)
-        
-        taxiOrderInfoView.layer.shadowColor = UIColor.black.cgColor
-        taxiOrderInfoView.layer.shadowOpacity = 0.1
-        taxiOrderInfoView.layer.shadowOffset = .zero
-        taxiOrderInfoView.layer.shadowRadius = 20
-        
-        taxiOrderInfoView.layer.shadowPath = UIBezierPath(rect: taxiOrderInfoView.bounds).cgPath
-        taxiOrderInfoView.layer.shouldRasterize = true
-        taxiOrderInfoView.layer.rasterizationScale = UIScreen.main.scale
-        
-        taxiOrderInfoView.alpha = 0
-        
-        
-        //infoBigViewLabel.alpha = 0
-        //infoBigViewLabel.frame.size.width = mainInfoView.frame.width - 40
-        //infoBigViewLabel.frame.size.height = 0
-        //infoBigViewLabel.translatesAutoresizingMaskIntoConstraints = true
-        
-        //mainButtonOutlet.style()
-        //mainButtonOutlet.backgroundColor = PaymentHistoryColors.blueColor.value
-        //mainButtonOutlet.alpha = 0
-        //topButtonConstraint.constant = 0
-        //mainViewInfoBG.alpha = 0
-        
-        //tintLayer.isHidden = false
-       // tintLayer.alpha = 0
-
-        view.addSubview(taxiOrderInfoView)
+        mainScreenInteractor.setup(view: taxiOrderInfoView, for: view)
     }
     
+    func returnToMainView() {
+        
+        bottomConstaint.constant = -600
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            self.taxiBackButtonOutlet.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+            UIView.animate(withDuration: 0.5) {
+                
+                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
+                self.menuButton.alpha = 1
+                self.circleView.alpha = 1
+                
+                if self.isTaxiOrdered {
+                    
+                    self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+                    self.timeLabel.text = "1 активный заказ"
+                    self.pathTimeView.alpha = 1
+                    self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
+                } else {
+                    
+                    self.pathTimeView.alpha = 0
+                }
+                
+                self.userLocationButtonOutlet.alpha = 0
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func pressTaxiOrderButton() {
+        
+        returnToMainView()
+    
+        foodTaxiView.placeAnnotationView.alpha = 0
+        foodTaxiView.placeLabel.text = ""
+        
+        taxiOrderInfoView.fromAddressTextField.text = fromAddress
+        taxiOrderInfoView.toAddressTextField.text = toAddress
+        if let tariffImage = mainScreenInteractor.getTaxiTariffImage(index: taxiTariffSelected) {
+            taxiOrderInfoView.taxiTypeImageView.image = tariffImage
+        }
+        
+        let time = String(timeRemainig!)
+        let fianlText = separationText.separation(input: Localizable.Taxi.remainingTime.localized, insert: time)
+        //let text = "Оставшееся время в пути ≈\(timeRemainig ?? 0) мин"
+        let textCount = fianlText.count
+        let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.yellowColor.value]
+        let textAttribute = createTextAttribute(inputText: fianlText, type: typeAttributeText,
+                                                   locRus: 24, lenRus: textCount - 24,
+                                                   locEng: 19, lenEng: textCount - 19)
+        
+
+        taxiOrderInfoView.taxiInfoTimeTextView.attributedText = textAttribute
+        taxiOrderInfoView.taxiInfoTimeTextView.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        taxiOrderInfoView.taxiInfoTimeTextView.textAlignment = .center
+        
+        UIView.animate(withDuration: 1) {
+            self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+        }
+
+        taxiTariffView.scoresEntered = 0
+        promocodeScoresView.reset()
+        
+        promotionView.alpha = 0
+    }
     
     // MARK: - @objc Taxi Methods
+    
+    @objc
+    private func taxiInfoSwipeUp(_ recognizer: UISwipeGestureRecognizer) {
+        
+        if taxiOrderInfoView.frame.height == 169 {
+            if recognizer.state == .ended {
+                UIView.animate(withDuration: 0.5) {
+                    let height:CGFloat = 169
+                    let posY = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                    self.taxiOrderInfoView.frame.origin.y = posY
+                } completion: { _ in
+                    self.taxiOrderInfoView.gestureRecognizers?.removeAll()
+                    
+                    let tap = UITapGestureRecognizer(target: self, action: #selector(self.taxiOrderedInfoTap))
+                    self.taxiOrderInfoView.addGestureRecognizer(tap)
+                    
+                    let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
+                    swipeDowm.direction = .down
+                    self.taxiOrderInfoView.addGestureRecognizer(swipeDowm)
+                }
+            }
+        }
+    }
+    
+    @objc
+    private func taxiInfoSwipeDown(_ recognizer: UISwipeGestureRecognizer) {
+        if taxiOrderInfoView.frame.height == 169 {
+            if recognizer.state == .ended {
+                UIView.animate(withDuration: 0.5) {
+                    let posY = self.view.frame.height - self.foodTaxiView.frame.height - 30
+                    self.taxiOrderInfoView.frame.origin.y = posY
+                } completion: { _ in
+                    self.taxiOrderInfoView.gestureRecognizers?.removeAll()
+                    
+                    let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeUp(_:)))
+                    swipeUp.direction = .up
+                    self.taxiOrderInfoView.addGestureRecognizer(swipeUp)
+                }
+            }
+        }
+    }
     
     @objc
     private func taxiOrderedInfoTap() {
         
         if taxiOrderInfoView.frame.height == 169 {
-            UIView.animate(withDuration: 2) {
-                self.foodTaxiView.frame.origin.y = self.view.frame.height
+            
+            UIView.animate(withDuration: 1) {
+                
                 let height:CGFloat = 434
+                
+                self.foodTaxiView.frame.origin.y = self.view.frame.height
                 self.taxiOrderInfoView.frame.size.height = height
+                
                 let posY = self.view.frame.height - height
                 self.taxiOrderInfoView.frame.origin.y = posY
+                
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
+                
+                self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
+                
                 self.view.layoutIfNeeded()
             }
         } else {
-            UIView.animate(withDuration: 2) {
-                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
+            UIView.animate(withDuration: 1) {
+                
                 let height:CGFloat = 169
+                
+                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
                 self.taxiOrderInfoView.frame.size.height = height
                 self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 1
+                
+                self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
+
                 self.view.layoutIfNeeded()
             }
         }
-        
-
     }
     
     @objc
@@ -653,7 +737,7 @@ class MainScreenViewController: BaseViewController {
                     self.setToLocationView.frame.origin.y = self.view.frame.height - self.setToLocationView.frame.height
                 }
                 if toAddress != "" {
-                    taxiMainInteractor.getCoordinates(from: toAddress, to: mapView) { address in
+                    mainScreenInteractor.getCoordinates(from: toAddress, to: mapView) { address in
                         self.toAddress = address
                     }
                 }
@@ -775,21 +859,11 @@ class MainScreenViewController: BaseViewController {
     @IBAction func next(_ sender: UIButton) {
         
         if isTaxiOrdered {
-            placeContainerView()
-//            returnToMainView()
-//            foodTaxiView.placeAnnotationView.alpha = 0
-//            foodTaxiView.placeLabel.text = ""
-//            UIView.animate(withDuration: 1) {
-//                self.taxiOrderInfoView.alpha = 1
-//            }
-//
-//            taxiTariffView.scoresEntered = 0
-//            promocodeScoresView.reset()
-//
-//            promotionView.alpha = 0
+            
+            pressTaxiOrderButton()
+            //placeContainerView()
+        }
 
-        } else 
-        
         if shouldMakeOrder {
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
@@ -881,32 +955,6 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
-    func returnToMainView() {
-        bottomConstaint.constant = -300
-        //userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 10.0 - safeAreaBottomHeight
-        UIView.animate(withDuration: 0.5) {
-            self.taxiBackButtonOutlet.alpha = 0
-            self.view.layoutIfNeeded()
-        } completion: { _ in
-            
-            UIView.animate(withDuration: 0.5) {
-                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
-                self.menuButton.alpha = 1
-                self.circleView.alpha = 1
-                //self.promotionView.alpha = 1
-                if self.isTaxiOrdered {
-                    self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
-                    self.timeLabel.text = "1 активный заказ"
-                    self.pathTimeView.alpha = 1
-                } else {
-                    self.pathTimeView.alpha = 0
-                }
-                self.userLocationButtonOutlet.alpha = 0
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
     @IBAction func taxiBackButtonAction(_ sender: UIButton) {
         promotionView.alpha = 0
         
@@ -949,7 +997,7 @@ class MainScreenViewController: BaseViewController {
 
             let setPoint = self.toAddress == "" ? self.fromAddress : self.toAddress
 
-            self.taxiMainInteractor.getCoordinates(from: setPoint, to: self.mapView) { address in
+            self.mainScreenInteractor.getCoordinates(from: setPoint, to: self.mapView) { address in
                 self.toAddress = address
                 self.setToLocationView.locationTextField.text = self.toAddress
                 self.setToAddressViewUpdateUI()
