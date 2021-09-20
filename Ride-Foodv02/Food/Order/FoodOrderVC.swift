@@ -10,6 +10,9 @@ class FoodOrderVC: BaseViewController {
     
     var totalPrice = 0
     
+    private var currentImage = UIImage()
+    private var currentPay = String()
+    
     //MARK: - Outlets
     
     private let cashBackNeededView = CashBackNeededView.initFromNib()
@@ -57,7 +60,8 @@ class FoodOrderVC: BaseViewController {
     
     @IBOutlet weak var bottomRoundedView: RoundedView! { didSet {
         bottomRoundedView.cornerRadius = 15.0
-        bottomRoundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        bottomRoundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        bottomRoundedView.isUserInteractionEnabled = false
     }}
     @IBOutlet weak var transparentView: TopRoundedView!
     
@@ -116,30 +120,27 @@ class FoodOrderVC: BaseViewController {
         super.viewDidAppear(animated)
         guard let userID = userID else { return }
         let paymentWaysInteractor = PaymentWaysInteractor()
-        DispatchQueue.global(qos: .userInitiated).async {
-            paymentWaysInteractor.loadPaymentData(userID: userID) { cards in
-                var numbers = [String]()
-                var images = [UIImage]()
-                if !cards.isEmpty {
-                    cards.forEach {
-                        let lastFourDigits = "****" + $0.number.suffix(4)
-                        numbers.append(lastFourDigits)
-                        images.append(#imageLiteral(resourceName: "Visa"))
-                    }
-                    self.paymentWays.insert(contentsOf: numbers, at: 1)
-                    self.paymentImages.insert(contentsOf: images, at: 1)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.tableViewHeightConstraint.constant += CGFloat(44 * numbers.count)
-                        self.containerViewHeightConstraint.constant += CGFloat(44 * numbers.count)
-                        UIView.animate(withDuration: 0.25) {
-                            self.view.layoutIfNeeded()
-                        }
-                    }
+        paymentWaysInteractor.loadPaymentData(userID: userID) { cards in
+            var numbers = [String]()
+            var images = [UIImage]()
+            if !cards.isEmpty {
+                cards.forEach {
+                    let lastFourDigits = "****" + $0.number.suffix(4)
+                    numbers.append(lastFourDigits)
+                    images.append(#imageLiteral(resourceName: "Visa"))
                 }
+                self.paymentWays.insert(contentsOf: numbers, at: 1)
+                self.paymentImages.insert(contentsOf: images, at: 1)
+                self.tableView.reloadData()
+                self.tableViewHeightConstraint.constant += CGFloat(44 * numbers.count)
+                self.containerViewHeightConstraint.constant += CGFloat(44 * numbers.count)
+                UIView.animate(withDuration: 0.25) {
+                    self.view.layoutIfNeeded()
+                }
+            }
                 
             }
-        }
+        
         
     }
     
@@ -151,6 +152,19 @@ class FoodOrderVC: BaseViewController {
             dismiss(animated: true)
         }
     }
+    
+    //MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "unwindSegueFromFood",
+           let sourse = segue.destination as? MainScreenViewController {
+            sourse.orderCompleteView.totalPrice = totalPrice
+            sourse.orderCompleteView.paymentImageView.image = currentImage
+            sourse.orderCompleteView.paymentDetailLabel.text = currentPay
+        }
+    }
+    
 }
 
 
@@ -190,6 +204,10 @@ extension FoodOrderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
+        currentImage = paymentImages[indexPath.row]
+        currentPay = paymentWays[indexPath.row]
+        bottomRoundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        bottomRoundedView.isUserInteractionEnabled = true
         if indexPath.row == 0 { //наличные, нужно показать экран со сдачей
             paymentButton.setTitle(Localizable.FoodOrder.foodOrder.localized, for: .normal)
             containerViewHeightConstraint.constant += 50

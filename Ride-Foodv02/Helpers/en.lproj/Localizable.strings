@@ -168,6 +168,8 @@
 "deliveryTime" = "Deliver in";
 "deliveryMin" = "min";
 "deliveryMoney" = "rub";
+"deliveryActiveOrder" = "active order";
+
 
 //MARK: - CashBack
 
@@ -185,3 +187,9 @@
 "foodOrderPay" = "Pay";
 "foodOrder" = "Order";
 "foodOrderMoney" = "rub";
+"foodOrderFrom" = "from";
+"foodOrderCongrats" = "Thank you for your order!";
+"foodOrderPayment" = "Payment № 54216687";
+"foodOrderNewOrder" = "New order";
+"foodOrderSeeYouAgain" = "We will be glad to see you again :)";
+"foodOrderDeliveryFood" = "Food delivery";

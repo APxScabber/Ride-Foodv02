@@ -60,7 +60,8 @@ class CategoriesAndFoodVC: BaseViewController {
     var previousCategoryID: Int = 0
     
     var presentedScreen: PresentedScreen = .subcategories
-    
+    let cartVC = CartVC()
+
  //MARK: - Outlets
     
     @IBOutlet weak var shopTitleLabel: UILabel! {didSet{
@@ -162,7 +163,7 @@ class CategoriesAndFoodVC: BaseViewController {
         case .subcategories:
             productsInCartView = FoodOrderBottomView(title: Localizable.Food.placeOrder.localized, price: overallPriceInCart, oldPrice: nil)
         case .cart:
-            productsInCartView = FoodOrderBottomView(title: Localizable.Food.goToPayment.localized, price: overallPriceInCart, oldPrice: nil)
+            productsInCartView = FoodOrderBottomView(title: Localizable.Food.goToPayment.localized, price: overallPriceInCart + cartVC.deliveryPrice, oldPrice: nil)
         }
         
         if let bottomView = productsInCartView{
@@ -271,12 +272,12 @@ class CategoriesAndFoodVC: BaseViewController {
                 self.setUpViews(screenType: .cart)
                 self.configureTrashButton()
                 self.fetchCDOrderInformation(with: .cart)
-                let cartVC = CartVC()
-                cartVC.productsInCart = self.productsInCart
-                cartVC.shopID         = self.shopID
-                cartVC.delegate       = self
-                cartVC.promocodeScoreView.delegate = self
-                self.add(childVC: cartVC, to: self.contentView)
+                self.cartVC.productsInCart = self.productsInCart
+                self.cartVC.shopID         = self.shopID
+                self.cartVC.delegate       = self
+                self.cartVC.promocodeScoreView.delegate = self
+                self.cartVC.cartTotalPrice = self.overallPriceInCart
+                self.add(childVC: self.cartVC, to: self.contentView)
                 self.dismissLoadingView()
             }
             presentedScreen = .cart
