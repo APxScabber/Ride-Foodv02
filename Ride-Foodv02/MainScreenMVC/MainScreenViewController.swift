@@ -153,6 +153,10 @@ class MainScreenViewController: BaseViewController {
     
     let taxiOrderInfoView = TaxiOrderInfo.initFromNib()
     
+    // MARK: - Search driver screen content
+    
+    var containerView = UIView()
+    
     // MARK: - Properties
 
     var fromAddress = String() { didSet { updateUI() }}
@@ -313,6 +317,35 @@ class MainScreenViewController: BaseViewController {
             self.view.layoutIfNeeded()
         } completion: { if $0 == .end {}
         }
+    }
+    
+    //MARK: - Configure Container view
+    
+    func configureContainerView(){
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+        containerView.backgroundColor = .clear
+        addChildVC()
+       
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 750),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    func addChildVC(){
+        let child = DriverSearchVC()
+        child.toAddress = toAddress
+        child.fromAddress = fromAddress
+        child.credits = 50
+        child.paymentCard = 5555555555555555
+        child.promocodes = []
+        child.tariff = 1
+        child.paymentMethod = "Apple Pay"
+        self.add(childVC: child, to: containerView)
     }
     
     // MARK: - Taxi Methods
@@ -711,24 +744,46 @@ class MainScreenViewController: BaseViewController {
         promotionDetailView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: view.bounds.height)
     }
     
+    func placeContainerView() {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.addressesChooserView.frame.origin.y = self.view.frame.height
+            self.addressesChooserView.alpha = 0
+            self.taxiBackButtonOutlet.alpha = 0
+            self.circleView.alpha = 0
+            self.promotionView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.configureContainerView()
+        }
+        
+     
+        
+      
+        
+        
+        
+    }
+    
     // MARK: - Actions
     
     @IBAction func next(_ sender: UIButton) {
         
         if isTaxiOrdered {
-            returnToMainView()
-            foodTaxiView.placeAnnotationView.alpha = 0
-            foodTaxiView.placeLabel.text = ""
-            UIView.animate(withDuration: 1) {
-                self.taxiOrderInfoView.alpha = 1
-            }
+            placeContainerView()
+//            returnToMainView()
+//            foodTaxiView.placeAnnotationView.alpha = 0
+//            foodTaxiView.placeLabel.text = ""
+//            UIView.animate(withDuration: 1) {
+//                self.taxiOrderInfoView.alpha = 1
+//            }
+//
+//            taxiTariffView.scoresEntered = 0
+//            promocodeScoresView.reset()
+//
+//            promotionView.alpha = 0
 
-            taxiTariffView.scoresEntered = 0
-            promocodeScoresView.reset()
-            
-            promotionView.alpha = 0
-
-        }
+        } else 
         
         if shouldMakeOrder {
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
