@@ -351,11 +351,11 @@ class MainScreenViewController: BaseViewController {
         let child = DriverSearchVC()
         child.toAddress = toAddress
         child.fromAddress = fromAddress
-        child.credits = 50
-        child.paymentCard = 5555555555555555
-        child.promocodes = []
-        child.tariff = 1
-        child.paymentMethod = "Apple Pay"
+        child.credits = 0
+        child.paymentCard = 1
+        child.promocodes = ["R-162860"]
+        child.tariff = 3
+        child.paymentMethod = "cash"
         self.add(childVC: child, to: containerView)
     }
     

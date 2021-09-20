@@ -27,7 +27,7 @@ class TaxiNetworkingManager{
             completion(.failure(.invalidData))
             return
         }
-            let endPoint            = self.baseURL + "/user/\(id)/order/taxi"
+            let endPoint            = self.baseURL + "/api/user/\(id)/order/taxi"
             
             guard let url           = URL(string: endPoint) else {
                 completion(.failure(.invalidData))

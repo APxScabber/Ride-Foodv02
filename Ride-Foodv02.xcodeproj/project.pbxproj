@@ -651,7 +651,6 @@
 		785F5D8426C11C9E004503CB /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
-				F5724CA926F69DC400573B35 /* Driver Search Screen */,
 				785F5D8526C11CDB004503CB /* Taxi.storyboard */,
 			);
 			path = Taxi;
@@ -738,8 +737,6 @@
 				C471DFDA26F8D200005158E8 /* MainScreenInteractor.swift */,
 				C446727626CEEC2D00598459 /* MainScreenExtensions.swift */,
 				7841E39626A6F31E00335DFA /* MainScreenConstants.swift */,
-				785D38AD26AB09DC00DAB562 /* PromotionView.xib */,
-				785D38AF26AB09E700DAB562 /* PromotionView.swift */,
 				7850E8FF2674DFBE00AA88CA /* MenuButton.swift */,
 				78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */,
 				78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */,
@@ -1118,16 +1115,13 @@
 		C471DFDC26F8DC5E005158E8 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
-				C471DFD626F0E82E005158E8 /* TaxiOrderInfo.swift */,
-				C471DFD826F0E839005158E8 /* TaxiOrderInfo.xib */,
+				F5724CA926F69DC400573B35 /* Driver Search Screen */,
 				78C8C98526C6AE2E001C947F /* FromAddressDetailView.xib */,
 				78C8C98726C6AE3C001C947F /* FromAddressDetailView.swift */,
 				78C8C98926C6CE1A001C947F /* ToAddressDetailView.swift */,
 				78C8C98B26C6CE5C001C947F /* ToAddressDetailView.xib */,
 				78E8DB1A26F0E18F008C72C9 /* PromocodeScoresView.swift */,
 				78E8DB1826F0DFF5008C72C9 /* PromocodeScoresView.xib */,
-				C446729426D79D2F00598459 /* SetToLocationView.xib */,
-				C446729626D7A15600598459 /* SetToLocationView.swift */,
 				78894E4726CFBD1A0044DBF4 /* TaxiTariffView.swift */,
 				78894E4526CFBD0C0044DBF4 /* TaxiTariffView.xib */,
 				78894E4B26CFF71F0044DBF4 /* ScoresView.xib */,
