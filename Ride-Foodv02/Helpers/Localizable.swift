@@ -81,6 +81,9 @@ enum Localizable {
         case foodOrderCheckout,foodOrderDeliveryAddress,foodOrderPaymentWays,foodOrderCash,foodOrderCard,foodOrderPay,foodOrder,foodOrderMoney,foodOrderCongrats,foodOrderPayment,foodOrderNewOrder,foodOrderSeeYouAgain,foodOrderDeliveryFood
     }
     
+    enum OrderRemove: String, LocalizableDelegate {
+        case orderRemoveTitle,orderRemoveClear,orderRemoveCancel,orderRemoveEmptyCart,orderRemoveReturnToShopping
+    }
     
 }
 

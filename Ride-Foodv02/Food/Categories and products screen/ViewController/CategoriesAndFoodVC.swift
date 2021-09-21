@@ -110,6 +110,7 @@ class CategoriesAndFoodVC: BaseViewController {
         view.addSubview(promocodeToolbar)
         view.addSubview(scoresView)
         configureContentView()
+        PromocodeActivator.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,6 +159,11 @@ class CategoriesAndFoodVC: BaseViewController {
         
         productsInCart.forEach { product in
             overallPriceInCart += Int((product.price * product.qty))
+        }
+        if overallPriceInCart > 0 {
+            CurrentShop.shared.shop = shopName
+            CurrentShop.shared.total = overallPriceInCart
+            CurrentShop.shared.id = shopID
         }
         switch screenType{
         case .subcategories:
@@ -286,7 +292,7 @@ class CategoriesAndFoodVC: BaseViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "FoodOrderVC") as! FoodOrderVC
             vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = self
-            vc.totalPrice = overallPriceInCart
+            vc.totalPrice = overallPriceInCart + cartVC.deliveryPrice
             present(vc, animated: true)
         }
         
@@ -673,19 +679,15 @@ extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
         containerView.isUserInteractionEnabled = false
         scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 170)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.scoresView.frame.origin.y = self.view.bounds.height - 170 - self.view.safeAreaInsets.bottom - CGFloat(SafeArea.shared.bottom)
+            self.scoresView.frame.origin.y = self.view.bounds.height - 170 - CGFloat(SafeArea.shared.bottom)
         }
         
         guard let userID = userID else { return }
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let totalScoresInteractor = TotalScoresInteractor()
-            totalScoresInteractor.loadScores(userID: userID) { data in
-                DispatchQueue.main.async {
-                    self.scoresView.scores = data.credit
-                }
-            }
+        let totalScoresInteractor = TotalScoresInteractor()
+        totalScoresInteractor.loadScores(userID: userID) { data in
+                self.scoresView.scores = data.credit
         }
+        
 
     }
     
@@ -754,4 +756,28 @@ extension CategoriesAndFoodVC: PromocodeToolbarDelegate {
         }
         }
     }
+}
+
+extension CategoriesAndFoodVC: PromocodeActivatorDelegate {
+    
+    func promocodeActivated(_ description: String) {
+        cartVC.promocodeScoreView.usedPromocode = true
+        promocodeToolbar.textField.resignFirstResponder()
+//        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
+//        promocodeActivationView.bodyLabel.text = description
+//        promocodeActivationView.isHidden = false
+//        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+//            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+//            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
+//        }
+    }
+    
+    func promocodeFailed(_ error: String) {
+        promocodeToolbar.lineView.backgroundColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+        promocodeToolbar.errorLabel.isHidden = false
+        promocodeToolbar.errorLabel.text = error
+        promocodeToolbar.spinner.stopAnimating()
+    }
+    
+    
 }

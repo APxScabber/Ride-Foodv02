@@ -40,6 +40,10 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         activeView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
     }}
     
+    @IBOutlet weak var heightConstraint:NSLayoutConstraint! { didSet {
+        heightConstraint.constant = CGFloat(145.0 + SafeArea.shared.bottom)
+    }}
+    
     @IBAction func done(_ sender: UIButton) {
         guard let code = textField.text else { return }
         delegate?.activate(promocode: code)
@@ -60,6 +64,7 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         textField.text = nil
         removeFromSuperview()
         updateState()
+        errorLabel.text = ""
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

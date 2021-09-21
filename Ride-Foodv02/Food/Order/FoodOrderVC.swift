@@ -76,7 +76,7 @@ class FoodOrderVC: BaseViewController {
     }}
     
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint! { didSet {
-        containerViewHeightConstraint.constant = 350.0
+        containerViewHeightConstraint.constant = CGFloat(350.0) - CGFloat(SafeArea.shared.bottom)
     }}
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cashBackViewHeightConstraint: NSLayoutConstraint! { didSet {
@@ -156,7 +156,6 @@ class FoodOrderVC: BaseViewController {
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "unwindSegueFromFood",
            let sourse = segue.destination as? MainScreenViewController {
             sourse.orderCompleteView.totalPrice = totalPrice

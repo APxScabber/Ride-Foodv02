@@ -194,3 +194,12 @@
 "foodOrderNewOrder" = "New order";
 "foodOrderSeeYouAgain" = "We will be glad to see you again :)";
 "foodOrderDeliveryFood" = "Food delivery";
+
+
+//MARK: - OrderRemove
+
+"orderRemoveTitle" = "For new purchases, you need to empty the basket of the previous order";
+"orderRemoveClear" = "Clear cart";
+"orderRemoveCancel" = "Cancel";
+"orderRemoveEmptyCart" = "Cart is empty";
+"orderRemoveReturnToShopping" = "Return to shopping";
