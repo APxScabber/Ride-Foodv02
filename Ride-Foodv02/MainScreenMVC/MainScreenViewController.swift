@@ -349,8 +349,8 @@ class MainScreenViewController: BaseViewController {
     
     func addChildVC(){
         let child = DriverSearchVC()
-        child.toAddress = toAddress
-        child.fromAddress = fromAddress
+        child.toAddress = "Place A"
+        child.fromAddress = "Place B"
         child.credits = 0
         child.paymentCard = 1
         child.promocodes = ["R-162860"]
@@ -860,8 +860,8 @@ class MainScreenViewController: BaseViewController {
         
         if isTaxiOrdered {
             
-            pressTaxiOrderButton()
-            //placeContainerView()
+           // pressTaxiOrderButton()
+            placeContainerView()
         }
 
         if shouldMakeOrder {

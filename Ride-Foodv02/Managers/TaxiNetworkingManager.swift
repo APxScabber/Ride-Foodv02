@@ -14,6 +14,7 @@ class TaxiNetworkingManager{
     
     func searchForDrivers(id: Int, tariff: Int, from: String, to: String, paymentCard: Int, paymentMethod: String, promoCodes: [String], credit: Int, completion: @escaping(Result<OrderData, VBError>) -> Void){
         
+        
         let infoToPass: [String: Any] = [
             "tariff": tariff,
             "from": from,
@@ -23,8 +24,10 @@ class TaxiNetworkingManager{
             "promo_codes": promoCodes,
             "credit": credit
         ]
+        
         guard let JSONData = try? JSONSerialization.data(withJSONObject: infoToPass) else {
             completion(.failure(.invalidData))
+          
             return
         }
             let endPoint            = self.baseURL + "/api/user/\(id)/order/taxi"
@@ -39,12 +42,13 @@ class TaxiNetworkingManager{
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
             if let _ = error {
                 completion(.failure(.invalidData))
             }
             guard let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 else {
-                    print(response!)
+                  response.statusCode == 200 else {
+                    print(response)
                     completion(.failure(.invalidResponse))
                 return
             }

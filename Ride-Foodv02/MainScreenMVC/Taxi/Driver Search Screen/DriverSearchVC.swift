@@ -52,7 +52,7 @@ class DriverSearchVC: UIViewController {
             switch result{
             case .failure(let error):
                 print(error)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.sendRequest()
                 }
                
