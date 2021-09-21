@@ -41,6 +41,9 @@ class ScoresView: UIView {
         differenceButton.setTitle(Localizable.Scores.misc.localized, for: .normal)
     }}
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint! { didSet {
+        heightConstraint.constant = CGFloat(170.0 + SafeArea.shared.bottom)
+    }}
     //MARK: - Actions
     
     

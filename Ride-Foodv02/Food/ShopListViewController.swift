@@ -1,5 +1,9 @@
 import UIKit
 
+protocol ShopListDelegate: AnyObject {
+    func syncUI()
+}
+
 class ShopListViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     var hasSetPointOrigin = false
@@ -11,12 +15,22 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     //MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var topRoundedView: RoundedView! { didSet {
-        topRoundedView.cornerRadius = 10.0
-        topRoundedView.colorToFill = UIColor.lightGray
+    @IBOutlet weak var bottomRoundedView: RoundedView! { didSet {
+        bottomRoundedView.cornerRadius = 15.0
+        bottomRoundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
     }}
+    
+    @IBOutlet weak var shopNameLabel: UILabel! { didSet {
+        shopNameLabel.font = UIFont.SFUIDisplayRegular(size: 17.0)
+    }}
+    
+    @IBOutlet weak var shopTotalPriceLabel: UILabel! { didSet {
+        shopTotalPriceLabel.font = UIFont.SFUIDisplaySemibold(size: 17.0)
+    }}
+    
     @IBOutlet weak var twoTopCornersRoundedView: TopRoundedView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var transparentView: UIView!
     
     @IBOutlet weak var placeLabel: UILabel! { didSet {
         placeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
@@ -26,12 +40,35 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         addressLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
         addressLabel.text = CurrentAddress.shared.address
     }}
-    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint! { didSet {
+        collectionViewHeightConstraint.constant = 0
+    }}
+    @IBOutlet weak var totalHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomRoundedViewHeightConstraint: NSLayoutConstraint!
+    
+    //MARK: - XIB
+    
+    private let orderRemoveView = OrderRemoveView.initFromNib()
+    private let orderRemovedView = OrderRemovedView.initFromNib()
+    
+    //MARK: - Action
+    
+    @IBAction func removeCart(_ sender: UIButton) {
+        showOrderRemoveView()
+    }
     
     //MARK: - ViewController lifecycle
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        orderRemoveView.delegate = self
+        orderRemoveView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 220.0)
+        view.addSubview(orderRemoveView)
+        
+        orderRemovedView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 320)
+        orderRemovedView.delegate = self
+        view.addSubview(orderRemovedView)
+        
         ShopFetcher.fetch { [weak self] in
             self?.shops = $0
             self?.collectionView.reloadData()
@@ -71,27 +108,19 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let shop = shops[indexPath.item]
-        let storyboard = UIStoryboard(name: "Food", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "shopDetailVC") as! ShopDetailViewController
-        vc.id = shop.id
-        vc.shopName = shop.name
-        vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = self
-        
-        
-        self.present(vc, animated: true)
-    }
-    
-    //MARK: - Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "shopDetail",
-           let destination = segue.destination as? ShopDetailViewController,
-           let cell = sender as? ShopCollectionViewCell,
-           let indexPath = collectionView.indexPath(for: cell) {
-                destination.id = shops[indexPath.item].id
-                destination.shopName = shops[indexPath.item].name
+        if shop.id != CurrentShop.shared.id && !CurrentShop.shared.shop.isEmpty {
+            showOrderRemoveView()
+        } else {
+            let storyboard = UIStoryboard(name: "Food", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "shopDetailVC") as! ShopDetailViewController
+            vc.id = shop.id
+            vc.shopName = shop.name
+            vc.modalPresentationStyle = .custom
+            vc.delegate = self
+            vc.transitioningDelegate = self
+            present(vc, animated: true)
         }
+        
     }
     
     //MARK: - UI update
@@ -101,8 +130,14 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         let totalOffset: CGFloat = padding*3
         let rows = CGFloat((shops.count + 1)/2)
         let height = (view.bounds.width - totalOffset)/4.0*rows + padding*(rows+1)
+        var offset: CGFloat = 0
         
-        collectionViewHeightConstraint.constant = height + CGFloat(SafeArea.shared.bottom)
+        if CurrentShop.shared.total == 0 {
+            bottomRoundedViewHeightConstraint.constant = 0
+            offset = 50.0
+        } else { updateBottomView() }
+        collectionViewHeightConstraint.constant = height
+        totalHeightConstraint.constant += (collectionViewHeightConstraint.constant - offset)
         
         UIView.animate(withDuration: FoodConstants.durationForLiftingShopView) {
             self.view.layoutIfNeeded()
@@ -119,20 +154,13 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
          let translation = sender.translation(in: view)
-
-         // Not allowing the user to drag the view upward
          guard translation.y >= 0 else { return }
-
-         // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
          view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
-
          if sender.state == .ended {
              let dragVelocity = sender.velocity(in: view)
              if dragVelocity.y >= 1300 {
-                 // Velocity fast enough to dismiss the uiview
                  self.dismiss(animated: true, completion: nil)
              } else {
-                 // Set back to original position of the view controller
                  UIView.animate(withDuration: 0.3) {
                      self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 300)
                  }
@@ -140,10 +168,78 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
          }
      }
     
+    private func showOrderRemoveView() {
+        orderRemoveView.show()
+        transparentView.isHidden = false
+    }
+    
+    private func checkIfUserHasActiveOrder() {
+        if CurrentShop.shared.total > 0 {
+            bottomRoundedViewHeightConstraint.constant = 50
+            totalHeightConstraint.constant += 50
+            updateBottomView()
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func updateBottomView() {
+        bottomRoundedView.isHidden = false
+        shopNameLabel.text = "Магазин \(CurrentShop.shared.shop)"
+        shopTotalPriceLabel.text = "\(CurrentShop.shared.total) \(Localizable.FoodOrder.foodOrderMoney.localized)"
+    }
     
 }
+
+//MARK: - UIViewControllerTransitioningDelegate
+
 extension ShopListViewController: UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.11)
+    }
+}
+
+//MARK: - OrderRemoveDelegate
+
+extension ShopListViewController: OrderRemoveViewDelegate {
+    
+    func orderRemoveViewClear() {
+        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: CurrentShop.shared.id) { error in }
+        CurrentShop.shared.reset()
+        orderRemovedView.show()
+    }
+    
+    func orderRemoveViewCancel() {
+        transparentView.isHidden = true
+        orderRemoveView.close()
+    }
+    
+    
+}
+
+//MARK: - OrderRemovedViewDelegate
+
+extension ShopListViewController: OrderRemovedViewDelegate {
+    
+    func returnToShopping() {
+        orderRemoveView.close()
+        transparentView.isHidden = true
+        bottomRoundedViewHeightConstraint.constant = 0
+        bottomRoundedView.isHidden = true
+        totalHeightConstraint.constant -= 50
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+}
+
+//MARK: - ShopListDelegate
+
+extension ShopListViewController: ShopListDelegate {
+    
+    func syncUI() {
+        checkIfUserHasActiveOrder()
     }
 }

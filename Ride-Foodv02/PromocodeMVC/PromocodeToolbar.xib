@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cco-FJ-By7">
-                    <rect key="frame" x="0.0" y="59" width="414" height="142"/>
+                    <rect key="frame" x="0.0" y="59" width="414" height="145"/>
                     <subviews>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="U4O-aT-voQ">
                             <rect key="frame" x="188.5" y="5" width="37" height="37"/>
@@ -35,7 +35,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="U4O-aT-voQ" firstAttribute="top" secondItem="cco-FJ-By7" secondAttribute="top" constant="5" id="3q5-Fd-0Uo"/>
-                        <constraint firstAttribute="height" constant="142" id="Owm-xR-553"/>
+                        <constraint firstAttribute="height" constant="145" id="Owm-xR-553"/>
                         <constraint firstItem="5dl-QK-Jvc" firstAttribute="leading" secondItem="cco-FJ-By7" secondAttribute="leading" constant="25" id="SzJ-Pi-QjZ"/>
                         <constraint firstItem="U4O-aT-voQ" firstAttribute="centerX" secondItem="cco-FJ-By7" secondAttribute="centerX" id="b4V-4f-xDw"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5dl-QK-Jvc" secondAttribute="trailing" constant="25" id="l3z-FU-We0"/>
@@ -107,6 +107,7 @@
                 <outlet property="activeView" destination="cco-FJ-By7" id="OiU-gA-J4n"/>
                 <outlet property="button" destination="YRH-rS-hIg" id="DWg-Ao-iYz"/>
                 <outlet property="errorLabel" destination="5dl-QK-Jvc" id="6RB-og-KD6"/>
+                <outlet property="heightConstraint" destination="Owm-xR-553" id="qE0-fZ-nr5"/>
                 <outlet property="lineView" destination="Tci-2b-eha" id="b0c-RR-g4N"/>
                 <outlet property="roundedView" destination="hpD-Pb-dxg" id="sAB-QF-kgF"/>
                 <outlet property="spinner" destination="U4O-aT-voQ" id="4Bj-2K-UWB"/>

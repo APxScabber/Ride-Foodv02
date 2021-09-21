@@ -15,7 +15,7 @@ class FoodMainVC: UIViewController {
     var region = MKCoordinateRegion()
     weak var delegate: FoodMainDelegate?
     
-   
+    private var keyboardHeight: CGFloat = 0
     
     //MARK: - Outlets
     
@@ -52,11 +52,8 @@ class FoodMainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
         NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+                
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(done))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
@@ -79,7 +76,6 @@ class FoodMainVC: UIViewController {
         super.viewWillAppear(animated)
         updateUI()
         updateViewConstraints()
-        textField.text = place
     }
     
   
@@ -95,13 +91,14 @@ class FoodMainVC: UIViewController {
     }
 
     @IBAction func goToTheShopList(_ sender: Any) {
+        CurrentAddress.shared.place = ""
         CurrentAddress.shared.address = textField.text ?? ""
         goToTheShopListVC()
     }
     
     
     func goToTheShopListVC(){
-        resignFirstResponder()
+        moveDown()
         let storyboard = UIStoryboard(name: "Food", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
         vc.modalPresentationStyle = .custom
@@ -116,26 +113,17 @@ class FoodMainVC: UIViewController {
         underbarLineView?.backgroundColor = place.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         confirmButton?.isUserInteractionEnabled = !place.isEmpty
     }
-    
-   // private var shouldMoveView: Bool? = true
-    
+        
     @objc private func updateConstraintWith(_ notification: Notification) {
         
-       // shouldMoveView = true
         guard let userInfo = notification.userInfo else { return }
-      //  guard shouldMoveView != nil else { return }
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             guard let superview = view.superview else { return }
             self.view.frame.origin.y = superview.frame.height - size.height - self.view.bounds.height
-         //   shouldMoveView = nil
+            keyboardHeight = size.height
         }
     }
-    
-    @objc private func hideKeyboard(with notification: Notification){
-        if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y = 0
-            }
-    }
+
 
     @objc
     private func textFieldChanged() {
@@ -147,9 +135,22 @@ class FoodMainVC: UIViewController {
     
     @objc
     private func done() {
-        dismiss(animated: true)
-        delegate?.done()
+        if keyboardHeight == 0 {
+            dismiss(animated: true)
+            delegate?.done()
+        } else {
+            moveDown()
+        }
     }
+    
+    private func moveDown() {
+        textField.resignFirstResponder()
+        keyboardHeight = 0
+        UIView.animate(withDuration: 0.25) {
+            self.view.frame.origin.y = self.view.superview!.frame.height - self.view.bounds.height
+        }
+    }
+    
 }
 
 
@@ -173,7 +174,6 @@ extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         CurrentAddress.shared.place = addresses[indexPath.row].title
         CurrentAddress.shared.address = addresses[indexPath.row].fullAddress
-        textField.text = CurrentAddress.shared.address
         goToTheShopListVC()
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -189,6 +189,8 @@ extension FoodMainVC: LocationChooserDelegate {
     func locationChoosen(_ newLocation: String) {
         place = newLocation
         textField.text = place
+        CurrentAddress.shared.place = ""
+        CurrentAddress.shared.address = newLocation
     }
     
     

@@ -191,3 +191,11 @@
 "foodOrderNewOrder" = "Новый заказ";
 "foodOrderSeeYouAgain" = "Будем рады вам снова :)";
 "foodOrderDeliveryFood" = "Доставка еды";
+
+//MARK: - OrderRemove
+
+"orderRemoveTitle" = "Для новых покупок вам необходимо очистить корзину предыдущего заказа";
+"orderRemoveClear" = "Очистить корзину";
+"orderRemoveCancel" = "Отмена";
+"orderRemoveEmptyCart" = "Корзина пуста";
+"orderRemoveReturnToShopping" = "Вернуться к покупкам";

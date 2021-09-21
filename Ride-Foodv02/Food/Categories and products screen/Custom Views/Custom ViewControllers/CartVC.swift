@@ -172,8 +172,6 @@ class CartVC: UIViewController {
             promocodeScoreView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             promocodeScoreView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             promocodeScoreView.heightAnchor.constraint(equalToConstant: 50),
-           // promocodeScoreView.topAnchor.constraint(equalTo: deliveryView.bottomAnchor, constant: 10)
-//            promocodeScoreView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
     }
 

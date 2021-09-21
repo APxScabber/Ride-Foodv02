@@ -10,6 +10,7 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
     var id = 0
     var shopName = String()
     var shopDetail:ShopDetail!
+    weak var delegate: ShopListDelegate?
     
     //MARK: - Outlets
     @IBOutlet weak var shopNameLabel: UILabel! { didSet {
@@ -33,6 +34,7 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
     //MARK: - IBActions
     
     @IBAction func close(_ sender: UIButton) {
+        delegate?.syncUI()
         dismiss(animated: true)
     }
     
@@ -147,6 +149,7 @@ class ShopDetailViewController: UIViewController, UICollectionViewDataSource,UIC
              let dragVelocity = sender.velocity(in: view)
              if dragVelocity.y >= 1300 {
                  // Velocity fast enough to dismiss the uiview
+                 delegate?.syncUI()
                  self.dismiss(animated: true, completion: nil)
              } else {
                  // Set back to original position of the view controller

@@ -18,6 +18,7 @@
 		7808D7D126B4818D00A88E12 /* TotalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */; };
 		7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */; };
 		7808D7D526B838F000A88E12 /* EmailChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808D7D426B838EF00A88E12 /* EmailChecker.swift */; };
+		780D3CDE26FA4D54004EF313 /* PathLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D3CDD26FA4D54004EF313 /* PathLineView.swift */; };
 		782D45D026B00F02006B3A98 /* ShopFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CF26B00F02006B3A98 /* ShopFetcher.swift */; };
 		782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45D126B01402006B3A98 /* ShopListViewController.swift */; };
 		782D45D426B018EF006B3A98 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45D326B018EF006B3A98 /* ShopCollectionViewCell.swift */; };
@@ -180,6 +181,11 @@
 		78CE749326A6E073006C3417 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE749226A6E073006C3417 /* MenuView.swift */; };
 		78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D3DF452686414B0028A66B /* PromocodeToolbar.xib */; };
 		78D3DF482686415C0028A66B /* PromocodeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3DF472686415C0028A66B /* PromocodeToolbar.swift */; };
+		78D67FB126F9F6AE001C44C4 /* CurrentShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D67FB026F9F6AE001C44C4 /* CurrentShop.swift */; };
+		78D67FB326FA0801001C44C4 /* OrderRemoveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D67FB226FA0801001C44C4 /* OrderRemoveView.xib */; };
+		78D67FB526FA0CED001C44C4 /* OrderRemoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D67FB426FA0CED001C44C4 /* OrderRemoveView.swift */; };
+		78D67FB726FA1C81001C44C4 /* OrderRemovedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D67FB626FA1C81001C44C4 /* OrderRemovedView.xib */; };
+		78D67FB926FA1C8D001C44C4 /* OrderRemovedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D67FB826FA1C8D001C44C4 /* OrderRemovedView.swift */; };
 		78DE81CC26CED9EB0093B698 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782D45CD26B00EA9006B3A98 /* Shop.swift */; };
 		78DE81CF26CEDB230093B698 /* MapKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE81CE26CEDB230093B698 /* MapKitManager.swift */; };
 		78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */; };
@@ -287,6 +293,7 @@
 		7808D7D026B4818D00A88E12 /* TotalScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoreViewController.swift; sourceTree = "<group>"; };
 		7808D7D226B481A400A88E12 /* TotalScoresInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalScoresInteractor.swift; sourceTree = "<group>"; };
 		7808D7D426B838EF00A88E12 /* EmailChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailChecker.swift; sourceTree = "<group>"; };
+		780D3CDD26FA4D54004EF313 /* PathLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathLineView.swift; sourceTree = "<group>"; };
 		782D45CD26B00EA9006B3A98 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		782D45CF26B00F02006B3A98 /* ShopFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopFetcher.swift; sourceTree = "<group>"; };
 		782D45D126B01402006B3A98 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
@@ -449,6 +456,11 @@
 		78CE749226A6E073006C3417 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		78D3DF452686414B0028A66B /* PromocodeToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromocodeToolbar.xib; sourceTree = "<group>"; };
 		78D3DF472686415C0028A66B /* PromocodeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocodeToolbar.swift; sourceTree = "<group>"; };
+		78D67FB026F9F6AE001C44C4 /* CurrentShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentShop.swift; sourceTree = "<group>"; };
+		78D67FB226FA0801001C44C4 /* OrderRemoveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRemoveView.xib; sourceTree = "<group>"; };
+		78D67FB426FA0CED001C44C4 /* OrderRemoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRemoveView.swift; sourceTree = "<group>"; };
+		78D67FB626FA1C81001C44C4 /* OrderRemovedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderRemovedView.xib; sourceTree = "<group>"; };
+		78D67FB826FA1C8D001C44C4 /* OrderRemovedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRemovedView.swift; sourceTree = "<group>"; };
 		78DE81CE26CEDB230093B698 /* MapKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitManager.swift; sourceTree = "<group>"; };
 		78E25AA426A982F8006E6BC9 /* FoodTaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTaxiView.xib; sourceTree = "<group>"; };
 		78E25AA626A98305006E6BC9 /* FoodTaxiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTaxiView.swift; sourceTree = "<group>"; };
@@ -565,6 +577,11 @@
 				78E8DB1E26F25294008C72C9 /* CashBackNeededView.swift */,
 				78B1DA6026F88CB3006166DC /* OrderCompleteView.swift */,
 				78B1DA6226F88CBF006166DC /* OrderCompleteView.xib */,
+				78D67FB026F9F6AE001C44C4 /* CurrentShop.swift */,
+				78D67FB226FA0801001C44C4 /* OrderRemoveView.xib */,
+				78D67FB426FA0CED001C44C4 /* OrderRemoveView.swift */,
+				78D67FB626FA1C81001C44C4 /* OrderRemovedView.xib */,
+				78D67FB826FA1C8D001C44C4 /* OrderRemovedView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1129,6 +1146,7 @@
 				78894E4D26D017190044DBF4 /* ScoresToolbar.xib */,
 				78894E4F26D017220044DBF4 /* ScoresToolbar.swift */,
 				785F5D8D26C15D41004503CB /* TaxiConstant.swift */,
+				780D3CDD26FA4D54004EF313 /* PathLineView.swift */,
 			);
 			path = Taxi;
 			sourceTree = "<group>";
@@ -1460,6 +1478,7 @@
 				78BE4A0426837B8E00A13641 /* PromotionDetail.xib in Resources */,
 				78E8DB1926F0DFF5008C72C9 /* PromocodeScoresView.xib in Resources */,
 				787140C6268637E6007834ED /* Promocode.storyboard in Resources */,
+				78D67FB326FA0801001C44C4 /* OrderRemoveView.xib in Resources */,
 				78D3DF462686414B0028A66B /* PromocodeToolbar.xib in Resources */,
 				7867B4AB266FAB1B0031BFA0 /* SFUIDisplay-Regular.otf in Resources */,
 				C446729526D79D3000598459 /* SetToLocationView.xib in Resources */,
@@ -1476,6 +1495,7 @@
 				7850E8F226739C8300AA88CA /* Promotion.storyboard in Resources */,
 				78A3A01A267B57D7006D0DAB /* Login.storyboard in Resources */,
 				787A83EB26AB2DA40096DFC3 /* Addresses.storyboard in Resources */,
+				78D67FB726FA1C81001C44C4 /* OrderRemovedView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1569,6 +1589,7 @@
 				7808D7C926B4806800A88E12 /* TotalScoresModel.swift in Sources */,
 				782D45DE26B03D21006B3A98 /* ShopDetail.swift in Sources */,
 				78E8DB1D26F102FE008C72C9 /* ShadowRoundedView.swift in Sources */,
+				78D67FB526FA0CED001C44C4 /* OrderRemoveView.swift in Sources */,
 				7841E3A226A8362500335DFA /* TariffsViewController.swift in Sources */,
 				F5D500DE26C71AE500488D45 /* PhoneNumberTableViewCell.swift in Sources */,
 				7867B4D526722DC10031BFA0 /* SettingsMainLabel.swift in Sources */,
@@ -1621,6 +1642,7 @@
 				78A39FE4267B55EC006D0DAB /* CoreDataManager.swift in Sources */,
 				78ACFD0B26A59E1700C995EB /* Promocodes.swift in Sources */,
 				78AEB87C267B59C10023605D /* StringExtension.swift in Sources */,
+				78D67FB926FA1C8D001C44C4 /* OrderRemovedView.swift in Sources */,
 				F50DEFD126CC604C003B9308 /* SubCategoriesTableViewCell.swift in Sources */,
 				C47892BE267B8B5B00B4C737 /* LoginColors.swift in Sources */,
 				7841E3AF26A8384C00335DFA /* TextViewExtension.swift in Sources */,
@@ -1641,6 +1663,7 @@
 				7867B4CE26711B120031BFA0 /* UIColor+Extensions.swift in Sources */,
 				78DE81CF26CEDB230093B698 /* MapKitManager.swift in Sources */,
 				78A3A007267B56E1006D0DAB /* ConfirmText.swift in Sources */,
+				780D3CDE26FA4D54004EF313 /* PathLineView.swift in Sources */,
 				7867B4C2266FCE0B0031BFA0 /* UIImageView+Extensions.swift in Sources */,
 				7841E3AD26A837F900335DFA /* MainTextFont.swift in Sources */,
 				C446727726CEEC2D00598459 /* MainScreenExtensions.swift in Sources */,
@@ -1700,6 +1723,7 @@
 				F529F1B826DB824C007B91B4 /* CartProductsQTYView.swift in Sources */,
 				C446725026C5C63B00598459 /* PaymentHistoryColor.swift in Sources */,
 				7802DFC7267D00480048CF1C /* PersonalInfoConstant.swift in Sources */,
+				78D67FB126F9F6AE001C44C4 /* CurrentShop.swift in Sources */,
 				7808D7CF26B480F000A88E12 /* TotalScores.swift in Sources */,
 				F5011DBD26B5854F00DE3777 /* VBConfirmAlertVC.swift in Sources */,
 				787D4B632677A751002D975D /* ToolbarView.swift in Sources */,
