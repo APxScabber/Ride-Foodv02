@@ -13,6 +13,7 @@ enum ScreenState{
 protocol DriverSearchDelegate: AnyObject{
     func cancel()
     func changeFrame()
+    func confirm()
 }
 
 import UIKit
@@ -48,7 +49,12 @@ class DriverSearchVC: UIViewController {
     }
     
     @objc func cancel(){
-        delegate?.cancel()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1) {
+                self.delegate?.cancel()
+            }
+        }
+        
     }
     
     func sendRequest(){
@@ -139,7 +145,7 @@ class DriverSearchVC: UIViewController {
     func configureFoundView(){
         view.addSubview(foundDriverView)
         foundDriverView.translatesAutoresizingMaskIntoConstraints = false
-        
+        foundDriverView.delegate = self
         NSLayoutConstraint.activate([
             foundDriverView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             foundDriverView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -200,4 +206,17 @@ class DriverSearchVC: UIViewController {
         
     }
 
+}
+
+extension DriverSearchVC: FoundDriverProtocol{
+    func confirm() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1) {
+                self.delegate?.confirm()
+            }
+        }
+        
+    }
+    
+    
 }

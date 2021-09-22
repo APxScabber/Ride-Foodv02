@@ -586,8 +586,24 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
 }
 
 extension MainScreenViewController: DriverSearchDelegate {
+    func confirm() {
+        DispatchQueue.main.async {
+            self.pressTaxiOrderButton()
+        }
+      
+    }
+    
     func cancel() {
-        print("Gonna cancel here")
+        DispatchQueue.main.async {
+                self.isTaxiOrdered = false
+                self.containerView.frame.origin.y = self.view.frame.height
+                self.containerView.removeFromSuperview()
+                self.view.layoutIfNeeded()
+            self.returnToMainView()
+        
+        }
+          
+    
     }
     
     func changeFrame() {

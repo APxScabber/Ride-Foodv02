@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol FoundDriverProtocol: AnyObject {
+    func confirm()
+}
+
 class FoundDriverView: UIView {
+    
+    weak var delegate: FoundDriverProtocol?
 
     @IBOutlet weak var confirmButton: UIButton! { didSet{
         confirmButton.layer.cornerRadius        = 15
@@ -80,6 +86,7 @@ class FoundDriverView: UIView {
  
 
     @IBAction func confirm(_ sender: Any) {
+        delegate?.confirm()
     }
     
 }
