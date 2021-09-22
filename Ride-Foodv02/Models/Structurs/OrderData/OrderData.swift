@@ -9,23 +9,23 @@ struct OrderData: Codable {
 
 // MARK: - DataClass
 struct DataClass: Codable {
-    var id: Int
-    var userid: Int
-    var from: String
-    var to: String
-    var credit: Int
-    var distance: Int
-    var price: Int
-    var discount: Int
-    var forPayment: Int
-    var type: String
-    var status: String
-    var comment: Comment
-    var tariff: Tariff
-    var promoCodes: [PromoCode]
-    var availablePromoCodes: [PromoCode]
-    var taxi: Taxi
-    var products: [Food]
+    var id: Int?
+    var userid: Int?
+    var from: String?
+    var to: String?
+    var credit: Int?
+    var distance: Int?
+    var price: Int?
+    var discount: Int?
+    var forPayment: Int?
+    var type: String?
+    var status: String?
+    var comment: Comment?
+    var tariff: Tariff?
+    var promoCodes: [PromoCode]?
+    var availablePromoCodes: [PromoCode]?
+    var taxi: Taxi?
+    var products: [Food]?
 }
 
 // MARK: - PromoCode
