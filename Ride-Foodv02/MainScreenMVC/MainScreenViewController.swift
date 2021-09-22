@@ -599,7 +599,13 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
-    private func pressTaxiOrderButton() {
+     func pressTaxiOrderButton() {
+         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+             self.containerView.frame.origin.y = self.view.frame.height - self.containerView.frame.height
+             self.containerView.removeFromSuperview()
+             self.view.layoutIfNeeded()
+         }
+      
         
         returnToMainView()
     
@@ -627,6 +633,7 @@ class MainScreenViewController: BaseViewController {
         taxiOrderInfoView.taxiInfoTimeTextView.textAlignment = .center
         
         UIView.animate(withDuration: 1) {
+         
             self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
         }
 

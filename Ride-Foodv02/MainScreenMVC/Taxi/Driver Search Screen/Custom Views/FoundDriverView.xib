@@ -23,13 +23,14 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-D8-pMB">
                     <rect key="frame" x="40" y="532" width="335" height="48"/>
+                    <color key="backgroundColor" name="SupportNextButtonActiveColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="q8h-aT-o44"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Подтвердить">
-                        <color key="baseBackgroundColor" name="SupportNextButtonActiveColor"/>
-                    </buttonConfiguration>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Подтвердить">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="confirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="MmS-O8-tWf"/>
                     </connections>
