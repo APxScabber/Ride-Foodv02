@@ -107,11 +107,9 @@ class CategoriesAndFoodVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews(screenType: .subcategories)
-        promocodeToolbar.isHidden = true
         scoresView.isHidden = true
         promocodeActivationView.isHidden = true
         scoresToolbar.isHidden = true
-        view.addSubview(promocodeToolbar)
         view.addSubview(scoresView)
         view.addSubview(promocodeActivationView)
         configureContentView()
@@ -703,6 +701,7 @@ extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
         transparentView.isHidden = false
         promocodeToolbar.delegate = self
         containerView.isUserInteractionEnabled = false
+        view.addSubview(promocodeToolbar)
         promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight - self.keyboardHeight - CGFloat(SafeArea.shared.bottom)

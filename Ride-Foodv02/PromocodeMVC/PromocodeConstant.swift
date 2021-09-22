@@ -3,7 +3,7 @@ import CoreGraphics
 
 struct PromocodeConstant {
     
-    static let toolbarHeight: CGFloat = 152.0
+    static let toolbarHeight: CGFloat = 145.0
 
     
 }
