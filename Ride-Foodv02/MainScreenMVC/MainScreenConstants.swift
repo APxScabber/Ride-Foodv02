@@ -13,4 +13,7 @@ struct MainScreenConstants {
     static let foodTaxiYOffset: CGFloat = 13.0
     static let promotionViewHeight: CGFloat = 45.0
     
+    static let searchDriverScreenHeight: CGFloat = 150
+    static let foundDriverScreenHeight: CGFloat = 620
+    
 }

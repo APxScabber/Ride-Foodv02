@@ -333,18 +333,26 @@ class MainScreenViewController: BaseViewController {
     //MARK: - Configure Container view
     
     func configureContainerView(){
-        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
         containerView.backgroundColor = .clear
         addChildVC()
+        setContainerViewFrame(with: .search)
        
-        
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 750),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 750),
+//            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//        ])
+    }
+    func setContainerViewFrame(with state: ScreenState){
+        switch state {
+        case .search:
+            containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.searchDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.searchDriverScreenHeight + bottomSafeAreaConstant)
+        case .found:
+            containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foundDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foundDriverScreenHeight + bottomSafeAreaConstant)
+        }
     }
     
     func addChildVC(){
@@ -356,6 +364,7 @@ class MainScreenViewController: BaseViewController {
         child.promocodes = ["R-162860"]
         child.tariff = 3
         child.paymentMethod = "cash"
+        child.delegate = self
         self.add(childVC: child, to: containerView)
     }
     
