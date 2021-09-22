@@ -269,7 +269,7 @@ extension MainScreenViewController: PromocodeScoresViewDelegate {
         promocodeToolbar.textField.becomeFirstResponder()
         promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - PromocodeConstant.toolbarHeight
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight - self.keyboardHeight - CGFloat(SafeArea.shared.bottom)
         }
 
         

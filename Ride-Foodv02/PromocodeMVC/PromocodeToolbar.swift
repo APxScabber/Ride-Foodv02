@@ -18,6 +18,7 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
 
     @IBOutlet weak var errorLabel: UILabel! { didSet {
         errorLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
+        errorLabel.text = ""
     }}
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var lineView: UIView!
@@ -54,6 +55,7 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
     
     @objc
     private func updateState() {
+        errorLabel.isHidden = !promocodeEntered
         lineView.backgroundColor = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         button.isUserInteractionEnabled = promocodeEntered
         roundedView.colorToFill = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
@@ -103,6 +105,7 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
             textField.resignFirstResponder()
             spinner.stopAnimating()
             textField.text = "R-"
+            errorLabel.text = ""
             updateState()
             delegate?.closePromocodeToolbar?()
         }
