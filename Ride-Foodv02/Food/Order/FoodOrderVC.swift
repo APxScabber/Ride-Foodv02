@@ -162,6 +162,7 @@ class FoodOrderVC: BaseViewController {
             sourse.orderCompleteView.totalPrice = totalPrice
             sourse.orderCompleteView.paymentImageView.image = currentImage
             sourse.orderCompleteView.paymentDetailLabel.text = currentPay
+            sourse.isFoodOrdered = true
         }
     }
     

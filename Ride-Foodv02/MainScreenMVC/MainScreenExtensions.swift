@@ -374,6 +374,14 @@ extension MainScreenViewController: MenuViewDelegate {
 extension MainScreenViewController: FoodTaxiViewDelegate {
     
     func goToFood() {
+        
+        if isTaxiOrdered {
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            UIView.animate(withDuration: 0.5) {
+                self.taxiOrderInfoView.frame.origin.y = lowPosY
+            }
+        }
+        
         UIView.animate(withDuration: MainScreenConstants.durationForAppearingPromotionView) {
             self.promotionView.alpha = 0
         }
@@ -381,6 +389,14 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     }
     
     func goToTaxi() {
+        
+        if isFoodOrdered {
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            UIView.animate(withDuration: 0.5) {
+                self.foodOrderInfoView.frame.origin.y = lowPosY
+            }
+        }
+        
         loadSetupsTaxi()
     }
 }
@@ -544,23 +560,26 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
         menuButton.isUserInteractionEnabled = true
         profileButton.isUserInteractionEnabled = true
         mapView.isUserInteractionEnabled = true
-        for gesture in mapView.gestureRecognizers! {
-            if gesture is UITapGestureRecognizer {
-                mapView.removeGestureRecognizer(gesture)
-            }
-        }
-        view.addSubview(deliveryMainView)
-        deliveryMainView.delegate = self
-        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
-        deliveryMainView.alpha = 0
-        pathTimeView.alpha = 1
+        
+//        for gesture in mapView.gestureRecognizers! {
+//            if gesture is UITapGestureRecognizer {
+//                mapView.removeGestureRecognizer(gesture)
+//            }
+//        }
+//        view.addSubview(deliveryMainView)
+//        deliveryMainView.delegate = self
+//        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+//        deliveryMainView.alpha = 0
+//        pathTimeView.alpha = 1
         foodTaxiView.foodImageView.isUserInteractionEnabled = false
         foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "FoodInActive")
-        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-            self.deliveryMainView.alpha = 1.0
-        }
+//        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
+//        UIView.animate(withDuration: 0.25) {
+//            self.view.layoutIfNeeded()
+            //self.deliveryMainView.alpha = 1.0
+//        }
+        
+        pressFoodOrderButton()
     }
     
     

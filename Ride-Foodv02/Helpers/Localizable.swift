@@ -39,7 +39,7 @@ enum Localizable {
     
     enum Food:String,LocalizableDelegate {
         
-        case map,enterAdress,confirm,placeOrder,goToPayment,bin,remove,clearBinQuestion,clearBin,cancel
+        case map,enterAdress,confirm,placeOrder,goToPayment,bin,remove,clearBinQuestion,clearBin,cancel, deliverTime
            
     }
     

@@ -152,6 +152,7 @@ class MainScreenViewController: BaseViewController {
     let promocodeActivationView = PromocodeActivation.initFromNib()
     
     let taxiOrderInfoView = TaxiOrderInfo.initFromNib()
+    let foodOrderInfoView = FoodOrderInfo.initFromNib()
     let orderCompleteView = OrderCompleteView.initFromNib()
     let deliveryMainView = DeliveryMainView.initFromNib()
     
@@ -205,6 +206,7 @@ class MainScreenViewController: BaseViewController {
         promocodeScoresView.delegate = self
         promocodeToolbar.isHidden = true
         promocodeActivationView.isHidden = true
+        setupFoodOrderInfoView()
         setupTaxiOrderInfoView()
         view.addSubview(menuView)
         view.addSubview(foodTaxiView)
@@ -364,6 +366,15 @@ class MainScreenViewController: BaseViewController {
     func loadSetupsTaxi() {
         
         if !isTaxiOrdered {
+            
+            if isFoodOrdered {
+                UIView.animate(withDuration: 0.5) {
+                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height
+                    self.userLocationButtonOutlet.isHidden = false
+
+                    
+                }
+            }
             
             updateUI()
         
@@ -557,6 +568,15 @@ class MainScreenViewController: BaseViewController {
         mainScreenInteractor.setup(view: taxiOrderInfoView, for: view)
     }
     
+    private func setupFoodOrderInfoView() {
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(foodInfoSwipeUp(_:)))
+        swipeUp.direction = .up
+        foodOrderInfoView.addGestureRecognizer(swipeUp)
+        
+        mainScreenInteractor.setup(view: foodOrderInfoView, for: view)
+    }
+    
     func returnToMainView() {
         
         bottomConstaint.constant = -600
@@ -573,14 +593,20 @@ class MainScreenViewController: BaseViewController {
                 self.menuButton.alpha = 1
                 self.circleView.alpha = 1
                 
-                if self.isTaxiOrdered {
+                if self.isTaxiOrdered && self.isFoodOrdered {
                     
+                    self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+                    self.timeLabel.text = "2 активных заказа"
+                    self.pathTimeView.alpha = 1
+                    self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
+                } else {
                     self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
                     self.timeLabel.text = "1 активный заказ"
                     self.pathTimeView.alpha = 1
                     self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
-                } else {
-                    
+                }
+                
+                if !self.isTaxiOrdered && !self.isFoodOrdered {
                     self.pathTimeView.alpha = 0
                 }
                 
@@ -593,6 +619,7 @@ class MainScreenViewController: BaseViewController {
     private func pressTaxiOrderButton() {
         
         returnToMainView()
+        promotionView.alpha = 0
     
         foodTaxiView.placeAnnotationView.alpha = 0
         foodTaxiView.placeLabel.text = ""
@@ -605,7 +632,6 @@ class MainScreenViewController: BaseViewController {
         
         let time = String(timeRemainig!)
         let fianlText = separationText.separation(input: Localizable.Taxi.remainingTime.localized, insert: time)
-        //let text = "Оставшееся время в пути ≈\(timeRemainig ?? 0) мин"
         let textCount = fianlText.count
         let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.yellowColor.value]
         let textAttribute = createTextAttribute(inputText: fianlText, type: typeAttributeText,
@@ -617,54 +643,161 @@ class MainScreenViewController: BaseViewController {
         taxiOrderInfoView.taxiInfoTimeTextView.font = UIFont.SFUIDisplayRegular(size: 17.0)
         taxiOrderInfoView.taxiInfoTimeTextView.textAlignment = .center
         
-        UIView.animate(withDuration: 1) {
-            self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
-        }
+
 
         taxiTariffView.scoresEntered = 0
         promocodeScoresView.reset()
         
-        promotionView.alpha = 0
+        if !isFoodOrdered && isTaxiOrdered {
+            UIView.animate(withDuration: 1.5) {
+                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            }
+        } else {
+            UIView.animate(withDuration: 1.5) {
+                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
+            }
+        }
+        
+    }
+    
+    func pressFoodOrderButton() {
+        
+        let time = String(45)
+        let fianlText = separationText.separation(input: Localizable.Food.deliverTime.localized, insert: time)
+        let textCount = fianlText.count
+        let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.yellowColor.value]
+        let textAttribute = createTextAttribute(inputText: fianlText, type: typeAttributeText,
+                                                   locRus: 15, lenRus: textCount - 15,
+                                                   locEng: 14, lenEng: textCount - 14)
+        
+
+        foodOrderInfoView.foodInfoTimeTextView.attributedText = textAttribute
+        foodOrderInfoView.foodInfoTimeTextView.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        foodOrderInfoView.foodInfoTimeTextView.textAlignment = .center
+        
+        if isFoodOrdered && !isTaxiOrdered {
+            UIView.animate(withDuration: 0.5) {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+
+                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+                self.timeLabel.text = "1 активный заказ"
+                self.pathTimeView.alpha = 1
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
+                
+                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+                self.timeLabel.text = "2 активных заказа"
+                self.pathTimeView.alpha = 1
+            }
+        }
+    }
+    
+    func animationSwipeUp() {
+
+        UIView.animate(withDuration: 0.5) {
+            let height:CGFloat = 169
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+            let highPosY = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+            
+            if self.isTaxiOrdered {
+                self.taxiOrderInfoView.frame.origin.y = lowPosY
+                if self.isFoodOrdered {
+                    self.foodOrderInfoView.frame.origin.y = highPosY
+                }
+            } else {
+                if self.isFoodOrdered {
+                    self.foodOrderInfoView.frame.origin.y = lowPosY
+                }
+            }
+        } completion: { _ in
+            
+            if self.isTaxiOrdered {
+                self.taxiOrderInfoView.gestureRecognizers?.removeAll()
+                
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.taxiOrderedInfoTap))
+                self.taxiOrderInfoView.addGestureRecognizer(tap)
+                
+                let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
+                swipeDowm.direction = .down
+                self.taxiOrderInfoView.addGestureRecognizer(swipeDowm)
+            }
+            
+            if self.isFoodOrdered {
+                self.foodOrderInfoView.gestureRecognizers?.removeAll()
+                
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.foodOrderedInfoTap))
+                self.foodOrderInfoView.addGestureRecognizer(tap)
+                
+                let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
+                swipeDowm.direction = .down
+                self.foodOrderInfoView.addGestureRecognizer(swipeDowm)
+            }
+        }
     }
     
     // MARK: - @objc Taxi Methods
+    
+    @objc
+    func foodInfoSwipeUp(_ recognizer: UISwipeGestureRecognizer) {
+        
+        if taxiOrderInfoView.frame.height == 169 {
+            if recognizer.state == .ended {
+                animationSwipeUp()
+            }
+        }
+    }
     
     @objc
     private func taxiInfoSwipeUp(_ recognizer: UISwipeGestureRecognizer) {
         
         if taxiOrderInfoView.frame.height == 169 {
             if recognizer.state == .ended {
-                UIView.animate(withDuration: 0.5) {
-                    let height:CGFloat = 169
-                    let posY = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
-                    self.taxiOrderInfoView.frame.origin.y = posY
-                } completion: { _ in
-                    self.taxiOrderInfoView.gestureRecognizers?.removeAll()
-                    
-                    let tap = UITapGestureRecognizer(target: self, action: #selector(self.taxiOrderedInfoTap))
-                    self.taxiOrderInfoView.addGestureRecognizer(tap)
-                    
-                    let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
-                    swipeDowm.direction = .down
-                    self.taxiOrderInfoView.addGestureRecognizer(swipeDowm)
-                }
+                animationSwipeUp()
             }
         }
     }
     
     @objc
     private func taxiInfoSwipeDown(_ recognizer: UISwipeGestureRecognizer) {
-        if taxiOrderInfoView.frame.height == 169 {
+        if taxiOrderInfoView.frame.height == 169 || foodOrderInfoView.frame.height == 169 {
             if recognizer.state == .ended {
+                
                 UIView.animate(withDuration: 0.5) {
-                    let posY = self.view.frame.height - self.foodTaxiView.frame.height - 30
-                    self.taxiOrderInfoView.frame.origin.y = posY
+                    
+                    let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+                    let highPosY = self.view.frame.height - self.foodTaxiView.frame.height - 50
+                    
+                    if self.isTaxiOrdered {
+                        self.taxiOrderInfoView.frame.origin.y = lowPosY
+                        if self.isFoodOrdered {
+                            self.foodOrderInfoView.frame.origin.y = highPosY
+                        }
+                    } else {
+                        if self.isFoodOrdered {
+                            self.foodOrderInfoView.frame.origin.y = lowPosY
+                        }
+                    }
+
                 } completion: { _ in
                     self.taxiOrderInfoView.gestureRecognizers?.removeAll()
+                    self.foodOrderInfoView.gestureRecognizers?.removeAll()
                     
-                    let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeUp(_:)))
-                    swipeUp.direction = .up
-                    self.taxiOrderInfoView.addGestureRecognizer(swipeUp)
+                    if self.isTaxiOrdered {
+                        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeUp(_:)))
+                        swipeUp.direction = .up
+                        self.taxiOrderInfoView.addGestureRecognizer(swipeUp)
+                    }
+                    
+                    if self.isFoodOrdered {
+                        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.foodInfoSwipeUp(_:)))
+                        swipeUp.direction = .up
+                        self.foodOrderInfoView.addGestureRecognizer(swipeUp)
+                    }
                 }
             }
         }
@@ -675,7 +808,7 @@ class MainScreenViewController: BaseViewController {
         
         if taxiOrderInfoView.frame.height == 169 {
             
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.5) {
                 
                 let height:CGFloat = 434
                 
@@ -689,10 +822,15 @@ class MainScreenViewController: BaseViewController {
                 
                 self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
                 
+                if self.isFoodOrdered {
+                    self.foodOrderInfoView.frame.origin.y = posY
+                    self.foodOrderInfoView.swipeLineImageView.alpha = 0
+                }
+                
                 self.view.layoutIfNeeded()
             }
         } else {
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.5) {
                 
                 let height:CGFloat = 169
                 
@@ -700,9 +838,64 @@ class MainScreenViewController: BaseViewController {
                 self.taxiOrderInfoView.frame.size.height = height
                 self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
                 
-                self.taxiOrderInfoView.swipeLineImageView.alpha = 1
+                if !self.isFoodOrdered {
+                    self.taxiOrderInfoView.swipeLineImageView.alpha = 1
+                } else {
+                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+                    self.foodOrderInfoView.swipeLineImageView.alpha = 1
+                }
                 
                 self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
+
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc
+    private func foodOrderedInfoTap() {
+        
+        if foodOrderInfoView.frame.height == 169 {
+            
+            UIView.animate(withDuration: 0.5) {
+                
+                let height:CGFloat = 350
+                
+                self.foodTaxiView.frame.origin.y = self.view.frame.height
+                self.foodOrderInfoView.frame.size.height = height
+                
+                let posY = self.view.frame.height - height
+                self.foodOrderInfoView.frame.origin.y = posY
+                
+                self.foodOrderInfoView.swipeLineImageView.alpha = 0
+                
+                self.mainScreenInteractor.animationFoodOrderInfoLowPart(for: self.foodOrderInfoView)
+                
+                if self.isTaxiOrdered {
+                    self.taxiOrderInfoView.frame.origin.y = self.view.frame.height
+                }
+                
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                
+                let height:CGFloat = 169
+                
+                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
+                self.foodOrderInfoView.frame.size.height = height
+                
+                if self.isTaxiOrdered {
+                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+                    self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                } else {
+                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                }
+                
+                self.foodOrderInfoView.swipeLineImageView.alpha = 1
+
+                
+                self.mainScreenInteractor.animationFoodOrderInfoLowPart(for: self.foodOrderInfoView)
 
                 self.view.layoutIfNeeded()
             }
@@ -812,14 +1005,14 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
-    //MARK: - Helper
+    @objc
+    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            close()
+        }
+    }
     
-//    @objc
-//    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
-//        if recognizer.state == .ended {
-//            close()
-//        }
-//    }
+    //MARK: - Helper
     
     func resetFrames() {
         menuView.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width - MainScreenConstants.menuViewXOffset, height: view.bounds.height)
@@ -934,19 +1127,9 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
-    @objc
-    private func closeMenuView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended {
-            close()
-        }
-    }
-    
     @IBAction func goToProfile(_ sender: UIButton) {
         goToStoryboard("UserProfile")
     }
-    
-//    @IBAction func goToMainScreen(_ segue: UIStoryboardSegue) {}
-    
     
     @IBAction func userLocationButtonAction(_ sender: Any) {
         MapKitManager.shared.locationManager.startUpdatingLocation()
