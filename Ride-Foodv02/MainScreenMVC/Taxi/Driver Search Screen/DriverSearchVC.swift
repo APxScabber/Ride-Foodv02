@@ -10,17 +10,22 @@ enum ScreenState{
     case search, found
 }
 
-protocol CancelButtonProtocol: AnyObject{
+protocol DriverSearchDelegate: AnyObject{
     func cancel()
+    func changeFrame()
 }
 
 import UIKit
 
 class DriverSearchVC: UIViewController {
     
+    var requestCount = 0
+    
     let cancelButton = VBButton(backgroundColor: .clear, title: "Отмена", cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     let searchWavesView = LoadingWavesCustomView()
     let searchingStatusLabel = UILabel()
+    
+    let foundDriverView = FoundDriverView.initFromNib()
     
     var toAddress = String()
     var fromAddress = String()
@@ -30,12 +35,14 @@ class DriverSearchVC: UIViewController {
     var paymentMethod = String()
     var paymentCard = Int()
     
-    weak var delegate: CancelButtonProtocol?
+    weak var delegate: DriverSearchDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        addviews(with: .search)
         sendRequest()
+        
     }
     
     @objc func cancel(){
@@ -43,6 +50,7 @@ class DriverSearchVC: UIViewController {
     }
     
     func sendRequest(){
+      
         guard let id = AddressesNetworkManager.shared.getUserID() else {
             print("Invalid ID")
             return
@@ -52,14 +60,68 @@ class DriverSearchVC: UIViewController {
             switch result{
             case .failure(let error):
                 print(error)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.sendRequest()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.requestCount += 1
+                    if self.requestCount == 10{
+                        DispatchQueue.main.async {
+                            UIView.animate(withDuration: 1) {
+                                self.removeViews(with: .search)
+                                self.delegate?.changeFrame()
+                                self.addviews(with: .found)
+                            }
+                        }
+                       
+                        return
+                    } else if self.requestCount == 5 {
+                        self.searchingStatusLabel.text = "Подождите еще немного"
+                        self.sendRequest()
+                    } else {
+                        self.sendRequest()
+                    }
+                   
                 }
-               
             case .success(let data):
-                print(data)
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 1) {
+                        self.removeViews(with: .search)
+                        self.delegate?.changeFrame()
+                        self.addviews(with: .found)
+                    }
+                }
             }
         }
+    }
+    
+    func removeViews(with state: ScreenState){
+        switch state{
+        case .search:
+            searchWavesView.removeFromSuperview()
+            searchingStatusLabel.removeFromSuperview()
+        case .found:
+            foundDriverView.removeFromSuperview()
+        }
+    }
+    
+    func addviews(with state: ScreenState){
+        switch state {
+        case .search:
+            configureWavesView()
+            configureStatusLabel()
+        case .found:
+            configureFoundView()
+        }
+    }
+    
+    func configureFoundView(){
+        view.addSubview(foundDriverView)
+        foundDriverView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            foundDriverView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            foundDriverView.topAnchor.constraint(equalTo: view.topAnchor),
+            foundDriverView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -5),
+            foundDriverView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
     }
     
     func configure(){
@@ -67,8 +129,7 @@ class DriverSearchVC: UIViewController {
         self.view.layer.cornerRadius = 15
         self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         configureCancelButton()
-        configureWavesView()
-        configureStatusLabel()
+       
     }
     
     func setLabelText(text: String){
@@ -107,10 +168,10 @@ class DriverSearchVC: UIViewController {
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -35),
             cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cancelButton.widthAnchor.constraint(equalToConstant: 100),
-            cancelButton.heightAnchor.constraint(equalToConstant: 50)
+            cancelButton.heightAnchor.constraint(equalToConstant: 30)
         ])
         
     }

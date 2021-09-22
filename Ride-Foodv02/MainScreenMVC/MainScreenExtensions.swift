@@ -584,3 +584,15 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
     
     
 }
+
+extension MainScreenViewController: DriverSearchDelegate {
+    func cancel() {
+        print("Gonna cancel here")
+    }
+    
+    func changeFrame() {
+        self.setContainerViewFrame(with: .found)
+    }
+    
+    
+}

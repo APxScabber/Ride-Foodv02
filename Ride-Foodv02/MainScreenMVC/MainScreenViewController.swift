@@ -333,29 +333,38 @@ class MainScreenViewController: BaseViewController {
     //MARK: - Configure Container view
     
     func configureContainerView(){
-        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
         containerView.backgroundColor = .clear
         addChildVC()
+        setContainerViewFrame(with: .search)
        
-        
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 750),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 750),
+//            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//        ])
+    }
+    func setContainerViewFrame(with state: ScreenState){
+        switch state {
+        case .search:
+            containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.searchDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.searchDriverScreenHeight + bottomSafeAreaConstant)
+        case .found:
+            containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foundDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foundDriverScreenHeight + bottomSafeAreaConstant)
+        }
     }
     
     func addChildVC(){
         let child = DriverSearchVC()
-        child.toAddress = toAddress
-        child.fromAddress = fromAddress
+        child.toAddress = "Place A"
+        child.fromAddress = "Place B"
         child.credits = 0
         child.paymentCard = 1
         child.promocodes = ["R-162860"]
         child.tariff = 3
         child.paymentMethod = "cash"
+        child.delegate = self
         self.add(childVC: child, to: containerView)
     }
     
@@ -860,8 +869,8 @@ class MainScreenViewController: BaseViewController {
         
         if isTaxiOrdered {
             
-            pressTaxiOrderButton()
-            //placeContainerView()
+           // pressTaxiOrderButton()
+            placeContainerView()
         }
 
         if shouldMakeOrder {
