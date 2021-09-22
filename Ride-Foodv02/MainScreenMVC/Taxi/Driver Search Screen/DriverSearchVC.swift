@@ -19,6 +19,8 @@ import UIKit
 
 class DriverSearchVC: UIViewController {
     
+    var orderData: OrderData?
+    
     var requestCount = 0
     
     let cancelButton = VBButton(backgroundColor: .clear, title: "Отмена", cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -68,6 +70,11 @@ class DriverSearchVC: UIViewController {
                                 self.removeViews(with: .search)
                                 self.delegate?.changeFrame()
                                 self.addviews(with: .found)
+                                self.orderData = MainScreenConstants.demoOrderData
+                                if let data = self.orderData?.data{
+                                    self.setData(with: data)
+                                }
+                               
                             }
                         }
                        
@@ -81,15 +88,32 @@ class DriverSearchVC: UIViewController {
                    
                 }
             case .success(let data):
+                self.orderData = data
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 1) {
                         self.removeViews(with: .search)
                         self.delegate?.changeFrame()
                         self.addviews(with: .found)
+                        if let data = self.orderData?.data{
+                            self.setData(with: data)
+                        }
+                       
                     }
                 }
             }
         }
+    }
+    
+    func setData(with data: DataClass){
+        
+        foundDriverView.tariffLabel.text = data.tariff?.name ?? "Standart"
+        foundDriverView.toAddressLabel.text = data.to
+        foundDriverView.fromAddressLabel.text = data.from
+        foundDriverView.activeOrderTimeLabel.text = "~\(data.distance ?? 15) минут"
+        foundDriverView.priceLabel.text = "\(data.price ?? 100) руб"
+        foundDriverView.carNameAndColor.text = "\(data.taxi?.color ?? "Белый") \(data.taxi?.car ?? "Opel Astra")"
+        foundDriverView.driverNemaLabel.text = "Анатолий (id: \(data.taxi?.id ?? 9))"
+        foundDriverView.driveTimeLabel.text = "\(data.distance ?? 3) мин."
     }
     
     func removeViews(with state: ScreenState){

@@ -24,11 +24,11 @@ class FoundDriverView: UIView {
     
     @IBOutlet weak var tariffBackgroundView: UIView!{didSet{
         tariffBackgroundView.layer.backgroundColor  = UIColor(red: 0.626, green: 0.883, blue: 0.298, alpha: 1).cgColor
-        tariffBackgroundView.layer.cornerRadius     = 14
+        tariffBackgroundView.layer.cornerRadius     = 10
     }}
     
     @IBOutlet weak var tariffLabel: UILabel! {didSet{
-        tariffLabel.font                           = UIFont.SFUIDisplayRegular(size: 10)
+        tariffLabel.font                           = UIFont.SFUIDisplaySemibold(size: 15)
         tariffLabel.textColor                      = .white
     }}
     
