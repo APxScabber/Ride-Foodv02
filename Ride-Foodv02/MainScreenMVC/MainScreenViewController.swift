@@ -181,7 +181,7 @@ class MainScreenViewController: BaseViewController {
     var shouldMakeOrder = false
     
     var taxiTariffSelected = 0
-    var timeRemainig: Int?
+    var timeRemainig: String?
     
     var isTaxiOrdered = false
     var isFoodOrdered = false
@@ -645,7 +645,7 @@ class MainScreenViewController: BaseViewController {
             taxiOrderInfoView.taxiTypeImageView.image = tariffImage
         }
         
-        let time = String(timeRemainig!)
+        let time = "15"//timeRemainig ?? ""
         let fianlText = separationText.separation(input: Localizable.Taxi.remainingTime.localized, insert: time)
         let textCount = fianlText.count
         let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.yellowColor.value]
@@ -679,7 +679,7 @@ class MainScreenViewController: BaseViewController {
     
     func pressFoodOrderButton() {
         
-        let time = String(45)
+        let time = "45"
         let fianlText = separationText.separation(input: Localizable.Food.deliverTime.localized, insert: time)
         let textCount = fianlText.count
         let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.yellowColor.value]
@@ -730,28 +730,40 @@ class MainScreenViewController: BaseViewController {
                 }
             }
         } completion: { _ in
+            self.taxiOrderInfoView.gestureRecognizers?.removeAll()
+            self.foodOrderInfoView.gestureRecognizers?.removeAll()
+            self.addSwipeDownGesture()
+            self.addTapGesture()
+        }
+    }
+    
+    func addSwipeDownGesture() {
+        if self.isTaxiOrdered {
             
-            if self.isTaxiOrdered {
-                self.taxiOrderInfoView.gestureRecognizers?.removeAll()
-                
-                let tap = UITapGestureRecognizer(target: self, action: #selector(self.taxiOrderedInfoTap))
-                self.taxiOrderInfoView.addGestureRecognizer(tap)
-                
-                let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
-                swipeDowm.direction = .down
-                self.taxiOrderInfoView.addGestureRecognizer(swipeDowm)
-            }
+            let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
+            swipeDowm.direction = .down
+            self.taxiOrderInfoView.addGestureRecognizer(swipeDowm)
+        }
+        
+        if self.isFoodOrdered {
             
-            if self.isFoodOrdered {
-                self.foodOrderInfoView.gestureRecognizers?.removeAll()
-                
-                let tap = UITapGestureRecognizer(target: self, action: #selector(self.foodOrderedInfoTap))
-                self.foodOrderInfoView.addGestureRecognizer(tap)
-                
-                let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
-                swipeDowm.direction = .down
-                self.foodOrderInfoView.addGestureRecognizer(swipeDowm)
-            }
+            let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
+            swipeDowm.direction = .down
+            self.foodOrderInfoView.addGestureRecognizer(swipeDowm)
+        }
+    }
+    
+    func addTapGesture() {
+        if self.isTaxiOrdered {
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.taxiOrderedInfoTap))
+            self.taxiOrderInfoView.addGestureRecognizer(tap)
+        }
+        
+        if self.isFoodOrdered {
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.foodOrderedInfoTap))
+            self.foodOrderInfoView.addGestureRecognizer(tap)
         }
     }
     
@@ -823,6 +835,9 @@ class MainScreenViewController: BaseViewController {
         
         if taxiOrderInfoView.frame.height == 169 {
             
+            taxiOrderInfoView.gestureRecognizers?.removeAll()
+            addTapGesture()
+            
             UIView.animate(withDuration: 0.5) {
                 
                 let height:CGFloat = 434
@@ -845,6 +860,9 @@ class MainScreenViewController: BaseViewController {
                 self.view.layoutIfNeeded()
             }
         } else {
+            taxiOrderInfoView.gestureRecognizers?.removeAll()
+            addTapGesture()
+            addSwipeDownGesture()
             UIView.animate(withDuration: 0.5) {
                 
                 let height:CGFloat = 169
@@ -871,7 +889,8 @@ class MainScreenViewController: BaseViewController {
     private func foodOrderedInfoTap() {
         
         if foodOrderInfoView.frame.height == 169 {
-            
+            foodOrderInfoView.gestureRecognizers?.removeAll()
+            addTapGesture()
             UIView.animate(withDuration: 0.5) {
                 
                 let height:CGFloat = 350
@@ -893,6 +912,9 @@ class MainScreenViewController: BaseViewController {
                 self.view.layoutIfNeeded()
             }
         } else {
+            foodOrderInfoView.gestureRecognizers?.removeAll()
+            addTapGesture()
+            addSwipeDownGesture()
             UIView.animate(withDuration: 0.5) {
                 
                 let height:CGFloat = 169

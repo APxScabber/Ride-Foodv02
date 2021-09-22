@@ -13,7 +13,7 @@ enum ScreenState{
 protocol DriverSearchDelegate: AnyObject{
     func cancel()
     func changeFrame()
-    func confirm()
+    func confirm(time: String)
 }
 
 import UIKit
@@ -212,7 +212,7 @@ extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
-                self.delegate?.confirm()
+                self.delegate?.confirm(time: self.foundDriverView.activeOrderTimeLabel.text ?? "")
             }
         }
         

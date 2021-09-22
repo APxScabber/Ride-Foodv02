@@ -212,7 +212,6 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
             self.view.layoutIfNeeded()
         }
         CalculatingPathManager.shared.calculatingPath(for: mapView) { pathTime in
-            self.timeRemainig = pathTime
             self.pathTime(minutes: pathTime)
         }
         
@@ -605,8 +604,9 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
 }
 
 extension MainScreenViewController: DriverSearchDelegate {
-    func confirm() {
+    func confirm(time: String) {
         DispatchQueue.main.async {
+            self.timeRemainig = time
             self.pressTaxiOrderButton()
         }
       
