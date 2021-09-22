@@ -8,6 +8,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
+    private var totalHeight: CGFloat = 140
+    private var shouldIncreaseHeight = false
     
     //MARK: - API
     var shops = [Shop]()
@@ -45,6 +47,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     }}
     @IBOutlet weak var totalHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomRoundedViewHeightConstraint: NSLayoutConstraint!
+    
+    private var panGesture = UIPanGestureRecognizer()
     
     //MARK: - XIB
     
@@ -118,6 +122,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
             vc.modalPresentationStyle = .custom
             vc.delegate = self
             vc.transitioningDelegate = self
+            if CurrentShop.shared.total == 0 { shouldIncreaseHeight = true }
             present(vc, animated: true)
         }
         
@@ -137,8 +142,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
             offset = 50.0
         } else { updateBottomView() }
         collectionViewHeightConstraint.constant = height
-        totalHeightConstraint.constant += (collectionViewHeightConstraint.constant - offset)
-        
+        totalHeightConstraint.constant += collectionViewHeightConstraint.constant - offset
+        totalHeight = totalHeightConstraint.constant
         UIView.animate(withDuration: FoodConstants.durationForLiftingShopView) {
             self.view.layoutIfNeeded()
         } completion: { [weak self] in
@@ -146,13 +151,14 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
                 self?.spinner.stopAnimating()
             }
         }
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
               view.addGestureRecognizer(panGesture)
         
         
     }
     
-    @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
+    @objc
+    private func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
          let translation = sender.translation(in: view)
          guard translation.y >= 0 else { return }
          view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
@@ -169,19 +175,25 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
      }
     
     private func showOrderRemoveView() {
+        panGesture.isEnabled = false
         orderRemoveView.show()
         transparentView.isHidden = false
     }
     
+    
     private func checkIfUserHasActiveOrder() {
+        
         if CurrentShop.shared.total > 0 {
-            bottomRoundedViewHeightConstraint.constant = 50
-            totalHeightConstraint.constant += 50
+            if shouldIncreaseHeight {
+                bottomRoundedViewHeightConstraint.constant = 50
+                totalHeightConstraint.constant = totalHeight + 50
+                shouldIncreaseHeight = false
+            }
             updateBottomView()
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }
-        }
+        } else { shouldIncreaseHeight = false }
     }
     
     private func updateBottomView() {
@@ -213,6 +225,7 @@ extension ShopListViewController: OrderRemoveViewDelegate {
     func orderRemoveViewCancel() {
         transparentView.isHidden = true
         orderRemoveView.close()
+        panGesture.isEnabled = true
     }
     
     
@@ -228,6 +241,7 @@ extension ShopListViewController: OrderRemovedViewDelegate {
         bottomRoundedViewHeightConstraint.constant = 0
         bottomRoundedView.isHidden = true
         totalHeightConstraint.constant -= 50
+        panGesture.isEnabled = true
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }

@@ -72,7 +72,7 @@ class PaymentWaysViewController: BaseViewController {
     private func getPaymentData() {
         
         guard let userID = userID else { return }
-        
+        tableView.isUserInteractionEnabled = false
         textPaymentOptions = [[PaymentMainViewText.cashTV.text(), "Apple Pay"], [PaymentMainViewText.scoresTV.text()]]
         
         paymentWaysInteractor.loadPaymentData(userID: userID) { modelsArray in
@@ -83,6 +83,7 @@ class PaymentWaysViewController: BaseViewController {
                 self.createPaymentOptions()
                 self.setupLinkCardButton()
                 self.tableView.reloadData()
+                self.tableView.isUserInteractionEnabled = true
             }
         }
     }
@@ -147,7 +148,8 @@ class PaymentWaysViewController: BaseViewController {
                     cell.rightImageView.image = row == selectedCell?.row ? #imageLiteral(resourceName: "selectedCheckBox") : #imageLiteral(resourceName: "emptyCheckBox")
                 }
             } else {
-                cell.rightImageView.image = row == selectedCell?.row ? #imageLiteral(resourceName: "selectedCheckBox") : #imageLiteral(resourceName: "emptyCheckBox")
+//                cell.rightImageView.image = row == selectedCell?.row ? #imageLiteral(resourceName: "selectedCheckBox") : #imageLiteral(resourceName: "emptyCheckBox")
+                cell.rightImageView.image = row == CurrentPayment.shared.id ? #imageLiteral(resourceName: "selectedCheckBox") : #imageLiteral(resourceName: "emptyCheckBox")
             }
         } else {
             cell.rightImageView.image = #imageLiteral(resourceName: "rightArrow")

@@ -12,6 +12,7 @@ class FoodOrderVC: BaseViewController {
     
     private var currentImage = UIImage()
     private var currentPay = String()
+    private var totalHeight: CGFloat = 0
     
     //MARK: - Outlets
     
@@ -114,6 +115,7 @@ class FoodOrderVC: BaseViewController {
         view.addSubview(cashBackNeededView)
         placeLabel.text = CurrentAddress.shared.place
         addressLabel.text = CurrentAddress.shared.address
+        tableView.isUserInteractionEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -132,13 +134,14 @@ class FoodOrderVC: BaseViewController {
                 self.paymentWays.insert(contentsOf: numbers, at: 1)
                 self.paymentImages.insert(contentsOf: images, at: 1)
                 self.tableView.reloadData()
-                self.tableViewHeightConstraint.constant += CGFloat(44 * numbers.count)
-                self.containerViewHeightConstraint.constant += CGFloat(44 * numbers.count)
+                self.tableViewHeightConstraint.constant += min(132,CGFloat(44 * numbers.count))
+                self.containerViewHeightConstraint.constant += min(132,CGFloat(44 * numbers.count))
+                self.totalHeight = self.containerViewHeightConstraint.constant
                 UIView.animate(withDuration: 0.25) {
                     self.view.layoutIfNeeded()
                 }
             }
-                
+                self.tableView.isUserInteractionEnabled = true
             }
         
         
@@ -187,8 +190,11 @@ extension FoodOrderVC: UITableViewDataSource {
                 foodOrderCell.lastFourCardDigitsLabel.text = paymentWays[indexPath.row]
                 foodOrderCell.paymentLabel.text = Localizable.FoodOrder.foodOrderCard.localized
             }
-            if let selectedIndex = selectedIndex,selectedIndex == indexPath {
+            if indexPath.row == CurrentPayment.shared.id && paymentWays.count > 2 {
                 foodOrderCell.rightImageView.image = #imageLiteral(resourceName: "selectedCheckBox")
+                selectedIndex = indexPath
+                selectRowAt(indexPath)
+                showCashbackViewIfNeeded()
             }
             return foodOrderCell
         }
@@ -202,27 +208,35 @@ extension FoodOrderVC: UITableViewDataSource {
 extension FoodOrderVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        selectRowAt(indexPath)
         tableView.reloadData()
-        currentImage = paymentImages[indexPath.row]
-        currentPay = paymentWays[indexPath.row]
-        bottomRoundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
-        bottomRoundedView.isUserInteractionEnabled = true
+        selectedIndex = indexPath
+        showCashbackViewIfNeeded()
+    }
+    
+    private func showCashbackViewIfNeeded() {
+        guard let indexPath = selectedIndex else { return }
+        cashBackViewHeightConstraint.constant = indexPath.row == 0 ? 44 : 0
+
         if indexPath.row == 0 { //наличные, нужно показать экран со сдачей
             paymentButton.setTitle(Localizable.FoodOrder.foodOrder.localized, for: .normal)
-            containerViewHeightConstraint.constant += 50
         } else { // убрать экран со сдачей
             paymentButton.setTitle(Localizable.FoodOrder.foodOrderPay.localized, for: .normal)
-            if selectedIndex?.row == 0 {
-                containerViewHeightConstraint.constant -= 50
-            }
         }
-        selectedIndex = indexPath
-        cashBackViewHeightConstraint.constant = indexPath.row == 0 ? 44 : 0
+        containerViewHeightConstraint.constant = totalHeight + cashBackViewHeightConstraint.constant
         cashbackView.isHidden = indexPath.row != 0
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    private func selectRowAt(_ indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        CurrentPayment.shared.id = indexPath.row
+        currentImage = paymentImages[indexPath.row]
+        currentPay = paymentWays[indexPath.row]
+        bottomRoundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        bottomRoundedView.isUserInteractionEnabled = true
     }
     
 }
