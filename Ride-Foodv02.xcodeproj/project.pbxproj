@@ -110,6 +110,7 @@
 		78894E4C26CFF71F0044DBF4 /* ScoresView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78894E4B26CFF71F0044DBF4 /* ScoresView.xib */; };
 		78894E4E26D017190044DBF4 /* ScoresToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78894E4D26D017190044DBF4 /* ScoresToolbar.xib */; };
 		78894E5026D017220044DBF4 /* ScoresToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78894E4F26D017220044DBF4 /* ScoresToolbar.swift */; };
+		7897FB1C26FB799B0001E228 /* CurrentPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FB1B26FB799B0001E228 /* CurrentPayment.swift */; };
 		789FA99526F8C129004CD3D9 /* DeliveryMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789FA99426F8C129004CD3D9 /* DeliveryMainView.xib */; };
 		789FA99726F8C136004CD3D9 /* DeliveryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FA99626F8C136004CD3D9 /* DeliveryMainView.swift */; };
 		78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */; };
@@ -389,6 +390,7 @@
 		78894E4B26CFF71F0044DBF4 /* ScoresView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoresView.xib; sourceTree = "<group>"; };
 		78894E4D26D017190044DBF4 /* ScoresToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoresToolbar.xib; sourceTree = "<group>"; };
 		78894E4F26D017220044DBF4 /* ScoresToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresToolbar.swift; sourceTree = "<group>"; };
+		7897FB1B26FB799B0001E228 /* CurrentPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPayment.swift; sourceTree = "<group>"; };
 		789FA99426F8C129004CD3D9 /* DeliveryMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryMainView.xib; sourceTree = "<group>"; };
 		789FA99626F8C136004CD3D9 /* DeliveryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMainView.swift; sourceTree = "<group>"; };
 		78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				78D67FB426FA0CED001C44C4 /* OrderRemoveView.swift */,
 				78D67FB626FA1C81001C44C4 /* OrderRemovedView.xib */,
 				78D67FB826FA1C8D001C44C4 /* OrderRemovedView.swift */,
+				7897FB1B26FB799B0001E228 /* CurrentPayment.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1583,6 +1586,7 @@
 				78A39FE3267B55EC006D0DAB /* LocalNotifications.swift in Sources */,
 				F544D4C526FA9EFB00720D28 /* FoundDriverView.swift in Sources */,
 				C446725826C5DC8A00598459 /* AddCardExtensions.swift in Sources */,
+				7897FB1C26FB799B0001E228 /* CurrentPayment.swift in Sources */,
 				787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */,
 				C4A9D77126B97F6D001894F8 /* MoreDetails.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,

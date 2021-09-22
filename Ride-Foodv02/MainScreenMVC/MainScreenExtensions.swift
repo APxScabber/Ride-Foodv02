@@ -552,6 +552,7 @@ extension MainScreenViewController: PromocodeActivatorDelegate {
 }
 
 //MARK: - OrderCompleteViewDelegate
+
 extension MainScreenViewController: OrderCompleteViewDelegate {
     
     func orderCompleteViewClose() {
@@ -561,11 +562,11 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
         profileButton.isUserInteractionEnabled = true
         mapView.isUserInteractionEnabled = true
         
-//        for gesture in mapView.gestureRecognizers! {
-//            if gesture is UITapGestureRecognizer {
-//                mapView.removeGestureRecognizer(gesture)
-//            }
-//        }
+        for gesture in mapView.gestureRecognizers! {
+            if gesture is UITapGestureRecognizer {
+                mapView.removeGestureRecognizer(gesture)
+            }
+        }
 //        view.addSubview(deliveryMainView)
 //        deliveryMainView.delegate = self
 //        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
@@ -587,7 +588,7 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
 }
 
 
-//MARK: - De
+//MARK: - DeliveryMainViewDelegate
 
 extension MainScreenViewController: DeliveryMainViewDelegate {
     
@@ -603,6 +604,8 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
     
     
 }
+
+//MARK: - DriverSearchDelegate
 
 extension MainScreenViewController: DriverSearchDelegate {
     func confirm() {
