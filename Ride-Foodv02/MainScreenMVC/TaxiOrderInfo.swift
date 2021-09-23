@@ -20,9 +20,11 @@ class TaxiOrderInfo: UIView {
     
     @IBOutlet weak var fromAddressTextField: UITextField! { didSet {
         fromAddressTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        //fromAddressTextField.textColor = UIColor(red: 255/138, green: 255/138, blue: 255/141, alpha: 1)
     }}
     @IBOutlet weak var toAddressTextField: UITextField! { didSet {
         toAddressTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        //toAddressTextField.textColor = UIColor(red: 255/138, green: 255/138, blue: 255/141, alpha: 1)
     }}
     
     @IBOutlet weak var taxiTypeImageView: UIImageView!

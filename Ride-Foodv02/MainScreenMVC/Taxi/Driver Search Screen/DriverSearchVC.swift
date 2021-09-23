@@ -19,8 +19,10 @@ enum DriverStatus{
 
 protocol DriverSearchDelegate: AnyObject{
     func cancel()
+
     func changeFrame(with screenState: ScreenState)
     func confirm()
+
 }
 
 import UIKit
@@ -252,9 +254,11 @@ extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
+
                 self.removeViews(with: .found)
                 self.delegate?.changeFrame(with: .wait)
                 self.addviews(with: .wait)
+
             }
         }
         

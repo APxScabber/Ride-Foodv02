@@ -212,7 +212,6 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
             self.view.layoutIfNeeded()
         }
         CalculatingPathManager.shared.calculatingPath(for: mapView) { pathTime in
-            self.timeRemainig = pathTime
             self.pathTime(minutes: pathTime)
         }
         
@@ -270,7 +269,7 @@ extension MainScreenViewController: PromocodeScoresViewDelegate {
         promocodeToolbar.textField.becomeFirstResponder()
         promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - PromocodeConstant.toolbarHeight
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight - self.keyboardHeight - CGFloat(SafeArea.shared.bottom)
         }
 
         
@@ -374,6 +373,14 @@ extension MainScreenViewController: MenuViewDelegate {
 extension MainScreenViewController: FoodTaxiViewDelegate {
     
     func goToFood() {
+        
+        if isTaxiOrdered {
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            UIView.animate(withDuration: 0.5) {
+                self.taxiOrderInfoView.frame.origin.y = lowPosY
+            }
+        }
+        
         UIView.animate(withDuration: MainScreenConstants.durationForAppearingPromotionView) {
             self.promotionView.alpha = 0
         }
@@ -381,6 +388,14 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     }
     
     func goToTaxi() {
+        
+        if isFoodOrdered {
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            UIView.animate(withDuration: 0.5) {
+                self.foodOrderInfoView.frame.origin.y = lowPosY
+            }
+        }
+        
         loadSetupsTaxi()
     }
 }
@@ -536,6 +551,7 @@ extension MainScreenViewController: PromocodeActivatorDelegate {
 }
 
 //MARK: - OrderCompleteViewDelegate
+
 extension MainScreenViewController: OrderCompleteViewDelegate {
     
     func orderCompleteViewClose() {
@@ -544,23 +560,26 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
         menuButton.isUserInteractionEnabled = true
         profileButton.isUserInteractionEnabled = true
         mapView.isUserInteractionEnabled = true
+        
         for gesture in mapView.gestureRecognizers! {
             if gesture is UITapGestureRecognizer {
                 mapView.removeGestureRecognizer(gesture)
             }
         }
-        view.addSubview(deliveryMainView)
-        deliveryMainView.delegate = self
-        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
-        deliveryMainView.alpha = 0
-        pathTimeView.alpha = 1
+//        view.addSubview(deliveryMainView)
+//        deliveryMainView.delegate = self
+//        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+//        deliveryMainView.alpha = 0
+//        pathTimeView.alpha = 1
         foodTaxiView.foodImageView.isUserInteractionEnabled = false
         foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "FoodInActive")
-        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-            self.deliveryMainView.alpha = 1.0
-        }
+//        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
+//        UIView.animate(withDuration: 0.25) {
+//            self.view.layoutIfNeeded()
+            //self.deliveryMainView.alpha = 1.0
+//        }
+        
+        pressFoodOrderButton()
     }
     
     
@@ -568,7 +587,7 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
 }
 
 
-//MARK: - De
+//MARK: - DeliveryMainViewDelegate
 
 extension MainScreenViewController: DeliveryMainViewDelegate {
     
@@ -585,13 +604,18 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
     
 }
 
+//MARK: - DriverSearchDelegate
+
 extension MainScreenViewController: DriverSearchDelegate {
+
     func changeFrame(with screenState: ScreenState) {
         self.setContainerViewFrame(with: screenState)
     }
     
     func confirm() {
+
         DispatchQueue.main.async {
+            self.timeRemainig = time
             self.pressTaxiOrderButton()
         }
       

@@ -64,7 +64,7 @@ class MainScreenInteractor {
         }
     }
     
-    // MARK: - Setup UI Taxi Ordered View
+    // MARK: - Setup UI Food Order View
     func setup(view: UIView, for controller: UIView) {
 
         let height:CGFloat = 169
@@ -171,6 +171,64 @@ class MainScreenInteractor {
             }
         }
     }
+    
+    //MARK: - FoodOrderView Animations
+    
+    func animationFoodOrderInfoLowPart(for view: UIView) {
+        animationCourierTextView(for: view)
+        animationCallButton(for: view)
+        animationCancelButton(for: view)
+        view.layoutIfNeeded()
+    }
+    
+    private func animationCourierTextView(for view: UIView) {
+        if let view = view as? FoodOrderInfo {
+            if view.courierHeightConstrint.constant != 0 {
+                
+                view.courierHeightConstrint.constant = 0
+                view.courierTopConstraint.constant = 0
+                view.courierTextView.alpha = 0
+            } else {
+                view.courierHeightConstrint.constant = 18
+                view.courierTopConstraint.constant = 10
+                view.courierTextView.alpha = 1
+            }
+        }
+    }
+    
+    private func animationCallButton(for view: UIView) {
+        if let view = view as? FoodOrderInfo {
+            if view.callHeightConstraint.constant != 0 {
+                
+                view.callHeightConstraint.constant = 0
+                view.callTopCostraint.constant = 0
+                view.callButtonOutlet.alpha = 0
+            } else {
+                view.callHeightConstraint.constant = 50
+                view.callTopCostraint.constant = 25
+                view.callButtonOutlet.alpha = 1
+            }
+        }
+    }
+    
+    private func animationCancelButton(for view: UIView) {
+        if let view = view as? FoodOrderInfo {
+            if view.cancelHeightConstraint.constant != 0 {
+                
+                view.cancelHeightConstraint.constant = 0
+                view.cancelTopConstraint.constant = 0
+                view.cancelButtonOutlet.alpha = 0
+            } else {
+                view.cancelHeightConstraint.constant = 35
+                view.cancelTopConstraint.constant = 12
+                view.cancelButtonOutlet.alpha = 1
+            }
+        }
+    }
+    
+    // MARK: - Swipe Animations
+    
+    
     
     func getTaxiTariffImage(index: Int) -> UIImage? {
         switch index {

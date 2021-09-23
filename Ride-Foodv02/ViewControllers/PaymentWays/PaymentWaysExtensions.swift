@@ -87,6 +87,7 @@ extension PaymentWaysViewController: UITableViewDelegate {
             let cellCurrent = tableView.cellForRow(at: indexPath) as! PaymentWaysTableViewCell
             
             if !paymentOptions.isEmpty {
+                CurrentPayment.shared.id = indexPath.row
                 if let cellPreview = cellPreview {
                     cellPreview.rightImageView.image = #imageLiteral(resourceName: "emptyCheckBox")
                 }
@@ -129,7 +130,7 @@ extension PaymentWaysViewController: UITableViewDelegate {
                 }
             }
         }
-            
+        tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

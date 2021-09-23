@@ -109,6 +109,7 @@ class FoodMainVC: UIViewController {
     //MARK: - UI changes
     @objc
     private func updateUI() {
+        textField?.text = place
         roundedView?.colorToFill = place.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         underbarLineView?.backgroundColor = place.isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         confirmButton?.isUserInteractionEnabled = !place.isEmpty

@@ -33,7 +33,8 @@ class CategoriesAndFoodVC: BaseViewController {
     
     let scoresView = ScoresView.initFromNib()
     let promocodeToolbar = PromocodeToolbar.initFromNib()
-    
+    let scoresToolbar = ScoresToolbar.initFromNib()
+
     var shopName: String = ""
     var mainCategoryName: String = ""
     var shopID: Int = 0
@@ -84,6 +85,7 @@ class CategoriesAndFoodVC: BaseViewController {
     //MARK: - UIViews
     
     let contentView = UIView()
+    let promocodeActivationView = PromocodeActivation.initFromNib()
 
     var topSeparatorView: UIView = {
         let view = UIView()
@@ -105,11 +107,14 @@ class CategoriesAndFoodVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews(screenType: .subcategories)
-        promocodeToolbar.isHidden = true
         scoresView.isHidden = true
-        view.addSubview(promocodeToolbar)
+        promocodeActivationView.isHidden = true
+        scoresToolbar.isHidden = true
         view.addSubview(scoresView)
+        view.addSubview(promocodeActivationView)
         configureContentView()
+        scoresToolbar.delegate = self
+        promocodeActivationView.delegate = self
         PromocodeActivator.delegate = self
     }
     
@@ -675,7 +680,6 @@ extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
         scoresView.isHidden = false
         transparentView.isHidden = false
         scoresView.delegate = self
-//        cartVC.view.isUserInteractionEnabled = false
         containerView.isUserInteractionEnabled = false
         scoresView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 170)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
@@ -697,6 +701,7 @@ extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
         transparentView.isHidden = false
         promocodeToolbar.delegate = self
         containerView.isUserInteractionEnabled = false
+        view.addSubview(promocodeToolbar)
         promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight - self.keyboardHeight - CGFloat(SafeArea.shared.bottom)
@@ -712,12 +717,13 @@ extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
 extension CategoriesAndFoodVC: ScoresViewDelegate {
     
     func showScoresToolbar() {
-//        scoresToolbar.isHidden = false
-//        scoresToolbar.scores = scoresView.scores
-//        scoresToolbar.textField.becomeFirstResponder()
-//        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 128)
+        view.addSubview(scoresToolbar)
+        scoresToolbar.isHidden = false
+        scoresToolbar.scores = scoresView.scores
+        scoresToolbar.textField.becomeFirstResponder()
+        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 128)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-         //   self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 128
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 128
         }
 
     }
@@ -734,7 +740,8 @@ extension CategoriesAndFoodVC: ScoresViewDelegate {
     }
     
     func spendAllScores() {
-     //   enter(scores: scoresView.scores)
+        closeScoresView()
+        enter(scores: scoresView.scores)
     }
 }
 
@@ -763,13 +770,13 @@ extension CategoriesAndFoodVC: PromocodeActivatorDelegate {
     func promocodeActivated(_ description: String) {
         cartVC.promocodeScoreView.usedPromocode = true
         promocodeToolbar.textField.resignFirstResponder()
-//        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
-//        promocodeActivationView.bodyLabel.text = description
-//        promocodeActivationView.isHidden = false
-//        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-//            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
-//            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
-//        }
+        promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
+        promocodeActivationView.bodyLabel.text = description
+        promocodeActivationView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height - 230
+        }
     }
     
     func promocodeFailed(_ error: String) {
@@ -778,6 +785,49 @@ extension CategoriesAndFoodVC: PromocodeActivatorDelegate {
         promocodeToolbar.errorLabel.text = error
         promocodeToolbar.spinner.stopAnimating()
     }
+    
+    
+}
+
+
+extension CategoriesAndFoodVC: PromocodeActivationDelegate {
+    
+    func closePromocodeActivationView() {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.promocodeActivationView.frame.origin.y = self.view.bounds.height
+        } completion: { if $0 == .end {
+            self.promocodeActivationView.isHidden = true
+            self.transparentView.isHidden = true
+            self.containerView.isUserInteractionEnabled = true
+        }
+        }
+    }
+    
+}
+
+//MARK: - ScoresToolbarDelegate
+
+extension CategoriesAndFoodVC: ScoresToolbarDelegate {
+    
+    func closeScoresToolbar() {
+        scoresToolbar.textField.resignFirstResponder()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height
+        } completion: {  if $0 == .end {
+                self.scoresToolbar.isHidden = true
+                self.transparentView.isHidden = true
+                self.containerView.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func enter(scores: Int) {
+        closeScoresToolbar()
+        closeScoresView()
+        cartVC.promocodeScoreView.scores = scores
+    }
+    
+    
     
     
 }

@@ -14,13 +14,13 @@
             filePath = "Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "dismiss()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8682A743-FC2C-4293-8B9A-130B908F82FF - d1a58fa745285624"
+                  uuid = "8682A743-FC2C-4293-8B9A-130B908F82FF - d1a58fa74528503b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -30,12 +30,12 @@
                   urlString = "file:///Users/alexeypeshekhonov/Documents/SkillBox/Diplom_v03/Ride-Foodv02/Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "400"
-                  endingLineNumber = "400"
+                  startingLineNumber = "415"
+                  endingLineNumber = "415"
                   offsetFromSymbolStart = "731">
                </Location>
                <Location
-                  uuid = "8682A743-FC2C-4293-8B9A-130B908F82FF - c8fc973df9843c9"
+                  uuid = "8682A743-FC2C-4293-8B9A-130B908F82FF - c8fc973df9845d8"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,8 +45,8 @@
                   urlString = "file:///Users/alexeypeshekhonov/Documents/SkillBox/Diplom_v03/Ride-Foodv02/Ride-Foodv02/MainScreenMVC/MainScreenExtensions.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "401"
-                  endingLineNumber = "401"
+                  startingLineNumber = "416"
+                  endingLineNumber = "416"
                   offsetFromSymbolStart = "19">
                </Location>
             </Locations>
