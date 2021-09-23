@@ -7,12 +7,19 @@
 
 
 enum ScreenState{
-    case search, found
+    case search, found, wait
+}
+
+enum DriverStatus{
+    case onTheWay
+    case almostThere
+    case arrived
+    case isWaiting
 }
 
 protocol DriverSearchDelegate: AnyObject{
     func cancel()
-    func changeFrame()
+    func changeFrame(with screenState: ScreenState)
     func confirm()
 }
 
@@ -29,6 +36,8 @@ class DriverSearchVC: UIViewController {
     let searchingStatusLabel = UILabel()
     
     let foundDriverView = FoundDriverView.initFromNib()
+    
+    let awaitDriverView = AwaitDriverView.initFromNib()
     
     var toAddress = String()
     var fromAddress = String()
@@ -68,13 +77,13 @@ class DriverSearchVC: UIViewController {
             switch result{
             case .failure(let error):
                 print(error)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     self.requestCount += 1
                     if self.requestCount == 10{
                         DispatchQueue.main.async {
                             UIView.animate(withDuration: 1) {
                                 self.removeViews(with: .search)
-                                self.delegate?.changeFrame()
+                                self.delegate?.changeFrame(with: .found)
                                 self.addviews(with: .found)
                                 self.orderData = MainScreenConstants.demoOrderData
                                 if let data = self.orderData?.data{
@@ -98,7 +107,7 @@ class DriverSearchVC: UIViewController {
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 1) {
                         self.removeViews(with: .search)
-                        self.delegate?.changeFrame()
+                        self.delegate?.changeFrame(with: .found)
                         self.addviews(with: .found)
                         if let data = self.orderData?.data{
                             self.setData(with: data)
@@ -129,6 +138,8 @@ class DriverSearchVC: UIViewController {
             searchingStatusLabel.removeFromSuperview()
         case .found:
             foundDriverView.removeFromSuperview()
+        case .wait:
+            awaitDriverView.removeFromSuperview()
         }
     }
     
@@ -139,7 +150,36 @@ class DriverSearchVC: UIViewController {
             configureStatusLabel()
         case .found:
             configureFoundView()
+        case .wait:
+            configureAwaitScreen()
         }
+    }
+    
+    func configureAwaitScreen(){
+        cancelButton.removeFromSuperview()
+        view.backgroundColor = .clear
+       
+        
+        awaitDriverView.configure(state: .arrived,
+                                  name: "Белая \(orderData?.data.taxi?.car ?? "Toyota Corolla")",
+                                  number: orderData?.data.taxi?.number ?? "477" ,
+                                  region: "\(orderData?.data.taxi?.regionNumber ?? 125)",
+                                  status: MainScreenConstants.DriverStatus.OnTheWay.rawValue,
+                                  time: "5")
+       
+        view.addSubview(awaitDriverView)
+        awaitDriverView.translatesAutoresizingMaskIntoConstraints = false
+       
+      
+        
+       
+        
+        NSLayoutConstraint.activate([
+            awaitDriverView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            awaitDriverView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            awaitDriverView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            awaitDriverView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func configureFoundView(){
@@ -212,7 +252,9 @@ extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
-                self.delegate?.confirm()
+                self.removeViews(with: .found)
+                self.delegate?.changeFrame(with: .wait)
+                self.addviews(with: .wait)
             }
         }
         

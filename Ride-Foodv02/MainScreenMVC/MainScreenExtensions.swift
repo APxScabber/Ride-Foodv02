@@ -586,6 +586,10 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
 }
 
 extension MainScreenViewController: DriverSearchDelegate {
+    func changeFrame(with screenState: ScreenState) {
+        self.setContainerViewFrame(with: screenState)
+    }
+    
     func confirm() {
         DispatchQueue.main.async {
             self.pressTaxiOrderButton()
@@ -604,10 +608,6 @@ extension MainScreenViewController: DriverSearchDelegate {
         }
           
     
-    }
-    
-    func changeFrame() {
-        self.setContainerViewFrame(with: .found)
     }
     
     
