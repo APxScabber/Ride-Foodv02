@@ -721,9 +721,9 @@ extension CategoriesAndFoodVC: ScoresViewDelegate {
         scoresToolbar.isHidden = false
         scoresToolbar.scores = scoresView.scores
         scoresToolbar.textField.becomeFirstResponder()
-        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 128)
+        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 150)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 128
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 150
         }
 
     }
@@ -743,6 +743,34 @@ extension CategoriesAndFoodVC: ScoresViewDelegate {
         closeScoresView()
         enter(scores: scoresView.scores)
     }
+}
+
+//MARK: - ScoresToolbarDelegate
+
+extension CategoriesAndFoodVC: ScoresToolbarDelegate {
+    
+    func closeScoresToolbar() {
+        scoresToolbar.textField.resignFirstResponder()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height
+            self.scoresView.frame.origin.y = self.view.bounds.height
+        } completion: {  if $0 == .end {
+                self.scoresToolbar.isHidden = true
+                self.transparentView.isHidden = true
+                self.containerView.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func enter(scores: Int) {
+        closeScoresToolbar()
+        closeScoresView()
+        cartVC.promocodeScoreView.scores = scores
+    }
+    
+    
+    
+    
 }
 
 //MARK: -  PromocodeToolbarDelegate
@@ -805,29 +833,4 @@ extension CategoriesAndFoodVC: PromocodeActivationDelegate {
     
 }
 
-//MARK: - ScoresToolbarDelegate
 
-extension CategoriesAndFoodVC: ScoresToolbarDelegate {
-    
-    func closeScoresToolbar() {
-        scoresToolbar.textField.resignFirstResponder()
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-            self.scoresToolbar.frame.origin.y = self.view.bounds.height
-        } completion: {  if $0 == .end {
-                self.scoresToolbar.isHidden = true
-                self.transparentView.isHidden = true
-                self.containerView.isUserInteractionEnabled = true
-            }
-        }
-    }
-    
-    func enter(scores: Int) {
-        closeScoresToolbar()
-        closeScoresView()
-        cartVC.promocodeScoreView.scores = scores
-    }
-    
-    
-    
-    
-}

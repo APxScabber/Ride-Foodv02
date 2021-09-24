@@ -10,6 +10,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     var pointOrigin: CGPoint?
     private var totalHeight: CGFloat = 140
     private var shouldIncreaseHeight = false
+    weak var delegate: ShopListDelegate?
     
     //MARK: - API
     var shops = [Shop]()
@@ -165,7 +166,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
          if sender.state == .ended {
              let dragVelocity = sender.velocity(in: view)
              if dragVelocity.y >= 1300 {
-                 self.dismiss(animated: true, completion: nil)
+                 delegate?.syncUI()
+                 dismiss(animated: true, completion: nil)
              } else {
                  UIView.animate(withDuration: 0.3) {
                      self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 300)

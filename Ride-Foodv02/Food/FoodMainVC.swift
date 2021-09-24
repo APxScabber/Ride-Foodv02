@@ -8,8 +8,8 @@ protocol FoodMainDelegate: AnyObject {
 class FoodMainVC: UIViewController {
     
 
-
     //MARK: - API
+    
     var addresses = [Address]()
     var place = String() { didSet { updateUI() }}
     var region = MKCoordinateRegion()
@@ -51,9 +51,7 @@ class FoodMainVC: UIViewController {
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
-                
+        activateKeyboardNotification()
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(done))
         swipe.direction = .down
         view.addGestureRecognizer(swipe)
@@ -103,7 +101,9 @@ class FoodMainVC: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "shopListVC") as! ShopListViewController
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
-        self.present(vc, animated: true)
+        vc.delegate = self
+        NotificationCenter.default.removeObserver(self)
+        present(vc, animated: true)
     }
     
     //MARK: - UI changes
@@ -152,8 +152,23 @@ class FoodMainVC: UIViewController {
         }
     }
     
+    private func activateKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
 }
 
+//MARK: - ShopListDelegate
+
+extension FoodMainVC: ShopListDelegate {
+    
+    func syncUI() {
+        activateKeyboardNotification()
+    }
+    
+}
+
+//MARK: - UITableViewDataSource
 
 extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
     

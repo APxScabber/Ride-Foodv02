@@ -1180,7 +1180,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
                                                 <connections>
                                                     <action selector="order:" destination="9uc-oh-uKC" eventType="touchUpInside" id="nwQ-Rf-7P6"/>
-                                                    <segue destination="MYX-wI-uVd" kind="unwind" identifier="unwindSegueFromFood" unwindAction="unwindSegueFromFood:" id="LQu-yP-0Xl"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1496,6 +1495,7 @@
                         <outlet property="topRoundedView" destination="WTM-QE-Uwh" id="CPP-VX-nHP"/>
                         <outlet property="totalPriceLabel" destination="vIJ-jL-uuM" id="iAd-iF-PqR"/>
                         <outlet property="transparentView" destination="Bns-OZ-N6h" id="FWv-QU-4Bj"/>
+                        <segue destination="MYX-wI-uVd" kind="unwind" identifier="unwindSegueFromFood" unwindAction="unwindSegueFromFood:" id="gBG-Eb-PfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfp-Vg-bGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

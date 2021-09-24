@@ -15,7 +15,7 @@ enum Localizable {
     }
     
     enum Support: String,LocalizableDelegate {
-        case cancel,capture,library,done,messageSent,next,problemDesc,addImageDesc,photoLimitDesc,responceDesc,send
+        case cancel,capture,library,supportDone,messageSent,next,problemDesc,addImageDesc,photoLimitDesc,responceDesc,send
             
     }
     
