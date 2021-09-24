@@ -9,10 +9,15 @@ import UIKit
 
 class AwaitDriverView: UIView {
     
+    var currentStatus: DriverStatus?
+    
     var carName         = String()
     var carNumber       = String()
     var carRegion       = String()
     var driverStatus    = String()
+    
+    let driverToClientDuration = 10
+    let driverWaitingDuration = 15
     
 //    Timer components
     var timer: Timer?
@@ -46,25 +51,48 @@ class AwaitDriverView: UIView {
     @objc func countdown() {
         var minutes: Int
         var seconds: Int
-
+       
         if totalDuration == 0 {
-            timer?.invalidate()
+            setBehaviorDuringCountDown(timer: timer ?? Timer())
+          
+        }
+        if totalDuration >= 1{
+            totalDuration = totalDuration - 1
+        }
+        minutes = (totalDuration % 3600) / 60
+        seconds = (totalDuration % 3600) % 60
+       timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
+        
+        if totalDuration <= 10 && currentStatus == .isWaiting{
+            timeLabel.textColor = UIColor.red
+        } else {
+            timeLabel.textColor = UIColor.saleOrangeColor
+        }
+    }
+    
+    func setBehaviorDuringCountDown(timer: Timer){
+        timer.invalidate()
+        switch currentStatus{
+        case .onTheWay:
             self.configure(state: .almostThere)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 DispatchQueue.main.async {
                     self.configure(state: .arrived)
                 }
-               
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-                self.startTimer(with: 30)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8){
+                self.startTimer(with: self.driverWaitingDuration)
                 self.configure(state: .isWaiting)
             }
+        case .almostThere:
+            break
+        case .arrived:
+          break
+        case .isWaiting:
+            timer.invalidate()
+        case .none:
+            break
         }
-        totalDuration = totalDuration - 1
-        minutes = (totalDuration % 3600) / 60
-        seconds = (totalDuration % 3600) % 60
-       timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
     func setData(name: String, number: String, region: String){
@@ -80,6 +108,7 @@ class AwaitDriverView: UIView {
 //    UI Part
     
     func configure(state: DriverStatus){
+        currentStatus = state
         self.containerView.layer.cornerRadius = 15
         self.containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         configureNameAndNumberViews()
@@ -145,7 +174,8 @@ class AwaitDriverView: UIView {
                 statusLabel.widthAnchor.constraint(equalToConstant: 200)
             ])
         case .isWaiting:
-            
+            statusLabel.removeFromSuperview()
+            containerView.addSubview(statusLabel)
             statusLabel.text = MainScreenConstants.DriverStatusText.Waiting.rawValue
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
@@ -180,9 +210,10 @@ class AwaitDriverView: UIView {
         case .arrived:
             timeLabel.removeFromSuperview()
         case .isWaiting:
+           
             containerView.addSubview(timeLabel)
         
-            timeLabel.textColor = UIColor.red
+          
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
