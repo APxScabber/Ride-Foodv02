@@ -35,6 +35,9 @@ class AwaitDriverView: UIView {
     @IBOutlet weak var containerView: UIView!
     
     func configure(state: DriverStatus, name: String, number: String , region: String, status: String, time: String){
+        self.containerView.layer.cornerRadius = 15
+        self.containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         self.carName = name
         self.carNumber = number
         self.carRegion = region
@@ -70,10 +73,10 @@ class AwaitDriverView: UIView {
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             NSLayoutConstraint.activate([
-                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
+                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 65),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
-                statusLabel.widthAnchor.constraint(equalToConstant: 137)
+                statusLabel.widthAnchor.constraint(equalToConstant: 170)
             ])
         case .almostThere:
             statusLabel.textColor = UIColor.black
@@ -97,10 +100,10 @@ class AwaitDriverView: UIView {
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             NSLayoutConstraint.activate([
-                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
+                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 65),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
-                statusLabel.widthAnchor.constraint(equalToConstant: 137)
+                statusLabel.widthAnchor.constraint(equalToConstant: 170)
             ])
         }
         
@@ -155,7 +158,7 @@ class AwaitDriverView: UIView {
         carNumberView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            carNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 60),
+            carNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 55),
             carNameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             carNameLabel.heightAnchor.constraint(equalToConstant: 40),
             carNameLabel.widthAnchor.constraint(equalToConstant: 200),

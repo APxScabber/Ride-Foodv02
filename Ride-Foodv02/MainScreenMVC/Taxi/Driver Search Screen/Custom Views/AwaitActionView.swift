@@ -33,6 +33,7 @@ class AwaitActionView: UIView {
     }
     
     func configure(){
+        self.backgroundColor = .white
         configureCircleView()
         configureImageView()
         configureNameLabel()
@@ -45,13 +46,11 @@ class AwaitActionView: UIView {
         circleView.translatesAutoresizingMaskIntoConstraints = false
         circleView.layer.cornerRadius = 30
        
-        circleView.layer.shadowPath = UIBezierPath(rect: circleView.bounds).cgPath
-        circleView.layer.shadowRadius = 5
-        circleView.layer.shadowOffset = .zero
-        circleView.layer.shadowOpacity = 1
-        circleView.layer.shadowColor = UIColor.SeparatorColor.cgColor
-        circleView.layer.masksToBounds = true
-        circleView.clipsToBounds = false
+        circleView.addShadowToView(shadow_color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.1),
+                                           offset: CGSize(width: 0, height: 0),
+                                           shadow_radius: 10,
+                                           shadow_opacity: 1,
+                                           corner_radius: 30)
         
         NSLayoutConstraint.activate([
             circleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
