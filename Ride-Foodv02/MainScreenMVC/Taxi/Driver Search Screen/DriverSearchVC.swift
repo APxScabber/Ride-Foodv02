@@ -65,6 +65,9 @@ class DriverSearchVC: UIViewController {
     @objc func cancel(){
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
+                self.view.subviews.forEach { i in
+                    i.removeFromSuperview()
+                }
                 self.delegate?.cancel()
             }
         }
@@ -195,7 +198,7 @@ class DriverSearchVC: UIViewController {
         NSLayoutConstraint.activate([
             foundDriverView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             foundDriverView.topAnchor.constraint(equalTo: view.topAnchor),
-            foundDriverView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -5),
+            foundDriverView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
             foundDriverView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
@@ -258,7 +261,7 @@ extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
-
+                self.view.backgroundColor = .clear
                 self.removeViews(with: .found)
                 self.delegate?.changeFrame(with: .wait)
                 self.addviews(with: .wait)

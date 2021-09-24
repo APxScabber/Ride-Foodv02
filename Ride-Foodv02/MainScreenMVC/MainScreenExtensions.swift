@@ -626,8 +626,13 @@ extension MainScreenViewController: DriverSearchDelegate {
                 self.isTaxiOrdered = false
                 self.containerView.frame.origin.y = self.view.frame.height
                 self.containerView.removeFromSuperview()
+            self.addressesChooserView.alpha = 1
+            self.taxiBackButtonOutlet.alpha = 1
+            self.circleView.alpha = 1
+            self.promotionView.alpha = 1
                 self.view.layoutIfNeeded()
             self.returnToMainView()
+           
         
         }
           
