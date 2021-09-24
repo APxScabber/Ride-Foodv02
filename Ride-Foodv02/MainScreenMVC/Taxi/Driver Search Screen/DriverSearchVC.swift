@@ -170,7 +170,7 @@ class DriverSearchVC: UIViewController {
                                 region: "\(orderData?.data.taxi?.regionNumber ?? 125)")
         
         awaitDriverView.configure(state: .onTheWay)
-        awaitDriverView.startTimer(with: 10)
+        awaitDriverView.startTimer(with: awaitDriverView.driverToClientDuration)
        
         view.addSubview(awaitDriverView)
         awaitDriverView.translatesAutoresizingMaskIntoConstraints = false

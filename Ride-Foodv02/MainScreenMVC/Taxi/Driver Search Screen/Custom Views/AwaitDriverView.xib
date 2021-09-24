@@ -43,6 +43,7 @@
             <connections>
                 <outlet property="containerView" destination="ojZ-Gz-xzd" id="uNd-hp-xAG"/>
                 <outlet property="roundedSwipeView" destination="Iq6-6m-tPN" id="qM4-W7-YTM"/>
+                <outlet property="swipeViewToTopConstraint" destination="Q9d-XL-5Wl" id="8jk-lv-YjB"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </view>

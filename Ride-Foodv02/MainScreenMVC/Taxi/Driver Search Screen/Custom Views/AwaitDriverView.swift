@@ -9,10 +9,20 @@ import UIKit
 
 class AwaitDriverView: UIView {
     
+    // storyboard contraints
+    
+    @IBOutlet weak var swipeViewToTopConstraint: NSLayoutConstraint!
+    
+    
+    var currentStatus: DriverStatus?
+    
     var carName         = String()
     var carNumber       = String()
     var carRegion       = String()
     var driverStatus    = String()
+    
+    let driverToClientDuration = 10
+    let driverWaitingDuration = 15
     
 //    Timer components
     var timer: Timer?
@@ -46,25 +56,49 @@ class AwaitDriverView: UIView {
     @objc func countdown() {
         var minutes: Int
         var seconds: Int
-
+       
         if totalDuration == 0 {
-            timer?.invalidate()
+            setBehaviorDuringCountDown(timer: timer ?? Timer())
+          
+        }
+        if totalDuration >= 1{
+            totalDuration = totalDuration - 1
+        }
+        minutes = (totalDuration % 3600) / 60
+        seconds = (totalDuration % 3600) % 60
+       timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
+        
+        if totalDuration <= 10 && currentStatus == .isWaiting{
+            timeLabel.textColor = UIColor.red
+        } else {
+            timeLabel.textColor = UIColor.saleOrangeColor
+        }
+    }
+    
+    func setBehaviorDuringCountDown(timer: Timer){
+        timer.invalidate()
+        switch currentStatus{
+        case .onTheWay:
             self.configure(state: .almostThere)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 DispatchQueue.main.async {
                     self.configure(state: .arrived)
                 }
-               
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-                self.startTimer(with: 30)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8){
+                self.startTimer(with: self.driverWaitingDuration)
                 self.configure(state: .isWaiting)
+                self.waitingDescriptionLabel.text = MainScreenConstants.DriverStatusText.FreeWaitingDescription.rawValue
             }
+        case .almostThere:
+            break
+        case .arrived:
+          break
+        case .isWaiting:
+            timer.invalidate()
+        case .none:
+            break
         }
-        totalDuration = totalDuration - 1
-        minutes = (totalDuration % 3600) / 60
-        seconds = (totalDuration % 3600) % 60
-       timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
     func setData(name: String, number: String, region: String){
@@ -80,9 +114,10 @@ class AwaitDriverView: UIView {
 //    UI Part
     
     func configure(state: DriverStatus){
+        currentStatus = state
         self.containerView.layer.cornerRadius = 15
         self.containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        configureNameAndNumberViews()
+        configureNameAndNumberViews(state: state)
         UIView.animate(withDuration: 0.5) {
            
             switch state {
@@ -145,15 +180,31 @@ class AwaitDriverView: UIView {
                 statusLabel.widthAnchor.constraint(equalToConstant: 200)
             ])
         case .isWaiting:
-            
+            statusLabel.removeFromSuperview()
+            containerView.addSubview(statusLabel)
             statusLabel.text = MainScreenConstants.DriverStatusText.Waiting.rawValue
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
+            
+            containerView.addSubview(waitingDescriptionLabel)
+            waitingDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+            waitingDescriptionLabel.font = UIFont.SFUIDisplayRegular(size: 12)
+            waitingDescriptionLabel.textAlignment = .center
+            waitingDescriptionLabel.textColor = UIColor.DarkGrayTextColor
+            
+            
+            
             NSLayoutConstraint.activate([
-                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
                 statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 65),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
-                statusLabel.widthAnchor.constraint(equalToConstant: 170)
+                statusLabel.widthAnchor.constraint(equalToConstant: 170),
+                
+                waitingDescriptionLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 1),
+                waitingDescriptionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+                waitingDescriptionLabel.widthAnchor.constraint(equalToConstant: 330),
+                waitingDescriptionLabel.heightAnchor.constraint(equalToConstant: 15)
+                
             ])
         }
         
@@ -180,9 +231,10 @@ class AwaitDriverView: UIView {
         case .arrived:
             timeLabel.removeFromSuperview()
         case .isWaiting:
+           
             containerView.addSubview(timeLabel)
         
-            timeLabel.textColor = UIColor.red
+          
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -195,7 +247,22 @@ class AwaitDriverView: UIView {
         
     }
     
-    func configureNameAndNumberViews(){
+    func configureNameAndNumberViews(state: DriverStatus){
+        
+        var topPadding = CGFloat()
+        
+        switch state{
+        case .onTheWay:
+            topPadding = 50
+        case .almostThere:
+            topPadding = 50
+        case .arrived:
+            topPadding = 55
+        case .isWaiting:
+            topPadding = 65
+            carNameLabel.removeFromSuperview()
+        }
+        
         containerView.addSubview(carNameLabel)
         carNameLabel.text = carName
         carNameLabel.font = UIFont.SFUIDisplayRegular(size: 19)
@@ -209,7 +276,7 @@ class AwaitDriverView: UIView {
         carNumberView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            carNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 55),
+            carNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: topPadding),
             carNameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             carNameLabel.heightAnchor.constraint(equalToConstant: 40),
             carNameLabel.widthAnchor.constraint(equalToConstant: 200),
