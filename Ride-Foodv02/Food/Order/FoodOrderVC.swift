@@ -93,7 +93,7 @@ class FoodOrderVC: BaseViewController {
     }
     
     @IBAction func order(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "unwindSegueFromFood", sender: self)
     }
     
     @IBAction func goToCashbackNeededView(_ sender: UIButton) {

@@ -35,6 +35,7 @@ class SupportAddImagesViewController: UIViewController {
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.color = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     }}
+    @IBOutlet weak var barButton: UIBarButtonItem!
     
     private let actionSheetView = SupportActionSheetView.initFromNib()
     
@@ -54,7 +55,8 @@ class SupportAddImagesViewController: UIViewController {
 
     @IBAction func sendFeedback(_ sender: UIButton) {
         if addImagesButton.buttonState != .done {
-            sendButton.setTitle(Localizable.Support.done.localized, for: .normal)
+            barButton.isEnabled = false
+            sendButton.setTitle(Localizable.Support.supportDone.localized, for: .normal)
             addImagesButton.buttonState = .done
             addImageDescriptionLabel.text = Localizable.Support.messageSent.localized
             addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)

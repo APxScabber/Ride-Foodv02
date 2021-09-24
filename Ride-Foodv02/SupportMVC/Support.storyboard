@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xtq-JV-5Ak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xtq-JV-5Ak">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -282,13 +282,14 @@
                     <connections>
                         <outlet property="addImageDescriptionLabel" destination="weD-Np-kdP" id="oor-nx-5gx"/>
                         <outlet property="addImagesButton" destination="k9A-mg-Y6i" id="dzn-hX-Xjw"/>
+                        <outlet property="barButton" destination="q6u-Pi-z9t" id="nlL-KH-SDt"/>
                         <outlet property="collectionView" destination="Z5u-u7-NZI" id="esC-7t-VOz"/>
                         <outlet property="errorDescriptionLabel" destination="qCi-L5-asd" id="9vR-nx-p5l"/>
                         <outlet property="roundedView" destination="ItP-um-WwU" id="X4F-bd-Bsl"/>
                         <outlet property="sendButton" destination="1ao-pi-Fbu" id="3d3-JY-7qK"/>
                         <outlet property="sendButtonView" destination="WPh-iB-UqK" id="dQq-fb-EjW"/>
                         <outlet property="successLabel" destination="InE-Vk-26N" id="HPC-vc-vdY"/>
-                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="goToMainScreen" unwindAction="goToMainScreen:" id="1pz-Hg-IVK"/>
+                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="goToMainScreen" unwindAction="unwindSegueFromSupport:" id="vq0-ma-eEQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AS6-oB-Xce" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

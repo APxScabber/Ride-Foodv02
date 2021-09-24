@@ -42,6 +42,12 @@ class SupportMainViewController: UIViewController {
         updateUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        distanceFromBottomConstraint.constant = SupportConstant.bottomConstraintValue
+        textView.resignFirstResponder()
+    }
+    
     //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "supportAddImagesSegue",

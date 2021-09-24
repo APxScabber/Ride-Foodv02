@@ -27,7 +27,7 @@
 "cancel" = "Cancel";
 "capture" = "Capture photo or video";
 "library" = "Library";
-"done" = "Done!";
+"supportDone" = "Done!";
 "messageSent" = "Message sent";
 "next" = "Next";
 "problemDesc" = "Describe the problem";

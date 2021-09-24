@@ -1240,4 +1240,8 @@ class MainScreenViewController: BaseViewController {
 
     }
     
+    @IBAction func unwindSegueFromSupport(_ segue: UIStoryboardSegue) {
+        close()
+    }
+    
 }
