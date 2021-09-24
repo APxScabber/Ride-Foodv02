@@ -168,7 +168,7 @@ class DriverSearchVC: UIViewController {
     func configureAwaitScreen(){
         cancelButton.removeFromSuperview()
         view.backgroundColor = .clear
-       
+        awaitDriverView.delegate = self
         awaitDriverView.setData(name: "Белая \(orderData?.data.taxi?.car ?? "Toyota Corolla")",
                                 number: orderData?.data.taxi?.number ?? "477",
                                 region: "\(orderData?.data.taxi?.regionNumber ?? 125)")
@@ -262,7 +262,7 @@ extension DriverSearchVC: FoundDriverProtocol{
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
 
-                self.delegate?.confirm()
+      //          self.delegate?.confirm()
 
                 self.view.backgroundColor = .clear
                 self.removeViews(with: .found)
@@ -272,5 +272,13 @@ extension DriverSearchVC: FoundDriverProtocol{
         }
         
     }
+}
+
+extension DriverSearchVC: CloseViewDelegate{
+    func close() {
+        self.delegate?.confirm()
+    }
+    
+    
 }
 
