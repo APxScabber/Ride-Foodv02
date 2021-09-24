@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CloseViewDelegate: AnyObject{
+    func close()
+}
+
 class AwaitDriverView: UIView {
     
     // storyboard contraints
@@ -23,9 +27,9 @@ class AwaitDriverView: UIView {
     
     let driverToClientDuration = 10
     let driverWaitingDuration = 15
-    let paidDriverWaitingDuration = 120
+    let paidDriverWaitingDuration = 10
     
-    
+    weak var delegate: CloseViewDelegate?
     
 //    Timer components
     var timer: Timer?
@@ -108,6 +112,8 @@ class AwaitDriverView: UIView {
             break
         case .paidWaiting:
             timer.invalidate()
+            delegate?.close()
+            
         }
     }
     
