@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-rn-GQU" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="150"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="170"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k34-ae-9eY" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                            <rect key="frame" x="25" y="90" width="364" height="50"/>
+                            <rect key="frame" x="25" y="95" width="364" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kll-0X-9zp">
                                     <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
@@ -41,14 +41,14 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7v-cL-jov">
-                            <rect key="frame" x="25" y="64" width="364" height="1"/>
+                            <rect key="frame" x="25" y="53" width="364" height="1"/>
                             <color key="backgroundColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="GSn-h3-zDj"/>
                             </constraints>
                         </view>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите количество баллов" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0se-ex-sGp">
-                            <rect key="frame" x="30" y="36" width="189" height="17"/>
+                            <rect key="frame" x="30" y="25" width="189" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="5bP-2U-9Vi"/>
                             </constraints>
@@ -56,7 +56,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="У вас меньше баллов чем указано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXi-A3-bqG">
-                            <rect key="frame" x="25" y="68" width="203" height="21"/>
+                            <rect key="frame" x="25" y="57" width="203" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="taf-2B-OTY"/>
                             </constraints>
@@ -81,13 +81,13 @@
                         <constraint firstItem="vXi-A3-bqG" firstAttribute="leading" secondItem="Dga-rn-GQU" secondAttribute="leading" constant="25" id="GZM-ms-J3N"/>
                         <constraint firstItem="9NR-5Y-gHz" firstAttribute="centerX" secondItem="Dga-rn-GQU" secondAttribute="centerX" id="Kfn-CY-mv5"/>
                         <constraint firstItem="k34-ae-9eY" firstAttribute="leading" secondItem="Dga-rn-GQU" secondAttribute="leading" constant="25" id="VtG-lN-Bn2"/>
-                        <constraint firstAttribute="height" constant="150" id="d2C-gz-xzE"/>
-                        <constraint firstAttribute="bottom" secondItem="k34-ae-9eY" secondAttribute="bottom" constant="10" id="f8J-2A-Can"/>
+                        <constraint firstAttribute="height" constant="170" id="d2C-gz-xzE"/>
+                        <constraint firstAttribute="bottom" secondItem="k34-ae-9eY" secondAttribute="bottom" constant="25" id="f8J-2A-Can"/>
                         <constraint firstItem="0se-ex-sGp" firstAttribute="leading" secondItem="Dga-rn-GQU" secondAttribute="leading" constant="30" id="jWk-cT-gcI"/>
                         <constraint firstItem="vXi-A3-bqG" firstAttribute="top" secondItem="Q7v-cL-jov" secondAttribute="bottom" constant="3" id="n01-RH-Hfg"/>
-                        <constraint firstItem="k34-ae-9eY" firstAttribute="top" secondItem="Q7v-cL-jov" secondAttribute="bottom" constant="25" id="nK9-Nh-fvA"/>
                         <constraint firstItem="Q7v-cL-jov" firstAttribute="top" secondItem="0se-ex-sGp" secondAttribute="bottom" constant="11" id="uNF-eE-Zpo"/>
                         <constraint firstAttribute="trailing" secondItem="Q7v-cL-jov" secondAttribute="trailing" constant="25" id="yAg-TI-p4W"/>
+                        <constraint firstItem="0se-ex-sGp" firstAttribute="top" secondItem="9NR-5Y-gHz" secondAttribute="bottom" constant="10" id="yNr-U7-sNx"/>
                     </constraints>
                 </view>
             </subviews>
@@ -101,6 +101,7 @@
             <connections>
                 <outlet property="confirmButton" destination="kll-0X-9zp" id="Kwl-br-Uo6"/>
                 <outlet property="errorLabel" destination="vXi-A3-bqG" id="3Jd-wL-W4L"/>
+                <outlet property="heightConstraint" destination="d2C-gz-xzE" id="v4O-di-N0V"/>
                 <outlet property="roundedView" destination="k34-ae-9eY" id="a2q-cj-xNV"/>
                 <outlet property="textField" destination="0se-ex-sGp" id="g54-uk-ain"/>
                 <outlet property="underBarLine" destination="Q7v-cL-jov" id="fUu-BS-Hgr"/>

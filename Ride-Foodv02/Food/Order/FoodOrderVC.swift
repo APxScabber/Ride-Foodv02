@@ -12,7 +12,7 @@ class FoodOrderVC: BaseViewController {
     
     private var currentImage = UIImage()
     private var currentPay = String()
-    private var totalHeight: CGFloat = 0
+    private var totalHeight: CGFloat = 350
     
     //MARK: - Outlets
     
@@ -93,7 +93,8 @@ class FoodOrderVC: BaseViewController {
     }
     
     @IBAction func order(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindSegueFromFood", sender: self)
+        performSegue(withIdentifier: "unwindSegueFromFood", sender: sender)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func goToCashbackNeededView(_ sender: UIButton) {
@@ -125,6 +126,7 @@ class FoodOrderVC: BaseViewController {
         paymentWaysInteractor.loadPaymentData(userID: userID) { cards in
             var numbers = [String]()
             var images = [UIImage]()
+            let initialImagesCount = self.paymentImages.count
             if !cards.isEmpty {
                 cards.forEach {
                     let lastFourDigits = "****" + $0.number.suffix(4)
@@ -135,13 +137,14 @@ class FoodOrderVC: BaseViewController {
                 self.paymentImages.insert(contentsOf: images, at: 1)
                 self.tableView.reloadData()
                 self.tableViewHeightConstraint.constant += min(132,CGFloat(44 * numbers.count))
-                self.containerViewHeightConstraint.constant += min(132,CGFloat(44 * numbers.count))
+                self.containerViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
+                self.containerViewHeightConstraint.constant -= CGFloat(44*initialImagesCount)
+            }
                 self.totalHeight = self.containerViewHeightConstraint.constant
+                self.tableView.isUserInteractionEnabled = true
                 UIView.animate(withDuration: 0.25) {
                     self.view.layoutIfNeeded()
                 }
-            }
-                self.tableView.isUserInteractionEnabled = true
             }
         
         
@@ -190,7 +193,8 @@ extension FoodOrderVC: UITableViewDataSource {
                 foodOrderCell.lastFourCardDigitsLabel.text = paymentWays[indexPath.row]
                 foodOrderCell.paymentLabel.text = Localizable.FoodOrder.foodOrderCard.localized
             }
-            if indexPath.row == CurrentPayment.shared.id && paymentWays.count > 2 {
+            
+            if indexPath.row == CurrentPayment.shared.id {
                 foodOrderCell.rightImageView.image = #imageLiteral(resourceName: "selectedCheckBox")
                 selectedIndex = indexPath
                 selectRowAt(indexPath)

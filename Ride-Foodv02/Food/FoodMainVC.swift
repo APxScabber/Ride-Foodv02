@@ -10,12 +10,15 @@ class FoodMainVC: UIViewController {
 
     //MARK: - API
     
-    var addresses = [Address]()
+    var localaddresses =  [UserAddressMO]()
+    var remoteAddresses =  [AddressData]()
+    
     var place = String() { didSet { updateUI() }}
     var region = MKCoordinateRegion()
     weak var delegate: FoodMainDelegate?
     
     private var keyboardHeight: CGFloat = 0
+    private var shouldUseRemoteAddresses = false
     
     //MARK: - Outlets
     
@@ -42,7 +45,9 @@ class FoodMainVC: UIViewController {
         textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }}
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint! { didSet {
+        tableViewHeightConstraint.constant = 0 
+    }}
     
     //MARK: - Actions
     
@@ -57,17 +62,7 @@ class FoodMainVC: UIViewController {
         view.addGestureRecognizer(swipe)
         CurrentAddress.shared.place = ""
         CurrentAddress.shared.address = ""
-        PersistanceManager.shared.fetchAddresses { result in
-            switch result {
-            case .success(let addresses):
-                addresses.forEach {
-                    self.addresses.append(Address(title: $0.title ?? "", fullAddress: $0.fullAddress ?? ""))
-                }
-                self.tableView.reloadData()
-                self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(addresses.count,3))
-            default:break
-            }
-        }
+        fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,6 +151,51 @@ class FoodMainVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintWith(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
+    //MARK: - Fetch addresses
+    
+    private func getAddressesFromServer() {
+        
+        AddressesNetworkManager.shared.getTheAddresses { [weak self] result in
+            guard let self = self else { return }
+            switch result{
+            case .success(let data):
+                DispatchQueue.main.async {
+                    
+                    if !data.isEmpty {
+                        self.shouldUseRemoteAddresses = true
+                        PersistanceManager.shared.createCoreDataInstance(addressesToCopy: self.remoteAddresses, view: self)
+                        self.remoteAddresses = data
+                        self.tableView.reloadData()
+                        self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(self.remoteAddresses.count,3))
+                    }
+                    print(data)
+                }
+            default:break
+            }
+        }
+    }
+    
+    private func fetch(){
+
+        PersistanceManager.shared.fetchAddresses { result in
+            switch result{
+            case .success(let data):
+                
+                if data.isEmpty {
+                    self.getAddressesFromServer()
+                } else {
+                    DispatchQueue.main.async {
+                        self.localaddresses = data
+                        self.tableView.reloadData()
+                        self.tableViewHeightConstraint.constant = FoodConstants.tableViewRowHeight * CGFloat(min(self.localaddresses.count,3))
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 //MARK: - ShopListDelegate
@@ -174,22 +214,33 @@ extension FoodMainVC: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addresses.count
+        return shouldUseRemoteAddresses ? remoteAddresses.count : localaddresses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodMainCell", for: indexPath)
         if let foodMainCell = cell as? FoodMainTableViewCell {
-            foodMainCell.placeLabel.text = addresses[indexPath.row].title
-            foodMainCell.addressLabel.text = addresses[indexPath.row].fullAddress
+            if shouldUseRemoteAddresses {
+                foodMainCell.placeLabel.text = remoteAddresses[indexPath.row].name ?? ""
+                foodMainCell.addressLabel.text = remoteAddresses[indexPath.row].address ?? ""
+            } else {
+                foodMainCell.placeLabel.text = localaddresses[indexPath.row].title ?? ""
+                foodMainCell.addressLabel.text = localaddresses[indexPath.row].fullAddress ?? ""
+            }
+            
             return foodMainCell
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentAddress.shared.place = addresses[indexPath.row].title
-        CurrentAddress.shared.address = addresses[indexPath.row].fullAddress
+        if shouldUseRemoteAddresses {
+            CurrentAddress.shared.place = remoteAddresses[indexPath.row].name ?? ""
+            CurrentAddress.shared.address = remoteAddresses[indexPath.row].address ?? ""
+        } else {
+            CurrentAddress.shared.place = localaddresses[indexPath.row].title ?? ""
+            CurrentAddress.shared.address = localaddresses[indexPath.row].fullAddress ?? ""
+        }
         goToTheShopListVC()
         tableView.deselectRow(at: indexPath, animated: true)
     }

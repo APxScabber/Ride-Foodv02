@@ -18,6 +18,7 @@ class ScoresToolbar: UIView {
         textField.placeholder = Localizable.Scores.scoresEnter.localized
         textField.addTarget(self, action: #selector(updateUI), for: .editingChanged)
     }}
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var underBarLine: UIView!
     @IBOutlet weak var errorLabel: UILabel! { didSet {
@@ -54,7 +55,10 @@ class ScoresToolbar: UIView {
         if let currentScores = Int(textField.text ?? ""),
            currentScores > scores {
             errorLabel.isHidden = false
+            underBarLine.backgroundColor = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+            roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
             underBarLine.backgroundColor = .red
+            confirmButton.isUserInteractionEnabled = false
         }
     }
     
