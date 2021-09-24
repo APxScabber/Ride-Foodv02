@@ -34,15 +34,15 @@ class AwaitDriverView: UIView {
     
     @IBOutlet weak var containerView: UIView!
     
-    func configure(state: DriverStatus, name: String, number: String , region: String, status: String, time: String){
-        self.containerView.layer.cornerRadius = 15
-        self.containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+    func setData(name: String, number: String, region: String){
         self.carName = name
         self.carNumber = number
         self.carRegion = region
-        self.driverStatus = status
-        self.time = time
+    }
+    
+    func configure(state: DriverStatus){
+        self.containerView.layer.cornerRadius = 15
+        self.containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         configureNameAndNumberViews()
         switch state {
         case .onTheWay:
@@ -70,6 +70,7 @@ class AwaitDriverView: UIView {
         
         switch state {
         case .onTheWay:
+            statusLabel.text = MainScreenConstants.DriverStatusText.OnTheWay.rawValue
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             NSLayoutConstraint.activate([
@@ -79,24 +80,27 @@ class AwaitDriverView: UIView {
                 statusLabel.widthAnchor.constraint(equalToConstant: 170)
             ])
         case .almostThere:
+            statusLabel.text = MainScreenConstants.DriverStatusText.AlmostThere.rawValue
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .center
             NSLayoutConstraint.activate([
                 statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
                 statusLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
-                statusLabel.widthAnchor.constraint(equalToConstant: 140)
+                statusLabel.widthAnchor.constraint(equalToConstant: 200)
             ])
         case .arrived:
+            statusLabel.text = MainScreenConstants.DriverStatusText.WaitingForYou.rawValue
             statusLabel.textColor = UIColor.saleOrangeColor
             statusLabel.textAlignment = .center
             NSLayoutConstraint.activate([
                 statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
                 statusLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
-                statusLabel.widthAnchor.constraint(equalToConstant: 140)
+                statusLabel.widthAnchor.constraint(equalToConstant: 200)
             ])
         case .isWaiting:
+            statusLabel.text = MainScreenConstants.DriverStatusText.Waiting.rawValue
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             NSLayoutConstraint.activate([
