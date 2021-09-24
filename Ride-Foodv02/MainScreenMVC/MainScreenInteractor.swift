@@ -242,5 +242,4 @@ class MainScreenInteractor {
             return nil
         }
     }
-    
 }

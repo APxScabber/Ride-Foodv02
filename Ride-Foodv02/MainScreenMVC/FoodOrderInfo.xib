@@ -98,6 +98,9 @@
                             <state key="normal" title="Отменить заказ">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="cancelOrderButtonAction:" destination="CiE-ac-leQ" eventType="touchUpInside" id="QnE-22-sM5"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -167,7 +170,7 @@
         <image name="Annotation" width="31" height="47.5"/>
         <image name="DeliveryBag" width="19.5" height="21"/>
         <image name="Gradient" width="12" height="52"/>
-        <image name="phone" width="12.5" height="12.5"/>
+        <image name="phone" width="24.5" height="24"/>
         <image name="swipeLine" width="120" height="15"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

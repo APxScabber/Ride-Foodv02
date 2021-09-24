@@ -43,6 +43,6 @@ class MoreDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func startButtonAction(_ sender: Any) {
-       
+       dismiss(animated: true, completion: nil)
     }
 }

@@ -8,6 +8,7 @@ protocol MenuViewDelegate: AnyObject {
 class MenuView: UIView {
 
     //MARK: - API
+    
     weak var delegate: MenuViewDelegate?
     var isVisible = false
   

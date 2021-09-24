@@ -136,6 +136,9 @@
                             <state key="normal" title="Добавить доставку">
                                 <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="addDeliveryButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="IBT-gJ-QyC"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-68-nMv">
                             <rect key="frame" x="25" y="336" width="364" height="35"/>
@@ -146,6 +149,9 @@
                             <state key="normal" title="Сообщить о проблеме">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="problemButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1DH-KL-VK6"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

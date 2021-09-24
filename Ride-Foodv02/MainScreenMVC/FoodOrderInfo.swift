@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol FoodOrderInfoDelegate: AnyObject {
+    func cancelOrder()
+}
+
 class FoodOrderInfo: UIView {
+    
+    weak var delegate: FoodOrderInfoDelegate?
     
     @IBOutlet weak var swipeLineImageView: UIImageView!
     
@@ -63,5 +69,11 @@ class FoodOrderInfo: UIView {
     @IBOutlet weak var cancelHeightConstraint: NSLayoutConstraint! { didSet {
         cancelHeightConstraint.constant = 0
     }}
+    
+    // MARK: - Actions
 
+    @IBAction func cancelOrderButtonAction(_ sender: Any) {
+        delegate?.cancelOrder()
+    }
+    
 }

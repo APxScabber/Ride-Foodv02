@@ -356,6 +356,23 @@ extension MainScreenViewController: MenuViewDelegate {
             }
         }
         
+        let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+        let highPosY = self.view.frame.height - self.foodTaxiView.frame.height - 50
+        
+        UIView.animate(withDuration: 0.5) {
+            if self.isTaxiOrdered {
+                self.taxiOrderInfoView.frame.origin.y = lowPosY
+            }
+            
+            if self.isFoodOrdered {
+                if self.isTaxiOrdered {
+                    self.foodOrderInfoView.frame.origin.y = highPosY
+                } else {
+                    self.foodOrderInfoView.frame.origin.y = lowPosY
+                }
+            }
+        }
+
     }
     
     func goToStoryboard(_ name:String) {
@@ -561,11 +578,11 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
         profileButton.isUserInteractionEnabled = true
         mapView.isUserInteractionEnabled = true
         
-        for gesture in mapView.gestureRecognizers! {
-            if gesture is UITapGestureRecognizer {
-                mapView.removeGestureRecognizer(gesture)
-            }
-        }
+//        for gesture in mapView.gestureRecognizers! {
+//            if gesture is UITapGestureRecognizer {
+//                mapView.removeGestureRecognizer(gesture)
+//            }
+//        }
 //        view.addSubview(deliveryMainView)
 //        deliveryMainView.delegate = self
 //        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
@@ -598,21 +615,41 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
             self.deliveryMainView.removeFromSuperview()
         }
         }
-
     }
-    
-    
 }
 
 //MARK: - DriverSearchDelegate
 
 extension MainScreenViewController: DriverSearchDelegate {
-    func confirm(time: String) {
+    func confirm(time: String, data: OrderData?) {
         DispatchQueue.main.async {
             self.timeRemainig = time
+            
+            if let data = data?.data {
+                let taxiInfo = data.taxi
+                let tariffInfo = data.tariff
+                self.taxiOrderInfoView.carModelLabel.text = "\(taxiInfo?.color ?? "") \(taxiInfo?.car ?? "")"
+                self.taxiOrderInfoView.mainCarNumberlabel.text = taxiInfo?.number
+                self.taxiOrderInfoView.carRegionNumberLabel.text = "\(taxiInfo?.regionNumber ?? 00)"
+                
+                let driverName = tariffInfo?.name
+                let driverID = String(taxiInfo?.id ?? 00)
+                let finalText = "Водитель: \(driverName ?? "") (id: \(driverID))"
+                let textCount = finalText.count
+                
+                let typeAttributeText: [NSAttributedString.Key : Any] = [.foregroundColor : PaymentWaysColors.grayColor.value]
+                let textAttribute = self.createTextAttribute(inputText: finalText, type: typeAttributeText,
+                                                           locRus: 0, lenRus: textCount - 9,
+                                                           locEng: 0, lenEng: textCount - 7)
+                
+
+                self.taxiOrderInfoView.carDriverTextView.attributedText = textAttribute
+                self.taxiOrderInfoView.carDriverTextView.font = UIFont.SFUIDisplayRegular(size: 17.0)
+                self.taxiOrderInfoView.carDriverTextView.textAlignment = .left
+                
+            }
             self.pressTaxiOrderButton()
         }
-      
     }
     
     func cancel() {
@@ -631,6 +668,72 @@ extension MainScreenViewController: DriverSearchDelegate {
     func changeFrame() {
         self.setContainerViewFrame(with: .found)
     }
-    
-    
 }
+
+// MARK: - Call about problem and Add Delivery Action
+
+extension MainScreenViewController: TaxiOrderInfoDelegate {
+    
+    func addDelivery() {
+        
+        rollUpTaxiOrderInfo()
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            self.taxiOrderInfoView.frame.origin.y = lowPosY
+        } completion: { _ in
+            self.taxiOrderInfoView.gestureRecognizers?.removeAll()
+            let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeUp(_:)))
+            swipeUp.direction = .up
+            self.taxiOrderInfoView.addGestureRecognizer(swipeUp)
+            
+            self.goToFood()
+        }
+    }
+    
+    func problemAction() {
+        let storyboard = UIStoryboard(name: "Support", bundle: .main)
+        if let supportVC = storyboard.instantiateInitialViewController() {
+            supportVC.modalPresentationStyle = .fullScreen
+            supportVC.modalTransitionStyle = .coverVertical
+            present(supportVC, animated: true)
+        }
+    }
+}
+
+// MARK: - Cancel food order
+
+extension MainScreenViewController: FoodOrderInfoDelegate {
+    func cancelOrder() {
+        rollUpFoodOrderInfo()
+        let posY = self.view.frame.height
+        UIView.animate(withDuration: 0.5) {
+            self.foodOrderInfoView.frame.origin.y = posY
+        } completion: { _ in
+            self.foodOrderInfoView.gestureRecognizers?.removeAll()
+            let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.foodInfoSwipeUp(_:)))
+            swipeUp.direction = .up
+            self.foodOrderInfoView.addGestureRecognizer(swipeUp)
+            self.isFoodOrdered = false
+            self.foodTaxiView.foodImageView.isUserInteractionEnabled = true
+            self.foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "Food")
+            
+            if self.isTaxiOrdered {
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 1
+                self.timeLabel.text = "1 активный заказ"
+            } else {
+                self.pathTimeBG.image = nil
+                self.timeLabel.text = ""
+                self.pathTimeView.alpha = 0
+            }
+        }
+    }
+}
+
+//extension MainScreenViewController: TotalScoreDelegate {
+//    
+//    func returnToMainScreen() {
+//        close()
+//    }
+//}

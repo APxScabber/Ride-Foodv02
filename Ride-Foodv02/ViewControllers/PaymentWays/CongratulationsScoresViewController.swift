@@ -95,6 +95,7 @@ class CongratulationsScoresViewController: BaseViewController {
     @IBAction func newOrderButtonAction(_ sender: Any) {
         isMoreDetailsLoad = false
         view.window!.rootViewController?.dismiss(animated: true)
+        
     }
     
     @IBAction func moreDetailsButtonAction(_ sender: Any) {
