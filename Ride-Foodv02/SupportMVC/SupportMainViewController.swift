@@ -73,7 +73,9 @@ class SupportMainViewController: UIViewController {
         if let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if distanceFromBottomConstraint.constant == SupportConstant.bottomConstraintValue {
             distanceFromBottomConstraint.constant += size.height
+                roundedView.cornerRadius = 13
             } else {
+                roundedView.cornerRadius = 15
                 distanceFromBottomConstraint.constant = SupportConstant.bottomConstraintValue
                 textView.resignFirstResponder()
             }

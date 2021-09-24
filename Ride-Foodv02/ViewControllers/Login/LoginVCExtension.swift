@@ -59,7 +59,7 @@ extension LoginViewController: UITextViewDelegate {
 
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
 
-                self?.topButtomConstraint.constant = self!.topButtonConstraintHeight
+                self?.topButtomConstraint.constant = 150.0
                 self?.view.layoutIfNeeded()
                 self?.bottomButtomConstraint.constant = self!.bottomButtonConstraintHeight
                 self?.view.layoutIfNeeded()
@@ -100,7 +100,7 @@ extension LoginViewController: UITextViewDelegate {
         if isAnimationButton {
             buttonAnimationOut()
         } else {
-            scrollView.frame.origin.y = safeAreaTopHeigh
+          //  scrollView.frame.origin.y = safeAreaTopHeigh
         }
     }
 }

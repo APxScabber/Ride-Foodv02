@@ -286,9 +286,9 @@ extension MainScreenViewController: ScoresViewDelegate {
         shouldUpdateUI = false
         scoresToolbar.scores = scoresView.scores
         scoresToolbar.textField.becomeFirstResponder()
-        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 128)
+        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: scoresToolbar.heightConstraint.constant)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 128
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - self.scoresToolbar.heightConstraint.constant
         }
 
     }
@@ -318,6 +318,7 @@ extension MainScreenViewController: ScoresToolbarDelegate {
         scoresToolbar.textField.resignFirstResponder()
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
             self.scoresToolbar.frame.origin.y = self.view.bounds.height
+            self.scoresView.frame.origin.y = self.view.bounds.height
         } completion: {  if $0 == .end {
             self.scoresToolbar.isHidden = true
             self.shouldUpdateUI = true
@@ -648,9 +649,10 @@ extension MainScreenViewController: DriverSearchDelegate {
                 self.taxiOrderInfoView.carDriverTextView.font = UIFont.SFUIDisplayRegular(size: 17.0)
                 self.taxiOrderInfoView.carDriverTextView.textAlignment = .left
                 
+                }
             }
-
-
+        }
+    
     func changeFrame(with screenState: ScreenState) {
         self.setContainerViewFrame(with: screenState)
     }

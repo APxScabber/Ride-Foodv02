@@ -721,9 +721,9 @@ extension CategoriesAndFoodVC: ScoresViewDelegate {
         scoresToolbar.isHidden = false
         scoresToolbar.scores = scoresView.scores
         scoresToolbar.textField.becomeFirstResponder()
-        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 150)
+        scoresToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: scoresToolbar.heightConstraint.constant)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - 150
+            self.scoresToolbar.frame.origin.y = self.view.bounds.height - self.keyboardHeight - self.scoresToolbar.heightConstraint.constant
         }
 
     }

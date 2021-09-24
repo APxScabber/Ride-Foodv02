@@ -289,7 +289,7 @@
                         <outlet property="sendButton" destination="1ao-pi-Fbu" id="3d3-JY-7qK"/>
                         <outlet property="sendButtonView" destination="WPh-iB-UqK" id="dQq-fb-EjW"/>
                         <outlet property="successLabel" destination="InE-Vk-26N" id="HPC-vc-vdY"/>
-                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="goToMainScreen" unwindAction="unwindSegueFromSupport:" id="vq0-ma-eEQ"/>
+                        <segue destination="SMy-hu-3eV" kind="unwind" identifier="unwindSegueFromSupport" unwindAction="unwindSegueFromSupport:" id="vq0-ma-eEQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AS6-oB-Xce" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

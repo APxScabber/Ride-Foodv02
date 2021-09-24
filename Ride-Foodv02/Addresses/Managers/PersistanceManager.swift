@@ -34,10 +34,7 @@ class PersistanceManager {
     
     func createCoreDataInstance(addressesToCopy: [AddressData]?, view: UIViewController){
         SignOutHelper.shared.resetCoreDataEntity(with: "UserAddressMO")
-        
-        
-        
-        
+ 
         guard let data = addressesToCopy else {
             return
         }
