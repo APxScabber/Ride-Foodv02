@@ -15,7 +15,7 @@ struct MainScreenConstants {
     
     static let searchDriverScreenHeight: CGFloat = 150
     static let foundDriverScreenHeight: CGFloat = 620
-    static let awaitDriverScreenHeight: CGFloat = 400
+    static let awaitDriverScreenHeight: CGFloat = 340
     
     
     static let demoOrderData: OrderData = OrderData(data: DataClass(id: 1,
@@ -43,7 +43,7 @@ struct MainScreenConstants {
                                                                                imageHistory: ""),
                                                                     products: nil))
     
-    enum DriverStatus: String{
+    enum DriverStatusText: String{
         case OnTheWay               = "Уже в пути"
         case AlmostThere            = "Почти на месте"
         case WaitingForYou          = "Вас ожидает"

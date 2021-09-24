@@ -162,12 +162,12 @@ class DriverSearchVC: UIViewController {
         view.backgroundColor = .clear
        
         
-        awaitDriverView.configure(state: .arrived,
+        awaitDriverView.configure(state: .arrived ,
                                   name: "Белая \(orderData?.data.taxi?.car ?? "Toyota Corolla")",
                                   number: orderData?.data.taxi?.number ?? "477" ,
                                   region: "\(orderData?.data.taxi?.regionNumber ?? 125)",
-                                  status: MainScreenConstants.DriverStatus.OnTheWay.rawValue,
-                                  time: "5")
+                                  status: MainScreenConstants.DriverStatusText.OnTheWay.rawValue,
+                                  time: "05:00")
        
         view.addSubview(awaitDriverView)
         awaitDriverView.translatesAutoresizingMaskIntoConstraints = false

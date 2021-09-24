@@ -615,7 +615,7 @@ extension MainScreenViewController: DriverSearchDelegate {
     func confirm() {
 
         DispatchQueue.main.async {
-            self.timeRemainig = time
+           
             self.pressTaxiOrderButton()
         }
       
