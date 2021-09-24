@@ -29,6 +29,8 @@ import UIKit
 
 class DriverSearchVC: UIViewController {
     
+    var timer: Timer?
+    
     var orderData: OrderData?
     
     var requestCount = 0
@@ -157,6 +159,8 @@ class DriverSearchVC: UIViewController {
         }
     }
     
+ 
+    
     func configureAwaitScreen(){
         cancelButton.removeFromSuperview()
         view.backgroundColor = .clear
@@ -165,7 +169,8 @@ class DriverSearchVC: UIViewController {
                                 number: orderData?.data.taxi?.number ?? "477",
                                 region: "\(orderData?.data.taxi?.regionNumber ?? 125)")
         
-        awaitDriverView.configure(state: .arrived)
+        awaitDriverView.configure(state: .onTheWay)
+        awaitDriverView.startTimer(with: 10)
        
         view.addSubview(awaitDriverView)
         awaitDriverView.translatesAutoresizingMaskIntoConstraints = false
@@ -261,6 +266,5 @@ extension DriverSearchVC: FoundDriverProtocol{
         }
         
     }
-    
-    
 }
+

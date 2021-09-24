@@ -13,9 +13,10 @@ class AwaitDriverView: UIView {
     var carNumber       = String()
     var carRegion       = String()
     var driverStatus    = String()
-    var time            = String()
     
-    
+//    Timer components
+    var timer: Timer?
+    var totalDuration = Int()
    
     
     let statusLabel             = UILabel()
@@ -34,32 +35,76 @@ class AwaitDriverView: UIView {
     
     @IBOutlet weak var containerView: UIView!
     
+// Business logic part
+    
+    func startTimer(with duration: Int){
+       totalDuration = duration
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+        }
+    
+    
+    @objc func countdown() {
+        var minutes: Int
+        var seconds: Int
+
+        if totalDuration == 0 {
+            timer?.invalidate()
+            self.configure(state: .almostThere)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                DispatchQueue.main.async {
+                    self.configure(state: .arrived)
+                }
+               
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                self.startTimer(with: 30)
+                self.configure(state: .isWaiting)
+            }
+        }
+        totalDuration = totalDuration - 1
+        minutes = (totalDuration % 3600) / 60
+        seconds = (totalDuration % 3600) % 60
+       timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
+    }
+    
     func setData(name: String, number: String, region: String){
         self.carName = name
         self.carNumber = number
         self.carRegion = region
     }
     
+    
+    
+    
+    
+//    UI Part
+    
     func configure(state: DriverStatus){
         self.containerView.layer.cornerRadius = 15
         self.containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         configureNameAndNumberViews()
-        switch state {
-        case .onTheWay:
-            configureNameLabel(with: state)
-            configureTimeLabel(with: state)
-            configureActions(with: state)
-        case .arrived:
-            configureNameLabel(with: state)
-            configureActions(with: state)
-        case .isWaiting:
-            configureNameLabel(with: state)
-            configureTimeLabel(with: state)
-            configureActions(with: state)
-        case .almostThere:
-            configureNameLabel(with: state)
-            configureActions(with: state)
+        UIView.animate(withDuration: 0.5) {
+           
+            switch state {
+            case .onTheWay:
+                self.configureNameLabel(with: state)
+                self.configureTimeLabel(with: state)
+                self.configureActions(with: state)
+            case .arrived:
+                self.configureNameLabel(with: state)
+                self.configureTimeLabel(with: state)
+                self.configureActions(with: state)
+            case .isWaiting:
+                self.configureNameLabel(with: state)
+                self.configureTimeLabel(with: state)
+                self.configureActions(with: state)
+            case .almostThere:
+                self.configureNameLabel(with: state)
+                self.configureTimeLabel(with: state)
+                self.configureActions(with: state)
+            }
         }
+   
     }
     
     func configureNameLabel(with state: DriverStatus){
@@ -84,7 +129,7 @@ class AwaitDriverView: UIView {
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .center
             NSLayoutConstraint.activate([
-                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
                 statusLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
                 statusLabel.widthAnchor.constraint(equalToConstant: 200)
@@ -94,12 +139,13 @@ class AwaitDriverView: UIView {
             statusLabel.textColor = UIColor.saleOrangeColor
             statusLabel.textAlignment = .center
             NSLayoutConstraint.activate([
-                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+                statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
                 statusLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
                 statusLabel.widthAnchor.constraint(equalToConstant: 200)
             ])
         case .isWaiting:
+            
             statusLabel.text = MainScreenConstants.DriverStatusText.Waiting.rawValue
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
@@ -117,8 +163,9 @@ class AwaitDriverView: UIView {
         timeLabel.font = UIFont.SFUIDisplayRegular(size: 28)
         switch state {
         case .onTheWay:
+            
             containerView.addSubview(timeLabel)
-            timeLabel.text = time
+         
             timeLabel.textColor = UIColor.saleOrangeColor
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
             
@@ -129,12 +176,12 @@ class AwaitDriverView: UIView {
                 timeLabel.widthAnchor.constraint(equalToConstant: 100)
             ])
         case .almostThere:
-            return
+            timeLabel.removeFromSuperview()
         case .arrived:
-            return
+            timeLabel.removeFromSuperview()
         case .isWaiting:
-            self.addSubview(timeLabel)
-            timeLabel.text = time
+            containerView.addSubview(timeLabel)
+        
             timeLabel.textColor = UIColor.red
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
             
@@ -198,6 +245,7 @@ class AwaitDriverView: UIView {
                 callView.widthAnchor.constraint(equalToConstant: 82)
             ])
         case .arrived:
+            callView.removeFromSuperview()
             containerView.addSubview(callView)
             containerView.addSubview(onMyWayView)
             callView.translatesAutoresizingMaskIntoConstraints = false
@@ -215,6 +263,7 @@ class AwaitDriverView: UIView {
                 onMyWayView.widthAnchor.constraint(equalToConstant: 82),
             ])
         case .isWaiting:
+            onMyWayView.removeFromSuperview()
             containerView.addSubview(callView)
             callView.translatesAutoresizingMaskIntoConstraints = false
             
