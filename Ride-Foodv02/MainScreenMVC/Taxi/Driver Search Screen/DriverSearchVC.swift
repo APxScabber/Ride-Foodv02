@@ -15,6 +15,7 @@ enum DriverStatus{
     case almostThere
     case arrived
     case isWaiting
+    case paidWaiting
 }
 
 protocol DriverSearchDelegate: AnyObject{

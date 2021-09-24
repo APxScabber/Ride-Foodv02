@@ -29,6 +29,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1Hn-KY-qlo"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4PA-D9-aOz"/>
                 <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="ojZ-Gz-xzd" secondAttribute="centerX" id="8uS-a3-Ari"/>
                 <constraint firstItem="ojZ-Gz-xzd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="ATb-5X-q4O"/>
                 <constraint firstItem="ojZ-Gz-xzd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ArL-z5-BjD"/>
@@ -37,6 +38,7 @@
                 <constraint firstItem="ojZ-Gz-xzd" firstAttribute="top" secondItem="Iq6-6m-tPN" secondAttribute="bottom" constant="6" id="TxY-hf-TaF"/>
                 <constraint firstItem="ojZ-Gz-xzd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bEm-Fz-McI"/>
                 <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="duO-Sf-Mv9"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tXg-aE-BDJ"/>
                 <constraint firstItem="Iq6-6m-tPN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="187" id="uH6-od-nc2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
