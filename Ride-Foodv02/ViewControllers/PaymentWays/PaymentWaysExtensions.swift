@@ -138,4 +138,3 @@ extension PaymentWaysViewController: UITableViewDelegate {
         view.tintColor = .clear
     }
 }
-

@@ -195,7 +195,7 @@ class MainScreenViewController: BaseViewController {
         foodTaxiView.layer.shadowOpacity = 0.3
         foodTaxiView.layer.shadowOffset = .zero
         foodTaxiView.layer.shadowRadius = 20
-        
+                
         menuView.delegate = self
         foodTaxiView.delegate = self
         promotionView.delegate = self
@@ -229,24 +229,27 @@ class MainScreenViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupSetToLocationView()
-        menuView.layoutSubviews()
-        
-        responderTextField?.becomeFirstResponder()
-        
-        MapKitManager.shared.checkLocationServices(delegate: self, view: self)
+        if !isTaxiOrdered {
+            setupSetToLocationView()
+            menuView.layoutSubviews()
+            
+            responderTextField?.becomeFirstResponder()
+            
+            MapKitManager.shared.checkLocationServices(delegate: self, view: self)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        safeAreaBottomHeight = view.safeAreaInsets.bottom
-                
-        if !menuView.isVisible {
-            resetFrames()
+        if !isTaxiOrdered {
+            safeAreaBottomHeight = view.safeAreaInsets.bottom
+                    
+            if !menuView.isVisible {
+                resetFrames()
+            }
+            userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
         }
-        userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
-
     }
     
     //MARK: - Deinit
@@ -572,6 +575,8 @@ class MainScreenViewController: BaseViewController {
     
     private func setupTaxiOrderInfoView() {
         
+        taxiOrderInfoView.delegate = self
+        
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(taxiInfoSwipeUp(_:)))
         swipeUp.direction = .up
         taxiOrderInfoView.addGestureRecognizer(swipeUp)
@@ -580,6 +585,8 @@ class MainScreenViewController: BaseViewController {
     }
     
     private func setupFoodOrderInfoView() {
+        
+        foodOrderInfoView.delegate = self
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(foodInfoSwipeUp(_:)))
         swipeUp.direction = .up
@@ -769,6 +776,68 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
+    func rollUpTaxiOrderInfo() {
+        taxiOrderInfoView.gestureRecognizers?.removeAll()
+        UIView.animate(withDuration: 0.5) {
+            
+            let height:CGFloat = 169
+            
+            self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
+            self.taxiOrderInfoView.frame.size.height = height
+            self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+            
+            if !self.isFoodOrdered {
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 1
+            } else {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+                self.foodOrderInfoView.swipeLineImageView.alpha = 1
+            }
+            
+            self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
+
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func rollUpFoodOrderInfo() {
+        
+        foodOrderInfoView.gestureRecognizers?.removeAll()
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            let height:CGFloat = 169
+            
+            self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
+            self.foodOrderInfoView.frame.size.height = height
+            
+            if self.isTaxiOrdered {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+            } else {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+            }
+            
+            self.foodOrderInfoView.swipeLineImageView.alpha = 1
+
+            
+            self.mainScreenInteractor.animationFoodOrderInfoLowPart(for: self.foodOrderInfoView)
+
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func hideShowMenuButton() {
+        UIView.animate(withDuration: 0.5) {
+            if self.menuButton.alpha == 0 {
+                self.menuButton.alpha = 1
+                self.circleView.alpha = 1
+            } else {
+                self.menuButton.alpha = 0
+                self.circleView.alpha = 0
+            }
+        }
+    }
+    
     // MARK: - @objc Taxi Methods
     
     @objc
@@ -782,7 +851,7 @@ class MainScreenViewController: BaseViewController {
     }
     
     @objc
-    private func taxiInfoSwipeUp(_ recognizer: UISwipeGestureRecognizer) {
+    func taxiInfoSwipeUp(_ recognizer: UISwipeGestureRecognizer) {
         
         if taxiOrderInfoView.frame.height == 169 {
             if recognizer.state == .ended {
@@ -835,6 +904,8 @@ class MainScreenViewController: BaseViewController {
     @objc
     private func taxiOrderedInfoTap() {
         
+        hideShowMenuButton()
+        
         if taxiOrderInfoView.frame.height == 169 {
             
             taxiOrderInfoView.gestureRecognizers?.removeAll()
@@ -855,40 +926,29 @@ class MainScreenViewController: BaseViewController {
                 self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
                 
                 if self.isFoodOrdered {
+                    self.taxiOrderInfoView.addDeliveryButtonOutlet.isEnabled = false
+                    self.taxiOrderInfoView.addDeliveryButtonOutlet.backgroundColor = UIColor(red: 0.817, green: 0.817, blue: 0.817, alpha: 1)
                     self.foodOrderInfoView.frame.origin.y = posY
                     self.foodOrderInfoView.swipeLineImageView.alpha = 0
+                } else {
+                    self.taxiOrderInfoView.addDeliveryButtonOutlet.isEnabled = true
+                    self.taxiOrderInfoView.addDeliveryButtonOutlet.backgroundColor = UIColor(red: 0.239, green: 0.231, blue: 1, alpha: 1)
                 }
                 
                 self.view.layoutIfNeeded()
             }
         } else {
-            taxiOrderInfoView.gestureRecognizers?.removeAll()
+            rollUpTaxiOrderInfo()
             addTapGesture()
             addSwipeDownGesture()
-            UIView.animate(withDuration: 0.5) {
-                
-                let height:CGFloat = 169
-                
-                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
-                self.taxiOrderInfoView.frame.size.height = height
-                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
-                
-                if !self.isFoodOrdered {
-                    self.taxiOrderInfoView.swipeLineImageView.alpha = 1
-                } else {
-                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
-                    self.foodOrderInfoView.swipeLineImageView.alpha = 1
-                }
-                
-                self.mainScreenInteractor.animationTaxiOrderInfoLowPart(for: self.taxiOrderInfoView)
-
-                self.view.layoutIfNeeded()
-            }
+            
         }
     }
     
     @objc
     private func foodOrderedInfoTap() {
+        
+        hideShowMenuButton()
         
         if foodOrderInfoView.frame.height == 169 {
             foodOrderInfoView.gestureRecognizers?.removeAll()
@@ -914,30 +974,9 @@ class MainScreenViewController: BaseViewController {
                 self.view.layoutIfNeeded()
             }
         } else {
-            foodOrderInfoView.gestureRecognizers?.removeAll()
+            rollUpFoodOrderInfo()
             addTapGesture()
             addSwipeDownGesture()
-            UIView.animate(withDuration: 0.5) {
-                
-                let height:CGFloat = 169
-                
-                self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
-                self.foodOrderInfoView.frame.size.height = height
-                
-                if self.isTaxiOrdered {
-                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
-                    self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
-                } else {
-                    self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
-                }
-                
-                self.foodOrderInfoView.swipeLineImageView.alpha = 1
-
-                
-                self.mainScreenInteractor.animationFoodOrderInfoLowPart(for: self.foodOrderInfoView)
-
-                self.view.layoutIfNeeded()
-            }
         }
     }
     
@@ -1165,6 +1204,18 @@ class MainScreenViewController: BaseViewController {
                 self.deliveryMainView.frame.origin.y = self.view.bounds.height
             }) {
             if $0 == .end { self.menuView.isVisible = true }
+        }
+        
+        if isTaxiOrdered {
+            UIView.animate(withDuration: 0.5) {
+                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height
+            }
+        }
+        
+        if isFoodOrdered {
+            UIView.animate(withDuration: 0.5) {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height
+            }
         }
     }
     

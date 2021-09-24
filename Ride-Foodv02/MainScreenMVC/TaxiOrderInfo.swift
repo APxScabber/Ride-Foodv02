@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol TaxiOrderInfoDelegate: AnyObject {
+    func problemAction()
+    func addDelivery()
+}
+
 class TaxiOrderInfo: UIView {
+    
+    weak var delegate: TaxiOrderInfoDelegate?
     
     @IBOutlet weak var swipeLineImageView: UIImageView!
     
@@ -92,4 +99,17 @@ class TaxiOrderInfo: UIView {
     @IBOutlet weak var problemHeightConstraint: NSLayoutConstraint! { didSet {
         problemHeightConstraint.constant = 0
     }}
+    
+    // MARK: - Actions
+    
+    @IBAction func problemButtonAction(_ sender: Any) {
+        delegate?.problemAction()
+    }
+    
+    @IBAction func addDeliveryButtonAction(_ sender: Any) {
+        delegate?.addDelivery()
+    }
+    
+    
+    
 }

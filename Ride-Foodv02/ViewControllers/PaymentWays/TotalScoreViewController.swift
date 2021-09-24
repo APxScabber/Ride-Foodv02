@@ -91,7 +91,7 @@ class TotalScoreViewController: BaseViewController {
     @IBAction func newOrderButtonAction(_ sender: Any) {
         
         isMoreDetailsLoad = false
-        
+        //dismiss(animated: true, completion: nil)
         view.window!.rootViewController?.dismiss(animated: true)
     }
     

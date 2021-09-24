@@ -64,6 +64,7 @@ class SupportAddImagesViewController: UIViewController {
             collectionView.removeFromSuperview()
         } else {
             performSegue(withIdentifier: "goToMainScreen", sender: sender)
+            dismiss(animated: true, completion: nil)
         }
     }
     

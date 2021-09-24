@@ -261,11 +261,13 @@ extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
+
+                self.delegate?.confirm(time: self.foundDriverView.activeOrderTimeLabel.text ?? "", data: self.orderData)
+
                 self.view.backgroundColor = .clear
                 self.removeViews(with: .found)
                 self.delegate?.changeFrame(with: .wait)
                 self.addviews(with: .wait)
-
             }
         }
         

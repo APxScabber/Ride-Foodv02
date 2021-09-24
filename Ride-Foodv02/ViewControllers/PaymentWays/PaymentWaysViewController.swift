@@ -17,6 +17,9 @@ class PaymentWaysViewController: BaseViewController {
     
     // MARK: - Properties
     
+    //let totalScoreViewController = TotalScoreViewController()
+    
+    
     var navigationTitle = PaymentMainViewText.topTitle.text()
     
     let cellHeight: CGFloat = 44
@@ -31,6 +34,9 @@ class PaymentWaysViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //totalScoreViewController.delegate = self
+        //TotalScoreViewController().delegate = self
         
         getUserID()
         navigationItem.title = navigationTitle
@@ -171,6 +177,10 @@ class PaymentWaysViewController: BaseViewController {
         }
     }
     
+    func close() {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Actions
     
     //Действие по нажатию на кнопку Привязать карту
@@ -183,6 +193,6 @@ class PaymentWaysViewController: BaseViewController {
     
     //Действие по нажатию на кнопку Назад
     @IBAction func done(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+        close()
     }
 }
