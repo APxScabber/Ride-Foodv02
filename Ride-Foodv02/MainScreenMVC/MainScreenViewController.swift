@@ -357,6 +357,8 @@ class MainScreenViewController: BaseViewController {
             containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.searchDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.searchDriverScreenHeight + bottomSafeAreaConstant)
         case .found:
             containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foundDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foundDriverScreenHeight + bottomSafeAreaConstant)
+        case .wait:
+            containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.awaitDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.awaitDriverScreenHeight + bottomSafeAreaConstant + 30)
         }
     }
     
@@ -1131,6 +1133,8 @@ class MainScreenViewController: BaseViewController {
             
            // pressTaxiOrderButton()
             placeContainerView()
+            pathTimeView.alpha = 0
+            taxiBackButtonOutlet.alpha = 1
         }
 
         if shouldMakeOrder {

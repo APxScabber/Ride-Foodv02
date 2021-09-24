@@ -280,6 +280,11 @@
 		F5BC917226AF779E008E9841 /* VBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917126AF779E008E9841 /* VBTextView.swift */; };
 		F5BC917426AF7B4E008E9841 /* VBMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917326AF7B4E008E9841 /* VBMapButton.swift */; };
 		F5BC917626AF9D0F008E9841 /* AddNewAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */; };
+		F5CA35A226FBDDB100F97632 /* AwaitDriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA35A126FBDDB100F97632 /* AwaitDriverView.swift */; };
+		F5CA35A426FBDDBE00F97632 /* AwaitDriverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CA35A326FBDDBE00F97632 /* AwaitDriverView.xib */; };
+		F5CA35A626FC0CF900F97632 /* AwaitActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA35A526FC0CF900F97632 /* AwaitActionView.swift */; };
+		F5CA35A826FC13F400F97632 /* CarNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA35A726FC13F400F97632 /* CarNumberView.swift */; };
+		F5CA35AA26FC13FF00F97632 /* CarNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CA35A926FC13FF00F97632 /* CarNumberView.xib */; };
 		F5D500DE26C71AE500488D45 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */; };
 		F5D500E026C71AFA00488D45 /* MenuItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */; };
 		F5E5661D26C8013100031140 /* SignOutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E5661C26C8013100031140 /* SignOutHelper.swift */; };
@@ -562,6 +567,11 @@
 		F5BC917126AF779E008E9841 /* VBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBTextView.swift; sourceTree = "<group>"; };
 		F5BC917326AF7B4E008E9841 /* VBMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBMapButton.swift; sourceTree = "<group>"; };
 		F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressVC.swift; sourceTree = "<group>"; };
+		F5CA35A126FBDDB100F97632 /* AwaitDriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitDriverView.swift; sourceTree = "<group>"; };
+		F5CA35A326FBDDBE00F97632 /* AwaitDriverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AwaitDriverView.xib; sourceTree = "<group>"; };
+		F5CA35A526FC0CF900F97632 /* AwaitActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitActionView.swift; sourceTree = "<group>"; };
+		F5CA35A726FC13F400F97632 /* CarNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarNumberView.swift; sourceTree = "<group>"; };
+		F5CA35A926FC13FF00F97632 /* CarNumberView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarNumberView.xib; sourceTree = "<group>"; };
 		F5D500DD26C71AE500488D45 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
 		F5D500DF26C71AFA00488D45 /* MenuItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsTableViewCell.swift; sourceTree = "<group>"; };
 		F5E5661C26C8013100031140 /* SignOutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutHelper.swift; sourceTree = "<group>"; };
@@ -1329,6 +1339,11 @@
 				F5724CAD26F8291D00573B35 /* LoadingWavesCustomView.swift */,
 				F544D4C426FA9EFB00720D28 /* FoundDriverView.swift */,
 				F544D4C626FAA50700720D28 /* FoundDriverView.xib */,
+				F5CA35A126FBDDB100F97632 /* AwaitDriverView.swift */,
+				F5CA35A326FBDDBE00F97632 /* AwaitDriverView.xib */,
+				F5CA35A526FC0CF900F97632 /* AwaitActionView.swift */,
+				F5CA35A726FC13F400F97632 /* CarNumberView.swift */,
+				F5CA35A926FC13FF00F97632 /* CarNumberView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1469,6 +1484,7 @@
 				787A83EF26AB2DA40096DFC3 /* AddressesVC.xib in Resources */,
 				78F1A97E26A8949000E16084 /* PaymentWays.storyboard in Resources */,
 				78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */,
+				F5CA35A426FBDDBE00F97632 /* AwaitDriverView.xib in Resources */,
 				78894E4626CFBD0C0044DBF4 /* TaxiTariffView.xib in Resources */,
 				78F1A98126A8949000E16084 /* AddCardConfirm.xib in Resources */,
 				78C8C99B26CACCB1001C947F /* FoodDetailView.xib in Resources */,
@@ -1487,6 +1503,7 @@
 				7858D37526AED7BC00441690 /* Food.storyboard in Resources */,
 				78740C1926DD472A0078F2F7 /* PromocodeActivation.xib in Resources */,
 				78C8C98F26C804C4001C947F /* OrderHistory.storyboard in Resources */,
+				F5CA35AA26FC13FF00F97632 /* CarNumberView.xib in Resources */,
 				7850E8FA2673BCF200AA88CA /* SupportActionSheetView.xib in Resources */,
 				7867B4A4266FAA420031BFA0 /* Support.storyboard in Resources */,
 				F544D4C726FAA50700720D28 /* FoundDriverView.xib in Resources */,
@@ -1555,6 +1572,7 @@
 				C446727126CEA8A600598459 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				7873A49926E237B50066A457 /* BackButton.swift in Sources */,
 				785F5D9426C2AF01004503CB /* Localizable.swift in Sources */,
+				F5CA35A826FC13F400F97632 /* CarNumberView.swift in Sources */,
 				78A39FF3267B568E006D0DAB /* UserSettingsMO+CoreDataProperties.swift in Sources */,
 				C4A9D77826B9E4B0001894F8 /* PaymentHistoryInteractor.swift in Sources */,
 				C446727526CEB38600598459 /* CalculatingPathManager.swift in Sources */,
@@ -1588,6 +1606,7 @@
 				C446725826C5DC8A00598459 /* AddCardExtensions.swift in Sources */,
 				7897FB1C26FB799B0001E228 /* CurrentPayment.swift in Sources */,
 				787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */,
+				F5CA35A626FC0CF900F97632 /* AwaitActionView.swift in Sources */,
 				C4A9D77126B97F6D001894F8 /* MoreDetails.swift in Sources */,
 				7867B4CC267109E90031BFA0 /* CGRect+Extensions.swift in Sources */,
 				78AEB885267B59D40023605D /* ConfirmFontSize.swift in Sources */,
@@ -1730,6 +1749,7 @@
 				78ACFD0926A59D2B00C995EB /* Promocode.swift in Sources */,
 				78894E4A26CFF2D40044DBF4 /* ScoresView.swift in Sources */,
 				F542D5E626D7394800312376 /* FoodOrderBottomView.swift in Sources */,
+				F5CA35A226FBDDB100F97632 /* AwaitDriverView.swift in Sources */,
 				7808D7C726B4593700A88E12 /* ConfirmCard.swift in Sources */,
 				7850E9002674DFBE00AA88CA /* MenuButton.swift in Sources */,
 				78E8DB1B26F0E18F008C72C9 /* PromocodeScoresView.swift in Sources */,
@@ -1900,7 +1920,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1921,7 +1941,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36UX7SKY3J;
+				DEVELOPMENT_TEAM = 8GYH8TXH77;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

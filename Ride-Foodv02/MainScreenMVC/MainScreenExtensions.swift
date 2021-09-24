@@ -621,6 +621,7 @@ extension MainScreenViewController: DeliveryMainViewDelegate {
 //MARK: - DriverSearchDelegate
 
 extension MainScreenViewController: DriverSearchDelegate {
+
     func confirm(time: String, data: OrderData?) {
         DispatchQueue.main.async {
             self.timeRemainig = time
@@ -648,6 +649,17 @@ extension MainScreenViewController: DriverSearchDelegate {
                 self.taxiOrderInfoView.carDriverTextView.textAlignment = .left
                 
             }
+
+
+    func changeFrame(with screenState: ScreenState) {
+        self.setContainerViewFrame(with: screenState)
+    }
+    
+    func confirm() {
+
+        DispatchQueue.main.async {
+           
+
             self.pressTaxiOrderButton()
         }
     }
@@ -657,8 +669,13 @@ extension MainScreenViewController: DriverSearchDelegate {
                 self.isTaxiOrdered = false
                 self.containerView.frame.origin.y = self.view.frame.height
                 self.containerView.removeFromSuperview()
+            self.addressesChooserView.alpha = 1
+            self.taxiBackButtonOutlet.alpha = 1
+            self.circleView.alpha = 1
+            self.promotionView.alpha = 1
                 self.view.layoutIfNeeded()
             self.returnToMainView()
+           
         
         }
           
@@ -691,6 +708,7 @@ extension MainScreenViewController: TaxiOrderInfoDelegate {
             self.goToFood()
         }
     }
+
     
     func problemAction() {
         let storyboard = UIStoryboard(name: "Support", bundle: .main)

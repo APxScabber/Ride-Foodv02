@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AwaitDriverView" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojZ-Gz-xzd">
+                    <rect key="frame" x="0.0" y="44" width="414" height="406"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-6m-tPN">
+                    <rect key="frame" x="187" y="33" width="40" height="5"/>
+                    <color key="backgroundColor" name="SettingsBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1Hn-KY-qlo"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4PA-D9-aOz"/>
+                <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="ojZ-Gz-xzd" secondAttribute="centerX" id="8uS-a3-Ari"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="ATb-5X-q4O"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ArL-z5-BjD"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Ea0-oc-Vj5"/>
+                <constraint firstItem="Iq6-6m-tPN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="33" id="Q9d-XL-5Wl"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="top" secondItem="Iq6-6m-tPN" secondAttribute="bottom" constant="6" id="TxY-hf-TaF"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bEm-Fz-McI"/>
+                <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="duO-Sf-Mv9"/>
+                <constraint firstItem="ojZ-Gz-xzd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tXg-aE-BDJ"/>
+                <constraint firstItem="Iq6-6m-tPN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="187" id="uH6-od-nc2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="containerView" destination="ojZ-Gz-xzd" id="uNd-hp-xAG"/>
+                <outlet property="roundedSwipeView" destination="Iq6-6m-tPN" id="qM4-W7-YTM"/>
+                <outlet property="swipeViewToTopConstraint" destination="Q9d-XL-5Wl" id="8jk-lv-YjB"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="SettingsBackgroundColor">
+            <color red="0.7839999794960022" green="0.7839999794960022" blue="0.7839999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

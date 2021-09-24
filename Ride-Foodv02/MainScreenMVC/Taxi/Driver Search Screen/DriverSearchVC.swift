@@ -7,18 +7,30 @@
 
 
 enum ScreenState{
-    case search, found
+    case search, found, wait
+}
+
+enum DriverStatus{
+    case onTheWay
+    case almostThere
+    case arrived
+    case isWaiting
+    case paidWaiting
 }
 
 protocol DriverSearchDelegate: AnyObject{
     func cancel()
-    func changeFrame()
-    func confirm(time: String, data: OrderData?)
+
+    func changeFrame(with screenState: ScreenState)
+    func confirm()
+
 }
 
 import UIKit
 
 class DriverSearchVC: UIViewController {
+    
+    var timer: Timer?
     
     var orderData: OrderData?
     
@@ -29,6 +41,8 @@ class DriverSearchVC: UIViewController {
     let searchingStatusLabel = UILabel()
     
     let foundDriverView = FoundDriverView.initFromNib()
+    
+    let awaitDriverView = AwaitDriverView.initFromNib()
     
     var toAddress = String()
     var fromAddress = String()
@@ -51,6 +65,9 @@ class DriverSearchVC: UIViewController {
     @objc func cancel(){
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
+                self.view.subviews.forEach { i in
+                    i.removeFromSuperview()
+                }
                 self.delegate?.cancel()
             }
         }
@@ -68,13 +85,13 @@ class DriverSearchVC: UIViewController {
             switch result{
             case .failure(let error):
                 print(error)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     self.requestCount += 1
                     if self.requestCount == 10{
                         DispatchQueue.main.async {
                             UIView.animate(withDuration: 1) {
                                 self.removeViews(with: .search)
-                                self.delegate?.changeFrame()
+                                self.delegate?.changeFrame(with: .found)
                                 self.addviews(with: .found)
                                 self.orderData = MainScreenConstants.demoOrderData
                                 if let data = self.orderData?.data{
@@ -98,7 +115,7 @@ class DriverSearchVC: UIViewController {
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 1) {
                         self.removeViews(with: .search)
-                        self.delegate?.changeFrame()
+                        self.delegate?.changeFrame(with: .found)
                         self.addviews(with: .found)
                         if let data = self.orderData?.data{
                             self.setData(with: data)
@@ -129,6 +146,8 @@ class DriverSearchVC: UIViewController {
             searchingStatusLabel.removeFromSuperview()
         case .found:
             foundDriverView.removeFromSuperview()
+        case .wait:
+            awaitDriverView.removeFromSuperview()
         }
     }
     
@@ -139,7 +158,37 @@ class DriverSearchVC: UIViewController {
             configureStatusLabel()
         case .found:
             configureFoundView()
+        case .wait:
+            configureAwaitScreen()
         }
+    }
+    
+ 
+    
+    func configureAwaitScreen(){
+        cancelButton.removeFromSuperview()
+        view.backgroundColor = .clear
+       
+        awaitDriverView.setData(name: "Белая \(orderData?.data.taxi?.car ?? "Toyota Corolla")",
+                                number: orderData?.data.taxi?.number ?? "477",
+                                region: "\(orderData?.data.taxi?.regionNumber ?? 125)")
+        
+        awaitDriverView.configure(state: .onTheWay)
+        awaitDriverView.startTimer(with: awaitDriverView.driverToClientDuration)
+       
+        view.addSubview(awaitDriverView)
+        awaitDriverView.translatesAutoresizingMaskIntoConstraints = false
+       
+      
+        
+       
+        
+        NSLayoutConstraint.activate([
+            awaitDriverView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            awaitDriverView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            awaitDriverView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            awaitDriverView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func configureFoundView(){
@@ -149,7 +198,7 @@ class DriverSearchVC: UIViewController {
         NSLayoutConstraint.activate([
             foundDriverView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             foundDriverView.topAnchor.constraint(equalTo: view.topAnchor),
-            foundDriverView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -5),
+            foundDriverView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
             foundDriverView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
@@ -212,11 +261,16 @@ extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 1) {
+
                 self.delegate?.confirm(time: self.foundDriverView.activeOrderTimeLabel.text ?? "", data: self.orderData)
+
+                self.view.backgroundColor = .clear
+                self.removeViews(with: .found)
+                self.delegate?.changeFrame(with: .wait)
+                self.addviews(with: .wait)
             }
         }
         
     }
-    
-    
 }
+
