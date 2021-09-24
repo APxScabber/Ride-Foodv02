@@ -1094,6 +1094,8 @@ class MainScreenViewController: BaseViewController {
             
            // pressTaxiOrderButton()
             placeContainerView()
+            pathTimeView.alpha = 0
+            taxiBackButtonOutlet.alpha = 1
         }
 
         if shouldMakeOrder {
