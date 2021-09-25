@@ -1,10 +1,16 @@
 import UIKit
 
 protocol OrderCompleteViewDelegate: AnyObject {
-    func orderCompleteViewClose()
+    func orderCompleteViewClose(order: OrderType)
+}
+
+enum OrderType{
+    case food, taxi
 }
 
 class OrderCompleteView: UIView {
+    
+    var currentOrderType: OrderType?
 
     //MARK: - API
     
@@ -68,12 +74,25 @@ class OrderCompleteView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        congratsLabel.text = Localizable.FoodOrder.foodOrderCongrats.localized
-        descLabel.text = Localizable.FoodOrder.foodOrderSeeYouAgain.localized
-        priceLabel.text = "\(totalPrice) " + Localizable.FoodOrder.foodOrderMoney.localized
-        deliveryLabel.text = " / \(Localizable.FoodOrder.foodOrderDeliveryFood.localized)"
-        paymentLabel.text = Localizable.FoodOrder.foodOrderPayment.localized
-        newOrderButton.setTitle(Localizable.FoodOrder.foodOrderNewOrder.localized, for: .normal)
+        switch currentOrderType {
+        case .taxi:
+            congratsLabel.text = "Благодарим за поездку!"
+            descLabel.text = Localizable.FoodOrder.foodOrderSeeYouAgain.localized
+            priceLabel.text = "\(150) " + Localizable.FoodOrder.foodOrderMoney.localized
+            deliveryLabel.text = " / Услуги такси "
+            paymentLabel.text = "Платёж № 54215489"
+            newOrderButton.setTitle(Localizable.FoodOrder.foodOrderNewOrder.localized, for: .normal)
+        case .food:
+            congratsLabel.text = Localizable.FoodOrder.foodOrderCongrats.localized
+            descLabel.text = Localizable.FoodOrder.foodOrderSeeYouAgain.localized
+            priceLabel.text = "\(totalPrice) " + Localizable.FoodOrder.foodOrderMoney.localized
+            deliveryLabel.text = " / \(Localizable.FoodOrder.foodOrderDeliveryFood.localized)"
+            paymentLabel.text = Localizable.FoodOrder.foodOrderPayment.localized
+            newOrderButton.setTitle(Localizable.FoodOrder.foodOrderNewOrder.localized, for: .normal)
+        case .none:
+            return
+        }
+
     }
     
     
@@ -116,7 +135,7 @@ class OrderCompleteView: UIView {
             self.frame.origin.y = self.superview?.frame.height ?? 0
         } completion: {  if $0 == .end {
             self.removeFromSuperview()
-            self.delegate?.orderCompleteViewClose()
+            self.delegate?.orderCompleteViewClose(order: self.currentOrderType ?? .food)
         }
         }
 
