@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddPhoneToolbar" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmW-VB-ytc">
+                    <rect key="frame" x="0.0" y="44" width="414" height="180"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOP-3N-qKI" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <rect key="frame" x="187" y="10" width="40" height="5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="I04-t1-E64"/>
+                                <constraint firstAttribute="width" constant="40" id="PHG-PO-AEH"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pA5-kl-fjR" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="23" width="414" height="157"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMu-3v-hJC">
+                                    <rect key="frame" x="30" y="22" width="354" height="18.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                </textField>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5P-7O-1Zl">
+                                    <rect key="frame" x="30" y="51.5" width="354" height="1"/>
+                                    <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="hUT-hW-A8d"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aha-L0-tF7" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                    <rect key="frame" x="25" y="78.5" width="364" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrH-ED-30E">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Подтвердить">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="confirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="83N-qq-8Ea"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="FUL-Oy-QqS"/>
+                                        <constraint firstAttribute="trailing" secondItem="KrH-ED-30E" secondAttribute="trailing" id="G7m-hn-vat"/>
+                                        <constraint firstAttribute="bottom" secondItem="KrH-ED-30E" secondAttribute="bottom" id="gUz-Y2-V2g"/>
+                                        <constraint firstItem="KrH-ED-30E" firstAttribute="leading" secondItem="aha-L0-tF7" secondAttribute="leading" id="lvK-A8-miG"/>
+                                        <constraint firstItem="KrH-ED-30E" firstAttribute="top" secondItem="aha-L0-tF7" secondAttribute="top" id="xtQ-Qc-rug"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="b5P-7O-1Zl" secondAttribute="trailing" constant="30" id="5OX-AI-dGm"/>
+                                <constraint firstAttribute="trailing" secondItem="dMu-3v-hJC" secondAttribute="trailing" constant="30" id="5Za-9P-KyU"/>
+                                <constraint firstItem="aha-L0-tF7" firstAttribute="top" secondItem="b5P-7O-1Zl" secondAttribute="bottom" constant="26" id="KOy-Qa-rRD"/>
+                                <constraint firstItem="dMu-3v-hJC" firstAttribute="leading" secondItem="pA5-kl-fjR" secondAttribute="leading" constant="30" id="OmW-yp-1aF"/>
+                                <constraint firstItem="dMu-3v-hJC" firstAttribute="top" secondItem="pA5-kl-fjR" secondAttribute="top" constant="22" id="VFc-Bm-gPU"/>
+                                <constraint firstAttribute="trailing" secondItem="aha-L0-tF7" secondAttribute="trailing" constant="25" id="nvL-6K-aRw"/>
+                                <constraint firstItem="b5P-7O-1Zl" firstAttribute="leading" secondItem="pA5-kl-fjR" secondAttribute="leading" constant="30" id="sVq-76-kQl"/>
+                                <constraint firstItem="aha-L0-tF7" firstAttribute="leading" secondItem="pA5-kl-fjR" secondAttribute="leading" constant="25" id="vXy-Bj-2wB"/>
+                                <constraint firstItem="b5P-7O-1Zl" firstAttribute="top" secondItem="dMu-3v-hJC" secondAttribute="bottom" constant="11" id="zHi-Eh-SdG"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="JOP-3N-qKI" firstAttribute="top" secondItem="hmW-VB-ytc" secondAttribute="top" constant="10" id="Mb0-RT-d6I"/>
+                        <constraint firstAttribute="trailing" secondItem="pA5-kl-fjR" secondAttribute="trailing" id="Pmw-yT-um5"/>
+                        <constraint firstItem="pA5-kl-fjR" firstAttribute="leading" secondItem="hmW-VB-ytc" secondAttribute="leading" id="VM5-Xf-c9r"/>
+                        <constraint firstAttribute="bottom" secondItem="pA5-kl-fjR" secondAttribute="bottom" id="YGI-Ge-BAS"/>
+                        <constraint firstAttribute="height" constant="180" id="gih-nU-C1d"/>
+                        <constraint firstItem="pA5-kl-fjR" firstAttribute="top" secondItem="JOP-3N-qKI" secondAttribute="bottom" constant="8" symbolic="YES" id="hyM-o5-BSb"/>
+                        <constraint firstItem="JOP-3N-qKI" firstAttribute="centerX" secondItem="hmW-VB-ytc" secondAttribute="centerX" id="uTF-6F-yv3"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="hmW-VB-ytc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="8cn-Ol-k26"/>
+                <constraint firstItem="hmW-VB-ytc" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mXI-ri-wOa"/>
+                <constraint firstItem="hmW-VB-ytc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="yjT-Bc-AoN"/>
+            </constraints>
+            <connections>
+                <outlet property="confirmButton" destination="KrH-ED-30E" id="2ZD-VN-ydX"/>
+                <outlet property="heightConstraint" destination="gih-nU-C1d" id="em0-QT-03E"/>
+                <outlet property="roundedView" destination="aha-L0-tF7" id="cs4-vd-Vle"/>
+                <outlet property="textField" destination="dMu-3v-hJC" id="oQR-o0-ABe"/>
+                <outlet property="underbarLine" destination="b5P-7O-1Zl" id="EIf-aH-udv"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="85.714285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

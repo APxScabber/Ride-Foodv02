@@ -11,7 +11,7 @@ class EnterPromocodeViewController: UIViewController {
     }}
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
-        roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        roundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
     }}
     @IBOutlet weak var promocodeLabel: UILabel! { didSet {
         promocodeLabel.font = UIFont.SFUIDisplaySemibold(size: 17)

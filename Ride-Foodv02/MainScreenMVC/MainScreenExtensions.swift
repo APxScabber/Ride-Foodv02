@@ -353,6 +353,7 @@ extension MainScreenViewController: MenuViewDelegate {
                     self.menuView.isVisible = false
                     self.profileButton.isUserInteractionEnabled = true
                     self.userLocationButtonOutlet.isUserInteractionEnabled = true
+                    self.shouldUpdateScreen = true
                 }
             }
         }

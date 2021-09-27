@@ -397,7 +397,7 @@
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shopCell" id="Ry7-g9-KMM" customClass="ShopCollectionViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
                                                 <rect key="frame" x="107" y="10" width="200" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k22-EQ-0UD">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k22-EQ-0UD">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
@@ -1495,13 +1495,20 @@
                         <outlet property="topRoundedView" destination="WTM-QE-Uwh" id="CPP-VX-nHP"/>
                         <outlet property="totalPriceLabel" destination="vIJ-jL-uuM" id="iAd-iF-PqR"/>
                         <outlet property="transparentView" destination="Bns-OZ-N6h" id="FWv-QU-4Bj"/>
-                        <segue destination="MYX-wI-uVd" kind="unwind" identifier="unwindSegueFromFood" unwindAction="unwindSegueFromFood:" id="gBG-Eb-PfL"/>
+                        <segue destination="nhR-6D-dwj" kind="presentation" identifier="comeBackToMain" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="z9H-YE-hpb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfp-Vg-bGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="MYX-wI-uVd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3757.971014492754" y="75"/>
+        </scene>
+        <!--MainScreen-->
+        <scene sceneID="ikN-rU-7WG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainScreen" id="nhR-6D-dwj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgO-yl-sDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4302" y="140"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

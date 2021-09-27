@@ -1,6 +1,10 @@
 import UIKit
 
 class PersonalInfoViewController: UIViewController {
+    //MARK: - Properties
+    
+    private var toolBarView = ToolbarView.initFromNib()
+    var phones = Phones()
     
     //MARK: - Outlets
     
@@ -30,7 +34,6 @@ class PersonalInfoViewController: UIViewController {
     @IBOutlet weak var rowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topOffsetConstraint: NSLayoutConstraint!
     
-    private var toolBarView = ToolbarView.initFromNib()
     
     //MARK: - IBActions
     
@@ -57,6 +60,7 @@ class PersonalInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         toolBarView.delegate = self
+        phones.recreate()
         NotificationCenter.default.addObserver(self, selector: #selector(showToolbarView(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
@@ -79,6 +83,7 @@ class PersonalInfoViewController: UIViewController {
     
         
     private func updateUI() {
+        phoneLabel.text = phones.phones[phones.currentPhoneID]
         nameLabel.text = Localizable.PersonalInfo.name.localized
         nameChoserLabel.text = Localizable.PersonalInfo.nameQuestion.localized
         emailChoserLabel.text = Localizable.PersonalInfo.emailQuestion.localized

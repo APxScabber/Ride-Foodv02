@@ -185,6 +185,7 @@ class MainScreenViewController: BaseViewController {
     
     var isTaxiOrdered = false
     var isFoodOrdered = false
+    var shouldUpdateScreen = false
     
     // MARK: - ViewController lifecycle
 
@@ -223,7 +224,7 @@ class MainScreenViewController: BaseViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         bottomSafeAreaConstant = view.safeAreaInsets.bottom
-
+        if !menuView.isVisible { resetFrames() }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -249,6 +250,9 @@ class MainScreenViewController: BaseViewController {
                 resetFrames()
             }
             userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
+        }
+        if isFoodOrdered && shouldUpdateScreen {
+            showFoodOrderView()
         }
     }
     
@@ -1116,13 +1120,21 @@ class MainScreenViewController: BaseViewController {
         } completion: { _ in
             self.configureContainerView()
         }
-        
-     
-        
-      
-        
-        
-        
+   
+    }
+    
+    private func showFoodOrderView() {
+        transparentView.isHidden = true
+        mapView.isUserInteractionEnabled = false
+        menuButton.isUserInteractionEnabled = false
+        profileButton.isUserInteractionEnabled = false
+        view.addSubview(orderCompleteView)
+        orderCompleteView.delegate = self
+        orderCompleteView.reset()
+        orderCompleteView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 380)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.orderCompleteView.frame.origin.y = self.view.bounds.height - 380
+        }
     }
     
     // MARK: - Actions
@@ -1189,6 +1201,8 @@ class MainScreenViewController: BaseViewController {
     
     @IBAction func goToMenu(_ sender: MenuButton) {
         transparentView.isHidden = false
+        menuView.isVisible = true
+        shouldUpdateScreen = false
         profileButton.isUserInteractionEnabled = false
         userLocationButtonOutlet.isUserInteractionEnabled = false
         circleView.isHidden = true
@@ -1202,9 +1216,7 @@ class MainScreenViewController: BaseViewController {
                 self.foodTaxiView.frame.origin.y = self.view.bounds.height + MainScreenConstants.promotionViewHeight + MainScreenConstants.foodTaxiYOffset
                 self.promotionView.frame.origin.y = self.view.bounds.height
                 self.deliveryMainView.frame.origin.y = self.view.bounds.height
-            }) {
-            if $0 == .end { self.menuView.isVisible = true }
-        }
+            })
         
         if isTaxiOrdered {
             UIView.animate(withDuration: 0.5) {
@@ -1279,7 +1291,7 @@ class MainScreenViewController: BaseViewController {
             }
         }
     }
-    
+
     func showTaxiCompletedView(){
         transparentView.isHidden = true
         mapView.isUserInteractionEnabled = false
@@ -1327,7 +1339,6 @@ class MainScreenViewController: BaseViewController {
             self.orderCompleteView.frame.origin.y = self.view.bounds.height - 380
         }
 
-    }
     
     @IBAction func unwindSegueFromSupport(_ segue: UIStoryboardSegue) {
         close()

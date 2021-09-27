@@ -85,6 +85,9 @@ enum Localizable {
         case orderRemoveTitle,orderRemoveClear,orderRemoveCancel,orderRemoveEmptyCart,orderRemoveReturnToShopping
     }
     
+    enum Phones: String,LocalizableDelegate {
+        case phoneAdd,phoneChange,phoneRemove,phoneSetToMain
+    }
 }
 
 

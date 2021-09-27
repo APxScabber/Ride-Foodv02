@@ -204,3 +204,11 @@
 "orderRemoveCancel" = "Cancel";
 "orderRemoveEmptyCart" = "Cart is empty";
 "orderRemoveReturnToShopping" = "Return to shopping";
+
+
+//MARK: - Phones
+
+"phoneAdd" = "Add phone";
+"phoneChange" = "Change phone";
+"phoneRemove" = "Remove";
+"phoneSetToMain" = "Set to main";

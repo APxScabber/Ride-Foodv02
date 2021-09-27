@@ -93,8 +93,7 @@ class FoodOrderVC: BaseViewController {
     }
     
     @IBAction func order(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindSegueFromFood", sender: sender)
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "comeBackToMain", sender: self)
     }
     
     @IBAction func goToCashbackNeededView(_ sender: UIButton) {
@@ -159,15 +158,18 @@ class FoodOrderVC: BaseViewController {
         }
     }
     
+
+    
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindSegueFromFood",
-           let sourse = segue.destination as? MainScreenViewController {
-            sourse.orderCompleteView.totalPrice = totalPrice
-            sourse.orderCompleteView.paymentImageView.image = currentImage
-            sourse.orderCompleteView.paymentDetailLabel.text = currentPay
-            sourse.isFoodOrdered = true
+        if segue.identifier == "comeBackToMain",
+           let destination = segue.destination as? MainScreenViewController {
+            destination.orderCompleteView.totalPrice = totalPrice
+            destination.orderCompleteView.paymentImageView.image = currentImage
+            destination.orderCompleteView.paymentDetailLabel.text = currentPay
+            destination.isFoodOrdered = true
+            destination.shouldUpdateScreen = true
         }
     }
     
