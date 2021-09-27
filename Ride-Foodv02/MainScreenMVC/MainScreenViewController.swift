@@ -1325,20 +1325,6 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
-    @IBAction func unwindSegueFromFood(_ segue: UIStoryboardSegue) {
-        transparentView.isHidden = true
-        mapView.isUserInteractionEnabled = false
-        menuButton.isUserInteractionEnabled = false
-        profileButton.isUserInteractionEnabled = false
-        view.addSubview(orderCompleteView)
-        orderCompleteView.currentOrderType = .food
-        orderCompleteView.delegate = self
-        orderCompleteView.reset()
-        orderCompleteView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 380)
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-            self.orderCompleteView.frame.origin.y = self.view.bounds.height - 380
-        }
-
     
     @IBAction func unwindSegueFromSupport(_ segue: UIStoryboardSegue) {
         close()
