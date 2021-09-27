@@ -123,44 +123,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Отмена заказа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQ0-0b-ahE">
-                                <rect key="frame" x="146" y="44" width="123" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Отмена заказа" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQ0-0b-ahE">
+                                <rect key="frame" x="98" y="44" width="219" height="31"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-Iz-hVN">
-                                <rect key="frame" x="8" y="44" width="42" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-Iz-hVN">
+                                <rect key="frame" x="8" y="44" width="40" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="BackButton" title=" "/>
                                 <connections>
                                     <action selector="back:" destination="P5p-Rd-azf" eventType="touchUpInside" id="qWd-DK-PYl"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SadFace" translatesAutoresizingMaskIntoConstraints="NO" id="Fl1-9L-VWf">
-                                <rect key="frame" x="142" y="372" width="130" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Вы отменили заказ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-SD-KMw">
-                                <rect key="frame" x="120" y="450" width="175" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Вы всегда можете совершить другой заказ, либо сообщить нам о возникшей проблеме." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE4-cs-LWi">
-                                <rect key="frame" x="74" y="502" width="267" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                <color key="textColor" name="SettingsHeaderColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CO2-rl-ewc">
-                                <rect key="frame" x="40" y="731" width="335" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CO2-rl-ewc">
+                                <rect key="frame" x="40" y="731" width="334" height="50"/>
                                 <color key="backgroundColor" name="SupportNextButtonActiveColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b7l-5R-S4W"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Другой заказ">
                                     <fontDescription key="titleFontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
@@ -170,9 +152,11 @@
                                     <action selector="anotherOrder:" destination="P5p-Rd-azf" eventType="touchUpInside" id="Y75-Dr-3yV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-JP-0Gx">
-                                <rect key="frame" x="40" y="789" width="335" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-JP-0Gx">
+                                <rect key="frame" x="40" y="789" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="C6W-yC-1Nz"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Сообщить о проблеме">
                                     <fontDescription key="titleFontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
@@ -182,9 +166,57 @@
                                     <action selector="reportProblem:" destination="P5p-Rd-azf" eventType="touchUpInside" id="wFy-Iw-zfz"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SadFace" translatesAutoresizingMaskIntoConstraints="NO" id="Fl1-9L-VWf">
+                                <rect key="frame" x="142" y="309" width="130" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="hqF-KQ-vsG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы отменили заказ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-SD-KMw">
+                                <rect key="frame" x="40" y="387" width="334" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="334" id="5Bg-c7-Wh1"/>
+                                    <constraint firstAttribute="height" constant="44" id="X2Z-W3-aaU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы всегда можете совершить другой заказ, либо сообщить нам о возникшей проблеме." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE4-cs-LWi">
+                                <rect key="frame" x="40" y="439" width="334" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="tmC-Wd-cma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                <color key="textColor" name="SettingsHeaderColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6nv-Kn-4Pu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hoP-SD-KMw" firstAttribute="top" secondItem="Fl1-9L-VWf" secondAttribute="bottom" constant="8" symbolic="YES" id="4Lk-8H-rYd"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="leading" secondItem="6nv-Kn-4Pu" secondAttribute="leading" constant="40" id="76x-xy-1xN"/>
+                            <constraint firstItem="uQ0-0b-ahE" firstAttribute="leading" secondItem="Fwp-Iz-hVN" secondAttribute="trailing" constant="50" id="7tH-kU-OfM"/>
+                            <constraint firstItem="uQ0-0b-ahE" firstAttribute="centerX" secondItem="ddl-Dy-dB1" secondAttribute="centerX" id="8bW-Dd-Fix"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="top" secondItem="6nv-Kn-4Pu" secondAttribute="top" id="9DZ-DZ-SM7"/>
+                            <constraint firstItem="Fl1-9L-VWf" firstAttribute="leading" secondItem="6nv-Kn-4Pu" secondAttribute="leading" constant="142" id="9zu-Ca-Kye"/>
+                            <constraint firstItem="6nv-Kn-4Pu" firstAttribute="bottom" secondItem="QAQ-JP-0Gx" secondAttribute="bottom" constant="23" id="C93-g4-hRc"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="top" secondItem="hoP-SD-KMw" secondAttribute="bottom" constant="8" symbolic="YES" id="Guu-Ty-kn1"/>
+                            <constraint firstItem="Fl1-9L-VWf" firstAttribute="top" secondItem="ddl-Dy-dB1" secondAttribute="top" constant="309" id="Ihs-1q-wZp"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="leading" secondItem="6nv-Kn-4Pu" secondAttribute="leading" constant="8" id="LwJ-GX-2j4"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="bottom" secondItem="uQ0-0b-ahE" secondAttribute="bottom" id="PDv-Zm-01j"/>
+                            <constraint firstItem="QAQ-JP-0Gx" firstAttribute="top" secondItem="CO2-rl-ewc" secondAttribute="bottom" constant="8" symbolic="YES" id="Xz7-tf-9g7"/>
+                            <constraint firstItem="Fl1-9L-VWf" firstAttribute="centerX" secondItem="hoP-SD-KMw" secondAttribute="centerX" id="bVm-ju-UzQ"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="top" secondItem="uQ0-0b-ahE" secondAttribute="top" id="drT-xU-ny9"/>
+                            <constraint firstItem="CO2-rl-ewc" firstAttribute="leading" secondItem="QAQ-JP-0Gx" secondAttribute="leading" id="eMJ-d2-6y3"/>
+                            <constraint firstItem="6nv-Kn-4Pu" firstAttribute="trailing" secondItem="uQ0-0b-ahE" secondAttribute="trailing" constant="97" id="eWL-ed-a3Q"/>
+                            <constraint firstItem="uQ0-0b-ahE" firstAttribute="centerX" secondItem="Fl1-9L-VWf" secondAttribute="centerX" id="f7t-x6-yFx"/>
+                            <constraint firstItem="CO2-rl-ewc" firstAttribute="trailing" secondItem="QAQ-JP-0Gx" secondAttribute="trailing" id="gSC-Aa-ggf"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="trailing" secondItem="CO2-rl-ewc" secondAttribute="trailing" id="iwJ-bD-fwr"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="leading" secondItem="CO2-rl-ewc" secondAttribute="leading" id="pv6-Cr-ynJ"/>
+                            <constraint firstItem="hoP-SD-KMw" firstAttribute="centerX" secondItem="JE4-cs-LWi" secondAttribute="centerX" id="yt8-ie-PEL"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="anotherOrderButton" destination="CO2-rl-ewc" id="ON0-KG-zQR"/>
