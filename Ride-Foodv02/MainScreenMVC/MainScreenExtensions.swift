@@ -392,7 +392,7 @@ extension MainScreenViewController: MenuViewDelegate {
 extension MainScreenViewController: FoodTaxiViewDelegate {
     
     func goToFood() {
-        
+        shouldResetFrames = false
         if isTaxiOrdered {
             let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
             UIView.animate(withDuration: 0.5) {
@@ -407,7 +407,7 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     }
     
     func goToTaxi() {
-        
+        shouldResetFrames = false
         if isFoodOrdered {
             let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
             UIView.animate(withDuration: 0.5) {
