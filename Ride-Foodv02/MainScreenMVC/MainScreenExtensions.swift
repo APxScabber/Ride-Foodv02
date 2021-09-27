@@ -694,18 +694,15 @@ extension MainScreenViewController: DriverSearchDelegate {
     }
     
     func cancel() {
-        DispatchQueue.main.async {
-                self.isTaxiOrdered = false
-                self.containerView.frame.origin.y = self.view.frame.height
-                self.containerView.removeFromSuperview()
-            self.addressesChooserView.alpha = 1
-            self.taxiBackButtonOutlet.alpha = 1
-            self.circleView.alpha = 1
-            self.promotionView.alpha = 1
-                self.view.layoutIfNeeded()
-            self.returnToMainView()
-           
+
         
+        DispatchQueue.main.async {
+            
+            let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CancelOrder") as! CancelOrderVC
+            vc.modalPresentationStyle = .popover
+            vc.delegate = self
+            self.present(vc, animated: true)
         }
           
     
@@ -778,9 +775,52 @@ extension MainScreenViewController: FoodOrderInfoDelegate {
     }
 }
 
+extension MainScreenViewController: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.4)
+    }
+}
+
 //extension MainScreenViewController: TotalScoreDelegate {
 //    
 //    func returnToMainScreen() {
 //        close()
 //    }
 //}
+extension MainScreenViewController: CancelOrderDelegate{
+    
+    func confirmCancel() {
+            let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CancelledVC") as! CancelledVC
+            vc.modalPresentationStyle = .fullScreen
+        vc.delegate = self
+         //   vc.transitioningDelegate = self
+            self.present(vc, animated: true)
+        
+    }
+    
+}
+
+extension MainScreenViewController: CancelOrderActionsProtocol{
+    func closeScreen() {
+           closeContainerView()
+    }
+    
+    func newOrder() {
+        closeContainerView()
+        resetFrames()
+        loadSetupsTaxi()
+    }
+    
+    func reportProblem() {
+        closeContainerView()
+        let storyboard = UIStoryboard(name: "Support", bundle: .main)
+        if let supportVC = storyboard.instantiateInitialViewController() {
+            supportVC.modalPresentationStyle = .fullScreen
+            supportVC.modalTransitionStyle = .coverVertical
+            present(supportVC, animated: true)
+        }
+    }
+    
+    
+}
