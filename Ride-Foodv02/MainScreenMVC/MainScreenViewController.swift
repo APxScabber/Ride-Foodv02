@@ -186,6 +186,7 @@ class MainScreenViewController: BaseViewController {
     var isTaxiOrdered = false
     var isFoodOrdered = false
     var shouldUpdateScreen = false
+    var shouldResetFrames = true
     
     // MARK: - ViewController lifecycle
 
@@ -224,7 +225,7 @@ class MainScreenViewController: BaseViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         bottomSafeAreaConstant = view.safeAreaInsets.bottom
-        if !menuView.isVisible { resetFrames() }
+        if !menuView.isVisible && shouldResetFrames { resetFrames() }
     }
     
     override func viewWillAppear(_ animated: Bool) {
