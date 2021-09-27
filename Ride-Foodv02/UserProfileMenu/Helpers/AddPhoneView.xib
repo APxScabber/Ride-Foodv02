@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddPhoneView" customModule="Ride_Foodv02" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Bm-IJ-lio">
+                    <rect key="frame" x="0.0" y="44" width="414" height="215"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9k-Vn-Tp4" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <rect key="frame" x="187" y="10" width="40" height="5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="4Kq-Ly-3Oc"/>
+                                <constraint firstAttribute="height" constant="5" id="cEz-sk-aMV"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxd-p1-prE" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="23" width="414" height="192"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-SC-ekz" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                                    <rect key="frame" x="25" y="25" width="364" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdn-6w-NeR">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Добавить номер">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addPhone:" destination="iN0-l3-epB" eventType="touchUpInside" id="S2g-gG-T4q"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="bdn-6w-NeR" secondAttribute="trailing" id="89q-HK-PPN"/>
+                                        <constraint firstItem="bdn-6w-NeR" firstAttribute="leading" secondItem="Qfi-SC-ekz" secondAttribute="leading" id="OoI-kV-Uza"/>
+                                        <constraint firstAttribute="height" constant="50" id="ToU-8c-ydE"/>
+                                        <constraint firstItem="bdn-6w-NeR" firstAttribute="top" secondItem="Qfi-SC-ekz" secondAttribute="top" id="xnP-xR-bPH"/>
+                                        <constraint firstAttribute="bottom" secondItem="bdn-6w-NeR" secondAttribute="bottom" id="ydO-hA-kGr"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaP-BB-BfS">
+                                    <rect key="frame" x="25" y="100" width="364" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="xbS-Dv-E5X"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Изменить номер">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="changePhone:" destination="iN0-l3-epB" eventType="touchUpInside" id="adF-nj-wnW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Qfi-SC-ekz" firstAttribute="top" secondItem="bxd-p1-prE" secondAttribute="top" constant="25" id="3wm-EM-GJ9"/>
+                                <constraint firstItem="CaP-BB-BfS" firstAttribute="leading" secondItem="bxd-p1-prE" secondAttribute="leading" constant="25" id="H7O-v4-a53"/>
+                                <constraint firstItem="Qfi-SC-ekz" firstAttribute="leading" secondItem="bxd-p1-prE" secondAttribute="leading" constant="25" id="LI0-ac-faY"/>
+                                <constraint firstAttribute="trailing" secondItem="CaP-BB-BfS" secondAttribute="trailing" constant="25" id="O6B-Jm-GD5"/>
+                                <constraint firstItem="CaP-BB-BfS" firstAttribute="top" secondItem="Qfi-SC-ekz" secondAttribute="bottom" constant="25" id="fHE-Se-BPu"/>
+                                <constraint firstAttribute="trailing" secondItem="Qfi-SC-ekz" secondAttribute="trailing" constant="25" id="fuk-X0-lxp"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="x9k-Vn-Tp4" firstAttribute="centerX" secondItem="3Bm-IJ-lio" secondAttribute="centerX" id="1L9-hN-NN3"/>
+                        <constraint firstAttribute="trailing" secondItem="bxd-p1-prE" secondAttribute="trailing" id="85N-6B-4zH"/>
+                        <constraint firstItem="x9k-Vn-Tp4" firstAttribute="top" secondItem="3Bm-IJ-lio" secondAttribute="top" constant="10" id="8CM-oA-mju"/>
+                        <constraint firstItem="bxd-p1-prE" firstAttribute="leading" secondItem="3Bm-IJ-lio" secondAttribute="leading" id="Rsp-bf-UTd"/>
+                        <constraint firstAttribute="height" constant="215" id="Zat-Zu-dvV"/>
+                        <constraint firstAttribute="bottom" secondItem="bxd-p1-prE" secondAttribute="bottom" id="b0m-CH-ymx"/>
+                        <constraint firstItem="bxd-p1-prE" firstAttribute="top" secondItem="x9k-Vn-Tp4" secondAttribute="bottom" constant="8" symbolic="YES" id="v13-zZ-CDr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="3Bm-IJ-lio" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="D2w-Hh-swr"/>
+                <constraint firstItem="3Bm-IJ-lio" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cXK-uM-ghj"/>
+                <constraint firstItem="3Bm-IJ-lio" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="urk-uX-Z6y"/>
+            </constraints>
+            <connections>
+                <outlet property="addPhoneButton" destination="bdn-6w-NeR" id="Mcq-ze-lZD"/>
+                <outlet property="changePhoneButton" destination="CaP-BB-BfS" id="R3t-1S-bai"/>
+                <outlet property="heightConstraint" destination="Zat-Zu-dvV" id="fim-3C-7N9"/>
+                <outlet property="roundedView" destination="Qfi-SC-ekz" id="GQd-5C-yEt"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="85.714285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

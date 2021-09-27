@@ -200,3 +200,12 @@
 "orderRemoveCancel" = "Отмена";
 "orderRemoveEmptyCart" = "Корзина пуста";
 "orderRemoveReturnToShopping" = "Вернуться к покупкам";
+
+
+//MARK: - Phones
+
+"phoneAdd" = "Добавить номер";
+"phoneChange" = "Изменить номер";
+"phoneRemove" = "Удалить";
+"phoneSetToMain" = "Назначить основным";
+

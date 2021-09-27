@@ -17,6 +17,7 @@ class SignOutHelper{
     let context = CoreDataManager.shared.persistentContainer.viewContext
     
     func resetUserDefaults() {
+        Phones.shared.clear()
         FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: CurrentShop.shared.id) { error in }
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()

@@ -37,6 +37,7 @@ class LoginViewController: BaseViewController {
     var keyboardHeight: CGFloat!
     
     let loginInteractor = LoginInteractor()
+    var phones = Phones()
     
     // MARK: - viewDidLoad
     

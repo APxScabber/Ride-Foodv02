@@ -54,6 +54,7 @@ extension LoginViewController {
     //Действие при нажатии на кнопку Далее
     @IBAction func nextButton(_ sender: Any) {
         loginInteractor.reciveConfirmCode(from: phoneNumberTextField.text!)
+        phones.append(phoneNumberTextField.text!)
     }
 
     // MARK: - Navigation
