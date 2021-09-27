@@ -86,7 +86,9 @@ class AwaitDriverView: UIView {
     
     func setBehaviorDuringCountDown(timer: Timer){
         timer.invalidate()
-        switch currentStatus{
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            
+            switch self.currentStatus{
         case .onTheWay:
             self.configure(state: .almostThere)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
@@ -112,9 +114,10 @@ class AwaitDriverView: UIView {
             break
         case .paidWaiting:
             timer.invalidate()
-            delegate?.close()
+                self.delegate?.close()
             
         }
+    }
     }
     
     func setData(name: String, number: String, region: String){
@@ -174,7 +177,7 @@ class AwaitDriverView: UIView {
             statusLabel.textAlignment = .right
             NSLayoutConstraint.activate([
                 statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 65),
+                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 55),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
                 statusLabel.widthAnchor.constraint(equalToConstant: 170)
             ])
@@ -216,7 +219,7 @@ class AwaitDriverView: UIView {
             
             NSLayoutConstraint.activate([
                 statusLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 65),
+                statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 55),
                 statusLabel.heightAnchor.constraint(equalToConstant: 35),
                 statusLabel.widthAnchor.constraint(equalToConstant: 170),
                 
@@ -229,6 +232,7 @@ class AwaitDriverView: UIView {
         case .paidWaiting:
             statusLabel.removeFromSuperview()
             containerView.addSubview(statusLabel)
+            statusLabel.adjustsFontSizeToFitWidth = true
             statusLabel.translatesAutoresizingMaskIntoConstraints = false
             statusLabel.text = MainScreenConstants.DriverStatusText.PaidWaiting.rawValue
             statusLabel.textColor = UIColor.black

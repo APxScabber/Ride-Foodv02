@@ -572,33 +572,61 @@ extension MainScreenViewController: PromocodeActivatorDelegate {
 //MARK: - OrderCompleteViewDelegate
 
 extension MainScreenViewController: OrderCompleteViewDelegate {
-    
-    func orderCompleteViewClose() {
-        userLocationButtonOutlet.isHidden = true
-        promotionView.isHidden = true
-        menuButton.isUserInteractionEnabled = true
-        profileButton.isUserInteractionEnabled = true
-        mapView.isUserInteractionEnabled = true
-        
-//        for gesture in mapView.gestureRecognizers! {
-//            if gesture is UITapGestureRecognizer {
-//                mapView.removeGestureRecognizer(gesture)
-//            }
-//        }
-//        view.addSubview(deliveryMainView)
-//        deliveryMainView.delegate = self
-//        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
-//        deliveryMainView.alpha = 0
-//        pathTimeView.alpha = 1
-        foodTaxiView.foodImageView.isUserInteractionEnabled = false
-        foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "FoodInActive")
-//        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
-//        UIView.animate(withDuration: 0.25) {
-//            self.view.layoutIfNeeded()
-            //self.deliveryMainView.alpha = 1.0
-//        }
-        
-        pressFoodOrderButton()
+    func orderCompleteViewClose(order: OrderType) {
+        switch order{
+        case .food:
+            userLocationButtonOutlet.isHidden = true
+            promotionView.isHidden = true
+            menuButton.isUserInteractionEnabled = true
+            profileButton.isUserInteractionEnabled = true
+            mapView.isUserInteractionEnabled = true
+            
+    //        for gesture in mapView.gestureRecognizers! {
+    //            if gesture is UITapGestureRecognizer {
+    //                mapView.removeGestureRecognizer(gesture)
+    //            }
+    //        }
+    //        view.addSubview(deliveryMainView)
+    //        deliveryMainView.delegate = self
+    //        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+    //        deliveryMainView.alpha = 0
+    //        pathTimeView.alpha = 1
+            foodTaxiView.foodImageView.isUserInteractionEnabled = false
+            foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "FoodInActive")
+    //        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
+    //        UIView.animate(withDuration: 0.25) {
+    //            self.view.layoutIfNeeded()
+                //self.deliveryMainView.alpha = 1.0
+    //        }
+            
+            pressFoodOrderButton()
+        case .taxi:
+            userLocationButtonOutlet.isHidden = true
+            promotionView.isHidden = true
+            menuButton.isUserInteractionEnabled = true
+            profileButton.isUserInteractionEnabled = true
+            mapView.isUserInteractionEnabled = true
+            
+    //        for gesture in mapView.gestureRecognizers! {
+    //            if gesture is UITapGestureRecognizer {
+    //                mapView.removeGestureRecognizer(gesture)
+    //            }
+    //        }
+    //        view.addSubview(deliveryMainView)
+    //        deliveryMainView.delegate = self
+    //        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
+    //        deliveryMainView.alpha = 0
+    //        pathTimeView.alpha = 1
+            foodTaxiView.foodImageView.isUserInteractionEnabled = false
+            foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "FoodInActive")
+    //        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
+    //        UIView.animate(withDuration: 0.25) {
+    //            self.view.layoutIfNeeded()
+                //self.deliveryMainView.alpha = 1.0
+    //        }
+            
+            pressTaxiOrderButton()
+        }
     }
     
     
@@ -661,25 +689,21 @@ extension MainScreenViewController: DriverSearchDelegate {
     func confirm() {
 
         DispatchQueue.main.async {
-           
-
-            self.pressTaxiOrderButton()
+        
+            self.showTaxiCompletedView()
         }
     }
     
     func cancel() {
-        DispatchQueue.main.async {
-                self.isTaxiOrdered = false
-                self.containerView.frame.origin.y = self.view.frame.height
-                self.containerView.removeFromSuperview()
-            self.addressesChooserView.alpha = 1
-            self.taxiBackButtonOutlet.alpha = 1
-            self.circleView.alpha = 1
-            self.promotionView.alpha = 1
-                self.view.layoutIfNeeded()
-            self.returnToMainView()
-           
+
         
+        DispatchQueue.main.async {
+            
+            let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CancelOrder") as! CancelOrderVC
+            vc.modalPresentationStyle = .popover
+            vc.delegate = self
+            self.present(vc, animated: true)
         }
           
     
@@ -752,9 +776,52 @@ extension MainScreenViewController: FoodOrderInfoDelegate {
     }
 }
 
+extension MainScreenViewController: UIViewControllerTransitioningDelegate{
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.4)
+    }
+}
+
 //extension MainScreenViewController: TotalScoreDelegate {
 //    
 //    func returnToMainScreen() {
 //        close()
 //    }
 //}
+extension MainScreenViewController: CancelOrderDelegate{
+    
+    func confirmCancel() {
+            let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CancelledVC") as! CancelledVC
+            vc.modalPresentationStyle = .fullScreen
+        vc.delegate = self
+         //   vc.transitioningDelegate = self
+            self.present(vc, animated: true)
+        
+    }
+    
+}
+
+extension MainScreenViewController: CancelOrderActionsProtocol{
+    func closeScreen() {
+           closeContainerView()
+    }
+    
+    func newOrder() {
+        closeContainerView()
+        resetFrames()
+        loadSetupsTaxi()
+    }
+    
+    func reportProblem() {
+        closeContainerView()
+        let storyboard = UIStoryboard(name: "Support", bundle: .main)
+        if let supportVC = storyboard.instantiateInitialViewController() {
+            supportVC.modalPresentationStyle = .fullScreen
+            supportVC.modalTransitionStyle = .coverVertical
+            present(supportVC, animated: true)
+        }
+    }
+    
+    
+}

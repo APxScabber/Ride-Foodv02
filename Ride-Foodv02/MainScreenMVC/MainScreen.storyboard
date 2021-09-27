@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoa-a6-qZB">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIDisplay-Regular.otf">
+            <string>SFUIDisplay-Regular</string>
+        </array>
+        <array key="SFUIDisplay-Semibold.otf">
+            <string>SFUIDisplay-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Food-->
         <scene sceneID="02w-x0-y1F">
@@ -16,6 +28,212 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUZ-O3-Ggm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="168" y="56"/>
+        </scene>
+        <!--Cancel OrderVC-->
+        <scene sceneID="2lc-VK-T0X">
+            <objects>
+                <viewController storyboardIdentifier="CancelOrder" id="xhJ-ng-Zf2" customClass="CancelOrderVC" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sE6-wC-603">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6oa-Ih-KBl">
+                                <rect key="frame" x="0.0" y="519" width="414" height="377"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Причина отмены" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alx-kp-zek">
+                                        <rect key="frame" x="133" y="21" width="148" height="23"/>
+                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M1F-MZ-pCN">
+                                        <rect key="frame" x="0.0" y="63" width="414" height="236"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cancelCell" textLabel="9U9-l2-eHY" style="IBUITableViewCellStyleDefault" id="BiR-7E-gVu" customClass="CancelOrderTableViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BiR-7E-gVu" id="h61-dh-WAo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9U9-l2-eHY">
+                                                            <rect key="frame" x="20" y="0.0" width="356.5" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="titleLabel" destination="9U9-l2-eHY" id="dZi-ta-yub"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="xhJ-ng-Zf2" id="KyO-AM-zjv"/>
+                                            <outlet property="delegate" destination="xhJ-ng-Zf2" id="b4a-48-2wS"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="M1F-MZ-pCN" firstAttribute="leading" secondItem="6oa-Ih-KBl" secondAttribute="leading" id="Dko-4R-nYa"/>
+                                    <constraint firstItem="M1F-MZ-pCN" firstAttribute="top" secondItem="alx-kp-zek" secondAttribute="bottom" constant="19" id="RdK-sV-Org"/>
+                                    <constraint firstItem="alx-kp-zek" firstAttribute="centerX" secondItem="M1F-MZ-pCN" secondAttribute="centerX" id="YHN-lU-CXS"/>
+                                    <constraint firstAttribute="bottom" secondItem="M1F-MZ-pCN" secondAttribute="bottom" constant="78" id="ZrQ-D1-E9x"/>
+                                    <constraint firstItem="alx-kp-zek" firstAttribute="top" secondItem="6oa-Ih-KBl" secondAttribute="top" constant="21" id="t3P-OH-Xl4"/>
+                                    <constraint firstAttribute="trailing" secondItem="M1F-MZ-pCN" secondAttribute="trailing" id="tAx-46-Kni"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cro-xc-gaS">
+                                <rect key="frame" x="185.5" y="506" width="43" height="5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="43" id="6by-yT-hoy"/>
+                                    <constraint firstAttribute="height" constant="5" id="JGd-dC-XNI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KgE-Yq-6Lu"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="leading" secondItem="KgE-Yq-6Lu" secondAttribute="leading" id="3wg-tb-uSD"/>
+                            <constraint firstItem="Cro-xc-gaS" firstAttribute="top" secondItem="KgE-Yq-6Lu" secondAttribute="top" constant="462" id="GpP-19-PgR"/>
+                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="top" secondItem="Cro-xc-gaS" secondAttribute="bottom" constant="8" symbolic="YES" id="dAp-zv-vej"/>
+                            <constraint firstAttribute="bottom" secondItem="6oa-Ih-KBl" secondAttribute="bottom" id="jib-cK-CHu"/>
+                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="trailing" secondItem="KgE-Yq-6Lu" secondAttribute="trailing" id="qc7-i8-Znc"/>
+                            <constraint firstItem="Cro-xc-gaS" firstAttribute="centerX" secondItem="sE6-wC-603" secondAttribute="centerX" id="rdV-bU-tyh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelOrderReasonLabel" destination="alx-kp-zek" id="zOV-U9-wCD"/>
+                        <outlet property="cancelOrderTableView" destination="M1F-MZ-pCN" id="pZk-rK-sqC"/>
+                        <outlet property="containerView" destination="6oa-Ih-KBl" id="2IR-d7-pCH"/>
+                        <outlet property="smallScrollView" destination="Cro-xc-gaS" id="eZ2-nm-wQb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhD-hb-Q15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="682.60869565217399" y="65.625"/>
+        </scene>
+        <!--CancelledVC-->
+        <scene sceneID="eAP-Uh-R2p">
+            <objects>
+                <viewController storyboardIdentifier="CancelledVC" id="P5p-Rd-azf" customClass="CancelledVC" customModule="Ride_Foodv02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ddl-Dy-dB1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Отмена заказа" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQ0-0b-ahE">
+                                <rect key="frame" x="98" y="44" width="219" height="31"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-Iz-hVN">
+                                <rect key="frame" x="8" y="44" width="40" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="BackButton" title=" "/>
+                                <connections>
+                                    <action selector="back:" destination="P5p-Rd-azf" eventType="touchUpInside" id="qWd-DK-PYl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CO2-rl-ewc">
+                                <rect key="frame" x="40" y="731" width="334" height="50"/>
+                                <color key="backgroundColor" name="SupportNextButtonActiveColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b7l-5R-S4W"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Другой заказ">
+                                    <fontDescription key="titleFontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="anotherOrder:" destination="P5p-Rd-azf" eventType="touchUpInside" id="Y75-Dr-3yV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-JP-0Gx">
+                                <rect key="frame" x="40" y="789" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="C6W-yC-1Nz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Сообщить о проблеме">
+                                    <fontDescription key="titleFontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="reportProblem:" destination="P5p-Rd-azf" eventType="touchUpInside" id="wFy-Iw-zfz"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SadFace" translatesAutoresizingMaskIntoConstraints="NO" id="Fl1-9L-VWf">
+                                <rect key="frame" x="142" y="309" width="130" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="hqF-KQ-vsG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы отменили заказ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-SD-KMw">
+                                <rect key="frame" x="40" y="387" width="334" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="334" id="5Bg-c7-Wh1"/>
+                                    <constraint firstAttribute="height" constant="44" id="X2Z-W3-aaU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы всегда можете совершить другой заказ, либо сообщить нам о возникшей проблеме." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE4-cs-LWi">
+                                <rect key="frame" x="40" y="439" width="334" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="tmC-Wd-cma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                <color key="textColor" name="SettingsHeaderColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6nv-Kn-4Pu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hoP-SD-KMw" firstAttribute="top" secondItem="Fl1-9L-VWf" secondAttribute="bottom" constant="8" symbolic="YES" id="4Lk-8H-rYd"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="leading" secondItem="6nv-Kn-4Pu" secondAttribute="leading" constant="40" id="76x-xy-1xN"/>
+                            <constraint firstItem="uQ0-0b-ahE" firstAttribute="leading" secondItem="Fwp-Iz-hVN" secondAttribute="trailing" constant="50" id="7tH-kU-OfM"/>
+                            <constraint firstItem="uQ0-0b-ahE" firstAttribute="centerX" secondItem="ddl-Dy-dB1" secondAttribute="centerX" id="8bW-Dd-Fix"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="top" secondItem="6nv-Kn-4Pu" secondAttribute="top" id="9DZ-DZ-SM7"/>
+                            <constraint firstItem="Fl1-9L-VWf" firstAttribute="leading" secondItem="6nv-Kn-4Pu" secondAttribute="leading" constant="142" id="9zu-Ca-Kye"/>
+                            <constraint firstItem="6nv-Kn-4Pu" firstAttribute="bottom" secondItem="QAQ-JP-0Gx" secondAttribute="bottom" constant="23" id="C93-g4-hRc"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="top" secondItem="hoP-SD-KMw" secondAttribute="bottom" constant="8" symbolic="YES" id="Guu-Ty-kn1"/>
+                            <constraint firstItem="Fl1-9L-VWf" firstAttribute="top" secondItem="ddl-Dy-dB1" secondAttribute="top" constant="309" id="Ihs-1q-wZp"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="leading" secondItem="6nv-Kn-4Pu" secondAttribute="leading" constant="8" id="LwJ-GX-2j4"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="bottom" secondItem="uQ0-0b-ahE" secondAttribute="bottom" id="PDv-Zm-01j"/>
+                            <constraint firstItem="QAQ-JP-0Gx" firstAttribute="top" secondItem="CO2-rl-ewc" secondAttribute="bottom" constant="8" symbolic="YES" id="Xz7-tf-9g7"/>
+                            <constraint firstItem="Fl1-9L-VWf" firstAttribute="centerX" secondItem="hoP-SD-KMw" secondAttribute="centerX" id="bVm-ju-UzQ"/>
+                            <constraint firstItem="Fwp-Iz-hVN" firstAttribute="top" secondItem="uQ0-0b-ahE" secondAttribute="top" id="drT-xU-ny9"/>
+                            <constraint firstItem="CO2-rl-ewc" firstAttribute="leading" secondItem="QAQ-JP-0Gx" secondAttribute="leading" id="eMJ-d2-6y3"/>
+                            <constraint firstItem="6nv-Kn-4Pu" firstAttribute="trailing" secondItem="uQ0-0b-ahE" secondAttribute="trailing" constant="97" id="eWL-ed-a3Q"/>
+                            <constraint firstItem="uQ0-0b-ahE" firstAttribute="centerX" secondItem="Fl1-9L-VWf" secondAttribute="centerX" id="f7t-x6-yFx"/>
+                            <constraint firstItem="CO2-rl-ewc" firstAttribute="trailing" secondItem="QAQ-JP-0Gx" secondAttribute="trailing" id="gSC-Aa-ggf"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="trailing" secondItem="CO2-rl-ewc" secondAttribute="trailing" id="iwJ-bD-fwr"/>
+                            <constraint firstItem="JE4-cs-LWi" firstAttribute="leading" secondItem="CO2-rl-ewc" secondAttribute="leading" id="pv6-Cr-ynJ"/>
+                            <constraint firstItem="hoP-SD-KMw" firstAttribute="centerX" secondItem="JE4-cs-LWi" secondAttribute="centerX" id="yt8-ie-PEL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="anotherOrderButton" destination="CO2-rl-ewc" id="ON0-KG-zQR"/>
+                        <outlet property="backButton" destination="Fwp-Iz-hVN" id="Uwt-6L-ZFA"/>
+                        <outlet property="cancelDescriptionLabel" destination="JE4-cs-LWi" id="CVs-Gz-jQN"/>
+                        <outlet property="cancelTitleLabel" destination="hoP-SD-KMw" id="RMA-UW-b4r"/>
+                        <outlet property="orderCancelLabel" destination="uQ0-0b-ahE" id="rMi-oM-cxR"/>
+                        <outlet property="reportProblemButton" destination="QAQ-JP-0Gx" id="7i9-PE-0tH"/>
+                        <outlet property="sadFaceImageView" destination="Fl1-9L-VWf" id="YIj-kR-xr6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYZ-u0-p3G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398.5507246376812" y="65.625"/>
         </scene>
         <!--Main Screen View Controller-->
         <scene sceneID="M33-Xi-BJa">
@@ -459,14 +677,22 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackButton" width="10" height="17"/>
         <image name="Clock" width="14" height="14"/>
         <image name="Gradient" width="12" height="52"/>
         <image name="Next" width="9.5" height="7.5"/>
         <image name="People" width="16" height="16"/>
         <image name="RawAnnotation" width="12" height="19"/>
+        <image name="SadFace" width="96" height="45"/>
         <image name="TaxiTime" width="187.5" height="60"/>
         <image name="userLocationButton" width="90" height="90"/>
         <image name="visa" width="33" height="10"/>
+        <namedColor name="SettingsHeaderColor">
+            <color red="0.54100000858306885" green="0.54100000858306885" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SupportNextButtonActiveColor">
+            <color red="0.23899999260902405" green="0.23100000619888306" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

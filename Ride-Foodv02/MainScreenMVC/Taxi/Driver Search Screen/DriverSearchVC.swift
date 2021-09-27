@@ -64,14 +64,8 @@ class DriverSearchVC: UIViewController {
     
     @objc func cancel(){
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 1) {
-                self.view.subviews.forEach { i in
-                    i.removeFromSuperview()
-                }
                 self.delegate?.cancel()
-            }
         }
-        
     }
     
     func sendRequest(){
