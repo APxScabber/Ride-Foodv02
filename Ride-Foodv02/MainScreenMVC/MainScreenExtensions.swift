@@ -601,31 +601,17 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
             
             pressFoodOrderButton()
         case .taxi:
+            
             userLocationButtonOutlet.isHidden = true
             promotionView.isHidden = true
             menuButton.isUserInteractionEnabled = true
             profileButton.isUserInteractionEnabled = true
             mapView.isUserInteractionEnabled = true
-            
-    //        for gesture in mapView.gestureRecognizers! {
-    //            if gesture is UITapGestureRecognizer {
-    //                mapView.removeGestureRecognizer(gesture)
-    //            }
-    //        }
-    //        view.addSubview(deliveryMainView)
-    //        deliveryMainView.delegate = self
-    //        deliveryMainView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foodTaxiViewHeight - MainScreenConstants.foodTaxiYOffset - bottomSafeAreaConstant - MainScreenConstants.promotionViewHeight, width: view.bounds.width, height: MainScreenConstants.promotionViewHeight)
-    //        deliveryMainView.alpha = 0
-    //        pathTimeView.alpha = 1
-            foodTaxiView.foodImageView.isUserInteractionEnabled = false
-            foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "FoodInActive")
-    //        timeLabel.text = "1 \(Localizable.Delivery.deliveryActiveOrder.localized)"
-    //        UIView.animate(withDuration: 0.25) {
-    //            self.view.layoutIfNeeded()
-                //self.deliveryMainView.alpha = 1.0
-    //        }
-            
-            pressTaxiOrderButton()
+            self.foodTaxiView.taxiImageView.image = UIImage(named: "Taxi")
+            self.foodTaxiView.taxiImageView.isUserInteractionEnabled = true
+            taxiOrderInfoView.removeFromSuperview()
+            isTaxiOrdered = false
+               closeContainerView()
         }
     }
     
@@ -695,8 +681,6 @@ extension MainScreenViewController: DriverSearchDelegate {
     }
     
     func cancel() {
-
-        
         DispatchQueue.main.async {
             
             let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
@@ -705,8 +689,6 @@ extension MainScreenViewController: DriverSearchDelegate {
             vc.delegate = self
             self.present(vc, animated: true)
         }
-          
-    
     }
     
     func changeFrame() {
@@ -776,11 +758,6 @@ extension MainScreenViewController: FoodOrderInfoDelegate {
     }
 }
 
-extension MainScreenViewController: UIViewControllerTransitioningDelegate{
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        PresentationController(presentedViewController: presented, presenting: presenting, viewHeightMultiplierPercentage: 0.4)
-    }
-}
 
 //extension MainScreenViewController: TotalScoreDelegate {
 //    
@@ -804,7 +781,7 @@ extension MainScreenViewController: CancelOrderDelegate{
 
 extension MainScreenViewController: CancelOrderActionsProtocol{
     func closeScreen() {
-        isTaxiOrdered = false
+            isTaxiOrdered = false
            closeContainerView()
         
         

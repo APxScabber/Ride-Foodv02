@@ -667,6 +667,9 @@ class MainScreenViewController: BaseViewController {
                 }
                 
                 if !self.isTaxiOrdered && !self.isFoodOrdered {
+                    self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "Taxi")
+                    self.foodTaxiView.foodImageView.image = #imageLiteral(resourceName: "Food")
+                    self.promotionView.alpha = 1
                     self.pathTimeView.alpha = 0
                 }
                 
@@ -1348,22 +1351,18 @@ class MainScreenViewController: BaseViewController {
     
     // MARK: Dismiss taxiContainerView and return to the main screen
     func closeContainerView(){
-        DispatchQueue.main.async {
-                self.containerView.frame.origin.y = self.view.frame.height
-                self.containerView.removeFromSuperview()
-            self.pathTimeView.alpha = 0
-            
-            self.addressesChooserView.alpha = 1
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.containerView.frame.origin.y = self.view.frame.height
+            self.containerView.removeFromSuperview()
+           
             self.taxiBackButtonOutlet.alpha = 1
             self.circleView.alpha = 1
             self.promotionView.alpha = 1
-                self.view.layoutIfNeeded()
+         
             self.returnToMainView()
-
-
-        }
+        self.view.layoutIfNeeded()
     }
-    
+    }
     
     @IBAction func unwindSegueFromSupport(_ segue: UIStoryboardSegue) {
         close()
