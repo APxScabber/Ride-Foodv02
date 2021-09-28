@@ -804,16 +804,22 @@ extension MainScreenViewController: CancelOrderDelegate{
 
 extension MainScreenViewController: CancelOrderActionsProtocol{
     func closeScreen() {
+        isTaxiOrdered = false
            closeContainerView()
+        
+        
+          
     }
     
     func newOrder() {
+        isTaxiOrdered = false
         closeContainerView()
         resetFrames()
         loadSetupsTaxi()
     }
     
     func reportProblem() {
+        isTaxiOrdered = false
         closeContainerView()
         let storyboard = UIStoryboard(name: "Support", bundle: .main)
         if let supportVC = storyboard.instantiateInitialViewController() {
