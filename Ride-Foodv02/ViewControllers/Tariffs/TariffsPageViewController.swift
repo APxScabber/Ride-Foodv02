@@ -10,7 +10,7 @@ import UIKit
 class TariffsPageViewController: UIPageViewController {
     
     var tariffsModelArray: [TariffsModel]?
-    var navigationTitle = "Тарифы"
+    var navigationTitle = Localizable.Tariffs.tariffs.localized
 
     // MARK: - viewDidLoad
     

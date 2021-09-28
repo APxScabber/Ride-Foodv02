@@ -27,6 +27,7 @@ class AddNewAddressVC: UIViewController{
     @IBOutlet weak var newAddressScrollView: UIScrollView!
     
     @IBOutlet weak var newAddressParentView: UIView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
 //    Save Button
     
@@ -143,10 +144,7 @@ class AddNewAddressVC: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? SelectLocationVC {
             vc.delegate = self
-        } //else if let TaxiVC = segue.destination as? TaxiMainVC{
-//            TaxiVC.toAddress = passedAddress?.address ?? ""
-//        }
-//
+        }
     }
     
 
@@ -453,6 +451,7 @@ class AddNewAddressVC: UIViewController{
 
     @objc func setAsMainAddress(){
         if isUPdatingAddress == true && wantToUpdateAddress == false {
+            spinner.isHidden = false
         print("Here gonna set address as destination one")
         guard let addressID = passedAddress?.id else {
             print("Invalid ID")
@@ -471,10 +470,7 @@ class AddNewAddressVC: UIViewController{
                     print("Successfully updated address")
                     self?.setUIIfUpdatingAddress(address: data)
                     self?.passedAddress = data
-                    self?.performSegue(withIdentifier: "ToTaxiSegue", sender: self)
-                    
-                    
-                   
+                    self?.performSegue(withIdentifier: "backToMain", sender: self)
                 }
             
             }

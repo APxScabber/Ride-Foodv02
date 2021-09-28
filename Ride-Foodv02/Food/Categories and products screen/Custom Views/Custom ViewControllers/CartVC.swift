@@ -205,7 +205,6 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource{
         let action = UIContextualAction(style: .destructive, title: Localizable.Food.remove.localized) { [weak self] (action, view, completionHandler) -> Void in
             guard let self = self else { return }
             let product = self.productsInCart[indexPath.row]
-            
             let context = FoodPersistanceManager.shared.context
             context.delete(product)
            

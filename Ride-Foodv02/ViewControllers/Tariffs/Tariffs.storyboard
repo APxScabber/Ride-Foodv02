@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EuE-0t-Mfb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EuE-0t-Mfb">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -101,14 +101,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d0n-OB-deA">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d0n-OB-deA">
                                 <rect key="frame" x="25" y="120.33333333333333" width="272" height="13.999999999999986"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Автомобили:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHc-TR-ANp">
                                         <rect key="frame" x="0.0" y="0.0" width="73" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="nHc-TR-ANp" secondAttribute="height" multiplier="73:14" id="H1E-sv-vUJ"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -146,7 +143,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="HKe-Bx-ZgB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="29"/>
                                 <state key="normal" title="Заказать такси">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>

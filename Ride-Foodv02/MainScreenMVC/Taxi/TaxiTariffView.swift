@@ -89,7 +89,7 @@ class TaxiTariffView: UIView {
         standartDurationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         standartPriceLabel.textColor = .black
         if scoresEntered != 0 {
-            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: prices[0] - scoresEntered)
+            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: max(0,prices[0] - scoresEntered))
         }
     }
     
@@ -109,7 +109,7 @@ class TaxiTariffView: UIView {
         premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
         premiumPriceLabel.textColor = .black
         if scoresEntered != 0 {
-            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: prices[1] - scoresEntered)
+            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: max(0,prices[1] - scoresEntered))
         }
     }
     
@@ -130,7 +130,7 @@ class TaxiTariffView: UIView {
         businessDurationLabel.textColor = #colorLiteral(red: 0.831372549, green: 0.7411764706, blue: 0.5019607843, alpha: 1)
         businessPriceLabel.textColor = .black
         if scoresEntered != 0 {
-            update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: prices[2] - scoresEntered)
+            update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: max(0,prices[2] - scoresEntered))
         }
     }
     
@@ -163,23 +163,6 @@ class TaxiTariffView: UIView {
         businessPriceLabel.text = "\(prices[2]) руб"
 
         recreateViewIfNeeded()
-    }
-    
-    func updateUIWith(scores:Int) {
-        scoresEntered = scores
-        guard let index = selectedIndex else { return }
-        switch index {
-            case 0:
-                let newPrice = prices[0] - scores
-                update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: newPrice)
-            case 1:
-                let newPrice = prices[1] - scores
-                update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: newPrice)
-            case 2:
-                let newPrice = prices[2] - scores
-                update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: newPrice)
-            default: break
-        }
     }
     
     private func update(oldLabel:UILabel,label:UILabel,oldPrice:Int,price:Int) {

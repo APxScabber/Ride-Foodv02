@@ -58,7 +58,7 @@ enum TariffsViewText {
         case .businessLabel:
             return "Business"
         case .carLabel:
-            return "Cars"
+            return "Cars:"
         case .emptyText:
             return ""
         case .aboutTariffs:

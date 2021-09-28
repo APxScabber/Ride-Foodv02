@@ -9,9 +9,7 @@ import UIKit
 
 class VBTextView: UIView {
     
-   public var textView = UITextField()
-    
-    public var placeholderLabel = UILabel()
+    public var textView = UITextField()
     
     public var bottomView = UIView()
     
@@ -27,7 +25,9 @@ class VBTextView: UIView {
     private func configure(){
         textView.translatesAutoresizingMaskIntoConstraints   = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
-    
+        
+        textView.adjustsFontSizeToFitWidth = true
+        textView.minimumFontSize = 10
         
         bottomView.backgroundColor                  = UIColor.ProfileButtonBorderColor
         textView.textColor                          = UIColor.black

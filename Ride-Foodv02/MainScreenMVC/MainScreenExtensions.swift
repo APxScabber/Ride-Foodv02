@@ -331,7 +331,6 @@ extension MainScreenViewController: ScoresToolbarDelegate {
         closeScoresView()
         taxiTariffView.scoresEntered = scores
         promocodeScoresView.scores = scores
-        taxiTariffView.updateUIWith(scores: scores)
     }
 }
 
@@ -377,14 +376,6 @@ extension MainScreenViewController: MenuViewDelegate {
 
     }
     
-    func goToStoryboard(_ name:String) {
-        let storyboard = UIStoryboard(name: name, bundle: .main)
-        if let supportVC = storyboard.instantiateInitialViewController() {
-            supportVC.modalPresentationStyle = .fullScreen
-            supportVC.modalTransitionStyle = .coverVertical
-            present(supportVC, animated: true)
-        }
-    }
 }
 
 //MARK: - FoodTaxiView Delegate
