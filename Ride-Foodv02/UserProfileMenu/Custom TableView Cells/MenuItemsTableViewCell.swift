@@ -13,7 +13,8 @@ class MenuItemsTableViewCell: UITableViewCell {
         menuItemLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
     }}
     
-    
+    @IBOutlet weak var paymentImageView: UIImageView!
+
     static let identifier = "MenuItemsCell"
 
     override func awakeFromNib() {

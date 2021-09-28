@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="519" width="414" height="377"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Причина отмены" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alx-kp-zek">
-                                        <rect key="frame" x="133.5" y="21" width="147.5" height="23"/>
+                                        <rect key="frame" x="132.5" y="21" width="149.5" height="23"/>
                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

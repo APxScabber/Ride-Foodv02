@@ -212,3 +212,15 @@
 "phoneChange" = "Change phone";
 "phoneRemove" = "Remove";
 "phoneSetToMain" = "Set to main";
+"phoneConfirm" = "Confirmation code";
+"phoneToNumber" = "To the phone";
+"phoneSendCode" = "SMS with a code was sent";
+"phoneResend" = "Resend after";
+"phoneSeconds" = "second";
+"phoneErrorConfirm" = "Wrong confirmation code";
+"phoneErrorDuplicate" = "This number is already in use";
+"phonesMain" = "Main";
+
+//MARK: - Tarrifs
+
+"tariffs" = "Tarrifs";

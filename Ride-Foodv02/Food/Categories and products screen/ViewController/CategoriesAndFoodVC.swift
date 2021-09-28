@@ -657,6 +657,7 @@ extension CategoriesAndFoodVC{
 
 extension CategoriesAndFoodVC: ClearFoodCartProtocol{
     func clearFoodCart() {
+        CurrentShop.shared.reset()
         FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
             guard let self = self else { return }
             guard error == nil else {

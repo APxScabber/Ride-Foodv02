@@ -64,14 +64,25 @@
                                         <constraint firstItem="KrH-ED-30E" firstAttribute="top" secondItem="aha-L0-tF7" secondAttribute="top" id="xtQ-Qc-rug"/>
                                     </constraints>
                                 </view>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Этот номер уже используется" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcB-JD-L59">
+                                    <rect key="frame" x="118.5" y="55.5" width="177.5" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="Hk8-VF-dqu"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="b5P-7O-1Zl" secondAttribute="trailing" constant="30" id="5OX-AI-dGm"/>
                                 <constraint firstAttribute="trailing" secondItem="dMu-3v-hJC" secondAttribute="trailing" constant="30" id="5Za-9P-KyU"/>
+                                <constraint firstItem="dcB-JD-L59" firstAttribute="centerX" secondItem="pA5-kl-fjR" secondAttribute="centerX" id="G3a-iv-Vfg"/>
                                 <constraint firstItem="aha-L0-tF7" firstAttribute="top" secondItem="b5P-7O-1Zl" secondAttribute="bottom" constant="26" id="KOy-Qa-rRD"/>
                                 <constraint firstItem="dMu-3v-hJC" firstAttribute="leading" secondItem="pA5-kl-fjR" secondAttribute="leading" constant="30" id="OmW-yp-1aF"/>
                                 <constraint firstItem="dMu-3v-hJC" firstAttribute="top" secondItem="pA5-kl-fjR" secondAttribute="top" constant="22" id="VFc-Bm-gPU"/>
+                                <constraint firstItem="dcB-JD-L59" firstAttribute="top" secondItem="b5P-7O-1Zl" secondAttribute="bottom" constant="3" id="kV0-TG-Bpq"/>
                                 <constraint firstAttribute="trailing" secondItem="aha-L0-tF7" secondAttribute="trailing" constant="25" id="nvL-6K-aRw"/>
                                 <constraint firstItem="b5P-7O-1Zl" firstAttribute="leading" secondItem="pA5-kl-fjR" secondAttribute="leading" constant="30" id="sVq-76-kQl"/>
                                 <constraint firstItem="aha-L0-tF7" firstAttribute="leading" secondItem="pA5-kl-fjR" secondAttribute="leading" constant="25" id="vXy-Bj-2wB"/>
@@ -100,6 +111,7 @@
             </constraints>
             <connections>
                 <outlet property="confirmButton" destination="KrH-ED-30E" id="2ZD-VN-ydX"/>
+                <outlet property="errorLabel" destination="dcB-JD-L59" id="Ye6-gp-Xvi"/>
                 <outlet property="heightConstraint" destination="gih-nU-C1d" id="em0-QT-03E"/>
                 <outlet property="roundedView" destination="aha-L0-tF7" id="cs4-vd-Vle"/>
                 <outlet property="textField" destination="dMu-3v-hJC" id="oQR-o0-ABe"/>
@@ -111,6 +123,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

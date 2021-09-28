@@ -11,4 +11,13 @@ extension UIViewController {
         }
     }
     
+    func goToStoryboard(_ name:String) {
+        let storyboard = UIStoryboard(name: name, bundle: .main)
+        if let supportVC = storyboard.instantiateInitialViewController() {
+            supportVC.modalPresentationStyle = .fullScreen
+            supportVC.modalTransitionStyle = .coverVertical
+            present(supportVC, animated: true)
+        }
+    }
+    
 }

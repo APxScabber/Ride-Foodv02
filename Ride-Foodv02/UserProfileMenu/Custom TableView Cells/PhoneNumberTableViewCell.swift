@@ -15,6 +15,7 @@ class PhoneNumberTableViewCell: UITableViewCell {
     
     @IBOutlet weak var isMainLabel: UILabel!{ didSet {
         isMainLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+        isMainLabel.text = Localizable.Phones.phonesMain.localized
     }}
     
     

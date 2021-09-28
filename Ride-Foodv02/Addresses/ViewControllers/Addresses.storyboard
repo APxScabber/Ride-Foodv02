@@ -106,7 +106,17 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7n-AJ-DaO">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NOT-oG-Tni">
+                                                <rect key="frame" x="188.5" y="342.5" width="37" height="37"/>
+                                                <color key="color" systemColor="systemOrangeColor"/>
+                                            </activityIndicatorView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="NOT-oG-Tni" firstAttribute="centerY" secondItem="b7n-AJ-DaO" secondAttribute="centerY" id="O74-wE-cSw"/>
+                                            <constraint firstItem="NOT-oG-Tni" firstAttribute="centerX" secondItem="b7n-AJ-DaO" secondAttribute="centerX" id="ZeI-7j-VKF"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -135,23 +145,15 @@
                     <connections>
                         <outlet property="newAddressParentView" destination="b7n-AJ-DaO" id="jA8-Kr-nnb"/>
                         <outlet property="newAddressScrollView" destination="MRI-KN-BnM" id="XLh-h1-nLg"/>
+                        <outlet property="spinner" destination="NOT-oG-Tni" id="wtB-xD-XQc"/>
                         <segue destination="mmI-fy-Wht" kind="presentation" identifier="selectLocationSegue" modalPresentationStyle="fullScreen" id="lVV-hb-oBj"/>
-                        <segue destination="mxf-OD-uGp" kind="presentation" identifier="ToTaxiSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="gQ7-AW-azU"/>
+                        <segue destination="hGi-ka-NP0" kind="unwind" identifier="backToMain" unwindAction="unwindSegueFromSupport:" id="1Nu-w5-ju7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd2-ua-ctn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="hGi-ka-NP0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1668.1159420289857" y="69.642857142857139"/>
-        </scene>
-        <!--TaxiStoryboard-->
-        <scene sceneID="h7F-8c-tIV">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TaxiStoryboard" storyboardName="Taxi" referencedIdentifier="TaxiStoryboard" id="mxf-OD-uGp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="vVM-hl-EGS"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XJP-kr-rq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2404" y="-38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wud-ck-E36">
@@ -294,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHN-DQ-nfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957" y="-597"/>
+            <point key="canvasLocation" x="2496" y="70"/>
         </scene>
     </scenes>
     <resources>
@@ -303,6 +305,9 @@
         <image name="houseIcon" width="14" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

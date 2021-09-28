@@ -14,13 +14,21 @@ class TariffsViewController: BaseViewController {
     @IBOutlet weak var standartButtonOutlet: UIButton!
     @IBOutlet weak var premiumButtonOutlet: UIButton!
     @IBOutlet weak var businessButtonOutlet: UIButton!
-    @IBOutlet weak var carLabel: UILabel!
-    @IBOutlet weak var carTypeLabel: UILabel!
+    @IBOutlet weak var carLabel: UILabel! { didSet {
+        carLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
+    @IBOutlet weak var carTypeLabel: UILabel! { didSet {
+        carTypeLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var tarrifInfoHeading: UILabel!
-    @IBOutlet weak var tariffInfoText: UITextView!
+    @IBOutlet weak var tariffInfoText: UITextView! { didSet {
+        tariffInfoText.font = UIFont.SFUIDisplayRegular(size: 12.0)
+    }}
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var orderTaxiButtonOutlet: UIButton!
+    @IBOutlet weak var orderTaxiButtonOutlet: UIButton! { didSet {
+        orderTaxiButtonOutlet.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
+    }}
     
     
     // MARK: - Properties
@@ -37,14 +45,11 @@ class TariffsViewController: BaseViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getUserID()
-        
+                
         collectionView.dataSource = self
         collectionView.delegate = self
 
         tarrifsButtonArray = [standartButtonOutlet, premiumButtonOutlet, businessButtonOutlet]
-        
         setupSmallTariffButtons()
         setupCarsTypeLabel()
         setupTarifInfoLabels()

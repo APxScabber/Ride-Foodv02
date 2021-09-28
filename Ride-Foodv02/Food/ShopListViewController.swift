@@ -195,7 +195,11 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }
-        } else { shouldIncreaseHeight = false }
+        } else {
+            bottomRoundedViewHeightConstraint.constant = 0
+            totalHeightConstraint.constant = totalHeight
+            shouldIncreaseHeight = false
+        }
     }
     
     private func updateBottomView() {

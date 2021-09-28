@@ -208,4 +208,15 @@
 "phoneChange" = "Изменить номер";
 "phoneRemove" = "Удалить";
 "phoneSetToMain" = "Назначить основным";
+"phoneConfirm" = "Код потдверждения";
+"phoneToNumber" = "На номер";
+"phoneSendCode" = "отправлено смс с кодом";
+"phoneResend" = "Повторная отправка через";
+"phoneSeconds" = "секунд";
+"phoneErrorConfirm" = "Неправильный код подтверждения";
+"phoneErrorDuplicate" = "Этот номер уже используется";
+"phonesMain" = "Основной";
 
+//MARK: - Tarrifs
+
+"tariffs" = "Тарифы";

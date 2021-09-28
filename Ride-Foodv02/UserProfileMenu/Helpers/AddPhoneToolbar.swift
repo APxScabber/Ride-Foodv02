@@ -2,7 +2,7 @@ import UIKit
 
 protocol AddPhoneToolbarDelegate: AnyObject {
     func addPhoneToolbarClose()
-    func addPhoneToolbarAdd(_ phone:String)
+    func addPhoneToolbarAdd()
     func addPhoneToolbarChange(_ phone:String,at index:Int)
 }
 
@@ -12,6 +12,7 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
     
     var index = 0
     var state: AddPhoneState = .add
+    var phones = [String]()
     weak var delegate: AddPhoneToolbarDelegate?
     private var phoneEntered: Bool { textField.text?.count == 18 }
     
@@ -31,6 +32,11 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
         roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
     }}
     
+    @IBOutlet weak var errorLabel: UILabel! { didSet {
+        errorLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
+        errorLabel.text = Localizable.Phones.phoneErrorDuplicate.localized
+    }}
+    
     @IBOutlet weak var confirmButton: UIButton! { didSet {
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
         confirmButton.setTitle(Localizable.Promocode.confirm.localized, for: .normal)
@@ -42,7 +48,7 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
     
     @IBAction func confirm(_ sender: UIButton) {
         if state == .add {
-            delegate?.addPhoneToolbarAdd(textField.text ?? "")
+            delegate?.addPhoneToolbarAdd()
         } else {
             delegate?.addPhoneToolbarChange(textField.text ?? "", at: index)
         }
@@ -52,6 +58,7 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
     
     @objc
     private func updateState() {
+        errorLabel.isHidden = true
         underbarLine.backgroundColor = phoneEntered ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         confirmButton.isUserInteractionEnabled = phoneEntered
         roundedView.colorToFill = phoneEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
@@ -59,6 +66,13 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
                                     LoginConstantText.phoneFormatFull.rawValue,
                                    replacmentCharacter: "#")
         textField.text = formatedNumber
+        if phones.contains(textField.text ?? "") && state == .add {
+            duplicateError()
+        }
+        guard let currentIndex = phones.firstIndex(of: textField.text ?? "") else { return }
+        if state == .changed && phones.contains(textField.text ?? "") && index != currentIndex {
+            duplicateError()
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -66,6 +80,13 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
         if text.count == 2 && string == "" { return false }
         if text.count == 18 && string != "" { return false}
         return true
+    }
+    
+    private func duplicateError() {
+        underbarLine.backgroundColor =  #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        confirmButton.isUserInteractionEnabled = false
+        roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        errorLabel.isHidden = false
     }
     
     //MARK: - Init

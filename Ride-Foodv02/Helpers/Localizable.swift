@@ -86,7 +86,11 @@ enum Localizable {
     }
     
     enum Phones: String,LocalizableDelegate {
-        case phoneAdd,phoneChange,phoneRemove,phoneSetToMain
+        case phoneAdd,phoneChange,phoneRemove,phoneSetToMain,phoneConfirm,phoneToNumber,phoneSendCode,phoneResend,phoneSeconds,phoneErrorConfirm,phoneErrorDuplicate,phonesMain
+    }
+    
+    enum Tariffs: String,LocalizableDelegate {
+        case tariffs
     }
 }
 

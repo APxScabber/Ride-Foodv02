@@ -19,11 +19,11 @@ class UserProfileTableVC: UITableViewController {
 //
     var phones = Phones()
     
-    var enterMobilePhooneNumber = Localizable.UserProfile.enterPhoneNumber.localized
-    var myAddressesMenuItem     = Localizable.UserProfile.myAddresses.localized
-    var paymentHistoryMenuItem  = Localizable.UserProfile.paymentHistory.localized
-    var ordersHistoryMenuItem   = Localizable.UserProfile.ordersHistory.localized
-    var paymentMethodMenuItem   = Localizable.UserProfile.paymentMethod.localized
+    let enterMobilePhooneNumber = Localizable.UserProfile.enterPhoneNumber.localized
+    let myAddressesMenuItem     = Localizable.UserProfile.myAddresses.localized
+    let paymentHistoryMenuItem  = Localizable.UserProfile.paymentHistory.localized
+    let ordersHistoryMenuItem   = Localizable.UserProfile.ordersHistory.localized
+    let paymentMethodMenuItem   = Localizable.UserProfile.paymentMethod.localized
     
     var sectionTwoMenuItems: [String] = []
 //    let footerView = UIView()
@@ -32,6 +32,7 @@ class UserProfileTableVC: UITableViewController {
     let backView = ProfileMenuBackgroundView()
     let addPhoneView = AddPhoneView.initFromNib()
     let addPhoneViewToolbar = AddPhoneToolbar.initFromNib()
+    let phoneConfirmView = PhoneConfirmView.initFromNib()
     
     let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first
     
@@ -217,6 +218,8 @@ class UserProfileTableVC: UITableViewController {
         if indexPath.section == 0 && indexPath.row == phones.phones.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemsTableViewCell.identifier, for: indexPath) as! MenuItemsTableViewCell
             cell.menuItemLabel.text = myAddressesMenuItem
+            cell.paymentImageView.isHidden = true
+            cell.menuItemLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 25.0).isActive = true
             return cell
         }
         
@@ -224,6 +227,10 @@ class UserProfileTableVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: MenuItemsTableViewCell.identifier, for: indexPath) as! MenuItemsTableViewCell
             let menuItem = sectionTwoMenuItems[indexPath.row]
             cell.menuItemLabel.text = menuItem
+            if indexPath.row < sectionTwoMenuItems.count - 1 {
+                cell.paymentImageView.isHidden = true
+                cell.menuItemLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 25.0).isActive = true
+            }
             return cell
         }
      return UITableViewCell()
@@ -302,6 +309,9 @@ extension UserProfileTableVC: ResetEverythingProtocol{
 extension UserProfileTableVC: AddPhoneViewDelegate {
     
     func addPhoneRemove() {
+        if currentIndexPath.row < phones.currentPhoneID {
+            phones.changeIDTo(phones.currentPhoneID - 1)
+        }
         phones.removeAt(currentIndexPath.row)
         tableView.reloadData()
         addPhoneViewClose()
@@ -332,6 +342,8 @@ extension UserProfileTableVC: AddPhoneViewDelegate {
         addPhoneViewToolbar.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: addPhoneViewToolbar.heightConstraint.constant)
         addPhoneViewToolbar.delegate = self
         addPhoneViewToolbar.textField.becomeFirstResponder()
+        addPhoneViewToolbar.phones = phones.phones
+        addPhoneViewToolbar.index = currentIndexPath.row
     }
     
     func addPhoneViewClose() {
@@ -353,10 +365,19 @@ extension UserProfileTableVC: AddPhoneViewDelegate {
 
 extension UserProfileTableVC: AddPhoneToolbarDelegate {
     
-    func addPhoneToolbarAdd(_ phone: String) {
-        phones.append(phone)
-        tableView.reloadData()
-        closeAddPhoneAll()
+    func addPhoneToolbarAdd() {
+        guard let window = window else { return }
+        window.addSubview(phoneConfirmView)
+        window.bringSubviewToFront(phoneConfirmView)
+        phoneConfirmView.frame = CGRect(x: window.bounds.width, y: window.bounds.height - phoneConfirmView.heightConstraint.constant - self.keyboardHeight, width: window.bounds.width, height: phoneConfirmView.heightConstraint.constant)
+        phoneConfirmView.delegate = self
+        addPhoneViewToolbar.delegate = self
+        addPhoneViewToolbar.textField.resignFirstResponder()
+        phoneConfirmView.phone = addPhoneViewToolbar.textField.text ?? ""
+        phoneConfirmView.runTimer()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.phoneConfirmView.frame.origin.x = 0
+        }
     }
     
     func addPhoneToolbarChange(_ phone: String, at index: Int) {
@@ -385,6 +406,28 @@ extension UserProfileTableVC: AddPhoneToolbarDelegate {
             self.tableView.isUserInteractionEnabled = true
         }
         }
+    }
+   
+}
+
+//MARK: - PhoneConfirmViewDelegate
+
+extension UserProfileTableVC: PhoneConfirmViewDelegate {
+    func phoneConfirmViewAdd(_ phone: String) {
+        guard let window = window else { return }
+        phones.append(phone)
+        tableView.reloadData()
+        phoneConfirmView.textField.resignFirstResponder()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.addPhoneViewToolbar.frame.origin.y = window.bounds.height
+            self.addPhoneView.frame.origin.y = window.bounds.height
+            self.phoneConfirmView.frame.origin.y = window.bounds.height
+        } completion: { if $0 == .end {
+            self.transparentView.isHidden = true
+            self.tableView.isUserInteractionEnabled = true
+        }
+        }
+
     }
     
     

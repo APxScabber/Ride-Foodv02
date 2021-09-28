@@ -59,7 +59,6 @@
 		7858D37926AF11B500441690 /* FoodMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */; };
 		785D38AE26AB09DC00DAB562 /* PromotionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785D38AD26AB09DC00DAB562 /* PromotionView.xib */; };
 		785D38B026AB09E700DAB562 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785D38AF26AB09E700DAB562 /* PromotionView.swift */; };
-		785F5D8626C11CDB004503CB /* Taxi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785F5D8526C11CDB004503CB /* Taxi.storyboard */; };
 		785F5D8E26C15D41004503CB /* TaxiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D8D26C15D41004503CB /* TaxiConstant.swift */; };
 		785F5D9026C16243004503CB /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D8F26C16243004503CB /* CLLocation+Extensions.swift */; };
 		785F5D9226C16E8D004503CB /* TopRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785F5D9126C16E8D004503CB /* TopRoundedView.swift */; };
@@ -97,7 +96,6 @@
 		787A83E526AB2D9B0096DFC3 /* MyAddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83E426AB2D9B0096DFC3 /* MyAddressesTableViewCell.swift */; };
 		787A83EB26AB2DA40096DFC3 /* Addresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787A83E626AB2DA30096DFC3 /* Addresses.storyboard */; };
 		787A83EE26AB2DA40096DFC3 /* AddressesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83E926AB2DA30096DFC3 /* AddressesVC.swift */; };
-		787A83EF26AB2DA40096DFC3 /* AddressesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787A83EA26AB2DA40096DFC3 /* AddressesVC.xib */; };
 		787A83F126AB2DAD0096DFC3 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83F026AB2DAD0096DFC3 /* PersistanceManager.swift */; };
 		787A83F326AB2DB80096DFC3 /* AddressesEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83F226AB2DB80096DFC3 /* AddressesEmptyStateView.swift */; };
 		787A83F526AB31FA0096DFC3 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A83F426AB31FA0096DFC3 /* CircleView.swift */; };
@@ -116,6 +114,9 @@
 		7897FB2226FF27FC0001E228 /* AddPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FB2126FF27FC0001E228 /* AddPhoneView.swift */; };
 		7897FB242701DF320001E228 /* AddPhoneToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7897FB232701DF320001E228 /* AddPhoneToolbar.xib */; };
 		7897FB262701DF460001E228 /* AddPhoneToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FB252701DF460001E228 /* AddPhoneToolbar.swift */; };
+		7897FB28270343D00001E228 /* PhoneConfirmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7897FB27270343D00001E228 /* PhoneConfirmView.xib */; };
+		7897FB2A270346450001E228 /* PhoneConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FB29270346450001E228 /* PhoneConfirmView.swift */; };
+		7897FB2C27036BFD0001E228 /* ConfirmationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FB2B27036BFD0001E228 /* ConfirmationCode.swift */; };
 		789FA99526F8C129004CD3D9 /* DeliveryMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789FA99426F8C129004CD3D9 /* DeliveryMainView.xib */; };
 		789FA99726F8C136004CD3D9 /* DeliveryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789FA99626F8C136004CD3D9 /* DeliveryMainView.swift */; };
 		78A39FE2267B55EC006D0DAB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */; };
@@ -353,7 +354,6 @@
 		7858D37826AF11B500441690 /* FoodMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMainTableViewCell.swift; sourceTree = "<group>"; };
 		785D38AD26AB09DC00DAB562 /* PromotionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionView.xib; sourceTree = "<group>"; };
 		785D38AF26AB09E700DAB562 /* PromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
-		785F5D8526C11CDB004503CB /* Taxi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Taxi.storyboard; sourceTree = "<group>"; };
 		785F5D8D26C15D41004503CB /* TaxiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiConstant.swift; sourceTree = "<group>"; };
 		785F5D8F26C16243004503CB /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		785F5D9126C16E8D004503CB /* TopRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRoundedView.swift; sourceTree = "<group>"; };
@@ -390,7 +390,6 @@
 		787A83E426AB2D9B0096DFC3 /* MyAddressesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddressesTableViewCell.swift; sourceTree = "<group>"; };
 		787A83E626AB2DA30096DFC3 /* Addresses.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Addresses.storyboard; sourceTree = "<group>"; };
 		787A83E926AB2DA30096DFC3 /* AddressesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesVC.swift; sourceTree = "<group>"; };
-		787A83EA26AB2DA40096DFC3 /* AddressesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressesVC.xib; sourceTree = "<group>"; };
 		787A83F026AB2DAD0096DFC3 /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		787A83F226AB2DB80096DFC3 /* AddressesEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesEmptyStateView.swift; sourceTree = "<group>"; };
 		787A83F426AB31FA0096DFC3 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -409,6 +408,9 @@
 		7897FB2126FF27FC0001E228 /* AddPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneView.swift; sourceTree = "<group>"; };
 		7897FB232701DF320001E228 /* AddPhoneToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhoneToolbar.xib; sourceTree = "<group>"; };
 		7897FB252701DF460001E228 /* AddPhoneToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneToolbar.swift; sourceTree = "<group>"; };
+		7897FB27270343D00001E228 /* PhoneConfirmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneConfirmView.xib; sourceTree = "<group>"; };
+		7897FB29270346450001E228 /* PhoneConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneConfirmView.swift; sourceTree = "<group>"; };
+		7897FB2B27036BFD0001E228 /* ConfirmationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationCode.swift; sourceTree = "<group>"; };
 		789FA99426F8C129004CD3D9 /* DeliveryMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryMainView.xib; sourceTree = "<group>"; };
 		789FA99626F8C136004CD3D9 /* DeliveryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMainView.swift; sourceTree = "<group>"; };
 		78A39FDE267B55EC006D0DAB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -702,14 +704,6 @@
 			path = Food;
 			sourceTree = "<group>";
 		};
-		785F5D8426C11C9E004503CB /* Taxi */ = {
-			isa = PBXGroup;
-			children = (
-				785F5D8526C11CDB004503CB /* Taxi.storyboard */,
-			);
-			path = Taxi;
-			sourceTree = "<group>";
-		};
 		7867B4A1266FA9F50031BFA0 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,7 +881,6 @@
 			children = (
 				787A83E626AB2DA30096DFC3 /* Addresses.storyboard */,
 				787A83E926AB2DA30096DFC3 /* AddressesVC.swift */,
-				787A83EA26AB2DA40096DFC3 /* AddressesVC.xib */,
 				F5BC917526AF9D0F008E9841 /* AddNewAddressVC.swift */,
 				F5011DB926B36FDD00DE3777 /* SelectLocationVC.swift */,
 			);
@@ -1256,7 +1249,6 @@
 				78A39FFF267B56C3006D0DAB /* Text */,
 				7867B4E1267392E30031BFA0 /* MainScreenMVC */,
 				7858D37326AED7AD00441690 /* Food */,
-				785F5D8426C11C9E004503CB /* Taxi */,
 				7867B4D12672290F0031BFA0 /* MenuMVC */,
 				7867B4B4266FAC410031BFA0 /* SupportMVC */,
 				7850E9012674FC0B00AA88CA /* SettingsMVC */,
@@ -1441,6 +1433,9 @@
 				7897FB2126FF27FC0001E228 /* AddPhoneView.swift */,
 				7897FB232701DF320001E228 /* AddPhoneToolbar.xib */,
 				7897FB252701DF460001E228 /* AddPhoneToolbar.swift */,
+				7897FB27270343D00001E228 /* PhoneConfirmView.xib */,
+				7897FB29270346450001E228 /* PhoneConfirmView.swift */,
+				7897FB2B27036BFD0001E228 /* ConfirmationCode.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1503,9 +1498,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7897FB28270343D00001E228 /* PhoneConfirmView.xib in Resources */,
 				7867B4AA266FAB1B0031BFA0 /* SFUIDisplay-Light.otf in Resources */,
 				78894E4C26CFF71F0044DBF4 /* ScoresView.xib in Resources */,
-				787A83EF26AB2DA40096DFC3 /* AddressesVC.xib in Resources */,
 				78F1A97E26A8949000E16084 /* PaymentWays.storyboard in Resources */,
 				78E25AA526A982F8006E6BC9 /* FoodTaxiView.xib in Resources */,
 				F5CA35A426FBDDBE00F97632 /* AwaitDriverView.xib in Resources */,
@@ -1525,7 +1520,6 @@
 				C4E83FBD266EA53B000EE70F /* LaunchScreen.storyboard in Resources */,
 				78BE49FE268354ED00A13641 /* SFUIDisplay-Bold.otf in Resources */,
 				C471DFD926F0E839005158E8 /* TaxiOrderInfo.xib in Resources */,
-				785F5D8626C11CDB004503CB /* Taxi.storyboard in Resources */,
 				7858D37526AED7BC00441690 /* Food.storyboard in Resources */,
 				78740C1926DD472A0078F2F7 /* PromocodeActivation.xib in Resources */,
 				78C8C98F26C804C4001C947F /* OrderHistory.storyboard in Resources */,
@@ -1686,6 +1680,7 @@
 				F58C01E4270179C700F61283 /* CancelledVC.swift in Sources */,
 				7867B4D32672291D0031BFA0 /* SettingsMainViewController.swift in Sources */,
 				78A3A00C267B56E9006D0DAB /* UserDefaultsManagerText.swift in Sources */,
+				7897FB2A270346450001E228 /* PhoneConfirmView.swift in Sources */,
 				78AEB87E267B59C10023605D /* ConfirmVCExtension.swift in Sources */,
 				78F1A97C26A8949000E16084 /* AddCardInteractor.swift in Sources */,
 				782D45D226B01402006B3A98 /* ShopListViewController.swift in Sources */,
@@ -1791,6 +1786,7 @@
 				7808D7D326B481A400A88E12 /* TotalScoresInteractor.swift in Sources */,
 				F5011DBF26B5FE9600DE3777 /* UIViewControllerExtensions.swift in Sources */,
 				F5724CAE26F8291D00573B35 /* LoadingWavesCustomView.swift in Sources */,
+				7897FB2C27036BFD0001E228 /* ConfirmationCode.swift in Sources */,
 				7850E8F626739E6800AA88CA /* Settings.swift in Sources */,
 				F529F1B826DB824C007B91B4 /* CartProductsQTYView.swift in Sources */,
 				C446725026C5C63B00598459 /* PaymentHistoryColor.swift in Sources */,
@@ -1952,7 +1948,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1973,7 +1969,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GYH8TXH77;
+				DEVELOPMENT_TEAM = 36UX7SKY3J;
 				INFOPLIST_FILE = "Ride-Foodv02/Misc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

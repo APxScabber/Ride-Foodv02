@@ -9,7 +9,9 @@ import UIKit
 
 class TariffsCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var cellLabel: UILabel! { didSet {
+        cellLabel.font = UIFont.SFUIDisplayLight(size: 12.0)
+    }}
     @IBOutlet weak var cellImageButton: UIButton!
     
 }

@@ -31,7 +31,7 @@ class LoginInteractor {
                 let confirmModel = model.data
                 let confirmCode = String(confirmModel.code)
                 LocalNotofications.shared.sendLocalNotifications(body: (confirmCode))
-
+                ConfirmationCode.shared.current = confirmCode
             case .failure(let error):
                 print("ERROR: \(error)")
             }
