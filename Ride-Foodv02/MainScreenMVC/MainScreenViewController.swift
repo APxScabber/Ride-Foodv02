@@ -173,6 +173,9 @@ class MainScreenViewController: BaseViewController {
     
     var bottomSafeAreaConstant: CGFloat = 0
     
+    var hasSetPointOrigin = false
+    var pointOrigin: CGPoint?
+    
     var safeAreaBottomHeight: CGFloat = 0.0
     var responderTextField: UITextField?
     var keyboardHeight: CGFloat = 0.0
@@ -364,6 +367,14 @@ class MainScreenViewController: BaseViewController {
             containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foundDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foundDriverScreenHeight + bottomSafeAreaConstant)
         case .wait:
             containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.awaitDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.awaitDriverScreenHeight + bottomSafeAreaConstant + 30)
+            
+              if !hasSetPointOrigin {
+                  hasSetPointOrigin = true
+                  pointOrigin = self.containerView.frame.origin
+             
+              }
+            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
+                  containerView.addGestureRecognizer(panGesture)
         }
     }
     
@@ -379,6 +390,32 @@ class MainScreenViewController: BaseViewController {
         child.delegate = self
         self.add(childVC: child, to: containerView)
     }
+    
+    @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
+         let translation = sender.translation(in: containerView)
+
+         // Not allowing the user to drag the view upward
+         guard translation.y >= 0 else { return }
+
+         // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
+         containerView.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
+
+         if sender.state == .ended {
+             let dragVelocity = sender.velocity(in: containerView)
+             if dragVelocity.y >= 1300 {
+                 // Velocity fast enough to dismiss the uiview
+                 isTaxiOrdered = true
+                 pressTaxiOrderButton()
+                 
+               //  self.dismiss(animated: true, completion: nil)
+             } else {
+                 // Set back to original position of the view controller
+                 UIView.animate(withDuration: 0.3) {
+                     self.containerView.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 300)
+                 }
+             }
+         }
+     }
     
     // MARK: - Taxi Methods
     
@@ -1312,9 +1349,10 @@ class MainScreenViewController: BaseViewController {
     // MARK: Dismiss taxiContainerView and return to the main screen
     func closeContainerView(){
         DispatchQueue.main.async {
-                self.isTaxiOrdered = false
                 self.containerView.frame.origin.y = self.view.frame.height
                 self.containerView.removeFromSuperview()
+            self.pathTimeView.alpha = 0
+            
             self.addressesChooserView.alpha = 1
             self.taxiBackButtonOutlet.alpha = 1
             self.circleView.alpha = 1

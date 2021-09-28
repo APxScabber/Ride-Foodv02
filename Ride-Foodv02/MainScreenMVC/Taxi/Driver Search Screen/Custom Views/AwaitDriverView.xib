@@ -23,6 +23,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-6m-tPN">
                     <rect key="frame" x="187" y="33" width="40" height="5"/>
                     <color key="backgroundColor" name="SettingsBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="sjs-cY-7z0"/>
+                        <constraint firstAttribute="height" constant="5" id="vR0-Q3-e9S"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -39,7 +43,6 @@
                 <constraint firstItem="ojZ-Gz-xzd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bEm-Fz-McI"/>
                 <constraint firstItem="Iq6-6m-tPN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="duO-Sf-Mv9"/>
                 <constraint firstItem="ojZ-Gz-xzd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tXg-aE-BDJ"/>
-                <constraint firstItem="Iq6-6m-tPN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="187" id="uH6-od-nc2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
