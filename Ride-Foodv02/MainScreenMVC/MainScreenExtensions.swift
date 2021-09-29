@@ -149,6 +149,10 @@ extension MainScreenViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         responderTextField = textField
+        userLocationButtonOutlet.alpha = 0
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapToTransparentView))
+        self.transparentView.addGestureRecognizer(tap)
         
         showMapItems(true)
         
@@ -174,6 +178,8 @@ extension MainScreenViewController: FromAddressDetailViewDelegate {
         
         toAddressDetailView.placeLabel.text = toAddress
         
+        currentAddressViewDetail = 2
+        
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.toAddressDetailView.frame.origin.x = 0
             self.fromAddressDetailView.frame.origin.x = -self.view.bounds.width
@@ -188,6 +194,8 @@ extension MainScreenViewController: FromAddressDetailViewDelegate {
 extension MainScreenViewController: ToAddressDetailViewDelegate {
     
     func toAddressDetailConfirm() {
+        
+        currentAddressViewDetail = 0
         transparentView.isHidden = true
         bottomConstaint.constant = 0.0
         toAddressDetailView.textField.resignFirstResponder()
@@ -204,6 +212,7 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
             self.shouldUpdateUI = true
             self.addressesChooserView.isUserInteractionEnabled = true
             self.shouldMakeOrder = true
+            //self.isPrepairToOrder = true
         }
         }
         userLocationButtonBottomConstraint.constant = addressesChooserViewHeightConstraint.constant - safeAreaBottomHeight
@@ -218,6 +227,8 @@ extension MainScreenViewController: ToAddressDetailViewDelegate {
         SetMapMarkersManager.shared.isPathCalculeted = true
         gradientImageView?.isHidden = fromAddress.isEmpty || toAddress.isEmpty
         showMapItems(true)
+        
+        //mapView.remo
     }
 }
 
@@ -473,6 +484,7 @@ extension MainScreenViewController: SetToLocationDelegate {
             self.setToLocationView.frame.origin.y = self.view.frame.height
             
         } completion: { _ in
+            
             self.setToLocationView.removeFromSuperview()
             self.bottomConstaint.constant = 0
             UIView.animate(withDuration: 0.5) {
@@ -482,6 +494,7 @@ extension MainScreenViewController: SetToLocationDelegate {
             self.setToAndFromMarkers()
             self.moveDown()
             self.zoomAllMarkers()
+            self.isMainScreen = true
         }
     }
     
