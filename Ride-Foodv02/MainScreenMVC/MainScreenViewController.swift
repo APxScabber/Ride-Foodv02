@@ -420,7 +420,7 @@ class MainScreenViewController: BaseViewController {
     // MARK: - Taxi Methods
     
     func loadSetupsTaxi() {
-        
+        addressesChooserView.alpha = 1
         if !isTaxiOrdered {
             
             if isFoodOrdered {
