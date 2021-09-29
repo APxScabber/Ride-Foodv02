@@ -55,8 +55,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="У вас меньше баллов чем указано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXi-A3-bqG">
-                            <rect key="frame" x="25" y="57" width="203" height="21"/>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="У вас меньше баллов чем указано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vXi-A3-bqG">
+                            <rect key="frame" x="25" y="57" width="364" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="taf-2B-OTY"/>
                             </constraints>
@@ -80,6 +80,7 @@
                         <constraint firstItem="Q7v-cL-jov" firstAttribute="leading" secondItem="Dga-rn-GQU" secondAttribute="leading" constant="25" id="9OO-nc-j9E"/>
                         <constraint firstItem="vXi-A3-bqG" firstAttribute="leading" secondItem="Dga-rn-GQU" secondAttribute="leading" constant="25" id="GZM-ms-J3N"/>
                         <constraint firstItem="9NR-5Y-gHz" firstAttribute="centerX" secondItem="Dga-rn-GQU" secondAttribute="centerX" id="Kfn-CY-mv5"/>
+                        <constraint firstAttribute="trailing" secondItem="vXi-A3-bqG" secondAttribute="trailing" constant="25" id="Owp-pq-rWG"/>
                         <constraint firstItem="k34-ae-9eY" firstAttribute="leading" secondItem="Dga-rn-GQU" secondAttribute="leading" constant="25" id="VtG-lN-Bn2"/>
                         <constraint firstAttribute="height" constant="170" id="d2C-gz-xzE"/>
                         <constraint firstAttribute="bottom" secondItem="k34-ae-9eY" secondAttribute="bottom" constant="25" id="f8J-2A-Can"/>

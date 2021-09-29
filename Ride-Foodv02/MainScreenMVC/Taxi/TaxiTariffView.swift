@@ -9,7 +9,9 @@ class TaxiTariffView: UIView {
     //MARK: - API
     weak var delegate: TaxiTariffViewDelegate?
     
-    var selectedIndex: Int?
+    var selectedIndex: Int? { didSet {
+        CurrentPrice.shared.price = prices[selectedIndex ?? 0]
+    }}
     var scoresEntered = 0 { didSet { recreateViewIfNeeded() }}
     
     private let prices = [100,250,430]
@@ -194,4 +196,23 @@ class TaxiTariffView: UIView {
     
     
     
+}
+
+
+class CurrentPrice {
+    
+    static let shared = CurrentPrice()
+    
+    var price: Int {
+        get { UserDefaults.standard.integer(forKey: kCurrentPrice) }
+        set { UserDefaults.standard.set(newValue, forKey: kCurrentPrice)}
+    }
+    
+    var totalDiscount: Int {
+        get { UserDefaults.standard.integer(forKey: kTotalDiscount) }
+        set { UserDefaults.standard.set(newValue, forKey: kTotalDiscount)}
+    }
+    
+    private let kCurrentPrice = "kCurrentPrice"
+    private let kTotalDiscount = "kTotalDiscount"
 }

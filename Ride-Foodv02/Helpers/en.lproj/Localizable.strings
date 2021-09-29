@@ -94,7 +94,7 @@
 "misc" = "Other quantity";
 "scoresError" = "You have less scores than indicated";
 "scoresEnter" = "Enter the number of scores";
-
+"scoresFoodMoreError" = "You entered the number of scores, the higher the purchase value";
 
 //MARK: - Taxi
 

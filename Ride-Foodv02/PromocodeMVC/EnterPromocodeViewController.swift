@@ -74,6 +74,15 @@ class EnterPromocodeViewController: UIViewController {
 
 extension EnterPromocodeViewController: PromocodeToolbarDelegate {
     
+    func closePromocodeToolbar() {
+        promocodeToolbar.dismiss()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.promocodeToolbar.frame.origin.y = self.view.bounds.height
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
     func activate(promocode: String) {
         PromocodeActivator.post(code: promocode)
         promocodeToolbar.spinner.startAnimating()

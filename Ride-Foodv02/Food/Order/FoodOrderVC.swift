@@ -170,6 +170,7 @@ class FoodOrderVC: BaseViewController {
             destination.orderCompleteView.totalPrice = totalPrice
             destination.orderCompleteView.paymentImageView.image = currentImage
             destination.orderCompleteView.paymentDetailLabel.text = currentPay
+            destination.orderCompleteView.currentOrderType = .food
             destination.isFoodOrdered = true
             destination.shouldUpdateScreen = true
         }

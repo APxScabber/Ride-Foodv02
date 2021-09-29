@@ -3,7 +3,7 @@ import UIKit
 @objc
 protocol PromocodeToolbarDelegate: AnyObject {
     func activate(promocode:String)
-    @objc optional func closePromocodeToolbar()
+    func closePromocodeToolbar()
 }
 
 //152 total height
@@ -51,14 +51,15 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
     }
 
     private var promocodeEntered: Bool { textField.text?.count == 8 }
-    
+    private var shouldHideErrorLabel = false
     
     @objc
     private func updateState() {
-        errorLabel.isHidden = !promocodeEntered
-        lineView.backgroundColor = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
+        errorLabel.isHidden = shouldHideErrorLabel
+        lineView.backgroundColor = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         button.isUserInteractionEnabled = promocodeEntered
         roundedView.colorToFill = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        shouldHideErrorLabel = true
     }
     
     func dismiss() {
@@ -76,6 +77,13 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         return true
     }
     
+    func showErrorWith(_ text:String) {
+        lineView.backgroundColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+        errorLabel.text = text
+        spinner.stopAnimating()
+        shouldHideErrorLabel = false
+        updateState()
+    }
 
     
     override func layoutSubviews() {
@@ -107,7 +115,7 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
             textField.text = "R-"
             errorLabel.text = ""
             updateState()
-            delegate?.closePromocodeToolbar?()
+            delegate?.closePromocodeToolbar()
         }
     }
 }

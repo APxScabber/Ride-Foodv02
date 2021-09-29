@@ -44,7 +44,7 @@ enum Localizable {
     }
     
     enum Scores: String,LocalizableDelegate {
-        case me,scoresAvailable,allIn,misc,scoresError,scoresEnter,score
+        case me,scoresAvailable,allIn,misc,scoresError,scoresEnter,score,scoresFoodMoreError
     }
     
     

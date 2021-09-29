@@ -1268,14 +1268,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F529F1AE26D88774007B91B4 /* Custom ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				F529F1AF26D887A5007B91B4 /* CartVC.swift */,
-			);
-			path = "Custom ViewControllers";
-			sourceTree = "<group>";
-		};
 		F56502F926CAF71E00934D91 /* Categories and products screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1292,6 +1284,7 @@
 		F56502FA26CAF77200934D91 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F529F1AF26D887A5007B91B4 /* CartVC.swift */,
 				F56502F326CA138600934D91 /* CategoriesAndFoodVC.swift */,
 				F568D20E26D3158000C13E28 /* ProductViewController.swift */,
 			);
@@ -1370,7 +1363,6 @@
 		F57BE60126D46D0000DE7594 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				F529F1AE26D88774007B91B4 /* Custom ViewControllers */,
 				F57BE60226D46D2900DE7594 /* onSaleView.swift */,
 				F542D5E526D7394800312376 /* FoodOrderBottomView.swift */,
 				F529F1B326DAE4EE007B91B4 /* PromocodeCreditView.swift */,

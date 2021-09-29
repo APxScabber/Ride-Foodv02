@@ -551,10 +551,7 @@ extension MainScreenViewController: PromocodeActivatorDelegate {
     }
     
     func promocodeFailed(_ error: String) {
-        promocodeToolbar.lineView.backgroundColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-        promocodeToolbar.errorLabel.isHidden = false
-        promocodeToolbar.errorLabel.text = error
-        promocodeToolbar.spinner.stopAnimating()
+        promocodeToolbar.showErrorWith(error)
     }
     
     
