@@ -95,6 +95,7 @@
 "misc" = "Другое количество";
 "scoresError" = "У вас меньше баллов чем указано";
 "scoresEnter" = "Введите количество баллов";
+"scoresFoodMoreError" = "Вы ввели количество баллов, превышающих стоимость покупки";
 
 //MARK: - Taxi
 
@@ -122,7 +123,7 @@
 "geoAlertSettings" = "Настройки";
 "geoAlertCancel" = "Отмена";
 
-//MARK: - Order histort
+//MARK: - Order history
 
 "canceled" = "Отмененные";
 "done" = "Завершенные";

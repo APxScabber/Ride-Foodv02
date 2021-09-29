@@ -23,7 +23,6 @@ class ScoresToolbar: UIView {
     @IBOutlet weak var underBarLine: UIView!
     @IBOutlet weak var errorLabel: UILabel! { didSet {
         errorLabel.font = UIFont.SFUIDisplayRegular(size: 10.0)
-        errorLabel.text = Localizable.Scores.scoresError.localized
     }}
     
     @IBOutlet weak var roundedView: RoundedView! { didSet {
@@ -52,14 +51,27 @@ class ScoresToolbar: UIView {
         roundedView.colorToFill = (textField.text ?? "").isEmpty ?  #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) :  #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         confirmButton.isUserInteractionEnabled = !(textField.text ?? "").isEmpty
         
-        if let currentScores = Int(textField.text ?? ""),
-           currentScores > scores {
-            errorLabel.isHidden = false
-            underBarLine.backgroundColor = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-            roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-            underBarLine.backgroundColor = .red
-            confirmButton.isUserInteractionEnabled = false
+        if let currentScores = Int(textField.text ?? "") {
+            
+            if currentScores > CurrentPrice.shared.price {
+                showErrorWith(Localizable.Scores.scoresFoodMoreError.localized)
+            }
+            
+            if currentScores > scores {
+                showErrorWith(Localizable.Scores.scoresError.localized)
+            }      
         }
+    }
+    
+    
+    private func showErrorWith(_ text:String) {
+        errorLabel.isHidden = false
+        underBarLine.backgroundColor = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        underBarLine.backgroundColor = .red
+        confirmButton.isUserInteractionEnabled = false
+        errorLabel.text = text
+
     }
     
     //MARK: - Init

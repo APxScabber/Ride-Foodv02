@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         SafeArea.shared.top = Float(window?.safeAreaInsets.top ?? 0)
         SafeArea.shared.bottom = Float(window?.safeAreaInsets.bottom ?? 0)
-        
+        CurrentPrice.shared.totalDiscount = 0
         return true
     }
     

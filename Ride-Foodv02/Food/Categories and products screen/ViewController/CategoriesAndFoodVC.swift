@@ -16,6 +16,7 @@ class CategoriesAndFoodVC: BaseViewController {
 //MARK: - API
     
     var productsInCartView: FoodOrderBottomView?
+    var goToPaymentView: FoodOrderBottomView?
     
     let trashBinButton = UIButton()
     
@@ -129,7 +130,6 @@ class CategoriesAndFoodVC: BaseViewController {
          if !hasSetPointOrigin {
              hasSetPointOrigin = true
              pointOrigin = self.view.frame.origin
-        
          }
      }
     
@@ -174,7 +174,8 @@ class CategoriesAndFoodVC: BaseViewController {
         case .subcategories:
             productsInCartView = FoodOrderBottomView(title: Localizable.Food.placeOrder.localized, price: overallPriceInCart, oldPrice: nil)
         case .cart:
-            productsInCartView = FoodOrderBottomView(title: Localizable.Food.goToPayment.localized, price: overallPriceInCart + cartVC.deliveryPrice, oldPrice: nil)
+            overallPriceInCart += cartVC.deliveryPrice
+            productsInCartView = FoodOrderBottomView(title: Localizable.Food.goToPayment.localized, price: overallPriceInCart, oldPrice: nil)
         }
         
         if let bottomView = productsInCartView{
@@ -293,18 +294,27 @@ class CategoriesAndFoodVC: BaseViewController {
             }
             presentedScreen = .cart
         } else {
-            let storyboard = UIStoryboard(name: "Food", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "FoodOrderVC") as! FoodOrderVC
-            vc.modalPresentationStyle = .custom
-            vc.transitioningDelegate = self
-            vc.totalPrice = overallPriceInCart + cartVC.deliveryPrice
-            present(vc, animated: true)
+            goToFoodOrder()
         }
         
    
     }
     
-
+    @objc
+    private func goToFoodOrder(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            goToFoodOrder()
+        }
+    }
+    
+    private func goToFoodOrder() {
+        let storyboard = UIStoryboard(name: "Food", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FoodOrderVC") as! FoodOrderVC
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        vc.totalPrice = overallPriceInCart
+        present(vc, animated: true)
+    }
     
     func updateUI(screenType: PresentedScreen){
         switch screenType {
@@ -509,6 +519,8 @@ class CategoriesAndFoodVC: BaseViewController {
 
 }
 
+//MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         subcategories.count
@@ -541,6 +553,7 @@ extension CategoriesAndFoodVC: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension CategoriesAndFoodVC: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -658,6 +671,7 @@ extension CategoriesAndFoodVC{
 extension CategoriesAndFoodVC: ClearFoodCartProtocol{
     func clearFoodCart() {
         CurrentShop.shared.reset()
+        goToPaymentView?.isHidden = true
         FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
             guard let self = self else { return }
             guard error == nil else {
@@ -678,6 +692,7 @@ extension CategoriesAndFoodVC: ClearFoodCartProtocol{
 extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
     
     func useScores() {
+        CurrentPrice.shared.price = overallPriceInCart
         scoresView.isHidden = false
         transparentView.isHidden = false
         scoresView.delegate = self
@@ -697,6 +712,7 @@ extension CategoriesAndFoodVC: PromocodeScoresViewDelegate {
     }
     
     func usePromocode() {
+        CurrentPrice.shared.price = overallPriceInCart
         promocodeToolbar.isHidden = false
         promocodeToolbar.textField.becomeFirstResponder()
         transparentView.isHidden = false
@@ -730,7 +746,6 @@ extension CategoriesAndFoodVC: ScoresViewDelegate {
     }
     
     func closeScoresView() {
-        
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.scoresView.frame.origin.y = self.view.bounds.height
         }completion: { if $0 == .end {
@@ -741,8 +756,8 @@ extension CategoriesAndFoodVC: ScoresViewDelegate {
     }
     
     func spendAllScores() {
+        enter(scores: min(scoresView.scores,CurrentPrice.shared.price))
         closeScoresView()
-        enter(scores: scoresView.scores)
     }
 }
 
@@ -767,6 +782,9 @@ extension CategoriesAndFoodVC: ScoresToolbarDelegate {
         closeScoresToolbar()
         closeScoresView()
         cartVC.promocodeScoreView.scores = scores
+        setupBottomView()
+        CurrentPrice.shared.totalDiscount += scores
+        updateBottomViewWith(overallPriceInCart - scores, oldPrice: CurrentPrice.shared.totalDiscount)
     }
     
     
@@ -809,10 +827,7 @@ extension CategoriesAndFoodVC: PromocodeActivatorDelegate {
     }
     
     func promocodeFailed(_ error: String) {
-        promocodeToolbar.lineView.backgroundColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-        promocodeToolbar.errorLabel.isHidden = false
-        promocodeToolbar.errorLabel.text = error
-        promocodeToolbar.spinner.stopAnimating()
+        promocodeToolbar.showErrorWith(error)
     }
     
     
@@ -822,6 +837,13 @@ extension CategoriesAndFoodVC: PromocodeActivatorDelegate {
 extension CategoriesAndFoodVC: PromocodeActivationDelegate {
     
     func closePromocodeActivationView() {
+        setupBottomView()
+        let discount = Int(0.15 * Double(overallPriceInCart))
+        let newPrice = max(0,overallPriceInCart - discount)
+        overallPriceInCart = newPrice
+        CurrentPrice.shared.price = newPrice
+        CurrentPrice.shared.totalDiscount += discount
+        updateBottomViewWith(newPrice, oldPrice: CurrentPrice.shared.totalDiscount)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.promocodeActivationView.frame.origin.y = self.view.bounds.height
         } completion: { if $0 == .end {
@@ -835,3 +857,35 @@ extension CategoriesAndFoodVC: PromocodeActivationDelegate {
 }
 
 
+extension CategoriesAndFoodVC {
+    
+    func setupBottomView() {
+        guard let productsInCartView = productsInCartView else { return }
+        if !productsInCartView.isHidden {
+            productsInCartView.isHidden = true
+            goToPaymentView = FoodOrderBottomView(title: Localizable.Food.goToPayment.localized, price: 500, oldPrice: 300)
+            
+            if let bottomView = goToPaymentView {
+                containerView.addSubview(bottomView)
+                let padding: CGFloat = 25
+                let tap = UITapGestureRecognizer(target: self, action: #selector(goToFoodOrder(_:)))
+                goToPaymentView?.addGestureRecognizer(tap)
+                NSLayoutConstraint.activate([
+                    bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+                    bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+                    bottomView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
+                    bottomView.heightAnchor.constraint(equalToConstant: 50)
+                ])
+            }
+        }
+        
+    }
+    
+    func updateBottomViewWith(_ newPrice:Int,oldPrice:Int) {
+        goToPaymentView?.oldPrice = oldPrice
+        goToPaymentView?.price = newPrice
+        CurrentPrice.shared.price = newPrice
+        overallPriceInCart = newPrice
+    }
+    
+}

@@ -123,6 +123,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
             vc.modalPresentationStyle = .custom
             vc.delegate = self
             vc.transitioningDelegate = self
+            CurrentShop.shared.shop = shop.name
+            CurrentShop.shared.id = shop.id
             if CurrentShop.shared.total == 0 { shouldIncreaseHeight = true }
             present(vc, animated: true)
         }

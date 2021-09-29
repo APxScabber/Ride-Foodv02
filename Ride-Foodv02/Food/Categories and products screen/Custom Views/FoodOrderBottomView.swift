@@ -13,8 +13,17 @@ class FoodOrderBottomView: UIView {
     let oldPriceLabel    = UILabel()
     
     var title       = String()
-    var price       = Int()
-    var oldPrice: Int?
+    var price       = Int() { didSet {
+        priceLabel.text = "\(price) \(Localizable.Delivery.deliveryMoney.localized)"
+
+    }}
+    var oldPrice: Int? { didSet {
+        oldPriceLabel.attributedText = NSMutableAttributedString(string: "\(oldPrice ?? 0) \(Localizable.Delivery.deliveryMoney.localized)", attributes: [
+                        NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                        NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 11)!,
+                        NSAttributedString.Key.foregroundColor: UIColor.white
+                        ])
+    }}
     
     init(title: String, price: Int, oldPrice: Int? ) {
         super.init(frame: .zero)
@@ -54,7 +63,7 @@ class FoodOrderBottomView: UIView {
         priceLabel.translatesAutoresizingMaskIntoConstraints    = false
         priceLabel.textColor                                    = .white
         priceLabel.font                                         = UIFont.SFUIDisplaySemibold(size: 17)
-        priceLabel.text                                         = "\(price) руб"
+        priceLabel.text                                         = "\(price) \(Localizable.Delivery.deliveryMoney.localized)"
         priceLabel.textAlignment                                = .right
       
         
@@ -66,8 +75,8 @@ class FoodOrderBottomView: UIView {
             
             priceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -horizontalPadding),
-            priceLabel.heightAnchor.constraint(equalToConstant: 17),
-            priceLabel.widthAnchor.constraint(equalToConstant: 100),
+            priceLabel.heightAnchor.constraint(equalToConstant: 25),
+          //  priceLabel.widthAnchor.constraint(equalToConstant: 100),
         ])
         
         if oldPrice != nil{
@@ -75,7 +84,7 @@ class FoodOrderBottomView: UIView {
             oldPriceLabel.translatesAutoresizingMaskIntoConstraints    = false
             oldPriceLabel.textColor                                    = .white
             oldPriceLabel.font                                         = UIFont.SFUIDisplaySemibold(size: 12)
-            oldPriceLabel.attributedText = NSMutableAttributedString(string: "\(oldPrice ?? 0) руб", attributes: [
+            oldPriceLabel.attributedText = NSMutableAttributedString(string: "\(oldPrice ?? 0) \(Localizable.Delivery.deliveryMoney.localized)", attributes: [
                             NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
                             NSAttributedString.Key.font: UIFont.SFUIDisplayRegular(size: 11)!,
                             NSAttributedString.Key.foregroundColor: UIColor.white
@@ -84,9 +93,10 @@ class FoodOrderBottomView: UIView {
             NSLayoutConstraint.activate([
                 oldPriceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
                 oldPriceLabel.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor, constant: -5),
-                oldPriceLabel.heightAnchor.constraint(equalToConstant: 17),
+                oldPriceLabel.heightAnchor.constraint(equalToConstant: 25),
                 oldPriceLabel.widthAnchor.constraint(equalToConstant: 70)
             ])
+            oldPriceLabel.textAlignment = .right
         }
         
         

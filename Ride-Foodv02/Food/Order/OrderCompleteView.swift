@@ -131,7 +131,9 @@ class OrderCompleteView: UIView {
     }
     
     private func close() {
+        
         guard let order = currentOrderType else { return }
+        
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
             self.frame.origin.y = self.superview?.frame.height ?? 0
         } completion: {  if $0 == .end {
