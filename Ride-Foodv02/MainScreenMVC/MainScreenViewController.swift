@@ -188,6 +188,8 @@ class MainScreenViewController: BaseViewController {
     
     var isTaxiOrdered = false
     var isFoodOrdered = false
+    var isPrepairToOrder = false
+    var currentAddressViewDetail = 0
     var shouldUpdateScreen = false
     var shouldResetFrames = true
     
@@ -405,6 +407,7 @@ class MainScreenViewController: BaseViewController {
              if dragVelocity.y >= 1300 {
                  // Velocity fast enough to dismiss the uiview
                  isTaxiOrdered = true
+                 isPrepairToOrder = false
                  pressTaxiOrderButton()
                  
                //  self.dismiss(animated: true, completion: nil)
@@ -659,7 +662,7 @@ class MainScreenViewController: BaseViewController {
                     self.timeLabel.text = "2 активных заказа"
                     self.pathTimeView.alpha = 1
                     self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
-                } else {
+                } else if self.isTaxiOrdered || self.isFoodOrdered {
                     self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
                     self.timeLabel.text = "1 активный заказ"
                     self.pathTimeView.alpha = 1
@@ -883,6 +886,31 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
+    func returnFromTaxiToStart() {
+        
+        UIView.animate(withDuration: 1) {
+            self.promotionView.alpha = 1
+        }
+        
+        returnToMainView()
+        
+        userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
+
+        fromTextField.isUserInteractionEnabled = true
+        toTextField.isUserInteractionEnabled = true
+        shouldMakeOrder = false
+        addresses.removeAll()
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        SetMapMarkersManager.shared.isPathCalculeted = false
+        isTaxiOrdered = false
+        isPrepairToOrder = false
+        SetMapMarkersManager.shared.isFromAddressMarkSelected = true
+        MapKitManager.shared.locationManager.startUpdatingLocation()
+        toAddress = ""
+        fromAddress = ""
+    }
+    
     // MARK: - @objc Taxi Methods
     
     @objc
@@ -1063,7 +1091,7 @@ class MainScreenViewController: BaseViewController {
     @objc
     private func mapViewTouched(_ recognizer: UITapGestureRecognizer) {
         
-        if !isTaxiOrdered {
+        if !isTaxiOrdered && !isPrepairToOrder {
             if recognizer.state == .ended {
                 
                 
@@ -1133,6 +1161,28 @@ class MainScreenViewController: BaseViewController {
         if recognizer.state == .ended {
             close()
         }
+    }
+    
+    @objc
+    func tapToTransparentView() {
+        if isPrepairToOrder {
+            switch currentAddressViewDetail {
+            case 1:
+                UIView.animate(withDuration: 0.5) {
+                    self.fromAddressDetailView.frame.origin.x = self.view.frame.width
+                }
+                
+            case 2:
+                UIView.animate(withDuration: 0.5) {
+                    self.toAddressDetailView.frame.origin.x = self.view.frame.width
+                }
+            default:
+                break
+            }
+            currentAddressViewDetail = 0
+        }
+        moveDown()
+        returnFromTaxiToStart()
     }
     
     //MARK: - Helper
@@ -1214,6 +1264,8 @@ class MainScreenViewController: BaseViewController {
 
         } else {
             moveDown()
+            isPrepairToOrder = true
+            currentAddressViewDetail = 1
             shouldUpdateUI = false
             bottomConstaint.constant -= addressesChooserViewHeightConstraint.constant
             fromAddressDetailView.isHidden = false
@@ -1226,7 +1278,7 @@ class MainScreenViewController: BaseViewController {
                                                  width: view.bounds.width,
                                                  height: TaxiConstant.fromAddressDetailViewHeight)
             fromAddressDetailView.placeLabel.text = fromAddress
-            userLocationButtonBottomConstraint.constant = fromAddressDetailView.bounds.height + keyboardHeight - safeAreaBottomHeight
+            //userLocationButtonBottomConstraint.constant = fromAddressDetailView.bounds.height + keyboardHeight - safeAreaBottomHeight
             
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.fromAddressDetailView.frame.origin.x = 0
@@ -1284,20 +1336,7 @@ class MainScreenViewController: BaseViewController {
     }
     
     @IBAction func taxiBackButtonAction(_ sender: UIButton) {
-        promotionView.alpha = 0
-        
-        returnToMainView()
-
-        fromTextField.isUserInteractionEnabled = true
-        toTextField.isUserInteractionEnabled = true
-        shouldMakeOrder = false
-        addresses.removeAll()
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
-        SetMapMarkersManager.shared.isPathCalculeted = false
-        isTaxiOrdered = false
-        SetMapMarkersManager.shared.isFromAddressMarkSelected = true
-        MapKitManager.shared.locationManager.startUpdatingLocation()
+        returnFromTaxiToStart()
     }
     
     @IBAction func mapButtonAction(_ sender: Any) {
