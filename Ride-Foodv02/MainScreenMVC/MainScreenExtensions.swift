@@ -774,7 +774,11 @@ extension MainScreenViewController: CancelOrderActionsProtocol{
     func closeScreen() {
             isTaxiOrdered = false
            closeContainerView()
-        
+   
+        self.taxiBackButtonOutlet.alpha = 1
+        self.circleView.alpha = 1
+        self.promotionView.alpha = 1
+        self.view.layoutIfNeeded()
         
           
     }
