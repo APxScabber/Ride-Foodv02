@@ -141,7 +141,11 @@
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activeOrder" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-t4-NQ4">
-                    <rect key="frame" x="145" y="20" width="124" height="53"/>
+                    <rect key="frame" x="134" y="20" width="145" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="145" id="BqI-DV-iWZ"/>
+                        <constraint firstAttribute="height" constant="53" id="Lw0-1I-LLX"/>
+                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fh-mY-V9B">
                     <rect key="frame" x="145" y="30" width="124" height="33"/>
@@ -150,7 +154,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Садовая-Триумфальная, 24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrc-Bx-e1O">
-                    <rect key="frame" x="64" y="94" width="330" height="31"/>
+                    <rect key="frame" x="64" y="94" width="219.5" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="11J-0T-LI6"/>
                     </constraints>
@@ -165,7 +169,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тверская, 13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uz-wh-ANj">
-                    <rect key="frame" x="64" y="147" width="330" height="31"/>
+                    <rect key="frame" x="64" y="147" width="219.5" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -188,11 +192,11 @@
                 <constraint firstItem="O1x-c7-Uq8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="107" id="BMd-zL-GVG"/>
                 <constraint firstItem="M9r-wL-WLN" firstAttribute="leading" secondItem="AN0-kW-ddM" secondAttribute="leading" id="Cch-bQ-k36"/>
                 <constraint firstItem="AN0-kW-ddM" firstAttribute="leading" secondItem="9iu-D8-pMB" secondAttribute="leading" id="HJi-6S-QNl"/>
-                <constraint firstItem="dhf-t4-NQ4" firstAttribute="trailing" secondItem="4fh-mY-V9B" secondAttribute="trailing" id="Hly-tV-d4k"/>
+                <constraint firstItem="dhf-t4-NQ4" firstAttribute="trailing" secondItem="4fh-mY-V9B" secondAttribute="trailing" constant="10" id="Hly-tV-d4k"/>
                 <constraint firstItem="4fh-mY-V9B" firstAttribute="centerX" secondItem="kGd-7h-TgD" secondAttribute="centerX" id="Kz7-wy-sJB"/>
                 <constraint firstItem="4fh-mY-V9B" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="LlC-ht-p6T"/>
                 <constraint firstItem="jrc-Bx-e1O" firstAttribute="trailing" secondItem="4uz-wh-ANj" secondAttribute="trailing" id="Lso-bG-TWD"/>
-                <constraint firstItem="dhf-t4-NQ4" firstAttribute="leading" secondItem="4fh-mY-V9B" secondAttribute="leading" id="MMx-ie-kZX"/>
+                <constraint firstItem="dhf-t4-NQ4" firstAttribute="leading" secondItem="4fh-mY-V9B" secondAttribute="leading" constant="-11" id="MMx-ie-kZX"/>
                 <constraint firstItem="4uz-wh-ANj" firstAttribute="top" secondItem="jrc-Bx-e1O" secondAttribute="bottom" constant="22" id="PCc-JW-sBT"/>
                 <constraint firstItem="4fh-mY-V9B" firstAttribute="centerY" secondItem="dhf-t4-NQ4" secondAttribute="centerY" id="Qcc-6H-C3R"/>
                 <constraint firstItem="9iu-D8-pMB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="Si3-TC-DEA"/>
