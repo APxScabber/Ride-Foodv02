@@ -681,9 +681,11 @@ class MainScreenViewController: BaseViewController {
     }
     
      func pressTaxiOrderButton() {
+         
          UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
              self.containerView.frame.origin.y = self.view.frame.height - self.containerView.frame.height
              self.containerView.removeFromSuperview()
+           
              self.view.layoutIfNeeded()
          }
       
@@ -717,16 +719,19 @@ class MainScreenViewController: BaseViewController {
 
         taxiTariffView.scoresEntered = 0
         promocodeScoresView.reset()
+         promocodeScoresView.removeFromSuperview()
         
         if !isFoodOrdered && isTaxiOrdered {
             UIView.animate(withDuration: 1.5) {
                 self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+                self.taxiOrderInfoView.alpha = 1
             }
         } else {
             UIView.animate(withDuration: 1.5) {
                 self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
                 self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
                 self.taxiOrderInfoView.swipeLineImageView.alpha = 0
+                self.taxiOrderInfoView.alpha = 1
             }
         }
         
@@ -1231,7 +1236,7 @@ class MainScreenViewController: BaseViewController {
     @IBAction func next(_ sender: UIButton) {
         
         if isTaxiOrdered {
-            promocodeScoresView.isHidden = true
+        
             roundedView.isUserInteractionEnabled = true
             print("place container")
            // pressTaxiOrderButton()
@@ -1246,7 +1251,9 @@ class MainScreenViewController: BaseViewController {
         if shouldMakeOrder {
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
-            if promocodeScoresView.superview == nil { addressesChooserView.addSubview(promocodeScoresView)}
+           // if promocodeScoresView.superview == nil {
+
+            addressesChooserView.addSubview(promocodeScoresView)
             taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 100)
             promocodeScoresView.frame = CGRect(x: 0, y: 235, width: view.bounds.width, height: 50)
             nextButton.setTitle(Localizable.Taxi.order.localized, for: .normal)

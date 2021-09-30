@@ -783,22 +783,23 @@ extension MainScreenViewController: CancelOrderDelegate{
 
 extension MainScreenViewController: CancelOrderActionsProtocol{
     func closeScreen() {
-            isTaxiOrdered = false
-           closeContainerView()
+        isTaxiOrdered = false
+        promocodeScoresView.removeFromSuperview()
+        closeContainerView()
         self.view.layoutIfNeeded()
         
     }
     
     func newOrder() {
         isTaxiOrdered = false
+        promocodeScoresView.removeFromSuperview()
         closeContainerView()
-        goToTaxi()
-        
-               self.view.layoutIfNeeded()
+        self.view.layoutIfNeeded()
     }
     
     func reportProblem() {
         isTaxiOrdered = false
+        promocodeScoresView.removeFromSuperview()
         closeContainerView()
         let storyboard = UIStoryboard(name: "Support", bundle: .main)
         if let supportVC = storyboard.instantiateInitialViewController() {
