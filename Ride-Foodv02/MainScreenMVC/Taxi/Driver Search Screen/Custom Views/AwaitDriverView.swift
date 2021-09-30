@@ -114,7 +114,12 @@ class AwaitDriverView: UIView {
             break
         case .paidWaiting:
             timer.invalidate()
-                self.delegate?.close()
+                DispatchQueue.main.async {
+                    print("Show completed view?")
+                    self.delegate?.close()
+                    return
+                }
+           
             
         }
     }
