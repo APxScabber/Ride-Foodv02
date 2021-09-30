@@ -38,13 +38,18 @@
                                 <rect key="frame" x="0.0" y="519" width="414" height="377"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Причина отмены" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alx-kp-zek">
-                                        <rect key="frame" x="132.5" y="21" width="149.5" height="23"/>
+                                        <rect key="frame" x="133.5" y="21" width="147.5" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="Sha-t4-KIN"/>
+                                            <constraint firstAttribute="width" constant="147.5" id="U4m-02-WOl"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M1F-MZ-pCN">
-                                        <rect key="frame" x="0.0" y="63" width="414" height="236"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M1F-MZ-pCN">
+                                        <rect key="frame" x="0.0" y="63" width="414" height="314"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cancelCell" textLabel="9U9-l2-eHY" style="IBUITableViewCellStyleDefault" id="BiR-7E-gVu" customClass="CancelOrderTableViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
@@ -76,32 +81,28 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="M1F-MZ-pCN" firstAttribute="leading" secondItem="6oa-Ih-KBl" secondAttribute="leading" id="Dko-4R-nYa"/>
-                                    <constraint firstItem="M1F-MZ-pCN" firstAttribute="top" secondItem="alx-kp-zek" secondAttribute="bottom" constant="19" id="RdK-sV-Org"/>
-                                    <constraint firstItem="alx-kp-zek" firstAttribute="centerX" secondItem="M1F-MZ-pCN" secondAttribute="centerX" id="YHN-lU-CXS"/>
-                                    <constraint firstAttribute="bottom" secondItem="M1F-MZ-pCN" secondAttribute="bottom" constant="78" id="ZrQ-D1-E9x"/>
-                                    <constraint firstItem="alx-kp-zek" firstAttribute="top" secondItem="6oa-Ih-KBl" secondAttribute="top" constant="21" id="t3P-OH-Xl4"/>
-                                    <constraint firstAttribute="trailing" secondItem="M1F-MZ-pCN" secondAttribute="trailing" id="tAx-46-Kni"/>
+                                    <constraint firstItem="alx-kp-zek" firstAttribute="top" secondItem="6oa-Ih-KBl" secondAttribute="top" constant="21" id="MFU-8k-yKq"/>
+                                    <constraint firstItem="alx-kp-zek" firstAttribute="centerX" secondItem="6oa-Ih-KBl" secondAttribute="centerX" id="NLF-Wn-GAQ"/>
+                                    <constraint firstAttribute="height" constant="377" id="nkh-3p-O2O"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cro-xc-gaS" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
                                 <rect key="frame" x="185.5" y="506" width="43" height="5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="6by-yT-hoy"/>
-                                    <constraint firstAttribute="height" constant="5" id="JGd-dC-XNI"/>
+                                    <constraint firstAttribute="width" constant="43" id="J4p-Bf-T9T"/>
+                                    <constraint firstAttribute="height" constant="5" id="jPv-pO-wEq"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KgE-Yq-6Lu"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="leading" secondItem="KgE-Yq-6Lu" secondAttribute="leading" id="3wg-tb-uSD"/>
-                            <constraint firstItem="Cro-xc-gaS" firstAttribute="top" secondItem="KgE-Yq-6Lu" secondAttribute="top" constant="462" id="GpP-19-PgR"/>
-                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="top" secondItem="Cro-xc-gaS" secondAttribute="bottom" constant="8" symbolic="YES" id="dAp-zv-vej"/>
-                            <constraint firstAttribute="bottom" secondItem="6oa-Ih-KBl" secondAttribute="bottom" id="jib-cK-CHu"/>
-                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="trailing" secondItem="KgE-Yq-6Lu" secondAttribute="trailing" id="qc7-i8-Znc"/>
-                            <constraint firstItem="Cro-xc-gaS" firstAttribute="centerX" secondItem="sE6-wC-603" secondAttribute="centerX" id="rdV-bU-tyh"/>
+                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="top" secondItem="Cro-xc-gaS" secondAttribute="bottom" constant="8" symbolic="YES" id="5YO-EH-3k5"/>
+                            <constraint firstItem="Cro-xc-gaS" firstAttribute="centerX" secondItem="sE6-wC-603" secondAttribute="centerX" id="7or-D3-NAu"/>
+                            <constraint firstAttribute="bottom" secondItem="6oa-Ih-KBl" secondAttribute="bottom" id="wC8-Ce-SiD"/>
+                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="trailing" secondItem="KgE-Yq-6Lu" secondAttribute="trailing" id="wft-Fz-Y6e"/>
+                            <constraint firstItem="6oa-Ih-KBl" firstAttribute="leading" secondItem="KgE-Yq-6Lu" secondAttribute="leading" id="zKB-ez-sBA"/>
                         </constraints>
                     </view>
                     <connections>
