@@ -113,7 +113,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let shop = shops[indexPath.item]
-        if shop.id != CurrentShop.shared.id && !CurrentShop.shared.shop.isEmpty {
+        if shop.id != CurrentShop.shared.id && CurrentShop.shared.total > 0 {
             showOrderRemoveView()
         } else {
             let storyboard = UIStoryboard(name: "Food", bundle: nil)

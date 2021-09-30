@@ -394,7 +394,7 @@
                                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shopCell" id="Ry7-g9-KMM" customClass="ShopCollectionViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shopCell" id="Ry7-g9-KMM" customClass="ShopCollectionViewCell" customModule="Ride_Foodv02" customModuleProvider="target">
                                                 <rect key="frame" x="107" y="10" width="200" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k22-EQ-0UD">
