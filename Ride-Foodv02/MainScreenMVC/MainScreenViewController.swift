@@ -405,12 +405,10 @@ class MainScreenViewController: BaseViewController {
          if sender.state == .ended {
              let dragVelocity = sender.velocity(in: containerView)
              if dragVelocity.y >= 1300 {
-                 // Velocity fast enough to dismiss the uiview
+               
                  isTaxiOrdered = true
                  isPrepairToOrder = false
                  pressTaxiOrderButton()
-                 
-               //  self.dismiss(animated: true, completion: nil)
              } else {
                  // Set back to original position of the view controller
                  UIView.animate(withDuration: 0.3) {
@@ -1233,11 +1231,16 @@ class MainScreenViewController: BaseViewController {
     @IBAction func next(_ sender: UIButton) {
         
         if isTaxiOrdered {
-            
+            promocodeScoresView.isHidden = true
+            roundedView.isUserInteractionEnabled = true
+            print("place container")
            // pressTaxiOrderButton()
             placeContainerView()
             pathTimeView.alpha = 0
             taxiBackButtonOutlet.alpha = 1
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+                self.view.layoutIfNeeded()
+            }
         }
 
         if shouldMakeOrder {
@@ -1254,7 +1257,7 @@ class MainScreenViewController: BaseViewController {
             taxiTariffView.isHidden = false
             taxiTariffView.reset()
             roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-            roundedView.isUserInteractionEnabled = false
+         //   roundedView.isUserInteractionEnabled = false
             transparentView.isHidden = true
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.view.layoutIfNeeded()
@@ -1383,7 +1386,7 @@ class MainScreenViewController: BaseViewController {
         orderCompleteView.reset()
         orderCompleteView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 380)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-            self.containerView.alpha = 0
+            self.closeContainerView()
             self.orderCompleteView.frame.origin.y = self.view.bounds.height - 380
         }
     }
@@ -1394,11 +1397,8 @@ class MainScreenViewController: BaseViewController {
             self.containerView.frame.origin.y = self.view.frame.height
             self.containerView.removeFromSuperview()
            
-            self.taxiBackButtonOutlet.alpha = 1
-            self.circleView.alpha = 1
-            self.promotionView.alpha = 1
-         
-            self.returnToMainView()
+            self.returnFromTaxiToStart()
+           
         self.view.layoutIfNeeded()
     }
     }

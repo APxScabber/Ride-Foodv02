@@ -161,6 +161,7 @@ class DriverSearchVC: UIViewController {
     
     func configureAwaitScreen(){
         cancelButton.removeFromSuperview()
+        removeViews(with: .found)
         view.backgroundColor = .clear
         awaitDriverView.delegate = self
         awaitDriverView.setData(name: "Белая \(orderData?.data.taxi?.car ?? "Toyota Corolla")",

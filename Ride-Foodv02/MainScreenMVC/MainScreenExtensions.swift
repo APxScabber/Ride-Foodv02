@@ -603,15 +603,16 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
             pressFoodOrderButton()
         case .taxi:
             
-            userLocationButtonOutlet.isHidden = true
-            promotionView.isHidden = true
+//            userLocationButtonOutlet.isHidden = true
+//            promotionView.isHidden = true
             menuButton.isUserInteractionEnabled = true
             profileButton.isUserInteractionEnabled = true
-            mapView.isUserInteractionEnabled = true
+//            mapView.isUserInteractionEnabled = true
             self.foodTaxiView.taxiImageView.image = UIImage(named: "Taxi")
             self.foodTaxiView.taxiImageView.isUserInteractionEnabled = true
-            taxiOrderInfoView.removeFromSuperview()
+            taxiOrderInfoView.alpha = 0
             isTaxiOrdered = false
+            
                closeContainerView()
         }
     }
@@ -784,20 +785,16 @@ extension MainScreenViewController: CancelOrderActionsProtocol{
     func closeScreen() {
             isTaxiOrdered = false
            closeContainerView()
-   
-        self.taxiBackButtonOutlet.alpha = 1
-        self.circleView.alpha = 1
-        self.promotionView.alpha = 1
         self.view.layoutIfNeeded()
         
-          
     }
     
     func newOrder() {
         isTaxiOrdered = false
         closeContainerView()
-        resetFrames()
-        loadSetupsTaxi()
+        goToTaxi()
+        
+               self.view.layoutIfNeeded()
     }
     
     func reportProblem() {
