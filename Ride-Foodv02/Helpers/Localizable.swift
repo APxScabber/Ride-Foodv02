@@ -39,8 +39,7 @@ enum Localizable {
     
     enum Food:String,LocalizableDelegate {
         
-        case map,enterAdress,confirm,placeOrder,goToPayment,bin,remove,clearBinQuestion,clearBin,cancel, deliverTime
-           
+        case map,enterAdress,confirm,placeOrder,goToPayment,bin,remove,clearBinQuestion,clearBin,cancel, deliverTime,toCart,comebackToShopping,cartIsEmpty
     }
     
     enum Scores: String,LocalizableDelegate {
@@ -49,7 +48,7 @@ enum Localizable {
     
     
     enum Taxi:String,LocalizableDelegate {
-        case fromAddressQuestion,toAddressQuestion,map,next,confirm,skip,fromAddressDetail,toAddressDetail, minutes, infoFromLabel, infoToLabel, order, remainingTime
+        case fromAddressQuestion,toAddressQuestion,map,next,confirm,skip,fromAddressDetail,toAddressDetail, minutes, infoFromLabel, infoToLabel, order, remainingTime,taxiOrderCongrats,taxiService
     }
     
     enum MapManager: String, LocalizableDelegate {
@@ -73,7 +72,7 @@ enum Localizable {
     }
     
     enum CashBack: String,LocalizableDelegate {
-        case cashBackTitle,cashBackLeftPrice,cashBackRightPrice
+        case cashBackTitle,cashBackLeftPrice,cashBackRightPrice,cashBackQuestion
     }
     
     
@@ -92,6 +91,17 @@ enum Localizable {
     enum Tariffs: String,LocalizableDelegate {
         case tariffs
     }
+    
+    enum DriverSearch: String,LocalizableDelegate {
+        case waitABit,searchingGoodVariant,driverSearchCall,driverSearchBRB,changePlan,orderMistake,longWaiting,noReasonCancel,cancelOrderReason,cancelOrder,youCanceledOrder,cancelOrderDescription,newOrder,reportProblem
+    }
+    
+    enum DriverStatusText: String, LocalizableDelegate{
+        case OnTheWay,AlmostThere,WaitingForYou,Waiting,PaidWaiting,FreeWaitingDescription,PaidWaitingDesctiption
+        
+        
+    }
+    
 }
 
 

@@ -17,6 +17,7 @@ class TaxiTariffView: UIView {
     private let prices = [100,250,430]
     
     //MARK: - Outlets
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var standartRoundedView: ShadowRoundedView! { didSet {
         standartRoundedView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectStandartView(_:))))

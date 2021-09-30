@@ -16,7 +16,7 @@ class CashBackNeededView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel! { didSet {
         titleLabel.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        titleLabel.text = Localizable.CashBack.cashBackTitle.localized
+        titleLabel.text = Localizable.CashBack.cashBackQuestion.localized
     }}
     
     @IBOutlet weak var leftRoundedView: RoundedView! { didSet {
@@ -37,6 +37,10 @@ class CashBackNeededView: UIView {
     @IBOutlet weak var rightPriceLabel: UILabel! { didSet {
         rightPriceLabel.font = UIFont.SFUIDisplayRegular(size: 17.0)
         rightPriceLabel.text = Localizable.CashBack.cashBackRightPrice.localized
+    }}
+    
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint! { didSet {
+        heightConstraint.constant = 190 + CGFloat(SafeArea.shared.bottom)
     }}
     
     //MARK: - Actions

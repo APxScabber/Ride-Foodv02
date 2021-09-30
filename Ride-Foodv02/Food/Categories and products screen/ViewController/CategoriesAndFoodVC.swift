@@ -121,7 +121,7 @@ class CategoriesAndFoodVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getProducts(shopID: shopID, categoryID: CategoryID, page: 1)
+        getProducts(shopID: CurrentShop.shared.id, categoryID: CategoryID, page: 1)
         fetchCDOrderInformation(with: .subcategories)
     }
     
@@ -136,7 +136,7 @@ class CategoriesAndFoodVC: BaseViewController {
     
     func fetchCDOrderInformation(with screenType: PresentedScreen){
         productsInCart.removeAll()
-        FoodPersistanceManager.shared.fetchAddresses(shopID: shopID) { [weak self] result in
+        FoodPersistanceManager.shared.fetchAddresses(shopID: CurrentShop.shared.id) { [weak self] result in
             guard let self = self else { return }
             switch result{
             case .failure(let error):

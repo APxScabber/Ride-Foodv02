@@ -36,7 +36,7 @@ class DriverSearchVC: UIViewController {
     
     var requestCount = 0
     
-    let cancelButton = VBButton(backgroundColor: .clear, title: "Отмена", cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let cancelButton = VBButton(backgroundColor: .clear, title: Localizable.Food.cancel.localized, cornerRadius: 15, textColor: .black, font: UIFont.SFUIDisplayRegular(size: 17)!, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     let searchWavesView = LoadingWavesCustomView()
     let searchingStatusLabel = UILabel()
     
@@ -97,7 +97,7 @@ class DriverSearchVC: UIViewController {
                        
                         return
                     } else if self.requestCount == 5 {
-                        self.searchingStatusLabel.text = "Подождите еще немного"
+                        self.searchingStatusLabel.text = Localizable.DriverSearch.waitABit.localized
                         self.sendRequest()
                     } else {
                         self.sendRequest()
@@ -215,7 +215,7 @@ class DriverSearchVC: UIViewController {
         searchingStatusLabel.translatesAutoresizingMaskIntoConstraints = false
         searchingStatusLabel.textColor          = UIColor.saleOrangeColor
         searchingStatusLabel.font               = UIFont.SFUIDisplaySemibold(size: 17)
-        setLabelText(text: "Ищем подходящий вариант")
+        setLabelText(text: Localizable.DriverSearch.searchingGoodVariant.localized)
         NSLayoutConstraint.activate([
             searchingStatusLabel.leadingAnchor.constraint(equalTo: searchWavesView.trailingAnchor, constant: 10),
             searchingStatusLabel.centerYAnchor.constraint(equalTo: searchWavesView.centerYAnchor),

@@ -21,7 +21,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-vF-ErA" customClass="ShadowRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                             <rect key="frame" x="25" y="126" width="364" height="122"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 сентября, 09:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="jc4-fI-UQG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 сентября, 09:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="jc4-fI-UQG">
                                     <rect key="frame" x="15" y="13" width="74" height="10"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="10" id="jPH-ax-GhD"/>
@@ -30,8 +30,8 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" / Доставка еды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="w2n-GG-efT">
-                                    <rect key="frame" x="94" y="13" width="64.5" height="10"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" / Доставка еды" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="w2n-GG-efT">
+                                    <rect key="frame" x="89" y="13" width="64.5" height="10"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="10" id="Lol-q7-l6R"/>
                                     </constraints>
@@ -80,7 +80,7 @@
                                 <constraint firstAttribute="trailing" secondItem="7pm-4b-c34" secondAttribute="trailing" constant="15" id="BZk-gt-pD6"/>
                                 <constraint firstItem="jc4-fI-UQG" firstAttribute="top" secondItem="Eiy-vF-ErA" secondAttribute="top" constant="13" id="GU8-QB-8dX"/>
                                 <constraint firstAttribute="trailing" secondItem="CEq-KA-pBv" secondAttribute="trailing" constant="15" id="JqP-pE-wvk"/>
-                                <constraint firstItem="w2n-GG-efT" firstAttribute="leading" secondItem="jc4-fI-UQG" secondAttribute="trailing" constant="5" id="NCk-ex-nlD"/>
+                                <constraint firstItem="w2n-GG-efT" firstAttribute="leading" secondItem="jc4-fI-UQG" secondAttribute="trailing" id="NCk-ex-nlD"/>
                                 <constraint firstItem="dwN-Gi-82H" firstAttribute="leading" secondItem="Eiy-vF-ErA" secondAttribute="leading" constant="13" id="Ofc-fY-4uL"/>
                                 <constraint firstItem="CEq-KA-pBv" firstAttribute="top" secondItem="Eiy-vF-ErA" secondAttribute="top" constant="15" id="gdR-xH-iJp"/>
                                 <constraint firstItem="jc4-fI-UQG" firstAttribute="leading" secondItem="Eiy-vF-ErA" secondAttribute="leading" constant="15" id="h2v-0U-llq"/>

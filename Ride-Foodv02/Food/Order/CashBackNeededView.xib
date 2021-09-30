@@ -48,10 +48,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 руб" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="itq-PQ-ojv">
-                                            <rect key="frame" x="49" y="16.5" width="72" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="9YE-Ux-Gnp"/>
-                                            </constraints>
+                                            <rect key="frame" x="49" y="15" width="72" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -78,10 +75,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000 руб" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HGn-Ei-WUP">
-                                            <rect key="frame" x="48" y="16.5" width="74" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="n7w-io-T6x"/>
-                                            </constraints>
+                                            <rect key="frame" x="48" y="15" width="74" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -133,6 +127,7 @@
                 <constraint firstItem="7zc-7s-WLf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zlu-2x-eG7"/>
             </constraints>
             <connections>
+                <outlet property="heightConstraint" destination="fM0-qQ-JvF" id="yx5-kW-S8p"/>
                 <outlet property="leftPriceLabel" destination="itq-PQ-ojv" id="7Y1-Xq-Ak4"/>
                 <outlet property="leftRoundedView" destination="g7W-Nk-hLZ" id="h7z-dC-Ngm"/>
                 <outlet property="rightPriceLabel" destination="HGn-Ei-WUP" id="kGo-Z6-Mtk"/>

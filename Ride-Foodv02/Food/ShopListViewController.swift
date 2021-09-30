@@ -79,6 +79,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
             self?.collectionView.reloadData()
             self?.updateUI()
         }
+        
     }
     
     override func viewDidLayoutSubviews() {

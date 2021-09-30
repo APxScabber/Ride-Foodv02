@@ -76,11 +76,11 @@ class OrderCompleteView: UIView {
         super.layoutSubviews()
         switch currentOrderType {
         case .taxi:
-            congratsLabel.text = "Благодарим за поездку!"
+            congratsLabel.text = Localizable.Taxi.taxiOrderCongrats.localized
             descLabel.text = Localizable.FoodOrder.foodOrderSeeYouAgain.localized
             priceLabel.text = "\(150) " + Localizable.FoodOrder.foodOrderMoney.localized
-            deliveryLabel.text = " / Услуги такси "
-            paymentLabel.text = "Платёж № 54215489"
+            deliveryLabel.text = " / \(Localizable.Taxi.taxiService.localized)"
+            paymentLabel.text = Localizable.FoodOrder.foodOrderPayment.localized
             newOrderButton.setTitle(Localizable.FoodOrder.foodOrderNewOrder.localized, for: .normal)
         case .food:
             congratsLabel.text = Localizable.FoodOrder.foodOrderCongrats.localized

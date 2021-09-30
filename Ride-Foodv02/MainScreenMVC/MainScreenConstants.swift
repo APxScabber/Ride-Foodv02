@@ -43,16 +43,6 @@ struct MainScreenConstants {
                                                                                imageHistory: ""),
                                                                     products: nil))
     
-    enum DriverStatusText: String{
-        case OnTheWay               = "Уже в пути"
-        case AlmostThere            = "Почти на месте"
-        case WaitingForYou          = "Вас ожидает"
-        case Waiting                = "Ожидание"
-        case PaidWaiting            = "Платное ожидание"
-        case FreeWaitingDescription = "Время бесплатного ожидания согласно тарифу"
-        case PaidWaitingDesctiption = "Время ожидания: 2 мин. Плата взымается согласно тарифу"
-        
-        
-    }
+    
     
 }

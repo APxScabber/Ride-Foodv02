@@ -14,7 +14,6 @@ class FromAddressDetailView: UIView {
     @IBOutlet weak var infoLabel: UILabel! { didSet {
         infoLabel.font = UIFont.SFUIDisplayLight(size: 12.0)
         infoLabel.textColor = TaxiSpecifyFromToColor.white.value
-        infoLabel.text = Localizable.Taxi.infoFromLabel.localized
     }}
     
     @IBOutlet weak var blurEffectView: UIVisualEffectView! { didSet {
@@ -23,7 +22,6 @@ class FromAddressDetailView: UIView {
         blurEffectView.addGestureRecognizer(tap)
     }}
     
-    @IBOutlet weak var hintView: UIView!
     @IBOutlet weak var topCorneredView: TopRoundedView!
     @IBOutlet weak var topRoundedView: RoundedView! { didSet {
         topRoundedView.cornerRadius = 10.0
@@ -36,12 +34,9 @@ class FromAddressDetailView: UIView {
     
     @IBOutlet weak var textField: UITextField! { didSet {
         textField.font = UIFont.SFUIDisplayLight(size: 17.0)
-        textField.placeholder = Localizable.Taxi.fromAddressDetail.localized
         textField.addTarget(self, action: #selector(updateUI), for: .editingChanged)
     }}
     @IBOutlet weak var confirmButton: UIButton! { didSet {
-        let title = isTextEmpty ? Localizable.Taxi.skip.localized : Localizable.Taxi.confirm.localized
-        confirmButton.setTitle(title, for: .normal)
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
     }}
     @IBOutlet weak var lineView: UIView!
@@ -72,4 +67,13 @@ class FromAddressDetailView: UIView {
         roundedView.colorToFill = (textField.text ?? "").isEmpty ? #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1) : #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
         confirmButton.isUserInteractionEnabled = !((textField.text ?? "").isEmpty)
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let title = isTextEmpty ? Localizable.Taxi.skip.localized : Localizable.Taxi.confirm.localized
+        confirmButton.setTitle(title, for: .normal)
+        infoLabel.text = Localizable.Taxi.infoFromLabel.localized
+        textField.placeholder = Localizable.Taxi.fromAddressDetail.localized
+    }
+    
 }

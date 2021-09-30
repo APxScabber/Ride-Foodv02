@@ -9,7 +9,9 @@ import UIKit
 
 class CancelOrderTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel! { didSet {
+        titleLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
+    }}
     
 
     override func awakeFromNib() {

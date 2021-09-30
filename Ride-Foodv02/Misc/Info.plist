@@ -29,6 +29,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Доступ к камере необходим, чтобы снять фотографии и отправить их в службу поддержки.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Для точного отображения Вашего текущего местоположения</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Доступ к медиатеке необходим, чтобы прикрепить файлы для вашего обращения в службу поддержки.</string>
 	<key>UIAppFonts</key>
@@ -59,7 +61,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Для точного отображения Вашего текущего местоположения</string>
 </dict>
 </plist>

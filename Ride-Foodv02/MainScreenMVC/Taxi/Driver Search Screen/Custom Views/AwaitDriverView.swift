@@ -43,12 +43,12 @@ class AwaitDriverView: UIView {
     
     let carNameLabel            = UILabel()
     
-    let callView                = AwaitActionView(image: UIImage(named: "CallImage")!, name: "Позвонить")
-    let onMyWayView             = AwaitActionView(image: UIImage(named: "WaitImage")!, name: "Скоро буду")
+    let callView                = AwaitActionView(image: UIImage(named: "CallImage")!, name: Localizable.DriverSearch.driverSearchCall.localized)
+    let onMyWayView             = AwaitActionView(image: UIImage(named: "WaitImage")!, name: Localizable.DriverSearch.driverSearchBRB.localized)
     
     let carNumberView           = CarNumberView.initFromNib()
     
-    @IBOutlet weak var roundedSwipeView: UIView!
+   // @IBOutlet weak var roundedSwipeView: UIView!
     
     @IBOutlet weak var containerView: UIView!
     
@@ -99,7 +99,7 @@ class AwaitDriverView: UIView {
             DispatchQueue.main.asyncAfter(deadline: .now() + 8){
                 self.startTimer(with: self.driverWaitingDuration)
                 self.configure(state: .isWaiting)
-                self.waitingDescriptionLabel.text = MainScreenConstants.DriverStatusText.FreeWaitingDescription.rawValue
+                self.waitingDescriptionLabel.text = Localizable.DriverStatusText.FreeWaitingDescription.localized
             }
         case .almostThere:
             break
@@ -109,7 +109,7 @@ class AwaitDriverView: UIView {
             timer.invalidate()
             self.startTimer(with: self.paidDriverWaitingDuration)
             self.configure(state: .paidWaiting)
-            self.waitingDescriptionLabel.text = MainScreenConstants.DriverStatusText.PaidWaitingDesctiption.rawValue
+            self.waitingDescriptionLabel.text = Localizable.DriverStatusText.PaidWaitingDesctiption.localized
         case .none:
             break
         case .paidWaiting:
@@ -177,7 +177,7 @@ class AwaitDriverView: UIView {
         
         switch state {
         case .onTheWay:
-            statusLabel.text = MainScreenConstants.DriverStatusText.OnTheWay.rawValue
+            statusLabel.text = Localizable.DriverStatusText.OnTheWay.localized
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             NSLayoutConstraint.activate([
@@ -187,7 +187,7 @@ class AwaitDriverView: UIView {
                 statusLabel.widthAnchor.constraint(equalToConstant: 170)
             ])
         case .almostThere:
-            statusLabel.text = MainScreenConstants.DriverStatusText.AlmostThere.rawValue
+            statusLabel.text = Localizable.DriverStatusText.AlmostThere.localized
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .center
             NSLayoutConstraint.activate([
@@ -197,7 +197,7 @@ class AwaitDriverView: UIView {
                 statusLabel.widthAnchor.constraint(equalToConstant: 200)
             ])
         case .arrived:
-            statusLabel.text = MainScreenConstants.DriverStatusText.WaitingForYou.rawValue
+            statusLabel.text = Localizable.DriverStatusText.WaitingForYou.localized
             statusLabel.textColor = UIColor.saleOrangeColor
             statusLabel.textAlignment = .center
             NSLayoutConstraint.activate([
@@ -210,7 +210,7 @@ class AwaitDriverView: UIView {
             statusLabel.removeFromSuperview()
             statusLabel.translatesAutoresizingMaskIntoConstraints = false
             containerView.addSubview(statusLabel)
-            statusLabel.text = MainScreenConstants.DriverStatusText.Waiting.rawValue
+            statusLabel.text = Localizable.DriverStatusText.Waiting.localized
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             
@@ -239,7 +239,7 @@ class AwaitDriverView: UIView {
             containerView.addSubview(statusLabel)
             statusLabel.adjustsFontSizeToFitWidth = true
             statusLabel.translatesAutoresizingMaskIntoConstraints = false
-            statusLabel.text = MainScreenConstants.DriverStatusText.PaidWaiting.rawValue
+            statusLabel.text = Localizable.DriverStatusText.PaidWaiting.localized
             statusLabel.textColor = UIColor.black
             statusLabel.textAlignment = .right
             
