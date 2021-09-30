@@ -48,6 +48,7 @@ class ProductViewController: UIViewController {
 //        AddToTheCartButton.layer.cornerRadius = 15
         AddToTheCartButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
         AddToTheCartButton.titleLabel?.minimumScaleFactor = 0.5
+        AddToTheCartButton.setTitle(Localizable.Food.toCart.localized, for: .normal)
     }}
     
     @IBOutlet weak var AddToTheCartRoundedView: RoundedView! { didSet  {
@@ -121,7 +122,7 @@ class ProductViewController: UIViewController {
     
     func setPriceLabelData(price: Int, qty: Int){
         overallSum = calculateOverallPrice(price: price, count: qty)
-        productPriceLabel.text = "\(overallSum) руб"
+        productPriceLabel.text = "\(overallSum) \(Localizable.Delivery.deliveryMoney.localized)"
     }
     
     

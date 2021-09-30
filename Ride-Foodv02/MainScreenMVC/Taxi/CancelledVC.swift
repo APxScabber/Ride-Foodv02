@@ -17,21 +17,34 @@ class CancelledVC: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var orderCancelLabel: UILabel!
+    @IBOutlet weak var orderCancelLabel: UILabel! { didSet {
+        orderCancelLabel.font = UIFont.SFUIDisplaySemibold(size: 15.0)
+        orderCancelLabel.text = Localizable.DriverSearch.cancelOrder.localized
+    }}
     
     @IBOutlet weak var sadFaceImageView: UIImageView!
     
     @IBOutlet weak var cancelTitleLabel: UILabel! { didSet{
         cancelTitleLabel.textColor = UIColor.saleOrangeColor
+        cancelTitleLabel.font = UIFont.SFUIDisplaySemibold(size: 17.0)
+        cancelTitleLabel.text = Localizable.DriverSearch.youCanceledOrder.localized
     }}
     
-    @IBOutlet weak var cancelDescriptionLabel: UILabel!
+    @IBOutlet weak var cancelDescriptionLabel: UILabel! { didSet {
+        cancelDescriptionLabel.font = UIFont.SFUIDisplayLight(size: 17.0)
+        cancelDescriptionLabel.text = Localizable.DriverSearch.cancelOrderDescription.localized
+    }}
     
     @IBOutlet weak var anotherOrderButton: UIButton! { didSet{
         anotherOrderButton.layer.cornerRadius = 15
+        anotherOrderButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        anotherOrderButton.setTitle(Localizable.DriverSearch.newOrder.localized, for: .normal)
     }}
     
-    @IBOutlet weak var reportProblemButton: UIButton!
+    @IBOutlet weak var reportProblemButton: UIButton! { didSet {
+        reportProblemButton.titleLabel?.font = UIFont.SFUIDisplayLight(size: 17.0)
+        reportProblemButton.setTitle(Localizable.DriverSearch.reportProblem.localized, for: .normal)
+    }}
     
     weak var delegate: CancelOrderActionsProtocol?
     

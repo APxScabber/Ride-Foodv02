@@ -16,19 +16,22 @@ class CancelOrderVC: UIViewController {
     weak var delegate: CancelOrderDelegate?
     
     let reasons = [
-        "Поменялись планы",
-        "Заказ совершен по ошибке",
-        "Долгое ожидание заказа",
-        "Без указания причины"
+        Localizable.DriverSearch.changePlan.localized,
+        Localizable.DriverSearch.orderMistake.localized,
+        Localizable.DriverSearch.longWaiting.localized,
+        Localizable.DriverSearch.noReasonCancel.localized
     ]
     
     @IBOutlet weak var containerView: UIView!
     
-    @IBOutlet weak var cancelOrderReasonLabel: UILabel!
+    @IBOutlet weak var cancelOrderReasonLabel: UILabel! { didSet {
+        cancelOrderReasonLabel.font = UIFont.SFUIDisplaySemibold(size: 17.0)
+        cancelOrderReasonLabel.text = Localizable.DriverSearch.cancelOrderReason.localized
+    }}
     
     @IBOutlet weak var cancelOrderTableView: UITableView!
     
-    @IBOutlet weak var smallScrollView: UIView!
+//    @IBOutlet weak var smallScrollView: UIView!
     
     
     override func viewDidLoad() {

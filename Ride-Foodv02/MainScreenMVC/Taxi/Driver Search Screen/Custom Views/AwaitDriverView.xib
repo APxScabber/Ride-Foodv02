@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,9 +19,9 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="406"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-6m-tPN">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-6m-tPN" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="187" y="33" width="40" height="5"/>
-                    <color key="backgroundColor" name="SettingsBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="sjs-cY-7z0"/>
                         <constraint firstAttribute="height" constant="5" id="vR0-Q3-e9S"/>
@@ -47,16 +46,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="containerView" destination="ojZ-Gz-xzd" id="uNd-hp-xAG"/>
-                <outlet property="roundedSwipeView" destination="Iq6-6m-tPN" id="qM4-W7-YTM"/>
                 <outlet property="swipeViewToTopConstraint" destination="Q9d-XL-5Wl" id="8jk-lv-YjB"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="SettingsBackgroundColor">
-            <color red="0.7839999794960022" green="0.7839999794960022" blue="0.7839999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

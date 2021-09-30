@@ -18,6 +18,7 @@ class FoundDriverView: UIView {
     @IBOutlet weak var confirmButton: UIButton! { didSet{
         confirmButton.layer.cornerRadius        = 15
         confirmButton.titleLabel?.font          = UIFont.SFUIDisplayRegular(size: 17)
+        confirmButton.setTitle(Localizable.PersonalInfo.confirm.localized, for: .normal)
     }}
     
     @IBOutlet weak var DriverInfoBackgroundView: UIView! { didSet{

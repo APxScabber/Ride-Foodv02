@@ -85,6 +85,9 @@
 "clearBin" = "Очистить";
 "cancel" = "Отмена";
 "deliverTime" = "Доставим через ≈@#^ мин";
+"toCart" = "В корзину";
+"comebackToShopping" = "Вернуться к покупкам";
+"cartIsEmpty" = "Корзина пуста";
 
 //MARK: - Scores
 
@@ -113,6 +116,8 @@
 (подъезд, строения рядом или другой ориентир)";
 "infoToLabel" = "Нажав сюда можно указать ориентиры пункта назначения";
 "remainingTime" = "Оставшееся время в пути ≈@#^ мин";
+"taxiOrderCongrats" = "Благодарим за поездку!";
+"taxiService" = "Услуги такси";
 
 //MARK: - Map Manager
 
@@ -173,7 +178,8 @@
 
 //MARK: - CashBack
 
-"cashBackTitle" = "С какой суммы потребуется сдача?";
+"cashBackTitle" = "Потребуется сдача";
+"cashBackQuestion" = "С какой суммы потребуется сдача?";
 "cashBackLeftPrice" = "с 1000 руб";
 "cashBackRightPrice" = "с 5000 руб";
 
@@ -221,3 +227,28 @@
 //MARK: - Tarrifs
 
 "tariffs" = "Тарифы";
+
+//MARK: - DriverSearch
+
+"waitABit" = "Подождите еще немного";
+"searchingGoodVariant" = "Ищем подходящий вариант";
+"driverSearchCall" = "Позвонить";
+"driverSearchBRB" = "Скоро буду";
+"changePlan" = "Поменялись планы";
+"orderMistake" = "Заказ совершен по ошибке";
+"longWaiting" = "Долгое ожидание заказа";
+"noReasonCancel" = "Без указания причины";
+"cancelOrderReason" = "Причина отмены";
+"cancelOrder" = "Отмена заказа";
+"youCanceledOrder" = "Вы отменили заказ";
+"cancelOrderDescription" = "Вы всегда можете совершить другой заказ, либо сообщить нам о возникшей проблеме.";
+"newOrder" = "Новый заказ";
+"reportProblem" = "Сообщить о проблеме";
+
+"OnTheWay"               = "Уже в пути";
+"AlmostThere"            = "Почти на месте";
+"WaitingForYou"          = "Вас ожидает";
+"Waiting"                = "Ожидание";
+"PaidWaiting"            = "Платное ожидание";
+"FreeWaitingDescription" = "Время бесплатного ожидания согласно тарифу";
+"PaidWaitingDesctiption" = "Время ожидания: 2 мин. Плата взимается согласно тарифу";

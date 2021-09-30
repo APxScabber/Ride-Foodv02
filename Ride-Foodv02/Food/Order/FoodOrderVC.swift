@@ -43,6 +43,7 @@ class FoodOrderVC: BaseViewController {
     
     @IBOutlet weak var cashbackLabel: UILabel! { didSet {
         cashbackLabel.font = UIFont.SFUIDisplayLight(size: 17.0)
+        cashbackLabel.text = Localizable.CashBack.cashBackTitle.localized
     }}
     
     @IBOutlet weak var cashbackValueLabel: UILabel! { didSet {
@@ -93,17 +94,18 @@ class FoodOrderVC: BaseViewController {
     }
     
     @IBAction func order(_ sender: UIButton) {
-        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: CurrentShop.shared.id) {  _ in }
+        FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: CurrentShop.shared.id) { error in }
         CurrentShop.shared.reset()
         performSegue(withIdentifier: "comeBackToMain", sender: self)
     }
     
     @IBAction func goToCashbackNeededView(_ sender: UIButton) {
-        cashBackNeededView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 175)
+        
+        cashBackNeededView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 190)
         transparentView.isHidden = false
         cashBackNeededView.isHidden = false
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0.0, options: .curveLinear) {
-            self.cashBackNeededView.frame.origin.y = self.view.bounds.height - self.cashBackNeededView.bounds.height
+            self.cashBackNeededView.frame.origin.y = self.view.bounds.height - self.cashBackNeededView.bounds.height - CGFloat(SafeArea.shared.bottom)
         }
 
     }
@@ -140,6 +142,8 @@ class FoodOrderVC: BaseViewController {
                 self.tableViewHeightConstraint.constant += min(132,CGFloat(44 * numbers.count))
                 self.containerViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
                 self.containerViewHeightConstraint.constant -= CGFloat(44*initialImagesCount)
+                if CurrentPayment.shared.id == 0 { self.containerViewHeightConstraint.constant -= (self.cashbackView.bounds.height + 20)
+                }
             }
                 self.totalHeight = self.containerViewHeightConstraint.constant
                 self.tableView.isUserInteractionEnabled = true
@@ -171,8 +175,7 @@ class FoodOrderVC: BaseViewController {
             destination.orderCompleteView.paymentImageView.image = currentImage
             destination.orderCompleteView.paymentDetailLabel.text = currentPay
             destination.orderCompleteView.currentOrderType = .food
-            destination.isFoodOrdered = true
-            destination.shouldUpdateScreen = true
+            destination.prepareForShowFoodOrderView()
         }
     }
     

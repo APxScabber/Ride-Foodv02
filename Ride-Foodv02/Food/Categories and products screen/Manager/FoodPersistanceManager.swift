@@ -65,6 +65,7 @@ class FoodPersistanceManager{
                 guard product.shopID == Int64(shopID) else { return }
                 deleteContext.delete(product)
             }
+            try? context.save()
             completion(nil)
         }
 //        catch{

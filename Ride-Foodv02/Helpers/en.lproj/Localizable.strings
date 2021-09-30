@@ -84,6 +84,9 @@
 "clearBin" = "Clear";
 "cancel" = "Cancel";
 "deliverTime" = "Deliver about ≈@#^ min";
+"toCart" = "To cart";
+"comebackToShopping" = "Return to shopping";
+"cartIsEmpty" = "Корзина пуста";
 
 //MARK: - Scores
 
@@ -112,6 +115,8 @@
 (entrance, buildings nearby or other landmark)";
 "infoToLabel" = "By clicking here, you can specify the landmarks of your destination";
 "remainingTime" = "The remaining time ≈@#^ min";
+"taxiOrderCongrats" = "Thanks for the trip!";
+"taxiService" = "Taxi service";
 
 //MARK: - Map Manager
 
@@ -175,9 +180,10 @@
 
 //MARK: - CashBack
 
-"cashBackTitle" = "How much do you need to change?";
+"cashBackTitle" = "Need cashback";
+"cashBackQuestion" = "How much do you need to change?";
 "cashBackLeftPrice" = "from 1000 rub";
-"cashBackRightPric" = "from 5000 rub";
+"cashBackRightPrice" = "from 5000 rub";
 
 //MARK: - FoodOrder
 
@@ -224,3 +230,28 @@
 //MARK: - Tarrifs
 
 "tariffs" = "Tarrifs";
+
+//MARK: - DriverSearch
+
+"waitABit" = "Wait a bit";
+"searchingGoodVariant" = "Looking for a suitable option";
+"driverSearchCall" = "Call";
+"driverSearchBRB" = "Will be soon";
+"changePlan" = "Changed plans";
+"orderMistake" = "Order made by mistake";
+"longWaiting" = "Long waiting time for order";
+"noReasonCancel" = "No reason";
+"cancelOrderReason" = "Cancel reason";
+"cancelOrder" = "Order cancel";
+"youCanceledOrder" = "You canceled an order";
+"cancelOrderDescription" = "You can always make another order, or tell us about your problem.";
+"newOrder" = "New order";
+"reportProblem" = "Report a problem";
+
+"OnTheWay"               = "On a road";
+"AlmostThere"            = "Almost there";
+"WaitingForYou"          = "Awaits you";
+"Waiting"                = "Waiting";
+"PaidWaiting"            = "Paid waiting";
+"FreeWaitingDescription" = "Free waiting time according to the tariff";
+"PaidWaitingDesctiption" = "Waiting time: 2 min. The fee is charged according to the tariff";

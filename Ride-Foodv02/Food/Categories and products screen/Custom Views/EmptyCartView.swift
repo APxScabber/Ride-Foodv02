@@ -49,7 +49,7 @@ class EmptyCartView: UIView {
         bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         bodyLabel.font                                      = UIFont.SFUIDisplayRegular(size: 20)
         bodyLabel.textColor                                 = UIColor.DarkGrayTextColor
-        bodyLabel.text                                      = "Корзина пуста"
+        bodyLabel.text                                      = Localizable.Food.cartIsEmpty.localized
         
         NSLayoutConstraint.activate([
             bodyLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
@@ -65,7 +65,7 @@ class EmptyCartView: UIView {
         button.translatesAutoresizingMaskIntoConstraints    = false
         button.backgroundColor                              = UIColor.SkillboxIndigoColor
         button.layer.cornerRadius                           = 15
-        button.setTitle("Вернуться к покупкам", for: .normal)
+        button.setTitle(Localizable.Food.comebackToShopping.localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         
         NSLayoutConstraint.activate([

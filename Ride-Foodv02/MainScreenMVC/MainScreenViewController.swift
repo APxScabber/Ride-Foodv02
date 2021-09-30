@@ -257,9 +257,7 @@ class MainScreenViewController: BaseViewController {
             }
             userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
         }
-        if isFoodOrdered && shouldUpdateScreen {
-            showFoodOrderView()
-        }
+        
     }
     
     //MARK: - Deinit
@@ -289,11 +287,6 @@ class MainScreenViewController: BaseViewController {
             destination.place = foodTaxiView.placeLabel.text ?? ""
             destination.delegate = self
             destination.region = mapView.region
-//        } else if segue.identifier == "taxi",
-//                  let destination = segue.destination as? TaxiMainVC {
-//            print("Segue Taxi")
-//            destination.fromAddress = foodTaxiView.placeLabel.text ?? ""
-//            MapKitManager.shared.currentUserCoordinate = mapView.annotations.first?.coordinate
         }
     }
     
@@ -912,6 +905,7 @@ class MainScreenViewController: BaseViewController {
         MapKitManager.shared.locationManager.startUpdatingLocation()
         toAddress = ""
         fromAddress = ""
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - @objc Taxi Methods
@@ -1217,6 +1211,13 @@ class MainScreenViewController: BaseViewController {
    
     }
     
+    func prepareForShowFoodOrderView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.showFoodOrderView()
+        }
+        
+    }
+    
     private func showFoodOrderView() {
         transparentView.isHidden = true
         mapView.isUserInteractionEnabled = false
@@ -1389,7 +1390,7 @@ class MainScreenViewController: BaseViewController {
         profileButton.isUserInteractionEnabled = false
         view.addSubview(orderCompleteView)
         orderCompleteView.currentOrderType = .taxi
-        orderCompleteView.delegate = self
+        orderCompleteView.delegate = self        
         orderCompleteView.reset()
         orderCompleteView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 380)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
