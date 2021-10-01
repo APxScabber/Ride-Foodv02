@@ -333,6 +333,7 @@ extension MainScreenViewController: ScoresToolbarDelegate {
         } completion: {  if $0 == .end {
             self.scoresToolbar.isHidden = true
             self.shouldUpdateUI = true
+            self.wholeTransparentView.isHidden = true
             }
         }
     }

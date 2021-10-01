@@ -19,7 +19,6 @@ class ScoresView: UIView {
     
     @IBOutlet weak var meLabel: UILabel! { didSet {
         meLabel.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        meLabel.text = Localizable.Scores.me.localized
     }}
     
     @IBOutlet weak var scoresLabel: UILabel! { didSet {
@@ -33,12 +32,10 @@ class ScoresView: UIView {
     
     @IBOutlet weak var allInButton: UIButton! { didSet {
         allInButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        allInButton.setTitle(Localizable.Scores.allIn.localized, for: .normal)
     }}
     
     @IBOutlet weak var differenceButton: UIButton! { didSet {
         differenceButton.titleLabel?.font = UIFont.SFUIDisplayLight(size: 17.0)
-        differenceButton.setTitle(Localizable.Scores.misc.localized, for: .normal)
     }}
     
     @IBOutlet weak var heightConstraint: NSLayoutConstraint! { didSet {
@@ -53,6 +50,16 @@ class ScoresView: UIView {
     
     @IBAction func misc(_ sender: UIButton) {
         delegate?.showScoresToolbar()
+    }
+    
+    //MARK: - Layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scoresLabel.text = "\(scores) \(Localizable.Scores.scoresAvailable.localized)"
+        differenceButton.setTitle(Localizable.Scores.misc.localized, for: .normal)
+        allInButton.setTitle(Localizable.Scores.allIn.localized, for: .normal)
+        meLabel.text = Localizable.Scores.me.localized
     }
     
     //MARK: - Init

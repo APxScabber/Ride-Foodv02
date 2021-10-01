@@ -20,13 +20,11 @@ class PromocodeScoresView: UIView {
 
     @IBOutlet weak var scoresLabel: UILabel! { didSet {
         scoresLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        scoresLabel.text = Localizable.Promocode.scores.localized
     }}
     @IBOutlet weak var scoresImageView: UIImageView!
 
     @IBOutlet weak var promocodeLabel: UILabel! { didSet {
         promocodeLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        promocodeLabel.text = Localizable.Promocode.promocode.localized
     }}
     @IBOutlet weak var promocodeImageView: UIImageView!
     @IBOutlet weak var promocodeDiscountLabel: UILabel! { didSet {
@@ -39,7 +37,6 @@ class PromocodeScoresView: UIView {
 
     @IBOutlet weak var scoresEnteredLabel: UILabel! { didSet {
         scoresEnteredLabel.font = UIFont.SFUIDisplayBold(size: 15.0)
-        scoresEnteredLabel.text = Localizable.Scores.scoresAvailable.localized
     }}
 
     @IBOutlet weak var scoresRoundedView: ShadowRoundedView!
@@ -58,6 +55,13 @@ class PromocodeScoresView: UIView {
         }
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scoresLabel.text = Localizable.Promocode.scores.localized
+        promocodeLabel.text = Localizable.Promocode.promocode.localized
+        scoresEnteredLabel.text = Localizable.Scores.scoresAvailable.localized
+    }
+    
     func reset() {
         usedScores = false
         usedPromocode = false

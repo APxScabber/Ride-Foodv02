@@ -13,14 +13,11 @@ class MainScreenViewController: BaseViewController {
     }}
     @IBOutlet weak var nextButton: UIButton! { didSet {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        nextButton.setTitle(Localizable.Taxi.next.localized, for: .normal)
     }}
     
     @IBOutlet weak var profileButton: UIButton!
     
-    @IBOutlet weak var mapButton: UIButton! { didSet {
-        mapButton.setTitle(Localizable.Taxi.map.localized, for: .normal)
-    }}
+    @IBOutlet weak var mapButton: UIButton!
     
     @IBOutlet weak var mapBigButton: UIButton!
     @IBOutlet weak var arrowButton: UIButton!
@@ -117,7 +114,6 @@ class MainScreenViewController: BaseViewController {
         fromTextField.addTarget(self, action: #selector(fromTextFieldChanged), for: .editingChanged)
         fromTextField.addTarget(self, action: #selector(fromTextFieldEnd), for: .editingDidEnd)
         fromTextField.delegate = self
-        fromTextField.placeholder = Localizable.Taxi.fromAddressQuestion.localized
     }}
     
     @IBOutlet weak var toTextField:UITextField! { didSet {
@@ -125,7 +121,6 @@ class MainScreenViewController: BaseViewController {
         toTextField.addTarget(self, action: #selector(toTextFieldChanged), for: .editingChanged)
         toTextField.addTarget(self, action: #selector(toTextFieldEnd), for: .editingDidEnd)
         toTextField.delegate = self
-        toTextField.placeholder = Localizable.Taxi.toAddressQuestion.localized
     }}
     
     //MARK: - Labels
@@ -229,6 +224,10 @@ class MainScreenViewController: BaseViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        nextButton.setTitle(Localizable.Taxi.next.localized, for: .normal)
+        mapButton.setTitle(Localizable.Taxi.map.localized, for: .normal)
+        fromTextField.placeholder = Localizable.Taxi.fromAddressQuestion.localized
+        toTextField.placeholder = Localizable.Taxi.toAddressQuestion.localized
         bottomSafeAreaConstant = view.safeAreaInsets.bottom
         if !menuView.isVisible && shouldResetFrames { resetFrames() }
     }
