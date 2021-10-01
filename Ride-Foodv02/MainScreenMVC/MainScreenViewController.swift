@@ -1346,6 +1346,10 @@ class MainScreenViewController: BaseViewController {
     }
     
     @IBAction func taxiBackButtonAction(_ sender: UIButton) {
+        if containerView.superview != nil{
+            closeContainerView()
+            return
+        }
         returnFromTaxiToStart()
     }
     
@@ -1401,6 +1405,7 @@ class MainScreenViewController: BaseViewController {
     // MARK: Dismiss taxiContainerView and return to the main screen
     func closeContainerView(){
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+            self.promocodeScoresView.removeFromSuperview()
             self.containerView.frame.origin.y = self.view.frame.height
             for i in self.containerView.subviews{
                 i.removeFromSuperview()
