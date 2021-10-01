@@ -11,9 +11,10 @@ class TaxiTariffView: UIView {
     
     var selectedIndex: Int? { didSet {
         CurrentPrice.shared.price = prices[selectedIndex ?? 0]
+        CurrentPrice.shared.updatedPrice = prices[selectedIndex ?? 0]
     }}
     var scoresEntered = 0 { didSet { recreateViewIfNeeded() }}
-    
+    var promocodeActivated = false { didSet { recreateViewIfNeeded() }}
     private let prices = [100,250,430]
     
     //MARK: - Outlets
@@ -78,7 +79,7 @@ class TaxiTariffView: UIView {
 
     @objc
     private func selectStandartView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended  {
+        if recognizer.state == .ended && CurrentPrice.shared.totalDiscount == 0  {
             reset()
             selectedIndex = 0
             updateStandartView()
@@ -91,14 +92,14 @@ class TaxiTariffView: UIView {
         standartImageView.image = #imageLiteral(resourceName: "StandartCar")
         standartDurationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         standartPriceLabel.textColor = .black
-        if scoresEntered != 0 {
-            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: max(0,prices[0] - scoresEntered))
+        if scoresEntered != 0 || promocodeActivated {
+            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: max(0,prices[0] - CurrentPrice.shared.totalDiscount))
         }
     }
     
     @objc
     private func selectPremiumView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended  {
+        if recognizer.state == .ended && CurrentPrice.shared.totalDiscount == 0  {
             reset()
             selectedIndex = 1
             updatePremiumView()
@@ -111,15 +112,15 @@ class TaxiTariffView: UIView {
         premiumImageView.image = #imageLiteral(resourceName: "PremiumCar")
         premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
         premiumPriceLabel.textColor = .black
-        if scoresEntered != 0 {
-            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: max(0,prices[1] - scoresEntered))
+        if scoresEntered != 0 || promocodeActivated {
+            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: max(0,prices[1] - CurrentPrice.shared.totalDiscount))
         }
     }
     
     
     @objc
     private func selectBusinessView(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended  {
+        if recognizer.state == .ended && CurrentPrice.shared.totalDiscount == 0  {
             reset()
             selectedIndex = 2
             updateBusinessView()
@@ -132,8 +133,8 @@ class TaxiTariffView: UIView {
         businessImageView.image = #imageLiteral(resourceName: "BusinessCar")
         businessDurationLabel.textColor = #colorLiteral(red: 0.831372549, green: 0.7411764706, blue: 0.5019607843, alpha: 1)
         businessPriceLabel.textColor = .black
-        if scoresEntered != 0 {
-            update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: max(0,prices[2] - scoresEntered))
+        if scoresEntered != 0 || promocodeActivated {
+            update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: max(0,prices[2] - CurrentPrice.shared.totalDiscount))
         }
     }
     
@@ -184,13 +185,13 @@ class TaxiTariffView: UIView {
         switch index {
             case 0:
                 updateStandartView()
-                if scoresEntered != 0 { standartOldPriceLabel.isHidden = false }
+                if scoresEntered != 0 || promocodeActivated { standartOldPriceLabel.isHidden = false }
             case 1:
                 updatePremiumView()
-                if scoresEntered != 0 { premiumOldPriceLabel.isHidden = false }
+                if scoresEntered != 0 || promocodeActivated { premiumOldPriceLabel.isHidden = false }
             case 2:
                 updateBusinessView()
-                if scoresEntered != 0 { businessOldPriceLabel.isHidden = false }
+                if scoresEntered != 0 || promocodeActivated { businessOldPriceLabel.isHidden = false }
         default:break
         }
     }
@@ -209,11 +210,24 @@ class CurrentPrice {
         set { UserDefaults.standard.set(newValue, forKey: kCurrentPrice)}
     }
     
+    var updatedPrice: Int {
+        get { UserDefaults.standard.integer(forKey: kUpdatedPrice) }
+        set { UserDefaults.standard.set(newValue, forKey: kUpdatedPrice)}
+    }
+    
     var totalDiscount: Int {
         get { UserDefaults.standard.integer(forKey: kTotalDiscount) }
         set { UserDefaults.standard.set(newValue, forKey: kTotalDiscount)}
     }
     
+    func reset() {
+        totalDiscount = 0
+        price = 0
+        updatedPrice = 0
+    }
+    
     private let kCurrentPrice = "kCurrentPrice"
     private let kTotalDiscount = "kTotalDiscount"
+    private let kUpdatedPrice = "kUpdatedPrice"
+
 }
