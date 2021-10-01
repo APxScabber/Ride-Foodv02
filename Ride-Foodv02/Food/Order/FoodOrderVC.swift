@@ -96,6 +96,7 @@ class FoodOrderVC: BaseViewController {
     @IBAction func order(_ sender: UIButton) {
         FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: CurrentShop.shared.id) { error in }
         CurrentShop.shared.reset()
+        CurrentPrice.shared.reset()
         performSegue(withIdentifier: "comeBackToMain", sender: self)
     }
     

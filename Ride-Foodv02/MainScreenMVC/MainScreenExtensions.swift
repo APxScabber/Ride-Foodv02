@@ -274,16 +274,16 @@ extension MainScreenViewController: PromocodeScoresViewDelegate {
     }
     
     func usePromocode() {
-        shouldUpdateUI = false
-        wholeTransparentView.isHidden = false
-        promocodeToolbar.isHidden = false
-        promocodeToolbar.textField.becomeFirstResponder()
-        promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
-            self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight - self.keyboardHeight - CGFloat(SafeArea.shared.bottom)
+        if taxiTariffView.selectedIndex != nil {
+            shouldUpdateUI = false
+            wholeTransparentView.isHidden = false
+            promocodeToolbar.isHidden = false
+            promocodeToolbar.textField.becomeFirstResponder()
+            promocodeToolbar.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: PromocodeConstant.toolbarHeight)
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
+                self.promocodeToolbar.frame.origin.y = self.view.bounds.height - PromocodeConstant.toolbarHeight - self.keyboardHeight - CGFloat(SafeArea.shared.bottom)
+            }
         }
-
-        
     }
     
 }
@@ -338,6 +338,7 @@ extension MainScreenViewController: ScoresToolbarDelegate {
     }
     
     func enter(scores: Int) {
+        CurrentPrice.shared.totalDiscount += scores
         closeScoresToolbar()
         closeScoresView()
         taxiTariffView.scoresEntered = scores
@@ -552,7 +553,11 @@ extension MainScreenViewController: PromocodeActivationDelegate {
 extension MainScreenViewController: PromocodeActivatorDelegate {
     
     func promocodeActivated(_ description: String) {
+        let discount = Int(0.15 * Double(CurrentPrice.shared.price - CurrentPrice.shared.totalDiscount))
+        CurrentPrice.shared.totalDiscount += discount
+        CurrentPrice.shared.updatedPrice = CurrentPrice.shared.price - discount
         promocodeScoresView.usedPromocode = true
+        taxiTariffView.promocodeActivated = true
         promocodeToolbar.textField.resignFirstResponder()
         promocodeActivationView.frame = CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 230)
         promocodeActivationView.bodyLabel.text = description

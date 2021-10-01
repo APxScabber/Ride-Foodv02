@@ -65,7 +65,6 @@ class PromocodeScoresView: UIView {
     }
 
     private func updatePromocodeView() {
-
         promocodeRoundedView.colorToFill = usedPromocode ? #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1) : .white
         promocodeImageView.isHidden = usedPromocode
         promocodeDiscountLabel.isHidden = !usedPromocode
@@ -82,7 +81,8 @@ class PromocodeScoresView: UIView {
         scoresRoundedView.colorToFill = usedScores ? #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1) : .white
         scoresEnterValueLabel.isHidden = !usedScores
         scoresLabel.isHidden = usedScores
-        scoresEnterValueLabel.text = "- \(scores)"
+        let minimumScores = min(CurrentPrice.shared.updatedPrice,CurrentPrice.shared.totalDiscount)
+        scoresEnterValueLabel.text = "- \(minimumScores)"
 
     }
 }

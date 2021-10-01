@@ -92,6 +92,11 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
          }
      }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        CurrentPrice.shared.reset()
+    }
+    
     //MARK: - CollectionViewDataSourse
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -228,6 +233,7 @@ extension ShopListViewController: OrderRemoveViewDelegate {
     func orderRemoveViewClear() {
         FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: CurrentShop.shared.id) { error in }
         CurrentShop.shared.reset()
+        CurrentPrice.shared.reset()
         orderRemovedView.show()
     }
     
