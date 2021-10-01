@@ -1403,6 +1403,9 @@ class MainScreenViewController: BaseViewController {
     func closeContainerView(){
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
             self.containerView.frame.origin.y = self.view.frame.height
+            for i in self.containerView.subviews{
+                i.removeFromSuperview()
+            }
             self.containerView.removeFromSuperview()
            
             self.returnFromTaxiToStart()

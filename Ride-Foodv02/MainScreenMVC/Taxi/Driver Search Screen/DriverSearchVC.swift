@@ -63,9 +63,7 @@ class DriverSearchVC: UIViewController {
     }
     
     @objc func cancel(){
-        DispatchQueue.main.async {
-                self.delegate?.cancel()
-        }
+     self.delegate?.cancel()
     }
     
     func sendRequest(){
@@ -174,10 +172,6 @@ class DriverSearchVC: UIViewController {
         view.addSubview(awaitDriverView)
         awaitDriverView.translatesAutoresizingMaskIntoConstraints = false
        
-      
-        
-       
-        
         NSLayoutConstraint.activate([
             awaitDriverView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             awaitDriverView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -255,14 +249,15 @@ class DriverSearchVC: UIViewController {
 extension DriverSearchVC: FoundDriverProtocol{
     func confirm() {
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 1) {
-
+            UIView.animate(withDuration: 0.5) {
+                self.removeViews(with: .found)
       //          self.delegate?.confirm()
 
                 self.view.backgroundColor = .clear
-                self.removeViews(with: .found)
+               
                 self.delegate?.changeFrame(with: .wait)
                 self.addviews(with: .wait)
+                self.view.layoutIfNeeded()
             }
         }
         

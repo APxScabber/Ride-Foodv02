@@ -611,6 +611,7 @@ extension MainScreenViewController: OrderCompleteViewDelegate {
             self.foodTaxiView.taxiImageView.image = UIImage(named: "Taxi")
             self.foodTaxiView.taxiImageView.isUserInteractionEnabled = true
             taxiOrderInfoView.alpha = 0
+            promocodeScoresView.removeFromSuperview()
             isTaxiOrdered = false
             
                closeContainerView()
@@ -773,8 +774,8 @@ extension MainScreenViewController: CancelOrderDelegate{
             let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "CancelledVC") as! CancelledVC
             vc.modalPresentationStyle = .fullScreen
-        vc.delegate = self
-         //   vc.transitioningDelegate = self
+            vc.delegate = self
+        
             self.present(vc, animated: true)
         
     }
@@ -786,7 +787,7 @@ extension MainScreenViewController: CancelOrderActionsProtocol{
         isTaxiOrdered = false
         promocodeScoresView.removeFromSuperview()
         closeContainerView()
-        self.view.layoutIfNeeded()
+      
         
     }
     
@@ -794,7 +795,7 @@ extension MainScreenViewController: CancelOrderActionsProtocol{
         isTaxiOrdered = false
         promocodeScoresView.removeFromSuperview()
         closeContainerView()
-        self.view.layoutIfNeeded()
+        
     }
     
     func reportProblem() {
