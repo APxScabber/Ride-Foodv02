@@ -791,7 +791,6 @@ extension MainScreenViewController: CancelOrderDelegate{
 extension MainScreenViewController: CancelOrderActionsProtocol{
     func closeScreen() {
         isTaxiOrdered = false
-        promocodeScoresView.removeFromSuperview()
         closeContainerView()
       
         
@@ -799,14 +798,12 @@ extension MainScreenViewController: CancelOrderActionsProtocol{
     
     func newOrder() {
         isTaxiOrdered = false
-        promocodeScoresView.removeFromSuperview()
         closeContainerView()
         
     }
     
     func reportProblem() {
         isTaxiOrdered = false
-        promocodeScoresView.removeFromSuperview()
         closeContainerView()
         let storyboard = UIStoryboard(name: "Support", bundle: .main)
         if let supportVC = storyboard.instantiateInitialViewController() {
