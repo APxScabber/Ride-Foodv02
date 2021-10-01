@@ -28,7 +28,6 @@ class TaxiTariffView: UIView {
     }}
     @IBOutlet weak var standartPriceLabel: UILabel! { didSet {
         standartPriceLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        standartPriceLabel.text = "\(prices[0]) руб"
     }}
     @IBOutlet weak var standartDurationLabel: UILabel! { didSet {
         standartDurationLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
@@ -47,7 +46,6 @@ class TaxiTariffView: UIView {
     }}
     @IBOutlet weak var premiumPriceLabel: UILabel! { didSet {
         premiumPriceLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        premiumPriceLabel.text = "\(prices[1]) руб"
     }}
     @IBOutlet weak var premiumDurationLabel: UILabel! { didSet {
         premiumDurationLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
@@ -65,7 +63,6 @@ class TaxiTariffView: UIView {
     }}
     @IBOutlet weak var businessPriceLabel: UILabel! { didSet {
         businessPriceLabel.font = UIFont.SFUIDisplayRegular(size: 15.0)
-        businessPriceLabel.text = "\(prices[2]) руб"
     }}
     @IBOutlet weak var businessDurationLabel: UILabel! { didSet {
         businessDurationLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
@@ -77,6 +74,13 @@ class TaxiTariffView: UIView {
 
     //MARK: - Setup
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        standartPriceLabel.text = "\(prices[0]) \(Localizable.Delivery.deliveryMoney.localized)"
+        premiumPriceLabel.text = "\(prices[1]) \(Localizable.Delivery.deliveryMoney.localized)"
+        businessPriceLabel.text = "\(prices[2]) \(Localizable.Delivery.deliveryMoney.localized)"
+    }
+    
     @objc
     private func selectStandartView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended && CurrentPrice.shared.totalDiscount == 0  {

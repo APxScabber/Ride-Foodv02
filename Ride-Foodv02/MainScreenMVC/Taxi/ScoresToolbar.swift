@@ -15,7 +15,6 @@ class ScoresToolbar: UIView {
     
     @IBOutlet weak var textField: UITextField! { didSet {
         textField.font  = UIFont.SFUIDisplayLight(size: 17.0)
-        textField.placeholder = Localizable.Scores.scoresEnter.localized
         textField.addTarget(self, action: #selector(updateUI), for: .editingChanged)
     }}
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -32,7 +31,6 @@ class ScoresToolbar: UIView {
     
     @IBOutlet weak var confirmButton: UIButton! { didSet {
         confirmButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        confirmButton.setTitle(Localizable.Food.confirm.localized, for: .normal)
     }}
     
     //MARK: - Action
@@ -72,6 +70,14 @@ class ScoresToolbar: UIView {
         confirmButton.isUserInteractionEnabled = false
         errorLabel.text = text
 
+    }
+    
+    //MARK: - Layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        confirmButton.setTitle(Localizable.Food.confirm.localized, for: .normal)
+        textField.placeholder = Localizable.Scores.scoresEnter.localized
     }
     
     //MARK: - Init

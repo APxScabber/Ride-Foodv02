@@ -779,11 +779,12 @@ extension CategoriesAndFoodVC: ScoresToolbarDelegate {
     }
     
     func enter(scores: Int) {
+        CurrentPrice.shared.totalDiscount += scores
+        CurrentPrice.shared.updatedPrice = overallPriceInCart
         closeScoresToolbar()
         closeScoresView()
         cartVC.promocodeScoreView.scores = scores
         setupBottomView()
-        CurrentPrice.shared.totalDiscount += scores
         updateBottomViewWith(overallPriceInCart - scores, oldPrice: CurrentPrice.shared.totalDiscount)
     }
     
