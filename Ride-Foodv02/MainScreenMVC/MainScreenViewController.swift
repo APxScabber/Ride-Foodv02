@@ -154,6 +154,7 @@ class MainScreenViewController: BaseViewController {
     // MARK: - Search driver screen content
     
     var containerView = UIView()
+    var isAwaitingDriver = false
     
     // MARK: - Properties
 
@@ -361,6 +362,8 @@ class MainScreenViewController: BaseViewController {
             containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.foundDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.foundDriverScreenHeight + bottomSafeAreaConstant)
         case .wait:
             containerView.frame = CGRect(x: 0, y: view.bounds.height - MainScreenConstants.awaitDriverScreenHeight - bottomSafeAreaConstant, width: view.bounds.width, height: MainScreenConstants.awaitDriverScreenHeight + bottomSafeAreaConstant + 30)
+            
+            isAwaitingDriver = true
             
               if !hasSetPointOrigin {
                   hasSetPointOrigin = true
@@ -1347,9 +1350,16 @@ class MainScreenViewController: BaseViewController {
     
     @IBAction func taxiBackButtonAction(_ sender: UIButton) {
         if containerView.superview != nil{
+            if isAwaitingDriver == true{
+                isTaxiOrdered = true
+                isPrepairToOrder = false
+                pressTaxiOrderButton()
+                isAwaitingDriver = false
+                return
+            }
             closeContainerView()
             return
-        }
+        } 
         returnFromTaxiToStart()
     }
     
