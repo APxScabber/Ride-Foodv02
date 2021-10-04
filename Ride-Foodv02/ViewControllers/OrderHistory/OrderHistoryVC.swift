@@ -72,6 +72,40 @@ class OrderHistoryVC: UIViewController {
         }
     }
 
+    //MARK: - Helper
+    
+    @objc
+    private func moveDetailViewBack(_ recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .ended {
+            
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+                self.detailView?.alpha = 0.0
+                self.detailView?.frame.size = self.initialDetailViewFrame.size
+                self.detailView?.frame = CGRect(x: 25, y: self.initialDetailViewFrame.origin.y, width: self.view.bounds.width - 50, height: self.initialDetailViewFrame.height)
+            } completion: { if $0 == .end {
+                self.tableView.cellForRow(at: self.selectedIndexPath!)?.isHidden = false
+                self.transparentView.isHidden = true
+                self.tableView.isUserInteractionEnabled = true
+                self.segmentedControl.isUserInteractionEnabled = true
+            }
+            }
+
+        }
+    }
+    
+    private func setupDetailViewWith(_ frame: CGRect) {
+        detailView?.frame = CGRect(x: 25, y: frame.origin.y, width: view.bounds.width - 50, height: frame.height)
+        detailView?.isHidden = false
+        detailView?.alpha = 0
+        detailView?.order = currentOrders[selectedIndexPath!.section]
+        let newFrame = CGRect(x: 25, y: 150, width: view.bounds.width - 50, height: 390)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
+            self.detailView?.alpha = 1.0
+            self.detailView?.frame = newFrame
+            self.detailView?.cornerRadius = 15.0
+        }
+    }
+    
 }
 
 //MARK: - UItableview datasourse
@@ -128,36 +162,6 @@ extension OrderHistoryVC: UITableViewDataSource,UITableViewDelegate {
         return segmentedControl.selectedSegmentIndex == 0 ? 120 : 150
     }
     
-    @objc
-    private func moveDetailViewBack(_ recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended {
-            
-            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-                self.detailView?.alpha = 0.0
-                self.detailView?.frame.size = self.initialDetailViewFrame.size
-                self.detailView?.frame = CGRect(x: 25, y: self.initialDetailViewFrame.origin.y, width: self.view.bounds.width - 50, height: self.initialDetailViewFrame.height)
-            } completion: { if $0 == .end {
-                self.tableView.cellForRow(at: self.selectedIndexPath!)?.isHidden = false
-                self.transparentView.isHidden = true
-                self.tableView.isUserInteractionEnabled = true
-                self.segmentedControl.isUserInteractionEnabled = true
-            }
-            }
-
-        }
-    }
     
-    private func setupDetailViewWith(_ frame: CGRect) {
-        detailView?.frame = CGRect(x: 25, y: frame.origin.y, width: view.bounds.width - 50, height: frame.height)
-        detailView?.isHidden = false
-        detailView?.alpha = 0
-        detailView?.order = currentOrders[selectedIndexPath!.section]
-        let newFrame = CGRect(x: 25, y: 150, width: view.bounds.width - 50, height: 390)
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
-            self.detailView?.alpha = 1.0
-            self.detailView?.frame = newFrame
-            self.detailView?.cornerRadius = 15.0
-        }
-    }
     
 }

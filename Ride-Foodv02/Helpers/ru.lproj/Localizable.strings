@@ -199,6 +199,7 @@
 "foodOrderNewOrder" = "Новый заказ";
 "foodOrderSeeYouAgain" = "Будем рады вам снова :)";
 "foodOrderDeliveryFood" = "Доставка еды";
+"foodOrderOneActive" = "1 активный заказ";
 
 //MARK: - OrderRemove
 

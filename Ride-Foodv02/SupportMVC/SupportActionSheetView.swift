@@ -1,27 +1,32 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol SupportActionSheetDelegate: AnyObject {
     func goToCamera()
     func goToLibrary()
     func cancel()
 }
 
-@IBDesignable
-class SupportRoundedView: UIView {
-    
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(roundedRect: rect, cornerRadius: 15.0)
-        UIColor.white.setFill()
-        path.fill()
-    }
-    
-}
 
 class SupportActionSheetView: UIView {
 
+    //MARK: - API
+    
     weak var delegate: SupportActionSheetDelegate?
     
     //MARK: - Outlets
+    
+    @IBOutlet weak var mediaLibraryView: RoundedView! { didSet {
+        mediaLibraryView.cornerRadius = 15.0
+        mediaLibraryView.colorToFill = .white
+    }}
+    
+    @IBOutlet weak var cancelButton: UIButton! { didSet {
+        cancelButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        cancelButton.layer.cornerRadius = 15.0
+    }}
+    
     @IBOutlet weak var captureLabel: UILabel! { didSet {
         captureLabel.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
@@ -30,9 +35,6 @@ class SupportActionSheetView: UIView {
         libraryLabel.font = UIFont.SFUIDisplayRegular(size: 17)
     }}
     
-    @IBOutlet weak var cancelLabel: UILabel! { didSet {
-        cancelLabel.font = UIFont.SFUIDisplayRegular(size: 17)
-    }}
     
     @IBOutlet weak var goToCameraView: UIView! { didSet {
         goToCameraView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToCamera)))
@@ -43,15 +45,10 @@ class SupportActionSheetView: UIView {
 
     }}
     
-    @IBOutlet weak var cancelView: UIView! { didSet {
-        cancelView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancel)))
-
-    }}
     
     //MARK: - Actions
 
-    @objc
-    private func cancel() {
+    @IBAction func cancel(_ sender: UIButton) {
         delegate?.cancel()
     }
     
@@ -65,10 +62,12 @@ class SupportActionSheetView: UIView {
         delegate?.goToLibrary()
     }
     
+    //MARK: - Layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         captureLabel.text = Localizable.Support.capture.localized
-        cancelLabel.text = Localizable.Support.cancel.localized
+        cancelButton.setTitle(Localizable.Support.cancel.localized, for: .normal)
         libraryLabel.text = Localizable.Support.library.localized
 
     }

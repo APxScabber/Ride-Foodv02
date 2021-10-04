@@ -16,16 +16,13 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aR-vA-bmf" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="59" width="414" height="142"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="142" id="W9m-9I-k8a"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bA-9V-3Fq" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="25" y="131" width="364" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d7-es-sD0">
-                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                            <rect key="frame" x="25" y="72" width="364" height="50"/>
+                            <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="3sI-xT-K6G"/>
+                            </constraints>
                             <state key="normal" title="Подвердить">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -34,13 +31,11 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="UPm-J1-11r"/>
-                        <constraint firstItem="4d7-es-sD0" firstAttribute="top" secondItem="0bA-9V-3Fq" secondAttribute="top" id="Y4s-hd-Xc1"/>
-                        <constraint firstAttribute="trailing" secondItem="4d7-es-sD0" secondAttribute="trailing" id="fkA-EX-Uz6"/>
-                        <constraint firstItem="4d7-es-sD0" firstAttribute="leading" secondItem="0bA-9V-3Fq" secondAttribute="leading" id="mNc-Fx-Qnq"/>
-                        <constraint firstAttribute="bottom" secondItem="4d7-es-sD0" secondAttribute="bottom" id="nsV-fs-6bf"/>
+                        <constraint firstAttribute="height" constant="142" id="W9m-9I-k8a"/>
+                        <constraint firstItem="4d7-es-sD0" firstAttribute="leading" secondItem="9aR-vA-bmf" secondAttribute="leading" constant="25" id="ee3-YA-1NL"/>
+                        <constraint firstAttribute="trailing" secondItem="4d7-es-sD0" secondAttribute="trailing" constant="25" id="nva-zx-v9c"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tmh-l2-z0S">
@@ -57,7 +52,7 @@
                     <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enS-Vl-JFg" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enS-Vl-JFg" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="187" y="44" width="40" height="5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -78,29 +73,24 @@
             <constraints>
                 <constraint firstItem="nKd-Vt-iqn" firstAttribute="top" secondItem="Tmh-l2-z0S" secondAttribute="bottom" constant="11" id="14k-z1-5Jh"/>
                 <constraint firstItem="r9U-5X-Tg6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="192-2L-jPS"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0bA-9V-3Fq" secondAttribute="trailing" constant="25" id="9gr-ch-a97"/>
                 <constraint firstItem="r9U-5X-Tg6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="29" id="BZc-Tq-LQ4"/>
-                <constraint firstItem="0bA-9V-3Fq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="FkJ-Oc-Gkq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nKd-Vt-iqn" secondAttribute="trailing" constant="25" id="Fs1-7e-XWG"/>
                 <constraint firstItem="9aR-vA-bmf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HVi-zi-iY1"/>
                 <constraint firstItem="enS-Vl-JFg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="T4k-SZ-rDZ"/>
-                <constraint firstItem="0bA-9V-3Fq" firstAttribute="top" secondItem="nKd-Vt-iqn" secondAttribute="bottom" constant="26" id="UZq-xG-aI3"/>
                 <constraint firstItem="Tmh-l2-z0S" firstAttribute="centerY" secondItem="r9U-5X-Tg6" secondAttribute="centerY" id="Z01-px-flx"/>
                 <constraint firstItem="9aR-vA-bmf" firstAttribute="top" secondItem="enS-Vl-JFg" secondAttribute="bottom" constant="10" id="ZJD-14-URg"/>
                 <constraint firstItem="enS-Vl-JFg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gre-8U-qt0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Tmh-l2-z0S" secondAttribute="trailing" constant="25" id="hQd-WL-lrk"/>
+                <constraint firstItem="4d7-es-sD0" firstAttribute="top" secondItem="nKd-Vt-iqn" secondAttribute="bottom" constant="26" id="jZS-Ln-rqU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9aR-vA-bmf" secondAttribute="trailing" id="jxS-uU-IH6"/>
                 <constraint firstItem="Tmh-l2-z0S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="qlS-5o-Vz5"/>
                 <constraint firstItem="nKd-Vt-iqn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="uT2-SU-TGL"/>
                 <constraint firstItem="nKd-Vt-iqn" firstAttribute="top" secondItem="r9U-5X-Tg6" secondAttribute="bottom" constant="11" id="yig-4k-dao"/>
             </constraints>
             <connections>
-                <outlet property="activeView" destination="9aR-vA-bmf" id="RFC-gq-YWV"/>
                 <outlet property="button" destination="4d7-es-sD0" id="dpY-Cy-rNR"/>
                 <outlet property="label" destination="r9U-5X-Tg6" id="xzp-jA-dNe"/>
                 <outlet property="lineView" destination="nKd-Vt-iqn" id="FYL-f3-VxZ"/>
-                <outlet property="roundedView" destination="0bA-9V-3Fq" id="jyy-Pb-Cae"/>
-                <outlet property="swipeDoneView" destination="enS-Vl-JFg" id="BOo-w0-Q4c"/>
                 <outlet property="textField" destination="Tmh-l2-z0S" id="SG2-0E-tgk"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>

@@ -2,7 +2,11 @@ import UIKit
 
 class SupportAddImageButton: UIButton {
 
+    //MARK: - API
+    
     var buttonState: ButtonState = .active { didSet { setNeedsDisplay() }}
+    
+    //MARK: - Drawing
     
     override func draw(_ rect: CGRect) {
         switch buttonState {
@@ -33,6 +37,8 @@ class SupportAddImageButton: UIButton {
         linePath.stroke()
         
     }
+    
+    //MARK: - Button state
     
     enum ButtonState {
         case active

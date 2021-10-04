@@ -43,6 +43,7 @@ class PromocodeActivation: UIView {
         addGestureRecognizer(swipe)
     }
     
+    //MARK: - Dismiss
     @objc
     private func close(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended {

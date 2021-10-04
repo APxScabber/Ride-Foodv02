@@ -6,16 +6,18 @@ protocol PromotionDetailDelegate: AnyObject {
 
 class PromotionDetail: UIView {
 
+    //MARK: - API
+    
     weak var delegate: PromotionDetailDelegate?
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var buyButton: UIButton! { didSet {
         buyButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
         buyButton.setTitle(Localizable.Promotion.goShopping.localized, for: .normal)
+        buyButton.layer.cornerRadius = 15.0
     }}
-    @IBOutlet private weak var buyButtonView: RoundedView! { didSet {
-        buyButtonView.colorToFill = .white
-        buyButtonView.cornerRadius = 15.0
-    }}
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var headerLabel: UILabel! { didSet {
@@ -34,6 +36,8 @@ class PromotionDetail: UIView {
     }}
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
+    //MARK: - Action
+    
     @IBAction func dismiss(_ sender: UIButton) {
         done()
     }
@@ -45,6 +49,7 @@ class PromotionDetail: UIView {
         }
     }
     
+    //MARK: - Dismiss
     @objc
     private func done() {
         bottomConstraint.constant = 10.0

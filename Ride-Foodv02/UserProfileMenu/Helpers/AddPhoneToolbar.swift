@@ -27,11 +27,6 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
 
     @IBOutlet weak var underbarLine: UIView!
     
-    @IBOutlet weak var roundedView: RoundedView! { didSet {
-        roundedView.cornerRadius = 15.0
-        roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-    }}
-    
     @IBOutlet weak var errorLabel: UILabel! { didSet {
         errorLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
         errorLabel.text = Localizable.Phones.phoneErrorDuplicate.localized
@@ -61,7 +56,7 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
         errorLabel.isHidden = true
         underbarLine.backgroundColor = phoneEntered ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         confirmButton.isUserInteractionEnabled = phoneEntered
-        roundedView.colorToFill = phoneEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        confirmButton.backgroundColor = phoneEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         let formatedNumber = textField.text!.applyPatternOnNumbers(pattern:
                                     LoginConstantText.phoneFormatFull.rawValue,
                                    replacmentCharacter: "#")
@@ -75,18 +70,20 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
         }
     }
     
+    private func duplicateError() {
+        underbarLine.backgroundColor =  #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        confirmButton.isUserInteractionEnabled = false
+        confirmButton.backgroundColor = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        errorLabel.isHidden = false
+    }
+    
+    //MARK: - Textfield delegate
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         if text.count == 2 && string == "" { return false }
         if text.count == 18 && string != "" { return false}
         return true
-    }
-    
-    private func duplicateError() {
-        underbarLine.backgroundColor =  #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-        confirmButton.isUserInteractionEnabled = false
-        roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-        errorLabel.isHidden = false
     }
     
     //MARK: - Init
@@ -106,6 +103,9 @@ class AddPhoneToolbar: UIView, UITextFieldDelegate {
         swipe.direction = .down
         addGestureRecognizer(swipe)
     }
+    
+    
+    //MARK: - Close
     
     @objc
     private func close(_ recognizer: UISwipeGestureRecognizer) {

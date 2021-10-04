@@ -2,7 +2,8 @@ import UIKit
 
 class PromocodeMainTableViewController: UITableViewController {
 
-
+    //MARK: - Outlets
+    
     @IBOutlet weak var enterPromocodeLabel: SettingsMainLabel! { didSet {
         enterPromocodeLabel.text = Localizable.Promocode.enterPromocode.localized
     }}
@@ -11,9 +12,12 @@ class PromocodeMainTableViewController: UITableViewController {
         usageHistoryLabel.text = Localizable.Promocode.historyUsage.localized
     }}
     
+    //MARK: - Actions
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
+    //MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

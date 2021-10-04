@@ -2,7 +2,10 @@ import UIKit
 
 class PromotionTableViewCell: UITableViewCell {
 
+    //MARK: -  API
     var resignationHandler: ( () -> () )?
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var background: UIImageView! 
     @IBOutlet weak var promotionLabel: UILabel! { didSet {
@@ -17,6 +20,8 @@ class PromotionTableViewCell: UITableViewCell {
         roundedView.colorToFill = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3046511214)
         roundedView.cornerRadius = 8.0
     }}
+    
+    //MARK: - Logic
     
     func fetchImageFrom(_ str:String) {
         ImageFetcher.fetch(str) { [weak self] data in

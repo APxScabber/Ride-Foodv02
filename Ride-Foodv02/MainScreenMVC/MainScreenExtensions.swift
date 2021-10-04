@@ -411,14 +411,14 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
     }
     
     func goToTaxi() {
+        
         shouldResetFrames = false
         if isFoodOrdered {
-            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - 35
             UIView.animate(withDuration: 0.5) {
-                self.foodOrderInfoView.frame.origin.y = lowPosY
+                self.foodOrderInfoView.frame.origin.y = self.view.bounds.height
             }
         }
-        
+        roundedView.isHidden = false
         loadSetupsTaxi()
     }
 }

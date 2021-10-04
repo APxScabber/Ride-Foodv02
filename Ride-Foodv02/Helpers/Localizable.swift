@@ -77,7 +77,8 @@ enum Localizable {
     
     
     enum FoodOrder: String,LocalizableDelegate {
-        case foodOrderCheckout,foodOrderDeliveryAddress,foodOrderPaymentWays,foodOrderCash,foodOrderCard,foodOrderPay,foodOrder,foodOrderMoney,foodOrderCongrats,foodOrderPayment,foodOrderNewOrder,foodOrderSeeYouAgain,foodOrderDeliveryFood
+        case foodOrderCheckout,foodOrderDeliveryAddress,foodOrderPaymentWays,foodOrderCash,foodOrderCard,foodOrderPay,foodOrder,foodOrderMoney,foodOrderCongrats,foodOrderPayment,foodOrderNewOrder,foodOrderSeeYouAgain,foodOrderDeliveryFood,
+        foodOrderOneActive
     }
     
     enum OrderRemove: String, LocalizableDelegate {

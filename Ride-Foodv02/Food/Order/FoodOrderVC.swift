@@ -176,6 +176,7 @@ class FoodOrderVC: BaseViewController {
             destination.orderCompleteView.paymentImageView.image = currentImage
             destination.orderCompleteView.paymentDetailLabel.text = currentPay
             destination.orderCompleteView.currentOrderType = .food
+            destination.isFoodOrdered = true
             destination.prepareForShowFoodOrderView()
         }
     }

@@ -9,8 +9,12 @@ protocol PromocodeToolbarDelegate: AnyObject {
 //152 total height
 class PromocodeToolbar: UIView, UITextFieldDelegate {
     
+    //MARK: - API
     weak var delegate: PromocodeToolbarDelegate?
+    private var promocodeEntered: Bool { textField.text?.count == 8 }
+    private var shouldHideErrorLabel = false
     
+    //MARK: - Outlets
     @IBOutlet weak var textField:UITextField! { didSet {
         textField.addTarget(self, action: #selector(updateState), for: .editingChanged)
         textField.delegate = self
@@ -22,59 +26,33 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
     }}
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var lineView: UIView!
-    @IBOutlet weak var roundedView: RoundedView! { didSet {
-        roundedView.cornerRadius = 15.0
-        roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-    }}
-    @IBOutlet weak var topRoundedView: RoundedView! { didSet {
-        topRoundedView.cornerRadius = 15.0
-        topRoundedView.colorToFill = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }}
+    
     @IBOutlet weak var button: UIButton! { didSet {
         button.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
         button.isUserInteractionEnabled = false
+        button.layer.cornerRadius = 15.0
     }}
     
-    @IBOutlet private weak var activeView: UIView! { didSet {
-        activeView.layer.cornerRadius = 15.0
-        activeView.layer.backgroundColor = UIColor.white.cgColor
-        activeView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-    }}
     
     @IBOutlet weak var heightConstraint:NSLayoutConstraint! { didSet {
         heightConstraint.constant = CGFloat(145.0 + SafeArea.shared.bottom)
     }}
     
+    //MARK: - Action
     @IBAction func done(_ sender: UIButton) {
         guard let code = textField.text else { return }
         delegate?.activate(promocode: code)
     }
 
-    private var promocodeEntered: Bool { textField.text?.count == 8 }
-    private var shouldHideErrorLabel = false
+    //MARK: - UI change
     
     @objc
     private func updateState() {
         errorLabel.isHidden = shouldHideErrorLabel
         lineView.backgroundColor = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         button.isUserInteractionEnabled = promocodeEntered
-        roundedView.colorToFill = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+        button.backgroundColor = promocodeEntered ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         shouldHideErrorLabel = true
-    }
-    
-    func dismiss() {
-        textField.resignFirstResponder()
-        textField.text = nil
-        removeFromSuperview()
-        updateState()
-        errorLabel.text = ""
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-        if text.count == 2 && string == "" { return false }
-        if text.count == 8 && string != "" { return false}
-        return true
     }
     
     func showErrorWith(_ text:String) {
@@ -84,13 +62,24 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         shouldHideErrorLabel = false
         updateState()
     }
-
     
+    //MARK: - Textfield delegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        if text.count == 2 && string == "" { return false }
+        if text.count == 8 && string != "" { return false}
+        return true
+    }
+    
+    //MARK: - Layout
+
     override func layoutSubviews() {
         super.layoutSubviews()
         button.setTitle(Localizable.PersonalInfo.confirm.localized, for: .normal)
     }
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -107,6 +96,15 @@ class PromocodeToolbar: UIView, UITextFieldDelegate {
         addGestureRecognizer(swipe)
     }
     
+    //MARK: - Dismiss
+    
+    func dismiss() {
+        textField.resignFirstResponder()
+        textField.text = nil
+        removeFromSuperview()
+        updateState()
+        errorLabel.text = ""
+    }
     @objc
     private func close(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended {
