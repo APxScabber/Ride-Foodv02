@@ -2,8 +2,10 @@ import UIKit
 
 class OrderHistoryTableViewCell: UITableViewCell {
 
+    //MARK: - API
     var orderHistoryState: OrderHistoryState = .done { didSet { updateUI() }}
     
+    //MARK: - Outlets
     @IBOutlet weak var topRoundedView: UIView!
     @IBOutlet weak var topRoundedViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomRoundedView: UIView!
@@ -35,6 +37,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
         cancelReasonDescLabel.font = UIFont.SFUIDisplayRegular(size: 12.0)
     }}
     
+    //MARK: - UI update
     private func updateUI() {
         
         updateViews()
@@ -60,6 +63,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
 
     }
     
+    //MARK: - State 
     enum OrderHistoryState {
         case done
         case cancel

@@ -9,6 +9,7 @@ class PromocodeActivator {
     
     static weak var delegate: PromocodeActivatorDelegate?
     
+    //активируем промокод, в случае ошибки показывает ее описание 
     static func post(code:String) {
         CoreDataManager.shared.fetchCoreData { result in
         switch result {

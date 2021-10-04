@@ -51,18 +51,6 @@ class SettingsMainViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    //MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 2 {
-            return createWith(Localizable.Settings.automaticUpdateMessage.localized, in: self.view)
-        }
-        return nil
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     //MARK: - UpdateUI()
     
     private func updateUI() {
@@ -95,5 +83,21 @@ class SettingsMainViewController: UITableViewController {
            let destination = segue.destination as? PromotionsTableViewController {
             destination.shouldDismiss = false
         }
+    }
+}
+
+//MARK: - UITableViewDelegate
+
+extension SettingsMainViewController {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 2 {
+            return createWith(Localizable.Settings.automaticUpdateMessage.localized, in: self.view)
+        }
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

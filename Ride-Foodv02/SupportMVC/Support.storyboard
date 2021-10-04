@@ -52,38 +52,29 @@
                                     <constraint firstItem="E0j-pM-Zm9" firstAttribute="leading" secondItem="OWK-Xk-gto" secondAttribute="leading" constant="10" id="t4e-ab-ju8"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tk-Cv-xh0" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocu-zw-MiW">
                                 <rect key="frame" x="25" y="804" width="364" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocu-zw-MiW">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <state key="normal" title="Next">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="2Jf-bz-IJY" kind="show" identifier="supportAddImagesSegue" id="GCV-RY-JyG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ocu-zw-MiW" secondAttribute="trailing" id="8Pw-KA-5Mp"/>
-                                    <constraint firstItem="Ocu-zw-MiW" firstAttribute="leading" secondItem="5tk-Cv-xh0" secondAttribute="leading" id="h2D-ES-KN4"/>
-                                    <constraint firstItem="Ocu-zw-MiW" firstAttribute="top" secondItem="5tk-Cv-xh0" secondAttribute="top" id="mZ7-jP-SvJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ocu-zw-MiW" secondAttribute="bottom" id="ofE-yV-cCY"/>
-                                    <constraint firstAttribute="height" constant="50" id="vGh-cf-1HE"/>
+                                    <constraint firstAttribute="height" constant="50" id="1hY-gS-Gc3"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2Jf-bz-IJY" kind="show" identifier="supportAddImagesSegue" id="GCV-RY-JyG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pal-36-pAv"/>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Ocu-zw-MiW" firstAttribute="top" secondItem="OWK-Xk-gto" secondAttribute="bottom" constant="15" id="3Xr-UP-6BR"/>
-                            <constraint firstItem="pal-36-pAv" firstAttribute="bottom" secondItem="5tk-Cv-xh0" secondAttribute="bottom" constant="8" id="5QT-Dj-k85"/>
-                            <constraint firstItem="5tk-Cv-xh0" firstAttribute="leading" secondItem="pal-36-pAv" secondAttribute="leading" constant="25" id="65T-ki-4eF"/>
-                            <constraint firstItem="pal-36-pAv" firstAttribute="trailing" secondItem="5tk-Cv-xh0" secondAttribute="trailing" constant="25" id="B0J-We-2ub"/>
+                            <constraint firstItem="pal-36-pAv" firstAttribute="trailing" secondItem="Ocu-zw-MiW" secondAttribute="trailing" constant="25" id="PHJ-R2-kwz"/>
+                            <constraint firstItem="Ocu-zw-MiW" firstAttribute="leading" secondItem="pal-36-pAv" secondAttribute="leading" constant="25" id="QGd-Ul-KQF"/>
+                            <constraint firstItem="Ocu-zw-MiW" firstAttribute="top" secondItem="OWK-Xk-gto" secondAttribute="bottom" constant="15" id="aGL-kn-0Kx"/>
                             <constraint firstItem="OWK-Xk-gto" firstAttribute="top" secondItem="pal-36-pAv" secondAttribute="top" constant="25" id="eDa-P4-Fng"/>
+                            <constraint firstItem="pal-36-pAv" firstAttribute="bottom" secondItem="Ocu-zw-MiW" secondAttribute="bottom" constant="8" id="hYB-qS-IVH"/>
                             <constraint firstItem="pal-36-pAv" firstAttribute="trailing" secondItem="OWK-Xk-gto" secondAttribute="trailing" constant="25" id="o2U-fA-SGN"/>
                             <constraint firstItem="OWK-Xk-gto" firstAttribute="leading" secondItem="pal-36-pAv" secondAttribute="leading" constant="25" id="zhM-c5-oW8"/>
                         </constraints>
@@ -97,9 +88,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="distanceFromBottomConstraint" destination="5QT-Dj-k85" id="bqR-je-D1g"/>
+                        <outlet property="distanceFromBottomConstraint" destination="hYB-qS-IVH" id="ZDF-FZ-w5V"/>
                         <outlet property="nextButton" destination="Ocu-zw-MiW" id="ibd-Hh-smS"/>
-                        <outlet property="nextButtonView" destination="5tk-Cv-xh0" id="0os-Et-fod"/>
                         <outlet property="roundedView" destination="OWK-Xk-gto" id="5IR-nY-RR2"/>
                         <outlet property="textView" destination="E0j-pM-Zm9" id="W8k-pp-Ctd"/>
                         <outlet property="textViewLabelDescription" destination="czZ-tm-BwH" id="fkg-NZ-0kP"/>
@@ -230,38 +220,29 @@
                                 <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPh-iB-UqK" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                <rect key="frame" x="25" y="804" width="364" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ao-pi-Fbu">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
-                                        <state key="normal">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sendFeedback:" destination="2Jf-bz-IJY" eventType="touchUpInside" id="3Yj-z6-gJQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ao-pi-Fbu">
+                                <rect key="frame" x="25" y="802" width="364" height="50"/>
+                                <color key="backgroundColor" red="0.23921568627450979" green="0.23137254901960785" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="1ao-pi-Fbu" secondAttribute="bottom" id="6xY-UV-N9C"/>
-                                    <constraint firstItem="1ao-pi-Fbu" firstAttribute="leading" secondItem="WPh-iB-UqK" secondAttribute="leading" id="DE0-Pp-AI8"/>
-                                    <constraint firstAttribute="height" constant="50" id="GvN-hH-PEg"/>
-                                    <constraint firstItem="1ao-pi-Fbu" firstAttribute="top" secondItem="WPh-iB-UqK" secondAttribute="top" id="MVr-18-QrS"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ao-pi-Fbu" secondAttribute="trailing" id="dKB-Bt-N3f"/>
+                                    <constraint firstAttribute="height" constant="50" id="WUP-8J-lYS"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" title="Отправить">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendFeedback:" destination="2Jf-bz-IJY" eventType="touchUpInside" id="3Yj-z6-gJQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JVI-Tn-Aen"/>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ItP-um-WwU" firstAttribute="top" secondItem="B8t-GD-H35" secondAttribute="top" constant="120" id="7kc-W2-efV"/>
-                            <constraint firstItem="JVI-Tn-Aen" firstAttribute="bottom" secondItem="WPh-iB-UqK" secondAttribute="bottom" constant="8" id="9rh-LN-RtQ"/>
                             <constraint firstItem="Z5u-u7-NZI" firstAttribute="top" secondItem="ItP-um-WwU" secondAttribute="bottom" constant="31" id="EcH-al-m2r"/>
-                            <constraint firstItem="JVI-Tn-Aen" firstAttribute="trailing" secondItem="WPh-iB-UqK" secondAttribute="trailing" constant="25" id="Jg3-pT-cfI"/>
-                            <constraint firstItem="WPh-iB-UqK" firstAttribute="leading" secondItem="JVI-Tn-Aen" secondAttribute="leading" constant="25" id="Pte-rL-Rtk"/>
+                            <constraint firstItem="JVI-Tn-Aen" firstAttribute="bottom" secondItem="1ao-pi-Fbu" secondAttribute="bottom" constant="10" id="Lw9-Ws-E3Z"/>
+                            <constraint firstItem="1ao-pi-Fbu" firstAttribute="leading" secondItem="JVI-Tn-Aen" secondAttribute="leading" constant="25" id="Pn5-kF-Xp3"/>
                             <constraint firstItem="JVI-Tn-Aen" firstAttribute="trailing" secondItem="Z5u-u7-NZI" secondAttribute="trailing" constant="16" id="PzU-2Z-Nqg"/>
+                            <constraint firstItem="JVI-Tn-Aen" firstAttribute="trailing" secondItem="1ao-pi-Fbu" secondAttribute="trailing" constant="25" id="Qyc-SX-IWl"/>
                             <constraint firstItem="JVI-Tn-Aen" firstAttribute="trailing" secondItem="qCi-L5-asd" secondAttribute="trailing" constant="44" id="ROQ-JS-SqO"/>
                             <constraint firstItem="Z5u-u7-NZI" firstAttribute="leading" secondItem="JVI-Tn-Aen" secondAttribute="leading" constant="16" id="cIL-21-BKt"/>
                             <constraint firstItem="qCi-L5-asd" firstAttribute="top" secondItem="Z5u-u7-NZI" secondAttribute="bottom" constant="24" id="dlL-HZ-OHq"/>
@@ -287,7 +268,6 @@
                         <outlet property="errorDescriptionLabel" destination="qCi-L5-asd" id="9vR-nx-p5l"/>
                         <outlet property="roundedView" destination="ItP-um-WwU" id="X4F-bd-Bsl"/>
                         <outlet property="sendButton" destination="1ao-pi-Fbu" id="3d3-JY-7qK"/>
-                        <outlet property="sendButtonView" destination="WPh-iB-UqK" id="dQq-fb-EjW"/>
                         <outlet property="successLabel" destination="InE-Vk-26N" id="HPC-vc-vdY"/>
                         <segue destination="SMy-hu-3eV" kind="unwind" identifier="unwindSegueFromSupport" unwindAction="unwindSegueFromSupport:" id="vq0-ma-eEQ"/>
                     </connections>

@@ -18,13 +18,10 @@ class AddPhoneView: UIView {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var roundedView: RoundedView! { didSet {
-        roundedView.cornerRadius = 15.0
-        roundedView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
-    }}
    
     @IBOutlet weak var addPhoneButton: UIButton! { didSet {
         addPhoneButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
+        addPhoneButton.layer.cornerRadius = 15.0
     }}
     
     @IBOutlet weak var changePhoneButton: UIButton! { didSet {
@@ -51,6 +48,7 @@ class AddPhoneView: UIView {
         }
     }
     
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,6 +66,7 @@ class AddPhoneView: UIView {
         addGestureRecognizer(swipe)
     }
     
+    //MARK: - Close
     @objc
     private func close(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {
@@ -75,6 +74,7 @@ class AddPhoneView: UIView {
         }
     }
     
+    //MARK: - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
         let addButtonText = state == .add_Change ? Localizable.Phones.phoneAdd.localized : Localizable.Phones.phoneSetToMain.localized
@@ -83,6 +83,7 @@ class AddPhoneView: UIView {
         changePhoneButton.setTitle(changeButtonText, for: .normal)
     }
     
+    //MARK: - State 
     enum AddPhoneViewState {
         case add_Change
         case setToMain_Delete

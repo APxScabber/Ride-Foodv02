@@ -2,6 +2,7 @@ import UIKit
 
 class PromocodeTableViewCell: UITableViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel! { didSet {
         titleLabel.font = UIFont.SFUIDisplayRegular(size: 12)
     }}
@@ -19,6 +20,7 @@ class PromocodeTableViewCell: UITableViewCell {
     @IBOutlet private weak var topView: UIView!
     @IBOutlet private weak var bottomView: UIView!
     
+    //MARK: - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
         topView.layer.cornerRadius = 15.0

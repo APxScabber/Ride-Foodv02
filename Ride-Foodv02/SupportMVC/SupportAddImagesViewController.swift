@@ -5,21 +5,21 @@ class SupportAddImagesViewController: UIViewController {
     //MARK: - Public API
     
     var text = ""
-    var images = [UIImage]() { didSet {
+    private(set) var images = [UIImage]() { didSet {
         errorDescriptionLabel.isHidden = images.count < SupportConstant.imagesLimit
         addImagesButton.buttonState = images.count < SupportConstant.imagesLimit ? .active : .inActive
         addImagesButton.isUserInteractionEnabled = images.count < SupportConstant.imagesLimit
     }}
     
+    //MARK: - Outlets
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var sendButton: UIButton! { didSet {
         sendButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+        sendButton.layer.cornerRadius = 15.0
     }}
-    @IBOutlet weak var sendButtonView: RoundedView! { didSet {
-        sendButtonView.cornerRadius = 15.0
-        sendButtonView.colorToFill = #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1)
-    }}
+  
     @IBOutlet weak var addImagesButton: SupportAddImageButton!
     
     @IBOutlet weak var addImageDescriptionLabel: UILabel! { didSet {
@@ -40,12 +40,11 @@ class SupportAddImagesViewController: UIViewController {
     private let actionSheetView = SupportActionSheetView.initFromNib()
     
     //MARK: - IBActions
+    
     @IBAction func dismiss(_ sender:UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    //MARK: - IBActions
+        
     @IBAction func addImage(_ sender: UIButton) {
         enableUI(false)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: SupportConstant.actionSheetAnimationDuration, delay: 0, options: .curveLinear) {
@@ -55,9 +54,9 @@ class SupportAddImagesViewController: UIViewController {
 
     @IBAction func sendFeedback(_ sender: UIButton) {
         if addImagesButton.buttonState != .done {
+            addImagesButton.buttonState = .done
             barButton.isEnabled = false
             sendButton.setTitle(Localizable.Support.supportDone.localized, for: .normal)
-            addImagesButton.buttonState = .done
             addImageDescriptionLabel.text = Localizable.Support.messageSent.localized
             addImageDescriptionLabel.textColor = #colorLiteral(red: 0.2039215686, green: 0.7411764706, blue: 0.3490196078, alpha: 1)
             successLabel.isHidden = false
@@ -71,11 +70,17 @@ class SupportAddImagesViewController: UIViewController {
     }
     
     //MARK: - ViewController lifecycle
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateUI()
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if addImagesButton.buttonState != .done {
+            navigationItem.title = Localizable.Menu.support.localized
+            sendButton.setTitle(Localizable.Support.send.localized, for: .normal)
+            addImageDescriptionLabel.text = Localizable.Support.addImageDesc.localized
+            errorDescriptionLabel.text = Localizable.Support.photoLimitDesc.localized
+        }
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -97,11 +102,8 @@ class SupportAddImagesViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    private func updateUI() {
-        navigationItem.title = Localizable.Menu.support.localized
-        sendButton.setTitle(Localizable.Support.send.localized, for: .normal)
-        addImageDescriptionLabel.text = Localizable.Support.addImageDesc.localized
-    }
+    
+   
 }
 
 //MARK: - ImagePickerDelegate

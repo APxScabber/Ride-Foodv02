@@ -2,6 +2,8 @@ import UIKit
 
 class PromotionListTableViewController: UITableViewController {
 
+    //MARK: -  API
+    
     private(set) var promotions = [PromotionModel]()
     private let promotionView = PromotionDetail.initFromNib()
 
@@ -9,10 +11,13 @@ class PromotionListTableViewController: UITableViewController {
         navigationItem.title = Localizable.Promotion.promotion.localized + " " + promotionType.rawValue.localized.lowercased()
     }}
     
+    //MARK: - Action
+    
     @IBAction func dismiss() {
         navigationController?.popViewController(animated: true)
     }
     
+    //MARK: - ViewController lifecycle
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -21,6 +26,8 @@ class PromotionListTableViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    //MARK: - UITableViewDataSourse
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return promotions.count
@@ -39,10 +46,12 @@ class PromotionListTableViewController: UITableViewController {
         return cell
     }
 
+    //MARK: - UITableView delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK: - Show promotion
     
     private func showPromotionViewAt(_ index:Int) {
         if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first  {

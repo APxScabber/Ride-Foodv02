@@ -6,13 +6,17 @@ protocol PhoneConfirmViewDelegate: AnyObject {
 
 class PhoneConfirmView: UIView, UITextFieldDelegate {
 
+    //MARK: - API
     var seconds = 30
     var phone = String()
     weak var timer: Timer?
     weak var delegate: PhoneConfirmViewDelegate?
-    
+    private let additionalLetterToSeconds: [Int:String] = [
+        1:"y",2:"ы",3:"ы",4:"ы",21:"y",22:"ы",23:"ы",24:"ы"
+    ]
     private let loginInteractor = LoginInteractor()
     
+    //MARK: - Outlets
     @IBOutlet weak var textField: UITextField! { didSet {
         textField.delegate = self
         textField.addTarget(self, action: #selector(updateConfirmViews), for: .editingChanged)
@@ -45,14 +49,7 @@ class PhoneConfirmView: UIView, UITextFieldDelegate {
     
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
-    @objc private func updateView() {
-        if seconds == 0 {
-            loginInteractor.reciveConfirmCode(from: phone)
-            seconds = 30
-        }
-        seconds -= 1
-        secondsLabel.text = "\(seconds) секунд" + (additionalLetterToSeconds[seconds] ?? "")
-    }
+    //MARK: - Timer
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateView), userInfo: nil, repeats: true)
@@ -60,13 +57,17 @@ class PhoneConfirmView: UIView, UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-        if text.count == 4 && string != "" { return false }
-        return true
+    //MARK: - UI update
+    @objc
+    private func updateView() {
+        if seconds == 0 {
+            loginInteractor.reciveConfirmCode(from: phone)
+            seconds = 30
+        }
+        seconds -= 1
+        secondsLabel.text = "\(seconds) секунд" + (additionalLetterToSeconds[seconds] ?? "")
     }
-    
+ 
     @objc
     private func updateConfirmViews() {
         guard let text = textField.text else { return }
@@ -93,15 +94,22 @@ class PhoneConfirmView: UIView, UITextFieldDelegate {
         seconds = 30
     }
     
+    //MARK: - Textfield delegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        if text.count == 4 && string != "" { return false }
+        return true
+    }
+    //MARK: - Layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         sendMessageLabel.text = "\(Localizable.Phones.phoneToNumber.localized) \(phone) \(Localizable.Phones.phoneSendCode.localized)"
         confirmationLabel.text = Localizable.Phones.phoneConfirm.localized
     }
     
-    private let additionalLetterToSeconds: [Int:String] = [
-        1:"y",2:"ы",3:"ы",4:"ы",21:"y",22:"ы",23:"ы",24:"ы"
-    ]
+    
     
 }
 

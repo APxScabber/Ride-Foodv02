@@ -13,11 +13,9 @@ class SupportMainViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton! { didSet {
         nextButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+        nextButton.layer.cornerRadius = 15.0
     }}
-    @IBOutlet weak var nextButtonView: RoundedView! { didSet {
-        nextButtonView.cornerRadius = 15.0
-        nextButtonView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-    }}
+    
     @IBOutlet weak var roundedView: RoundedView! { didSet {
         roundedView.cornerRadius = 15.0
         roundedView.color = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
@@ -30,6 +28,7 @@ class SupportMainViewController: UIViewController {
     @IBAction func dismiss(_ sender:UIBarButtonItem) {
         dismiss(animated: true)
     }
+
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -59,7 +58,7 @@ class SupportMainViewController: UIViewController {
     
     //MARK: - UI changes
     private func updateUI() {
-        nextButtonView.colorToFill = text.count < SupportConstant.minimumLeters ? UIColor.supportNextButtonInActiveColor : UIColor.SupportNextButtonActiveColor
+        nextButton.backgroundColor = text.count < SupportConstant.minimumLeters ? UIColor.supportNextButtonInActiveColor : UIColor.SupportNextButtonActiveColor
         nextButton.isUserInteractionEnabled = text.count >= SupportConstant.minimumLeters
         textViewLabelDescription.isHidden = !text.isEmpty
         nextButton.setTitle(Localizable.Support.next.localized, for: .normal)

@@ -1,8 +1,12 @@
 import UIKit
 
-class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PromocodeHistoryViewController: UIViewController {
     
- 
+    //MARK: - Properties
+    var showActivePromocode: Bool { segmentedControl.selectedSegmentIndex == 0 }
+
+    //MARK: - Outlets
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl! { didSet {
         segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
         segmentedControl.setTitle(Localizable.Promocode.active.localized, forSegmentAt: 0)
@@ -16,18 +20,35 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
     }}
     @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
     
-    var showActivePromocode: Bool { segmentedControl.selectedSegmentIndex == 0 }
+    //MARK: - Action
+    
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Localizable.Promocode.historyUsage.localized
     }
     
-
-    @IBAction func goBack(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+    
+    //MARK: - Change segmented control
+    @objc
+    private func segmentedControlChanged() {
+        tableView.reloadData()
+        infoLabel.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
+        tableViewTopConstraint.constant = segmentedControl.selectedSegmentIndex == 0 ? 67 : 0
+        UIView.animate(withDuration: 0.4) { self.view.layoutIfNeeded() }
     }
     
+}
+
+//MARK: - UITableViewDataSourse
+
+extension PromocodeHistoryViewController: UITableViewDataSource
+{
     func numberOfSections(in tableView: UITableView) -> Int {
         return showActivePromocode ? Promocodes.active.count : Promocodes.inActive.count
     }
@@ -58,17 +79,12 @@ class PromocodeHistoryViewController: UIViewController, UITableViewDataSource, U
         }
         return cell
     }
+}
+
+
+extension PromocodeHistoryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    @objc
-    private func segmentedControlChanged() {
-        tableView.reloadData()
-        infoLabel.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
-        tableViewTopConstraint.constant = segmentedControl.selectedSegmentIndex == 0 ? 67 : 0
-        UIView.animate(withDuration: 0.4) { self.view.layoutIfNeeded() }
-    }
-    
 }

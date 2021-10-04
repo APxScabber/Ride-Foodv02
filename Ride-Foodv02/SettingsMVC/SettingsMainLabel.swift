@@ -2,6 +2,7 @@ import UIKit
 
 class SettingsMainLabel: UILabel {
 
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -12,6 +13,7 @@ class SettingsMainLabel: UILabel {
         setup()
     }
     
+    //MARK: - Setup
     private func setup() {
         font = UIFont.SFUIDisplayRegular(size: 15)
         numberOfLines = 1

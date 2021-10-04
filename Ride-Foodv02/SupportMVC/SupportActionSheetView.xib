@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-DP-MlV" customClass="SupportRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-DP-MlV" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="20" y="689" width="374" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQE-ty-pAK">
@@ -100,41 +100,38 @@
                         <constraint firstAttribute="trailing" secondItem="UVm-aH-a9Z" secondAttribute="trailing" id="bm3-20-jZG"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dD8-sx-hW0" customClass="SupportRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-Av-DD3">
                     <rect key="frame" x="25" y="804" width="364" height="50"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отмена" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajw-oX-aYO">
-                            <rect key="frame" x="151" y="14.5" width="62" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.23921568627450979" green="0.23137254901960785" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="SHx-2l-Dt0"/>
-                        <constraint firstItem="Ajw-oX-aYO" firstAttribute="centerX" secondItem="dD8-sx-hW0" secondAttribute="centerX" id="esJ-CO-nCD"/>
-                        <constraint firstItem="Ajw-oX-aYO" firstAttribute="centerY" secondItem="dD8-sx-hW0" secondAttribute="centerY" id="fh3-TZ-bXm"/>
+                        <constraint firstAttribute="height" constant="50" id="akr-zU-R6b"/>
                     </constraints>
-                </view>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Отмена">
+                        <color key="titleColor" red="0.23921568627450979" green="0.23137254901960785" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="E2M-Fr-GkX"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="dD8-sx-hW0" firstAttribute="top" secondItem="f2T-DP-MlV" secondAttribute="bottom" constant="15" id="84t-4h-nbp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dD8-sx-hW0" secondAttribute="bottom" constant="8" id="A8e-IS-o9v"/>
-                <constraint firstItem="dD8-sx-hW0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="FHZ-mx-thP"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dD8-sx-hW0" secondAttribute="trailing" constant="25" id="a9b-Kg-WU5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oxQ-Av-DD3" secondAttribute="trailing" constant="25" id="01j-qe-ipU"/>
+                <constraint firstItem="oxQ-Av-DD3" firstAttribute="top" secondItem="f2T-DP-MlV" secondAttribute="bottom" constant="15" id="ShZ-BN-zS9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f2T-DP-MlV" secondAttribute="trailing" constant="20" id="cSu-tL-cff"/>
+                <constraint firstItem="oxQ-Av-DD3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="gls-QV-f5q"/>
+                <constraint firstItem="oxQ-Av-DD3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-8" id="mpG-yR-lnH"/>
                 <constraint firstItem="f2T-DP-MlV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="see-UI-dJk"/>
             </constraints>
             <connections>
-                <outlet property="cancelLabel" destination="Ajw-oX-aYO" id="JhR-rQ-Met"/>
-                <outlet property="cancelView" destination="dD8-sx-hW0" id="tfP-e3-uNX"/>
+                <outlet property="cancelButton" destination="oxQ-Av-DD3" id="euq-FR-Vwa"/>
                 <outlet property="captureLabel" destination="evm-yg-CNP" id="bHb-Ke-iWJ"/>
                 <outlet property="goToCameraView" destination="cuf-Vy-mK5" id="CJX-vI-Gvb"/>
                 <outlet property="goToLibraryView" destination="UVm-aH-a9Z" id="aiN-ZF-fbw"/>
                 <outlet property="libraryLabel" destination="aYR-J9-V8l" id="ock-NT-8UO"/>
+                <outlet property="mediaLibraryView" destination="f2T-DP-MlV" id="g32-QO-Rqe"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>

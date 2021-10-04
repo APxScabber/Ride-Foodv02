@@ -29,29 +29,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxd-p1-prE" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="23" width="414" height="192"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-SC-ekz" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                                    <rect key="frame" x="25" y="25" width="364" height="50"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdn-6w-NeR">
-                                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="Добавить номер">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="addPhone:" destination="iN0-l3-epB" eventType="touchUpInside" id="S2g-gG-T4q"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="bdn-6w-NeR" secondAttribute="trailing" id="89q-HK-PPN"/>
-                                        <constraint firstItem="bdn-6w-NeR" firstAttribute="leading" secondItem="Qfi-SC-ekz" secondAttribute="leading" id="OoI-kV-Uza"/>
-                                        <constraint firstAttribute="height" constant="50" id="ToU-8c-ydE"/>
-                                        <constraint firstItem="bdn-6w-NeR" firstAttribute="top" secondItem="Qfi-SC-ekz" secondAttribute="top" id="xnP-xR-bPH"/>
-                                        <constraint firstAttribute="bottom" secondItem="bdn-6w-NeR" secondAttribute="bottom" id="ydO-hA-kGr"/>
-                                    </constraints>
-                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaP-BB-BfS">
                                     <rect key="frame" x="25" y="100" width="364" height="50"/>
                                     <constraints>
@@ -65,15 +42,29 @@
                                         <action selector="changePhone:" destination="iN0-l3-epB" eventType="touchUpInside" id="adF-nj-wnW"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdn-6w-NeR">
+                                    <rect key="frame" x="25" y="25" width="364" height="50"/>
+                                    <color key="backgroundColor" red="0.23921568627450979" green="0.23137254901960785" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="eQk-e3-oBr"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Добавить номер">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addPhone:" destination="iN0-l3-epB" eventType="touchUpInside" id="S2g-gG-T4q"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="Qfi-SC-ekz" firstAttribute="top" secondItem="bxd-p1-prE" secondAttribute="top" constant="25" id="3wm-EM-GJ9"/>
+                                <constraint firstItem="CaP-BB-BfS" firstAttribute="top" secondItem="bdn-6w-NeR" secondAttribute="bottom" constant="25" id="7qh-fy-Y12"/>
+                                <constraint firstItem="bdn-6w-NeR" firstAttribute="leading" secondItem="bxd-p1-prE" secondAttribute="leading" constant="25" id="DRH-rn-iHB"/>
                                 <constraint firstItem="CaP-BB-BfS" firstAttribute="leading" secondItem="bxd-p1-prE" secondAttribute="leading" constant="25" id="H7O-v4-a53"/>
-                                <constraint firstItem="Qfi-SC-ekz" firstAttribute="leading" secondItem="bxd-p1-prE" secondAttribute="leading" constant="25" id="LI0-ac-faY"/>
                                 <constraint firstAttribute="trailing" secondItem="CaP-BB-BfS" secondAttribute="trailing" constant="25" id="O6B-Jm-GD5"/>
-                                <constraint firstItem="CaP-BB-BfS" firstAttribute="top" secondItem="Qfi-SC-ekz" secondAttribute="bottom" constant="25" id="fHE-Se-BPu"/>
-                                <constraint firstAttribute="trailing" secondItem="Qfi-SC-ekz" secondAttribute="trailing" constant="25" id="fuk-X0-lxp"/>
+                                <constraint firstItem="bdn-6w-NeR" firstAttribute="top" secondItem="bxd-p1-prE" secondAttribute="top" constant="25" id="Pfh-09-2D1"/>
+                                <constraint firstAttribute="trailing" secondItem="bdn-6w-NeR" secondAttribute="trailing" constant="25" id="tlY-Cq-SFM"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -100,7 +91,6 @@
                 <outlet property="addPhoneButton" destination="bdn-6w-NeR" id="Mcq-ze-lZD"/>
                 <outlet property="changePhoneButton" destination="CaP-BB-BfS" id="R3t-1S-bai"/>
                 <outlet property="heightConstraint" destination="Zat-Zu-dvV" id="fim-3C-7N9"/>
-                <outlet property="roundedView" destination="Qfi-SC-ekz" id="GQd-5C-yEt"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="85.714285714285708"/>
         </view>

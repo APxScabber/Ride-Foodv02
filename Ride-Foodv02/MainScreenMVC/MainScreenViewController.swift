@@ -657,9 +657,9 @@ class MainScreenViewController: BaseViewController {
                     self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
                 } else if self.isTaxiOrdered || self.isFoodOrdered {
                     self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
-                    self.timeLabel.text = "1 активный заказ"
+                    self.timeLabel.text = Localizable.FoodOrder.foodOrderOneActive.localized
                     self.pathTimeView.alpha = 1
-                    self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
+                    self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "Taxi")
                 }
                 
                 if !self.isTaxiOrdered && !self.isFoodOrdered {
@@ -747,31 +747,34 @@ class MainScreenViewController: BaseViewController {
         foodOrderInfoView.foodInfoTimeTextView.font = UIFont.SFUIDisplayRegular(size: 17.0)
         foodOrderInfoView.foodInfoTimeTextView.textAlignment = .center
         
-        if isFoodOrdered && !isTaxiOrdered {
-            UIView.animate(withDuration: 0.5) {
-                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+        UIView.animate(withDuration: 0.5) {
+            self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
 
-                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
-                self.timeLabel.text = "1 активный заказ"
-                self.pathTimeView.alpha = 1
-            }
-        } else {
-            UIView.animate(withDuration: 0.5) {
-                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
-                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
-                
-                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
-                self.timeLabel.text = "2 активных заказа"
-                self.pathTimeView.alpha = 1
-            }
+            self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+            self.pathTimeView.alpha = 1
         }
+        timeLabel.text = "1 активный заказ"
+        
+//        if isFoodOrdered && !isTaxiOrdered {
+//
+//        } else {
+//            UIView.animate(withDuration: 0.5) {
+//                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
+//                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
+//
+//                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+//                self.pathTimeView.alpha = 1
+//            }
+//            timeLabel.text = "2 активных заказа"
+//
+//        }
     }
     
     func animationSwipeUp() {
 
         UIView.animate(withDuration: 0.5) {
-            let height:CGFloat = 169
-            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+            let height:CGFloat = 170
+            let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - height
             let highPosY = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
             
             if self.isTaxiOrdered {
@@ -888,10 +891,17 @@ class MainScreenViewController: BaseViewController {
         
         UIView.animate(withDuration: 1) {
             self.promotionView.alpha = 1
+            if self.isFoodOrdered {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 35
+            }
         }
         
         returnToMainView()
-        
+        promocodeScoresView.removeFromSuperview()
+        roundedView.frame.origin.y = self.view.bounds.height
+        roundedViewTopConstraint.priority = .required
+        roundedViewBottomConstraint.priority = .defaultLow
+        taxiTariffView.removeFromSuperview()
         userLocationButtonBottomConstraint.constant = foodTaxiView.bounds.height + promotionView.bounds.height + 20.0 - safeAreaBottomHeight
 
         fromTextField.isUserInteractionEnabled = true
@@ -1252,10 +1262,9 @@ class MainScreenViewController: BaseViewController {
         }
 
         if shouldMakeOrder {
+            
             addressesChooserViewHeightConstraint.constant = 370 + safeAreaBottomHeight
             if taxiTariffView.superview == nil { addressesChooserView.addSubview(taxiTariffView) }
-           // if promocodeScoresView.superview == nil {
-
             addressesChooserView.addSubview(promocodeScoresView)
             taxiTariffView.frame = CGRect(x: 0, y: 135, width: view.bounds.width, height: 100)
             promocodeScoresView.frame = CGRect(x: 0, y: 235, width: view.bounds.width, height: 50)
@@ -1267,7 +1276,6 @@ class MainScreenViewController: BaseViewController {
             taxiTariffView.isHidden = false
             taxiTariffView.reset()
             roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-         //   roundedView.isUserInteractionEnabled = false
             transparentView.isHidden = true
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.25, delay: 0, options: .curveLinear) {
                 self.view.layoutIfNeeded()
@@ -1276,6 +1284,7 @@ class MainScreenViewController: BaseViewController {
             isTaxiOrdered = true
 
         } else {
+            
             moveDown()
             isPrepairToOrder = true
             currentAddressViewDetail = 1

@@ -2,6 +2,9 @@ import Foundation
 
 class PromotionsFetcher {
     
+    
+    // ловит список акций с сервера
+    
     static func fetch(_ type:PromotionType, completion: @escaping ( ([PromotionModel]) -> () )) {
         CoreDataManager.shared.fetchCoreData { result in
         switch result {
@@ -27,6 +30,8 @@ class PromotionsFetcher {
         }
     }
     }
+    
+    //показывает детальное описание акции
     
     static func getPromotionDescriptionWith(id:Int, _ completion: @escaping ( (String) -> () )) {
         CoreDataManager.shared.fetchCoreData { result in

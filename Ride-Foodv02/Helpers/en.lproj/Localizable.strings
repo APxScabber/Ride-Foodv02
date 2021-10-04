@@ -201,6 +201,7 @@
 "foodOrderNewOrder" = "New order";
 "foodOrderSeeYouAgain" = "We will be glad to see you again :)";
 "foodOrderDeliveryFood" = "Food delivery";
+"foodOrderOneActive" = "1 active order";
 
 
 //MARK: - OrderRemove

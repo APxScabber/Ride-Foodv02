@@ -1,11 +1,13 @@
 import UIKit
 
 class PersonalInfoViewController: UIViewController {
-    //MARK: - Properties
+    
+    //MARK: - API
     
     private var toolBarView = ToolbarView.initFromNib()
     var phones = Phones()
-    
+    private var yOffset: CGFloat = 0.0
+
     //MARK: - Outlets
     
     @IBOutlet weak var phoneLabel: UILabel! { didSet {
@@ -81,6 +83,7 @@ class PersonalInfoViewController: UIViewController {
         remove()
     }
     
+    //MARK: - UI update
         
     private func updateUI() {
         phoneLabel.text = phones.phones[phones.currentPhoneID]
@@ -105,7 +108,6 @@ class PersonalInfoViewController: UIViewController {
         }
     }
     
-    private var yOffset: CGFloat = 0.0
     
     @objc
     private func showToolbarView(_ notification:NSNotification) {
@@ -118,11 +120,7 @@ class PersonalInfoViewController: UIViewController {
         }
     }
 
-    private func activateToolbar() {
-        toolBarView.textField.becomeFirstResponder()
-        transparentView.isHidden = false
-        transparentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-    }
+    
     
     private func moveScrollViewYOffset(at: CGFloat) {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: PersonalInfoConstant.durationForAppearingToolbarView, delay: 0, options: .curveLinear) {
@@ -131,8 +129,16 @@ class PersonalInfoViewController: UIViewController {
         }
     }
     
+    //MARK: - Activation
+    
+    private func activateToolbar() {
+        toolBarView.textField.becomeFirstResponder()
+        transparentView.isHidden = false
+        transparentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }
 }
 
+//MARK: - ToolbarView delegate
 
 extension PersonalInfoViewController: ToolbarViewDelegate {
     

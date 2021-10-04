@@ -5,8 +5,6 @@ protocol ToolbarViewDelegate:AnyObject {
     func remove()
 }
 
-//152 total height
-
 class ToolbarView: UIView {
     
     //MARK: - API
@@ -28,21 +26,11 @@ class ToolbarView: UIView {
     
     @IBOutlet weak var lineView: UIView!
     
-    @IBOutlet weak var roundedView: RoundedView! { didSet {
-        roundedView.cornerRadius = 15.0
-        roundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-    }}
-    
     @IBOutlet weak var button: UIButton! { didSet {
         button.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17)
+        button.layer.cornerRadius = 15.0
     }}
-    
-    @IBOutlet private weak var activeView: TopRoundedView! 
-    @IBOutlet weak var swipeDoneView: RoundedView! { didSet {
-        swipeDoneView.cornerRadius = 15.0
-        swipeDoneView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
-    }}
-    
+
     //MARK: - IBAction
     
     @IBAction func done(_ sender: UIButton) {
@@ -50,8 +38,8 @@ class ToolbarView: UIView {
     }
 
 
-    
     //MARK: - Layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         button.setTitle(Localizable.PersonalInfo.confirm.localized, for: .normal)
@@ -65,11 +53,11 @@ class ToolbarView: UIView {
         if state == .name {
             lineView.backgroundColor = label.isHidden ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
             button.isUserInteractionEnabled = label.isHidden
-            roundedView.colorToFill = label.isHidden ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+            button.backgroundColor = label.isHidden ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         } else if state == .email {
             lineView.backgroundColor = EmailChecker.validEmail(textField.text ?? "") ? #colorLiteral(red: 0.2392156863, green: 0.1921568627, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
             button.isUserInteractionEnabled = EmailChecker.validEmail(textField.text ?? "")
-            roundedView.colorToFill = EmailChecker.validEmail(textField.text ?? "") ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
+            button.backgroundColor = EmailChecker.validEmail(textField.text ?? "") ? #colorLiteral(red: 0.2392156863, green: 0.231372549, blue: 1, alpha: 1) : #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         }
         
     }

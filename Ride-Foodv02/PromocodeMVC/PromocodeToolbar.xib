@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cco-FJ-By7">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cco-FJ-By7" customClass="TopRoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="59" width="414" height="145"/>
                     <subviews>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="U4O-aT-voQ">
@@ -31,21 +31,12 @@
                             <color key="textColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="U4O-aT-voQ" firstAttribute="top" secondItem="cco-FJ-By7" secondAttribute="top" constant="5" id="3q5-Fd-0Uo"/>
-                        <constraint firstAttribute="height" constant="145" id="Owm-xR-553"/>
-                        <constraint firstItem="5dl-QK-Jvc" firstAttribute="leading" secondItem="cco-FJ-By7" secondAttribute="leading" constant="25" id="SzJ-Pi-QjZ"/>
-                        <constraint firstItem="U4O-aT-voQ" firstAttribute="centerX" secondItem="cco-FJ-By7" secondAttribute="centerX" id="b4V-4f-xDw"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5dl-QK-Jvc" secondAttribute="trailing" constant="25" id="l3z-FU-We0"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpD-Pb-dxg" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
-                    <rect key="frame" x="25" y="125" width="364" height="50"/>
-                    <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-rS-hIg">
-                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                            <rect key="frame" x="25" y="66" width="364" height="50"/>
+                            <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Cgz-ap-TIf"/>
+                            </constraints>
                             <state key="normal" title="Подвердить">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -54,13 +45,15 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="YRH-rS-hIg" secondAttribute="bottom" id="2MN-5x-ePJ"/>
-                        <constraint firstAttribute="height" constant="50" id="Efh-UT-jeo"/>
-                        <constraint firstAttribute="trailing" secondItem="YRH-rS-hIg" secondAttribute="trailing" id="eMR-nD-yNq"/>
-                        <constraint firstItem="YRH-rS-hIg" firstAttribute="leading" secondItem="hpD-Pb-dxg" secondAttribute="leading" id="jsk-R2-677"/>
-                        <constraint firstItem="YRH-rS-hIg" firstAttribute="top" secondItem="hpD-Pb-dxg" secondAttribute="top" id="zNT-U5-Dqz"/>
+                        <constraint firstItem="U4O-aT-voQ" firstAttribute="top" secondItem="cco-FJ-By7" secondAttribute="top" constant="5" id="3q5-Fd-0Uo"/>
+                        <constraint firstAttribute="height" constant="145" id="Owm-xR-553"/>
+                        <constraint firstItem="5dl-QK-Jvc" firstAttribute="leading" secondItem="cco-FJ-By7" secondAttribute="leading" constant="25" id="SzJ-Pi-QjZ"/>
+                        <constraint firstItem="U4O-aT-voQ" firstAttribute="centerX" secondItem="cco-FJ-By7" secondAttribute="centerX" id="b4V-4f-xDw"/>
+                        <constraint firstItem="YRH-rS-hIg" firstAttribute="leading" secondItem="cco-FJ-By7" secondAttribute="leading" constant="25" id="cam-zs-4fn"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5dl-QK-Jvc" secondAttribute="trailing" constant="25" id="l3z-FU-We0"/>
+                        <constraint firstAttribute="trailing" secondItem="YRH-rS-hIg" secondAttribute="trailing" constant="25" id="w3r-sI-JDJ"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="R-" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QR0-Ja-GQS">
@@ -75,7 +68,7 @@
                         <constraint firstAttribute="height" constant="1" id="Ncn-sh-xYn"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-td-4da" customClass="RoundedView" customModule="Ride_Foodv02" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-td-4da" customClass="SwipeDownView" customModule="Ride_Foodv02" customModuleProvider="target">
                     <rect key="frame" x="187" y="44" width="40" height="5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -90,29 +83,24 @@
                 <constraint firstItem="cco-FJ-By7" firstAttribute="top" secondItem="ggD-td-4da" secondAttribute="bottom" constant="10" id="1sQ-5o-MUD"/>
                 <constraint firstItem="QR0-Ja-GQS" firstAttribute="leading" secondItem="b7t-6K-VSp" secondAttribute="leading" constant="25" id="3Fc-8i-qe3"/>
                 <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="cco-FJ-By7" secondAttribute="trailing" id="4Lg-K4-Ztg"/>
-                <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="hpD-Pb-dxg" secondAttribute="trailing" constant="25" id="GBm-8b-7b6"/>
                 <constraint firstItem="ggD-td-4da" firstAttribute="centerX" secondItem="oIg-Kc-znl" secondAttribute="centerX" id="JLv-0k-J99"/>
                 <constraint firstItem="ggD-td-4da" firstAttribute="top" secondItem="b7t-6K-VSp" secondAttribute="top" id="JZm-XZ-UUv"/>
                 <constraint firstItem="Tci-2b-eha" firstAttribute="leading" secondItem="b7t-6K-VSp" secondAttribute="leading" constant="25" id="KH9-ku-hLc"/>
-                <constraint firstItem="hpD-Pb-dxg" firstAttribute="leading" secondItem="b7t-6K-VSp" secondAttribute="leading" constant="25" id="Meb-Xm-qDU"/>
                 <constraint firstItem="QR0-Ja-GQS" firstAttribute="top" secondItem="ggD-td-4da" secondAttribute="bottom" constant="26" id="NjL-Ud-dWA"/>
+                <constraint firstItem="YRH-rS-hIg" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="20" id="Zlp-xb-h9w"/>
                 <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="QR0-Ja-GQS" secondAttribute="trailing" constant="25" id="eKE-3G-gIn"/>
                 <constraint firstItem="Tci-2b-eha" firstAttribute="top" secondItem="QR0-Ja-GQS" secondAttribute="bottom" constant="10.5" id="gga-yX-UXS"/>
-                <constraint firstItem="hpD-Pb-dxg" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="20" id="jWk-H9-QPr"/>
                 <constraint firstItem="b7t-6K-VSp" firstAttribute="trailing" secondItem="Tci-2b-eha" secondAttribute="trailing" constant="25" id="w3f-UW-MuM"/>
                 <constraint firstItem="cco-FJ-By7" firstAttribute="leading" secondItem="b7t-6K-VSp" secondAttribute="leading" id="wco-DX-XWo"/>
                 <constraint firstItem="5dl-QK-Jvc" firstAttribute="top" secondItem="Tci-2b-eha" secondAttribute="bottom" constant="1" id="yyX-CZ-CLL"/>
             </constraints>
             <connections>
-                <outlet property="activeView" destination="cco-FJ-By7" id="OiU-gA-J4n"/>
                 <outlet property="button" destination="YRH-rS-hIg" id="DWg-Ao-iYz"/>
                 <outlet property="errorLabel" destination="5dl-QK-Jvc" id="6RB-og-KD6"/>
                 <outlet property="heightConstraint" destination="Owm-xR-553" id="qE0-fZ-nr5"/>
                 <outlet property="lineView" destination="Tci-2b-eha" id="b0c-RR-g4N"/>
-                <outlet property="roundedView" destination="hpD-Pb-dxg" id="sAB-QF-kgF"/>
                 <outlet property="spinner" destination="U4O-aT-voQ" id="4Bj-2K-UWB"/>
                 <outlet property="textField" destination="QR0-Ja-GQS" id="Y4U-eH-6qG"/>
-                <outlet property="topRoundedView" destination="ggD-td-4da" id="woh-UA-DRd"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
         </view>
