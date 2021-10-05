@@ -12,6 +12,8 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     private var shouldIncreaseHeight = false
     weak var delegate: ShopListDelegate?
     
+    var totalPriceInCart: Int = 0
+    
     //MARK: - API
     var shops = [Shop]()
     
@@ -149,7 +151,7 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         if CurrentShop.shared.total == 0 {
             bottomRoundedViewHeightConstraint.constant = 0
             offset = 50.0
-        } else { updateBottomView() }
+        } else { showBottomView() }
         collectionViewHeightConstraint.constant = height
         totalHeightConstraint.constant += collectionViewHeightConstraint.constant - offset
         totalHeight = totalHeightConstraint.constant
@@ -164,6 +166,24 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
               view.addGestureRecognizer(panGesture)
         
         
+    }
+    
+    func showBottomView(){
+        totalPriceInCart = 0
+        FoodPersistanceManager.shared.fetchProductsInCart(shopID: CurrentShop.shared.id) { [weak self] result in
+            guard let self = self else { return }
+            switch result{
+            case .success(let data):
+                data.forEach({ item in
+                    self.totalPriceInCart += Int(item.price * item.qty)
+                })
+                if self.totalPriceInCart > 0{
+                    self.updateBottomView(price: self.totalPriceInCart)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     @objc
@@ -192,14 +212,14 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
     
     
     private func checkIfUserHasActiveOrder() {
-        
-        if CurrentShop.shared.total > 0 {
+        showBottomView()
+        if totalPriceInCart > 0 {
             if shouldIncreaseHeight {
                 bottomRoundedViewHeightConstraint.constant = 50
                 totalHeightConstraint.constant = totalHeight + 50
                 shouldIncreaseHeight = false
             }
-            updateBottomView()
+           
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
             }
@@ -210,10 +230,10 @@ class ShopListViewController: UIViewController, UICollectionViewDataSource,UICol
         }
     }
     
-    private func updateBottomView() {
+    private func updateBottomView(price: Int) {
         bottomRoundedView.isHidden = false
         shopNameLabel.text = "Магазин \(CurrentShop.shared.shop)"
-        shopTotalPriceLabel.text = "\(CurrentShop.shared.total) \(Localizable.FoodOrder.foodOrderMoney.localized)"
+        shopTotalPriceLabel.text = "\(price) \(Localizable.FoodOrder.foodOrderMoney.localized)"
     }
     
 }
