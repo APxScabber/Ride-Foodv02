@@ -2,6 +2,7 @@ import UIKit
 
 class MenuButton: UIButton {
 
+    //MARK: - Drawing 
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath(arcCenter: rect.center, radius: rect.width/2, startAngle: 0, endAngle: .pi*2, clockwise: false)
         UIColor.white.setFill()

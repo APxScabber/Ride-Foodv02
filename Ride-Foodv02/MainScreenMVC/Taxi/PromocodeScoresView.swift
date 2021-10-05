@@ -43,6 +43,8 @@ class PromocodeScoresView: UIView {
 
     @IBOutlet weak var promocodeRoundedView: ShadowRoundedView!
 
+    //MARK: - Actions
+    
     @IBAction private func usePromocode(_ sender: UIButton) {
         if !usedPromocode {
             delegate?.usePromocode()
@@ -55,6 +57,8 @@ class PromocodeScoresView: UIView {
         }
     }
 
+    //MARK: - Layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         scoresLabel.text = Localizable.Promocode.scores.localized
@@ -62,12 +66,17 @@ class PromocodeScoresView: UIView {
         scoresEnteredLabel.text = Localizable.Scores.scoresAvailable.localized
     }
     
+    //MARK: - Reset
+    
     func reset() {
         usedScores = false
         usedPromocode = false
         scores = 0
     }
 
+    
+    //MARK: - UI changes
+    
     private func updatePromocodeView() {
         promocodeRoundedView.colorToFill = usedPromocode ? #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1) : .white
         promocodeImageView.isHidden = usedPromocode

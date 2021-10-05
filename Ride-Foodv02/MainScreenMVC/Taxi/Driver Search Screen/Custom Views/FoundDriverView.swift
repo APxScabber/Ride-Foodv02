@@ -13,8 +13,11 @@ protocol FoundDriverProtocol: AnyObject {
 
 class FoundDriverView: UIView {
     
+    //MARK: - API
     weak var delegate: FoundDriverProtocol?
 
+    //MARK: - Outlets
+    
     @IBOutlet weak var confirmButton: UIButton! { didSet{
         confirmButton.layer.cornerRadius        = 15
         confirmButton.titleLabel?.font          = UIFont.SFUIDisplayRegular(size: 17)
@@ -84,7 +87,7 @@ class FoundDriverView: UIView {
     }}
     
     
- 
+ //MARK: - Actions
 
     @IBAction func confirm(_ sender: Any) {
         delegate?.confirm()

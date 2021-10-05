@@ -14,7 +14,10 @@ protocol TaxiOrderInfoDelegate: AnyObject {
 
 class TaxiOrderInfo: UIView {
     
+    //MARK: - API
     weak var delegate: TaxiOrderInfoDelegate?
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var swipeLineImageView: UIImageView!
     
@@ -27,11 +30,9 @@ class TaxiOrderInfo: UIView {
     
     @IBOutlet weak var fromAddressTextField: UITextField! { didSet {
         fromAddressTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        //fromAddressTextField.textColor = UIColor(red: 255/138, green: 255/138, blue: 255/141, alpha: 1)
     }}
     @IBOutlet weak var toAddressTextField: UITextField! { didSet {
         toAddressTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        //toAddressTextField.textColor = UIColor(red: 255/138, green: 255/138, blue: 255/141, alpha: 1)
     }}
     
     @IBOutlet weak var taxiTypeImageView: UIImageView!
@@ -110,6 +111,13 @@ class TaxiOrderInfo: UIView {
         delegate?.addDelivery()
     }
     
+    //MARK: - Layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        problemButtonOutlet.setTitle(Localizable.DriverSearch.reportProblem.localized, for: .normal)
+        addDeliveryButtonOutlet.setTitle(Localizable.Delivery.deliveryAdd.localized, for: .normal)
+    }
     
     
 }

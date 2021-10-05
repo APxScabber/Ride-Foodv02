@@ -6,6 +6,11 @@ protocol FoodTaxiViewDelegate: AnyObject {
 }
 
 class FoodTaxiView: UIView {
+
+    //MARK: - API
+    weak var delegate: FoodTaxiViewDelegate?
+
+    //MARK: - Outlets
     
     @IBOutlet weak var foodImageView: UIImageView! { didSet {
         foodImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(foodImageViewClicked(_:))))
@@ -22,8 +27,8 @@ class FoodTaxiView: UIView {
     }}
     @IBOutlet weak var placeAnnotationView: UIImageView!
     
-    weak var delegate: FoodTaxiViewDelegate?
     
+    //MARK: - Delegation
     
     @objc
     private func foodImageViewClicked(_ recognizer: UITapGestureRecognizer) {
@@ -38,6 +43,8 @@ class FoodTaxiView: UIView {
             delegate?.goToTaxi()
         }
     }
+    
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)

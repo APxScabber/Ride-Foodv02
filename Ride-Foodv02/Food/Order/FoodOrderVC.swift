@@ -65,7 +65,7 @@ class FoodOrderVC: BaseViewController {
         bottomRoundedView.colorToFill = #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)
         bottomRoundedView.isUserInteractionEnabled = false
     }}
-    @IBOutlet weak var transparentView: TopRoundedView!
+    @IBOutlet weak var transparentView: UIView!
     
     @IBOutlet weak var paymentButton: UIButton! { didSet {
         paymentButton.titleLabel?.font = UIFont.SFUIDisplayRegular(size: 17.0)
@@ -143,7 +143,7 @@ class FoodOrderVC: BaseViewController {
                 self.tableViewHeightConstraint.constant += min(132,CGFloat(44 * numbers.count))
                 self.containerViewHeightConstraint.constant += self.tableViewHeightConstraint.constant
                 self.containerViewHeightConstraint.constant -= CGFloat(44*initialImagesCount)
-                if CurrentPayment.shared.id == 0 { self.containerViewHeightConstraint.constant -= (self.cashbackView.bounds.height + 20)
+                if CurrentPayment.shared.id == 0 { self.containerViewHeightConstraint.constant -= (self.cashbackView.bounds.height)
                 }
             }
                 self.totalHeight = self.containerViewHeightConstraint.constant

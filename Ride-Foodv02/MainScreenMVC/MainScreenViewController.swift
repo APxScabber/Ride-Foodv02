@@ -636,7 +636,6 @@ class MainScreenViewController: BaseViewController {
     func returnToMainView() {
         
         bottomConstaint.constant = -600
-        
         UIView.animate(withDuration: 0.5) {
             
             self.taxiBackButtonOutlet.alpha = 0
@@ -652,7 +651,7 @@ class MainScreenViewController: BaseViewController {
                 if self.isTaxiOrdered && self.isFoodOrdered {
                     
                     self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
-                    self.timeLabel.text = "2 активных заказа"
+                    self.timeLabel.text = Localizable.FoodOrder.foodOrderTwoActive.localized
                     self.pathTimeView.alpha = 1
                     self.foodTaxiView.taxiImageView.image = #imageLiteral(resourceName: "taxiButtonDisable")
                 } else if self.isTaxiOrdered || self.isFoodOrdered {
@@ -753,29 +752,28 @@ class MainScreenViewController: BaseViewController {
             self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
             self.pathTimeView.alpha = 1
         }
-        timeLabel.text = "1 активный заказ"
+        timeLabel.text = Localizable.FoodOrder.foodOrderOneActive.localized
         
-//        if isFoodOrdered && !isTaxiOrdered {
-//
-//        } else {
-//            UIView.animate(withDuration: 0.5) {
-//                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
-//                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
-//
-//                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
-//                self.pathTimeView.alpha = 1
-//            }
-//            timeLabel.text = "2 активных заказа"
-//
-//        }
+        if isFoodOrdered && isTaxiOrdered {
+            UIView.animate(withDuration: 0.5) {
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 50
+                self.taxiOrderInfoView.swipeLineImageView.alpha = 0
+
+                self.pathTimeBG.image = #imageLiteral(resourceName: "activeOrder")
+                self.pathTimeView.alpha = 1
+            }
+            timeLabel.text = Localizable.FoodOrder.foodOrderTwoActive.localized
+        }
     }
     
     func animationSwipeUp() {
-
+        menuButton.alpha = 0
+        circleView.alpha = 0
+        
         UIView.animate(withDuration: 0.5) {
             let height:CGFloat = 170
             let lowPosY = self.view.frame.height - self.foodTaxiView.frame.height - height
-            let highPosY = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+            let highPosY = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height + 15
             
             if self.isTaxiOrdered {
                 self.taxiOrderInfoView.frame.origin.y = lowPosY
@@ -796,6 +794,7 @@ class MainScreenViewController: BaseViewController {
     }
     
     func addSwipeDownGesture() {
+        
         if self.isTaxiOrdered {
             
             let swipeDowm = UISwipeGestureRecognizer(target: self, action: #selector(self.taxiInfoSwipeDown(_:)))
@@ -833,12 +832,12 @@ class MainScreenViewController: BaseViewController {
             
             self.foodTaxiView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height
             self.taxiOrderInfoView.frame.size.height = height
-            self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+            self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height
             
             if !self.isFoodOrdered {
                 self.taxiOrderInfoView.swipeLineImageView.alpha = 1
             } else {
-                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height + 15
                 self.foodOrderInfoView.swipeLineImageView.alpha = 1
             }
             
@@ -860,10 +859,10 @@ class MainScreenViewController: BaseViewController {
             self.foodOrderInfoView.frame.size.height = height
             
             if self.isTaxiOrdered {
-                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height - 15
-                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - 2 * height + 15
+                self.taxiOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height
             } else {
-                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height - 15
+                self.foodOrderInfoView.frame.origin.y = self.view.frame.height - self.foodTaxiView.frame.height - height
             }
             
             self.foodOrderInfoView.swipeLineImageView.alpha = 1
@@ -875,20 +874,9 @@ class MainScreenViewController: BaseViewController {
         }
     }
     
-    func hideShowMenuButton() {
-        UIView.animate(withDuration: 0.5) {
-            if self.menuButton.alpha == 0 {
-                self.menuButton.alpha = 1
-                self.circleView.alpha = 1
-            } else {
-                self.menuButton.alpha = 0
-                self.circleView.alpha = 0
-            }
-        }
-    }
-    
     func returnFromTaxiToStart() {
-        
+        addSwipeDownGesture()
+
         UIView.animate(withDuration: 1) {
             self.promotionView.alpha = 1
             if self.isFoodOrdered {
@@ -944,6 +932,8 @@ class MainScreenViewController: BaseViewController {
     
     @objc
     private func taxiInfoSwipeDown(_ recognizer: UISwipeGestureRecognizer) {
+        menuButton.alpha = 1
+        circleView.alpha = 1
         if taxiOrderInfoView.frame.height == 169 || foodOrderInfoView.frame.height == 169 {
             if recognizer.state == .ended {
                 
@@ -986,7 +976,7 @@ class MainScreenViewController: BaseViewController {
     @objc
     private func taxiOrderedInfoTap() {
         
-        hideShowMenuButton()
+        //hideShowMenuButton()
         
         if taxiOrderInfoView.frame.height == 169 {
             
@@ -1030,7 +1020,7 @@ class MainScreenViewController: BaseViewController {
     @objc
     private func foodOrderedInfoTap() {
         
-        hideShowMenuButton()
+//        hideShowMenuButton()
         
         if foodOrderInfoView.frame.height == 169 {
             foodOrderInfoView.gestureRecognizers?.removeAll()
@@ -1039,10 +1029,10 @@ class MainScreenViewController: BaseViewController {
                 
                 let height:CGFloat = 350
                 
-                self.foodTaxiView.frame.origin.y = self.view.frame.height
+               // self.foodTaxiView.frame.origin.y = self.view.frame.height
                 self.foodOrderInfoView.frame.size.height = height
                 
-                let posY = self.view.frame.height - height
+                let posY = self.view.frame.height - height - self.foodTaxiView.frame.size.height
                 self.foodOrderInfoView.frame.origin.y = posY
                 
                 self.foodOrderInfoView.swipeLineImageView.alpha = 0
@@ -1417,7 +1407,10 @@ class MainScreenViewController: BaseViewController {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: .curveLinear) {
             self.closeContainerView()
             self.orderCompleteView.frame.origin.y = self.view.bounds.height - 380
-        }
+        } completion: { if $0 == .end {
+            self.mapView.isUserInteractionEnabled = true
+        }}
+        
     }
     
     // MARK: Dismiss taxiContainerView and return to the main screen

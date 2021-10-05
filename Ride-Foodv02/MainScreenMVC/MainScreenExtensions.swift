@@ -119,7 +119,7 @@ extension MainScreenViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodMainCell", for: indexPath)
-        if let foodMainCell = cell as? FoodMainTableViewCell {
+        if let foodMainCell = cell as? FoodMainTableViewCell,addresses.count > 0 {
             foodMainCell.placeLabel.text = addresses[indexPath.row].title
             foodMainCell.addressLabel.text = addresses[indexPath.row].fullAddress
             return foodMainCell
@@ -746,6 +746,8 @@ extension MainScreenViewController: FoodOrderInfoDelegate {
         let posY = self.view.frame.height
         UIView.animate(withDuration: 0.5) {
             self.foodOrderInfoView.frame.origin.y = posY
+            self.menuButton.alpha = 1
+            self.circleView.alpha = 1
         } completion: { _ in
             self.foodOrderInfoView.gestureRecognizers?.removeAll()
             let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.foodInfoSwipeUp(_:)))
@@ -757,7 +759,7 @@ extension MainScreenViewController: FoodOrderInfoDelegate {
             
             if self.isTaxiOrdered {
                 self.taxiOrderInfoView.swipeLineImageView.alpha = 1
-                self.timeLabel.text = "1 активный заказ"
+                self.timeLabel.text = Localizable.FoodOrder.foodOrderOneActive.localized
             } else {
                 self.pathTimeBG.image = nil
                 self.timeLabel.text = ""

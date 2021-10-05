@@ -14,6 +14,9 @@ protocol SetToLocationDelegate: AnyObject {
 
 class SetToLocationView: UIView {
     
+    // MARK: - Properties
+    
+    weak var delegate: SetToLocationDelegate?
     
     // MARK: - Outlets
     @IBOutlet weak var underLineView: UIView!
@@ -26,11 +29,10 @@ class SetToLocationView: UIView {
     @IBOutlet weak var roundedView: RoundedView!
     @IBOutlet weak var confirmButton: UIButton!
     
-    // MARK: - Properties
     
-    weak var delegate: SetToLocationDelegate?
 
     // MARK: - Actions
+    
     @IBAction func done(_ sender: UITextField) {
         sender.resignFirstResponder()
     }

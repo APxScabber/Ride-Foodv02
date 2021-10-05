@@ -13,10 +13,11 @@ protocol FoodOrderInfoDelegate: AnyObject {
 
 class FoodOrderInfo: UIView {
     
+    //MARK: - API
     weak var delegate: FoodOrderInfoDelegate?
     
+    //MARK: - Outlets
     @IBOutlet weak var swipeLineImageView: UIImageView!
-    
     
     @IBOutlet weak var mainView: UIView! { didSet {
         mainView.layer.cornerRadius = 15
@@ -26,11 +27,9 @@ class FoodOrderInfo: UIView {
     
     @IBOutlet weak var deliveryFoodTextField: UITextField! { didSet {
         deliveryFoodTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        //deliveryFoodTextField.textColor = UIColor(red: 138, green: 138, blue: 141, alpha: 1)
     }}
     @IBOutlet weak var toAddressTextField: UITextField! { didSet {
         toAddressTextField.font = UIFont.SFUIDisplayRegular(size: 17.0)
-        //toAddressTextField.textColor = UIColor(red: 138, green: 138, blue: 141, alpha: 1)
     }}
     
     @IBOutlet weak var foodInfoTimeTextView: UITextView!
@@ -76,4 +75,11 @@ class FoodOrderInfo: UIView {
         delegate?.cancelOrder()
     }
     
+    //MARK: - Layout
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cancelButtonOutlet.setTitle(Localizable.FoodOrder.foodOrderCancelOrder.localized, for: .normal)
+        callButtonOutlet.setTitle(Localizable.FoodOrder.foodOrderCallToCouirer.localized, for: .normal)
+        deliveryFoodTextField.text = Localizable.FoodOrder.foodOrderDeliveryFood.localized
+    }
 }

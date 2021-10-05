@@ -41,7 +41,7 @@ class ScoresToolbar: UIView {
             delegate?.enter(scores: scores)
         }
     }
-    
+    //MARK: - UI update
     @objc
     private func updateUI() {
         errorLabel.isHidden = true
@@ -98,6 +98,7 @@ class ScoresToolbar: UIView {
         addGestureRecognizer(swipe)
     }
     
+    //MARK: - Close 
     @objc
     private func close(_ recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {

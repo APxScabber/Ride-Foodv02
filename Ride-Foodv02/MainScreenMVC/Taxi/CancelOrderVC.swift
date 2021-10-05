@@ -13,6 +13,7 @@ protocol CancelOrderDelegate: AnyObject{
 
 class CancelOrderVC: UIViewController {
     
+    //MARK: - API
     weak var delegate: CancelOrderDelegate?
     
     let reasons = [
@@ -21,6 +22,8 @@ class CancelOrderVC: UIViewController {
         Localizable.DriverSearch.longWaiting.localized,
         Localizable.DriverSearch.noReasonCancel.localized
     ]
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var containerView: UIView!
     
@@ -31,15 +34,14 @@ class CancelOrderVC: UIViewController {
     
     @IBOutlet weak var cancelOrderTableView: UITableView!
     
-//    @IBOutlet weak var smallScrollView: UIView!
     
-    
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        // Do any additional setup after loading the view.
     }
  
+    //MARK: - UI logic
     
     func configureUI(){
         cancelOrderTableView.reloadData()
@@ -48,17 +50,9 @@ class CancelOrderVC: UIViewController {
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension CancelOrderVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

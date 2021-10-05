@@ -81,6 +81,8 @@ class TaxiTariffView: UIView {
         businessPriceLabel.text = "\(prices[2]) \(Localizable.Delivery.deliveryMoney.localized)"
     }
     
+    //MARK: - Selection
+    
     @objc
     private func selectStandartView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended && CurrentPrice.shared.totalDiscount == 0  {
@@ -91,16 +93,6 @@ class TaxiTariffView: UIView {
         }
     }
     
-    private func updateStandartView() {
-        standartRoundedView.colorToFill = .white
-        standartImageView.image = #imageLiteral(resourceName: "StandartCar")
-        standartDurationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-        standartPriceLabel.textColor = .black
-        if scoresEntered != 0 || promocodeActivated {
-            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: max(0,prices[0] - CurrentPrice.shared.totalDiscount))
-        }
-    }
-    
     @objc
     private func selectPremiumView(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended && CurrentPrice.shared.totalDiscount == 0  {
@@ -108,16 +100,6 @@ class TaxiTariffView: UIView {
             selectedIndex = 1
             updatePremiumView()
             delegate?.tariffEntered(index: selectedIndex ?? 1)
-        }
-    }
-    
-    private func updatePremiumView() {
-        premiumRoundedView.colorToFill = .white
-        premiumImageView.image = #imageLiteral(resourceName: "PremiumCar")
-        premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
-        premiumPriceLabel.textColor = .black
-        if scoresEntered != 0 || promocodeActivated {
-            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: max(0,prices[1] - CurrentPrice.shared.totalDiscount))
         }
     }
     
@@ -132,6 +114,30 @@ class TaxiTariffView: UIView {
         }
     }
     
+    //MARK: - Update views
+    
+    private func updateStandartView() {
+        standartRoundedView.colorToFill = .white
+        standartImageView.image = #imageLiteral(resourceName: "StandartCar")
+        standartDurationLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+        standartPriceLabel.textColor = .black
+        if scoresEntered != 0 || promocodeActivated {
+            update(oldLabel: standartOldPriceLabel, label: standartPriceLabel, oldPrice: prices[0], price: max(0,prices[0] - CurrentPrice.shared.totalDiscount))
+        }
+    }
+    
+    
+    private func updatePremiumView() {
+        premiumRoundedView.colorToFill = .white
+        premiumImageView.image = #imageLiteral(resourceName: "PremiumCar")
+        premiumDurationLabel.textColor = #colorLiteral(red: 0.768627451, green: 0.2588235294, blue: 0.9490196078, alpha: 1)
+        premiumPriceLabel.textColor = .black
+        if scoresEntered != 0 || promocodeActivated {
+            update(oldLabel: premiumOldPriceLabel, label: premiumPriceLabel, oldPrice: prices[1], price: max(0,prices[1] - CurrentPrice.shared.totalDiscount))
+        }
+    }
+    
+
     private func updateBusinessView() {
         businessRoundedView.colorToFill = .white
         businessImageView.image = #imageLiteral(resourceName: "BusinessCar")
@@ -141,6 +147,8 @@ class TaxiTariffView: UIView {
             update(oldLabel: businessOldPriceLabel, label: businessPriceLabel, oldPrice: prices[2], price: max(0,prices[2] - CurrentPrice.shared.totalDiscount))
         }
     }
+    
+    //MARK: - Reset
     
     func reset() {
 
@@ -173,11 +181,13 @@ class TaxiTariffView: UIView {
         recreateViewIfNeeded()
     }
     
+    //MARK: - UI update
+    
     private func update(oldLabel:UILabel,label:UILabel,oldPrice:Int,price:Int) {
-        label.text = "\(price) руб"
+        label.text = "\(price) \(Localizable.Delivery.deliveryMoney.localized)"
         
         oldLabel.isHidden = false
-        let attrString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(oldPrice) руб")
+        let attrString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(oldPrice) \(Localizable.Delivery.deliveryMoney.localized)")
         attrString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attrString.length))
         oldLabel.attributedText = attrString
     }

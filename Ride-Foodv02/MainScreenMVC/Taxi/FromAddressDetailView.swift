@@ -68,6 +68,7 @@ class FromAddressDetailView: UIView {
         confirmButton.isUserInteractionEnabled = !((textField.text ?? "").isEmpty)
     }
     
+    //MARK: - Layout 
     override func layoutSubviews() {
         super.layoutSubviews()
         let title = isTextEmpty ? Localizable.Taxi.skip.localized : Localizable.Taxi.confirm.localized

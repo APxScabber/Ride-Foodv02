@@ -80,6 +80,8 @@ class ScoresView: UIView {
         addGestureRecognizer(swipe)
     }
     
+    //MARK: - Close
+    
     @objc
     private func close(_ reconizer: UISwipeGestureRecognizer) {
         if reconizer.state == .ended {
