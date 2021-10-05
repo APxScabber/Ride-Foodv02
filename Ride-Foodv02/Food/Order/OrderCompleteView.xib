@@ -106,11 +106,13 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ZhN-Ka-qqg" secondAttribute="trailing" id="0oU-Qd-Pbu"/>
-                                <constraint firstItem="ZhN-Ka-qqg" firstAttribute="top" secondItem="Fsx-gZ-PdR" secondAttribute="top" id="3et-nm-3jk"/>
+                                <constraint firstItem="ZhN-Ka-qqg" firstAttribute="top" secondItem="Fsx-gZ-PdR" secondAttribute="top" id="1IK-Gw-7iB"/>
                                 <constraint firstAttribute="height" constant="50" id="67M-dQ-qME"/>
                                 <constraint firstItem="ZhN-Ka-qqg" firstAttribute="leading" secondItem="Fsx-gZ-PdR" secondAttribute="leading" id="7E3-TC-qKd"/>
-                                <constraint firstAttribute="bottom" secondItem="ZhN-Ka-qqg" secondAttribute="bottom" id="8Xi-HH-HMm"/>
+                                <constraint firstItem="ZhN-Ka-qqg" firstAttribute="width" secondItem="Fsx-gZ-PdR" secondAttribute="width" id="NME-ha-4cG"/>
+                                <constraint firstAttribute="bottom" secondItem="ZhN-Ka-qqg" secondAttribute="bottom" id="RqM-6I-2Sl"/>
+                                <constraint firstItem="ZhN-Ka-qqg" firstAttribute="height" secondItem="Fsx-gZ-PdR" secondAttribute="height" id="ujn-ib-bWe"/>
+                                <constraint firstAttribute="trailing" secondItem="ZhN-Ka-qqg" secondAttribute="trailing" id="vsj-XW-M8u"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Будем рады вам снова :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pec-xq-wfb">
@@ -153,7 +155,7 @@
                         <constraint firstItem="J3W-md-D0m" firstAttribute="centerX" secondItem="iqJ-Is-YdW" secondAttribute="centerX" id="cdZ-J5-G1Z"/>
                         <constraint firstItem="Pec-xq-wfb" firstAttribute="leading" secondItem="iqJ-Is-YdW" secondAttribute="leading" constant="25" id="gZb-vU-KRd"/>
                         <constraint firstItem="J3W-md-D0m" firstAttribute="leading" secondItem="iqJ-Is-YdW" secondAttribute="leading" constant="25" id="j4v-JD-iWd"/>
-                        <constraint firstItem="Fsx-gZ-PdR" firstAttribute="top" secondItem="Eiy-vF-ErA" secondAttribute="bottom" constant="40" id="upq-oh-8Ux"/>
+                        <constraint firstItem="PdO-Vp-OoA" firstAttribute="top" secondItem="iqJ-Is-YdW" secondAttribute="topMargin" id="reB-a2-0cT"/>
                         <constraint firstItem="Eiy-vF-ErA" firstAttribute="top" secondItem="Pec-xq-wfb" secondAttribute="bottom" constant="10" id="yda-FG-VUV"/>
                         <constraint firstItem="PdO-Vp-OoA" firstAttribute="centerX" secondItem="iqJ-Is-YdW" secondAttribute="centerX" id="ykL-ST-enB"/>
                         <constraint firstItem="Pec-xq-wfb" firstAttribute="top" secondItem="J3W-md-D0m" secondAttribute="bottom" constant="7" id="zI9-Gt-o40"/>
