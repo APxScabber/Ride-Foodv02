@@ -1190,8 +1190,7 @@ class MainScreenViewController: BaseViewController {
             }
             currentAddressViewDetail = 0
         }
-        moveDown()
-        returnFromTaxiToStart()
+        close()
     }
     
     //MARK: - Helper
