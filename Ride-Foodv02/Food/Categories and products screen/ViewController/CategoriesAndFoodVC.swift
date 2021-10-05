@@ -136,7 +136,7 @@ class CategoriesAndFoodVC: BaseViewController {
     
     func fetchCDOrderInformation(with screenType: PresentedScreen){
         productsInCart.removeAll()
-        FoodPersistanceManager.shared.fetchAddresses(shopID: CurrentShop.shared.id) { [weak self] result in
+        FoodPersistanceManager.shared.fetchProductsInCart(shopID: CurrentShop.shared.id) { [weak self] result in
             guard let self = self else { return }
             switch result{
             case .failure(let error):
@@ -670,7 +670,7 @@ extension CategoriesAndFoodVC{
 
 extension CategoriesAndFoodVC: ClearFoodCartProtocol{
     func clearFoodCart() {
-        CurrentShop.shared.reset()
+      //  CurrentShop.shared.reset()
         goToPaymentView?.isHidden = true
         FoodPersistanceManager.shared.deleteCoreDataInstance(shopID: shopID) { [weak self] error in
             guard let self = self else { return }

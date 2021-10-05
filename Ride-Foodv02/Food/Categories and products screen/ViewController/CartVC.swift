@@ -60,7 +60,7 @@ class CartVC: UIViewController {
     // Business Logic
     
     func retrieveCartProducts(){
-        FoodPersistanceManager.shared.fetchAddresses(shopID: shopID) { [weak self] result in
+        FoodPersistanceManager.shared.fetchProductsInCart(shopID: shopID) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error):

@@ -17,7 +17,7 @@ class FoodPersistanceManager{
     
     let context = CoreDataManager.shared.persistentContainer.viewContext
     
-    func fetchAddresses(shopID: Int, completion: @escaping (Result<[FoodOrderMO], Error>) -> Void){
+    func fetchProductsInCart(shopID: Int, completion: @escaping (Result<[FoodOrderMO], Error>) -> Void){
         var products: [FoodOrderMO] = []
         do {
             let food = try! context.fetch(FoodOrderMO.fetchRequest()) as [FoodOrderMO]
