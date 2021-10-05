@@ -320,6 +320,11 @@ class CategoriesAndFoodVC: BaseViewController {
         switch screenType {
         case .subcategories:
             DispatchQueue.main.async {
+                guard self.isPaginating == false else{
+                    self.productsCollectionView.reloadData()
+                    return
+                }
+                
                 if self.showSubcategories{
                     self.configureTableView()
                     self.subcategoriesTableView.reloadData()
@@ -327,11 +332,12 @@ class CategoriesAndFoodVC: BaseViewController {
                     if !self.subcategories.isEmpty {
                         self.configureSubcategoriesCollectionViews()
                         self.configureProductsCollectionView()
-                        self.reloadProductsCollectionView()
+                        self.productsCollectionView.reloadData()
                         self.subcategoriesCollectionView.reloadData()
                     } else {
                         self.configureProductsCollectionView()
-                        self.reloadProductsCollectionView()
+                        self.productsCollectionView.reloadData()
+                       
                     }
                 }
             }
