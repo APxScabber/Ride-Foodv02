@@ -189,8 +189,8 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         DispatchQueue.global(qos: .userInitiated).async {
             if let imageData = product.icon{
                 let url = URL(string: imageData)
-                let data = try? Data(contentsOf: url!)
-                let image = UIImage(data: data!)
+                guard let data = try? Data(contentsOf: url!) else { return }
+                let image = UIImage(data: data)
                 DispatchQueue.main.async {
                     self.productImageView.image = image
                 }
