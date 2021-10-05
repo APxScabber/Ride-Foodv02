@@ -5,6 +5,7 @@ protocol ToAddressDetailViewDelegate: AnyObject {
 }
 class ToAddressDetailView: UIView {
 
+    //MARK: - API
     weak var delegate: ToAddressDetailViewDelegate?
     var isTextEmpty = true
     
@@ -20,7 +21,6 @@ class ToAddressDetailView: UIView {
         blurEffectView.addGestureRecognizer(tap)
     }}
     
-    @IBOutlet weak var hintView: UIView!
     @IBOutlet weak var topCorneredView: TopRoundedView!
     @IBOutlet weak var topRoundedView: RoundedView! { didSet {
         topRoundedView.cornerRadius = 10.0
@@ -68,6 +68,7 @@ class ToAddressDetailView: UIView {
         confirmButton.isUserInteractionEnabled = !((textField.text ?? "").isEmpty)
     }
     
+    //MARK: - Layout
     
     override func layoutSubviews() {
         super.layoutSubviews()

@@ -9,6 +9,8 @@ import UIKit
 
 class CarNumberView: UIView {
 
+    //MARK: - Outlets
+    
     @IBOutlet weak var carNumberLabel: UILabel! {didSet{
         carNumberLabel.font             = UIFont.SFUIDisplayRegular(size: 12)
         carNumberLabel.textColor        = UIColor.black

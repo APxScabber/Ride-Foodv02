@@ -15,6 +15,10 @@ protocol CancelOrderActionsProtocol: AnyObject{
 
 class CancelledVC: UIViewController {
     
+    //MARK: - API
+    weak var delegate: CancelOrderActionsProtocol?
+
+    //MARK: - Outlets
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var orderCancelLabel: UILabel! { didSet {
@@ -46,16 +50,7 @@ class CancelledVC: UIViewController {
         reportProblemButton.setTitle(Localizable.DriverSearch.reportProblem.localized, for: .normal)
     }}
     
-    weak var delegate: CancelOrderActionsProtocol?
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+//MARK: - Actions
     
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -74,18 +69,5 @@ class CancelledVC: UIViewController {
         
     }
     
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

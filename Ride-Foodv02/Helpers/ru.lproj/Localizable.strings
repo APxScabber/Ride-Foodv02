@@ -175,6 +175,7 @@
 "deliveryMin" = "мин";
 "deliveryMoney" = "руб";
 "deliveryActiveOrder" = "активный заказ";
+"deliveryAdd" = "Добавить доставку";
 
 //MARK: - CashBack
 
@@ -200,6 +201,9 @@
 "foodOrderSeeYouAgain" = "Будем рады вам снова :)";
 "foodOrderDeliveryFood" = "Доставка еды";
 "foodOrderOneActive" = "1 активный заказ";
+"foodOrderTwoActive" = "2 активных заказа";
+"foodOrderCallToCouirer" = "Позвонить курьеру";
+"foodOrderCancelOrder" = "Отменить заказ";
 
 //MARK: - OrderRemove
 

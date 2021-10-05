@@ -9,10 +9,12 @@ import UIKit
 
 class LoadingWavesCustomView: UIView {
     
+    //MARK: - Images
     let imageOne    = UIImageView(image: UIImage(named: "SearchOne"))
     let imageTwo    = UIImageView(image: UIImage(named: "SearchTwo"))
     let imageThree  = UIImageView(image: UIImage(named: "SearchThree"))
 
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -22,6 +24,7 @@ class LoadingWavesCustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Configure
     func configure(){
         self.translatesAutoresizingMaskIntoConstraints = false
         configureFirstImage()
@@ -41,6 +44,7 @@ class LoadingWavesCustomView: UIView {
         }, completion: nil)
     }
     
+    //MARK: - Constraints
     func setConstraints(){
         for i in [imageOne, imageTwo, imageThree]{
             NSLayoutConstraint.activate([
@@ -49,6 +53,8 @@ class LoadingWavesCustomView: UIView {
             ])
         }
     }
+    
+    //MARK: - Configure images
     
     func configureFirstImage(){
         imageOne.translatesAutoresizingMaskIntoConstraints = false

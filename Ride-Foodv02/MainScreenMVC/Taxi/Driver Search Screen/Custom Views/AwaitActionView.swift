@@ -9,6 +9,7 @@ import UIKit
 
 class AwaitActionView: UIView {
     
+    //MARK: - API
     var image = UIImage()
     var name = String()
     
@@ -16,6 +17,7 @@ class AwaitActionView: UIView {
     var iconImageView = UIImageView()
     var titleLabel = UILabel()
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -31,6 +33,8 @@ class AwaitActionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Configure
     
     func configure(){
         self.backgroundColor = .white
@@ -86,12 +90,5 @@ class AwaitActionView: UIView {
             titleLabel.widthAnchor.constraint(equalToConstant: 80)
         ])
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

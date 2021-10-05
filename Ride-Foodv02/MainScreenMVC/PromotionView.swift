@@ -7,7 +7,10 @@ protocol PromotionViewDelegate: AnyObject {
 
 class PromotionView: UIView {
     
+    //MARK: - API
     weak var delegate: PromotionViewDelegate?
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var detailLabel: UILabel! { didSet {
         detailLabel.font = UIFont.SFUIDisplaySemibold(size: 12.0)
@@ -16,6 +19,8 @@ class PromotionView: UIView {
     @IBOutlet weak var touchableView: UIView! { didSet {
         touchableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showPromotion)))
     }}
+    
+    //MARK: - Actions
     
     @IBAction func close(_ sender: UIButton) {
         delegate?.closePromotionView()

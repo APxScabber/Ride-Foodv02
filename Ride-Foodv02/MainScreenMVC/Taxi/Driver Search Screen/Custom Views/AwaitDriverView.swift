@@ -13,11 +13,9 @@ protocol CloseViewDelegate: AnyObject{
 
 class AwaitDriverView: UIView {
     
-    // storyboard contraints
+    //MARK: - API
     
-    @IBOutlet weak var swipeViewToTopConstraint: NSLayoutConstraint!
-    
-    
+    weak var delegate: CloseViewDelegate?
     var currentStatus: DriverStatus?
     
     var carName         = String()
@@ -29,12 +27,10 @@ class AwaitDriverView: UIView {
     let driverWaitingDuration = 15
     let paidDriverWaitingDuration = 10
     
-    weak var delegate: CloseViewDelegate?
+    //MARK: - Outlets
     
-//    Timer components
-    var timer: Timer?
-    var totalDuration = Int()
-   
+    @IBOutlet weak var swipeViewToTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
     
     let statusLabel             = UILabel()
     let waitingDescriptionLabel = UILabel()
@@ -43,16 +39,20 @@ class AwaitDriverView: UIView {
     
     let carNameLabel            = UILabel()
     
+
+    //MARK: - Timer
+    var timer: Timer?
+    var totalDuration = Int()
+   
+    //MARK: - Images
+
     let callView                = AwaitActionView(image: UIImage(named: "CallImage")!, name: Localizable.DriverSearch.driverSearchCall.localized)
     let onMyWayView             = AwaitActionView(image: UIImage(named: "WaitImage")!, name: Localizable.DriverSearch.driverSearchBRB.localized)
     
     let carNumberView           = CarNumberView.initFromNib()
     
-   // @IBOutlet weak var roundedSwipeView: UIView!
     
-    @IBOutlet weak var containerView: UIView!
-    
-// Business logic part
+    //MARK: - Business logic part
     
     func startTimer(with duration: Int){
        totalDuration = duration
@@ -134,8 +134,7 @@ class AwaitDriverView: UIView {
     
     
     
-    
-//    UI Part
+   //MARK: - UI Part
     
     func configure(state: DriverStatus){
         currentStatus = state

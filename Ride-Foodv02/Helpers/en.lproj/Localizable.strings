@@ -176,6 +176,7 @@
 "deliveryMin" = "min";
 "deliveryMoney" = "rub";
 "deliveryActiveOrder" = "active order";
+"deliveryAdd" = "Add delivery";
 
 
 //MARK: - CashBack
@@ -202,7 +203,9 @@
 "foodOrderSeeYouAgain" = "We will be glad to see you again :)";
 "foodOrderDeliveryFood" = "Food delivery";
 "foodOrderOneActive" = "1 active order";
-
+"foodOrderTwoActive" = "2 active orders";
+"foodOrderCallToCouirer" = "Call to courier";
+"foodOrderCancelOrder" = "Cancel order";
 
 //MARK: - OrderRemove
 
