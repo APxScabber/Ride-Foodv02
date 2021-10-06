@@ -420,6 +420,7 @@ extension MainScreenViewController: FoodTaxiViewDelegate {
         }
         roundedView.isHidden = false
         loadSetupsTaxi()
+        
     }
 }
 
