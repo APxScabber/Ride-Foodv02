@@ -478,6 +478,9 @@ class MainScreenViewController: BaseViewController {
             self.promotionView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
+            self.roundedViewTopConstraint.priority = .defaultLow
+            self.roundedViewBottomConstraint.priority = .required
+            self.roundedViewBottomConstraint.constant = 10
             self.bottomConstaint.constant = 0
             self.userLocationButtonBottomConstraint.constant = self.addressesChooserViewHeightConstraint.constant - self.safeAreaBottomHeight
             UIView.animate(withDuration: 0.5) {
@@ -485,6 +488,7 @@ class MainScreenViewController: BaseViewController {
                 self.view.layoutIfNeeded()
                 print(self.userLocationButtonBottomConstraint.constant)
             }
+            
         }
     }
     
@@ -530,8 +534,8 @@ class MainScreenViewController: BaseViewController {
         responderTextField = nil
         setBottomConstraintTo(0)
         taxiTariffView.removeFromSuperview()
-        roundedViewTopConstraint.priority = .required
-        roundedViewBottomConstraint.priority = .defaultLow
+        roundedViewTopConstraint.priority = .defaultLow
+        roundedViewBottomConstraint.priority = .required
         twoCorneredView.backgroundColor = .white
         showMapItems(false)
         shouldUpdateUI = true
@@ -1059,7 +1063,8 @@ class MainScreenViewController: BaseViewController {
         guard let size = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         if keyboardHeight == 0 { keyboardHeight = size.height }
-        
+        roundedViewTopConstraint.priority = .required
+        roundedViewBottomConstraint.priority = .defaultLow
         if shouldUpdateUI {
             setBottomConstraintTo(keyboardHeight - safeAreaBottomHeight)
             shouldUpdateUI = false
